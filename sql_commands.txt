@@ -1,3 +1,10 @@
+Copyright (C) 2011 Kyle Evans <kyledevans@gmail.com>
+
+Released under the GPL version 2 only.
+
+-------------------------------------------------------
+
+
 SELECT patients.patient_id, patients.patient_last, patients.patient_first, drugs.drug_name,
 drugs.drug_generic, drugs.drug_manufacturer, drugs.drug_ndc, drugs.drug_form, drugs.drug_strength,
 drugs.drug_instructions, prescriptions.prescription_amount, prescriptions.prescription_written,
