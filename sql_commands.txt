@@ -1,0 +1,18 @@
+SELECT patients.patient_id, patients.patient_last, patients.patient_first, drugs.drug_name,
+drugs.drug_generic, drugs.drug_manufacturer, drugs.drug_ndc, drugs.drug_form, drugs.drug_strength,
+drugs.drug_instructions, prescriptions.prescription_amount, prescriptions.prescription_written,
+prescriptions.prescription_filled
+FROM prescriptions
+JOIN patients ON patients.patient_id = prescriptions.patient_id
+JOIN drugs ON prescriptions.drug_id = drugs.drug_id
+WHERE patients.patient_last = :Last OR patients.patient_first = :First
+
+CREATE VIEW v_prescriptions
+SELECT patients.patient_id, prescriptions.prescription_id, drugs.drug_id, shipments.shipment_id,
+patients.patient_last, patients.patient_first, drugs.drug_name, drugs.drug_generic, drugs.drug_manufacturer,
+drugs.drug_ndc, drugs.drug_form, drugs.drug_strength, drugs.drug_instructions, prescriptions.prescription_amount, prescriptions.prescription_written, prescriptions.prescription_filled, shipments.shipment_expiration,
+shipments.shipment_lot
+FROM prescriptions
+JOIN patients ON prescriptions.patient_id = patients.patient_id
+JOIN drugs ON prescriptions.drug_id = drugs.drug_id
+JOIN shipments ON prescriptions.shipment_id = shipments.shipment_id
