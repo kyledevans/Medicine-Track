@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	// SQL test code
+
 	QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
 	db.setHostName("192.168.1.99");
 	db.setDatabaseName("epc");
@@ -20,17 +21,15 @@ MainWindow::MainWindow(QWidget *parent) :
 	db.setPassword("kobalt");
 	db.open();
 
-	QSqlQueryModel *model = new QSqlQueryModel;
-	model->setQuery("SELECT first, last FROM patients;");
+	/*QSqlQueryModel *model = new QSqlQueryModel;
+	model->setQuery("SELECT id, first, last FROM patients;");
 	model->setHeaderData(0, Qt::Horizontal, tr("id"));
 	model->setHeaderData(1, Qt::Horizontal, tr("first"));
-	//model->setHeaderData(2, Qt::Horizontal, tr("last"));
+	model->setHeaderData(2, Qt::Horizontal, tr("last"));
 
 	QTableView *view = new QTableView(ui->centralWidget);
 	view->setModel(model);
-	view->show();
-
-	//delete model;
+	view->show();*/
 }
 
 MainWindow::~MainWindow()
