@@ -8,6 +8,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "patientsearch.h"
+#include "prescriptionsframe.h"
+#include "medicationsframe.h"
+#include "inventoryframe.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,11 +25,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	ui->setupUi(this);
 
-	PatientSearch *mainFrame = new PatientSearch();
-	PatientSearch *secondFrame = new PatientSearch();
-	//ui->centralWidget->layout()->addWidget(mainFrame);
-	ui->mainTabs->addTab(mainFrame, QString("Patients"));
-	ui->mainTabs->addTab(secondFrame, QString("Prescriptions"));
+	PatientSearch *patientFrame = new PatientSearch();
+	PrescriptionsFrame *prescriptionsFrame = new PrescriptionsFrame();
+	MedicationsFrame *medicationsFrame = new MedicationsFrame();
+	InventoryFrame *inventoryFrame = new InventoryFrame();
+
+	ui->mainTabs->addTab(patientFrame, QString("Patients"));
+	ui->mainTabs->addTab(prescriptionsFrame, QString("Prescriptions"));
+	ui->mainTabs->addTab(medicationsFrame, QString("Medications"));
+	ui->mainTabs->addTab(inventoryFrame, QString("Inventory"));
 
 	/*//SQL test code
 	QSqlQueryModel *model = new QSqlQueryModel;
