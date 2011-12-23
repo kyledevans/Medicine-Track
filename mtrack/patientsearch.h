@@ -19,6 +19,7 @@ public:
 
 public slots:
 	void initiateSearch();
+	void resetPressed();
 
 private:
     Ui::PatientSearch *ui;

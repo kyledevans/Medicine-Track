@@ -23,3 +23,9 @@ FROM prescriptions
 JOIN patients ON prescriptions.patient_id = patients.patient_id
 JOIN drugs ON prescriptions.drug_id = drugs.drug_id
 JOIN shipments ON prescriptions.shipment_id = shipments.shipment_id
+
+
+SELECT patients.id, patients.last, patients.first, patients.dob, drugs.name, drugs.form, drugs.strength, prescriptions.amount, prescriptions.written, prescriptions.filled
+FROM prescriptions
+JOIN patients ON prescriptions.patient_id = patients.id
+JOIN drugs ON prescriptions.drug_id = drugs.id;

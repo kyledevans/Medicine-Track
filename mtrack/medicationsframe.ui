@@ -98,6 +98,9 @@
        <property name="text">
         <string>Search</string>
        </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -186,10 +189,47 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableView" name="resultTable"/>
+    <widget class="QTableView" name="resultTable">
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>nameField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>168</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>78</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>nameField</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>168</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

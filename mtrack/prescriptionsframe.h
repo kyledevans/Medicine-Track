@@ -15,6 +15,9 @@ public:
     explicit PrescriptionsFrame(QWidget *parent = 0);
     ~PrescriptionsFrame();
 
+public slots:
+	void resetPressed();
+
 private:
     Ui::PrescriptionsFrame *ui;
 };

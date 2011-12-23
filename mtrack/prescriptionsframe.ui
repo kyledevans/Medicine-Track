@@ -112,7 +112,21 @@
        </widget>
       </item>
       <item>
-       <widget class="QDateEdit" name="filledField"/>
+       <widget class="QDateEdit" name="filledField">
+        <property name="dateTime">
+         <datetime>
+          <hour>0</hour>
+          <minute>0</minute>
+          <second>0</second>
+          <year>1970</year>
+          <month>1</month>
+          <day>31</day>
+         </datetime>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item>
        <spacer name="horizontalSpacer_3">
@@ -222,7 +236,21 @@
        </widget>
       </item>
       <item>
-       <widget class="QDateEdit" name="dobField"/>
+       <widget class="QDateEdit" name="dobField">
+        <property name="dateTime">
+         <datetime>
+          <hour>0</hour>
+          <minute>0</minute>
+          <second>0</second>
+          <year>1970</year>
+          <month>1</month>
+          <day>31</day>
+         </datetime>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item>
        <spacer name="horizontalSpacer_6">
@@ -253,6 +281,9 @@
       <widget class="QPushButton" name="searchButton">
        <property name="text">
         <string>Search</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -312,10 +343,143 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableView" name="resultTable"/>
+    <widget class="QTableView" name="resultTable">
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>resetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>medicationNameField</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>140</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>152</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>lotField</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>140</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>456</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>lastField</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>140</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>145</x>
+     <y>101</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>firstField</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>140</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>444</x>
+     <y>101</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>medicationNameField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>152</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lotField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>456</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lastField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>firstField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>444</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
