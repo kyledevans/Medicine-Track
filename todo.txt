@@ -4,7 +4,38 @@ Released under the GPL version 2 only.
 
 -------------------------------------------------------
 
-
 1.  Add the ability to have custom instructions for each prescription.
 
-2.  Figure out how NDC's should be handled.
+2.  Possible feature is to be able to combine patients into 1.  IE: the clerk fails to find the existing patient record when filling a prescription and instead creates a duplicate patient record.
+
+3.  Maybe make the drug form to be an enum type.  IE: Tablet, Capsule, etc.
+
+4.  Need to be able to print new barcodes after a shipment has been registered in the database.  IE: The barcodes are destroyed somehow.
+
+5.  It would be nice if when in the inventory screen, the user could print a report detailing who received a prescription by lot number.  IE: There is a recall on the drug and we need to start making calls to patients.
+
+6.  Make the interface tab based.  Tabs will never close.  Always be open.
+
+7.  Every time the user does something that changes information on the database, post a message to the status bar at the bottom.
+
+8.  The application needs to always indicate whether or not it is connected to the database.
+
+9.  Figure out how the database will handle users being idle for a long time.
+
+10.  Make some kind of error reporting feature.  Nothing too fancy at first.
+
+
+-----
+
+Questions:
+
+Q1.  Figure out how NDC's should be handled.
+	A1.  Make a large enough char field and store them.  NDC's can be of several forms so allow for that and don't rely on them to be meaningful.
+
+Q2.  Is some information not allowed to be changed after creation?  IE: how many units were in a shipment.
+	A2.  
+
+Q3.  Are labels that will be printed all the same physical size?
+	A3.  
+
+Q4.  Do liquid medications that share the same NDC come in identical same strengths and sizes?
