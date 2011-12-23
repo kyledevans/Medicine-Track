@@ -17,6 +17,9 @@ public:
     explicit PatientSearch(QWidget *parent = 0);
     ~PatientSearch();
 
+public slots:
+	void initiateSearch();
+
 private:
     Ui::PatientSearch *ui;
 };

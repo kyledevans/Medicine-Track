@@ -129,5 +129,70 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>firstNameField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>162</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>81</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lastNameField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>492</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>81</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>firstNameField</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>lastNameField</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>492</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
