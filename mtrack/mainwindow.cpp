@@ -23,7 +23,10 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	PatientSearch *mainFrame = new PatientSearch();
-	ui->centralWidget->layout()->addWidget(mainFrame);
+	PatientSearch *secondFrame = new PatientSearch();
+	//ui->centralWidget->layout()->addWidget(mainFrame);
+	ui->mainTabs->addTab(mainFrame, QString("Patients"));
+	ui->mainTabs->addTab(secondFrame, QString("Prescriptions"));
 
 	/*//SQL test code
 	QSqlQueryModel *model = new QSqlQueryModel;

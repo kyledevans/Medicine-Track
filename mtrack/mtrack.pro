@@ -12,13 +12,19 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    patientsearch.cpp
+    patientsearch.cpp \
+    prescriptionsframe.cpp
 
 HEADERS  += mainwindow.h \
-    patientsearch.h
+    patientsearch.h \
+    prescriptionsframe.h
 
 FORMS    += mainwindow.ui \
-    patientsearch.ui
+    patientsearch.ui \
+    prescriptionsframe.ui
+
+
+
 
 
 
