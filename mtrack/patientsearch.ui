@@ -10,9 +10,6 @@
     <height>535</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Frame</string>
-  </property>
   <property name="frameShape">
    <enum>QFrame::StyledPanel</enum>
   </property>
@@ -34,7 +31,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="firstNameField"/>
+       <widget class="QLineEdit" name="firstNameField">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item>
        <spacer name="horizontalSpacer_3">
@@ -60,7 +64,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lastNameField"/>
+       <widget class="QLineEdit" name="lastNameField">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item>
        <spacer name="horizontalSpacer">
@@ -113,7 +124,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableWidget" name="resultTable"/>
+    <widget class="QTableView" name="resultTable"/>
    </item>
   </layout>
  </widget>
