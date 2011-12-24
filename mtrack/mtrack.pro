@@ -15,19 +15,29 @@ SOURCES += main.cpp\
     patientsearch.cpp \
     prescriptionsframe.cpp \
     medicationsframe.cpp \
-    inventoryframe.cpp
+    inventoryframe.cpp \
+    newpatientwizard.cpp \
+    patientrecord.cpp
 
 HEADERS  += mainwindow.h \
     patientsearch.h \
     prescriptionsframe.h \
     medicationsframe.h \
-    inventoryframe.h
+    inventoryframe.h \
+    newpatientwizard.h \
+    patientrecord.h
 
 FORMS    += mainwindow.ui \
     patientsearch.ui \
     prescriptionsframe.ui \
     medicationsframe.ui \
-    inventoryframe.ui
+    inventoryframe.ui \
+    newpatientwizard.ui
+
+
+
+
+
 
 
 

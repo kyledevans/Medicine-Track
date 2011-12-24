@@ -174,7 +174,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="newPatientButton">
        <property name="text">
         <string>New Patient</string>
        </property>
@@ -275,6 +275,14 @@
     <string>Modify demographic information</string>
    </property>
   </action>
+  <action name="newPatientAction">
+   <property name="text">
+    <string>New Patient</string>
+   </property>
+   <property name="toolTip">
+    <string>Add a new patient</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
@@ -367,6 +375,22 @@
     <hint type="sourcelabel">
      <x>816</x>
      <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>newPatientButton</sender>
+   <signal>clicked()</signal>
+   <receiver>newPatientAction</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>256</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>

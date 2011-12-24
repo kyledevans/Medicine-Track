@@ -16,6 +16,9 @@ Released under the GPL version 2 only.
 #include "patientsearch.h"
 #include "ui_patientsearch.h"
 
+#include "patientrecord.h"
+#include "newpatientwizard.h"
+
 PatientSearch::PatientSearch(QWidget *parent) :
 	QFrame(parent),
 	ui(new Ui::PatientSearch),
@@ -27,6 +30,7 @@ PatientSearch::PatientSearch(QWidget *parent) :
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
 	connect(ui->prescribeAction, SIGNAL(triggered()), this, SLOT(initiatePrescription()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModification()));
+	connect(ui->newPatientAction, SIGNAL(triggered()), this, SLOT(initiateNewPatient()));
 
 	ui->resultTable->addAction(ui->prescribeAction);
 	ui->resultTable->addAction(ui->modifyAction);
@@ -120,3 +124,33 @@ void PatientSearch::initiateModification()
 		}
 	}
 }
+
+void PatientSearch::initiateNewPatient()
+{
+	NewPatientWizard *wiz = new NewPatientWizard();
+	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(newPatient(PatientRecord*)));
+	wiz->exec();
+
+	delete wiz;
+}
+
+void PatientSearch::newPatient(PatientRecord *new_patient)
+{
+	QString query;
+	QSqlQueryModel *model = new QSqlQueryModel();	// TODO: garbage collection for this
+
+	query = QString("INSERT INTO patients (last, first, dob) VALUES ('");
+	query += new_patient->last;
+	query += QString("', '");
+	query += new_patient->first;
+	query += QString("', '");
+	query += new_patient->dob.toString("yyyy-MM-dd");
+	query += QString("');");
+
+	model->setQuery(query);
+	qDebug() << query;
+
+	delete model;
+	delete new_patient;
+}
+

@@ -10,6 +10,8 @@ Released under the GPL version 2 only.
 #include <QFrame>
 #include <QList>
 
+#include "patientrecord.h"
+
 namespace Ui {
     class PatientSearch;
 }
@@ -27,6 +29,8 @@ public slots:
 	void resetPressed();
 	void initiatePrescription();
 	void initiateModification();
+	void initiateNewPatient();
+	void newPatient(PatientRecord *);
 
 private:
     Ui::PatientSearch *ui;
