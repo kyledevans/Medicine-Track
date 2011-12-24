@@ -63,7 +63,7 @@ void PatientSearch::initiateSearch()
 
 		model->setQuery(query);
 
-		// Store patient id's
+		// Retrieve the ID's before we remove them from the display
 		for (int i = 0; i < model->rowCount(); i++) {
 			ids.append(model->record(i).value("id").toInt());
 		}

@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #define INVENTORYFRAME_H
 
 #include <QFrame>
+#include <QList>
 
 namespace Ui {
     class InventoryFrame;
@@ -23,9 +24,12 @@ public:
 
 public slots:
 	void initiateSearch();
+	void initiateModify();
 
 private:
     Ui::InventoryFrame *ui;
+	QList<int> drugIds;			// Contains the drug id's of the current query
+	bool db_queried;			// Indicates if the result table has a model
 };
 
 #endif // INVENTORYFRAME_H

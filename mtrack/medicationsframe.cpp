@@ -32,7 +32,7 @@ MedicationsFrame::~MedicationsFrame()
 }
 
 /* SQL command without C++
-SELECT drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left )
+SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left )
 FROM drugs
 JOIN shipments ON drugs.id = shipments.drug_id
 WHERE drugs.name LIKE SOME_VAR
@@ -55,6 +55,7 @@ void MedicationsFrame::initiateSearch()
 
 	model->setQuery(query);
 
+	// Retrieve the ID's before we remove them from the display
 	for (int i = 0; i < model->rowCount(); i++) {
 		drugIds.append(model->record(i).value(0).toInt());
 	}

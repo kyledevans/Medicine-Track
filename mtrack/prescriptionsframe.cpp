@@ -93,7 +93,7 @@ void PrescriptionsFrame::initiateSearch()
 
 		model->setQuery(query);
 
-		// Store prescription ID's
+		// Retrieve the ID's before we remove them from the display
 		for (int i = 0; i < model->rowCount(); i++) {
 			patientIds.append(model->record(i).value(0).toInt());
 			presIds.append(model->record(i).value(1).toInt());

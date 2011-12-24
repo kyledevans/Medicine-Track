@@ -28,8 +28,8 @@ public slots:
 
 private:
     Ui::MedicationsFrame *ui;
-	QList<int> drugIds;
-	bool db_queried;
+	QList<int> drugIds;				// Contains the drug id's of the current query
+	bool db_queried;				// Indicates if the result table has a model
 };
 
 #endif // MEDICATIONSFRAME_H
