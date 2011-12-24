@@ -17,7 +17,9 @@ SOURCES += main.cpp\
     medicationsframe.cpp \
     inventoryframe.cpp \
     newpatientwizard.cpp \
-    patientrecord.cpp
+    patientrecord.cpp \
+    altermedicationwizard.cpp \
+    medicationrecord.cpp
 
 HEADERS  += mainwindow.h \
     patientsearch.h \
@@ -25,14 +27,24 @@ HEADERS  += mainwindow.h \
     medicationsframe.h \
     inventoryframe.h \
     newpatientwizard.h \
-    patientrecord.h
+    patientrecord.h \
+    altermedicationwizard.h \
+    medicationrecord.h \
+    globals.h
 
 FORMS    += mainwindow.ui \
     patientsearch.ui \
     prescriptionsframe.ui \
     medicationsframe.ui \
     inventoryframe.ui \
-    newpatientwizard.ui
+    newpatientwizard.ui \
+    altermedicationwizard.ui
+
+
+
+
+
+
 
 
 
