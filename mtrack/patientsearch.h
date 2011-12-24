@@ -3,8 +3,6 @@
 
 #include <QFrame>
 
-#include <QSqlQueryModel>
-
 namespace Ui {
     class PatientSearch;
 }

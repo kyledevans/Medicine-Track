@@ -16,6 +16,7 @@ public:
     ~PrescriptionsFrame();
 
 public slots:
+	void initiateSearch();
 	void resetPressed();
 
 private:

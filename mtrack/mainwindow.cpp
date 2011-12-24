@@ -34,17 +34,6 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->mainTabs->addTab(prescriptionsFrame, QString("Prescriptions"));
 	ui->mainTabs->addTab(medicationsFrame, QString("Medications"));
 	ui->mainTabs->addTab(inventoryFrame, QString("Inventory"));
-
-	/*//SQL test code
-	QSqlQueryModel *model = new QSqlQueryModel;
-	model->setQuery("SELECT id, first, last FROM patients;");
-	model->setHeaderData(0, Qt::Horizontal, tr("id"));
-	model->setHeaderData(1, Qt::Horizontal, tr("first"));
-	model->setHeaderData(2, Qt::Horizontal, tr("last"));
-
-	QTableView *view = new QTableView(ui->centralWidget);
-	view->setModel(model);
-	view->show();*/
 }
 
 MainWindow::~MainWindow()

@@ -25,7 +25,14 @@ JOIN drugs ON prescriptions.drug_id = drugs.drug_id
 JOIN shipments ON prescriptions.shipment_id = shipments.shipment_id
 
 
-SELECT patients.id, patients.last, patients.first, patients.dob, drugs.name, drugs.form, drugs.strength, prescriptions.amount, prescriptions.written, prescriptions.filled
+SELECT patients.id, patients.last, patients.first, patients.dob, drugs.name, drugs.form, drugs.strength, prescriptions.amount, prescriptions.written, prescriptions.filled, shipments.lot
 FROM prescriptions
 JOIN patients ON prescriptions.patient_id = patients.id
-JOIN drugs ON prescriptions.drug_id = drugs.id;
+JOIN drugs ON prescriptions.drug_id = drugs.id
+JOIN shipments ON prescriptions.shipment_id = shipments.id
+WHERE drugs.name = SOMEVAR
+AND shipments.lot = SOMEVAR
+AND prescriptions.filled = SOMEVAR
+AND patients.last = SOMEVAR
+AND patients.first = SOMEVAR
+AND patients.dob = SOMEVAR;

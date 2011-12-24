@@ -279,7 +279,7 @@
      <item>
       <widget class="QPushButton" name="modifyShipmentButton">
        <property name="text">
-        <string>Modify Shipment</string>
+        <string>Modify Stock</string>
        </property>
       </widget>
      </item>

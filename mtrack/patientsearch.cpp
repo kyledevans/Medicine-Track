@@ -1,5 +1,5 @@
 #include <QString>
-#include <QtDebug>
+#include <QSqlQueryModel>
 
 #include "patientsearch.h"
 #include "ui_patientsearch.h"
@@ -21,7 +21,8 @@ PatientSearch::~PatientSearch()
 
 void PatientSearch::initiateSearch()
 {
-	QString query;
+	QString query;	// Holds the SQL query
+
 	// If the text fields are empty, don't do anything.
 	if (		(ui->firstNameField->text() != QString(""))
 			||	(ui->lastNameField->text() != QString(""))
@@ -40,7 +41,6 @@ void PatientSearch::initiateSearch()
 		} else {
 			query += QString(";");
 		}
-		qDebug() << query;
 
 		model->setQuery(query);
 		model->setHeaderData(0, Qt::Horizontal, tr("ID"));
