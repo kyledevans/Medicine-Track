@@ -21,6 +21,9 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
     ui->setupUi(this);
 
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
+	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
+
+	ui->resultTable->addAction(ui->modifyAction);
 }
 
 InventoryFrame::~InventoryFrame()
@@ -44,6 +47,7 @@ void InventoryFrame::initiateSearch()
 {
 	QString query;
 	QSqlQueryModel *model = new QSqlQueryModel(ui->resultTable);
+	drugIds.clear();
 
 	query = QString("SELECT drugs.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE drugs.name LIKE '%");
 	query += ui->nameField->text();
@@ -57,8 +61,9 @@ void InventoryFrame::initiateSearch()
 		query += QString(" AND drugs.active = 1");
 	}
 	if (ui->expiredCheckbox->isChecked()) {	// Expired checkbox
-		query += QString(" AND shipments.expiration > CURDATE()");
+		query += QString(" AND shipments.expiration < CURDATE()");
 	}
+	query += QString(";");
 
 	model->setQuery(query);
 
