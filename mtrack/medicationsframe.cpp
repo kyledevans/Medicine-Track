@@ -6,7 +6,6 @@ Released under the GPL version 2 only.
 
 #include <QString>
 #include <QSqlQueryModel>
-#include <QDebug>
 
 #include "medicationsframe.h"
 #include "ui_medicationsframe.h"
@@ -31,7 +30,7 @@ FROM drugs
 JOIN shipments ON drugs.id = shipments.drug_id
 WHERE drugs.name LIKE SOME_VAR
 AND drugs.active = SOME_VAR
-GROUP BY shipments.drug_id
+GROUP BY shipments.drug_id;
 */
 void MedicationsFrame::initiateSearch()
 {
@@ -45,8 +44,6 @@ void MedicationsFrame::initiateSearch()
 		query += QString(" AND drugs.active = '1'");
 	}
 	query += QString(" GROUP BY shipments.drug_id;");
-
-	qDebug() << query;
 
 	model->setQuery(query);
 	model->setHeaderData(0, Qt::Horizontal, tr("Medication"));

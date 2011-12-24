@@ -141,14 +141,11 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="stockLabel">
+      <widget class="QCheckBox" name="stockCheckbox">
        <property name="text">
         <string>In stock</string>
        </property>
       </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="stockCombo"/>
      </item>
      <item>
       <spacer name="horizontalSpacer_4">
@@ -389,22 +386,6 @@
     <hint type="destinationlabel">
      <x>739</x>
      <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>resetButton</sender>
-   <signal>clicked()</signal>
-   <receiver>stockCombo</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>48</x>
-     <y>78</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>89</x>
-     <y>48</y>
     </hint>
    </hints>
   </connection>

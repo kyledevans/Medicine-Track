@@ -21,6 +21,9 @@ public:
     explicit InventoryFrame(QWidget *parent = 0);
     ~InventoryFrame();
 
+public slots:
+	void initiateSearch();
+
 private:
     Ui::InventoryFrame *ui;
 };

@@ -4,8 +4,8 @@ Copyright (C) 2011 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QSqlQueryModel>
 #include <QString>
+#include <QSqlQueryModel>
 
 #include "prescriptionsframe.h"
 #include "ui_prescriptionsframe.h"
