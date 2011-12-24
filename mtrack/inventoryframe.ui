@@ -274,7 +274,10 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="modifyShipmentButton">
+      <widget class="QPushButton" name="modifyButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="text">
         <string>Modify Stock</string>
        </property>
@@ -293,6 +296,14 @@
     </widget>
    </item>
   </layout>
+  <action name="modifyAction">
+   <property name="text">
+    <string>Modify Stock</string>
+   </property>
+   <property name="toolTip">
+    <string>Modify stock information</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
@@ -389,6 +400,22 @@
     <hint type="destinationlabel">
      <x>739</x>
      <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>modifyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>modifyAction</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>872</x>
+     <y>175</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>

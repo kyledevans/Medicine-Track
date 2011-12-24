@@ -161,6 +161,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QPushButton" name="newStockButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="text">
         <string>New Stock</string>
        </property>
@@ -181,6 +184,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="modifyMedicationButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="text">
         <string>Modify Medication</string>
        </property>
@@ -199,6 +205,30 @@
     </widget>
    </item>
   </layout>
+  <action name="newMedicationAction">
+   <property name="text">
+    <string>New Medication</string>
+   </property>
+   <property name="toolTip">
+    <string>Add a new medication</string>
+   </property>
+  </action>
+  <action name="newStockAction">
+   <property name="text">
+    <string>New Stock</string>
+   </property>
+   <property name="toolTip">
+    <string>Add new stock of a medication</string>
+   </property>
+  </action>
+  <action name="modifyAction">
+   <property name="text">
+    <string>Modify Medication</string>
+   </property>
+   <property name="toolTip">
+    <string>Modify medication information</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
@@ -231,6 +261,54 @@
     <hint type="destinationlabel">
      <x>168</x>
      <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>newStockButton</sender>
+   <signal>clicked()</signal>
+   <receiver>newStockAction</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>175</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>modifyMedicationButton</sender>
+   <signal>clicked()</signal>
+   <receiver>modifyAction</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>854</x>
+     <y>175</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>newMedicationButton</sender>
+   <signal>clicked()</signal>
+   <receiver>newMedicationAction</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>280</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>

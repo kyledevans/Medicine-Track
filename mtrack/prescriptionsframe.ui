@@ -335,6 +335,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="modifyPrescriptionButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="text">
         <string>Modify Prescription</string>
        </property>
@@ -353,6 +356,14 @@
     </widget>
    </item>
   </layout>
+  <action name="modifyAction">
+   <property name="text">
+    <string>Modify Prescription</string>
+   </property>
+   <property name="toolTip">
+    <string>Modify past prescription information</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
@@ -481,6 +492,22 @@
     <hint type="destinationlabel">
      <x>129</x>
      <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>modifyPrescriptionButton</sender>
+   <signal>clicked()</signal>
+   <receiver>modifyAction</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>823</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>
