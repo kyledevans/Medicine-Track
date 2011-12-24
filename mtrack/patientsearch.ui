@@ -215,6 +215,9 @@
     <layout class="QHBoxLayout" name="buttonLayout2">
      <item>
       <widget class="QPushButton" name="prescribeButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="text">
         <string>New Prescription</string>
        </property>
@@ -235,6 +238,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="modifyButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="text">
         <string>Modify Patient</string>
        </property>

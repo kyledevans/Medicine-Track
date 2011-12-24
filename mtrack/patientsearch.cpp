@@ -74,7 +74,17 @@ void PatientSearch::initiateSearch()
 		model->setHeaderData(2, Qt::Horizontal, tr("D.O.B."));
 
 		ui->resultTable->setModel(model);
+
 		db_queried = true;	// Let other functions start accessing values in the table
+
+		// Enable/disable buttons depending on if there were any hits in the search
+		if (model->rowCount() > 0) {
+			ui->prescribeButton->setEnabled(true);
+			ui->modifyButton->setEnabled(true);
+		} else {
+			ui->prescribeButton->setEnabled(false);
+			ui->modifyButton->setEnabled(false);
+		}
 	}
 }
 
