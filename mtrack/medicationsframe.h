@@ -1,3 +1,9 @@
+/*
+Copyright (C) 2011 Kyle Evans <kyledevans@gmail.com>
+
+Released under the GPL version 2 only.
+*/
+
 #ifndef MEDICATIONSFRAME_H
 #define MEDICATIONSFRAME_H
 
@@ -14,6 +20,9 @@ class MedicationsFrame : public QFrame
 public:
     explicit MedicationsFrame(QWidget *parent = 0);
     ~MedicationsFrame();
+
+public slots:
+	void initiateSearch();
 
 private:
     Ui::MedicationsFrame *ui;

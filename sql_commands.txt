@@ -36,3 +36,7 @@ AND prescriptions.filled = SOMEVAR
 AND patients.last = SOMEVAR
 AND patients.first = SOMEVAR
 AND patients.dob = SOMEVAR;
+
+SELECT drugs.name, drugs.ndc, drugs.strength, drugs.amount, shipments.product_count, shipments.product_left
+FROM drugs
+JOIN 
