@@ -150,6 +150,12 @@ void PatientSearch::newPatient(PatientRecord *new_patient)
 	model->setQuery(query);
 	qDebug() << query;
 
+	ui->lastNameField->setText(new_patient->last);
+	ui->firstNameField->setText(new_patient->first);
+	ui->dobField->setDate(new_patient->dob);
+
+	initiateSearch();
+
 	delete model;
 	delete new_patient;
 }
