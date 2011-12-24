@@ -183,7 +183,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="modifyMedicationButton">
+      <widget class="QPushButton" name="modifyButton">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -281,7 +281,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>modifyMedicationButton</sender>
+   <sender>modifyButton</sender>
    <signal>clicked()</signal>
    <receiver>modifyAction</receiver>
    <slot>trigger()</slot>

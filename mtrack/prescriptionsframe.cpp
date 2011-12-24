@@ -15,13 +15,14 @@ Released under the GPL version 2 only.
 
 PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :
     QFrame(parent),
-    ui(new Ui::PrescriptionsFrame)
+	ui(new Ui::PrescriptionsFrame),
+	db_queried(false)
 {
     ui->setupUi(this);
 
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
-	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModification()));
+	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 
 	ui->resultTable->addAction(ui->modifyAction);
 }
@@ -125,7 +126,7 @@ void PrescriptionsFrame::initiateSearch()
 	}
 }
 
-void PrescriptionsFrame::initiateModification()
+void PrescriptionsFrame::initiateModify()
 {
 	unsigned int row;
 

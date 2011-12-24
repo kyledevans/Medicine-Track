@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #define MEDICATIONSFRAME_H
 
 #include <QFrame>
+#include <QList>
 
 namespace Ui {
     class MedicationsFrame;
@@ -23,9 +24,12 @@ public:
 
 public slots:
 	void initiateSearch();
+	void initiateModify();
 
 private:
     Ui::MedicationsFrame *ui;
+	QList<int> drugIds;
+	bool db_queried;
 };
 
 #endif // MEDICATIONSFRAME_H
