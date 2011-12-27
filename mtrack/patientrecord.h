@@ -14,10 +14,14 @@ class PatientRecord
 {
 public:
     PatientRecord();
+
+	/* Table 'patients' columns */
 	int id;
 	QString first;
 	QString last;
 	QDate dob;
+
+	bool exists;			// True if the record is already in the database
 };
 
 #endif // PATIENTRECORD_H

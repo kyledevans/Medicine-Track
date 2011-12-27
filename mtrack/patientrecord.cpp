@@ -6,6 +6,7 @@ Released under the GPL version 2 only.
 
 #include "patientrecord.h"
 
-PatientRecord::PatientRecord()
+PatientRecord::PatientRecord():
+	id(0)
 {
 }

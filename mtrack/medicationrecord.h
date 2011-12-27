@@ -21,10 +21,13 @@ public:
 	QString generic;
 	QString manufacturer;
 	QString ndc;
-	int form;				// See globals.h for FORM* types
+	int form;				// See globals.h for FORM* values
 	QString strength;
-	int amount;
+	QString amount;
 	bool active;
+
+	// Table 'instructions' columns
+	QString instructions;
 
 	bool exists;			// True if the record is already in the database
 };

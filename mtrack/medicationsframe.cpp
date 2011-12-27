@@ -13,6 +13,8 @@ Released under the GPL version 2 only.
 #include "medicationsframe.h"
 #include "ui_medicationsframe.h"
 
+#include "altermedicationwizard.h"
+
 MedicationsFrame::MedicationsFrame(QWidget *parent) :
     QFrame(parent),
 	ui(new Ui::MedicationsFrame),
@@ -22,6 +24,7 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
 
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
+	connect(ui->newMedicationAction, SIGNAL(triggered()), this, SLOT(initiateNewMed()));
 
 	ui->resultTable->addAction(ui->modifyAction);
 }
@@ -79,15 +82,77 @@ void MedicationsFrame::initiateSearch()
 	}
 }
 
+/* Readable SQL.  Numbers in () indicate the column number and are not SQL:
+SELECT drugs.id(0), drugs.instruction_id(1), drugs.name(2), drugs.generic(3), drugs.manufacturer(4), drugs.ndc(5), drugs.form(6),
+drugs.strength(7), drugs.amount(8), drugs.active(9), instructions.text(10)
+FROM drugs
+JOIN instructions ON drugs.instruction_id = instructions.id
+WHERE drugs.id = SOME_VAR
+  */
+
 void MedicationsFrame::initiateModify()
 {
 	unsigned int row;
+	MedicationRecord *med = new MedicationRecord;
+	AlterMedicationWizard *wiz;
+	QSqlQueryModel *model = new QSqlQueryModel();
+	qDebug() << "here";
+	QString query;
 
 	if (db_queried) {
 		if (ui->resultTable->selectionModel()->hasSelection()) {
 			// This line finds the top row that was selected by the user
 			row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+			med->id = drugIds[row];
 			qDebug() << "drug.id = " << drugIds[row];
 		}
 	}
+
+	/* Populate the med record from the database */
+	query = QString("SELECT drugs.id, drugs.instruction_id, drugs.name, drugs.generic, drugs.manufacturer, drugs.ndc, drugs.form, drugs.strength, drugs.amount, drugs.active, instructions.text FROM drugs JOIN instructions ON drugs.instruction_id = instructions.id WHERE drugs.id = '");
+	query += QString::number(med->id);
+	query += QString("';");
+	model->setQuery(query);
+
+	med->instruction_id = model->record(0).value(1).toInt();
+	med->name = model->record(0).value(2).toString();
+	med->generic = model->record(0).value(3).toString();
+	med->manufacturer = model->record(0).value(4).toString();
+	med->ndc = model->record(0).value(5).toString();
+	med->form = model->record(0).value(6).toInt();
+	med->strength = model->record(0).value(7).toString();
+	med->amount = model->record(0).value(8).toString();
+	med->active = model->record(0).value(9).toBool();
+	med->instructions = model->record(0).value(10).toString();
+	med->exists = true;
+
+	wiz = new AlterMedicationWizard(med);
+
+	delete model;
+
+	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitModify(MedicationRecord*)));
+
+	wiz->exec();
+	delete wiz;
+}
+
+void MedicationsFrame::initiateNewMed()
+{
+	MedicationRecord *med = new MedicationRecord;
+	AlterMedicationWizard *wiz = new AlterMedicationWizard(med);
+
+	connect(wiz, SIGNAL(wizardComplete(MedicationRecord *)), this, SLOT(submitNewMed(MedicationRecord *)));
+
+	wiz->exec();
+	delete wiz;
+}
+
+void MedicationsFrame::submitModify(MedicationRecord *med)
+{
+	qDebug() << "modify drugs.id = " << med->id;
+}
+
+void MedicationsFrame::submitNewMed(MedicationRecord *med)
+{
+	qDebug() << "new drugs.name = " << med->name;
 }

@@ -27,7 +27,7 @@ public slots:
 	void returnResults();
 
 signals:
-	void wizardComplete(PatientRecord *);
+	void wizardComplete(PatientRecord *);	// Note that you must delete the record when you are finished
 
 private:
     Ui::NewPatientWizard *ui;

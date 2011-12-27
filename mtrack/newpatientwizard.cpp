@@ -10,13 +10,9 @@ Released under the GPL version 2 only.
 
 NewPatientWizard::NewPatientWizard(QWidget *parent) :
     QWizard(parent),
-    ui(new Ui::NewPatientWizard)
+	ui(new Ui::NewPatientWizard)
 {
     ui->setupUi(this);
-
-	/*ui->page1->registerField("firstField*", ui->firstField);
-	ui->page1->registerField("lastField*", ui->lastField);
-	ui->page1->registerField("dobField*", ui->dobField);*/
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
 }
