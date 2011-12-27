@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 
 #include "globals.h"
 
+#include <QDebug>
+
 AlterMedicationWizard::AlterMedicationWizard(QWidget *parent) :
     QWizard(parent),
 	ui(new Ui::AlterMedicationWizard),
@@ -45,7 +47,6 @@ AlterMedicationWizard::AlterMedicationWizard(MedicationRecord *new_med, QWidget 
 
 	// Fill in the information into the form if the wizard is modifying an existing record
 	if (med->exists) {
-		// TODO
 		ui->medicationField->setText(med->name);
 		ui->genericField->setText(med->generic);
 		ui->manufacturerField->setText(med->manufacturer);
@@ -75,6 +76,11 @@ void AlterMedicationWizard::returnResults()
 	med->form = ui->formBox->itemData(ui->formBox->currentIndex()).toInt();
 	med->strength = ui->strengthField->text();
 	/* write some code that retrieves data from amount field only if 'form' is compatible */
+	if ((ui->formBox->currentIndex() == FORM::Elixir) || (ui->formBox->currentIndex() == FORM::Suspension)) {
+		med->amount = ui->amountField->text();
+	} else {
+		med->amount = QString("");
+	}
 	med->active = ui->activeCheckbox->isChecked();
 	med->instructions = ui->instructionsField->toPlainText();
 

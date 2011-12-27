@@ -12,9 +12,9 @@ Released under the GPL version 2 only.
 namespace FORM {
 	const int Capsule = 0;
 	const int Cream = 1;
-	const int Elixir = 2;
+	const int Elixir = 2;		// Come in fixed amounts
 	const int Ointment = 3;
-	const int Suspension = 4;
+	const int Suspension = 4;	// Come in fixed amounts
 	const int Syrup = 5;
 	const int Tablet = 6;
 
