@@ -14,6 +14,7 @@ Released under the GPL version 2 only.
 #include "ui_medicationsframe.h"
 
 #include "altermedicationwizard.h"
+#include "globals.h"
 
 MedicationsFrame::MedicationsFrame(QWidget *parent) :
     QFrame(parent),
@@ -96,7 +97,6 @@ void MedicationsFrame::initiateModify()
 	MedicationRecord *med = new MedicationRecord;
 	AlterMedicationWizard *wiz;
 	QSqlQueryModel *model = new QSqlQueryModel();
-	qDebug() << "here";
 	QString query;
 
 	if (db_queried) {
@@ -119,7 +119,7 @@ void MedicationsFrame::initiateModify()
 	med->generic = model->record(0).value(3).toString();
 	med->manufacturer = model->record(0).value(4).toString();
 	med->ndc = model->record(0).value(5).toString();
-	med->form = model->record(0).value(6).toInt();
+	med->form = FORM::sqlToForm(model->record(0).value(6).toString());
 	med->strength = model->record(0).value(7).toString();
 	med->amount = model->record(0).value(8).toString();
 	med->active = model->record(0).value(9).toBool();

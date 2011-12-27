@@ -28,7 +28,7 @@ namespace SQL {
 	const QString Cream = QString("cream");
 	const QString Elixir = QString("elixir");
 	const QString Ointment = QString("ointment");
-	const QString Suspension = QString("ointment");
+	const QString Suspension = QString("suspension");
 	const QString Syrup = QString("syrup");
 	const QString Tablet = QString("tablet");
 	const QString Undefined_Form = QString("-1");

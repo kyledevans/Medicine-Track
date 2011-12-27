@@ -9,21 +9,20 @@ Released under the GPL version 2 only.
 int FORM::sqlToForm(QString val)
 {
 	QString temp = val.toLower();
-	if (temp == SQL::Capsule) {
 
-	} else if (temp == SQL::Capsule) {
+	if (temp.contains(SQL::Capsule)) {
 		return FORM::Capsule;
-	} else if (temp == SQL::Cream) {
+	} else if (temp.contains(SQL::Cream)) {
 		return FORM::Cream;
-	} else if (temp == SQL::Elixir) {
+	} else if (temp.contains(SQL::Elixir)) {
 		return FORM::Elixir;
-	} else if (temp == SQL::Ointment) {
+	} else if (temp.contains(SQL::Ointment)) {
 		return FORM::Ointment;
-	} else if (temp == SQL::Suspension) {
+	} else if (temp.contains(SQL::Suspension)) {
 		return FORM::Suspension;
-	} else if (temp == SQL::Syrup) {
+	} else if (temp.contains(SQL::Syrup)) {
 		return FORM::Syrup;
-	} else if (temp == SQL::Tablet) {
+	} else if (temp.contains(SQL::Tablet)) {
 		return FORM::Tablet;
 	} else {
 		return FORM::Undefined;
