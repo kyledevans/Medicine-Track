@@ -172,9 +172,7 @@ void MedicationsFrame::submitModify(MedicationRecord *med)
 	query += QString().setNum(med->instruction_id);
 	query += QString("';");
 
-	qDebug() << query;
 	model->setQuery(query);
-	qDebug() << model->lastError().databaseText();
 
 	// Update the 'drugs' entry
 	query = QString("UPDATE drugs SET name = '");
@@ -197,9 +195,7 @@ void MedicationsFrame::submitModify(MedicationRecord *med)
 	query += QString(" WHERE drugs.id = '");
 	query += QString().setNum(med->id) + QString("';");
 
-	qDebug() << query;
 	model->setQuery(query);
-	qDebug() << model->lastError().databaseText();
 }
 
 /* SQL without C++:
@@ -246,21 +242,3 @@ void MedicationsFrame::submitNewMed(MedicationRecord *med)
 
 	model->setQuery(query);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

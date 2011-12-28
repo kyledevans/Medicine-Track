@@ -31,6 +31,7 @@ public slots:
 	void initiateModification();
 	void initiateNewPatient();
 	void newPatient(PatientRecord *);
+	void submitModify(PatientRecord *);
 
 private:
     Ui::PatientSearch *ui;

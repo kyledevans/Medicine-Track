@@ -10,9 +10,26 @@ Released under the GPL version 2 only.
 
 NewPatientWizard::NewPatientWizard(QWidget *parent) :
     QWizard(parent),
-	ui(new Ui::NewPatientWizard)
+	ui(new Ui::NewPatientWizard),
+	patient(NULL)
 {
     ui->setupUi(this);
+}
+
+NewPatientWizard::NewPatientWizard(PatientRecord *new_patient, QWidget *parent) :
+	QWizard(parent),
+	ui(new Ui::NewPatientWizard)
+{
+	ui->setupUi(this);
+
+	patient = new_patient;
+
+	// Fill out the details if wizard is in modify mode
+	if (patient->exists) {
+		ui->lastField->setText(patient->last);
+		ui->firstField->setText(patient->first);
+		ui->dobField->setDate(patient->dob);
+	}
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
 }
@@ -24,9 +41,8 @@ NewPatientWizard::~NewPatientWizard()
 
 void NewPatientWizard::returnResults()
 {
-	PatientRecord *new_record = new PatientRecord;
-	new_record->first = ui->firstField->text();
-	new_record->last = ui->lastField->text();
-	new_record->dob = ui->dobField->date();
-	emit(wizardComplete(new_record));
+	patient->first = ui->firstField->text();
+	patient->last = ui->lastField->text();
+	patient->dob = ui->dobField->date();
+	emit(wizardComplete(patient));
 }

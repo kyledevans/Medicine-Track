@@ -7,6 +7,7 @@ Released under the GPL version 2 only.
 #include <QString>
 #include <QSqlQueryModel>
 #include <QSqlRecord>
+#include <QSqlError>
 #include <QAction>
 #include <QMenu>
 #include <QList>
@@ -111,29 +112,68 @@ void PatientSearch::initiatePrescription()
 	}
 }
 
+/* SQL without C++.  Numbers in () indicate the column number and are not SQL:
+SELECT id(0), last(1), first(2), dob(3)
+FROM patients
+WHERE id = 'SOME_VAR';
+*/
 void PatientSearch::initiateModification()
 {
-	unsigned int row, id;
+	unsigned int row;
+	PatientRecord *patient;
+	NewPatientWizard *wiz;
+	QSqlQueryModel *model;
+	QString query;
 
 	if (db_queried) {
 		if (ui->resultTable->selectionModel()->hasSelection()) {
+			patient = new PatientRecord;
+			model = new QSqlQueryModel();
+
 			// This line finds the top row that was selected by the user
 			row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-			id = ids[row];
-			qDebug() << id;
+			patient->id = ids[row];
+
+			patient->exists = true;
+
+			query = QString("SELECT id, last, first, dob FROM patients WHERE id = '");
+			query += QString().setNum(patient->id) + QString("';");
+
+			model->setQuery(query);
+
+			patient->last = model->record(0).value(1).toString();
+			patient->first = model->record(0).value(2).toString();
+			patient->dob = QDate().fromString(model->record(0).value(3).toString(), "yyyy-MM-dd");
+
+			delete model;
+
+			wiz = new NewPatientWizard(patient);
+			connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitModify(PatientRecord*)));
+
+			wiz->exec();
+			delete wiz;
 		}
 	}
 }
 
 void PatientSearch::initiateNewPatient()
 {
-	NewPatientWizard *wiz = new NewPatientWizard();
+	NewPatientWizard *wiz;
+	PatientRecord *patient = new PatientRecord;
+
+	wiz = new NewPatientWizard(patient);
+
 	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(newPatient(PatientRecord*)));
+
 	wiz->exec();
 
 	delete wiz;
 }
 
+/* SQL code without C++:
+INSERT INTO patients (last, first, dob)
+VALUES ('SOME_VAR', 'SOME_VAR', 'SOME_VAR');
+*/
 void PatientSearch::newPatient(PatientRecord *new_patient)
 {
 	QString query;
@@ -148,7 +188,6 @@ void PatientSearch::newPatient(PatientRecord *new_patient)
 	query += QString("');");
 
 	model->setQuery(query);
-	qDebug() << query;
 
 	ui->lastNameField->setText(new_patient->last);
 	ui->firstNameField->setText(new_patient->first);
@@ -160,3 +199,30 @@ void PatientSearch::newPatient(PatientRecord *new_patient)
 	delete new_patient;
 }
 
+/* SQL without C++:
+UPDATE patients
+SET last = 'SOME_VAR', first = 'SOME_VAR', dob = 'SOME_VAR'
+WHERE id = 'SOME_VAR';
+*/
+void PatientSearch::submitModify(PatientRecord *new_patient)
+{
+	QString query;
+	QSqlQueryModel *model = new QSqlQueryModel();
+
+	query = QString("UPDATE patients SET last = '");
+	query += new_patient->last + QString("', first = '");
+	query += new_patient->first + QString("', dob = '");
+	query += new_patient->dob.toString("yyyy-MM-dd") + QString("' WHERE id = '");
+	query += QString().setNum(new_patient->id) + QString("';");
+
+	model->setQuery(query);
+
+	ui->lastNameField->setText(new_patient->last);
+	ui->firstNameField->setText(new_patient->first);
+	ui->dobField->setDate(new_patient->dob);
+
+	initiateSearch();
+
+	delete model;
+	delete new_patient;
+}

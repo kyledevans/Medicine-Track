@@ -7,6 +7,7 @@ Released under the GPL version 2 only.
 #include "patientrecord.h"
 
 PatientRecord::PatientRecord():
-	id(0)
+	id(0),
+	exists(false)
 {
 }

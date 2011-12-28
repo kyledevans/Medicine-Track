@@ -21,6 +21,7 @@ class NewPatientWizard : public QWizard
 
 public:
     explicit NewPatientWizard(QWidget *parent = 0);
+	explicit NewPatientWizard(PatientRecord *, QWidget *parent = 0);
     ~NewPatientWizard();
 
 public slots:
@@ -31,6 +32,7 @@ signals:
 
 private:
     Ui::NewPatientWizard *ui;
+	PatientRecord *patient;
 };
 
 #endif // NEWPATIENTWIZARD_H
