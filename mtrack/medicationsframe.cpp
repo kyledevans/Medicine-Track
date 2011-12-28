@@ -17,6 +17,7 @@ Released under the GPL version 2 only.
 #include "ui_medicationsframe.h"
 
 #include "altermedicationwizard.h"
+#include "altershipmentwizard.h"
 #include "globals.h"
 
 MedicationsFrame::MedicationsFrame(QWidget *parent) :
@@ -29,6 +30,7 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->newMedicationAction, SIGNAL(triggered()), this, SLOT(initiateNewMed()));
+	connect(ui->newStockAction, SIGNAL(triggered()), this, SLOT(initiateNewShipment()));
 
 	ui->resultTable->addAction(ui->modifyAction);
 }
@@ -81,9 +83,37 @@ void MedicationsFrame::initiateSearch()
 	db_queried = true;
 	if (model->rowCount() > 0) {
 		ui->modifyButton->setEnabled(true);
+		ui->newStockButton->setEnabled(true);
 	} else {
 		ui->modifyButton->setEnabled(false);
+		ui->newStockButton->setEnabled(false);
 	}
+}
+
+void MedicationsFrame::initiateNewShipment()
+{
+	unsigned int row;
+	ShipmentRecord *shipment;
+	AlterShipmentWizard *wiz;
+
+	if (db_queried) {
+		if (ui->resultTable->selectionModel()->hasSelection()) {
+			shipment = new ShipmentRecord;
+
+			// This line finds the top row that was selected by the user
+			row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+			shipment->drug_id = drugIds[row];
+		} else {
+			return;
+		}
+	} else {
+		return;
+	}
+
+	wiz = new AlterShipmentWizard(shipment);
+	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitNewShipment(ShipmentRecord*)));
+	wiz->exec();
+	delete wiz;
 }
 
 /* Readable SQL.  Numbers in () indicate the column number and are not SQL:
@@ -92,24 +122,31 @@ drugs.strength(7), drugs.amount(8), drugs.active(9), instructions.text(10)
 FROM drugs
 JOIN instructions ON drugs.instruction_id = instructions.id
 WHERE drugs.id = SOME_VAR
-  */
-
+*/
 void MedicationsFrame::initiateModify()
 {
 	unsigned int row;
-	MedicationRecord *med = new MedicationRecord;
+	MedicationRecord *med;
 	AlterMedicationWizard *wiz;
-	QSqlQueryModel *model = new QSqlQueryModel();
+	QSqlQueryModel *model;
 	QString query;
 
 	if (db_queried) {
 		if (ui->resultTable->selectionModel()->hasSelection()) {
+			med = new MedicationRecord;
+
 			// This line finds the top row that was selected by the user
 			row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 			med->id = drugIds[row];
-			qDebug() << "drug.id = " << drugIds[row];
+		} else {
+			return;
 		}
+	} else {
+		return;
 	}
+
+	// Allocate stuff yo.
+	model = new QSqlQueryModel;
 
 	/* Populate the med record from the database */
 	query = QString("SELECT drugs.id, drugs.instruction_id, drugs.name, drugs.generic, drugs.manufacturer, drugs.ndc, drugs.form, drugs.strength, drugs.amount, drugs.active, instructions.text FROM drugs JOIN instructions ON drugs.instruction_id = instructions.id WHERE drugs.id = '");
@@ -241,4 +278,25 @@ void MedicationsFrame::submitNewMed(MedicationRecord *med)
 	}
 
 	model->setQuery(query);
+}
+
+/* SQL without C++:
+INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left)
+VALUES (...)
+*/
+void MedicationsFrame::submitNewShipment(ShipmentRecord *shipment)
+{
+	QSqlQueryModel *model = new QSqlQueryModel();
+	QString query;
+
+	query = QString("INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left) VALUES ('");
+	query += QString().setNum(shipment->drug_id) + QString("','");
+	query += shipment->expiration.toString("yyyy-MM-dd") + QString("','");
+	query += shipment->lot + QString("','");
+	query += QString().setNum(shipment->product_count) + QString("','");
+	query += QString().setNum(shipment->product_left) + QString("');");
+
+	qDebug() << query;
+	model->setQuery(query);
+	qDebug() << model->lastError().databaseText();
 }

@@ -11,6 +11,7 @@ Released under the GPL version 2 only.
 #include <QList>
 
 #include "medicationrecord.h"
+#include "shipmentrecord.h"
 
 namespace Ui {
     class MedicationsFrame;
@@ -28,8 +29,10 @@ public slots:
 	void initiateSearch();
 	void initiateModify();
 	void initiateNewMed();
+	void initiateNewShipment();
 	void submitModify(MedicationRecord *);
 	void submitNewMed(MedicationRecord *);
+	void submitNewShipment(ShipmentRecord *);
 
 private:
     Ui::MedicationsFrame *ui;

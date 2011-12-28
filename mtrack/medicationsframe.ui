@@ -210,7 +210,7 @@
     <string>New Medication</string>
    </property>
    <property name="toolTip">
-    <string>Add a new medication</string>
+    <string>Add a new medication.</string>
    </property>
   </action>
   <action name="newStockAction">
@@ -218,7 +218,7 @@
     <string>New Stock</string>
    </property>
    <property name="toolTip">
-    <string>Add new stock of a medication</string>
+    <string>Add new stock of a medication.</string>
    </property>
   </action>
   <action name="modifyAction">
@@ -226,7 +226,7 @@
     <string>Modify Medication</string>
    </property>
    <property name="toolTip">
-    <string>Modify medication information</string>
+    <string>Modify medication information.</string>
    </property>
   </action>
  </widget>
