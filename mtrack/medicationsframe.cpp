@@ -150,9 +150,56 @@ void MedicationsFrame::initiateNewMed()
 	delete wiz;
 }
 
+/*
+UPDATE instructions
+SET text = 'SOME_VAR'
+WHERE instructions.id = 'SOME_VAR';
+
+UPDATE drugs
+SET name = 'SOME_VAR', generic = 'SOME_VAR', manufacturer = 'SOME_VAR', ndc = 'SOME_VAR',
+form = 'SOME_VAR', strength = 'SOME_VAR', amount = 'SOME_VAR', active = 'SOME_VAR'
+WHERE drugs.id = 'SOME_VAR';
+*/
 void MedicationsFrame::submitModify(MedicationRecord *med)
 {
-	qDebug() << "modify drugs.id = " << med->id;
+	QSqlQueryModel *model = new QSqlQueryModel();
+	QString query;
+
+	// Update the instructions
+	query = QString("UPDATE instructions SET text = '");
+	query += med->instructions;
+	query += QString("' WHERE instructions.id = '");
+	query += QString().setNum(med->instruction_id);
+	query += QString("';");
+
+	qDebug() << query;
+	model->setQuery(query);
+	qDebug() << model->lastError().databaseText();
+
+	// Update the 'drugs' entry
+	query = QString("UPDATE drugs SET name = '");
+	query += med->name + QString("', generic = '");
+	query += med->generic + QString("', manufacturer = '");
+	query += med->ndc + QString("', form = '");
+	query += SQL::formToSql(med->form) + QString("', strength = '");
+	query += med->strength + QString("', amount = ");
+	if ((med->form == FORM::Elixir) || (med->form == FORM::Suspension)) {
+		query += QString("'") + med->amount + QString("', ");
+	} else {
+		query += QString("NULL, ");
+	}
+	query += QString("active = '");
+	if (med->active == true) {
+		query += QString("1' ");
+	} else {
+		query += QString("0' ");
+	}
+	query += QString(" WHERE drugs.id = '");
+	query += QString().setNum(med->id) + QString("';");
+
+	qDebug() << query;
+	model->setQuery(query);
+	qDebug() << model->lastError().databaseText();
 }
 
 /* SQL without C++:
@@ -165,17 +212,14 @@ VALUES (...)
 */
 void MedicationsFrame::submitNewMed(MedicationRecord *med)
 {
-	qDebug() << "new drugs.name = " << med->name;
 	QSqlQueryModel *model = new QSqlQueryModel();
-	QString query, query2;
+	QString query;
 
 	query = QString("INSERT INTO instructions (text) VALUES (\"");
 	query += med->instructions;
 	query += QString("\");");
 
-	qDebug() << query;
-	model->setQuery(query);
-	qDebug() << model->lastError().databaseText();
+	model->setQuery(query);	// Create the instructions entry
 
 	// Only insert an amount if applicable
 	if ((med->form == FORM::Elixir) || (med->form == FORM::Suspension)) {
@@ -199,9 +243,8 @@ void MedicationsFrame::submitNewMed(MedicationRecord *med)
 	} else {
 		query += QString("0');");
 	}
-	qDebug() << query;
+
 	model->setQuery(query);
-	qDebug() << model->lastError().databaseText();
 }
 
 
