@@ -26,6 +26,7 @@ public:
 
 public slots:
 	void returnResults();
+	void amountFieldCheck(int);
 
 signals:
 	void wizardComplete(MedicationRecord *);	// Note that you must delete the record when finished

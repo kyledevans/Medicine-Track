@@ -17,16 +17,6 @@ AlterMedicationWizard::AlterMedicationWizard(QWidget *parent) :
 	med(NULL)
 {
     ui->setupUi(this);
-
-	ui->formBox->addItem("Capsule", QVariant(FORM::Capsule));
-	ui->formBox->addItem("Cream", QVariant(FORM::Cream));
-	ui->formBox->addItem("Elixir", QVariant(FORM::Elixir));
-	ui->formBox->addItem("Ointment", QVariant(FORM::Ointment));
-	ui->formBox->addItem("Suspension", QVariant(FORM::Suspension));
-	ui->formBox->addItem("Syrup", QVariant(FORM::Syrup));
-	ui->formBox->addItem("Tablet", QVariant(FORM::Tablet));
-
-	//connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
 }
 
 AlterMedicationWizard::AlterMedicationWizard(MedicationRecord *new_med, QWidget *parent) :
@@ -37,6 +27,7 @@ AlterMedicationWizard::AlterMedicationWizard(MedicationRecord *new_med, QWidget 
 	ui->setupUi(this);
 	med = new_med;
 
+	// Add entries to the "form" field
 	ui->formBox->addItem("Capsule", QVariant(FORM::Capsule));
 	ui->formBox->addItem("Cream", QVariant(FORM::Cream));
 	ui->formBox->addItem("Elixir", QVariant(FORM::Elixir));
@@ -57,9 +48,15 @@ AlterMedicationWizard::AlterMedicationWizard(MedicationRecord *new_med, QWidget 
 		ui->amountField->setText(med->amount);
 		ui->activeCheckbox->setChecked(med->active);
 		ui->instructionsField->setPlainText(med->instructions);
+
+		if ((med->form == FORM::Elixir) || (med->form == FORM::Suspension)) {
+			ui->amountLabel->setEnabled(true);
+			ui->amountField->setEnabled(true);
+		}
 	}
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
+	connect(ui->formBox, SIGNAL(currentIndexChanged(int)), this, SLOT(amountFieldCheck(int)));
 }
 
 AlterMedicationWizard::~AlterMedicationWizard()
@@ -85,4 +82,15 @@ void AlterMedicationWizard::returnResults()
 	med->instructions = ui->instructionsField->toPlainText();
 
 	emit(wizardComplete(med));
+}
+
+void AlterMedicationWizard::amountFieldCheck(int index)
+{
+	if ((index == FORM::Elixir) || (index == FORM::Suspension)) {
+		ui->amountLabel->setEnabled(true);
+		ui->amountField->setEnabled(true);
+	} else {
+		ui->amountLabel->setEnabled(false);
+		ui->amountField->setEnabled(false);
+	}
 }

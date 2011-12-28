@@ -5,8 +5,11 @@ Released under the GPL version 2 only.
 */
 
 #include <QString>
+#include <QVariant>
 #include <QSqlQueryModel>
+#include <QSqlQuery>
 #include <QSqlRecord>
+#include <QSqlError>
 
 #include <QDebug>
 
@@ -38,10 +41,10 @@ MedicationsFrame::~MedicationsFrame()
 /* SQL command without C++
 SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left )
 FROM drugs
-JOIN shipments ON drugs.id = shipments.drug_id
+LEFT JOIN shipments ON drugs.id = shipments.drug_id
 WHERE drugs.name LIKE SOME_VAR
 AND drugs.active = SOME_VAR
-GROUP BY shipments.drug_id;
+GROUP BY drugs.id;
 */
 void MedicationsFrame::initiateSearch()
 {
@@ -49,13 +52,13 @@ void MedicationsFrame::initiateSearch()
 	QSqlQueryModel *model = new QSqlQueryModel(ui->resultTable);
 	drugIds.clear();
 
-	query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left ) FROM drugs JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
+	query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left ) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
 	query += ui->nameField->text();
 	query += QString("%'");
 	if (ui->activeCheckbox->isChecked()) {
 		query += QString(" AND drugs.active = '1'");
 	}
-	query += QString(" GROUP BY shipments.drug_id;");
+	query += QString(" GROUP BY drugs.id;");
 
 	model->setQuery(query);
 
@@ -152,7 +155,69 @@ void MedicationsFrame::submitModify(MedicationRecord *med)
 	qDebug() << "modify drugs.id = " << med->id;
 }
 
+/* SQL without C++:
+INSERT INTO instructions (text)
+VALUES ('SOME_VAR');
+
+INSERT INTO drugs (instruction_id, name, generic, manufacturer, ndc, form, strength, amount, active)
+VALUES (...)
+
+*/
 void MedicationsFrame::submitNewMed(MedicationRecord *med)
 {
 	qDebug() << "new drugs.name = " << med->name;
+	QSqlQueryModel *model = new QSqlQueryModel();
+	QString query, query2;
+
+	query = QString("INSERT INTO instructions (text) VALUES (\"");
+	query += med->instructions;
+	query += QString("\");");
+
+	qDebug() << query;
+	model->setQuery(query);
+	qDebug() << model->lastError().databaseText();
+
+	// Only insert an amount if applicable
+	if ((med->form == FORM::Elixir) || (med->form == FORM::Suspension)) {
+		query = QString("INSERT INTO drugs (instruction_id, name, generic, manufacturer, ndc, form, strength, amount, active) VALUES ('");
+	} else {
+		query = QString("INSERT INTO drugs (instruction_id, name, generic, manufacturer, ndc, form, strength, active) VALUES ('");
+	}
+	query += QString().setNum(model->query().lastInsertId().toInt());	// gets the new instructions.id from previous query
+	query += QString("','");
+	query += med->name + QString("','");
+	query += med->generic + QString("','");
+	query += med->manufacturer + QString("','");
+	query += med->ndc + QString("','");
+	query += SQL::formToSql(med->form) + QString("','");
+	if ((med->form == FORM::Elixir) || (med->form == FORM::Suspension)) {
+		query += med->amount + QString("','");
+	}
+	query += med->strength + QString("','");
+	if (med->active == true) {
+		query += QString("1');");
+	} else {
+		query += QString("0');");
+	}
+	qDebug() << query;
+	model->setQuery(query);
+	qDebug() << model->lastError().databaseText();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
