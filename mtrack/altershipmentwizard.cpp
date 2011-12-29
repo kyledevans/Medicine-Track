@@ -46,6 +46,5 @@ void AlterShipmentWizard::returnResults()
 	shipment->lot = ui->lotField->text();
 	shipment->product_count = ui->unitsField->text().toInt();
 	shipment->product_left = ui->stockField->text().toInt();
-	qDebug() << "here";
 	emit(wizardComplete(shipment));
 }

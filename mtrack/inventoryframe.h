@@ -10,6 +10,8 @@ Released under the GPL version 2 only.
 #include <QFrame>
 #include <QList>
 
+#include "shipmentrecord.h"
+
 namespace Ui {
     class InventoryFrame;
 }
@@ -25,10 +27,12 @@ public:
 public slots:
 	void initiateSearch();
 	void initiateModify();
+	void submitModify(ShipmentRecord *);
 
 private:
     Ui::InventoryFrame *ui;
-	QList<int> drugIds;			// Contains the drug id's of the current query
+	QList<int> drugIds;			// Contains the drug id's of the current search
+	QList<int> shipmentIds;		// Contains the shipment id's of the current search
 	bool db_queried;			// Indicates if the result table has a model
 };
 

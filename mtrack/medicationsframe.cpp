@@ -296,7 +296,5 @@ void MedicationsFrame::submitNewShipment(ShipmentRecord *shipment)
 	query += QString().setNum(shipment->product_count) + QString("','");
 	query += QString().setNum(shipment->product_left) + QString("');");
 
-	qDebug() << query;
 	model->setQuery(query);
-	qDebug() << model->lastError().databaseText();
 }
