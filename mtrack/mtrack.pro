@@ -12,39 +12,39 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
+    patientsearch.cpp \
     prescriptionsframe.cpp \
-    globals.cpp
+    medicationsframe.cpp \
+    inventoryframe.cpp \
+    newpatientwizard.cpp \
+    patientrecord.cpp \
+    altermedicationwizard.cpp \
+    medicationrecord.cpp \
+    globals.cpp \
+    altershipmentwizard.cpp \
+    shipmentrecord.cpp
 
 HEADERS  += mainwindow.h \
+    patientsearch.h \
     prescriptionsframe.h \
-    globals.h
+    medicationsframe.h \
+    inventoryframe.h \
+    newpatientwizard.h \
+    patientrecord.h \
+    altermedicationwizard.h \
+    medicationrecord.h \
+    globals.h \
+    altershipmentwizard.h \
+    shipmentrecord.h
 
 FORMS    += mainwindow.ui \
-    prescriptionsframe.ui
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    patientsearch.ui \
+    prescriptionsframe.ui \
+    medicationsframe.ui \
+    inventoryframe.ui \
+    newpatientwizard.ui \
+    altermedicationwizard.ui \
+    altershipmentwizard.ui
 
 
 

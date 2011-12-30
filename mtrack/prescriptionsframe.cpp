@@ -39,7 +39,18 @@ void PrescriptionsFrame::resetPressed()
 }
 
 /* SQL query without C++:
-
+SELECT patients.id, prescriptions.id, drugs.id, shipments.id, patients.last, patients.first, patients.dob, drugs.name,
+drugs.form, drugs.strength, prescriptions.amount, prescriptions.written, prescriptions.filled, shipments.lot
+FROM prescriptions
+JOIN patients ON prescriptions.patient_id = patients.id
+JOIN drugs ON prescriptions.drug_id = drugs.id
+JOIN shipments ON prescriptions.shipment_id = shipments.id
+WHERE drugs.name LIKE SOMEVAR
+AND shipments.lot LIKE SOMEVAR
+AND prescriptions.filled = SOMEVAR
+AND patients.last LIKE SOMEVAR
+AND patients.first LIKE SOMEVAR
+AND patients.dob = SOMEVAR;
 */
 void PrescriptionsFrame::initiateSearch()
 {
