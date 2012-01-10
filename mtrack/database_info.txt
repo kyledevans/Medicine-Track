@@ -1,0 +1,123 @@
+--
+-- Table structure for table 'drugs'
+--
+
+CREATE TABLE drugs (
+  id int(10) unsigned NOT NULL auto_increment COMMENT 'Drug ID',
+  `name` varchar(128) collate utf8_unicode_ci NOT NULL COMMENT 'Drug Name',
+  generic varchar(128) collate utf8_unicode_ci default NULL COMMENT 'Non-generic name',
+  manufacturer varchar(128) collate utf8_unicode_ci NOT NULL COMMENT 'Manufacturer Name',
+  ndc char(11) collate utf8_unicode_ci NOT NULL COMMENT 'National Drug Code number',
+  form enum('capsule','cream','drops','elixir','ointment','solution','suspension','syrup','tablet') collate utf8_unicode_ci NOT NULL COMMENT 'Inhale, capsule, etc.',
+  strength varchar(64) collate utf8_unicode_ci NOT NULL,
+  amount varchar(64) collate utf8_unicode_ci default NULL COMMENT 'How much in bottle if liquid',
+  active tinyint(1) NOT NULL default '1' COMMENT 'Intend to sell',
+  instructions varchar(512) collate utf8_unicode_ci NOT NULL COMMENT 'Default instructions',
+  PRIMARY KEY  (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='A list of drugs';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'patients'
+--
+
+CREATE TABLE patients (
+  id int(10) unsigned NOT NULL auto_increment COMMENT 'Patient ID',
+  `last` varchar(64) collate utf8_unicode_ci NOT NULL COMMENT 'Last name',
+  `first` varchar(64) collate utf8_unicode_ci NOT NULL COMMENT 'First name',
+  dob date NOT NULL COMMENT 'Date of birth',
+  PRIMARY KEY  (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Patient Demographic Information';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'pharmacists'
+--
+
+CREATE TABLE pharmacists (
+  id int(10) unsigned NOT NULL auto_increment COMMENT 'Pharmacist ID',
+  `last` varchar(32) collate utf8_unicode_ci NOT NULL COMMENT 'Last name',
+  `first` varchar(32) collate utf8_unicode_ci NOT NULL COMMENT 'First name',
+  initials char(8) collate utf8_unicode_ci NOT NULL COMMENT 'Initials',
+  active tinyint(1) NOT NULL default '1' COMMENT 'True if the pharmacist is still able to fill prescriptions',
+  PRIMARY KEY  (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Pharmacists are anyone that fills prescriptions';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'prescribers'
+--
+
+CREATE TABLE prescribers (
+  id int(10) unsigned NOT NULL auto_increment COMMENT 'Prescriber ID',
+  `last` varchar(32) collate utf8_unicode_ci NOT NULL COMMENT 'Last name',
+  `first` varchar(32) collate utf8_unicode_ci NOT NULL COMMENT 'First name',
+  full_name varchar(64) collate utf8_unicode_ci NOT NULL COMMENT 'Full name as it appears on a prescription label',
+  active tinyint(1) NOT NULL default '1' COMMENT 'True if the prescriber is still in operation',
+  PRIMARY KEY  (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='List of people that are allowed to give prescriptions';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'prescriptions'
+--
+
+CREATE TABLE prescriptions (
+  id int(10) unsigned NOT NULL COMMENT 'Prescription ID',
+  patient_id int(10) unsigned NOT NULL COMMENT 'Patient ID',
+  drug_id int(10) unsigned NOT NULL COMMENT 'Drug ID',
+  shipment_id int(10) unsigned NOT NULL COMMENT 'Shipment ID',
+  prescriber_id int(10) unsigned NOT NULL COMMENT 'Person who prescribed the medication',
+  pharmacist_id int(10) unsigned NOT NULL COMMENT 'Pharmacist who filled the prescription',
+  amount int(10) unsigned NOT NULL COMMENT 'Total amount in the prescription',
+  dose_size varchar(64) collate utf8_unicode_ci NOT NULL COMMENT 'Size of an individual dose',
+  written date NOT NULL,
+  filled date NOT NULL,
+  instructions varchar(512) collate utf8_unicode_ci NOT NULL COMMENT 'Medication instructions',
+  comments varchar(512) collate utf8_unicode_ci NOT NULL COMMENT 'Any additional notes that should be recorded',
+  PRIMARY KEY  (id),
+  KEY patient_id (patient_id),
+  KEY drug_id (drug_id),
+  KEY shipment_id (shipment_id),
+  KEY prescriptions_ibfk_4 (prescriber_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Individual prescriptions';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'shipments'
+--
+
+CREATE TABLE shipments (
+  id int(10) unsigned NOT NULL auto_increment COMMENT 'Shipment ID',
+  drug_id int(10) unsigned NOT NULL COMMENT 'Drug ID',
+  expiration date NOT NULL COMMENT 'Expiration Date',
+  lot char(32) collate utf8_unicode_ci NOT NULL COMMENT 'Lot number',
+  product_count int(10) unsigned NOT NULL COMMENT 'Units in shipment',
+  product_left int(10) unsigned NOT NULL COMMENT 'Products unsold',
+  PRIMARY KEY  (id),
+  KEY drug_id (drug_id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Drug shipment information';
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `prescriptions`
+--
+ALTER TABLE `prescriptions`
+  ADD CONSTRAINT prescriptions_ibfk_4 FOREIGN KEY (prescriber_id) REFERENCES prescribers (id) ON UPDATE CASCADE,
+  ADD CONSTRAINT prescriptions_ibfk_1 FOREIGN KEY (patient_id) REFERENCES patients (id) ON UPDATE CASCADE,
+  ADD CONSTRAINT prescriptions_ibfk_2 FOREIGN KEY (drug_id) REFERENCES drugs (id) ON UPDATE CASCADE,
+  ADD CONSTRAINT prescriptions_ibfk_3 FOREIGN KEY (shipment_id) REFERENCES shipments (id) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `shipments`
+--
+ALTER TABLE `shipments`
+  ADD CONSTRAINT shipments_ibfk_1 FOREIGN KEY (drug_id) REFERENCES drugs (id) ON UPDATE CASCADE;
