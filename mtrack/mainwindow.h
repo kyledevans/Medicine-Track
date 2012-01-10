@@ -9,6 +9,7 @@ Released under the GPL version 2 only.
 
 #include <QMainWindow>
 #include <QSqlDatabase>
+#include <QSettings>
 
 namespace Ui {
     class MainWindow;
@@ -22,9 +23,15 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+	void connectDB();
+
 private:
     Ui::MainWindow *ui;
 	QSqlDatabase db;
+
+	bool importSettings();				// Returns true if it was able to import settings
+	bool writeDefaults(QSettings *);	// Returns true if the write was succesful
 };
 
 #endif // MAINWINDOW_H

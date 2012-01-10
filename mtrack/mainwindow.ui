@@ -71,6 +71,14 @@
     <string>Options</string>
    </property>
   </action>
+  <action name="reconnectAction">
+   <property name="text">
+    <string>Reconnect</string>
+   </property>
+   <property name="toolTip">
+    <string>Reconnect to the database</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
