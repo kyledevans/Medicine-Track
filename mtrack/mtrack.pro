@@ -22,7 +22,10 @@ SOURCES += main.cpp\
     medicationrecord.cpp \
     globals.cpp \
     altershipmentwizard.cpp \
-    shipmentrecord.cpp
+    shipmentrecord.cpp \
+    alertinterface.cpp \
+    prescriptionrecord.cpp \
+    prescriptionlabel.cpp
 
 HEADERS  += mainwindow.h \
     patientsearch.h \
@@ -35,7 +38,10 @@ HEADERS  += mainwindow.h \
     medicationrecord.h \
     globals.h \
     altershipmentwizard.h \
-    shipmentrecord.h
+    shipmentrecord.h \
+    alertinterface.h \
+    prescriptionrecord.h \
+    prescriptionlabel.h
 
 FORMS    += mainwindow.ui \
     patientsearch.ui \
@@ -44,35 +50,11 @@ FORMS    += mainwindow.ui \
     inventoryframe.ui \
     newpatientwizard.ui \
     altermedicationwizard.ui \
-    altershipmentwizard.ui
+    altershipmentwizard.ui \
+    prescriptionlabel.ui
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+OTHER_FILES += \
+    database_info.txt
 
 
 
