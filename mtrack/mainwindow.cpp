@@ -10,6 +10,7 @@ Released under the GPL version 2 only.
 #include "prescriptionsframe.h"
 #include "medicationsframe.h"
 #include "inventoryframe.h"
+#include "globals.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -18,6 +19,11 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	db = QSqlDatabase::addDatabase("QMYSQL");
+
+	QCoreApplication::setOrganizationName(DEFAULTS::Organization);
+	QCoreApplication::setOrganizationDomain(DEFAULTS::Domain);
+	QCoreApplication::setApplicationName(DEFAULTS::Application);
+	QCoreApplication::setApplicationVersion(DEFAULTS::AppVersion);
 
 	if (importSettings()) {
 		connectDB();
@@ -97,6 +103,10 @@ bool MainWindow::writeDefaults(QSettings *settings)
 	val = settings->value("db password", "-1");
 	if (val.toString().contains("-1")) {
 		settings->setValue("db password", DEFAULTS::DBPassword);
+	}
+	val = settings->value("manager", "-1");
+	if (val.toString().contains("-1")) {
+		settings->setValue("manager", DEFAULTS::ManagerEnabled);
 	}
 	return true;
 }

@@ -50,9 +50,12 @@ namespace DEFAULTS {
 	const QString DBName("epc");
 	const QString DBUser("kyle");
 	const QString DBPassword("kobalt");
+	const double AppVersion = 1.1;			// The version of the application
+	const double AppMajor = 1.0;			// The version of the application without any decimal places
 	const double ConfigVersion = 1.0;		// Not the version of the software, simply the config version
 	const double ConfigIncompatible = 2.0;	// The next version of the config file that is not compatible
 	const double ConfigMajor = 1.0;			// The version of the config without any decimal places
+	const bool ManagerEnabled = false;		// Default value for "manager" setting
 }
 
 namespace SQL {
