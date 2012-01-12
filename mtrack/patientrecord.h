@@ -15,13 +15,13 @@ class PatientRecord
 public:
     PatientRecord();
 
-	/* Table 'patients' columns */
-	int id;
-	QString first;
-	QString last;
-	QDate dob;
+	int id;				// patients.id
+	int allscripts_id;	// patients.allscripts_id
+	QString first;		// patients.first
+	QString last;		// patients.last
+	QDate dob;			// patients.dob
 
-	bool exists;			// True if the record is already in the database
+	bool exists;		// True if the record is already in the database
 };
 
 #endif // PATIENTRECORD_H

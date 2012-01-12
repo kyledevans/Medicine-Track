@@ -1,3 +1,11 @@
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: 'epc'
+--
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table 'drugs'
 --
@@ -24,6 +32,7 @@ CREATE TABLE drugs (
 
 CREATE TABLE patients (
   id int(10) unsigned NOT NULL auto_increment COMMENT 'Patient ID',
+  allscripts_id int(10) unsigned NOT NULL COMMENT 'Allscripts EMR ID',
   `last` varchar(64) collate utf8_unicode_ci NOT NULL COMMENT 'Last name',
   `first` varchar(64) collate utf8_unicode_ci NOT NULL COMMENT 'First name',
   dob date NOT NULL COMMENT 'Date of birth',

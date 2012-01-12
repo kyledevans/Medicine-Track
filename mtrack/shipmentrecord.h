@@ -15,14 +15,14 @@ class ShipmentRecord
 public:
     ShipmentRecord();
 
-	int id;
-	int drug_id;
-	QDate expiration;
-	QString lot;
-	int product_count;
-	int product_left;
+	int id;				// shipments.id
+	int drug_id;		// shipments.drug_id
+	QDate expiration;	// shipments.expiration
+	QString lot;		// shipments.lot
+	int product_count;	// shipments.product_count
+	int product_left;	// shipments.product_left
 
-	bool exists;
+	bool exists;		// True if the db already contains this record
 };
 
 #endif // SHIPMENTRECORD_H

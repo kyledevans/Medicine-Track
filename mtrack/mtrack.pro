@@ -25,7 +25,13 @@ SOURCES += main.cpp\
     shipmentrecord.cpp \
     alertinterface.cpp \
     prescriptionrecord.cpp \
-    prescriptionlabel.cpp
+    prescriptionlabel.cpp \
+    npw_page00.cpp \
+    asw_page00.cpp \
+    nmw_page00.cpp \
+    nmw_page01.cpp \
+    prescriberrecord.cpp \
+    pharmacistrecord.cpp
 
 HEADERS  += mainwindow.h \
     patientsearch.h \
@@ -41,7 +47,13 @@ HEADERS  += mainwindow.h \
     shipmentrecord.h \
     alertinterface.h \
     prescriptionrecord.h \
-    prescriptionlabel.h
+    prescriptionlabel.h \
+    npw_page00.h \
+    asw_page00.h \
+    nmw_page00.h \
+    nmw_page01.h \
+    prescriberrecord.h \
+    pharmacistrecord.h
 
 FORMS    += mainwindow.ui \
     patientsearch.ui \
@@ -51,10 +63,30 @@ FORMS    += mainwindow.ui \
     newpatientwizard.ui \
     altermedicationwizard.ui \
     altershipmentwizard.ui \
-    prescriptionlabel.ui
+    prescriptionlabel.ui \
+    npw_page00.ui \
+    asw_page00.ui \
+    nmw_page00.ui \
+    nmw_page01.ui
 
 OTHER_FILES += \
     database_info.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

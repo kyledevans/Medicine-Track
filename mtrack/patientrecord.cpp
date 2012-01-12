@@ -6,8 +6,11 @@ Released under the GPL version 2 only.
 
 #include "patientrecord.h"
 
+#include "globals.h"
+
 PatientRecord::PatientRecord():
-	id(0),
+	id(SQL::Undefined_ID),
+	allscripts_id(SQL::Undefined_ID),
 	exists(false)
 {
 }
