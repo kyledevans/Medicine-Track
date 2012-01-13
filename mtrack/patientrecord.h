@@ -23,7 +23,7 @@ public:
 
 	bool exists;		// True if the record is already in the database
 
-	bool retrievePatient(int);	// (int) is the patient id. Returns false if the retrieve failed
+	bool retrieve(int);	// (int) is the patient id. Returns false if the retrieve failed
 };
 
 #endif // PATIENTRECORD_H

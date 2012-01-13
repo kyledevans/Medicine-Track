@@ -21,6 +21,8 @@ public:
 	bool active;		// pharmacists.active
 
 	bool exists;		// True if the record is already in the database
+
+	bool retrieve(int);	// (int) is the pharmacist id.  Returns false if the retrieve failed
 };
 
 #endif // PHARMACISTRECORD_H

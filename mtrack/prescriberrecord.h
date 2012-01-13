@@ -21,6 +21,8 @@ public:
 	bool active;		// prescribers.active
 
 	bool exists;		// True if the record is already in the database
+
+	bool retrieve(int);	// (int) is the prescriber id.  Returns false on failure
 };
 
 #endif // PRESCRIBERRECORD_H

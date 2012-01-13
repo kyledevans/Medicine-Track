@@ -30,6 +30,8 @@ public:
 	QString instructions;
 
 	bool exists;			// True if the record is already in the database
+
+	bool retrieve(int);		// (int) is the id.  Returns false if the retrieve failed
 };
 
 #endif // MEDICATIONRECORD_H

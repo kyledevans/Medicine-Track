@@ -23,6 +23,8 @@ public:
 	int product_left;	// shipments.product_left
 
 	bool exists;		// True if the db already contains this record
+
+	bool retrieve(int);	// (int) is the shipment id.  Returns false if retrieve failed
 };
 
 #endif // SHIPMENTRECORD_H

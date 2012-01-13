@@ -94,6 +94,7 @@ CREATE TABLE prescriptions (
   filled date NOT NULL,
   instructions varchar(512) collate utf8_unicode_ci NOT NULL COMMENT 'Medication instructions',
   comments varchar(512) collate utf8_unicode_ci NOT NULL COMMENT 'Any additional notes that should be recorded',
+  active tinyint(1) NOT NULL default '1' COMMENT 'Indicates if the prescription is still useful',
   PRIMARY KEY  (id),
   KEY patient_id (patient_id),
   KEY drug_id (drug_id),
@@ -126,10 +127,10 @@ CREATE TABLE shipments (
 -- Constraints for table `prescriptions`
 --
 ALTER TABLE `prescriptions`
-  ADD CONSTRAINT prescriptions_ibfk_4 FOREIGN KEY (prescriber_id) REFERENCES prescribers (id) ON UPDATE CASCADE,
   ADD CONSTRAINT prescriptions_ibfk_1 FOREIGN KEY (patient_id) REFERENCES patients (id) ON UPDATE CASCADE,
   ADD CONSTRAINT prescriptions_ibfk_2 FOREIGN KEY (drug_id) REFERENCES drugs (id) ON UPDATE CASCADE,
-  ADD CONSTRAINT prescriptions_ibfk_3 FOREIGN KEY (shipment_id) REFERENCES shipments (id) ON UPDATE CASCADE;
+  ADD CONSTRAINT prescriptions_ibfk_3 FOREIGN KEY (shipment_id) REFERENCES shipments (id) ON UPDATE CASCADE,
+  ADD CONSTRAINT prescriptions_ibfk_4 FOREIGN KEY (prescriber_id) REFERENCES prescribers (id) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `shipments`

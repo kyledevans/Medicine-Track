@@ -27,8 +27,11 @@ public:
 	QDate filled;			// prescriptions.filled
 	QString instructions;	// prescriptions.instructions
 	QString comments;		// prescriptions.comments
+	bool active;			// prescriptions.active
 
 	bool exists;			// True if the record is already in the database
+
+	bool retrieve(int);		// (int) is the prescription id.  Returns false if retrieve fails
 };
 
 #endif // PRESCRIPTIONRECORD_H
