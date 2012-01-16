@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 
 #include <QWizardPage>
 
+#include "medicationrecord.h"
+
 namespace Ui {
     class NMW_Page01;
 }
@@ -20,6 +22,8 @@ class NMW_Page01 : public QWizardPage
 public:
     explicit NMW_Page01(QWidget *parent = 0);
     ~NMW_Page01();
+
+	void getResults(MedicationRecord *);
 
 private:
     Ui::NMW_Page01 *ui;

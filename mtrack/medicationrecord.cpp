@@ -17,7 +17,7 @@ Released under the GPL version 2 only.
 MedicationRecord::MedicationRecord():
 	id(SQL::Undefined_ID),
 	instruction_id(SQL::Undefined_ID),
-	form(FORM::Undefined),
+	form(FORM_INT::Undefined),
 	active(false),
 	exists(false)
 {
@@ -51,7 +51,7 @@ bool MedicationRecord::retrieve(int newId)
 	generic = model->record(0).value(1).toString();
 	manufacturer = model->record(0).value(2).toString();
 	ndc = model->record(0).value(3).toString();
-	form = model->record(0).value(4).toString();
+	form = FORM_INT::strToInt(model->record(0).value(4).toString());
 	strength = model->record(0).value(5).toString();
 	amount = model->record(0).value(6).toString();
 	active = model->record(0).value(7).toBool();

@@ -51,7 +51,7 @@ bool PrescriptionRecord::retrieve(int newId)
 	patient_id = model->record(0).value(0).toInt();
 	drug_id = model->record(0).value(1).toInt();
 	shipment_id = model->record(0).value(2).toInt();
-	prescriber_id = model->record(0).value(3).toInt;
+	prescriber_id = model->record(0).value(3).toInt();
 	pharmacist_id = model->record(0).value(4).toInt();
 	amount = model->record(0).value(5).toInt();
 	dose_size = model->record(0).value(6).toString();

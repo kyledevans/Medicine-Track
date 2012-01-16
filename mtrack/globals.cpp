@@ -4,6 +4,8 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QRegExp>
+
 #include "globals.h"
 
 int FORM_INT::strToInt(QString val)
@@ -55,7 +57,7 @@ QString FORM_STR::intToStr(int val)
 	case FORM_INT::Tablet:
 		return FORM_STR::Tablet;
 	default:
-		return FORM_STR::Undefined_Form;
+		return FORM_STR::Undefined;
 	}
 }
 

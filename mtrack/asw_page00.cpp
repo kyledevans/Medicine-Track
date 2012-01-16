@@ -12,9 +12,22 @@ ASW_Page00::ASW_Page00(QWidget *parent) :
     ui(new Ui::ASW_Page00)
 {
     ui->setupUi(this);
+
+	registerField("expireField", ui->expireField);
+	registerField("lotField", ui->lotField);
+	registerField("unitsField", ui->unitsField);
+	registerField("stockField", ui->stockField);
 }
 
 ASW_Page00::~ASW_Page00()
 {
     delete ui;
+}
+
+void ASW_Page00::getResults(ShipmentRecord *shipment)
+{
+	shipment->expiration = ui->expireField->date();
+	shipment->lot = ui->lotField->text();
+	shipment->product_count = ui->unitsField->text().toInt();
+	shipment->product_left = ui->stockField->text().toInt();
 }

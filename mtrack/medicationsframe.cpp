@@ -159,7 +159,7 @@ void MedicationsFrame::initiateModify()
 	med->generic = model->record(0).value(3).toString();
 	med->manufacturer = model->record(0).value(4).toString();
 	med->ndc = model->record(0).value(5).toString();
-	med->form = FORM::sqlToForm(model->record(0).value(6).toString());
+	med->form = FORM_INT::strToInt(model->record(0).value(6).toString());
 	med->strength = model->record(0).value(7).toString();
 	med->amount = model->record(0).value(8).toString();
 	med->active = model->record(0).value(9).toBool();
@@ -205,9 +205,9 @@ void MedicationsFrame::submitModify(MedicationRecord *med)
 	query += med->manufacturer + QString("', instructions = '");
 	query += med->instructions + QString("', ndc = '");
 	query += med->ndc + QString("', form = '");
-	query += SQL::formToSql(med->form) + QString("', strength = '");
+	query += FORM_STR::intToStr(med->form) + QString("', strength = '");
 	query += med->strength + QString("', amount = ");
-	if ((med->form == FORM::Elixir) || (med->form == FORM::Suspension)) {
+	if ((med->form == FORM_INT::Elixir) || (med->form == FORM_INT::Suspension)) {
 		query += QString("'") + med->amount + QString("', ");
 	} else {
 		query += QString("NULL, ");
@@ -236,7 +236,7 @@ void MedicationsFrame::submitNewMed(MedicationRecord *med)
 	QString query;
 
 	// Only insert an amount if applicable
-	if ((med->form == FORM::Elixir) || (med->form == FORM::Suspension)) {
+	if ((med->form == FORM_INT::Elixir) || (med->form == FORM_INT::Suspension)) {
 		query = QString("INSERT INTO drugs (name, instructions, generic, manufacturer, ndc, form, strength, amount, active) VALUES ('");
 	} else {
 		query = QString("INSERT INTO drugs (name, instructions, generic, manufacturer, ndc, form, strength, active) VALUES ('");
@@ -248,8 +248,8 @@ void MedicationsFrame::submitNewMed(MedicationRecord *med)
 	query += med->generic + QString("','");
 	query += med->manufacturer + QString("','");
 	query += med->ndc + QString("','");
-	query += SQL::formToSql(med->form) + QString("','");
-	if ((med->form == FORM::Elixir) || (med->form == FORM::Suspension)) {
+	query += FORM_STR::intToStr(med->form) + QString("','");
+	if ((med->form == FORM_INT::Elixir) || (med->form == FORM_INT::Suspension)) {
 		query += med->amount + QString("','");
 	}
 	query += med->strength + QString("','");

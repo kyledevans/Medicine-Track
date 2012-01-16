@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 
 #include <QWizardPage>
 
+#include "medicationrecord.h"
+
 namespace Ui {
     class NMW_Page00;
 }
@@ -21,8 +23,15 @@ public:
     explicit NMW_Page00(QWidget *parent = 0);
     ~NMW_Page00();
 
+	void getResults(MedicationRecord *);
+
+private slots:
+	void amountFieldCheck(int);
+
 private:
     Ui::NMW_Page00 *ui;
+
+	bool formHasFixedAmount();		// Returns true if the currently selected value in formField should have an amount associated with it
 };
 
 #endif // NMW_PAGE00_H

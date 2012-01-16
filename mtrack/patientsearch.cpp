@@ -53,18 +53,17 @@ void PatientSearch::initiateSearch()
 			||	(ui->dobField->date().toString("yyyy-MM-dd") != QString("1970-01-31"))) {
 		QSqlQueryModel *model = new QSqlQueryModel(ui->resultTable);
 
-		query = QString("SELECT id, last, first, dob FROM patients WHERE first LIKE '%")
-				+= ui->firstNameField->text()
-				+= QString("%' AND last LIKE '%")
-				+= ui->lastNameField->text()
-				+= QString("%'");
+		query = QString("SELECT id, last, first, dob FROM patients WHERE first LIKE '%");
+		query += ui->firstNameField->text();
+		query += QString("%' AND last LIKE '%");
+		query += ui->lastNameField->text();
+		query += QString("%'");
 		if (ui->dobField->date().toString("yyyy-MM-dd") != QString("1970-01-31")) {
-			query += QString(" AND dob = '")
-				+= ui->dobField->date().toString("yyyy-MM-dd")
-				+= QString("';");
-		} else {
-			query += QString(";");
+			query += QString(" AND dob = '");
+			query += ui->dobField->date().toString("yyyy-MM-dd");
+			query += QString("'");
 		}
+		query += QString(" AND active = '1';");
 
 		model->setQuery(query);
 

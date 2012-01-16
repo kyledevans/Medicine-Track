@@ -4,6 +4,8 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QDebug>
+
 #include "patientrecord.h"
 #include "newpatientwizard.h"
 #include "ui_newpatientwizard.h"
@@ -24,12 +26,8 @@ NewPatientWizard::NewPatientWizard(PatientRecord *new_patient, QWidget *parent) 
 
 	patient = new_patient;
 
-	// Fill out the details if wizard is in modify mode
-	if (patient->exists) {
-		ui->lastField->setText(patient->last);
-		ui->firstField->setText(patient->first);
-		ui->dobField->setDate(patient->dob);
-	}
+	qDebug() << "Unfinished method called.  NewPatientWizard::NewPatientWizard(PatientRecord *new_patient, QWidget *parent)";
+	// Need to get this working for modifying an existing patient (if at all)
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
 }
@@ -41,8 +39,6 @@ NewPatientWizard::~NewPatientWizard()
 
 void NewPatientWizard::returnResults()
 {
-	patient->first = ui->firstField->text();
-	patient->last = ui->lastField->text();
-	patient->dob = ui->dobField->date();
+	ui->page00->getResults(patient);
 	emit(wizardComplete(patient));
 }

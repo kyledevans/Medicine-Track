@@ -36,7 +36,7 @@ namespace FORM_STR {
 	const QString Suspension = QString("suspension");
 	const QString Syrup = QString("syrup");
 	const QString Tablet = QString("tablet");
-	const QString Undefined_Form = QString("-1");
+	const QString Undefined = QString("-1");
 
 	QString intToStr(int);	// Converts the FORM types to SQL strings
 }

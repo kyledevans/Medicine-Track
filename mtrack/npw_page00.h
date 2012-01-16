@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #define NPW_PAGE00_H
 
 #include <QWizardPage>
+#include "patientrecord.h"
 
 namespace Ui {
     class NPW_Page00;
@@ -20,6 +21,8 @@ class NPW_Page00 : public QWizardPage
 public:
     explicit NPW_Page00(QWidget *parent = 0);
     ~NPW_Page00();
+
+	void getResults(PatientRecord *);
 
 private:
     Ui::NPW_Page00 *ui;

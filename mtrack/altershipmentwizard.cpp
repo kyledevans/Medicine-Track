@@ -26,10 +26,11 @@ AlterShipmentWizard::AlterShipmentWizard(ShipmentRecord *new_shipment, QWidget *
 	shipment = new_shipment;
 
 	if (shipment->exists) {
-		ui->expireField->setDate(shipment->expiration);
+		// TODO: This needs to be re-implemented somewhere
+		/*ui->expireField->setDate(shipment->expiration);
 		ui->lotField->setText(shipment->lot);
 		ui->unitsField->setText(QString().setNum(shipment->product_count));
-		ui->stockField->setText(QString().setNum(shipment->product_left));
+		ui->stockField->setText(QString().setNum(shipment->product_left));*/
 	}
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
@@ -42,9 +43,6 @@ AlterShipmentWizard::~AlterShipmentWizard()
 
 void AlterShipmentWizard::returnResults()
 {
-	shipment->expiration = ui->expireField->date();
-	shipment->lot = ui->lotField->text();
-	shipment->product_count = ui->unitsField->text().toInt();
-	shipment->product_left = ui->stockField->text().toInt();
+	ui->page00->getResults(shipment);
 	emit(wizardComplete(shipment));
 }

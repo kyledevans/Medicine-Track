@@ -11,6 +11,7 @@ Released under the GPL version 2 only.
 #include "medicationsframe.h"
 #include "inventoryframe.h"
 #include "globals.h"
+#include "alertinterface.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QCoreApplication::setOrganizationName(DEFAULTS::Organization);
 	QCoreApplication::setOrganizationDomain(DEFAULTS::Domain);
 	QCoreApplication::setApplicationName(DEFAULTS::Application);
-	QCoreApplication::setApplicationVersion(DEFAULTS::AppVersion);
+	QCoreApplication::setApplicationVersion(QString().setNum(DEFAULTS::AppVersion));
 
 	if (importSettings()) {
 		connectDB();

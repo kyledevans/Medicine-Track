@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 
 #include <QWizardPage>
 
+#include "shipmentrecord.h"
+
 namespace Ui {
     class ASW_Page00;
 }
@@ -20,6 +22,8 @@ class ASW_Page00 : public QWizardPage
 public:
     explicit ASW_Page00(QWidget *parent = 0);
     ~ASW_Page00();
+
+	void getResults(ShipmentRecord *);
 
 private:
     Ui::ASW_Page00 *ui;

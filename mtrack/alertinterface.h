@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #define ALERTINTERFACE_H
 
 #include <QWidget>
+#include <QSqlQueryModel>
 
 class AlertInterface : public QWidget
 {

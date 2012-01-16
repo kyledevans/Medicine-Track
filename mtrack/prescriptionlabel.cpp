@@ -57,7 +57,8 @@ void PrescriptionLabel::print(QPrinter *printer)
 	printer->setPageMargins(0.25, 0.0, 0.0, 0.6, QPrinter::Inch);
 	printer->setOrientation(QPrinter::Landscape);
 
-	ui->lastLabel->setText(pres->last);
+	// TODO: This needs to be updated to reflect current data structures
+	/*ui->lastLabel->setText(pres->last);
 	ui->firstLabel->setText(pres->first);
 	ui->medicationLabel->setText(pres->drug);
 	ui->manufacturerLabel->setText(pres->manufacturer);
@@ -70,7 +71,7 @@ void PrescriptionLabel::print(QPrinter *printer)
 	ui->ndcLabel->setText(pres->ndc);
 	ui->genericLabel->setText(GENERIC::toTier2(pres->drug));
 	ui->lotLabel->setText(pres->lot);
-	ui->fillerLabel->setText(PHARM_STR::toAbr(pres->pharmacist));
+	ui->fillerLabel->setText(PHARM_STR::toAbr(pres->pharmacist));*/
 
 	painter.begin(printer);
 	this->render(&painter);

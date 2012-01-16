@@ -229,7 +229,7 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_9">
        <item>
-        <widget class="QComboBox" name="formBox"/>
+        <widget class="QComboBox" name="formField"/>
        </item>
        <item>
         <spacer name="horizontalSpacer_6">
@@ -249,7 +249,7 @@
      <item>
       <layout class="QFormLayout" name="formLayout_5">
        <item row="0" column="0">
-        <widget class="QLabel" name="amountLabel_2">
+        <widget class="QLabel" name="amountLabel">
          <property name="enabled">
           <bool>false</bool>
          </property>
@@ -261,7 +261,7 @@
        <item row="0" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_11">
          <item>
-          <widget class="QLineEdit" name="amountField_2">
+          <widget class="QLineEdit" name="amountField">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -299,7 +299,7 @@
     </layout>
    </item>
    <item row="10" column="0">
-    <widget class="QCheckBox" name="activeCheckbox">
+    <widget class="QCheckBox" name="activeField">
      <property name="text">
       <string>Active</string>
      </property>

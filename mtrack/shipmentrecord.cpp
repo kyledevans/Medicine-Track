@@ -50,7 +50,7 @@ bool ShipmentRecord::retrieve(int newId)
 	drug_id = model->record(0).value(0).toInt();
 	expiration = QDate().fromString(model->record(0).value(1).toString(), "yyyy-MM-dd");
 	lot = model->record(0).value(2).toString();
-	product_count = model->record(0).value(3).toInt;
+	product_count = model->record(0).value(3).toInt();
 	product_left = model->record(0).value(4).toInt();
 	exists = true;
 
