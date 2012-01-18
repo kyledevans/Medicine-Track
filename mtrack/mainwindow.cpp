@@ -12,6 +12,8 @@ Released under the GPL version 2 only.
 #include "inventoryframe.h"
 #include "globals.h"
 #include "alertinterface.h"
+#include "prescriberframe.h"
+#include "pharmacistframe.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,11 +36,15 @@ MainWindow::MainWindow(QWidget *parent) :
 	PrescriptionsFrame *prescriptionsFrame = new PrescriptionsFrame();
 	MedicationsFrame *medicationsFrame = new MedicationsFrame();
 	InventoryFrame *inventoryFrame = new InventoryFrame();
+	PrescriberFrame *prescriberFrame = new PrescriberFrame();
+	PharmacistFrame *pharmacistFrame = new PharmacistFrame();
 
 	ui->mainTabs->addTab(patientFrame, QString("Patients"));
 	ui->mainTabs->addTab(prescriptionsFrame, QString("Prescriptions"));
 	ui->mainTabs->addTab(medicationsFrame, QString("Medications"));
 	ui->mainTabs->addTab(inventoryFrame, QString("Inventory"));
+	ui->mainTabs->addTab(prescriberFrame, QString("Prescribers"));
+	ui->mainTabs->addTab(pharmacistFrame, QString("Pharmacists"));
 }
 
 MainWindow::~MainWindow()

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PrescriberFrame</class>
- <widget class="QFrame" name="PrescriberFrame">
+ <class>PharmacistFrame</class>
+ <widget class="QFrame" name="PharmacistFrame">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>894</width>
-    <height>559</height>
+    <width>941</width>
+    <height>657</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -108,7 +108,7 @@
      <item>
       <widget class="QPushButton" name="newButton">
        <property name="text">
-        <string>New Prescriber</string>
+        <string>New Pharmacist</string>
        </property>
       </widget>
      </item>
@@ -161,7 +161,7 @@
      <item>
       <widget class="QPushButton" name="modifyButton">
        <property name="text">
-        <string>Modify</string>
+        <string>Modify Pharmacist</string>
        </property>
       </widget>
      </item>
@@ -172,8 +172,8 @@
    </item>
   </layout>
   <zorder>horizontalLayoutWidget</zorder>
-  <zorder>horizontalLayoutWidget_2</zorder>
   <zorder>horizontalSpacer</zorder>
+  <zorder>horizontalLayoutWidget_2</zorder>
   <zorder>horizontalLayoutWidget_3</zorder>
   <zorder>resultTable</zorder>
   <zorder>verticalSpacer</zorder>

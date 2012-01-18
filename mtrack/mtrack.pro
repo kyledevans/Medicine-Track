@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     apharmp_page00.cpp \
     alterprescriberwizard.cpp \
     aprescriberpage_page00.cpp \
-    prescriberframe.cpp
+    prescriberframe.cpp \
+    pharmacistframe.cpp
 
 HEADERS  += mainwindow.h \
     patientsearch.h \
@@ -63,7 +64,8 @@ HEADERS  += mainwindow.h \
     apharmp_page00.h \
     alterprescriberwizard.h \
     aprescriberpage_page00.h \
-    prescriberframe.h
+    prescriberframe.h \
+    pharmacistframe.h
 
 FORMS    += mainwindow.ui \
     patientsearch.ui \
@@ -82,10 +84,14 @@ FORMS    += mainwindow.ui \
     apharmp_page00.ui \
     alterprescriberwizard.ui \
     aprescriberpage_page00.ui \
-    prescriberframe.ui
+    prescriberframe.ui \
+    pharmacistframe.ui
 
 OTHER_FILES += \
     database_info.txt
+
+
+
 
 
 
