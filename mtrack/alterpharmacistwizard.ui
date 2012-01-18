@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>AlterPharmacistWizard</class>
  <widget class="QWizard" name="AlterPharmacistWizard">
@@ -5,14 +6,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>640</width>
+    <height>483</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Wizard</string>
   </property>
-  <widget class="QWizardPage" name="wizardPage1"/>
-  <widget class="QWizardPage" name="wizardPage2"/>
+  <widget class="APharmP_Page00" name="page0">
+   <property name="title">
+    <string>New Pharmacist Wizard</string>
+   </property>
+   <property name="subTitle">
+    <string>Enter the details for the pharmacist.</string>
+   </property>
+  </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>APharmP_Page00</class>
+   <extends>QWizardPage</extends>
+   <header location="global">apharmp_page00.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
 </ui>
