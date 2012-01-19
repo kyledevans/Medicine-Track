@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 
 #include <QWizardPage>
 
+#include "pharmacistrecord.h"
+
 namespace Ui {
     class APharmP_Page00;
 }
@@ -20,6 +22,8 @@ class APharmP_Page00 : public QWizardPage
 public:
     explicit APharmP_Page00(QWidget *parent = 0);
     ~APharmP_Page00();
+
+	void getResults(PharmacistRecord *);
 
 private:
     Ui::APharmP_Page00 *ui;

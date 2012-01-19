@@ -161,7 +161,7 @@
      <item>
       <widget class="QPushButton" name="modifyButton">
        <property name="text">
-        <string>Modify</string>
+        <string>Modify Prescriber</string>
        </property>
       </widget>
      </item>
@@ -171,13 +171,74 @@
     <widget class="QTableView" name="resultTable"/>
    </item>
   </layout>
-  <zorder>horizontalLayoutWidget</zorder>
-  <zorder>horizontalLayoutWidget_2</zorder>
-  <zorder>horizontalSpacer</zorder>
-  <zorder>horizontalLayoutWidget_3</zorder>
   <zorder>resultTable</zorder>
   <zorder>verticalSpacer</zorder>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>resetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>lastField</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>179</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>firstField</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>535</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lastField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>179</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>firstField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>535</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

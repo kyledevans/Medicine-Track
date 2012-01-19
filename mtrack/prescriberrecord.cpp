@@ -54,3 +54,18 @@ bool PrescriberRecord::retrieve(int newId)
 	delete model;
 	return true;
 }
+
+/* SQL without C++:
+INSERT INTO prescribers (last, first, full_name, active)
+VALUES ('SOME_VAL', 'SOME_VAL', 'SOME_VAL', 'SOME_VAL');
+
+UPDATE prescribers
+SET last = 'SOME_VAL', first = 'SOME_VAL', full_name = 'SOME_VAL', active = 'SOME_VAL'
+WHERE id = 'SOME_VAL';
+*/
+void PrescriberRecord::commitRecord()
+{
+	QSqlQueryModel *model;
+	QString query;
+	AlertInterface alert;
+}
