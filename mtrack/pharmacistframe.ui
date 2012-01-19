@@ -171,10 +171,6 @@
     <widget class="QTableView" name="resultTable"/>
    </item>
   </layout>
-  <zorder>horizontalLayoutWidget</zorder>
-  <zorder>horizontalSpacer</zorder>
-  <zorder>horizontalLayoutWidget_2</zorder>
-  <zorder>horizontalLayoutWidget_3</zorder>
   <zorder>resultTable</zorder>
   <zorder>verticalSpacer</zorder>
  </widget>

@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Wizard</string>
   </property>
-  <widget class="APrescriberP_Page00" name="page0">
+  <widget class="QWizardPage" name="page0">
    <property name="title">
     <string>New Prescriber Wizard</string>
    </property>
@@ -22,14 +22,6 @@
    </property>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>APrescriberP_Page00</class>
-   <extends>QWizardPage</extends>
-   <header location="global">aprescriberp_page00.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
