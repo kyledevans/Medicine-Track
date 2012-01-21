@@ -14,7 +14,8 @@ Released under the GPL version 2 only.
 #include "globals.h"
 #include "alertinterface.h"
 
-PrescriptionRecord::PrescriptionRecord():
+PrescriptionRecord::PrescriptionRecord(QObject *parent):
+	QObject(parent),
 	id(SQL::Undefined_ID),
 	patient_id(SQL::Undefined_ID),
 	drug_id(SQL::Undefined_ID),

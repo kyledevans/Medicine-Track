@@ -10,10 +10,13 @@ Released under the GPL version 2 only.
 #include <QDate>
 #include <QString>
 
-class ShipmentRecord
+#include <QObject>
+
+class ShipmentRecord : public QObject
 {
+	Q_OBJECT
 public:
-    ShipmentRecord();
+	explicit ShipmentRecord(QObject *parent = 0);
 
 	int id;					// shipments.id
 	int drug_id;			// shipments.drug_id

@@ -15,7 +15,8 @@ Released under the GPL version 2 only.
 #include "globals.h"
 #include "alertinterface.h"
 
-ShipmentRecord::ShipmentRecord():
+ShipmentRecord::ShipmentRecord(QObject *parent):
+	QObject(parent),
 	id(SQL::Undefined_ID),
 	drug_id(SQL::Undefined_ID),
 	product_count(-1),

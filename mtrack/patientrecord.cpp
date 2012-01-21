@@ -15,7 +15,8 @@ Released under the GPL version 2 only.
 #include "alertinterface.h"
 #include "globals.h"
 
-PatientRecord::PatientRecord():
+PatientRecord::PatientRecord(QObject *parent):
+	QObject(parent),
 	id(SQL::Undefined_ID),
 	allscripts_id(SQL::Undefined_ID),
 	active(true),

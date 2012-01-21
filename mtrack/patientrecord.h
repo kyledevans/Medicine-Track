@@ -7,13 +7,16 @@ Released under the GPL version 2 only.
 #include <QString>
 #include <QDate>
 
+#include <QObject>
+
 #ifndef PATIENTRECORD_H
 #define PATIENTRECORD_H
 
-class PatientRecord
+class PatientRecord : public QObject
 {
+	Q_OBJECT
 public:
-    PatientRecord();
+	explicit PatientRecord(QObject *parent = 0);
 
 	int id;				// patients.id
 	int allscripts_id;	// patients.allscripts_id
