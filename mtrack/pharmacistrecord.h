@@ -16,7 +16,7 @@ class PharmacistRecord : public QObject
 	Q_OBJECT
 
 public:
-    PharmacistRecord();
+	explicit PharmacistRecord(QObject *parent = 0);
 
 	int id;					// pharmacists.id
 	QString last;			// pharmacists.last

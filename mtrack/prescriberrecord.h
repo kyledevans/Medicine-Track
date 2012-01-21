@@ -13,9 +13,8 @@ Released under the GPL version 2 only.
 class PrescriberRecord : public QObject
 {
 	Q_OBJECT
-
 public:
-    PrescriberRecord();
+	explicit PrescriberRecord(QObject *parent = 0);
 
 	int id;					// prescribers.id
 	QString last;			// prescribers.last

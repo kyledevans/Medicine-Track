@@ -174,8 +174,6 @@
     <widget class="QTableView" name="resultTable"/>
    </item>
   </layout>
-  <zorder>resultTable</zorder>
-  <zorder>verticalSpacer</zorder>
  </widget>
  <resources/>
  <connections>

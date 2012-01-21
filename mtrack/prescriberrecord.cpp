@@ -15,7 +15,8 @@ Released under the GPL version 2 only.
 #include "globals.h"
 #include "alertinterface.h"
 
-PrescriberRecord::PrescriberRecord():
+PrescriberRecord::PrescriberRecord(QObject *parent):
+	QObject(parent),
 	id(SQL::Undefined_ID),
 	active(true),
 	exists(false)
