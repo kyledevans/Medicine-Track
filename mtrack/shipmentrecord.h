@@ -15,16 +15,17 @@ class ShipmentRecord
 public:
     ShipmentRecord();
 
-	int id;				// shipments.id
-	int drug_id;		// shipments.drug_id
-	QDate expiration;	// shipments.expiration
-	QString lot;		// shipments.lot
-	int product_count;	// shipments.product_count
-	int product_left;	// shipments.product_left
+	int id;					// shipments.id
+	int drug_id;			// shipments.drug_id
+	QDate expiration;		// shipments.expiration
+	QString lot;			// shipments.lot
+	int product_count;		// shipments.product_count
+	int product_left;		// shipments.product_left
 
-	bool exists;		// True if the db already contains this record
+	bool exists;			// True if the db already contains this record
 
-	bool retrieve(int);	// (int) is the shipment id.  Returns false if retrieve failed
+	bool retrieve(int);		// (int) is the shipment id.  Returns false if retrieve failed
+	bool commitRecord();	// Inserts (or updates) the record in the db
 };
 
 #endif // SHIPMENTRECORD_H

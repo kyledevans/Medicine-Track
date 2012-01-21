@@ -26,9 +26,6 @@ public:
 	bool exists;			// True if the record is already in the database
 
 	bool retrieve(int);		// (int) is the prescriber id.  Returns false on failure
-
-public slots:
-
 	bool commitRecord();	// Inserts (or updates) the record in the db
 };
 

@@ -6,23 +6,28 @@ Released under the GPL version 2 only.
 
 #include <QString>
 
+#include <QObject>
+
 #ifndef PHARMACISTRECORD_H
 #define PHARMACISTRECORD_H
 
-class PharmacistRecord
+class PharmacistRecord : public QObject
 {
+	Q_OBJECT
+
 public:
     PharmacistRecord();
 
-	int id;				// pharmacists.id
-	QString last;		// pharmacists.last
-	QString first;		// pharmacists.first
-	QString initials;	// pharmacists.initials
-	bool active;		// pharmacists.active
+	int id;					// pharmacists.id
+	QString last;			// pharmacists.last
+	QString first;			// pharmacists.first
+	QString initials;		// pharmacists.initials
+	bool active;			// pharmacists.active
 
-	bool exists;		// True if the record is already in the database
+	bool exists;			// True if the record is already in the database
 
-	bool retrieve(int);	// (int) is the pharmacist id.  Returns false if the retrieve failed
+	bool retrieve(int);		// (int) is the pharmacist id.  Returns false if the retrieve failed
+	bool commitRecord();	// Inserts (or Updates) the record in the db
 };
 
 #endif // PHARMACISTRECORD_H

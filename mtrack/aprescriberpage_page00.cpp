@@ -29,5 +29,5 @@ void APrescriberPage_Page00::getResults(PrescriberRecord *pres)
 	pres->last = ui->lastField->text();
 	pres->first = ui->firstField->text();
 	pres->full_name = ui->fullField->text();
-	pres->active = ui->activeField->text();
+	pres->active = ui->activeField->isChecked();
 }

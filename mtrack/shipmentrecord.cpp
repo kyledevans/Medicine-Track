@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #include <QString>
 #include <QVariant>
 #include <QSqlRecord>
+#include <QSqlQuery>
 
 #include "shipmentrecord.h"
 
@@ -53,6 +54,53 @@ bool ShipmentRecord::retrieve(int newId)
 	product_count = model->record(0).value(3).toInt();
 	product_left = model->record(0).value(4).toInt();
 	exists = true;
+
+	delete model;
+	return true;
+}
+
+/* SQL without C++:
+INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left)
+VALUES ('SOME_VAL', 'SOME_VAL', 'SOME_VAL', 'SOME_VAL');
+
+UPDATE shipments
+SET drug_id = 'SOME_VAL', expiration = 'SOME_VAL', lot = 'SOME_VAL', product_count = 'SOME_VAL', product_left = 'SOME_VAL'
+WHERE id = 'SOME_VAL';
+*/
+bool ShipmentRecord::commitRecord()
+{
+	QSqlQueryModel *model;
+	QString query;
+	AlertInterface alert;
+
+	model = new QSqlQueryModel;
+
+	if (exists) {
+		query = QString("INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left) VALUES ('");
+		query += QString().setNum(drug_id) + QString("', '");
+		query += expiration.toString("yyyy-MM-dd") + QString("', '");
+		query += SQL::cleanNoMatching(lot) + QString("', '");
+		query += QString().setNum(product_count) + QString("', '");
+		query += QString().setNum(product_left) + QString("');");
+	} else {
+		query = QString("UPDATE shipments SET drug_id = '");
+		query += QString().setNum(drug_id) + QString("', expiration = '");
+		query += expiration.toString("yyyy-MM-dd") + QString("', lot = '");
+		query += SQL::cleanNoMatching(lot) + QString("', product_count = '");
+		query += QString().setNum(product_count) + QString("', product_left = '");
+		query += QString().setNum(product_left) + QString("' WHERE id = '");
+		query += QString().setNum(id) + QString("';");
+	}
+
+	if (!alert.attemptQuery(model, &query)) {
+		delete model;
+		return false;
+	}
+
+	if (!exists) {
+		id = model->query().lastInsertId().toInt();
+		exists = true;
+	}
 
 	delete model;
 	return true;

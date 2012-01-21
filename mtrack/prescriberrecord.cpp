@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #include <QString>
 #include <QVariant>
 #include <QSqlRecord>
+#include <QSqlQuery>
 
 #include "prescriberrecord.h"
 
@@ -63,9 +64,46 @@ UPDATE prescribers
 SET last = 'SOME_VAL', first = 'SOME_VAL', full_name = 'SOME_VAL', active = 'SOME_VAL'
 WHERE id = 'SOME_VAL';
 */
-void PrescriberRecord::commitRecord()
+bool PrescriberRecord::commitRecord()
 {
 	QSqlQueryModel *model;
 	QString query;
 	AlertInterface alert;
+
+	model = new QSqlQueryModel;
+
+	if (exists) {
+		query = QString("INSERT INTO prescribers (last, first, full_name, active) VALUES ('");
+		query += SQL::cleanNoMatching(last) + QString("', '");
+		query += SQL::cleanNoMatching(first) + QString("', '");
+		query += SQL::cleanNoMatching(full_name) + QString("', '");
+		if (active) {
+			query += QString("1');");
+		} else {
+			query += QString("0');");
+		}
+	} else {
+		query += QString("UPDATE prescribers SET last = '");
+		query += SQL::cleanNoMatching(last) + QString("', first = '");
+		query += SQL::cleanNoMatching(first) + QString("', full_name = '");
+		query += SQL::cleanNoMatching(full_name) + QString("', active = '");
+		if (active) {
+			query += QString("1' WHERE id = '");
+		} else {
+			query += QString("0' WHERE id = '");
+		}
+		query += QString().setNum(id) + QString("';");
+	}
+
+	if (!alert.attemptQuery(model, &query)) {
+		delete model;
+		return false;
+	}
+	if (!exists) {	// Update the local record if this was an insert
+		id = model->query().lastInsertId().toInt();
+		exists = true;
+	}
+
+	delete model;
+	return true;
 }

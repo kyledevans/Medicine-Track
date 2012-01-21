@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #include <QString>
 #include <QVariant>
 #include <QSqlRecord>
+#include <QSqlQuery>
 
 #include "pharmacistrecord.h"
 
@@ -50,6 +51,59 @@ bool PharmacistRecord::retrieve(int newId)
 	initials = model->record(0).value(2).toString();
 	active = model->record(0).value(2).toBool();
 	exists = true;
+
+	delete model;
+	return true;
+}
+
+/* SQL without C++:
+INSERT INTO pharmacists (last, first, initials, active)
+VALUES ('SOME_VAL', 'SOME_VAL', 'SOME_VAL', 'SOME_VAL');
+
+UPDATE prescribers
+SET last = 'SOME_VAL', first = 'SOME_VAL', initials = 'SOME_VAL', active = 'SOME_VAL'
+WHERE id = 'SOME_VAL';
+*/
+bool PharmacistRecord::commitRecord()
+{
+	QSqlQueryModel *model;
+	QString query;
+	AlertInterface alert;
+
+	model = new QSqlQueryModel;
+
+	if (!exists) {	// Need to do an INSERT
+		query = QString("INSERT INTO pharmacists (last, first, initials, active) VALUES ('");
+		query += last + QString("', '");
+		query += first + QString("', '");
+		query += initials + QString("', '");
+		if (active) {
+			query += QString("1');");
+		} else {
+			query += QString("0');");
+		}
+	} else {		// Need to do an UPDATE
+		query = QString("UPDATE prescribers SET last = '");
+		query += SQL::cleanNoMatching(last) + QString("', first = '");
+		query += SQL::cleanNoMatching(first) + QString("', initials = '");
+		query += SQL::cleanNoMatching(initials) + QString("', active = '");
+		if (active) {
+			query += QString("1' WHERE id = '");
+		} else {
+			query += QString("0' WHERE id = '");
+		}
+		query += QString().setNum(id) + QString("';");
+	}
+
+	if (!alert.attemptQuery(model, &query)) {
+		delete model;
+		return false;
+	}
+
+	if (!exists) {
+		id = model->query().lastInsertId().toInt();
+		exists = true;
+	}
 
 	delete model;
 	return true;

@@ -20,10 +20,12 @@ public:
 	QString first;		// patients.first
 	QString last;		// patients.last
 	QDate dob;			// patients.dob
+	bool active;		// patients.active
 
 	bool exists;		// True if the record is already in the database
 
 	bool retrieve(int);	// (int) is the patient id. Returns false if the retrieve failed
+	bool commitRecord();	// Inserts (or updates) the record in the db
 };
 
 #endif // PATIENTRECORD_H
