@@ -171,6 +171,14 @@
     <widget class="QTableView" name="resultTable"/>
    </item>
   </layout>
+  <action name="newAction">
+   <property name="text">
+    <string>New Prescriber</string>
+   </property>
+   <property name="toolTip">
+    <string>Enter a new prescriber.</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>

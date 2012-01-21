@@ -15,6 +15,8 @@ Released under the GPL version 2 only.
 #include "globals.h"
 #include "alertinterface.h"
 
+#include <QDebug>
+
 PharmacistRecord::PharmacistRecord(QObject *parent):
 	QObject(parent),
 	id(SQL::Undefined_ID),
@@ -108,4 +110,9 @@ bool PharmacistRecord::commitRecord()
 
 	delete model;
 	return true;
+}
+
+void PharmacistRecord::print()
+{
+	qDebug() << "id =" << id << ", last =" << last << ", first =" << first << ", initials =" << initials << ", active =" << active;
 }

@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 
 #include <QWizard>
 
+#include "pharmacistrecord.h"
+
 namespace Ui {
     class AlterPharmacistWizard;
 }
@@ -19,10 +21,19 @@ class AlterPharmacistWizard : public QWizard
 
 public:
     explicit AlterPharmacistWizard(QWidget *parent = 0);
+	explicit AlterPharmacistWizard(PharmacistRecord *, QWidget *parent = 0);
     ~AlterPharmacistWizard();
+
+public slots:
+	void returnResults();
+
+signals:
+	void wizardComplete(PharmacistRecord *);
 
 private:
     Ui::AlterPharmacistWizard *ui;
+
+	PharmacistRecord *pharm;
 };
 
 #endif // ALTERPHARMACISTWIZARD_H

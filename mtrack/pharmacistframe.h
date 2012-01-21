@@ -21,6 +21,9 @@ public:
     explicit PharmacistFrame(QWidget *parent = 0);
     ~PharmacistFrame();
 
+public slots:
+	void initiateNew();
+
 private:
     Ui::PharmacistFrame *ui;
 };

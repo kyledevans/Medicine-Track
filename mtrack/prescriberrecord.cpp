@@ -15,6 +15,8 @@ Released under the GPL version 2 only.
 #include "globals.h"
 #include "alertinterface.h"
 
+#include <QDebug>
+
 PrescriberRecord::PrescriberRecord(QObject *parent):
 	QObject(parent),
 	id(SQL::Undefined_ID),
@@ -107,4 +109,9 @@ bool PrescriberRecord::commitRecord()
 
 	delete model;
 	return true;
+}
+
+void PrescriberRecord::print()
+{
+	qDebug() << "id =" << id << ", last =" << last << ", first =" << first << ", full_name =" << full_name << ", active =" << active;
 }

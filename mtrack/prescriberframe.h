@@ -21,6 +21,9 @@ public:
     explicit PrescriberFrame(QWidget *parent = 0);
     ~PrescriberFrame();
 
+public slots:
+	void initiateNew();
+
 private:
     Ui::PrescriberFrame *ui;
 };
