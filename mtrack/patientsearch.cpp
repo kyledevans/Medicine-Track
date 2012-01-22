@@ -137,7 +137,26 @@ void PatientSearch::initiatePrescription()
 
 void PatientSearch::initiateModification()
 {
+	unsigned int row;
+	NewPatientWizard *wiz;
+	PatientRecord *patient;
 
+	patient = new PatientRecord();
+
+	if (db_queried) {
+		if (ui->resultTable->selectionModel()->hasSelection()) {
+			// This line finds the top row that was selected by the user
+			row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+			patient->retrieve(ids[row]);
+		}
+	}
+
+	wiz = new NewPatientWizard(patient);
+	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitNewPatient(PatientRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PatientRecord*)), this, SLOT(newPatientCleanup(PatientRecord*)));
+	wiz->exec();
+
+	delete wiz;
 }
 
 void PatientSearch::initiateNewPatient()

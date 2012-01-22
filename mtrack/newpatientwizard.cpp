@@ -26,6 +26,13 @@ NewPatientWizard::NewPatientWizard(PatientRecord *new_patient, QWidget *parent) 
 
 	patient = new_patient;
 
+	if (patient->exists) {
+		setField("mrNumberField", patient->allscripts_id);
+		setField("lastField", patient->last);
+		setField("firstField", patient->first);
+		setField("dobField", patient->dob);
+	}
+
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
 	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));
 }
