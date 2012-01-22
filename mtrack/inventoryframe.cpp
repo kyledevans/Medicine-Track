@@ -16,6 +16,7 @@ Released under the GPL version 2 only.
 #include "ui_inventoryframe.h"
 
 #include "altershipmentwizard.h"
+#include "alertinterface.h"
 
 InventoryFrame::InventoryFrame(QWidget *parent) :
     QFrame(parent),
@@ -45,32 +46,41 @@ WHERE drugs.name LIKE SOME_VAR
 AND shipments.lot LIKE SOME_VAR
 AND shipments.product_left > 0
 AND drugs.active = 1
-AND shipments.expiration > CURDATE();
+AND shipments.expiration < CURDATE();
 */
-void InventoryFrame::initiateSearch()
+void InventoryFrame::initiateSearch(int shipID)
 {
 	QString query;
-	QSqlQueryModel *model = new QSqlQueryModel(ui->resultTable);
+	QSqlQueryModel *model;
+	AlertInterface alert;
+
+	model = new QSqlQueryModel(ui->resultTable);
+
+	if (shipID == SQL::Undefined_ID) {
+		query = QString("SELECT shipments.id, drugs.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE drugs.name LIKE '%");
+		query += SQL::cleanInput(ui->nameField->text()) + QString("%' AND shipments.lot LIKE '%");
+		query += SQL::cleanInput(ui->lotField->text()) + QString("%'");
+		if (ui->stockCheckbox->isChecked()) {	// Stocked checkbox
+			query += QString(" AND shipments.product_left > 0");
+		}
+		if (ui->activeCheckbox->isChecked()) {	// Active checkbox
+			query += QString(" AND drugs.active = 1");
+		}
+		if (ui->expiredCheckbox->isChecked()) {	// Expired checkbox
+			query += QString(" AND shipments.expiration < CURDATE()");
+		}
+		query += QString(";");
+	} else {
+		query = QString("SELECT shipments.id, drugs.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE id = '");
+		query += QString().setNum(shipID) + QString("';");
+	}
+
+	if (!alert.attemptQuery(model, &query)) {
+		delete model;
+		return;
+	}
+
 	drugIds.clear();
-
-	query = QString("SELECT shipments.id, drugs.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE drugs.name LIKE '%");
-	query += ui->nameField->text();
-	query += QString("%' AND shipments.lot LIKE '%");
-	query += ui->lotField->text();
-	query += QString("%'");
-	if (ui->stockCheckbox->isChecked()) {	// Stocked checkbox
-		query += QString(" AND shipments.product_left > 0");
-	}
-	if (ui->activeCheckbox->isChecked()) {	// Active checkbox
-		query += QString(" AND drugs.active = 1");
-	}
-	if (ui->expiredCheckbox->isChecked()) {	// Expired checkbox
-		query += QString(" AND shipments.expiration < CURDATE()");
-	}
-	query += QString(";");
-
-	model->setQuery(query);
-
 	// Retrieve the ID's before we remove them from the display
 	for (int i = 0; i < model->rowCount(); i++) {
 		shipmentIds.append(model->record(i).value(0).toInt());

@@ -10,6 +10,7 @@ Released under the GPL version 2 only.
 #include <QFrame>
 
 #include "prescriberrecord.h"
+#include "globals.h"
 
 namespace Ui {
     class PrescriberFrame;
@@ -24,12 +25,16 @@ public:
     ~PrescriberFrame();
 
 public slots:
+	void initiateSearch(int presID = SQL::Undefined_ID);
 	void initiateNew();
 	void submitNew(PrescriberRecord *);
 	void newCleanup(PrescriberRecord *);
 
 private:
     Ui::PrescriberFrame *ui;
+
+	QList<int> ids;		// Contains the prescriber id's of the current query
+	bool db_queried;	// True if there is data in the resultTable
 };
 
 #endif // PRESCRIBERFRAME_H

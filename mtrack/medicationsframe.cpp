@@ -19,6 +19,7 @@ Released under the GPL version 2 only.
 #include "altermedicationwizard.h"
 #include "altershipmentwizard.h"
 #include "globals.h"
+#include "alertinterface.h"
 
 MedicationsFrame::MedicationsFrame(QWidget *parent) :
     QFrame(parent),
@@ -48,21 +49,30 @@ WHERE drugs.name LIKE 'SOME_VAR'
 AND drugs.active = 'SOME_VAR'
 GROUP BY drugs.id;
 */
-void MedicationsFrame::initiateSearch()
+void MedicationsFrame::initiateSearch(int medID)
 {
 	QString query;
 	QSqlQueryModel *model;
+	AlertInterface alert;
 
-	query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left ) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
-	query += ui->nameField->text();
-	query += QString("%'");
-	if (ui->activeCheckbox->isChecked()) {
-		query += QString(" AND drugs.active = '1'");
+	if (medID == SQL::Undefined_ID) {
+		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left ) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
+		query += SQL::cleanInput(ui->nameField->text()) + QString("%'");
+		if (ui->activeCheckbox->isChecked()) {
+			query += QString(" AND drugs.active = '1'");
+		}
+		query += QString(" GROUP BY drugs.id;");
+	} else {
+		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left ) FROM drugs LEFT JOIN shipments ON drugs.id = shipments.drug_id WHERE id = '");
+		query += QString().setNum(medID) + QString("' GROUP BY drugs.id;");
 	}
-	query += QString(" GROUP BY drugs.id;");
 
 	model = new QSqlQueryModel(ui->resultTable);
-	model->setQuery(query);
+
+	if (!alert.attemptQuery(model, &query)) {
+		delete model;
+		return;
+	}
 
 	drugIds.clear();
 	// Retrieve the ID's before we remove them from the display
@@ -122,6 +132,7 @@ void MedicationsFrame::submitModify(MedicationRecord *med)
 void MedicationsFrame::submitNewMed(MedicationRecord *med)
 {
 	med->commitRecord();
+	initiateSearch(med->id);
 	medCleanup(med);
 }
 

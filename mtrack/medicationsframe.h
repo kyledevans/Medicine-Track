@@ -12,6 +12,7 @@ Released under the GPL version 2 only.
 
 #include "medicationrecord.h"
 #include "shipmentrecord.h"
+#include "globals.h"
 
 namespace Ui {
     class MedicationsFrame;
@@ -26,7 +27,7 @@ public:
     ~MedicationsFrame();
 
 public slots:
-	void initiateSearch();
+	void initiateSearch(int medID = SQL::Undefined_ID);
 	void initiateModify();
 	void initiateNewMed();
 	void initiateNewShipment();
