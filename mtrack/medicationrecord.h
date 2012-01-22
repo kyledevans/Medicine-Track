@@ -32,6 +32,9 @@ public:
 	bool exists;			// True if the record is already in the database
 
 	bool retrieve(int);		// (int) is the id.  Returns false if the retrieve failed
+	bool commitRecord();	// Inserts (or updates) the record in the db
+
+	void print();			// Prints to the debug interface
 };
 
 #endif // MEDICATIONRECORD_H

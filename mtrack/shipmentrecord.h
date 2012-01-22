@@ -24,11 +24,14 @@ public:
 	QString lot;			// shipments.lot
 	int product_count;		// shipments.product_count
 	int product_left;		// shipments.product_left
+	bool active;			// shipments.active
 
 	bool exists;			// True if the db already contains this record
 
 	bool retrieve(int);		// (int) is the shipment id.  Returns false if retrieve failed
 	bool commitRecord();	// Inserts (or updates) the record in the db
+
+	void print();			// Prints to the debug interface
 };
 
 #endif // SHIPMENTRECORD_H

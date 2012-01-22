@@ -7,8 +7,6 @@ Released under the GPL version 2 only.
 #include "alterprescriberwizard.h"
 #include "ui_alterprescriberwizard.h"
 
-#include "aprescriberpage_page00.h"
-
 AlterPrescriberWizard::AlterPrescriberWizard(QWidget *parent) :
     QWizard(parent),
     ui(new Ui::AlterPrescriberWizard)
@@ -32,5 +30,5 @@ AlterPrescriberWizard::~AlterPrescriberWizard()
 
 void AlterPrescriberWizard::returnResults()
 {
-
+	ui->page00->getResults(pres);
 }

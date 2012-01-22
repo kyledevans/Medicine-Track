@@ -246,5 +246,21 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>newButton</sender>
+   <signal>clicked()</signal>
+   <receiver>newAction</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>278</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>

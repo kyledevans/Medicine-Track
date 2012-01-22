@@ -75,7 +75,7 @@ bool PatientRecord::commitRecord()
 
 	model = new QSqlQueryModel;
 
-	if (exists) {
+	if (!exists) {
 		query = QString("INSERT INTO patients (allscripts_id, last, first, dob, active) VALUES ('");
 		query += QString().setNum(allscripts_id) + QString("', '");
 		query += SQL::cleanNoMatching(last) + QString("', '");

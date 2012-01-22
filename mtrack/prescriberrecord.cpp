@@ -75,7 +75,7 @@ bool PrescriberRecord::commitRecord()
 
 	model = new QSqlQueryModel;
 
-	if (exists) {
+	if (!exists) {
 		query = QString("INSERT INTO prescribers (last, first, full_name, active) VALUES ('");
 		query += SQL::cleanNoMatching(last) + QString("', '");
 		query += SQL::cleanNoMatching(first) + QString("', '");

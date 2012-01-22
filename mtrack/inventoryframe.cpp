@@ -106,7 +106,7 @@ WHERE id = 'SOME_VAR';
 */
 void InventoryFrame::initiateModify()
 {
-	unsigned int row;
+/*	unsigned int row;
 	QSqlQueryModel *model;
 	QString query;
 	ShipmentRecord *shipment;
@@ -146,7 +146,7 @@ void InventoryFrame::initiateModify()
 
 	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitModify(ShipmentRecord*)));
 	wiz->exec();
-	delete wiz;
+	delete wiz;*/
 }
 
 /* SQL without C++
@@ -156,7 +156,7 @@ WHERE id = 'SOME_VAR';
 */
 void InventoryFrame::submitModify(ShipmentRecord *shipment)
 {
-	QSqlQueryModel *model = new QSqlQueryModel;
+/*	QSqlQueryModel *model = new QSqlQueryModel;
 	QString query;
 
 	query = QString("UPDATE shipments SET expiration = '");
@@ -168,5 +168,5 @@ void InventoryFrame::submitModify(ShipmentRecord *shipment)
 
 	qDebug() << query;
 	model->setQuery(query);
-	qDebug() << model->lastError().databaseText();
+	qDebug() << model->lastError().databaseText();*/
 }

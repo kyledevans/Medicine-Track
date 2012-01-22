@@ -15,6 +15,8 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
     ui(new Ui::PrescriberFrame)
 {
     ui->setupUi(this);
+
+	connect(ui->newAction, SIGNAL(triggered()), this, SLOT(initiateNew()));
 }
 
 PrescriberFrame::~PrescriberFrame()
@@ -31,7 +33,7 @@ void PrescriberFrame::initiateNew()
 	wiz->exec();
 
 	wiz->returnResults();
-	pres->print();
+	pres->commitRecord();
 
 	delete wiz;
 	delete pres;

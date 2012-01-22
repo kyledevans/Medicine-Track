@@ -30,11 +30,20 @@ void PharmacistFrame::initiateNew()
 	PharmacistRecord *pharm = new PharmacistRecord();
 
 	wiz = new AlterPharmacistWizard(pharm);
+	connect(wiz, SIGNAL(wizardComplete(PharmacistRecord*)), this, SLOT(submitNew(PharmacistRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PharmacistRecord*)), this, SLOT(newCleanup(PharmacistRecord*)));
 	wiz->exec();
 
-	wiz->returnResults();
-	pharm->print();
-
 	delete wiz;
+}
+
+void PharmacistFrame::submitNew(PharmacistRecord *pharm)
+{
+	pharm->commitRecord();
+	newCleanup(pharm);
+}
+
+void PharmacistFrame::newCleanup(PharmacistRecord *pharm)
+{
 	delete pharm;
 }

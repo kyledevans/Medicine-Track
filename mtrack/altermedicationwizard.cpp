@@ -28,11 +28,11 @@ AlterMedicationWizard::AlterMedicationWizard(MedicationRecord *new_med, QWidget 
 	med = new_med;
 
 	// Fill in the information into the form if the wizard is modifying an existing record
-	if (med->exists) {
+	/*if (med->exists) {
 
 		// TODO: This will probably need to go elsewhere, but will be needed sometime
 		// Code that fills in information when modifying an existing medication
-		/*ui->medicationField->setText(med->name);
+		ui->medicationField->setText(med->name);
 		ui->genericField->setText(med->generic);
 		ui->manufacturerField->setText(med->manufacturer);
 		ui->ndcField->setText(med->ndc);
@@ -46,8 +46,8 @@ AlterMedicationWizard::AlterMedicationWizard(MedicationRecord *new_med, QWidget 
 		if ((med->form == FORM::Elixir) || (med->form == FORM::Suspension)) {
 			ui->amountLabel->setEnabled(true);
 			ui->amountField->setEnabled(true);
-		}*/
-	}
+		}
+	}*/
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
 	//connect(ui->formBox, SIGNAL(currentIndexChanged(int)), this, SLOT(amountFieldCheck(int)));	TODO: This needs to be re-implemented

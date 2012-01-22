@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 
 #include <QFrame>
 
+#include "pharmacistrecord.h"
+
 namespace Ui {
     class PharmacistFrame;
 }
@@ -23,6 +25,8 @@ public:
 
 public slots:
 	void initiateNew();
+	void submitNew(PharmacistRecord *);		// Commits to the db and cleans up
+	void newCleanup(PharmacistRecord *);	// Cleans up after the new/modify wizard
 
 private:
     Ui::PharmacistFrame *ui;

@@ -15,18 +15,21 @@ Released under the GPL version 2 only.
 #include "globals.h"
 #include "alertinterface.h"
 
+#include <QDebug>
+
 ShipmentRecord::ShipmentRecord(QObject *parent):
 	QObject(parent),
 	id(SQL::Undefined_ID),
 	drug_id(SQL::Undefined_ID),
 	product_count(-1),
 	product_left(-1),
+	active(true),
 	exists(false)
 {
 }
 
 /* SQL without C++:
-SELECT drug_id, expiration, lot, product_count, product_left
+SELECT drug_id, expiration, lot, product_count, product_left, active
 FROM shipments
 WHERE id = 'SOME_VAL';
 */
@@ -41,7 +44,7 @@ bool ShipmentRecord::retrieve(int newId)
 	}
 
 	model = new QSqlQueryModel;
-	query += QString("SELECT drug_id, expiration, lot, product_count, product_left FROM shipments WHERE id = '");
+	query += QString("SELECT drug_id, expiration, lot, product_count, product_left, active FROM shipments WHERE id = '");
 	query += QString().setNum(newId) + QString("';");
 
 	if (!alert.attemptQuery(model, &query)) {
@@ -54,6 +57,7 @@ bool ShipmentRecord::retrieve(int newId)
 	lot = model->record(0).value(2).toString();
 	product_count = model->record(0).value(3).toInt();
 	product_left = model->record(0).value(4).toInt();
+	active = model->record(0).value(5).toBool();
 	exists = true;
 
 	delete model;
@@ -76,7 +80,7 @@ bool ShipmentRecord::commitRecord()
 
 	model = new QSqlQueryModel;
 
-	if (exists) {
+	if (!exists) {
 		query = QString("INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left) VALUES ('");
 		query += QString().setNum(drug_id) + QString("', '");
 		query += expiration.toString("yyyy-MM-dd") + QString("', '");
@@ -105,4 +109,9 @@ bool ShipmentRecord::commitRecord()
 
 	delete model;
 	return true;
+}
+
+void ShipmentRecord::print()
+{
+	qDebug() << "id =" << id << ", drug_id =" << drug_id << ", expiration =" << expiration.toString("yyyy-MM-dd") << ", lot =" << lot << ", product_count =" << product_count << ", product_left =" << product_left << ", active =" << active;
 }

@@ -28,9 +28,9 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
     ui->setupUi(this);
 
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
-	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
+	//connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->newMedicationAction, SIGNAL(triggered()), this, SLOT(initiateNewMed()));
-	connect(ui->newStockAction, SIGNAL(triggered()), this, SLOT(initiateNewShipment()));
+	//connect(ui->newStockAction, SIGNAL(triggered()), this, SLOT(initiateNewShipment()));
 
 	ui->resultTable->addAction(ui->modifyAction);
 }
@@ -92,7 +92,7 @@ void MedicationsFrame::initiateSearch()
 
 void MedicationsFrame::initiateNewShipment()
 {
-	unsigned int row;
+/*	unsigned int row;
 	ShipmentRecord *shipment;
 	AlterShipmentWizard *wiz;
 
@@ -113,7 +113,7 @@ void MedicationsFrame::initiateNewShipment()
 	wiz = new AlterShipmentWizard(shipment);
 	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitNewShipment(ShipmentRecord*)));
 	wiz->exec();
-	delete wiz;
+	delete wiz;*/
 }
 
 /* Readable SQL.  Numbers in () indicate the column number and are not SQL:
@@ -125,7 +125,7 @@ WHERE drugs.id = SOME_VAR
 */
 void MedicationsFrame::initiateModify()
 {
-	unsigned int row;
+/*	unsigned int row;
 	MedicationRecord *med;
 	AlterMedicationWizard *wiz;
 	QSqlQueryModel *model;
@@ -148,7 +148,7 @@ void MedicationsFrame::initiateModify()
 	// Allocate stuff yo.
 	model = new QSqlQueryModel;
 
-	/* Populate the med record from the database */
+	// Populate the med record from the database
 	query = QString("SELECT drugs.id, drugs.instruction_id, drugs.name, drugs.generic, drugs.manufacturer, drugs.ndc, drugs.form, drugs.strength, drugs.amount, drugs.active, instructions.text FROM drugs JOIN instructions ON drugs.instruction_id = instructions.id WHERE drugs.id = '");
 	query += QString::number(med->id);
 	query += QString("';");
@@ -173,18 +173,30 @@ void MedicationsFrame::initiateModify()
 	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitModify(MedicationRecord*)));
 
 	wiz->exec();
-	delete wiz;
+	delete wiz;*/
 }
 
 void MedicationsFrame::initiateNewMed()
 {
-	MedicationRecord *med = new MedicationRecord;
+/*	MedicationRecord *med = new MedicationRecord;
 	AlterMedicationWizard *wiz = new AlterMedicationWizard(med);
 
 	connect(wiz, SIGNAL(wizardComplete(MedicationRecord *)), this, SLOT(submitNewMed(MedicationRecord *)));
 
 	wiz->exec();
+	delete wiz;*/
+
+	AlterMedicationWizard *wiz;
+	MedicationRecord *med = new MedicationRecord();
+
+	wiz = new AlterMedicationWizard(med);
+	wiz->exec();
+
+	wiz->returnResults();
+	med->print();
+
 	delete wiz;
+	delete med;
 }
 
 /*
@@ -195,7 +207,7 @@ WHERE drugs.id = 'SOME_VAR';
 */
 void MedicationsFrame::submitModify(MedicationRecord *med)
 {
-	QSqlQueryModel *model = new QSqlQueryModel();
+/*	QSqlQueryModel *model = new QSqlQueryModel();
 	QString query;
 
 	// Update the 'drugs' entry
@@ -222,7 +234,7 @@ void MedicationsFrame::submitModify(MedicationRecord *med)
 	query += QString().setNum(med->id) + QString("';");
 
 	model->setQuery(query);
-	qDebug() << model->lastError().databaseText();
+	qDebug() << model->lastError().databaseText();*/
 }
 
 /* SQL without C++:
@@ -232,7 +244,7 @@ VALUES (...)
 */
 void MedicationsFrame::submitNewMed(MedicationRecord *med)
 {
-	QSqlQueryModel *model = new QSqlQueryModel();
+/*	QSqlQueryModel *model = new QSqlQueryModel();
 	QString query;
 
 	// Only insert an amount if applicable
@@ -260,7 +272,7 @@ void MedicationsFrame::submitNewMed(MedicationRecord *med)
 	}
 
 	model->setQuery(query);
-	qDebug() << model->lastError().databaseText();
+	qDebug() << model->lastError().databaseText();*/
 }
 
 /* SQL without C++:
@@ -269,7 +281,7 @@ VALUES (...)
 */
 void MedicationsFrame::submitNewShipment(ShipmentRecord *shipment)
 {
-	QSqlQueryModel *model = new QSqlQueryModel();
+/*	QSqlQueryModel *model = new QSqlQueryModel();
 	QString query;
 
 	query = QString("INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left) VALUES ('");
@@ -279,5 +291,5 @@ void MedicationsFrame::submitNewShipment(ShipmentRecord *shipment)
 	query += QString().setNum(shipment->product_count) + QString("','");
 	query += QString().setNum(shipment->product_left) + QString("');");
 
-	model->setQuery(query);
+	model->setQuery(query);*/
 }

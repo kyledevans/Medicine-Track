@@ -22,6 +22,9 @@ AlterPharmacistWizard::AlterPharmacistWizard(PharmacistRecord *new_pharm, QWidge
 	ui->setupUi(this);
 
 	pharm = new_pharm;
+
+	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
+	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));
 }
 
 AlterPharmacistWizard::~AlterPharmacistWizard()
@@ -34,4 +37,9 @@ void AlterPharmacistWizard::returnResults()
 	ui->page0->getResults(pharm);
 
 	emit(wizardComplete(pharm));
+}
+
+void AlterPharmacistWizard::rejectedWizard()
+{
+	emit(wizardRejected(pharm));
 }

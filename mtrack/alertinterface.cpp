@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 
 #include "alertinterface.h"
 
+#include <QDebug>
+
 AlertInterface::AlertInterface(QWidget *parent) :
     QWidget(parent)
 {
@@ -16,13 +18,17 @@ AlertInterface::AlertInterface(QWidget *parent) :
 
 bool AlertInterface::attemptQuery(QSqlQueryModel *model, QString *query)
 {
-	model->setQuery(*query);
+	// Comment out the next 2 lines for production builds
+	qDebug() << *query;
+	return true;
+
+/*	model->setQuery(*query);
 	if (!model->lastError().isValid()) {
 		return true;	// Everything went well
 	}
 
 	databaseInaccessible();
-	return false;
+	return false;*/
 }
 
 void AlertInterface::databaseInaccessible()

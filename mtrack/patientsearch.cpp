@@ -118,7 +118,7 @@ WHERE id = 'SOME_VAR';
 */
 void PatientSearch::initiateModification()
 {
-	unsigned int row;
+/*	unsigned int row;
 	PatientRecord *patient;
 	NewPatientWizard *wiz;
 	QSqlQueryModel *model;
@@ -152,12 +152,12 @@ void PatientSearch::initiateModification()
 			wiz->exec();
 			delete wiz;
 		}
-	}
+	}*/
 }
 
 void PatientSearch::initiateNewPatient()
 {
-	NewPatientWizard *wiz;
+/*	NewPatientWizard *wiz;
 	PatientRecord *patient = new PatientRecord;
 
 	wiz = new NewPatientWizard(patient);
@@ -166,7 +166,7 @@ void PatientSearch::initiateNewPatient()
 
 	wiz->exec();
 
-	delete wiz;
+	delete wiz;*/
 }
 
 /* SQL code without C++:
@@ -175,7 +175,7 @@ VALUES ('SOME_VAR', 'SOME_VAR', 'SOME_VAR');
 */
 void PatientSearch::newPatient(PatientRecord *new_patient)
 {
-	QString query;
+/*	QString query;
 	QSqlQueryModel *model = new QSqlQueryModel();	// TODO: garbage collection for this
 
 	query = QString("INSERT INTO patients (last, first, dob) VALUES ('");
@@ -195,7 +195,7 @@ void PatientSearch::newPatient(PatientRecord *new_patient)
 	initiateSearch();
 
 	delete model;
-	delete new_patient;
+	delete new_patient;*/
 }
 
 /* SQL without C++:
@@ -205,7 +205,7 @@ WHERE id = 'SOME_VAR';
 */
 void PatientSearch::submitModify(PatientRecord *new_patient)
 {
-	QString query;
+/*	QString query;
 	QSqlQueryModel *model = new QSqlQueryModel();
 
 	query = QString("UPDATE patients SET last = '");
@@ -223,5 +223,5 @@ void PatientSearch::submitModify(PatientRecord *new_patient)
 	initiateSearch();
 
 	delete model;
-	delete new_patient;
+	delete new_patient;*/
 }
