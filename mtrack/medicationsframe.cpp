@@ -44,15 +44,14 @@ MedicationsFrame::~MedicationsFrame()
 SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left )
 FROM drugs
 LEFT JOIN shipments ON drugs.id = shipments.drug_id
-WHERE drugs.name LIKE SOME_VAR
-AND drugs.active = SOME_VAR
+WHERE drugs.name LIKE 'SOME_VAR'
+AND drugs.active = 'SOME_VAR'
 GROUP BY drugs.id;
 */
 void MedicationsFrame::initiateSearch()
 {
 	QString query;
-	QSqlQueryModel *model = new QSqlQueryModel(ui->resultTable);
-	drugIds.clear();
+	QSqlQueryModel *model;
 
 	query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left ) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
 	query += ui->nameField->text();
@@ -62,8 +61,10 @@ void MedicationsFrame::initiateSearch()
 	}
 	query += QString(" GROUP BY drugs.id;");
 
+	model = new QSqlQueryModel(ui->resultTable);
 	model->setQuery(query);
 
+	drugIds.clear();
 	// Retrieve the ID's before we remove them from the display
 	for (int i = 0; i < model->rowCount(); i++) {
 		drugIds.append(model->record(i).value(0).toInt());

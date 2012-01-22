@@ -17,8 +17,10 @@ Released under the GPL version 2 only.
 #include "patientsearch.h"
 #include "ui_patientsearch.h"
 
+#include "globals.h"
 #include "patientrecord.h"
 #include "newpatientwizard.h"
+#include "alertinterface.h"
 
 PatientSearch::PatientSearch(QWidget *parent) :
 	QFrame(parent),
@@ -26,6 +28,8 @@ PatientSearch::PatientSearch(QWidget *parent) :
 	db_queried(false)
 {
     ui->setupUi(this);
+
+	ui->dobField->setDate(DEFAULTS::Date);
 
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
@@ -42,59 +46,79 @@ PatientSearch::~PatientSearch()
     delete ui;
 }
 
-void PatientSearch::initiateSearch()
+/* SQL without C++:
+SELECT id, allscripts_id, last, first, dob
+FROM patients
+WHERE last LIKE '%SOME_VAR%'
+AND first LIKE '%SOME_VAR%'
+AND dob = 'SOME_VAR'
+AND active = '1';
+*/
+void PatientSearch::initiateSearch(int patientID)
 {
+	QSqlQueryModel *model;
 	QString query;	// Holds the SQL query
-	ids.clear();
+	AlertInterface alert;
 
 	// If the text fields are empty, don't do anything.
-	if (		(ui->firstNameField->text() != QString(""))
-			||	(ui->lastNameField->text() != QString(""))
-			||	(ui->dobField->date().toString("yyyy-MM-dd") != QString("1970-01-31"))) {
-		QSqlQueryModel *model = new QSqlQueryModel(ui->resultTable);
+	if ((ui->firstNameField->text().isEmpty()) &&
+		(ui->lastNameField->text().isEmpty()) &&
+		(ui->dobField->date() == DEFAULTS::Date))
+	{
+		return;
+	}
 
-		query = QString("SELECT id, last, first, dob FROM patients WHERE first LIKE '%");
-		query += ui->firstNameField->text();
-		query += QString("%' AND last LIKE '%");
-		query += ui->lastNameField->text();
-		query += QString("%'");
-		if (ui->dobField->date().toString("yyyy-MM-dd") != QString("1970-01-31")) {
-			query += QString(" AND dob = '");
-			query += ui->dobField->date().toString("yyyy-MM-dd");
-			query += QString("'");
+	model = new QSqlQueryModel(ui->resultTable);
+
+	// Do a normal search when a specific patient ID hasn't been specified
+	if (patientID == SQL::Undefined_ID) {
+		query = QString("SELECT id, allscripts_id, last, first, dob FROM patients WHERE last LIKE '%");
+		query += SQL::cleanInput(ui->firstNameField->text()) + QString("%' AND last LIKE '%");
+		query += SQL::cleanInput(ui->lastNameField->text()) + QString("%' ");
+		if (ui->dobField->date() != DEFAULTS::Date) {
+			query += QString("AND dob = '");
+			query += ui->dobField->date().toString("yyyy-MM-dd") + QString("' ");
 		}
-		query += QString(" AND active = '1';");
+		query += QString("AND active = '1';");
+	} else {	// Otherwise search for the specific patient
+		query = QString("SELECT id, allscripts_id, last, first, dob FROM patients WHERE id = '");
+		query += QString().setNum(patientID) + QString("';");
+	}
 
-		model->setQuery(query);
+	if (!alert.attemptQuery(model, &query)) {
+		delete model;
+		return;
+	}
 
-		// Retrieve the ID's before we remove them from the display
-		for (int i = 0; i < model->rowCount(); i++) {
-			ids.append(model->record(i).value("id").toInt());
-		}
+	ids.clear();
+	// Retrieve the ID's before we remove them from the display
+	for (int i = 0; i < model->rowCount(); i++) {
+		ids.append(model->record(i).value("id").toInt());
+	}
 
-		model->removeColumn(0);
-		model->setHeaderData(0, Qt::Horizontal, tr("Last name"));
-		model->setHeaderData(1, Qt::Horizontal, tr("First name"));
-		model->setHeaderData(2, Qt::Horizontal, tr("D.O.B."));
+	model->removeColumn(0);
+	model->setHeaderData(0, Qt::Horizontal, tr("MR Number"));
+	model->setHeaderData(1, Qt::Horizontal, tr("Last Name"));
+	model->setHeaderData(2, Qt::Horizontal, tr("First Name"));
+	model->setHeaderData(3, Qt::Horizontal, tr("D.O.B."));
 
-		ui->resultTable->setModel(model);
+	ui->resultTable->setModel(model);
 
-		db_queried = true;	// Let other functions start accessing values in the table
+	db_queried = true;	// Let other functions start accessing values in the table
 
-		// Enable/disable buttons depending on if there were any hits in the search
-		if (model->rowCount() > 0) {
-			ui->prescribeButton->setEnabled(true);
-			ui->modifyButton->setEnabled(true);
-		} else {
-			ui->prescribeButton->setEnabled(false);
-			ui->modifyButton->setEnabled(false);
-		}
+	// Enable/disable buttons depending on if there were any hits in the search
+	if (model->rowCount() > 0) {
+		ui->prescribeButton->setEnabled(true);
+		ui->modifyButton->setEnabled(true);
+	} else {
+		ui->prescribeButton->setEnabled(false);
+		ui->modifyButton->setEnabled(false);
 	}
 }
 
 void PatientSearch::resetPressed()
 {
-	ui->dobField->setDate(QDate(1970, 1, 31));	// Default date is 1/31/1970
+	ui->dobField->setDate(DEFAULTS::Date);
 }
 
 void PatientSearch::initiatePrescription()
@@ -132,6 +156,7 @@ void PatientSearch::initiateNewPatient()
 void PatientSearch::submitNewPatient(PatientRecord *patient)
 {
 	patient->commitRecord();
+	initiateSearch(patient->id);
 	newPatientCleanup(patient);
 }
 

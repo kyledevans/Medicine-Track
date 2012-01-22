@@ -110,13 +110,6 @@
       </item>
       <item>
        <widget class="QDateEdit" name="dobField">
-        <property name="date">
-         <date>
-          <year>1970</year>
-          <month>1</month>
-          <day>31</day>
-         </date>
-        </property>
         <property name="calendarPopup">
          <bool>true</bool>
         </property>

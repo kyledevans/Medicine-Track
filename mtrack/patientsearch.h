@@ -11,6 +11,7 @@ Released under the GPL version 2 only.
 #include <QList>
 
 #include "patientrecord.h"
+#include "globals.h"
 
 namespace Ui {
     class PatientSearch;
@@ -25,7 +26,7 @@ public:
     ~PatientSearch();
 
 public slots:
-	void initiateSearch();
+	void initiateSearch(int patientID = SQL::Undefined_ID);
 	void resetPressed();
 	void initiatePrescription();
 	void initiateModification();
