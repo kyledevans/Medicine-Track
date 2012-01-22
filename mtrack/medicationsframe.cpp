@@ -20,6 +20,7 @@ Released under the GPL version 2 only.
 #include "altershipmentwizard.h"
 #include "globals.h"
 #include "alertinterface.h"
+#include "shipmentrecord.h"
 
 MedicationsFrame::MedicationsFrame(QWidget *parent) :
     QFrame(parent),
@@ -31,7 +32,7 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	//connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->newMedicationAction, SIGNAL(triggered()), this, SLOT(initiateNewMed()));
-	//connect(ui->newStockAction, SIGNAL(triggered()), this, SLOT(initiateNewShipment()));
+	connect(ui->newStockAction, SIGNAL(triggered()), this, SLOT(initiateNewShipment()));
 
 	ui->resultTable->addAction(ui->modifyAction);
 }
@@ -74,10 +75,10 @@ void MedicationsFrame::initiateSearch(int medID)
 		return;
 	}
 
-	drugIds.clear();
+	ids.clear();
 	// Retrieve the ID's before we remove them from the display
 	for (int i = 0; i < model->rowCount(); i++) {
-		drugIds.append(model->record(i).value(0).toInt());
+		ids.append(model->record(i).value(0).toInt());
 	}
 
 	model->removeColumn(0);
@@ -101,20 +102,12 @@ void MedicationsFrame::initiateSearch(int medID)
 	}
 }
 
-void MedicationsFrame::initiateNewShipment()
-{
-
-}
-
-void MedicationsFrame::initiateModify()
-{
-
-}
-
 void MedicationsFrame::initiateNewMed()
 {
 	AlterMedicationWizard *wiz;
-	MedicationRecord *med = new MedicationRecord();
+	MedicationRecord *med;
+
+	med = new MedicationRecord();
 
 	wiz = new AlterMedicationWizard(med);
 	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitNewMed(MedicationRecord*)));
@@ -122,6 +115,11 @@ void MedicationsFrame::initiateNewMed()
 	wiz->exec();
 
 	delete wiz;
+}
+
+void MedicationsFrame::initiateModify()
+{
+
 }
 
 void MedicationsFrame::submitModify(MedicationRecord *med)
@@ -141,7 +139,41 @@ void MedicationsFrame::medCleanup(MedicationRecord *med)
 	delete med;
 }
 
+void MedicationsFrame::initiateNewShipment()
+{
+	unsigned int row;
+	ShipmentRecord *ship;
+	AlterShipmentWizard *wiz;
+
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return;
+	}
+
+	ship = new ShipmentRecord();
+	wiz = new AlterShipmentWizard(ship);
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+	ship->drug_id = ids[row];
+
+	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitNewShipment(ShipmentRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(ShipmentRecord*)), this, SLOT(shipmentCleanup(ShipmentRecord*)));
+
+	wiz->exec();
+
+	delete wiz;
+}
+
 void MedicationsFrame::submitNewShipment(ShipmentRecord *shipment)
 {
+	shipment->commitRecord();
+	shipmentCleanup(shipment);
+}
 
+void MedicationsFrame::shipmentCleanup(ShipmentRecord *shipment)
+{
+	delete shipment;
 }

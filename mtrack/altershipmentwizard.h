@@ -26,9 +26,11 @@ public:
 
 public slots:
 	void returnResults();
+	void rejectedWizard();
 
 signals:
 	void wizardComplete(ShipmentRecord *);
+	void wizardRejected(ShipmentRecord *);
 
 private:
     Ui::AlterShipmentWizard *ui;

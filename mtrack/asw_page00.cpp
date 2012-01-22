@@ -7,11 +7,15 @@ Released under the GPL version 2 only.
 #include "asw_page00.h"
 #include "ui_asw_page00.h"
 
+#include "globals.h"
+
 ASW_Page00::ASW_Page00(QWidget *parent) :
     QWizardPage(parent),
     ui(new Ui::ASW_Page00)
 {
     ui->setupUi(this);
+
+	ui->expireField->setDate(DEFAULTS::Date);
 
 	registerField("expireField", ui->expireField);
 	registerField("lotField", ui->lotField);

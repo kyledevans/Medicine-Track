@@ -28,18 +28,21 @@ public:
 
 public slots:
 	void initiateSearch(int medID = SQL::Undefined_ID);
+
 	void initiateModify();
-	void initiateNewMed();
-	void initiateNewShipment();
 	void submitModify(MedicationRecord *);
+
+	void initiateNewMed();
 	void submitNewMed(MedicationRecord *);
 	void medCleanup(MedicationRecord *);
 
+	void initiateNewShipment();
 	void submitNewShipment(ShipmentRecord *);
+	void shipmentCleanup(ShipmentRecord *);
 
 private:
     Ui::MedicationsFrame *ui;
-	QList<int> drugIds;				// Contains the drug id's of the current query
+	QList<int> ids;					// Contains the drug id's of the current query
 	bool db_queried;				// Indicates if the result table has a model
 };
 

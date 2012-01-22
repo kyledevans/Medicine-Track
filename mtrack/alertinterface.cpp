@@ -28,7 +28,7 @@ bool AlertInterface::attemptQuery(QSqlQueryModel *model, QString *query)
 	}
 
 	qDebug() << "DB ERROR:" << model->lastError().text();	// TODO: Remove this for production
-	qDebug() << "query:" << query;	// TODO: Remove this as well
+	qDebug() << "query:" << *query;	// TODO: Remove this as well
 	databaseInaccessible();
 	return false;
 }

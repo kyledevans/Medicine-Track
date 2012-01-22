@@ -34,6 +34,7 @@ AlterShipmentWizard::AlterShipmentWizard(ShipmentRecord *new_shipment, QWidget *
 	}
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
+	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));
 }
 
 AlterShipmentWizard::~AlterShipmentWizard()
@@ -45,4 +46,9 @@ void AlterShipmentWizard::returnResults()
 {
 	ui->page00->getResults(shipment);
 	emit(wizardComplete(shipment));
+}
+
+void AlterShipmentWizard::rejectedWizard()
+{
+	emit(wizardRejected(shipment));
 }
