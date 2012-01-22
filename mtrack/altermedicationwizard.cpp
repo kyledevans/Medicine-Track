@@ -50,6 +50,7 @@ AlterMedicationWizard::AlterMedicationWizard(MedicationRecord *new_med, QWidget 
 	}*/
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
+	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));
 	//connect(ui->formBox, SIGNAL(currentIndexChanged(int)), this, SLOT(amountFieldCheck(int)));	TODO: This needs to be re-implemented
 }
 
@@ -63,4 +64,9 @@ void AlterMedicationWizard::returnResults()
 	ui->page0->getResults(med);
 	ui->page1->getResults(med);
 	emit(wizardComplete(med));
+}
+
+void AlterMedicationWizard::rejectedWizard()
+{
+	emit(wizardRejected(med));
 }

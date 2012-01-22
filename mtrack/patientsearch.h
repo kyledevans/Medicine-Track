@@ -30,8 +30,9 @@ public slots:
 	void initiatePrescription();
 	void initiateModification();
 	void initiateNewPatient();
-	void newPatient(PatientRecord *);
+	void submitNewPatient(PatientRecord *);
 	void submitModify(PatientRecord *);
+	void newPatientCleanup(PatientRecord *);
 
 private:
     Ui::PatientSearch *ui;

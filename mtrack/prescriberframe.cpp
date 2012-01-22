@@ -30,11 +30,20 @@ void PrescriberFrame::initiateNew()
 	PrescriberRecord *pres = new PrescriberRecord();
 
 	wiz = new AlterPrescriberWizard(pres);
+	connect(wiz, SIGNAL(wizardComplete(PrescriberRecord*)), this, SLOT(submitNew(PrescriberRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PrescriberRecord*)), this, SLOT(newCleanup(PrescriberRecord*)));
 	wiz->exec();
 
-	wiz->returnResults();
-	pres->commitRecord();
-
 	delete wiz;
+}
+
+void PrescriberFrame::submitNew(PrescriberRecord *pres)
+{
+	pres->commitRecord();
+	newCleanup(pres);
+}
+
+void PrescriberFrame::newCleanup(PrescriberRecord *pres)
+{
 	delete pres;
 }

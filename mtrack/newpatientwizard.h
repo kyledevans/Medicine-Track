@@ -26,9 +26,11 @@ public:
 
 public slots:
 	void returnResults();
+	void rejectedWizard();
 
 signals:
 	void wizardComplete(PatientRecord *);	// Note that you must delete the record when you are finished
+	void wizardRejected(PatientRecord *);	// Note that you must delete the record when you are finished
 
 private:
     Ui::NewPatientWizard *ui;

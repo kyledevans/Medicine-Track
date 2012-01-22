@@ -26,9 +26,11 @@ public:
 
 public slots:
 	void returnResults();
+	void rejectedWizard();
 
 signals:
 	void wizardComplete(PrescriberRecord *);
+	void wizardRejected(PrescriberRecord *);
 
 private:
     Ui::AlterPrescriberWizard *ui;

@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 
 #include <QFrame>
 
+#include "prescriberrecord.h"
+
 namespace Ui {
     class PrescriberFrame;
 }
@@ -23,6 +25,8 @@ public:
 
 public slots:
 	void initiateNew();
+	void submitNew(PrescriberRecord *);
+	void newCleanup(PrescriberRecord *);
 
 private:
     Ui::PrescriberFrame *ui;

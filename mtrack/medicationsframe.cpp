@@ -92,204 +92,44 @@ void MedicationsFrame::initiateSearch()
 
 void MedicationsFrame::initiateNewShipment()
 {
-/*	unsigned int row;
-	ShipmentRecord *shipment;
-	AlterShipmentWizard *wiz;
 
-	if (db_queried) {
-		if (ui->resultTable->selectionModel()->hasSelection()) {
-			shipment = new ShipmentRecord;
-
-			// This line finds the top row that was selected by the user
-			row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-			shipment->drug_id = drugIds[row];
-		} else {
-			return;
-		}
-	} else {
-		return;
-	}
-
-	wiz = new AlterShipmentWizard(shipment);
-	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitNewShipment(ShipmentRecord*)));
-	wiz->exec();
-	delete wiz;*/
 }
 
-/* Readable SQL.  Numbers in () indicate the column number and are not SQL:
-SELECT drugs.id(0), drugs.instruction_id(1), drugs.name(2), drugs.generic(3), drugs.manufacturer(4), drugs.ndc(5), drugs.form(6),
-drugs.strength(7), drugs.amount(8), drugs.active(9), instructions.text(10)
-FROM drugs
-JOIN instructions ON drugs.instruction_id = instructions.id
-WHERE drugs.id = SOME_VAR
-*/
 void MedicationsFrame::initiateModify()
 {
-/*	unsigned int row;
-	MedicationRecord *med;
-	AlterMedicationWizard *wiz;
-	QSqlQueryModel *model;
-	QString query;
 
-	if (db_queried) {
-		if (ui->resultTable->selectionModel()->hasSelection()) {
-			med = new MedicationRecord;
-
-			// This line finds the top row that was selected by the user
-			row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-			med->id = drugIds[row];
-		} else {
-			return;
-		}
-	} else {
-		return;
-	}
-
-	// Allocate stuff yo.
-	model = new QSqlQueryModel;
-
-	// Populate the med record from the database
-	query = QString("SELECT drugs.id, drugs.instruction_id, drugs.name, drugs.generic, drugs.manufacturer, drugs.ndc, drugs.form, drugs.strength, drugs.amount, drugs.active, instructions.text FROM drugs JOIN instructions ON drugs.instruction_id = instructions.id WHERE drugs.id = '");
-	query += QString::number(med->id);
-	query += QString("';");
-	model->setQuery(query);
-
-	med->instruction_id = model->record(0).value(1).toInt();
-	med->name = model->record(0).value(2).toString();
-	med->generic = model->record(0).value(3).toString();
-	med->manufacturer = model->record(0).value(4).toString();
-	med->ndc = model->record(0).value(5).toString();
-	med->form = FORM_INT::strToInt(model->record(0).value(6).toString());
-	med->strength = model->record(0).value(7).toString();
-	med->amount = model->record(0).value(8).toString();
-	med->active = model->record(0).value(9).toBool();
-	med->instructions = model->record(0).value(10).toString();
-	med->exists = true;
-
-	wiz = new AlterMedicationWizard(med);
-
-	delete model;
-
-	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitModify(MedicationRecord*)));
-
-	wiz->exec();
-	delete wiz;*/
 }
 
 void MedicationsFrame::initiateNewMed()
 {
-/*	MedicationRecord *med = new MedicationRecord;
-	AlterMedicationWizard *wiz = new AlterMedicationWizard(med);
-
-	connect(wiz, SIGNAL(wizardComplete(MedicationRecord *)), this, SLOT(submitNewMed(MedicationRecord *)));
-
-	wiz->exec();
-	delete wiz;*/
-
 	AlterMedicationWizard *wiz;
 	MedicationRecord *med = new MedicationRecord();
 
 	wiz = new AlterMedicationWizard(med);
+	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitNewMed(MedicationRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(MedicationRecord*)), this, SLOT(medCleanup(MedicationRecord*)));
 	wiz->exec();
 
-	wiz->returnResults();
-	med->print();
-
 	delete wiz;
+}
+
+void MedicationsFrame::submitModify(MedicationRecord *med)
+{
+
+}
+
+void MedicationsFrame::submitNewMed(MedicationRecord *med)
+{
+	med->commitRecord();
+	medCleanup(med);
+}
+
+void MedicationsFrame::medCleanup(MedicationRecord *med)
+{
 	delete med;
 }
 
-/*
-UPDATE drugs
-SET name = 'SOME_VAR', generic = 'SOME_VAR', manufacturer = 'SOME_VAR', instructions = 'SOME_VAR', ndc = 'SOME_VAR',
-form = 'SOME_VAR', strength = 'SOME_VAR', amount = 'SOME_VAR', active = 'SOME_VAR'
-WHERE drugs.id = 'SOME_VAR';
-*/
-void MedicationsFrame::submitModify(MedicationRecord *med)
-{
-/*	QSqlQueryModel *model = new QSqlQueryModel();
-	QString query;
-
-	// Update the 'drugs' entry
-	query = QString("UPDATE drugs SET name = '");
-	query += med->name + QString("', generic = '");
-	query += med->generic + QString("', manufacturer = '");
-	query += med->manufacturer + QString("', instructions = '");
-	query += med->instructions + QString("', ndc = '");
-	query += med->ndc + QString("', form = '");
-	query += FORM_STR::intToStr(med->form) + QString("', strength = '");
-	query += med->strength + QString("', amount = ");
-	if ((med->form == FORM_INT::Elixir) || (med->form == FORM_INT::Suspension)) {
-		query += QString("'") + med->amount + QString("', ");
-	} else {
-		query += QString("NULL, ");
-	}
-	query += QString("active = '");
-	if (med->active == true) {
-		query += QString("1' ");
-	} else {
-		query += QString("0' ");
-	}
-	query += QString(" WHERE drugs.id = '");
-	query += QString().setNum(med->id) + QString("';");
-
-	model->setQuery(query);
-	qDebug() << model->lastError().databaseText();*/
-}
-
-/* SQL without C++:
-INSERT INTO drugs (name, instructions, generic, manufacturer, ndc, form, strength, amount, active)
-VALUES (...)
-
-*/
-void MedicationsFrame::submitNewMed(MedicationRecord *med)
-{
-/*	QSqlQueryModel *model = new QSqlQueryModel();
-	QString query;
-
-	// Only insert an amount if applicable
-	if ((med->form == FORM_INT::Elixir) || (med->form == FORM_INT::Suspension)) {
-		query = QString("INSERT INTO drugs (name, instructions, generic, manufacturer, ndc, form, strength, amount, active) VALUES ('");
-	} else {
-		query = QString("INSERT INTO drugs (name, instructions, generic, manufacturer, ndc, form, strength, active) VALUES ('");
-	}
-	query += QString().setNum(model->query().lastInsertId().toInt());	// gets the new instructions.id from previous query
-	query += QString("','");
-	query += med->name + QString("','");
-	query += med->instructions + QString("','");
-	query += med->generic + QString("','");
-	query += med->manufacturer + QString("','");
-	query += med->ndc + QString("','");
-	query += FORM_STR::intToStr(med->form) + QString("','");
-	if ((med->form == FORM_INT::Elixir) || (med->form == FORM_INT::Suspension)) {
-		query += med->amount + QString("','");
-	}
-	query += med->strength + QString("','");
-	if (med->active == true) {
-		query += QString("1');");
-	} else {
-		query += QString("0');");
-	}
-
-	model->setQuery(query);
-	qDebug() << model->lastError().databaseText();*/
-}
-
-/* SQL without C++:
-INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left)
-VALUES (...)
-*/
 void MedicationsFrame::submitNewShipment(ShipmentRecord *shipment)
 {
-/*	QSqlQueryModel *model = new QSqlQueryModel();
-	QString query;
 
-	query = QString("INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left) VALUES ('");
-	query += QString().setNum(shipment->drug_id) + QString("','");
-	query += shipment->expiration.toString("yyyy-MM-dd") + QString("','");
-	query += shipment->lot + QString("','");
-	query += QString().setNum(shipment->product_count) + QString("','");
-	query += QString().setNum(shipment->product_left) + QString("');");
-
-	model->setQuery(query);*/
 }

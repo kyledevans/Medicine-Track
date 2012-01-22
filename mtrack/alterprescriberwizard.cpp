@@ -21,6 +21,9 @@ AlterPrescriberWizard::AlterPrescriberWizard(PrescriberRecord *new_pres, QWidget
 	ui->setupUi(this);
 
 	pres = new_pres;
+
+	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
+	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));
 }
 
 AlterPrescriberWizard::~AlterPrescriberWizard()
@@ -31,4 +34,11 @@ AlterPrescriberWizard::~AlterPrescriberWizard()
 void AlterPrescriberWizard::returnResults()
 {
 	ui->page00->getResults(pres);
+
+	emit(wizardComplete(pres));
+}
+
+void AlterPrescriberWizard::rejectedWizard()
+{
+	emit(wizardRejected(pres));
 }

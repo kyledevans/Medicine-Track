@@ -26,10 +26,8 @@ NewPatientWizard::NewPatientWizard(PatientRecord *new_patient, QWidget *parent) 
 
 	patient = new_patient;
 
-	qDebug() << "Unfinished method called.  NewPatientWizard::NewPatientWizard(PatientRecord *new_patient, QWidget *parent)";
-	// Need to get this working for modifying an existing patient (if at all)
-
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
+	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));
 }
 
 NewPatientWizard::~NewPatientWizard()
@@ -41,4 +39,9 @@ void NewPatientWizard::returnResults()
 {
 	ui->page00->getResults(patient);
 	emit(wizardComplete(patient));
+}
+
+void NewPatientWizard::rejectedWizard()
+{
+	emit(wizardRejected(patient));
 }
