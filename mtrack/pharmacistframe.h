@@ -30,6 +30,7 @@ public slots:
 	void initiateNew();
 	void submitNew(PharmacistRecord *);		// Commits to the db and cleans up
 	void newCleanup(PharmacistRecord *);	// Cleans up after the new/modify wizard
+	void initiateModify();
 
 private:
     Ui::PharmacistFrame *ui;

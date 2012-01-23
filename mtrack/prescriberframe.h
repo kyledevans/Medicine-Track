@@ -29,6 +29,7 @@ public slots:
 	void initiateNew();
 	void submitNew(PrescriberRecord *);
 	void newCleanup(PrescriberRecord *);
+	void initiateModify();
 
 private:
     Ui::PrescriberFrame *ui;

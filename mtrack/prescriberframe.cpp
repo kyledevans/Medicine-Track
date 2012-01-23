@@ -28,6 +28,9 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
 
 	connect(ui->newAction, SIGNAL(triggered()), this, SLOT(initiateNew()));
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
+	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
+
+	ui->resultTable->addAction(ui->modifyAction);
 }
 
 PrescriberFrame::~PrescriberFrame()
@@ -55,7 +58,7 @@ void PrescriberFrame::initiateSearch(int presID)
 		query += SQL::cleanInput(ui->lastField->text()) + QString("%' AND first LIKE '%");
 		query += SQL::cleanInput(ui->firstField->text()) + QString("%' AND active = '1';");
 	} else {
-		query = QString("SELECT id, last, first, initials FROM pharmacists WHERE id = '");
+		query = QString("SELECT id, last, first, full_name FROM prescribers WHERE id = '");
 		query += QString().setNum(presID) + QString("';");
 	}
 
@@ -102,4 +105,35 @@ void PrescriberFrame::submitNew(PrescriberRecord *pres)
 void PrescriberFrame::newCleanup(PrescriberRecord *pres)
 {
 	delete pres;
+}
+
+void PrescriberFrame::initiateModify()
+{
+	unsigned int row;
+	AlterPrescriberWizard *wiz;
+	PrescriberRecord *pres;
+
+	if (db_queried) {
+		if (!ui->resultTable->selectionModel()->hasSelection()) {
+			return;
+		}
+	} else {
+		return;
+	}
+
+	pres = new PrescriberRecord();
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+	if (!pres->retrieve(ids[row])) {
+		delete pres;
+		return;
+	}
+
+	wiz = new AlterPrescriberWizard(pres);
+	connect(wiz, SIGNAL(wizardComplete(PrescriberRecord*)), this, SLOT(submitNew(PrescriberRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PrescriberRecord*)), this, SLOT(newCleanup(PrescriberRecord*)));
+	wiz->exec();
+
+	delete wiz;
 }

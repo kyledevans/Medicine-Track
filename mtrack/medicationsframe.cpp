@@ -123,8 +123,6 @@ void MedicationsFrame::initiateModify()
 	AlterMedicationWizard *wiz;
 	MedicationRecord *med;
 
-	med = new MedicationRecord();
-
 	if (db_queried) {
 		if (!ui->resultTable->selectionModel()->hasSelection()) {
 			return;
@@ -133,9 +131,12 @@ void MedicationsFrame::initiateModify()
 		return;
 	}
 
+	med = new MedicationRecord();
+
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 	if (!med->retrieve(ids[row])) {
+		delete med;
 		return;
 	}
 

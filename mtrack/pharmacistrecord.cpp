@@ -63,7 +63,7 @@ bool PharmacistRecord::retrieve(int newId)
 INSERT INTO pharmacists (last, first, initials, active)
 VALUES ('SOME_VAL', 'SOME_VAL', 'SOME_VAL', 'SOME_VAL');
 
-UPDATE prescribers
+UPDATE pharmacists
 SET last = 'SOME_VAL', first = 'SOME_VAL', initials = 'SOME_VAL', active = 'SOME_VAL'
 WHERE id = 'SOME_VAL';
 */
@@ -86,7 +86,7 @@ bool PharmacistRecord::commitRecord()
 			query += QString("0');");
 		}
 	} else {		// Need to do an UPDATE
-		query = QString("UPDATE prescribers SET last = '");
+		query = QString("UPDATE pharmacists SET last = '");
 		query += SQL::cleanNoMatching(last) + QString("', first = '");
 		query += SQL::cleanNoMatching(first) + QString("', initials = '");
 		query += SQL::cleanNoMatching(initials) + QString("', active = '");

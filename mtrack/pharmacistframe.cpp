@@ -27,6 +27,9 @@ PharmacistFrame::PharmacistFrame(QWidget *parent) :
 
 	connect(ui->newAction, SIGNAL(triggered()), this, SLOT(initiateNew()));
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
+	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
+
+	ui->resultTable->addAction(ui->modifyAction);
 }
 
 PharmacistFrame::~PharmacistFrame()
@@ -82,6 +85,37 @@ void PharmacistFrame::initiateNew()
 {
 	AlterPharmacistWizard *wiz;
 	PharmacistRecord *pharm = new PharmacistRecord();
+
+	wiz = new AlterPharmacistWizard(pharm);
+	connect(wiz, SIGNAL(wizardComplete(PharmacistRecord*)), this, SLOT(submitNew(PharmacistRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PharmacistRecord*)), this, SLOT(newCleanup(PharmacistRecord*)));
+	wiz->exec();
+
+	delete wiz;
+}
+
+void PharmacistFrame::initiateModify()
+{
+	unsigned int row;
+	AlterPharmacistWizard *wiz;
+	PharmacistRecord *pharm;
+
+	if (db_queried) {
+		if (!ui->resultTable->selectionModel()->hasSelection()) {
+			return;
+		}
+	} else {
+		return;
+	}
+
+	pharm = new PharmacistRecord();
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+	if (!pharm->retrieve(ids[row])) {
+		delete pharm;
+		return;
+	}
 
 	wiz = new AlterPharmacistWizard(pharm);
 	connect(wiz, SIGNAL(wizardComplete(PharmacistRecord*)), this, SLOT(submitNew(PharmacistRecord*)));

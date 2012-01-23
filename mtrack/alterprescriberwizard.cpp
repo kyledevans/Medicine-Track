@@ -22,6 +22,13 @@ AlterPrescriberWizard::AlterPrescriberWizard(PrescriberRecord *new_pres, QWidget
 
 	pres = new_pres;
 
+	if (pres->exists) {
+		setField("lastField", pres->last);
+		setField("firstField", pres->first);
+		setField("fullField", pres->full_name);
+		setField("activeField", pres->active);
+	}
+
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
 	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));
 }

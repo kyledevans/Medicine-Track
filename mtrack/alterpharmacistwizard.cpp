@@ -23,6 +23,13 @@ AlterPharmacistWizard::AlterPharmacistWizard(PharmacistRecord *new_pharm, QWidge
 
 	pharm = new_pharm;
 
+	if (pharm->exists) {
+		setField("lastField", pharm->last);
+		setField("firstField", pharm->first);
+		setField("initialsField", pharm->initials);
+		setField("activeField", pharm->active);
+	}
+
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
 	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));
 }
