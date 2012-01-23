@@ -4,8 +4,6 @@
 --
 
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
 --
 -- Database: 'epc'
 --
@@ -25,8 +23,8 @@ CREATE TABLE drugs (
   form enum('capsule','cream','drops','elixir','ointment','solution','suspension','syrup','tablet') collate utf8_unicode_ci NOT NULL COMMENT 'Inhale, capsule, etc.',
   strength varchar(64) collate utf8_unicode_ci NOT NULL,
   amount varchar(64) collate utf8_unicode_ci default NULL COMMENT 'How much in bottle if liquid',
-  active tinyint(1) NOT NULL default '1' COMMENT 'Intend to sell',
   instructions varchar(512) collate utf8_unicode_ci NOT NULL COMMENT 'Default instructions',
+  active tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='A list of drugs';
 
@@ -42,6 +40,7 @@ CREATE TABLE patients (
   `last` varchar(64) collate utf8_unicode_ci NOT NULL COMMENT 'Last name',
   `first` varchar(64) collate utf8_unicode_ci NOT NULL COMMENT 'First name',
   dob date NOT NULL COMMENT 'Date of birth',
+  active tinyint(1) NOT NULL default '1' COMMENT 'Indicates if the patient record is still in use.',
   PRIMARY KEY  (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Patient Demographic Information';
 
@@ -115,6 +114,7 @@ CREATE TABLE shipments (
   lot char(32) collate utf8_unicode_ci NOT NULL COMMENT 'Lot number',
   product_count int(10) unsigned NOT NULL COMMENT 'Units in shipment',
   product_left int(10) unsigned NOT NULL COMMENT 'Products unsold',
+  active tinyint(1) NOT NULL default '1' COMMENT 'Indicates if the shipment is still valid.',
   PRIMARY KEY  (id),
   KEY drug_id (drug_id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Drug shipment information';
