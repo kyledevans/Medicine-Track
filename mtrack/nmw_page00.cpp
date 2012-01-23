@@ -47,6 +47,19 @@ NMW_Page00::~NMW_Page00()
     delete ui;
 }
 
+void NMW_Page00::setFormAmount(int form, QString amount)
+{
+	int temp;
+
+	temp = ui->formField->findData(QVariant(form));
+	ui->formField->setCurrentIndex(temp);
+
+	amountFieldCheck();
+	if (formHasFixedAmount()) {
+		ui->amountField->setText(amount);
+	}
+}
+
 void NMW_Page00::getResults(MedicationRecord *med)
 {
 	med->name = ui->medicationField->text();
@@ -66,7 +79,8 @@ void NMW_Page00::getResults(MedicationRecord *med)
 
 void NMW_Page00::amountFieldCheck(int index)
 {
-	if ((index == FORM_INT::Elixir) || (index == FORM_INT::Suspension)) {
+	index++;	// TODO: this makes compile warning about unused variable go away
+	if (formHasFixedAmount()) {
 		ui->amountLabel->setEnabled(true);
 		ui->amountField->setEnabled(true);
 	} else {

@@ -144,12 +144,16 @@ void PatientSearch::initiateModification()
 	patient = new PatientRecord();
 
 	if (db_queried) {
-		if (ui->resultTable->selectionModel()->hasSelection()) {
-			// This line finds the top row that was selected by the user
-			row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-			patient->retrieve(ids[row]);
+		if (!ui->resultTable->selectionModel()->hasSelection()) {
+			return;
 		}
+	} else {
+		return;
 	}
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+	patient->retrieve(ids[row]);
 
 	wiz = new NewPatientWizard(patient);
 	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitNewPatient(PatientRecord*)));

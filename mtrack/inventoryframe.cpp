@@ -38,7 +38,7 @@ InventoryFrame::~InventoryFrame()
 
 
 /*  SQL without C++.  Numbers in () indicate column and are not SQL:
-SELECT shipments.id, drugs.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot,
+SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot,
 shipments.product_count, shipments.product_left
 FROM shipments
 JOIN drugs ON shipments.drug_id = drugs.id
@@ -57,7 +57,7 @@ void InventoryFrame::initiateSearch(int shipID)
 	model = new QSqlQueryModel(ui->resultTable);
 
 	if (shipID == SQL::Undefined_ID) {
-		query = QString("SELECT shipments.id, drugs.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE drugs.name LIKE '%");
+		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE drugs.name LIKE '%");
 		query += SQL::cleanInput(ui->nameField->text()) + QString("%' AND shipments.lot LIKE '%");
 		query += SQL::cleanInput(ui->lotField->text()) + QString("%'");
 		if (ui->stockCheckbox->isChecked()) {	// Stocked checkbox
@@ -71,7 +71,7 @@ void InventoryFrame::initiateSearch(int shipID)
 		}
 		query += QString(";");
 	} else {
-		query = QString("SELECT shipments.id, drugs.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE id = '");
+		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE shipments.id = '");
 		query += QString().setNum(shipID) + QString("';");
 	}
 
@@ -80,14 +80,13 @@ void InventoryFrame::initiateSearch(int shipID)
 		return;
 	}
 
-	drugIds.clear();
+	ids.clear();
 	// Retrieve the ID's before we remove them from the display
 	for (int i = 0; i < model->rowCount(); i++) {
-		shipmentIds.append(model->record(i).value(0).toInt());
-		drugIds.append(model->record(i).value(1).toInt());
+		ids.append(model->record(i).value(0).toInt());
+		//drugIds.append(model->record(i).value(1).toInt());
 	}
 
-	model->removeColumn(0);
 	model->removeColumn(0);
 
 	model->setHeaderData(0, Qt::Horizontal, tr("Medication"));
@@ -109,74 +108,44 @@ void InventoryFrame::initiateSearch(int shipID)
 	}
 }
 
-/* SQL without C++.  Numbers in () indicate column and are not SQL:
-SELECT shipments.drug_id(0), shipments.expiration(1), shipments.lot(2), shipments.product_count(3), shipments.product_left(4)
-FROM shipments
-WHERE id = 'SOME_VAR';
-*/
 void InventoryFrame::initiateModify()
 {
-/*	unsigned int row;
-	QSqlQueryModel *model;
-	QString query;
-	ShipmentRecord *shipment;
+	unsigned int row;
 	AlterShipmentWizard *wiz;
+	ShipmentRecord *shipment;
+
+	shipment = new ShipmentRecord();
 
 	if (db_queried) {
-		if (ui->resultTable->selectionModel()->hasSelection()) {
-			shipment = new ShipmentRecord;
-
-			// This line finds the top row that was selected by the user
-			row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-			shipment->id = shipmentIds[row];
-		} else {
+		if (!ui->resultTable->selectionModel()->hasSelection()) {
 			return;
 		}
 	} else {
 		return;
 	}
 
-	model = new QSqlQueryModel;
-
-	query = QString("SELECT shipments.drug_id, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments WHERE id = '");
-	query += QString().setNum(shipment->id) + QString("';");
-
-	model->setQuery(query);
-
-	shipment->drug_id = model->record(0).value(0).toInt();
-	shipment->expiration = QDate().fromString(model->record(0).value(1).toString(), "yyyy-MM-dd");
-	shipment->lot = model->record(0).value(2).toString();
-	shipment->product_count = model->record(0).value(3).toInt();
-	shipment->product_left = model->record(0).value(4).toInt();
-	shipment->exists = true;
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+	if (!shipment->retrieve(ids[row])) {
+		return;
+	}
 
 	wiz = new AlterShipmentWizard(shipment);
-
-	delete model;
-
 	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitModify(ShipmentRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(ShipmentRecord*)), this, SLOT(shipmentCleanup(ShipmentRecord*)));
 	wiz->exec();
-	delete wiz;*/
+
+	delete wiz;
 }
 
-/* SQL without C++
-UPDATE shipments
-SET expiration = 'SOME_VAR', lot = 'SOME_VAR', product_count = 'SOME_VAR', product_left = 'SOME_VAR'
-WHERE id = 'SOME_VAR';
-*/
 void InventoryFrame::submitModify(ShipmentRecord *shipment)
 {
-/*	QSqlQueryModel *model = new QSqlQueryModel;
-	QString query;
+	shipment->commitRecord();
+	initiateSearch(shipment->id);
+	shipmentCleanup(shipment);
+}
 
-	query = QString("UPDATE shipments SET expiration = '");
-	query += shipment->expiration.toString("yyyy-MM-dd") + QString("', lot = '");
-	query += shipment->lot + QString("', product_count = '");
-	query += QString().setNum(shipment->product_count) + QString("', product_left = '");
-	query += QString().setNum(shipment->product_left) + QString("' WHERE id = '");
-	query += QString().setNum(shipment->id) + QString("';");
-
-	qDebug() << query;
-	model->setQuery(query);
-	qDebug() << model->lastError().databaseText();*/
+void InventoryFrame::shipmentCleanup(ShipmentRecord *shipment)
+{
+	delete shipment;
 }

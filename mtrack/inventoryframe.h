@@ -29,12 +29,12 @@ public slots:
 	void initiateSearch(int shipID = SQL::Undefined_ID);
 	void initiateModify();
 	void submitModify(ShipmentRecord *);
+	void shipmentCleanup(ShipmentRecord *);
 
 private:
     Ui::InventoryFrame *ui;
 
-	QList<int> drugIds;			// Contains the drug id's of the current search
-	QList<int> shipmentIds;		// Contains the shipment id's of the current search
+	QList<int> ids;				// Contains the shipment id's of the current search
 	bool db_queried;			// Indicates if the result table has a model
 };
 

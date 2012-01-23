@@ -24,9 +24,10 @@ public:
     ~NMW_Page00();
 
 	void getResults(MedicationRecord *);
+	void setFormAmount(int, QString amount = QString(""));	// Set form and amount
 
 private slots:
-	void amountFieldCheck(int);
+	void amountFieldCheck(int index = -1);
 
 private:
     Ui::NMW_Page00 *ui;

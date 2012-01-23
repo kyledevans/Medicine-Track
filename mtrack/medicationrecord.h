@@ -15,19 +15,16 @@ public:
     MedicationRecord();
 
 	// Table 'drugs' columns
-	int id;
-	int instruction_id;
-	QString name;
-	QString generic;
-	QString manufacturer;
-	QString ndc;
-	int form;				// See globals.h for FORM* values
-	QString strength;
-	QString amount;
-	bool active;
-
-	// Table 'instructions' columns
-	QString instructions;
+	int id;					// drugs.id
+	QString name;			// drugs.name
+	QString generic;		// drugs.generic
+	QString manufacturer;	// drugs.manufacturer
+	QString ndc;			// drugs.ndc
+	int form;				// drugs.form
+	QString strength;		// drugs.strength
+	QString amount;			// drugs.amount
+	QString instructions;	// drugs.instructions
+	bool active;			// drugs.active
 
 	bool exists;			// True if the record is already in the database
 

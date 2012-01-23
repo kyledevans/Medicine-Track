@@ -19,9 +19,8 @@ Released under the GPL version 2 only.
 
 MedicationRecord::MedicationRecord():
 	id(SQL::Undefined_ID),
-	instruction_id(SQL::Undefined_ID),
 	form(FORM_INT::Undefined),
-	active(false),
+	active(true),
 	exists(false)
 {
 }
@@ -57,8 +56,8 @@ bool MedicationRecord::retrieve(int newId)
 	form = FORM_INT::strToInt(model->record(0).value(4).toString());
 	strength = model->record(0).value(5).toString();
 	amount = model->record(0).value(6).toString();
-	instructions = model->record(0).value(8).toString();
-	active = model->record(0).value(9).toBool();
+	instructions = model->record(0).value(7).toString();
+	active = model->record(0).value(8).toBool();
 	exists = true;
 
 	delete model;
@@ -69,7 +68,7 @@ bool MedicationRecord::retrieve(int newId)
 INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, amount, instructions, active)
 VALUES ('SOME_VAL', ....);
 
-UPDATE prescribers
+UPDATE drugs
 SET name = 'SOME_VAL', generic = 'SOME_VAL', manufacturer = 'SOME_VAL', ndc = 'SOME_VAL', form = 'SOME_VAL',
 strength = 'SOME_VAL', amount = 'SOME_VAL', instructions = 'SOME_VAL', active = 'SOME_VAL'
 WHERE id = 'SOME_VAL';
@@ -98,7 +97,7 @@ bool MedicationRecord::commitRecord()
 			query += QString("0');");
 		}
 	} else {	// Need to to an UPDATE instead
-		query = QString("UPDATE prescribers SET name = '");
+		query = QString("UPDATE drugs SET name = '");
 		query += SQL::cleanNoMatching(name) + QString("', generic = '");
 		query += SQL::cleanNoMatching(generic) + QString("', manufacturer = '");
 		query += SQL::cleanNoMatching(manufacturer) + QString("', ndc = '");

@@ -30,7 +30,7 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
     ui->setupUi(this);
 
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
-	//connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
+	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->newMedicationAction, SIGNAL(triggered()), this, SLOT(initiateNewMed()));
 	connect(ui->newStockAction, SIGNAL(triggered()), this, SLOT(initiateNewShipment()));
 
@@ -64,7 +64,7 @@ void MedicationsFrame::initiateSearch(int medID)
 		}
 		query += QString(" GROUP BY drugs.id;");
 	} else {
-		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left ) FROM drugs LEFT JOIN shipments ON drugs.id = shipments.drug_id WHERE id = '");
+		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.amount, SUM( shipments.product_left ) FROM drugs LEFT JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
 		query += QString().setNum(medID) + QString("' GROUP BY drugs.id;");
 	}
 
@@ -119,7 +119,32 @@ void MedicationsFrame::initiateNewMed()
 
 void MedicationsFrame::initiateModify()
 {
+	unsigned int row;
+	AlterMedicationWizard *wiz;
+	MedicationRecord *med;
 
+	med = new MedicationRecord();
+
+	if (db_queried) {
+		if (!ui->resultTable->selectionModel()->hasSelection()) {
+			return;
+		}
+	} else {
+		return;
+	}
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+	if (!med->retrieve(ids[row])) {
+		return;
+	}
+
+	wiz = new AlterMedicationWizard(med);
+	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitNewMed(MedicationRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(MedicationRecord*)), this, SLOT(medCleanup(MedicationRecord*)));
+	wiz->exec();
+
+	delete wiz;
 }
 
 void MedicationsFrame::submitModify(MedicationRecord *med)

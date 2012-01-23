@@ -28,30 +28,19 @@ AlterMedicationWizard::AlterMedicationWizard(MedicationRecord *new_med, QWidget 
 	med = new_med;
 
 	// Fill in the information into the form if the wizard is modifying an existing record
-	/*if (med->exists) {
-
-		// TODO: This will probably need to go elsewhere, but will be needed sometime
-		// Code that fills in information when modifying an existing medication
-		ui->medicationField->setText(med->name);
-		ui->genericField->setText(med->generic);
-		ui->manufacturerField->setText(med->manufacturer);
-		ui->ndcField->setText(med->ndc);
-		temp = ui->formBox->findData(QVariant(med->form));
-		ui->formBox->setCurrentIndex(temp);
-		ui->strengthField->setText(med->strength);
-		ui->amountField->setText(med->amount);
-		ui->activeCheckbox->setChecked(med->active);
-		ui->instructionsField->setPlainText(med->instructions);
-
-		if ((med->form == FORM::Elixir) || (med->form == FORM::Suspension)) {
-			ui->amountLabel->setEnabled(true);
-			ui->amountField->setEnabled(true);
-		}
-	}*/
+	if (med->exists) {
+		setField("medicationField", med->name);
+		setField("genericField", med->generic);
+		setField("manufacturerField", med->manufacturer);
+		setField("ndcField", med->ndc);
+		setField("strengthField", med->strength);
+		setField("instructionsField", med->instructions);
+		setField("activeField", med->active);
+		ui->page0->setFormAmount(med->form, med->amount);
+	}
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
 	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));
-	//connect(ui->formBox, SIGNAL(currentIndexChanged(int)), this, SLOT(amountFieldCheck(int)));	TODO: This needs to be re-implemented
 }
 
 AlterMedicationWizard::~AlterMedicationWizard()
