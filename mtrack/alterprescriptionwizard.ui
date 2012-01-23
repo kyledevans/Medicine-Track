@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AlterPrescriptionWizard</class>
+ <widget class="QWizard" name="AlterPrescriptionWizard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>707</width>
+    <height>467</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Wizard</string>
+  </property>
+  <widget class="APW_Page00" name="wizardPage1">
+   <property name="title">
+    <string>New Prescription Wizard</string>
+   </property>
+   <property name="subTitle">
+    <string>Select the medication.</string>
+   </property>
+  </widget>
+  <widget class="APW_Page01" name="wizardPage2">
+   <property name="title">
+    <string>New Prescription Wizard</string>
+   </property>
+   <property name="subTitle">
+    <string>Enter the prescription details.</string>
+   </property>
+  </widget>
+  <widget class="APW_Page02" name="wizardPage">
+   <property name="title">
+    <string>New Prescription Wizard</string>
+   </property>
+   <property name="subTitle">
+    <string>Enter the prescription instructions.</string>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>APW_Page00</class>
+   <extends>QWizardPage</extends>
+   <header location="global">apw_page00.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>APW_Page01</class>
+   <extends>QWizardPage</extends>
+   <header location="global">apw_page01.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>APW_Page02</class>
+   <extends>QWizardPage</extends>
+   <header location="global">apw_page02.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
