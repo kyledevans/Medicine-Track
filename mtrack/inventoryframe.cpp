@@ -42,10 +42,11 @@ SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipm
 shipments.product_count, shipments.product_left
 FROM shipments
 JOIN drugs ON shipments.drug_id = drugs.id
-WHERE drugs.name LIKE SOME_VAR
-AND shipments.lot LIKE SOME_VAR
+WHERE drugs.name LIKE '%SOME_VAR%'
+AND shipments.lot LIKE '%SOME_VAR%'
 AND shipments.product_left > 0
-AND drugs.active = 1
+AND drugs.active = 'SOME_VAR'
+AND shipments.active = 'SOME_VAR'
 AND shipments.expiration < CURDATE();
 */
 void InventoryFrame::initiateSearch(int shipID)
@@ -64,7 +65,8 @@ void InventoryFrame::initiateSearch(int shipID)
 			query += QString(" AND shipments.product_left > 0");
 		}
 		if (ui->activeCheckbox->isChecked()) {	// Active checkbox
-			query += QString(" AND drugs.active = 1");
+			query += QString(" AND drugs.active = '1'");
+			query += QString(" AND shipments.active = '1'");
 		}
 		if (ui->expiredCheckbox->isChecked()) {	// Expired checkbox
 			query += QString(" AND shipments.expiration < CURDATE()");

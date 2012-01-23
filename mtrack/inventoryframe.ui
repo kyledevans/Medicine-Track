@@ -145,6 +145,9 @@
        <property name="text">
         <string>In stock</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -167,6 +170,9 @@
       <widget class="QCheckBox" name="activeCheckbox">
        <property name="text">
         <string>Active</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

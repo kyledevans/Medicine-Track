@@ -30,6 +30,7 @@ AlterShipmentWizard::AlterShipmentWizard(ShipmentRecord *new_shipment, QWidget *
 		setField("lotField", shipment->lot);
 		setField("unitsField", shipment->product_count);
 		setField("stockField", shipment->product_left);
+		setField("activeField", shipment->active);
 	}
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
