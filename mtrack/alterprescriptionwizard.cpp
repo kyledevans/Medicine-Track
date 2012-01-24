@@ -14,14 +14,6 @@ AlterPrescriptionWizard::AlterPrescriptionWizard(QWidget *parent) :
     ui->setupUi(this);
 }
 
-/* Scratch SQL:
-SELECT *
-FROM shipments
-JOIN drugs ON drugs.id = shipments.drug_id
-WHERE shipments.active = '1'
-AND drugs.active = 1;
-
-*/
 AlterPrescriptionWizard::~AlterPrescriptionWizard()
 {
     delete ui;

@@ -9,6 +9,11 @@ Released under the GPL version 2 only.
 
 #include <QWizardPage>
 
+#include "patientrecord.h"
+#include "medicationrecord.h"
+#include "prescriptionrecord.h"
+#include "shipmentrecord.h"
+
 namespace Ui {
     class APW_Page00;
 }
@@ -21,8 +26,17 @@ public:
     explicit APW_Page00(QWidget *parent = 0);
     ~APW_Page00();
 
+	void setPatient(PatientRecord *);
+	void setPrescription(PrescriptionRecord *);
+
+public slots:
+	void initiateSearch();
+
 private:
     Ui::APW_Page00 *ui;
+
+	PatientRecord *patient;
+	PrescriptionRecord *prescription;
 };
 
 #endif // APW_PAGE00_H

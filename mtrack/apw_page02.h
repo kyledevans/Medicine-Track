@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 
 #include <QWizardPage>
 
+#include "prescriptionrecord.h"
+
 namespace Ui {
     class APW_Page02;
 }
@@ -21,8 +23,12 @@ public:
     explicit APW_Page02(QWidget *parent = 0);
     ~APW_Page02();
 
+	void setPrescription(PrescriptionRecord *);
+
 private:
     Ui::APW_Page02 *ui;
+
+	PrescriptionRecord *prescription;
 };
 
 #endif // APW_PAGE02_H

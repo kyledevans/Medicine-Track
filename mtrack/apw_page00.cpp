@@ -18,3 +18,20 @@ APW_Page00::~APW_Page00()
 {
     delete ui;
 }
+
+void APW_Page00::setPatient(PatientRecord *new_patient)
+{
+	patient = new_patient;
+}
+
+/* SQL without C++:
+SELECT *
+FROM shipments
+JOIN drugs ON drugs.id = shipments.drug_id
+WHERE shipments.active = '1'
+AND drugs.active = 1;
+*/
+void APW_Page00::initiateSearch()
+{
+
+}

@@ -7,7 +7,16 @@ Released under the GPL version 2 only.
 #ifndef APW_PAGE01_H
 #define APW_PAGE01_H
 
+#include <QList>
+
 #include <QWizardPage>
+
+#include "patientrecord.h"
+#include "medicationrecord.h"
+#include "prescriptionrecord.h"
+#include "shipmentrecord.h"
+#include "prescriberrecord.h"
+#include "pharmacistrecord.h"
 
 namespace Ui {
     class APW_Page01;
@@ -21,8 +30,21 @@ public:
     explicit APW_Page01(QWidget *parent = 0);
     ~APW_Page01();
 
+	void setPatient(PatientRecord *);
+	void setPrescription(PrescriptionRecord *);
+	void setMedication(MedicationRecord *);
+	void setShipment(ShipmentRecord *);
+
 private:
     Ui::APW_Page01 *ui;
+
+	PatientRecord *patient;
+	PrescriptionRecord *prescription;
+	MedicationRecord *medication;
+	ShipmentRecord *shipment;
+
+	QList<PrescriberRecord *> prescribers;
+	QList<PharmacistRecord *> pharmacists;
 };
 
 #endif // APW_PAGE01_H
