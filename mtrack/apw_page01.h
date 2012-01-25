@@ -35,6 +35,8 @@ public:
 	void setMedication(MedicationRecord *);
 	void setShipment(ShipmentRecord *);
 
+	bool initCustom();
+
 private:
     Ui::APW_Page01 *ui;
 

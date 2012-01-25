@@ -9,7 +9,9 @@ Released under the GPL version 2 only.
 
 APW_Page00::APW_Page00(QWidget *parent) :
     QWizardPage(parent),
-    ui(new Ui::APW_Page00)
+	ui(new Ui::APW_Page00),
+	patient(0),
+	prescription(0)
 {
     ui->setupUi(this);
 }
@@ -22,6 +24,17 @@ APW_Page00::~APW_Page00()
 void APW_Page00::setPatient(PatientRecord *new_patient)
 {
 	patient = new_patient;
+}
+
+void APW_Page00::setPrescription(PrescriptionRecord *new_prescription)
+{
+	prescription = new_prescription;
+}
+
+void APW_Page00::initCustom()
+{
+	ui->lastLabel->setText(patient->last);
+	ui->firstLabel->setText(patient->first);
 }
 
 /* SQL without C++:

@@ -21,7 +21,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_7">
       <item>
-       <widget class="QLabel" name="label_9">
+       <widget class="QLabel" name="lastLabel">
         <property name="text">
          <string>LASTNAME</string>
         </property>
@@ -35,7 +35,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_11">
+       <widget class="QLabel" name="firstLabel">
         <property name="text">
          <string>FIRSTNAME</string>
         </property>
@@ -64,7 +64,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_8">
       <item>
-       <widget class="QLabel" name="medicationLabel_2">
+       <widget class="QLabel" name="medicationLabel">
         <property name="text">
          <string>MEDICATIONNAME</string>
         </property>
@@ -133,7 +133,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="amountLabel_2">
+       <widget class="QLabel" name="amountLabel">
         <property name="text">
          <string>AMOUNT</string>
         </property>
@@ -161,7 +161,7 @@
       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
      </property>
      <item row="0" column="0">
-      <widget class="QLabel" name="amountLabel">
+      <widget class="QLabel" name="amountLabel_2">
        <property name="text">
         <string>Amount</string>
        </property>

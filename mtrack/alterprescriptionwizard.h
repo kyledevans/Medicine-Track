@@ -9,6 +9,11 @@ Released under the GPL version 2 only.
 
 #include <QWizard>
 
+#include "prescriptionrecord.h"
+#include "patientrecord.h"
+#include "medicationrecord.h"
+#include "shipmentrecord.h"
+
 namespace Ui {
     class AlterPrescriptionWizard;
 }
@@ -21,8 +26,18 @@ public:
     explicit AlterPrescriptionWizard(QWidget *parent = 0);
     ~AlterPrescriptionWizard();
 
+	void setPatient(PatientRecord *);
+	void setMedication(MedicationRecord *);
+	void setPrescription(PrescriptionRecord *);
+	void setShipment(ShipmentRecord *);
+
 private:
     Ui::AlterPrescriptionWizard *ui;
+
+	PatientRecord *patient;
+	MedicationRecord *medication;
+	PrescriptionRecord *prescription;
+	ShipmentRecord *shipment;
 };
 
 #endif // ALTERPRESCRIPTIONWIZARD_H

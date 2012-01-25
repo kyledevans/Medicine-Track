@@ -9,7 +9,8 @@ Released under the GPL version 2 only.
 
 APW_Page02::APW_Page02(QWidget *parent) :
     QWizardPage(parent),
-    ui(new Ui::APW_Page02)
+	ui(new Ui::APW_Page02),
+	prescription(0)
 {
     ui->setupUi(this);
 }
@@ -17,4 +18,9 @@ APW_Page02::APW_Page02(QWidget *parent) :
 APW_Page02::~APW_Page02()
 {
     delete ui;
+}
+
+void APW_Page02::setPrescription(PrescriptionRecord *new_prescription)
+{
+	prescription = new_prescription;
 }
