@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Wizard</string>
   </property>
-  <widget class="APW_Page00" name="wizardPage1">
+  <widget class="APW_Page00" name="page0">
    <property name="title">
     <string>New Prescription Wizard</string>
    </property>
@@ -21,7 +21,7 @@
     <string>Select the medication.</string>
    </property>
   </widget>
-  <widget class="APW_Page01" name="wizardPage2">
+  <widget class="APW_Page01" name="page1">
    <property name="title">
     <string>New Prescription Wizard</string>
    </property>
@@ -29,7 +29,7 @@
     <string>Enter the prescription details.</string>
    </property>
   </widget>
-  <widget class="APW_Page02" name="wizardPage">
+  <widget class="APW_Page02" name="page2">
    <property name="title">
     <string>New Prescription Wizard</string>
    </property>

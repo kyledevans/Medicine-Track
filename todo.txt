@@ -24,6 +24,8 @@ Released under the GPL version 2 only.
 
 12.  Combine the prescribers and pharmacists tables into 1
 
+13.  Need to make the drugs.strength, drugs.amount, and prescriptions.amount into type INT.  Then add corresponding VARCHAR fields that will indicate units.
+
 
 -----
 

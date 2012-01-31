@@ -29,8 +29,6 @@ public:
 	void setPatient(PatientRecord *);
 	void setPrescription(PrescriptionRecord *);
 
-	bool initCustom();
-
 public slots:
 	void initiateSearch();
 

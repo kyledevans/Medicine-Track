@@ -38,6 +38,9 @@ public:
 	bool initCustom();
 
 private:
+	void deleteLists();
+	void setupComboBoxes();
+
     Ui::APW_Page01 *ui;
 
 	PatientRecord *patient;

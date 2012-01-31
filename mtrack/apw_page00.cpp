@@ -24,6 +24,8 @@ APW_Page00::~APW_Page00()
 void APW_Page00::setPatient(PatientRecord *new_patient)
 {
 	patient = new_patient;
+	ui->lastLabel->setText(patient->last);
+	ui->firstLabel->setText(patient->first);
 }
 
 void APW_Page00::setPrescription(PrescriptionRecord *new_prescription)
@@ -31,18 +33,14 @@ void APW_Page00::setPrescription(PrescriptionRecord *new_prescription)
 	prescription = new_prescription;
 }
 
-void APW_Page00::initCustom()
-{
-	ui->lastLabel->setText(patient->last);
-	ui->firstLabel->setText(patient->first);
-}
-
 /* SQL without C++:
-SELECT *
+SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form,
+drugs.strength, drugs.amount, shipments.product_left
 FROM shipments
 JOIN drugs ON drugs.id = shipments.drug_id
 WHERE shipments.active = '1'
-AND drugs.active = 1;
+AND drugs.active = 1
+AND shipments.expiration < CURDATE();
 */
 void APW_Page00::initiateSearch()
 {

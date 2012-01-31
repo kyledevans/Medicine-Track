@@ -21,6 +21,7 @@ Released under the GPL version 2 only.
 #include "patientrecord.h"
 #include "newpatientwizard.h"
 #include "alertinterface.h"
+#include "alterprescriptionwizard.h"
 
 PatientSearch::PatientSearch(QWidget *parent) :
 	QFrame(parent),
@@ -123,16 +124,36 @@ void PatientSearch::resetPressed()
 
 void PatientSearch::initiatePrescription()
 {
-	unsigned int row, id;
+	unsigned int row;
+	PatientRecord *patient;
+	MedicationRecord *medication;
+	PrescriptionRecord *prescription;
+	ShipmentRecord *shipment;
 
-	if (db_queried) {
-		if (ui->resultTable->selectionModel()->hasSelection()) {
-			// This line finds the top row that was selected by the user
-			row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-			id = ids[row];
-			qDebug() << id;
-		}
+	AlterPrescriptionWizard *wiz;
+
+	if (!db_queried) {
+		return;
 	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return;
+	}
+
+	patient = new PatientRecord();
+	medication = new MedicationRecord();
+	prescription = new PrescriptionRecord();
+	shipment = new ShipmentRecord();
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+	patient->retrieve(ids[row]);
+
+	wiz = new AlterPrescriptionWizard();
+	wiz->setPatient(patient);
+	wiz->setMedication(medication);
+	wiz->setPrescription(prescription);
+	wiz->setShipment(shipment);
+	wiz->exec();
 }
 
 void PatientSearch::initiateModification()
