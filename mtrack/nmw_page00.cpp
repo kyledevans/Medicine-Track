@@ -38,7 +38,9 @@ NMW_Page00::NMW_Page00(QWidget *parent) :
 	registerField("ndcField", ui->ndcField);
 	registerField("formField", ui->formField);
 	registerField("strengthField", ui->strengthField);
+	registerField("strUnitsField", ui->strUnitsField);
 	registerField("amountField", ui->amountField);
+	registerField("amUnitsField", ui->amUnitsField);
 	registerField("activeField", ui->activeField);
 }
 
@@ -47,16 +49,17 @@ NMW_Page00::~NMW_Page00()
     delete ui;
 }
 
-void NMW_Page00::setFormAmount(int form, QString amount)
+void NMW_Page00::setFormAmount(MedicationRecord *med)
 {
 	int temp;
 
-	temp = ui->formField->findData(QVariant(form));
+	temp = ui->formField->findData(QVariant(med->form));
 	ui->formField->setCurrentIndex(temp);
 
 	amountFieldCheck();
 	if (formHasFixedAmount()) {
-		ui->amountField->setText(amount);
+		ui->amountField->setText(QString().setNum(med->amount));
+		ui->amUnitsField->setText(med->am_units);
 	}
 }
 
@@ -67,12 +70,15 @@ void NMW_Page00::getResults(MedicationRecord *med)
 	med->manufacturer = ui->manufacturerField->text();
 	med->ndc = ui->ndcField->text();
 	med->form = ui->formField->itemData(ui->formField->currentIndex()).toInt();
-	med->strength = ui->strengthField->text();
+	med->strength = ui->strengthField->text().toInt();
+	med->str_units = ui->strUnitsField->text();
 
 	if (formHasFixedAmount()) {	// Only need to get a value from amount if it makes sense
-		med->amount = ui->amountField->text();
+		med->amount = ui->amountField->text().toInt();
+		med->am_units = ui->amUnitsField->text();
 	} else {
-		med->amount = QString("");
+		med->amount = 1;
+		med->am_units = QString("");
 	}
 	med->active = ui->activeField->isChecked();
 }
@@ -83,9 +89,13 @@ void NMW_Page00::amountFieldCheck(int index)
 	if (formHasFixedAmount()) {
 		ui->amountLabel->setEnabled(true);
 		ui->amountField->setEnabled(true);
+		ui->amUnitsLabel->setEnabled(true);
+		ui->amUnitsField->setEnabled(true);
 	} else {
 		ui->amountLabel->setEnabled(false);
 		ui->amountField->setEnabled(false);
+		ui->amUnitsLabel->setEnabled(false);
+		ui->amUnitsField->setEnabled(false);
 	}
 }
 

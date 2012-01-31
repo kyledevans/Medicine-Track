@@ -115,10 +115,31 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableView" name="resultTable"/>
+    <widget class="QTableView" name="resultTable">
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>medicationField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>241</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>483</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

@@ -24,7 +24,7 @@ public:
 	int shipment_id;		// prescriptions.shipment_id
 	int prescriber_id;		// prescriptions.prescriber_id
 	int pharmacist_id;		// prescriptions.pharmacist_id
-	QString amount;			// prescriptions.amount
+	int amount;				// prescriptions.amount
 	QString dose_size;		// prescriptions.dose_size
 	QDate written;			// prescriptions.written
 	QDate filled;			// prescriptions.filled

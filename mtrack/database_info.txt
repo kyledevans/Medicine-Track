@@ -5,6 +5,12 @@
 
 
 --
+-- Database: 'epc'
+--
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table 'drugs'
 --
 
@@ -15,26 +21,14 @@ CREATE TABLE drugs (
   manufacturer varchar(128) collate utf8_unicode_ci NOT NULL COMMENT 'Manufacturer Name',
   ndc char(11) collate utf8_unicode_ci NOT NULL COMMENT 'National Drug Code number',
   form enum('capsule','cream','drops','elixir','ointment','solution','suspension','syrup','tablet') collate utf8_unicode_ci NOT NULL COMMENT 'Inhale, capsule, etc.',
-  strength varchar(64) collate utf8_unicode_ci NOT NULL,
-  amount varchar(64) collate utf8_unicode_ci default NULL COMMENT 'How much in bottle if liquid',
+  strength int(10) unsigned NOT NULL COMMENT 'Strength of prescription',
+  str_units varchar(32) collate utf8_unicode_ci default NULL COMMENT 'Units for strength',
+  amount int(10) unsigned NOT NULL default '1' COMMENT 'Amount if in a fixed amount',
+  am_units varchar(32) collate utf8_unicode_ci default NULL COMMENT 'Units for the amount',
   instructions varchar(512) collate utf8_unicode_ci NOT NULL COMMENT 'Default instructions',
   active tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='A list of drugs';
-
---
--- Dumping data for table 'drugs'
---
-
-INSERT INTO drugs VALUES(1, 'Ibuprofin', 'Advil', 'HyVee', '09876543210', 'tablet', '4 oz', NULL, '', 1);
-INSERT INTO drugs VALUES(2, 'Amoxicillin', 'Amoxil', 'Prescott', '01234567890', 'suspension', '400 mg per 5 ml', NULL, '', 1);
-INSERT INTO drugs VALUES(3, 'Citrizine Hydrochloride', 'Zyrtec', 'HyVee', '86516516516', 'tablet', '10 mg', NULL, '', 1);
-INSERT INTO drugs VALUES(4, 'Lisinopril', 'Zestril', '65165165', '65165165', 'tablet', '2.5 mg', NULL, '', 1);
-INSERT INTO drugs VALUES(5, 'Metoprol', NULL, 'Ingenu', '65186516', 'tablet', '25 mg', NULL, '', 1);
-INSERT INTO drugs VALUES(6, 'Omeprazole', 'Prilosec', 'Kremer', '65126517', 'capsule', '20 mg', NULL, '', 1);
-INSERT INTO drugs VALUES(7, 'Lipitor', NULL, 'Pfizer', '546515232', 'tablet', '80 mg', NULL, '', 1);
-INSERT INTO drugs VALUES(8, 'Muddybuddies', 'Puppychow', '90564', '111', 'elixir', '150 bytes', '15', 'EAT', 1);
-INSERT INTO drugs VALUES(9, 'Puppychow', 'Muddybuddies', 'HyVee', 'ndc', 'ointment', 'str', '', 'chew', 1);
 
 -- --------------------------------------------------------
 
@@ -52,28 +46,6 @@ CREATE TABLE patients (
   PRIMARY KEY  (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Patient Demographic Information';
 
---
--- Dumping data for table 'patients'
---
-
-INSERT INTO patients VALUES(1, 0, 'Baggins', 'Bilbo', '2011-12-01', 1);
-INSERT INTO patients VALUES(2, 0, 'Nixon', 'Richard', '1994-03-08', 1);
-INSERT INTO patients VALUES(3, 0, 'Wayne', 'Bruce', '2008-02-29', 1);
-INSERT INTO patients VALUES(4, 11, 'Evans', 'Ginger', '1992-06-04', 1);
-INSERT INTO patients VALUES(5, 0, 'Skywalker', 'Luke', '1986-05-07', 1);
-INSERT INTO patients VALUES(6, 0, 'Skywalker', 'Anakin', '2005-10-11', 1);
-INSERT INTO patients VALUES(7, 0, 'Stewart', 'Jon', '1993-09-08', 1);
-INSERT INTO patients VALUES(8, 0, 'Hanks', 'Tom', '1991-07-17', 1);
-INSERT INTO patients VALUES(9, 0, 'Ford', 'Harrison', '2011-08-10', 1);
-INSERT INTO patients VALUES(10, 0, 'Salender', 'Lisbeth', '2008-04-30', 1);
-INSERT INTO patients VALUES(11, 0, 'Blomkvist', 'Mikael', '1997-03-13', 1);
-INSERT INTO patients VALUES(12, 0, 'Vance', 'Bob', '2001-01-31', 1);
-INSERT INTO patients VALUES(13, 0, 'Lucas', 'George', '2009-06-15', 1);
-INSERT INTO patients VALUES(14, 0, 'Vontrap', 'Maria', '2001-09-10', 1);
-INSERT INTO patients VALUES(15, 0, 'Washington', 'George', '2003-05-31', 1);
-INSERT INTO patients VALUES(16, 0, 'Galifianakis', 'Zach', '2006-01-31', 1);
-INSERT INTO patients VALUES(18, 193, 'Evans', 'Kyle', '1986-11-27', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -88,13 +60,6 @@ CREATE TABLE pharmacists (
   active tinyint(1) NOT NULL default '1' COMMENT 'True if the pharmacist is still able to fill prescriptions',
   PRIMARY KEY  (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Pharmacists are anyone that fills prescriptions';
-
---
--- Dumping data for table 'pharmacists'
---
-
-INSERT INTO pharmacists VALUES(1, 'Wilson', 'Andrea', 'AW', 1);
-INSERT INTO pharmacists VALUES(2, 'Meyer', 'Ashley', 'AME', 1);
 
 -- --------------------------------------------------------
 
@@ -111,13 +76,6 @@ CREATE TABLE prescribers (
   PRIMARY KEY  (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='List of people that are allowed to give prescriptions';
 
---
--- Dumping data for table 'prescribers'
---
-
-INSERT INTO prescribers VALUES(1, 'Evans', 'Douglas', 'D. Evans, DO', 1);
-INSERT INTO prescribers VALUES(2, 'Castle', 'Dianne', 'D. Castle, PNP', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -131,7 +89,7 @@ CREATE TABLE prescriptions (
   shipment_id int(10) unsigned NOT NULL COMMENT 'Shipment ID',
   prescriber_id int(10) unsigned NOT NULL COMMENT 'Person who prescribed the medication',
   pharmacist_id int(10) unsigned NOT NULL COMMENT 'Pharmacist who filled the prescription',
-  amount int(10) unsigned NOT NULL COMMENT 'Total amount in the prescription',
+  amount int(10) unsigned NOT NULL default '1' COMMENT 'Total amount in the prescription',
   dose_size varchar(64) collate utf8_unicode_ci NOT NULL COMMENT 'Size of an individual dose',
   written date NOT NULL,
   filled date NOT NULL,
@@ -144,17 +102,6 @@ CREATE TABLE prescriptions (
   KEY shipment_id (shipment_id),
   KEY prescriptions_ibfk_4 (prescriber_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Individual prescriptions';
-
---
--- Dumping data for table 'prescriptions'
---
-
-INSERT INTO prescriptions VALUES(0, 2, 1, 4, 1, 0, 60, '', '1997-12-24', '1997-12-24', 'Default', '', 1);
-INSERT INTO prescriptions VALUES(1, 2, 1, 4, 1, 0, 25, '', '2011-12-15', '2011-12-19', 'Default', '', 1);
-INSERT INTO prescriptions VALUES(2, 2, 2, 1, 1, 0, 500, '', '1990-03-12', '1990-03-13', 'Default', '', 1);
-INSERT INTO prescriptions VALUES(3, 2, 1, 6, 1, 0, 125, '', '1991-11-11', '1991-11-11', 'Default', '', 1);
-INSERT INTO prescriptions VALUES(4, 1, 2, 3, 1, 0, 600, '', '2010-05-05', '2010-05-05', 'Default', '', 1);
-INSERT INTO prescriptions VALUES(5, 1, 1, 5, 1, 0, 1024, '', '2011-06-06', '2011-06-07', 'Default', '', 1);
 
 -- --------------------------------------------------------
 
@@ -173,25 +120,6 @@ CREATE TABLE shipments (
   PRIMARY KEY  (id),
   KEY drug_id (drug_id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Drug shipment information';
-
---
--- Dumping data for table 'shipments'
---
-
-INSERT INTO shipments VALUES(1, 2, '2015-12-31', 'BBBB', 50, 23, 1);
-INSERT INTO shipments VALUES(2, 2, '2013-05-21', 'AAAA', 25, 24, 1);
-INSERT INTO shipments VALUES(3, 2, '2002-12-10', 'CCCC', 100, 0, 1);
-INSERT INTO shipments VALUES(4, 1, '2021-01-07', 'DDDD', 500, 224, 1);
-INSERT INTO shipments VALUES(5, 1, '2018-09-18', 'EEEE', 1000, 67, 1);
-INSERT INTO shipments VALUES(6, 1, '2033-04-11', 'FFFF', 250, 99, 1);
-INSERT INTO shipments VALUES(7, 4, '2032-11-27', '6516565', 600, 568, 1);
-INSERT INTO shipments VALUES(8, 4, '2001-09-17', '351651', 200, 200, 0);
-INSERT INTO shipments VALUES(9, 4, '2003-12-19', '3516615', 300, 16, 1);
-INSERT INTO shipments VALUES(10, 8, '2001-01-05', '651465f', 500, 432, 1);
-INSERT INTO shipments VALUES(11, 8, '2001-01-13', '4289745', 1000, 1000, 1);
-INSERT INTO shipments VALUES(12, 2, '2014-11-11', 'lot', 50, 50, 1);
-INSERT INTO shipments VALUES(13, 2, '2013-01-22', 'lot4290', 50, 50, 1);
-INSERT INTO shipments VALUES(14, 3, '2014-12-13', 'LOT', 6000, 882, 0);
 
 --
 -- Constraints for dumped tables

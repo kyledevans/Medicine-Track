@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 
 #include <QWizardPage>
 
+#include <QList>
+
 #include "patientrecord.h"
 #include "medicationrecord.h"
 #include "prescriptionrecord.h"
@@ -37,6 +39,10 @@ private:
 
 	PatientRecord *patient;
 	PrescriptionRecord *prescription;
+
+	bool db_queried;
+
+	QList<int> ids;				// Contains the shipment id's of the current search
 };
 
 #endif // APW_PAGE00_H

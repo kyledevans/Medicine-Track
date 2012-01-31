@@ -21,8 +21,10 @@ public:
 	QString manufacturer;	// drugs.manufacturer
 	QString ndc;			// drugs.ndc
 	int form;				// drugs.form
-	QString strength;		// drugs.strength
-	QString amount;			// drugs.amount
+	int strength;			// drugs.strength
+	QString str_units;		// drugs.str_units
+	int amount;				// drugs.amount
+	QString am_units;		// drugs.am_units
 	QString instructions;	// drugs.instructions
 	bool active;			// drugs.active
 
