@@ -125,10 +125,7 @@ void PatientSearch::resetPressed()
 void PatientSearch::initiatePrescription()
 {
 	unsigned int row;
-	PatientRecord *patient;
-	MedicationRecord *medication;
 	PrescriptionRecord *prescription;
-	ShipmentRecord *shipment;
 
 	AlterPrescriptionWizard *wiz;
 
@@ -139,24 +136,17 @@ void PatientSearch::initiatePrescription()
 		return;
 	}
 
-	patient = new PatientRecord();
-	medication = new MedicationRecord();
-	prescription = new PrescriptionRecord();
-	shipment = new ShipmentRecord();
+	wiz = new AlterPrescriptionWizard();
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-	patient->retrieve(ids[row]);
-	prescription->patient_id = patient->id;
+	if (!wiz->getPatient(ids[row])) {
+		delete wiz;
+		return;
+	}
 
-	wiz = new AlterPrescriptionWizard();
-
-	// TODO: next 3 lines cause a memory leak and need to be fixed.
-	// Preferably the wizard will create its' own records (except for the PrescriptionRecord)
-	wiz->setPatient(patient);
-	wiz->setMedication(medication);
-	wiz->setShipment(shipment);
-
+	prescription = new PrescriptionRecord;
+	prescription->patient_id = ids[row];
 	wiz->setPrescription(prescription);
 
 	connect(wiz, SIGNAL(wizardComplete(PrescriptionRecord*)), this, SLOT(submitNewPrescription(PrescriptionRecord*)));

@@ -21,11 +21,32 @@ AlterPrescriptionWizard::AlterPrescriptionWizard(QWidget *parent) :
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
 	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));
+
+	patient = new PatientRecord;
+	medication = new MedicationRecord;
+	shipment = new ShipmentRecord;
+
+	ui->page1->setMedication(medication);
 }
 
 AlterPrescriptionWizard::~AlterPrescriptionWizard()
 {
     delete ui;
+
+	delete patient;
+	delete medication;
+	delete shipment;
+}
+
+bool AlterPrescriptionWizard::getPatient(int new_id)
+{
+	if (!patient->retrieve(new_id)) {
+		return false;
+	}
+
+	ui->page0->setPatient(patient);
+	ui->page1->setPatient(patient);
+	return true;
 }
 
 void AlterPrescriptionWizard::returnResults()
@@ -49,28 +70,10 @@ void AlterPrescriptionWizard::changeMedication(int new_id)
 	ui->page1->medUpdated();
 }
 
-void AlterPrescriptionWizard::setPatient(PatientRecord *new_patient)
-{
-	patient = new_patient;
-	ui->page0->setPatient(patient);
-	ui->page1->setPatient(patient);
-}
-
-void AlterPrescriptionWizard::setMedication(MedicationRecord *new_medication)
-{
-	medication = new_medication;
-	ui->page1->setMedication(medication);
-}
-
 void AlterPrescriptionWizard::setPrescription(PrescriptionRecord *new_prescription)
 {
 	prescription = new_prescription;
 	ui->page0->setPrescription(prescription);
 	ui->page1->setPrescription(prescription);
 	ui->page2->setPrescription(prescription);
-}
-
-void AlterPrescriptionWizard::setShipment(ShipmentRecord *new_shipment)
-{
-	shipment = new_shipment;
 }

@@ -26,10 +26,8 @@ public:
     explicit AlterPrescriptionWizard(QWidget *parent = 0);
     ~AlterPrescriptionWizard();
 
-	void setPatient(PatientRecord *);
-	void setMedication(MedicationRecord *);
 	void setPrescription(PrescriptionRecord *);
-	void setShipment(ShipmentRecord *);
+	bool getPatient(int);
 
 public slots:
 	void changeMedication(int);
