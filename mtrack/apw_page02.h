@@ -26,6 +26,7 @@ public:
 	void setPrescription(PrescriptionRecord *);
 
 	bool initCustom();
+	void getResults();
 
 private:
     Ui::APW_Page02 *ui;

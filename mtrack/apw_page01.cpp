@@ -14,6 +14,7 @@ Released under the GPL version 2 only.
 
 #include "alertinterface.h"
 #include "prescriberrecord.h"
+#include "globals.h"
 
 #include <QDebug>
 
@@ -26,6 +27,9 @@ APW_Page01::APW_Page01(QWidget *parent) :
 	shipment(0)
 {
     ui->setupUi(this);
+
+	ui->filledField->setDate(QDate::currentDate());
+	ui->writtenField->setDate(QDate::currentDate());
 }
 
 APW_Page01::~APW_Page01()
@@ -108,8 +112,10 @@ bool APW_Page01::initCustom()
 
 void APW_Page01::medUpdated()
 {
-	qDebug() << medication->name;
 	ui->medicationLabel->setText(medication->name);
+	ui->formLabel->setText(FORM_STR::intToStr(medication->form));
+	ui->strengthLabel->setText(QString().setNum(medication->strength) + QString(" ") + medication->str_units);
+	ui->amountLabel->setText(QString().setNum(medication->amount) + QString(" ") + medication->am_units);
 }
 
 void APW_Page01::setupComboBoxes()
@@ -126,6 +132,20 @@ void APW_Page01::setupComboBoxes()
 
 	ui->filledByField->setCurrentIndex(-1);
 	ui->writtenByField->setCurrentIndex(-1);
+}
+
+void APW_Page01::getResults()
+{
+	int temp;
+	prescription->amount = ui->amountField->text().toInt();
+	prescription->dose_size = ui->doseField->text();
+	prescription->written = ui->writtenField->date();
+	prescription->filled = ui->filledField->date();
+
+	temp = ui->writtenByField->currentIndex();
+	prescription->prescriber_id = ui->writtenByField->itemData(temp).toInt();
+	temp = ui->filledByField->currentIndex();
+	prescription->pharmacist_id = ui->filledByField->itemData(temp).toInt();
 }
 
 void APW_Page01::setPatient(PatientRecord *new_patient)

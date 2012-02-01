@@ -8,11 +8,14 @@ Released under the GPL version 2 only.
 #include <QString>
 #include <QVariant>
 #include <QSqlRecord>
+#include <QSqlQuery>
 
 #include "prescriptionrecord.h"
 
 #include "globals.h"
 #include "alertinterface.h"
+
+#include <QDebug>
 
 PrescriptionRecord::PrescriptionRecord(QObject *parent):
 	QObject(parent),
@@ -66,4 +69,58 @@ bool PrescriptionRecord::retrieve(int newId)
 
 	delete model;
 	return true;
+}
+
+/* SQL without C++:
+INSERT INTO prescriptions (patient_id, drug_id, shipment_id, prescriber_id,
+pharmacist_id, amount, dose_size, written, filled, instructions)
+VALUES (...);
+
+UPDATE prescriptions
+SET patient_id = 'SOME_VAL', drug_id = 'SOME_VAL', shipment_id = 'SOME_VAL',
+prescriber_id = 'SOME_VAL', pharmacist_id = 'SOME_VAL', amount = 'SOME_VAL',
+dose_size = 'SOME_VAL', written = 'SOME_VAL', filled = 'SOME_VAL', instructions = 'SOME_VAL'
+WHERE id = 'SOME_VAL';
+*/
+bool PrescriptionRecord::commitRecord()
+{
+	QSqlQueryModel *model;
+	QString query;
+	AlertInterface alert;
+
+	model = new QSqlQueryModel();
+
+	if (!exists) {
+		query = QString("INSERT INTO prescriptions (patient_id, drug_id, shipment_id, prescriber_id, pharmacist_id, amount, dose_size, written, filled, instructions) VALUES ('");
+		query += QString().setNum(patient_id) + QString("', '");
+		query += QString().setNum(drug_id) + QString("', '");
+		query += QString().setNum(shipment_id) + QString("', '");
+		query += QString().setNum(prescriber_id) + QString("', '");
+		query += QString().setNum(pharmacist_id) + QString("', '");
+		query += QString().setNum(amount) + QString("', '");
+		query += SQL::cleanNoMatching(dose_size) + QString("', '");
+		query += written.toString("yyyy-MM-dd") + QString("', '");
+		query += filled.toString("yyyy-MM-dd") + QString("', '");
+		query += SQL::cleanNoMatching(instructions) + QString("');");
+	}
+
+	// TODO: This does not update an existing record yet
+
+	if (!alert.attemptQuery(model, &query)) {
+		delete model;
+		return false;
+	}
+
+	if (!exists) {
+		id = model->query().lastInsertId().toInt();
+		exists = true;
+	}
+
+	delete model;
+	return true;
+}
+
+void PrescriptionRecord::print()
+{
+	qDebug() << "id =" << id << "patient_id =" << patient_id << "drug_id =" << drug_id << "shipment_id =" << shipment_id << "prescriber_id =" << prescriber_id << "pharmacist_id =" << pharmacist_id << "amount =" << amount << "dose_size =" << dose_size << "written =" << written.toString("yyyy-MM-dd") << "filled =" << filled.toString("yyyy-MM-dd") << "instructions =" << instructions;
 }

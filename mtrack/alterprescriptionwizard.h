@@ -33,6 +33,12 @@ public:
 
 public slots:
 	void changeMedication(int);
+	void returnResults();
+	void rejectedWizard();
+
+signals:
+	void wizardComplete(PrescriptionRecord *);
+	void wizardRejected(PrescriptionRecord *);
 
 private:
     Ui::AlterPrescriptionWizard *ui;

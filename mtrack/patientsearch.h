@@ -11,6 +11,7 @@ Released under the GPL version 2 only.
 #include <QList>
 
 #include "patientrecord.h"
+#include "prescriptionrecord.h"
 #include "globals.h"
 
 namespace Ui {
@@ -34,6 +35,9 @@ public slots:
 	void submitNewPatient(PatientRecord *);
 	void submitModify(PatientRecord *);
 	void newPatientCleanup(PatientRecord *);
+
+	void submitNewPrescription(PrescriptionRecord *);
+	void newPrescriptionCleanup(PrescriptionRecord *);
 
 private:
     Ui::PatientSearch *ui;

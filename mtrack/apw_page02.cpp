@@ -24,3 +24,8 @@ void APW_Page02::setPrescription(PrescriptionRecord *new_prescription)
 {
 	prescription = new_prescription;
 }
+
+void APW_Page02::getResults()
+{
+	prescription->instructions = ui->instructionsField->toPlainText();
+}

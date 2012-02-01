@@ -36,6 +36,7 @@ public:
 	void setShipment(ShipmentRecord *);
 
 	bool initCustom();
+	void getResults();
 
 	void medUpdated();
 
