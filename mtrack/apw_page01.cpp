@@ -15,6 +15,8 @@ Released under the GPL version 2 only.
 #include "alertinterface.h"
 #include "prescriberrecord.h"
 
+#include <QDebug>
+
 APW_Page01::APW_Page01(QWidget *parent) :
     QWizardPage(parent),
 	ui(new Ui::APW_Page01),
@@ -102,6 +104,12 @@ bool APW_Page01::initCustom()
 	setupComboBoxes();
 
 	return true;
+}
+
+void APW_Page01::medUpdated()
+{
+	qDebug() << medication->name;
+	ui->medicationLabel->setText(medication->name);
 }
 
 void APW_Page01::setupComboBoxes()

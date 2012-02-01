@@ -31,8 +31,14 @@ public:
 	void setPatient(PatientRecord *);
 	void setPrescription(PrescriptionRecord *);
 
+	bool isComplete() const;
+
 public slots:
 	void initiateSearch();
+	void resultSelected();
+
+signals:
+	void medicationChanged(int);
 
 private:
     Ui::APW_Page00 *ui;

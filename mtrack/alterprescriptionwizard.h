@@ -31,6 +31,9 @@ public:
 	void setPrescription(PrescriptionRecord *);
 	void setShipment(ShipmentRecord *);
 
+public slots:
+	void changeMedication(int);
+
 private:
     Ui::AlterPrescriptionWizard *ui;
 

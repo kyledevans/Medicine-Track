@@ -37,6 +37,8 @@ public:
 
 	bool initCustom();
 
+	void medUpdated();
+
 private:
 	void deleteLists();
 	void setupComboBoxes();

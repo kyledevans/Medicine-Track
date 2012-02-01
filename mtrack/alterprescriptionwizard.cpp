@@ -7,11 +7,15 @@ Released under the GPL version 2 only.
 #include "alterprescriptionwizard.h"
 #include "ui_alterprescriptionwizard.h"
 
+#include <QDebug>
+
 AlterPrescriptionWizard::AlterPrescriptionWizard(QWidget *parent) :
     QWizard(parent),
     ui(new Ui::AlterPrescriptionWizard)
 {
     ui->setupUi(this);
+
+	connect(ui->page0, SIGNAL(medicationChanged(int)), this, SLOT(changeMedication(int)));
 
 	ui->page1->initCustom();
 }
@@ -19,6 +23,13 @@ AlterPrescriptionWizard::AlterPrescriptionWizard(QWidget *parent) :
 AlterPrescriptionWizard::~AlterPrescriptionWizard()
 {
     delete ui;
+}
+
+void AlterPrescriptionWizard::changeMedication(int new_id)
+{
+	shipment->retrieve(new_id);
+	medication->retrieve(shipment->drug_id);
+	ui->page1->medUpdated();
 }
 
 void AlterPrescriptionWizard::setPatient(PatientRecord *new_patient)
@@ -31,6 +42,7 @@ void AlterPrescriptionWizard::setPatient(PatientRecord *new_patient)
 void AlterPrescriptionWizard::setMedication(MedicationRecord *new_medication)
 {
 	medication = new_medication;
+	ui->page1->setMedication(medication);
 }
 
 void AlterPrescriptionWizard::setPrescription(PrescriptionRecord *new_prescription)
