@@ -100,7 +100,9 @@ FORMS    += mainwindow.ui \
     apw_page02.ui
 
 OTHER_FILES += \
-    database_info.txt
+    database_info.txt \
+    barcodes.txt
+
 
 
 
