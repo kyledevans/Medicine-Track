@@ -26,6 +26,8 @@ Released under the GPL version 2 only.
 
 13.  Need to make the drugs.strength, drugs.amount, and prescriptions.amount into type INT.  Then add corresponding VARCHAR fields that will indicate units.
 
+14.  Liquid drugs can be either dispensed in discrete amounts(IE: give the entire bottle to a patient) or measured out and dispensed from a large bottle.
+
 
 -----
 
