@@ -37,7 +37,8 @@ AlterMedicationWizard::AlterMedicationWizard(MedicationRecord *new_med, QWidget 
 		setField("strUnitsField", med->str_units);
 		setField("instructionsField", med->instructions);
 		setField("activeField", med->active);
-		ui->page0->setFormAmount(med);
+		setField("amUnitsField", med->am_units);
+		ui->page0->setForm(med->form);
 	}
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));

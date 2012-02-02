@@ -23,11 +23,9 @@ public:
     explicit NMW_Page00(QWidget *parent = 0);
     ~NMW_Page00();
 
-	void getResults(MedicationRecord *);
-	void setFormAmount(MedicationRecord *);	// Set form and amount
+	void setForm(int);
 
-private slots:
-	void amountFieldCheck(int index = -1);
+	void getResults(MedicationRecord *);
 
 private:
     Ui::NMW_Page00 *ui;

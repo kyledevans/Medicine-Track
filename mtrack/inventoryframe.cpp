@@ -38,7 +38,7 @@ InventoryFrame::~InventoryFrame()
 
 
 /*  SQL without C++.  Numbers in () indicate column and are not SQL:
-SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot,
+SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot,
 shipments.product_count, shipments.product_left
 FROM shipments
 JOIN drugs ON shipments.drug_id = drugs.id
@@ -58,7 +58,7 @@ void InventoryFrame::initiateSearch(int shipID)
 	model = new QSqlQueryModel(ui->resultTable);
 
 	if (shipID == SQL::Undefined_ID) {
-		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE drugs.name LIKE '%");
+		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE drugs.name LIKE '%");
 		query += SQL::cleanInput(ui->nameField->text()) + QString("%' AND shipments.lot LIKE '%");
 		query += SQL::cleanInput(ui->lotField->text()) + QString("%'");
 		if (ui->stockCheckbox->isChecked()) {	// Stocked checkbox
@@ -73,7 +73,7 @@ void InventoryFrame::initiateSearch(int shipID)
 		}
 		query += QString(";");
 	} else {
-		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.amount, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE shipments.id = '");
+		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE shipments.id = '");
 		query += QString().setNum(shipID) + QString("';");
 	}
 
@@ -94,11 +94,10 @@ void InventoryFrame::initiateSearch(int shipID)
 	model->setHeaderData(0, Qt::Horizontal, tr("Medication"));
 	model->setHeaderData(1, Qt::Horizontal, tr("Form"));
 	model->setHeaderData(2, Qt::Horizontal, tr("Strength"));
-	model->setHeaderData(3, Qt::Horizontal, tr("Amount"));
-	model->setHeaderData(4, Qt::Horizontal, tr("Expiration"));
-	model->setHeaderData(5, Qt::Horizontal, tr("Lot #"));
-	model->setHeaderData(6, Qt::Horizontal, tr("Units ordered"));
-	model->setHeaderData(7, Qt::Horizontal, tr("Units stocked"));
+	model->setHeaderData(3, Qt::Horizontal, tr("Expiration"));
+	model->setHeaderData(4, Qt::Horizontal, tr("Lot #"));
+	model->setHeaderData(5, Qt::Horizontal, tr("Units ordered"));
+	model->setHeaderData(6, Qt::Horizontal, tr("Units stocked"));
 
 	ui->resultTable->setModel(model);
 

@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QVariant>
+#include <QIntValidator>
 
 #include "apw_page01.h"
 #include "ui_apw_page01.h"
@@ -27,6 +28,9 @@ APW_Page01::APW_Page01(QWidget *parent) :
 	shipment(0)
 {
     ui->setupUi(this);
+
+	QValidator *numbers = new QIntValidator(this);
+	ui->amountField->setValidator(numbers);
 
 	ui->filledField->setDate(QDate::currentDate());
 	ui->writtenField->setDate(QDate::currentDate());
@@ -115,7 +119,7 @@ void APW_Page01::medUpdated()
 	ui->medicationLabel->setText(medication->name);
 	ui->formLabel->setText(FORM_STR::intToStr(medication->form));
 	ui->strengthLabel->setText(QString().setNum(medication->strength) + QString(" ") + medication->str_units);
-	ui->amountLabel->setText(QString().setNum(medication->amount) + QString(" ") + medication->am_units);
+	ui->amUnitsLabel->setText(medication->am_units);
 }
 
 void APW_Page01::setupComboBoxes()

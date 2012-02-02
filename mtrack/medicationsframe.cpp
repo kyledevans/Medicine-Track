@@ -43,7 +43,7 @@ MedicationsFrame::~MedicationsFrame()
 }
 
 /* SQL command without C++
-SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.amount, drugs.am_units, SUM( shipments.product_left )
+SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.am_units, SUM( shipments.product_left )
 FROM drugs
 LEFT JOIN shipments ON drugs.id = shipments.drug_id
 WHERE drugs.name LIKE 'SOME_VAR'
@@ -57,14 +57,14 @@ void MedicationsFrame::initiateSearch(int medID)
 	AlertInterface alert;
 
 	if (medID == SQL::Undefined_ID) {
-		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.amount, drugs.am_units, SUM( shipments.product_left ) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
+		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.am_units, SUM( shipments.product_left ) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
 		query += SQL::cleanInput(ui->nameField->text()) + QString("%'");
 		if (ui->activeCheckbox->isChecked()) {
 			query += QString(" AND drugs.active = '1'");
 		}
 		query += QString(" GROUP BY drugs.id;");
 	} else {
-		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.amount, drugs.am_units, SUM( shipments.product_left ) FROM drugs LEFT JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
+		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.am_units, SUM( shipments.product_left ) FROM drugs LEFT JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
 		query += QString().setNum(medID) + QString("' GROUP BY drugs.id;");
 	}
 
@@ -88,9 +88,8 @@ void MedicationsFrame::initiateSearch(int medID)
 	model->setHeaderData(2, Qt::Horizontal, tr("Form"));
 	model->setHeaderData(3, Qt::Horizontal, tr("Strength"));
 	model->setHeaderData(4, Qt::Horizontal, tr("Units"));
-	model->setHeaderData(5, Qt::Horizontal, tr("Amount"));
-	model->setHeaderData(6, Qt::Horizontal, tr("Units"));
-	model->setHeaderData(7, Qt::Horizontal, tr("Stock"));
+	model->setHeaderData(5, Qt::Horizontal, tr("Dispensed units"));
+	model->setHeaderData(6, Qt::Horizontal, tr("Stock"));
 
 	ui->resultTable->setModel(model);
 
