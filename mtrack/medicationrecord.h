@@ -23,7 +23,8 @@ public:
 	int form;				// drugs.form
 	int strength;			// drugs.strength
 	QString str_units;		// drugs.str_units
-	QString am_units;		// drugs.am_units
+	QString dispense_units;	// drugs.dispense_units
+	QString unit_size;		// drugs.unit_size
 	QString instructions;	// drugs.instructions
 	bool active;			// drugs.active
 

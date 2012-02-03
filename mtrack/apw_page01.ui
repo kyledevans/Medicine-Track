@@ -117,6 +117,29 @@
        </widget>
       </item>
       <item>
+       <spacer name="horizontalSpacer_10">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="unitSizeLabel">
+        <property name="text">
+         <string>UNIT_SIZE</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_3">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -163,9 +186,9 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="amUnitsLabel">
+        <widget class="QLabel" name="dispenseUnitsLabel">
          <property name="text">
-          <string>AM UNITS</string>
+          <string>DISPENSE UNITS</string>
          </property>
         </widget>
        </item>

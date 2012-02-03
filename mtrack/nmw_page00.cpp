@@ -41,7 +41,8 @@ NMW_Page00::NMW_Page00(QWidget *parent) :
 	registerField("formField", ui->formField);
 	registerField("strengthField", ui->strengthField);
 	registerField("strUnitsField", ui->strUnitsField);
-	registerField("amUnitsField", ui->amUnitsField);
+	registerField("dispenseUnitsField", ui->dispenseUnitsField);
+	registerField("unitSizeField", ui->unitSizeField);
 	registerField("activeField", ui->activeField);
 }
 
@@ -64,6 +65,7 @@ void NMW_Page00::getResults(MedicationRecord *med)
 	med->form = ui->formField->itemData(ui->formField->currentIndex()).toInt();
 	med->strength = ui->strengthField->text().toInt();
 	med->str_units = ui->strUnitsField->text();
-	med->am_units = ui->amUnitsField->text();
+	med->dispense_units = ui->dispenseUnitsField->text();
+	med->unit_size = ui->unitSizeField->text();
 	med->active = ui->activeField->isChecked();
 }

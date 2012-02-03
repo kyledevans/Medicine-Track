@@ -48,13 +48,13 @@ void APW_Page00::setPrescription(PrescriptionRecord *new_prescription)
 }
 
 /* SQL without C++:
-SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength,
-drugs.str_units, drugs.amount, drugs.am_units, shipments.product_left
+SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units),
+drugs.unit_size, shipments.product_left
 FROM shipments
 JOIN drugs ON drugs.id = shipments.drug_id
 WHERE shipments.active = '1'
-AND drugs.active = 1
-AND shipments.expiration < CURDATE()
+AND drugs.active = '1'
+AND shipments.expiration > CURDATE()
 AND drugs.name LIKE '%SOME_VAL%';
 */
 void APW_Page00::initiateSearch()
@@ -65,7 +65,7 @@ void APW_Page00::initiateSearch()
 
 	model = new QSqlQueryModel(ui->resultTable);
 
-	query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength, drugs.str_units, drugs.amount, drugs.am_units, shipments.product_left FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.active = '1' AND drugs.active = 1 AND shipments.expiration < CURDATE() AND drugs.name LIKE '%");
+	query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), drugs.unit_size, shipments.product_left FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.active = '1' AND drugs.active = '1' AND shipments.expiration > CURDATE() AND drugs.name LIKE '%");
 	query += SQL::cleanInput(ui->medicationField->text()) + QString("%';");
 
 	if (!alert.attemptQuery(model, &query)) {
