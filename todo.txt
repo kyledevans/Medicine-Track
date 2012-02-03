@@ -6,8 +6,6 @@ Released under the GPL version 2 only.
 
 2.  Possible feature is to be able to combine patients into 1.  IE: the clerk fails to find the existing patient record when filling a prescription and instead creates a duplicate patient record.
 
-3.  Maybe make the drug form to be an enum type.  IE: Tablet, Capsule, etc.
-
 4.  Need to be able to print new barcodes after a shipment has been registered in the database.  IE: The barcodes are destroyed somehow.
 
 5.  It would be nice if when in the inventory screen, the user could print a report detailing who received a prescription by lot number.  IE: There is a recall on the drug and we need to start making calls to patients.
@@ -18,15 +16,9 @@ Released under the GPL version 2 only.
 
 9.  Figure out how the database will handle users being idle for a long time.
 
-10.  Make some kind of error reporting feature.  Nothing too fancy at first.
-
-11.  Combine the prescribers and pharmacists tab into 1
-
 12.  Combine the prescribers and pharmacists tables into 1
 
-13.  Need to make the drugs.strength, drugs.amount, and prescriptions.amount into type INT.  Then add corresponding VARCHAR fields that will indicate units.
-
-14.  Liquid drugs can be either dispensed in discrete amounts(IE: give the entire bottle to a patient) or measured out and dispensed from a large bottle.
+13.  Figure out how to write off inventory.  Should there simply be a 'write off' flag?  Or perhaps more flags like 'expired', 'defect', 'destroyed', etc.
 
 
 -----
