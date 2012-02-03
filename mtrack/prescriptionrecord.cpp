@@ -9,6 +9,7 @@ Released under the GPL version 2 only.
 #include <QVariant>
 #include <QSqlRecord>
 #include <QSqlQuery>
+#include <QSqlDatabase>
 
 #include "prescriptionrecord.h"
 
@@ -72,9 +73,15 @@ bool PrescriptionRecord::retrieve(int newId)
 }
 
 /* SQL without C++:
+START TRANSACTION;
 INSERT INTO prescriptions (patient_id, drug_id, shipment_id, prescriber_id,
 pharmacist_id, amount, dose_size, written, filled, instructions)
 VALUES (...);
+
+UPDATE shipments
+SET shipments.product_left = (shipments.product_left - 'SOME_VAL')
+WHERE shipments.id = 'SOME_VAL';
+COMMIT;
 
 UPDATE prescriptions
 SET patient_id = 'SOME_VAL', drug_id = 'SOME_VAL', shipment_id = 'SOME_VAL',
@@ -87,10 +94,13 @@ bool PrescriptionRecord::commitRecord()
 	QSqlQueryModel *model;
 	QString query;
 	AlertInterface alert;
+	QSqlDatabase db;
 
 	model = new QSqlQueryModel();
 
 	if (!exists) {
+		db = QSqlDatabase::database();	// Get the default DB
+		db.transaction();
 		query = QString("INSERT INTO prescriptions (patient_id, drug_id, shipment_id, prescriber_id, pharmacist_id, amount, dose_size, written, filled, instructions) VALUES ('");
 		query += QString().setNum(patient_id) + QString("', '");
 		query += QString().setNum(drug_id) + QString("', '");
@@ -102,14 +112,32 @@ bool PrescriptionRecord::commitRecord()
 		query += written.toString("yyyy-MM-dd") + QString("', '");
 		query += filled.toString("yyyy-MM-dd") + QString("', '");
 		query += SQL::cleanNoMatching(instructions) + QString("');");
+
+		if (!alert.attemptQuery(model, &query)) {
+			delete model;
+			db.rollback();
+			return false;
+		}
+
+		// Update the inventory
+		query = QString("UPDATE shipments SET shipments.product_left = (shipments.product_left - '");
+		query += QString().setNum(amount) + QString("') WHERE shipments.id = '");
+		query += QString().setNum(shipment_id) + QString("';");
+
+		if (!alert.attemptQuery(model, &query)) {
+			db.rollback();
+			qDebug() << "db.rollback()";
+			delete model;
+			return false;
+		} else {
+			db.commit();
+			qDebug() << "db.commit()";
+			delete model;
+			return true;
+		}
 	}
 
 	// TODO: This does not update an existing record yet
-
-	if (!alert.attemptQuery(model, &query)) {
-		delete model;
-		return false;
-	}
 
 	if (!exists) {
 		id = model->query().lastInsertId().toInt();

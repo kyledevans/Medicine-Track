@@ -3,6 +3,9 @@
 -- Released under the GPL version 2 only.
 --
 
+SET GLOBAL sql_mode='STRICT_TRANS_TABLES';
+
+--------------------------------------------------------
 
 --
 -- Database: 'epc'
