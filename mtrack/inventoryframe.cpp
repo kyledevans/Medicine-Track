@@ -9,6 +9,7 @@ Released under the GPL version 2 only.
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QSqlError>
+#include <QInputDialog>
 
 #include <QDebug>
 
@@ -27,8 +28,10 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
+	connect(ui->writeOffAction, SIGNAL(triggered()), this, SLOT(initiateWriteOff()));
 
 	ui->resultTable->addAction(ui->modifyAction);
+	ui->resultTable->addAction(ui->writeOffAction);
 }
 
 InventoryFrame::~InventoryFrame()
@@ -37,7 +40,7 @@ InventoryFrame::~InventoryFrame()
 }
 
 
-/*  SQL without C++.  Numbers in () indicate column and are not SQL:
+/*  SQL without C++:
 SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot,
 shipments.product_count, shipments.product_left
 FROM shipments
@@ -148,5 +151,37 @@ void InventoryFrame::submitModify(ShipmentRecord *shipment)
 
 void InventoryFrame::shipmentCleanup(ShipmentRecord *shipment)
 {
+	delete shipment;
+}
+
+void InventoryFrame::initiateWriteOff()
+{
+	unsigned int row, wo_amount;
+	ShipmentRecord *shipment;
+	bool ok;
+
+	shipment = new ShipmentRecord();
+
+	if (db_queried) {
+		if (!ui->resultTable->selectionModel()->hasSelection()) {
+			return;
+		}
+	} else {
+		return;
+	}
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+	if (!shipment->retrieve(ids[row])) {
+		return;
+	}
+
+	// Get from the user how many to write off
+	wo_amount = QInputDialog::getInt(this, "Write off inventory", "How many additional units do you want to write off?", 0, 0, shipment->product_left, 1, &ok);
+	if (ok && wo_amount > 0) {
+		shipment->addWriteOff(wo_amount);
+	}
+
+	initiateSearch(shipment->id);
 	delete shipment;
 }

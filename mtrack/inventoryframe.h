@@ -30,6 +30,7 @@ public slots:
 	void initiateModify();
 	void submitModify(ShipmentRecord *);
 	void shipmentCleanup(ShipmentRecord *);
+	void initiateWriteOff();
 
 private:
     Ui::InventoryFrame *ui;

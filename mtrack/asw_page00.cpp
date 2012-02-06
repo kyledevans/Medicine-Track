@@ -21,6 +21,7 @@ ASW_Page00::ASW_Page00(QWidget *parent) :
 	registerField("lotField", ui->lotField);
 	registerField("unitsField", ui->unitsField);
 	registerField("stockField", ui->stockField);
+	registerField("writeOffField", ui->writeOffField);
 	registerField("activeField", ui->activeField);
 }
 
@@ -35,5 +36,6 @@ void ASW_Page00::getResults(ShipmentRecord *shipment)
 	shipment->lot = ui->lotField->text();
 	shipment->product_count = ui->unitsField->text().toInt();
 	shipment->product_left = ui->stockField->text().toInt();
+	shipment->write_off = ui->writeOffField->text().toInt();
 	shipment->active = ui->activeField->isChecked();
 }

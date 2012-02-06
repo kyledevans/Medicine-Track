@@ -23,13 +23,14 @@ ShipmentRecord::ShipmentRecord(QObject *parent):
 	drug_id(SQL::Undefined_ID),
 	product_count(-1),
 	product_left(-1),
+	write_off(0),
 	active(true),
 	exists(false)
 {
 }
 
 /* SQL without C++:
-SELECT drug_id, expiration, lot, product_count, product_left, active
+SELECT drug_id, expiration, lot, product_count, product_left, write_off, active
 FROM shipments
 WHERE id = 'SOME_VAL';
 */
@@ -44,7 +45,7 @@ bool ShipmentRecord::retrieve(int newId)
 	}
 
 	model = new QSqlQueryModel;
-	query += QString("SELECT drug_id, expiration, lot, product_count, product_left, active FROM shipments WHERE id = '");
+	query += QString("SELECT drug_id, expiration, lot, product_count, product_left, write_off, active FROM shipments WHERE id = '");
 	query += QString().setNum(newId) + QString("';");
 
 	if (!alert.attemptQuery(model, &query)) {
@@ -57,7 +58,8 @@ bool ShipmentRecord::retrieve(int newId)
 	lot = model->record(0).value(2).toString();
 	product_count = model->record(0).value(3).toInt();
 	product_left = model->record(0).value(4).toInt();
-	active = model->record(0).value(5).toBool();
+	write_off = model->record(0).value(5).toInt();
+	active = model->record(0).value(6).toBool();
 	exists = true;
 
 	delete model;
@@ -65,12 +67,12 @@ bool ShipmentRecord::retrieve(int newId)
 }
 
 /* SQL without C++:
-INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left, active)
+INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left, write_off, active)
 VALUES ('SOME_VAL', 'SOME_VAL', 'SOME_VAL', 'SOME_VAL');
 
 UPDATE shipments
-SET drug_id = 'SOME_VAL', expiration = 'SOME_VAL', lot = 'SOME_VAL',
-product_count = 'SOME_VAL', product_left = 'SOME_VAL', active = 'SOME_VAL'
+SET drug_id = 'SOME_VAL', expiration = 'SOME_VAL', lot = 'SOME_VAL', product_count = 'SOME_VAL',
+product_left = 'SOME_VAL', write_off = 'SOME_VAL', active = 'SOME_VAL'
 WHERE id = 'SOME_VAL';
 */
 bool ShipmentRecord::commitRecord()
@@ -82,12 +84,13 @@ bool ShipmentRecord::commitRecord()
 	model = new QSqlQueryModel;
 
 	if (!exists) {
-		query = QString("INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left, active) VALUES ('");
+		query = QString("INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left, write_off, active) VALUES ('");
 		query += QString().setNum(drug_id) + QString("', '");
 		query += expiration.toString("yyyy-MM-dd") + QString("', '");
 		query += SQL::cleanNoMatching(lot) + QString("', '");
 		query += QString().setNum(product_count) + QString("', '");
 		query += QString().setNum(product_left) + QString("', '");
+		query += QString().setNum(write_off) + QString("', '");
 		if (active) {
 			query += QString("1');");
 		} else {
@@ -99,7 +102,8 @@ bool ShipmentRecord::commitRecord()
 		query += expiration.toString("yyyy-MM-dd") + QString("', lot = '");
 		query += SQL::cleanNoMatching(lot) + QString("', product_count = '");
 		query += QString().setNum(product_count) + QString("', product_left = '");
-		query += QString().setNum(product_left) + QString("', active = '");
+		query += QString().setNum(product_left) + QString("', write_off = '");
+		query += QString().setNum(write_off) + QString("', active = '");
 		if (active) {
 			query += QString("1' ");
 		} else {
@@ -123,7 +127,39 @@ bool ShipmentRecord::commitRecord()
 	return true;
 }
 
+/* SQL without C++:
+UPDATE shipments
+SET product_left = (shipments.product_left - SOME_VAL), write_off = (shipments.write_off + SOME_VAL)
+WHERE id = 'SOME_VAL';
+*/
+bool ShipmentRecord::addWriteOff(int wo_amount)
+{
+	QSqlQueryModel *model;
+	QString query;
+	AlertInterface alert;
+
+	if (!exists) {
+		write_off += wo_amount;
+		product_left -= wo_amount;
+		return commitRecord();
+	}
+
+	model = new QSqlQueryModel;
+	query = QString("UPDATE shipments SET product_left = (shipments.product_left - ");
+	query += QString().setNum(wo_amount) + QString("), write_off = (shipments.write_off + ");
+	query += QString().setNum(wo_amount) + QString(") WHERE id = '");
+	query += QString().setNum(id) + QString("';");
+
+	if (!alert.attemptQuery(model, &query)) {
+		delete model;
+		return false;
+	}
+
+	delete model;
+	return true;
+}
+
 void ShipmentRecord::print()
 {
-	qDebug() << "id =" << id << ", drug_id =" << drug_id << ", expiration =" << expiration.toString("yyyy-MM-dd") << ", lot =" << lot << ", product_count =" << product_count << ", product_left =" << product_left << ", active =" << active;
+	qDebug() << "id =" << id << ", drug_id =" << drug_id << ", expiration =" << expiration.toString("yyyy-MM-dd") << ", lot =" << lot << ", product_count =" << product_count << ", product_left =" << product_left << ", write_off =" << write_off << ", active =" << active;
 }

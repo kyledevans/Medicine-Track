@@ -310,6 +310,14 @@
     <string>Modify stock information</string>
    </property>
   </action>
+  <action name="writeOffAction">
+   <property name="text">
+    <string>Write Off...</string>
+   </property>
+   <property name="toolTip">
+    <string>Write off a specified amount of stock.</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
