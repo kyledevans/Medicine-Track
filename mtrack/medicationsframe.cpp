@@ -71,7 +71,6 @@ void MedicationsFrame::initiateSearch(int medID)
 			shipment.retrieve(barcode.toID());
 			query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.dispense_units, drugs.unit_size, SUM( shipments.product_left ) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
 			query += QString().setNum(shipment.drug_id) + QString("' GROUP BY drugs.id;");
-			qDebug() << query;
 		}
 	} else {
 		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.dispense_units, drugs.unit_size, SUM( shipments.product_left ) FROM drugs LEFT JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
