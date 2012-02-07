@@ -31,6 +31,7 @@ public slots:
 	void submitModify(ShipmentRecord *);
 	void shipmentCleanup(ShipmentRecord *);
 	void initiateWriteOff();
+	void initiatePrintBarcode();
 
 private:
     Ui::InventoryFrame *ui;

@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     alterprescriptionwizard.cpp \
     apw_page00.cpp \
     apw_page01.cpp \
-    apw_page02.cpp
+    apw_page02.cpp \
+    barcodelabel.cpp
 
 HEADERS  += mainwindow.h \
     patientsearch.h \
@@ -73,7 +74,8 @@ HEADERS  += mainwindow.h \
     alterprescriptionwizard.h \
     apw_page00.h \
     apw_page01.h \
-    apw_page02.h
+    apw_page02.h \
+    barcodelabel.h
 
 FORMS    += mainwindow.ui \
     patientsearch.ui \
@@ -97,8 +99,12 @@ FORMS    += mainwindow.ui \
     alterprescriptionwizard.ui \
     apw_page00.ui \
     apw_page01.ui \
-    apw_page02.ui
+    apw_page02.ui \
+    barcodelabel.ui
 
 OTHER_FILES += \
     database_info.txt \
     barcodes.txt
+
+
+

@@ -18,6 +18,7 @@ Released under the GPL version 2 only.
 
 #include "altershipmentwizard.h"
 #include "alertinterface.h"
+#include "barcodelabel.h"
 
 InventoryFrame::InventoryFrame(QWidget *parent) :
     QFrame(parent),
@@ -29,9 +30,11 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->writeOffAction, SIGNAL(triggered()), this, SLOT(initiateWriteOff()));
+	connect(ui->printBarcodeAction, SIGNAL(triggered()), this, SLOT(initiatePrintBarcode()));
 
 	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->writeOffAction);
+	ui->resultTable->addAction(ui->printBarcodeAction);
 }
 
 InventoryFrame::~InventoryFrame()
@@ -184,4 +187,24 @@ void InventoryFrame::initiateWriteOff()
 
 	initiateSearch(shipment->id);
 	delete shipment;
+}
+
+void InventoryFrame::initiatePrintBarcode()
+{
+	unsigned int row;
+	BarcodeLabel label;
+
+	if (db_queried) {
+		if (!ui->resultTable->selectionModel()->hasSelection()) {
+			return;
+		}
+	} else {
+		return;
+	}
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	label.setBarcode(QString("SID") + QString().setNum(ids[row]));
+	label.print();
 }

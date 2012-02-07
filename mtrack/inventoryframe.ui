@@ -318,6 +318,14 @@
     <string>Write off a specified amount of stock.</string>
    </property>
   </action>
+  <action name="printBarcodeAction">
+   <property name="text">
+    <string>Print Barcode</string>
+   </property>
+   <property name="toolTip">
+    <string>Print a barcode</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
