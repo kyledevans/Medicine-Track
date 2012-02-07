@@ -60,6 +60,7 @@ void InventoryFrame::initiateSearch(int shipID)
 	QString query;
 	QSqlQueryModel *model;
 	AlertInterface alert;
+	BarcodeLabel barcode;
 
 	model = new QSqlQueryModel(ui->resultTable);
 
@@ -76,6 +77,11 @@ void InventoryFrame::initiateSearch(int shipID)
 		}
 		if (ui->expiredCheckbox->isChecked()) {	// Expired checkbox
 			query += QString(" AND shipments.expiration < CURDATE()");
+		}
+		if (!ui->barcodeField->text().isEmpty()) {	// If we're searching based on barcode, just ignore every other qualifier
+			query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE shipments.id = '");
+			barcode.setBarcode(ui->barcodeField->text());
+			query += QString().setNum(barcode.toID()) + QString("'");
 		}
 		query += QString(";");
 	} else {

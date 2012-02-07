@@ -13,6 +13,8 @@ Released under the GPL version 2 only.
 #include "barcodelabel.h"
 #include "ui_barcodelabel.h"
 
+#include "globals.h"
+
 BarcodeLabel::BarcodeLabel(QWidget *parent) :
     QFrame(parent),
 	ui(new Ui::BarcodeLabel),
@@ -57,6 +59,27 @@ void BarcodeLabel::print()
 	if (!has_barcode) {
 		return;
 	}
+}
+
+int BarcodeLabel::toID()
+{
+	QString temp;
+	bool ok;
+	int id;
+
+
+	if (!has_barcode) {
+		return SQL::Undefined_ID;
+	}
+
+	temp = barcode;
+	temp.remove("SID");
+	temp.remove('*');
+	id = temp.toInt(&ok);
+	if (!ok) {
+		return SQL::Undefined_ID;
+	}
+	return id;
 }
 
 void BarcodeLabel::printLabel(QPrinter *printer)

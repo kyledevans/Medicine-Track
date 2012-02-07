@@ -21,6 +21,7 @@ Released under the GPL version 2 only.
 #include "globals.h"
 #include "alertinterface.h"
 #include "shipmentrecord.h"
+#include "barcodelabel.h"
 
 MedicationsFrame::MedicationsFrame(QWidget *parent) :
     QFrame(parent),
@@ -55,6 +56,8 @@ void MedicationsFrame::initiateSearch(int medID)
 	QString query;
 	QSqlQueryModel *model;
 	AlertInterface alert;
+	BarcodeLabel barcode;
+	ShipmentRecord shipment;
 
 	if (medID == SQL::Undefined_ID) {
 		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.dispense_units, drugs.unit_size, SUM( shipments.product_left ) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
@@ -63,6 +66,13 @@ void MedicationsFrame::initiateSearch(int medID)
 			query += QString(" AND drugs.active = '1'");
 		}
 		query += QString(" GROUP BY drugs.id;");
+		barcode.setBarcode(ui->nameField->text());
+		if (barcode.toID() != SQL::Undefined_ID) {
+			shipment.retrieve(barcode.toID());
+			query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.dispense_units, drugs.unit_size, SUM( shipments.product_left ) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
+			query += QString().setNum(shipment.drug_id) + QString("' GROUP BY drugs.id;");
+			qDebug() << query;
+		}
 	} else {
 		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.dispense_units, drugs.unit_size, SUM( shipments.product_left ) FROM drugs LEFT JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
 		query += QString().setNum(medID) + QString("' GROUP BY drugs.id;");

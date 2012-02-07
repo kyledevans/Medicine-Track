@@ -28,6 +28,8 @@ public:
 	QString getBarcode();
 	bool hasBarcode();
 
+	int toID();
+
 	void print();
 
 private slots:
