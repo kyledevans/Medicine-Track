@@ -10,6 +10,7 @@ Released under the GPL version 2 only.
 #include <QWizardPage>
 
 #include "prescriptionrecord.h"
+#include "medicationrecord.h"
 
 namespace Ui {
     class APW_Page02;
@@ -24,6 +25,8 @@ public:
     ~APW_Page02();
 
 	void setPrescription(PrescriptionRecord *);
+	void setMedication(MedicationRecord *);
+	void medUpdated();
 
 	bool initCustom();
 	void getResults();
@@ -32,6 +35,7 @@ private:
     Ui::APW_Page02 *ui;
 
 	PrescriptionRecord *prescription;
+	MedicationRecord *medication;
 };
 
 #endif // APW_PAGE02_H

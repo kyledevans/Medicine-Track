@@ -4,6 +4,8 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QIntValidator>
+
 #include "asw_page00.h"
 #include "ui_asw_page00.h"
 
@@ -14,6 +16,11 @@ ASW_Page00::ASW_Page00(QWidget *parent) :
     ui(new Ui::ASW_Page00)
 {
     ui->setupUi(this);
+
+	QValidator *numbers = new QIntValidator(this);
+	ui->stockField->setValidator(numbers);
+	ui->unitsField->setValidator(numbers);
+	ui->writeOffField->setValidator(numbers);
 
 	ui->expireField->setDate(DEFAULTS::Date);
 

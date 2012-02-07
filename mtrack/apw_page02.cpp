@@ -25,6 +25,16 @@ void APW_Page02::setPrescription(PrescriptionRecord *new_prescription)
 	prescription = new_prescription;
 }
 
+void APW_Page02::setMedication(MedicationRecord *new_medication)
+{
+	medication = new_medication;
+}
+
+void APW_Page02::medUpdated()
+{
+	ui->instructionsField->setPlainText(medication->instructions);
+}
+
 void APW_Page02::getResults()
 {
 	prescription->instructions = ui->instructionsField->toPlainText();

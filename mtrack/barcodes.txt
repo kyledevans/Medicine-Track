@@ -3,4 +3,4 @@ I recommend using Code-39-Logitogo.ttf.
 
 Encodings:
 
-shipments.id    SHIP(ID)
+shipments.id    SID(ID)

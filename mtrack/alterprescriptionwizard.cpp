@@ -27,6 +27,7 @@ AlterPrescriptionWizard::AlterPrescriptionWizard(QWidget *parent) :
 	shipment = new ShipmentRecord;
 
 	ui->page1->setMedication(medication);
+	ui->page2->setMedication(medication);
 }
 
 AlterPrescriptionWizard::~AlterPrescriptionWizard()
@@ -68,6 +69,7 @@ void AlterPrescriptionWizard::changeMedication(int new_id)
 	prescription->shipment_id = shipment->id;
 	prescription->drug_id = medication->id;
 	ui->page1->medUpdated();
+	ui->page2->medUpdated();
 }
 
 void AlterPrescriptionWizard::setPrescription(PrescriptionRecord *new_prescription)
