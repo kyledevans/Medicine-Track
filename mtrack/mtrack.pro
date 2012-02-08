@@ -104,7 +104,9 @@ FORMS    += mainwindow.ui \
 
 OTHER_FILES += \
     database_info.txt \
-    barcodes.txt
+    barcodes.txt \
+    build_instructions.txt
+
 
 
 
