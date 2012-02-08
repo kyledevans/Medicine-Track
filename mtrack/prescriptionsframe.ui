@@ -364,6 +364,14 @@
     <string>Modify past prescription information</string>
    </property>
   </action>
+  <action name="printAction">
+   <property name="text">
+    <string>Print Label</string>
+   </property>
+   <property name="toolTip">
+    <string>Print a label for the prescription</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>

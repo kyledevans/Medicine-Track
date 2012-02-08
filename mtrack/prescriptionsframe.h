@@ -26,6 +26,7 @@ public slots:
 	void initiateSearch();
 	void resetPressed();
 	void initiateModify();
+	void initiatePrint();
 
 private:
     Ui::PrescriptionsFrame *ui;

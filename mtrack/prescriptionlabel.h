@@ -11,6 +11,11 @@ Released under the GPL version 2 only.
 #include <QPrinter>
 
 #include "prescriptionrecord.h"
+#include "prescriberrecord.h"
+#include "pharmacistrecord.h"
+#include "patientrecord.h"
+#include "medicationrecord.h"
+#include "shipmentrecord.h"
 
 namespace Ui {
 	class PrescriptionLabel;
@@ -32,7 +37,13 @@ public slots:
 
 private:
 	Ui::PrescriptionLabel *ui;
-	PrescriptionRecord *pres;
+
+	PrescriptionRecord *prescription;
+	PrescriberRecord *prescriber;
+	PharmacistRecord *pharmacist;
+	PatientRecord *patient;
+	MedicationRecord *medication;
+	ShipmentRecord *shipment;
 };
 
 #endif // PRESCRIPTIONLABEL_H

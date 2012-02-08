@@ -87,6 +87,7 @@ void BarcodeLabel::printLabel(QPrinter *printer)
 	QPainter painter;
 
 	ui->barcodeLabel->setText(barcode);
+	ui->asciiLabel->setText(getBarcode());
 
 	painter.begin(printer);
 	painter.scale(7.0, 7.0);

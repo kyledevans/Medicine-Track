@@ -17,7 +17,8 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-MedicationRecord::MedicationRecord():
+MedicationRecord::MedicationRecord(QObject *parent):
+	QObject(parent),
 	id(SQL::Undefined_ID),
 	form(FORM_INT::Undefined),
 	active(true),
@@ -45,6 +46,7 @@ bool MedicationRecord::retrieve(int newId)
 	query += QString().setNum(newId) + QString("';");
 
 	if (!alert.attemptQuery(model, &query)) {
+		delete model;
 		return false;	// Query failed
 	}
 

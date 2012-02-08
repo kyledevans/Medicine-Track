@@ -22,6 +22,7 @@ Released under the GPL version 2 only.
 #include "newpatientwizard.h"
 #include "alertinterface.h"
 #include "alterprescriptionwizard.h"
+#include "prescriptionlabel.h"
 
 PatientSearch::PatientSearch(QWidget *parent) :
 	QFrame(parent),
@@ -201,6 +202,7 @@ void PatientSearch::initiateNewPatient()
 void PatientSearch::submitNewPrescription(PrescriptionRecord *prescription)
 {
 	prescription->commitRecord();
+	initiatePrint(prescription);
 	newPrescriptionCleanup(prescription);
 }
 
@@ -224,4 +226,25 @@ void PatientSearch::newPatientCleanup(PatientRecord *patient)
 void PatientSearch::submitModify(PatientRecord *patient)
 {
 
+}
+
+void PatientSearch::initiatePrint(PrescriptionRecord *prescription)
+{
+	PrescriptionLabel *label;
+	unsigned int row;
+
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return;
+	}
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	label = new PrescriptionLabel(prescription);
+	label->printLabel();
+
+	delete label;
 }

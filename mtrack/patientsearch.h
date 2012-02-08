@@ -40,7 +40,10 @@ public slots:
 	void newPrescriptionCleanup(PrescriptionRecord *);
 
 private:
+	void initiatePrint(PrescriptionRecord *);
+
     Ui::PatientSearch *ui;
+
 	QList<int> ids;		// Contains the patient id's of the current query
 	bool db_queried;	// Indicates if the result table has a model
 };

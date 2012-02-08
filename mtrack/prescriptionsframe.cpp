@@ -13,6 +13,8 @@ Released under the GPL version 2 only.
 #include "prescriptionsframe.h"
 #include "ui_prescriptionsframe.h"
 
+#include "prescriptionlabel.h"
+
 PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :
     QFrame(parent),
 	ui(new Ui::PrescriptionsFrame),
@@ -23,8 +25,10 @@ PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
+	connect(ui->printAction, SIGNAL(triggered()), this, SLOT(initiatePrint()));
 
 	ui->resultTable->addAction(ui->modifyAction);
+	ui->resultTable->addAction(ui->printAction);
 }
 
 PrescriptionsFrame::~PrescriptionsFrame()
@@ -137,5 +141,29 @@ void PrescriptionsFrame::initiateModify()
 			qDebug() << "prescriptions.id = " << presIds[row] << " | patients.id = " << patientIds[row] << " | drugs.id = " << drugIds[row] << " | shipments.id = " << shipmentIds[row];
 		}
 	}
+}
+
+void PrescriptionsFrame::initiatePrint()
+{
+	PrescriptionLabel *label;
+	unsigned int row;
+	PrescriptionRecord *pres;
+
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return;
+	}
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	pres = new PrescriptionRecord;
+	pres->retrieve(presIds[row]);
+	label = new PrescriptionLabel(pres);
+	label->printLabel();
+
+	delete label;
 }
 
