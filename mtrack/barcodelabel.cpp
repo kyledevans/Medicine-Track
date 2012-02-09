@@ -7,6 +7,7 @@ Released under the GPL version 2 only.
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QPainter>
+#include <QSizeF>
 
 #include <QDebug>
 
@@ -85,12 +86,18 @@ int BarcodeLabel::toID()
 void BarcodeLabel::printLabel(QPrinter *printer)
 {
 	QPainter painter;
+	QSizeF size(1.125, 3.5);
+
+	setFixedSize(1125, 3500);
+
+	printer->setPaperSize(size, QPrinter::Inch);
+	printer->setOrientation(QPrinter::Landscape);
 
 	ui->barcodeLabel->setText(barcode);
 	ui->asciiLabel->setText(getBarcode());
 
 	painter.begin(printer);
-	painter.scale(7.0, 7.0);
+	painter.scale(3.0, 3.0);
 	this->render(&painter);
 	painter.end();
 }

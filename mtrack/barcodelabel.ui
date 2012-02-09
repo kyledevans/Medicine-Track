@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>589</width>
-    <height>420</height>
+    <width>534</width>
+    <height>124</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,8 +25,8 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>40</y>
+     <x>10</x>
+     <y>0</y>
      <width>491</width>
      <height>113</height>
     </rect>
@@ -44,13 +44,11 @@
        <font>
         <family>Code-39-Logitogo</family>
         <pointsize>24</pointsize>
+        <kerning>false</kerning>
        </font>
       </property>
       <property name="text">
-       <string>TextLabel</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <string>*SID15*</string>
       </property>
      </widget>
     </item>
@@ -81,9 +79,6 @@
       </property>
       <property name="text">
        <string>TextLabel</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
