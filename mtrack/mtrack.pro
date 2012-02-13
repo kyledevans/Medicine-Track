@@ -8,6 +8,7 @@ QT       += core gui sql
 
 TARGET = mtrack
 TEMPLATE = app
+CONFIG += embed_manifests_exe
 
 
 SOURCES += main.cpp\

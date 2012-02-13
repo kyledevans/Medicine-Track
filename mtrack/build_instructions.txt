@@ -1,7 +1,9 @@
-Here's the Qt build options that I think will probably work.  For MSVC 2010 builds:
--release -opensource -static -accessibility -no-stl -no-sql-sqlite -qt-sql-mysql -no-qt3support -no-opengl -no-gif -no-libpng -no-libmng -no-libtiff -no-libjpeg -no-openssl -no-dbus -no-phonon -no-phonon-backend -no-multimedia -no-audio-backend -no-webkit -no-script -no-scripttools -no-declarative -no-declarative-debug -no-style-plastique -no-style-cleanlooks -no-style-motif -no-style-cde -no-style-windowsce -no-style-windowsmobile -no-style-s60
+Here are the build flags for Qt when using MSVC 2010:
+configure -release -opensource -nomake examples -nomake demos -static -plugin-manifests -accessibility -no-stl -no-sql-sqlite -qt-sql-mysql -no-qt3support -no-xmlpatterns -no-opengl -no-gif -no-libpng -no-libmng -no-libtiff -no-libjpeg -no-openssl -no-dbus -no-phonon -no-phonon-backend -no-multimedia -no-audio-backend -no-webkit -no-script -no-scripttools -no-declarative -no-declarative-debug -no-style-plastique -no-style-cleanlooks -no-style-motif -no-style-cde -no-style-windowsce -no-style-windowsmobile -no-style-s60 -I C:\PROGRA~2\MySQL\MYSQLS~1.5\include -L C:\PROGRA~2\MySQL\MYSQLS~1.5\lib
 
 Also, you might want to change the build options, though I haven't tried these yet:
--O1 -Og  -GL -MD
+-O1 -Og -GL -MD
 
 You need to set these at the QMAKE_CFLAGS_RELEASE variable in your C:\PATH_TO_QT\mkspecs\win32-msvc2010\qmake.conf
+
+For usually more up to date information, check the project wiki on gitorious.
