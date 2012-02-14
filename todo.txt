@@ -18,8 +18,7 @@ Released under the GPL version 2 only.
 
 12.  Combine the prescribers and pharmacists tables into 1
 
-13.  Figure out how to write off inventory.  Should there simply be a 'write off' flag?  Or perhaps more flags like 'expired', 'defect', 'destroyed', etc.
-
+13.  See if converting the resultTables into QTableWidgets helps when trying to detect if a user has made a selection.
 
 -----
 
