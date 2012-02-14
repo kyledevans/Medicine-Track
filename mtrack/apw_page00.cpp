@@ -50,7 +50,7 @@ void APW_Page00::setPrescription(PrescriptionRecord *new_prescription)
 
 /* SQL without C++:
 SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units),
-drugs.unit_size, shipments.product_left
+drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units)
 FROM shipments
 JOIN drugs ON drugs.id = shipments.drug_id
 WHERE shipments.active = '1'
@@ -67,13 +67,13 @@ void APW_Page00::initiateSearch()
 
 	model = new QSqlQueryModel(ui->resultTable);
 
-	query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), drugs.unit_size, shipments.product_left FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.active = '1' AND drugs.active = '1' AND shipments.expiration > CURDATE() AND drugs.name LIKE '%");
+    query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units) FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.active = '1' AND drugs.active = '1' AND shipments.expiration > CURDATE() AND drugs.name LIKE '%");
 	query += SQL::cleanInput(ui->medicationField->text()) + QString("%';");
 
 	if (!ui->medicationField->text().isEmpty()) {
 		barcode.setBarcode(ui->medicationField->text());
 		if (barcode.toID() != SQL::Undefined_ID) {
-			query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), drugs.unit_size, shipments.product_left FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.id = '");
+            query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units) FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.id = '");
 			query += QString().setNum(barcode.toID()) + QString("';");
 		}
 	}
@@ -88,6 +88,15 @@ void APW_Page00::initiateSearch()
 	for (int i = 0; i < model->rowCount(); i++) {
 		ids.append(model->record(i).value(0).toInt());
 	}
+
+    model->removeColumn(0);
+    model->removeColumn(0);
+
+    model->setHeaderData(0, Qt::Horizontal, tr("Medication"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Form"));
+    model->setHeaderData(2, Qt::Horizontal, tr("Strength"));
+    model->setHeaderData(3, Qt::Horizontal, tr("Unit size"));
+    model->setHeaderData(4, Qt::Horizontal, tr("Stock"));
 
 	ui->resultTable->setModel(model);
 

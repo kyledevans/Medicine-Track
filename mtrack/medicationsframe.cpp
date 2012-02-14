@@ -44,7 +44,7 @@ MedicationsFrame::~MedicationsFrame()
 }
 
 /* SQL command without C++
-SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.dispense_units, drugs.unit_size, SUM( shipments.product_left )
+SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), drugs.unit_size, CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units)
 FROM drugs
 LEFT JOIN shipments ON drugs.id = shipments.drug_id
 WHERE drugs.name LIKE 'SOME_VAR'
@@ -60,7 +60,7 @@ void MedicationsFrame::initiateSearch(int medID)
 	ShipmentRecord shipment;
 
 	if (medID == SQL::Undefined_ID) {
-		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.dispense_units, drugs.unit_size, SUM( shipments.product_left ) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
+        query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), drugs.unit_size, CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
 		query += SQL::cleanInput(ui->nameField->text()) + QString("%'");
 		if (ui->activeCheckbox->isChecked()) {
 			query += QString(" AND drugs.active = '1'");
@@ -69,11 +69,11 @@ void MedicationsFrame::initiateSearch(int medID)
 		barcode.setBarcode(ui->nameField->text());
 		if (barcode.toID() != SQL::Undefined_ID) {
 			shipment.retrieve(barcode.toID());
-			query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.dispense_units, drugs.unit_size, SUM( shipments.product_left ) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
+            query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), drugs.unit_size, CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
 			query += QString().setNum(shipment.drug_id) + QString("' GROUP BY drugs.id;");
 		}
 	} else {
-		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.str_units, drugs.dispense_units, drugs.unit_size, SUM( shipments.product_left ) FROM drugs LEFT JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
+        query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), drugs.unit_size, CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) FROM drugs LEFT JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
 		query += QString().setNum(medID) + QString("' GROUP BY drugs.id;");
 	}
 
@@ -96,10 +96,8 @@ void MedicationsFrame::initiateSearch(int medID)
 	model->setHeaderData(1, Qt::Horizontal, tr("NDC"));
 	model->setHeaderData(2, Qt::Horizontal, tr("Form"));
 	model->setHeaderData(3, Qt::Horizontal, tr("Strength"));
-	model->setHeaderData(4, Qt::Horizontal, tr("Units"));
-	model->setHeaderData(5, Qt::Horizontal, tr("Dispensed units"));
-	model->setHeaderData(6, Qt::Horizontal, tr("Unit size"));
-	model->setHeaderData(7, Qt::Horizontal, tr("Stock"));
+    model->setHeaderData(4, Qt::Horizontal, tr("Unit size"));
+    model->setHeaderData(5, Qt::Horizontal, tr("Stock"));
 
 	ui->resultTable->setModel(model);
 
