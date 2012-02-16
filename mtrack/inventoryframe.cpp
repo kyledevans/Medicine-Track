@@ -5,11 +5,11 @@ Released under the GPL version 2 only.
 */
 
 #include <QString>
-#include <QSqlQueryModel>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QSqlError>
 #include <QInputDialog>
+#include <QTableWidgetItem>
 
 #include <QDebug>
 
@@ -31,6 +31,7 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->writeOffAction, SIGNAL(triggered()), this, SLOT(initiateWriteOff()));
 	connect(ui->printBarcodeAction, SIGNAL(triggered()), this, SLOT(initiatePrintBarcode()));
+	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 
 	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->writeOffAction);
@@ -58,11 +59,10 @@ AND shipments.expiration < CURDATE();
 void InventoryFrame::initiateSearch(int shipID)
 {
 	QString query;
-	QSqlQueryModel *model;
+	QSqlQuery *model;
 	AlertInterface alert;
 	BarcodeLabel barcode;
-
-	model = new QSqlQueryModel(ui->resultTable);
+	int i;					// Increment var
 
 	if (shipID == SQL::Undefined_ID) {
 		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE drugs.name LIKE '%");
@@ -89,35 +89,40 @@ void InventoryFrame::initiateSearch(int shipID)
 		query += QString().setNum(shipID) + QString("';");
 	}
 
+		model = new QSqlQuery;
 	if (!alert.attemptQuery(model, &query)) {
 		delete model;
 		return;
 	}
 
 	ids.clear();
-	// Retrieve the ID's before we remove them from the display
-	for (int i = 0; i < model->rowCount(); i++) {
-		ids.append(model->record(i).value(0).toInt());
-		//drugIds.append(model->record(i).value(1).toInt());
+	ui->resultTable->clearContents();
+	ui->resultTable->setRowCount(model->size());
+	for (i = 0; i < model->size(); i++) {
+		model->next();
+		ids.append(model->value(0).toInt());    // Retrieve the ID's before they get deleted
+		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
+		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
+		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
+		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toString()));
+		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(5).toString()));
+		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(6).toString()));
+		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(7).toString()));
 	}
 
-	model->removeColumn(0);
-
-	model->setHeaderData(0, Qt::Horizontal, tr("Medication"));
-	model->setHeaderData(1, Qt::Horizontal, tr("Form"));
-	model->setHeaderData(2, Qt::Horizontal, tr("Strength"));
-	model->setHeaderData(3, Qt::Horizontal, tr("Expiration"));
-	model->setHeaderData(4, Qt::Horizontal, tr("Lot #"));
-	model->setHeaderData(5, Qt::Horizontal, tr("Units ordered"));
-	model->setHeaderData(6, Qt::Horizontal, tr("Units stocked"));
-
-	ui->resultTable->setModel(model);
-
 	db_queried = true;
-	if (model->rowCount() > 0) {
+}
+
+void InventoryFrame::selectionChanged()
+{
+	if (ui->resultTable->selectionModel()->hasSelection()) {
 		ui->modifyButton->setEnabled(true);
+		ui->printBarcodeAction->setEnabled(true);
+		ui->modifyAction->setEnabled(true);
 	} else {
 		ui->modifyButton->setEnabled(false);
+		ui->printBarcodeAction->setEnabled(false);
+		ui->modifyAction->setEnabled(false);
 	}
 }
 
