@@ -29,13 +29,15 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
 	db_queried(false)
 {
     ui->setupUi(this);
+	ui->resultTable->addAction(ui->modifyAction);
 
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->newMedicationAction, SIGNAL(triggered()), this, SLOT(initiateNewMed()));
 	connect(ui->newStockAction, SIGNAL(triggered()), this, SLOT(initiateNewShipment()));
+	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 
-	ui->resultTable->addAction(ui->modifyAction);
+	selectionChanged();
 }
 
 MedicationsFrame::~MedicationsFrame()
@@ -101,6 +103,21 @@ void MedicationsFrame::initiateSearch(int medID)
 
 	db_queried = true;
     delete model;
+}
+
+void MedicationsFrame::selectionChanged()
+{
+	if (ui->resultTable->selectionModel()->hasSelection()) {
+		ui->newStockButton->setEnabled(true);
+		ui->newStockAction->setEnabled(true);
+		ui->modifyButton->setEnabled(true);
+		ui->modifyAction->setEnabled(true);
+	} else {
+		ui->newStockButton->setEnabled(false);
+		ui->newStockAction->setEnabled(false);
+		ui->modifyButton->setEnabled(false);
+		ui->modifyAction->setEnabled(false);
+	}
 }
 
 void MedicationsFrame::initiateNewMed()

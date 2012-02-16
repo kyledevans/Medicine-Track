@@ -40,6 +40,8 @@ public slots:
 	void submitNewShipment(ShipmentRecord *);
 	void shipmentCleanup(ShipmentRecord *);
 
+	void selectionChanged();
+
 private:
     Ui::MedicationsFrame *ui;
 	QList<int> ids;					// Contains the drug id's of the current query

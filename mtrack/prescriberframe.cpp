@@ -5,10 +5,8 @@ Released under the GPL version 2 only.
 */
 
 #include <QString>
-#include <QSqlQueryModel>
+#include <QSqlQuery>
 #include <QSqlRecord>
-#include <QAction>
-#include <QMenu>
 #include <QList>
 
 #include "prescriberframe.h"
@@ -25,12 +23,14 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
 	db_queried(false)
 {
     ui->setupUi(this);
+	ui->resultTable->addAction(ui->modifyAction);
 
 	connect(ui->newAction, SIGNAL(triggered()), this, SLOT(initiateNew()));
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
+	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 
-	ui->resultTable->addAction(ui->modifyAction);
+	selectionChanged();
 }
 
 PrescriberFrame::~PrescriberFrame()
@@ -47,11 +47,10 @@ AND active = '1';
 */
 void PrescriberFrame::initiateSearch(int presID)
 {
-	QSqlQueryModel *model;	// DB interface
+	QSqlQuery *model;       // DB interface
 	QString query;			// Holds the SQL query
 	AlertInterface alert;	// Handles problems
-
-	model = new QSqlQueryModel(ui->resultTable);
+	int i;                  // Increment var
 
 	if (presID == SQL::Undefined_ID) {
 		query = QString("SELECT id, last, first, full_name FROM prescribers WHERE last LIKE '%");
@@ -62,24 +61,37 @@ void PrescriberFrame::initiateSearch(int presID)
 		query += QString().setNum(presID) + QString("';");
 	}
 
+	model = new QSqlQuery;
+
 	if (!alert.attemptQuery(model, &query)) {	// On error, cleanup and exit
 		delete model;
 		return;
 	}
 
 	ids.clear();
-	// Retrieve the ID's before we remove them from the display
-	for (int i = 0; i < model->rowCount(); i++) {
-		ids.append(model->record(i).value("id").toInt());
+	ui->resultTable->clearContents();
+	ui->resultTable->setRowCount(model->size());
+	for (i = 0; i < model->size(); i++) {
+		model->next();
+		ids.append(model->value(0).toInt());	// Retrieve the ID's before they get deleted
+		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
+		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
+		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
 	}
 
-	model->removeColumn(0);
-	model->setHeaderData(0, Qt::Horizontal, tr("Last Name"));
-	model->setHeaderData(1, Qt::Horizontal, tr("First Name"));
-	model->setHeaderData(2, Qt::Horizontal, tr("Initials"));
-
-	ui->resultTable->setModel(model);
 	db_queried = true;
+	delete model;
+}
+
+void PrescriberFrame::selectionChanged()
+{
+	if (ui->resultTable->selectionModel()->hasSelection()) {
+		ui->modifyButton->setEnabled(true);
+		ui->modifyAction->setEnabled(true);
+	} else {
+		ui->modifyButton->setEnabled(false);
+		ui->modifyAction->setEnabled(false);
+	}
 }
 
 void PrescriberFrame::initiateNew()

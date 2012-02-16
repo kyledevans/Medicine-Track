@@ -5,7 +5,7 @@ Released under the GPL version 2 only.
 */
 
 #include <QVariant>
-#include <QIntValidator>
+#include <QDoubleValidator>
 
 #include "nmw_page00.h"
 #include "ui_nmw_page00.h"
@@ -19,7 +19,7 @@ NMW_Page00::NMW_Page00(QWidget *parent) :
 {
     ui->setupUi(this);
 
-	QValidator *numbers = new QIntValidator(this);
+	QValidator *numbers = new QDoubleValidator(this);
 	ui->strengthField->setValidator(numbers);
 
 	// Add entries to the "form" field
@@ -63,7 +63,7 @@ void NMW_Page00::getResults(MedicationRecord *med)
 	med->manufacturer = ui->manufacturerField->text();
 	med->ndc = ui->ndcField->text();
 	med->form = ui->formField->itemData(ui->formField->currentIndex()).toInt();
-	med->strength = ui->strengthField->text().toInt();
+	med->strength = ui->strengthField->text().toDouble();
 	med->str_units = ui->strUnitsField->text();
 	med->dispense_units = ui->dispenseUnitsField->text();
 	med->unit_size = ui->unitSizeField->text();

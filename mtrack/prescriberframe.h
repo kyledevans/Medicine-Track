@@ -31,6 +31,8 @@ public slots:
 	void newCleanup(PrescriberRecord *);
 	void initiateModify();
 
+	void selectionChanged();
+
 private:
     Ui::PrescriberFrame *ui;
 

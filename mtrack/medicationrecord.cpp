@@ -56,7 +56,7 @@ bool MedicationRecord::retrieve(int newId)
 	manufacturer = model->record(0).value(2).toString();
 	ndc = model->record(0).value(3).toString();
 	form = FORM_INT::strToInt(model->record(0).value(4).toString());
-	strength = model->record(0).value(5).toInt();
+	strength = model->record(0).value(5).toDouble();
 	str_units = model->record(0).value(6).toString();
 	dispense_units = model->record(0).value(7).toString();
 	unit_size = model->record(0).value(8).toString();
