@@ -9,6 +9,7 @@ Released under the GPL version 2 only.
 
 #include <QWidget>
 #include <QSqlQueryModel>
+#include <QSqlQuery>
 
 class AlertInterface : public QWidget
 {
@@ -17,6 +18,7 @@ public:
 	explicit AlertInterface(QWidget *parent = 0);
 
 	bool attemptQuery(QSqlQueryModel *, QString *);	// Returns true if succesful
+    bool attemptQuery(QSqlQuery *, QString *);      // Returns true if succesful
 	void databaseInaccessible();
 
 	void criticalError(QString);

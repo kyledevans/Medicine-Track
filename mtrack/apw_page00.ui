@@ -118,10 +118,42 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableView" name="resultTable">
+    <widget class="QTableWidget" name="resultTable">
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
+     <property name="rowCount">
+      <number>1</number>
+     </property>
+     <property name="columnCount">
+      <number>5</number>
+     </property>
+     <row/>
+     <column>
+      <property name="text">
+       <string>Medication</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Form</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Strength</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Unit size</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Stock</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>
