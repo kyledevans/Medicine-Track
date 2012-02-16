@@ -39,6 +39,8 @@ public slots:
 	void submitNewPrescription(PrescriptionRecord *);
 	void newPrescriptionCleanup(PrescriptionRecord *);
 
+	void selectionChanged();
+
 private:
 	void initiatePrint(PrescriptionRecord *);
 
