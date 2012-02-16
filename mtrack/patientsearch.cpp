@@ -42,6 +42,8 @@ PatientSearch::PatientSearch(QWidget *parent) :
 
 	ui->resultTable->addAction(ui->prescribeAction);
 	ui->resultTable->addAction(ui->modifyAction);
+
+	selectionChanged();
 }
 
 PatientSearch::~PatientSearch()
@@ -104,11 +106,11 @@ void PatientSearch::initiateSearch(int patientID)
 		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
 		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
 		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
-		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toString()));
+		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toDate().toString("MM-dd-yyyy")));
 	}
 
 	db_queried = true;	// Let other functions start accessing values in the table
-    delete model;
+	delete model;
 }
 
 void PatientSearch::selectionChanged()
@@ -117,15 +119,21 @@ void PatientSearch::selectionChanged()
 	if (ui->resultTable->selectionModel()->hasSelection()) {
 		ui->prescribeButton->setEnabled(true);
 		ui->modifyButton->setEnabled(true);
+		ui->prescribeAction->setEnabled(true);
+		ui->modifyAction->setEnabled(true);
 	} else {
 		ui->prescribeButton->setEnabled(false);
 		ui->modifyButton->setEnabled(false);
+		ui->prescribeAction->setEnabled(false);
+		ui->modifyAction->setEnabled(false);
 	}
 }
 
 void PatientSearch::resetPressed()
 {
 	ui->dobField->setDate(DEFAULTS::Date);
+	ui->resultTable->clearContents();
+	ui->resultTable->setRowCount(0);
 }
 
 void PatientSearch::initiatePrescription()
@@ -230,7 +238,7 @@ void PatientSearch::newPatientCleanup(PatientRecord *patient)
 
 void PatientSearch::submitModify(PatientRecord *patient)
 {
-
+	// TODO: Implement this
 }
 
 void PatientSearch::initiatePrint(PrescriptionRecord *prescription)

@@ -346,13 +346,71 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableView" name="resultTable">
+    <widget class="QTableWidget" name="resultTable">
      <property name="contextMenuPolicy">
       <enum>Qt::ActionsContextMenu</enum>
      </property>
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
+     <property name="columnCount">
+      <number>11</number>
+     </property>
+     <column>
+      <property name="text">
+       <string>M.R. Number</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Last name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>First name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>D.O.B.</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Medication</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Form</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Strength</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Amount</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Written date</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Filled date</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Lot number</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>

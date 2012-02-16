@@ -28,12 +28,12 @@ public slots:
 	void initiateModify();
 	void initiatePrint();
 
+	void selectionChanged();
+
 private:
     Ui::PrescriptionsFrame *ui;
-	QList<int> presIds;			// Contains prescription id's
-	QList<int> patientIds;		// Contains corresponding patient id's
-	QList<int> drugIds;			// Contains corresponding drug id's
-	QList<int> shipmentIds;		// Contains corresponding shipment id's
+
+	QList<int> ids;				// Contains prescription id's
 	bool db_queried;			// Indicates if the result table has a model
 };
 
