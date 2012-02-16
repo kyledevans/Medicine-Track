@@ -64,7 +64,6 @@ void APW_Page00::initiateSearch()
 	QSqlQuery *model;
 	AlertInterface alert;
 	BarcodeLabel barcode;
-	QTableWidgetItem *item;
 	int i;		// Increment variable
 
 	model = new QSqlQuery;
@@ -99,6 +98,7 @@ void APW_Page00::initiateSearch()
 	}
 
 	db_queried = true;
+    delete model;
 }
 
 void APW_Page00::resultSelected()

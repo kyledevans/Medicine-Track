@@ -108,6 +108,7 @@ void PatientSearch::initiateSearch(int patientID)
 	}
 
 	db_queried = true;	// Let other functions start accessing values in the table
+    delete model;
 }
 
 void PatientSearch::selectionChanged()

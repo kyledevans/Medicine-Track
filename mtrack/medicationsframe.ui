@@ -198,13 +198,46 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableView" name="resultTable">
+    <widget class="QTableWidget" name="resultTable">
      <property name="contextMenuPolicy">
       <enum>Qt::ActionsContextMenu</enum>
      </property>
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
+     <property name="columnCount">
+      <number>6</number>
+     </property>
+     <column>
+      <property name="text">
+       <string>Medication</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>NDC</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Form</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Strength</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Unit size</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Stock</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>

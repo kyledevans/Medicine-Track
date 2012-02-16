@@ -9,7 +9,7 @@ Released under the GPL version 2 only.
 #include <QSqlQueryModel>
 #include <QSqlQuery>
 #include <QSqlRecord>
-#include <QSqlError>
+#include <QTableWidgetItem>
 
 #include <QDebug>
 
@@ -54,10 +54,11 @@ GROUP BY drugs.id;
 void MedicationsFrame::initiateSearch(int medID)
 {
 	QString query;
-	QSqlQueryModel *model;
+    QSqlQuery *model;
 	AlertInterface alert;
 	BarcodeLabel barcode;
 	ShipmentRecord shipment;
+    int i;      // Increment var
 
 	if (medID == SQL::Undefined_ID) {
         query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), drugs.unit_size, CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
@@ -77,38 +78,29 @@ void MedicationsFrame::initiateSearch(int medID)
 		query += QString().setNum(medID) + QString("' GROUP BY drugs.id;");
 	}
 
-	model = new QSqlQueryModel(ui->resultTable);
+    model = new QSqlQuery;
 
 	if (!alert.attemptQuery(model, &query)) {
 		delete model;
 		return;
 	}
 
-	ids.clear();
-	// Retrieve the ID's before we remove them from the display
-	for (int i = 0; i < model->rowCount(); i++) {
-		ids.append(model->record(i).value(0).toInt());
-	}
-
-	model->removeColumn(0);
-
-	model->setHeaderData(0, Qt::Horizontal, tr("Medication"));
-	model->setHeaderData(1, Qt::Horizontal, tr("NDC"));
-	model->setHeaderData(2, Qt::Horizontal, tr("Form"));
-	model->setHeaderData(3, Qt::Horizontal, tr("Strength"));
-    model->setHeaderData(4, Qt::Horizontal, tr("Unit size"));
-    model->setHeaderData(5, Qt::Horizontal, tr("Stock"));
-
-	ui->resultTable->setModel(model);
+    ids.clear();
+    ui->resultTable->clearContents();
+    ui->resultTable->setRowCount(model->size());
+    for (i = 0; i < model->size(); i++) {
+        model->next();
+        ids.append(model->value(i).toInt());    // Retrieve the ID's before they get deleted
+        ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
+        ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
+        ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
+        ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toString()));
+        ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(5).toString()));
+        ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(6).toString()));
+    }
 
 	db_queried = true;
-	if (model->rowCount() > 0) {
-		ui->modifyButton->setEnabled(true);
-		ui->newStockButton->setEnabled(true);
-	} else {
-		ui->modifyButton->setEnabled(false);
-		ui->newStockButton->setEnabled(false);
-	}
+    delete model;
 }
 
 void MedicationsFrame::initiateNewMed()
