@@ -90,7 +90,7 @@ void MedicationsFrame::initiateSearch(int medID)
     ui->resultTable->setRowCount(model->size());
     for (i = 0; i < model->size(); i++) {
         model->next();
-        ids.append(model->value(0).toInt());    // Retrieve the ID's before they get deleted
+		ids.append(model->value(0).toInt());	// Retrieve the ID's before they get deleted
         ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
         ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
         ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));

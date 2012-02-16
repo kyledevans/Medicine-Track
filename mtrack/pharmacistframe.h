@@ -32,6 +32,8 @@ public slots:
 	void newCleanup(PharmacistRecord *);	// Cleans up after the new/modify wizard
 	void initiateModify();
 
+	void selectionChanged();
+
 private:
     Ui::PharmacistFrame *ui;
 
