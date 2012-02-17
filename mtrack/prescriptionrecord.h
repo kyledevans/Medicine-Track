@@ -37,6 +37,8 @@ public:
 	bool retrieve(int);		// (int) is the prescription id.  Returns false if retrieve fails
 	bool commitRecord();	// Returns false if the procedure failed
 	void print();			// Prints to the default debug interface
+
+
 };
 
 #endif // PRESCRIPTIONRECORD_H

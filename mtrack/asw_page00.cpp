@@ -17,6 +17,26 @@ ASW_Page00::ASW_Page00(QWidget *parent) :
 {
     ui->setupUi(this);
 
+	ui->expireLabel->setText(ShipmentRecord::expiration_Label);
+	ui->expireLabel->setToolTip(ShipmentRecord::expiration_Tooltip);
+	ui->expireField->setToolTip(ShipmentRecord::expiration_Tooltip);
+
+	ui->lotLabel->setText(ShipmentRecord::lot_Label);
+	ui->lotLabel->setToolTip(ShipmentRecord::lot_Tooltip);
+	ui->lotField->setToolTip(ShipmentRecord::lot_Tooltip);
+
+	ui->unitsLabel->setText(ShipmentRecord::product_count_Label);
+	ui->unitsLabel->setToolTip(ShipmentRecord::product_count_Tooltip);
+	ui->unitsField->setToolTip(ShipmentRecord::product_count_Tooltip);
+
+	ui->stockLabel->setText(ShipmentRecord::product_left_Label);
+	ui->stockLabel->setToolTip(ShipmentRecord::product_left_Tooltip);
+	ui->stockField->setToolTip(ShipmentRecord::product_left_Tooltip);
+
+	ui->writeOffLabel->setText(ShipmentRecord::write_off_Label);
+	ui->writeOffLabel->setToolTip(ShipmentRecord::write_off_Tooltip);
+	ui->writeOffField->setToolTip(ShipmentRecord::write_off_Tooltip);
+
 	QValidator *numbers = new QIntValidator(this);
 	ui->stockField->setValidator(numbers);
 	ui->unitsField->setValidator(numbers);

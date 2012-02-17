@@ -167,6 +167,12 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>mrNumberField</tabstop>
+  <tabstop>lastField</tabstop>
+  <tabstop>firstField</tabstop>
+  <tabstop>dobField</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

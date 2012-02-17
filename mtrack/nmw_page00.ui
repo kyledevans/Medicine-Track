@@ -375,6 +375,18 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>medicationField</tabstop>
+  <tabstop>genericField</tabstop>
+  <tabstop>manufacturerField</tabstop>
+  <tabstop>ndcField</tabstop>
+  <tabstop>strengthField</tabstop>
+  <tabstop>strUnitsField</tabstop>
+  <tabstop>formField</tabstop>
+  <tabstop>dispenseUnitsField</tabstop>
+  <tabstop>unitSizeField</tabstop>
+  <tabstop>activeField</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

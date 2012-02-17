@@ -37,6 +37,37 @@ public:
 	bool commitRecord();	// Inserts (or updates) the record in the db
 
 	void print();			// Prints to the debug interface
+
+	/* Use these to keep UI strings consistent and sane. */
+	static const QString name_Label;
+	static const QString name_Tooltip;
+
+	static const QString generic_Label;
+	static const QString generic_Tooltip;
+
+	static const QString manufacturer_Label;
+	static const QString manufacturer_Tooltip;
+
+	static const QString ndc_Label;
+	static const QString ndc_Tooltip;
+
+	static const QString form_Label;
+	static const QString form_Tooltip;
+
+	static const QString strength_Label;
+	static const QString strength_Tooltip;
+
+	static const QString str_units_Label;
+	static const QString str_units_Tooltip;
+
+	static const QString dispense_units_Label;
+	static const QString dispense_units_Tooltip;
+
+	static const QString unit_size_Label;
+	static const QString unit_size_Tooltip;
+
+	static const QString instructions_Label;
+	static const QString instructions_Tooltip;
 };
 
 #endif // MEDICATIONRECORD_H

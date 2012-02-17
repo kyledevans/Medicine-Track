@@ -380,6 +380,14 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>amountField</tabstop>
+  <tabstop>doseField</tabstop>
+  <tabstop>writtenField</tabstop>
+  <tabstop>filledField</tabstop>
+  <tabstop>writtenByField</tabstop>
+  <tabstop>filledByField</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

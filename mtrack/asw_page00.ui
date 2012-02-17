@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QLabel" name="expireLabel">
      <property name="text">
-      <string>Expiration date</string>
+      <string>EXPIRATION</string>
      </property>
     </widget>
    </item>
@@ -48,7 +48,7 @@
    <item row="1" column="0">
     <widget class="QLabel" name="lotLabel">
      <property name="text">
-      <string>Lot #</string>
+      <string>LOT</string>
      </property>
     </widget>
    </item>
@@ -88,7 +88,7 @@
    <item row="2" column="0">
     <widget class="QLabel" name="unitsLabel">
      <property name="text">
-      <string>Units in shipment</string>
+      <string>STOCK RECEIVED</string>
      </property>
     </widget>
    </item>
@@ -128,7 +128,7 @@
    <item row="3" column="0">
     <widget class="QLabel" name="stockLabel">
      <property name="text">
-      <string>Units in stock</string>
+      <string>STOCK LEFT</string>
      </property>
     </widget>
    </item>
@@ -166,9 +166,9 @@
     </layout>
    </item>
    <item row="4" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="writeOffLabel">
      <property name="text">
-      <string>Write off</string>
+      <string>WRITE OFF</string>
      </property>
     </widget>
    </item>
@@ -220,6 +220,14 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>expireField</tabstop>
+  <tabstop>lotField</tabstop>
+  <tabstop>unitsField</tabstop>
+  <tabstop>stockField</tabstop>
+  <tabstop>writeOffField</tabstop>
+  <tabstop>activeField</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

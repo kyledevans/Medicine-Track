@@ -25,7 +25,7 @@
      <item>
       <widget class="QLabel" name="nameLabel">
        <property name="text">
-        <string>Name</string>
+        <string>NAME</string>
        </property>
       </widget>
      </item>
@@ -64,7 +64,7 @@
      <item>
       <widget class="QLabel" name="lotLabel">
        <property name="text">
-        <string>Lot #</string>
+        <string>LOT NUMBER</string>
        </property>
       </widget>
      </item>
@@ -103,7 +103,7 @@
      <item>
       <widget class="QLabel" name="barcodeLabel">
        <property name="text">
-        <string>Barcode</string>
+        <string>BARCODE</string>
        </property>
       </widget>
      </item>
@@ -300,44 +300,46 @@
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
      <property name="columnCount">
-      <number>8</number>
+      <number>7</number>
      </property>
+     <attribute name="horizontalHeaderMinimumSectionSize">
+      <number>100</number>
+     </attribute>
      <column>
       <property name="text">
-       <string>Medication</string>
+       <string>MEDICATION</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Form</string>
+       <string>FORM</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Strength</string>
+       <string>STRENGTH</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Expiration</string>
+       <string>EXPIRATION</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Lot #</string>
+       <string>LOT NUMBER</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Units ordered</string>
+       <string>UNITS ORDERED</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Units left</string>
+       <string>UNITS LEFT</string>
       </property>
      </column>
-     <column/>
     </widget>
    </item>
   </layout>

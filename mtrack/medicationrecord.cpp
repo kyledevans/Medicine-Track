@@ -17,6 +17,37 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
+
+const QString MedicationRecord::name_Label("Medication");
+const QString MedicationRecord::name_Tooltip("Name of the medication");
+
+const QString MedicationRecord::generic_Label("Generic for");
+const QString MedicationRecord::generic_Tooltip("Brand name of medication (empty for none)");
+
+const QString MedicationRecord::manufacturer_Label("Manufacturer");
+const QString MedicationRecord::manufacturer_Tooltip("Manufacturer");
+
+const QString MedicationRecord::ndc_Label("NDC");
+const QString MedicationRecord::ndc_Tooltip("National Drug Code");
+
+const QString MedicationRecord::form_Label("Form");
+const QString MedicationRecord::form_Tooltip("Medication form");
+
+const QString MedicationRecord::strength_Label("Strength");
+const QString MedicationRecord::strength_Tooltip("Strength (only numbers)");
+
+const QString MedicationRecord::str_units_Label("Strength units");
+const QString MedicationRecord::str_units_Tooltip("Units of measurement for strength");
+
+const QString MedicationRecord::dispense_units_Label("Dispense units");
+const QString MedicationRecord::dispense_units_Tooltip("Dispense units can be anything: bottles, capsules, etc.");
+
+const QString MedicationRecord::unit_size_Label("Unit size (optional)");
+const QString MedicationRecord::unit_size_Tooltip("Size of a single unit. IE: A \"75 ml\" bottle");
+
+const QString MedicationRecord::instructions_Label("Instructions");
+const QString MedicationRecord::instructions_Tooltip("Default instructions for the patient");
+
 MedicationRecord::MedicationRecord(QObject *parent):
 	QObject(parent),
 	id(SQL::Undefined_ID),

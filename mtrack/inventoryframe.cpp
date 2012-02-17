@@ -19,20 +19,70 @@ Released under the GPL version 2 only.
 #include "altershipmentwizard.h"
 #include "alertinterface.h"
 #include "barcodelabel.h"
+#include "shipmentrecord.h"
+#include "medicationrecord.h"
 
 InventoryFrame::InventoryFrame(QWidget *parent) :
     QFrame(parent),
 	ui(new Ui::InventoryFrame),
 	db_queried(false)
 {
+	QTableWidgetItem *header;
     ui->setupUi(this);
 
+	// Set the various strings and tooltips for the search interface
+	ui->nameLabel->setText(MedicationRecord::name_Label);
+	ui->nameLabel->setToolTip(MedicationRecord::name_Tooltip);
+	ui->nameField->setToolTip(MedicationRecord::name_Tooltip);
+
+	ui->lotLabel->setText(ShipmentRecord::lot_Label);
+	ui->lotLabel->setToolTip(ShipmentRecord::lot_Tooltip);
+	ui->lotField->setToolTip(ShipmentRecord::lot_Tooltip);
+
+	ui->barcodeLabel->setText(ShipmentRecord::barcode_Label);
+	ui->barcodeLabel->setToolTip(ShipmentRecord::barcode_Tooltip);
+	ui->barcodeField->setToolTip(ShipmentRecord::barcode_Tooltip);
+
+	// Set the various strings and tooltips for the resultTable
+	header = ui->resultTable->horizontalHeaderItem(0);
+	header->setText(MedicationRecord::name_Label);
+	header->setToolTip(MedicationRecord::name_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(1);
+	header->setText(MedicationRecord::form_Label);
+	header->setToolTip(MedicationRecord::form_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(2);
+	header->setText(MedicationRecord::strength_Label);
+	header->setToolTip(MedicationRecord::strength_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(3);
+	header->setText(ShipmentRecord::expiration_Label);
+	header->setToolTip(ShipmentRecord::expiration_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(4);
+	header->setText(ShipmentRecord::lot_Label);
+	header->setToolTip(ShipmentRecord::lot_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(5);
+	header->setText(ShipmentRecord::product_count_Label);
+	header->setToolTip(ShipmentRecord::product_count_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(6);
+	header->setText(ShipmentRecord::product_left_Label);
+	header->setToolTip(ShipmentRecord::product_left_Tooltip);
+
+	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+
+	// Connecting various signals/slots...
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->writeOffAction, SIGNAL(triggered()), this, SLOT(initiateWriteOff()));
 	connect(ui->printBarcodeAction, SIGNAL(triggered()), this, SLOT(initiatePrintBarcode()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
+	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
 
+	// Add items to the resultTable right-click menu
 	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->writeOffAction);
 	ui->resultTable->addAction(ui->printBarcodeAction);
@@ -43,6 +93,11 @@ InventoryFrame::~InventoryFrame()
     delete ui;
 }
 
+void InventoryFrame::resetPressed()
+{
+	ui->resultTable->clearContents();
+	ui->resultTable->setRowCount(0);
+}
 
 /*  SQL without C++:
 SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot,

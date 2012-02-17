@@ -33,7 +33,9 @@ public slots:
 	void initiateWriteOff();
 	void initiatePrintBarcode();
 
-        void selectionChanged();
+	void resetPressed();
+
+	void selectionChanged();
 
 private:
     Ui::InventoryFrame *ui;

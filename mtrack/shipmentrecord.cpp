@@ -17,6 +17,27 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
+const QString ShipmentRecord::expiration_Label("Expiration");
+const QString ShipmentRecord::expiration_Tooltip("Expiration date");
+
+const QString ShipmentRecord::lot_Label("Lot #");
+const QString ShipmentRecord::lot_Tooltip("Lot number");
+
+const QString ShipmentRecord::product_count_Label("Inventory received");
+const QString ShipmentRecord::product_count_Tooltip("How many units were received");
+
+const QString ShipmentRecord::product_left_Label("Inventory left");
+const QString ShipmentRecord::product_left_Tooltip("How much inventory is left after prescriptions and write-offs");
+
+const QString ShipmentRecord::write_off_Label("Write off");
+const QString ShipmentRecord::write_off_Tooltip("Write off inventory");
+
+const QString ShipmentRecord::name_barcode_Label("Medication/Barcode");
+const QString ShipmentRecord::name_barcode_Tooltip("Medication name or shipment barcode");
+
+const QString ShipmentRecord::barcode_Label("Barcode");
+const QString ShipmentRecord::barcode_Tooltip("Shipment barcode");
+
 ShipmentRecord::ShipmentRecord(QObject *parent):
 	QObject(parent),
 	id(SQL::Undefined_ID),
