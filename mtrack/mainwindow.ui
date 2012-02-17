@@ -52,7 +52,7 @@
     <property name="title">
      <string>Tools</string>
     </property>
-    <addaction name="actionOptions"/>
+    <addaction name="optionsAction"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -72,7 +72,7 @@
     <string>Ctrl+Q</string>
    </property>
   </action>
-  <action name="actionOptions">
+  <action name="optionsAction">
    <property name="text">
     <string>Options</string>
    </property>

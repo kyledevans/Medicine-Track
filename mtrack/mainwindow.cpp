@@ -4,6 +4,8 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include "mtsettings.h"
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "patientsearch.h"
@@ -14,6 +16,9 @@ Released under the GPL version 2 only.
 #include "alertinterface.h"
 #include "prescriberframe.h"
 #include "pharmacistframe.h"
+#include "mtconfig.h"
+
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -45,6 +50,14 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->mainTabs->addTab(inventoryFrame, QString("Inventory"));
 	ui->mainTabs->addTab(prescriberFrame, QString("Prescribers"));
 	ui->mainTabs->addTab(pharmacistFrame, QString("Pharmacists"));
+
+	connect(ui->optionsAction, SIGNAL(triggered()), this, SLOT(initiateOptions()));
+}
+
+void MainWindow::initiateOptions()
+{
+	MTConfig config;
+	config.exec();
 }
 
 MainWindow::~MainWindow()
@@ -55,66 +68,22 @@ MainWindow::~MainWindow()
 
 bool MainWindow::importSettings()
 {
-	QSettings settings(QSettings::IniFormat, QSettings::UserScope, QCoreApplication::organizationName(), QCoreApplication::applicationName());
-	QVariant val;
+	MTSettings *settings;
 
-	settings.setFallbacksEnabled(false);
+	settings = new MTSettings(QCoreApplication::organizationName(), QCoreApplication::applicationName());
 
-	val = settings.value("configversion", -1.0);
-
-	if (val.toDouble() < 0.0) {	// Need to fill in default settings
-		if (!writeDefaults(&settings)) {
-			return false;
-		}
+	if (!settings->importSettings()) {
+		qDebug() << "Failed to read settings";
 	}
 
-	val = settings.value("db host", "-1");
-	db.setHostName(val.toString());
+	db.setHostName(settings->db_host);
+	db.setDatabaseName(settings->db_name);
+	db.setUserName(settings->db_user);
+	db.setPassword(settings->db_password);
 
-	val = settings.value("db name");
-	db.setDatabaseName(val.toString());
+	connectDB();
 
-	val = settings.value("db user");
-	db.setUserName(val.toString());
-
-	val = settings.value("db password");
-	db.setPassword(val.toString());
-
-	return true;
-}
-
-bool MainWindow::writeDefaults(QSettings *settings)
-{
-	QVariant val;
-
-	val = settings->value("configversion", -1);
-	if (val.toString().contains("-1")) {	// Need to fill in default settings
-		settings->setValue("config version", DEFAULTS::ConfigVersion);
-	} else if (val.toDouble() >= DEFAULTS::ConfigIncompatible) {
-		return false;	// Config file is not compatible
-	} else if (val.toDouble() < DEFAULTS::ConfigMajor) {
-		return false;	// Config file is an earlier version and not compatible
-	}
-	val = settings->value("db host", "-1");
-	if (val.toString().contains("-1")) {
-		settings->setValue("db host", DEFAULTS::DBHost);
-	}
-	val = settings->value("db name", "-1");
-	if (val.toString().contains("-1")) {
-		settings->setValue("db name", DEFAULTS::DBName);
-	}
-	val = settings->value("db user", "-1");
-	if (val.toString().contains("-1")) {
-		settings->setValue("db user", DEFAULTS::DBUser);
-	}
-	val = settings->value("db password", "-1");
-	if (val.toString().contains("-1")) {
-		settings->setValue("db password", DEFAULTS::DBPassword);
-	}
-	val = settings->value("manager", "-1");
-	if (val.toString().contains("-1")) {
-		settings->setValue("manager", DEFAULTS::ManagerEnabled);
-	}
+	delete settings;
 	return true;
 }
 
