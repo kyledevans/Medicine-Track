@@ -38,7 +38,21 @@ public:
 	bool commitRecord();	// Returns false if the procedure failed
 	void print();			// Prints to the default debug interface
 
+	/* Use these to keep UI strings consistent and sane. */
+	static const QString amount_Label;
+	static const QString amount_Tooltip;
 
+	static const QString dose_size_Label;
+	static const QString dose_size_Tooltip;
+
+	static const QString written_Label;
+	static const QString written_Tooltip;
+
+	static const QString filled_Label;
+	static const QString filled_Tooltip;
+
+	static const QString instructions_Label;
+	static const QString instructions_Tooltip;
 };
 
 #endif // PRESCRIPTIONRECORD_H

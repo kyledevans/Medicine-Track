@@ -29,6 +29,19 @@ public:
 
 	bool retrieve(int);	// (int) is the patient id. Returns false if the retrieve failed
 	bool commitRecord();	// Inserts (or updates) the record in the db
+
+	/* Use these to keep UI strings consistent and sane. */
+	static const QString allscripts_id_Label;
+	static const QString allscripts_id_Tooltip;
+
+	static const QString last_Label;
+	static const QString last_Tooltip;
+
+	static const QString first_Label;
+	static const QString first_Tooltip;
+
+	static const QString dob_Label;
+	static const QString dob_Tooltip;
 };
 
 #endif // PATIENTRECORD_H

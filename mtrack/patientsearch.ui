@@ -26,7 +26,7 @@
       <item>
        <widget class="QLabel" name="lastNameLabel">
         <property name="text">
-         <string>Last</string>
+         <string>LAST</string>
         </property>
        </widget>
       </item>
@@ -65,7 +65,7 @@
       <item>
        <widget class="QLabel" name="firstNameLabel">
         <property name="text">
-         <string>First</string>
+         <string>FIRST</string>
         </property>
        </widget>
       </item>
@@ -104,7 +104,7 @@
       <item>
        <widget class="QLabel" name="dobLabel">
         <property name="text">
-         <string>D.O.B.</string>
+         <string>DOB</string>
         </property>
        </widget>
       </item>
@@ -254,22 +254,22 @@
      </property>
      <column>
       <property name="text">
-       <string>M.R. Number</string>
+       <string>MR NUMBER</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Last</string>
+       <string>LAST</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>First</string>
+       <string>FIRST</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>D.O.B.</string>
+       <string>DOB</string>
       </property>
      </column>
     </widget>

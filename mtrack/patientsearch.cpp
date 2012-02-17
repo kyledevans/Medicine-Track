@@ -29,10 +29,42 @@ PatientSearch::PatientSearch(QWidget *parent) :
 	ui(new Ui::PatientSearch),
 	db_queried(false)
 {
+	QTableWidgetItem *header;
     ui->setupUi(this);
+
+	// Setup the search UI strings and tooltips
+	ui->lastNameLabel->setText(PatientRecord::last_Label);
+	ui->lastNameLabel->setToolTip(PatientRecord::last_Tooltip);
+	ui->lastNameField->setToolTip(PatientRecord::last_Tooltip);
+
+	ui->firstNameLabel->setText(PatientRecord::first_Label);
+	ui->firstNameLabel->setToolTip(PatientRecord::first_Tooltip);
+	ui->firstNameField->setToolTip(PatientRecord::first_Tooltip);
+
+	ui->dobLabel->setText(PatientRecord::dob_Label);
+	ui->dobLabel->setToolTip(PatientRecord::dob_Tooltip);
+	ui->dobField->setToolTip(PatientRecord::dob_Tooltip);
+
+	// Setup the resultTable strings and tooltips
+	header = ui->resultTable->horizontalHeaderItem(0);
+	header->setText(PatientRecord::allscripts_id_Label);
+	header->setToolTip(PatientRecord::allscripts_id_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(1);
+	header->setText(PatientRecord::last_Label);
+	header->setToolTip(PatientRecord::last_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(2);
+	header->setText(PatientRecord::first_Label);
+	header->setToolTip(PatientRecord::first_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(3);
+	header->setText(PatientRecord::dob_Label);
+	header->setToolTip(PatientRecord::dob_Tooltip);
 
 	ui->dobField->setDate(DEFAULTS::Date);
 
+	// Setup signals/slots
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
 	connect(ui->prescribeAction, SIGNAL(triggered()), this, SLOT(initiatePrescription()));
@@ -40,9 +72,11 @@ PatientSearch::PatientSearch(QWidget *parent) :
 	connect(ui->newPatientAction, SIGNAL(triggered()), this, SLOT(initiateNewPatient()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 
+	// Add actions to resultTable right-click menu
 	ui->resultTable->addAction(ui->prescribeAction);
 	ui->resultTable->addAction(ui->modifyAction);
 
+	// Deactivate actions that require an item selected in resultTable
 	selectionChanged();
 }
 

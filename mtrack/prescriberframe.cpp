@@ -22,13 +22,39 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
 	ui(new Ui::PrescriberFrame),
 	db_queried(false)
 {
+	QTableWidgetItem *header;
     ui->setupUi(this);
-	ui->resultTable->addAction(ui->modifyAction);
 
+	// Setup the search UI strings and tooltips
+	ui->lastLabel->setText(PrescriberRecord::last_Label);
+	ui->lastLabel->setToolTip(PrescriberRecord::last_Tooltip);
+	ui->lastField->setToolTip(PrescriberRecord::last_Tooltip);
+
+	ui->firstLabel->setText(PrescriberRecord::first_Label);
+	ui->firstLabel->setToolTip(PrescriberRecord::first_Tooltip);
+	ui->firstField->setToolTip(PrescriberRecord::first_Tooltip);
+
+	// Setup resultTable UI strings and tooltips
+	header = ui->resultTable->horizontalHeaderItem(0);
+	header->setText(PrescriberRecord::last_Label);
+	header->setToolTip(PrescriberRecord::last_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(1);
+	header->setText(PrescriberRecord::first_Label);
+	header->setToolTip(PrescriberRecord::first_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(2);
+	header->setText(PrescriberRecord::full_name_Label);
+	header->setToolTip(PrescriberRecord::full_name_Tooltip);
+
+	// Setup signals/slots
 	connect(ui->newAction, SIGNAL(triggered()), this, SLOT(initiateNew()));
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
+
+	// Add actions to the resultTable menu
+	ui->resultTable->addAction(ui->modifyAction);
 
 	selectionChanged();
 }

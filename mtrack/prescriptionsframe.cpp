@@ -16,23 +16,99 @@ Released under the GPL version 2 only.
 #include "prescriptionlabel.h"
 #include "globals.h"
 #include "alertinterface.h"
+#include "prescriptionrecord.h"
+#include "shipmentrecord.h"
 
 PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :
     QFrame(parent),
 	ui(new Ui::PrescriptionsFrame),
 	db_queried(false)
 {
+	QTableWidgetItem *header;
     ui->setupUi(this);
 
+	// Setup the search UI strings and tooltips
+	ui->medicationNameLabel->setText(MedicationRecord::name_Label);
+	ui->medicationNameLabel->setToolTip(MedicationRecord::name_Tooltip);
+	ui->medicationNameField->setToolTip(MedicationRecord::name_Tooltip);
+
+	ui->lotLabel->setText(ShipmentRecord::lot_Label);
+	ui->lotLabel->setToolTip(ShipmentRecord::lot_Tooltip);
+	ui->lotField->setToolTip(ShipmentRecord::lot_Tooltip);
+
+	ui->filledLabel->setText(PrescriptionRecord::filled_Label);
+	ui->filledLabel->setToolTip(PrescriptionRecord::filled_Tooltip);
+	ui->filledField->setToolTip(PrescriptionRecord::filled_Tooltip);
+
+	ui->lastLabel->setText(PatientRecord::last_Label);
+	ui->lastLabel->setToolTip(PatientRecord::last_Tooltip);
+	ui->lastField->setToolTip(PatientRecord::last_Tooltip);
+
+	ui->firstLabel->setText(PatientRecord::first_Label);
+	ui->firstLabel->setToolTip(PatientRecord::first_Tooltip);
+	ui->firstField->setToolTip(PatientRecord::first_Tooltip);
+
+	ui->dobLabel->setText(PatientRecord::dob_Label);
+	ui->dobLabel->setToolTip(PatientRecord::dob_Tooltip);
+	ui->dobField->setToolTip(PatientRecord::dob_Tooltip);
+
+	// Setup the resultTable strings and tooltips
+	header = ui->resultTable->horizontalHeaderItem(0);
+	header->setText(PatientRecord::allscripts_id_Label);
+	header->setToolTip(PatientRecord::allscripts_id_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(1);
+	header->setText(PatientRecord::last_Label);
+	header->setToolTip(PatientRecord::last_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(2);
+	header->setText(PatientRecord::first_Label);
+	header->setToolTip(PatientRecord::first_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(3);
+	header->setText(PatientRecord::dob_Label);
+	header->setToolTip(PatientRecord::dob_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(4);
+	header->setText(MedicationRecord::name_Label);
+	header->setToolTip(MedicationRecord::name_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(5);
+	header->setText(MedicationRecord::form_Label);
+	header->setToolTip(MedicationRecord::form_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(6);
+	header->setText(MedicationRecord::strength_Label);
+	header->setToolTip(MedicationRecord::strength_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(7);
+	header->setText(PrescriptionRecord::amount_Label);
+	header->setToolTip(PrescriptionRecord::amount_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(8);
+	header->setText(PrescriptionRecord::filled_Label);
+	header->setToolTip(PrescriptionRecord::filled_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(9);
+	header->setText(PrescriptionRecord::written_Label);
+	header->setToolTip(PrescriptionRecord::written_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(10);
+	header->setText(ShipmentRecord::lot_Label);
+	header->setToolTip(ShipmentRecord::lot_Tooltip);
+
+	// Setup signals/slots
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->printAction, SIGNAL(triggered()), this, SLOT(initiatePrint()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 
+	// Add items to resultTable right-click menu
 	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->printAction);
 
+	// Disable actions that require an item selected in the resultTable
 	selectionChanged();
 }
 

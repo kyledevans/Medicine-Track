@@ -25,7 +25,7 @@
      <item>
       <widget class="QLabel" name="nameLabel">
        <property name="text">
-        <string>Name</string>
+        <string>MEDICATION/BARCODE</string>
        </property>
       </widget>
      </item>
@@ -208,9 +208,12 @@
      <property name="columnCount">
       <number>6</number>
      </property>
+     <attribute name="horizontalHeaderMinimumSectionSize">
+      <number>100</number>
+     </attribute>
      <column>
       <property name="text">
-       <string>Medication</string>
+       <string>MEDICATION</string>
       </property>
      </column>
      <column>
@@ -220,22 +223,22 @@
      </column>
      <column>
       <property name="text">
-       <string>Form</string>
+       <string>FORM</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Strength</string>
+       <string>STRENGTH</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Unit size</string>
+       <string>UNIT SIZE</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Stock</string>
+       <string>STOCK</string>
       </property>
      </column>
     </widget>

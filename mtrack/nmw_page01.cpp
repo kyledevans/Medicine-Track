@@ -7,11 +7,16 @@ Released under the GPL version 2 only.
 #include "nmw_page01.h"
 #include "ui_nmw_page01.h"
 
+#include "medicationrecord.h"
+
 NMW_Page01::NMW_Page01(QWidget *parent) :
     QWizardPage(parent),
     ui(new Ui::NMW_Page01)
 {
     ui->setupUi(this);
+
+	// Setup UI strings and tooltips
+	ui->instructionsField->setToolTip(MedicationRecord::instructions_Tooltip);
 
 	registerField("instructionsField", ui->instructionsField, "plainText", SIGNAL(textChanged()));
 }

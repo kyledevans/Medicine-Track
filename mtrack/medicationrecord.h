@@ -56,6 +56,7 @@ public:
 
 	static const QString strength_Label;
 	static const QString strength_Tooltip;
+	static const QString strength_Tooltip_edit;
 
 	static const QString str_units_Label;
 	static const QString str_units_Tooltip;

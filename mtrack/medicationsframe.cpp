@@ -22,20 +22,56 @@ Released under the GPL version 2 only.
 #include "alertinterface.h"
 #include "shipmentrecord.h"
 #include "barcodelabel.h"
+#include "medicationrecord.h"
 
 MedicationsFrame::MedicationsFrame(QWidget *parent) :
     QFrame(parent),
 	ui(new Ui::MedicationsFrame),
 	db_queried(false)
 {
+	QTableWidgetItem *header;
     ui->setupUi(this);
-	ui->resultTable->addAction(ui->modifyAction);
 
+	// Set the search UI strings and tooltips
+	ui->nameLabel->setText(ShipmentRecord::name_barcode_Label);
+	ui->nameLabel->setToolTip(ShipmentRecord::name_barcode_Tooltip);
+	ui->nameField->setToolTip(ShipmentRecord::name_barcode_Tooltip);
+
+	// Set the various strings and tooltips for the resultTable
+	header = ui->resultTable->horizontalHeaderItem(0);
+	header->setText(MedicationRecord::name_Label);
+	header->setToolTip(MedicationRecord::name_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(1);
+	header->setText(MedicationRecord::ndc_Label);
+	header->setToolTip(MedicationRecord::ndc_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(2);
+	header->setText(MedicationRecord::form_Label);
+	header->setToolTip(MedicationRecord::form_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(3);
+	header->setText(MedicationRecord::strength_Label);
+	header->setToolTip(MedicationRecord::strength_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(4);
+	header->setText(MedicationRecord::unit_size_Label);
+	header->setToolTip(MedicationRecord::unit_size_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(5);
+	header->setText(ShipmentRecord::product_left_Label);
+	header->setToolTip(ShipmentRecord::product_left_Tooltip);
+
+	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+
+	// Setup various signal/slot connections
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->newMedicationAction, SIGNAL(triggered()), this, SLOT(initiateNewMed()));
 	connect(ui->newStockAction, SIGNAL(triggered()), this, SLOT(initiateNewShipment()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
+
+	ui->resultTable->addAction(ui->modifyAction);
 
 	selectionChanged();
 }

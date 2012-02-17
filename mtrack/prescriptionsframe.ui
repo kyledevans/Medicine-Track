@@ -29,7 +29,7 @@
       <item>
        <widget class="QLabel" name="medicationNameLabel">
         <property name="text">
-         <string>Name</string>
+         <string>MEDICATION</string>
         </property>
        </widget>
       </item>
@@ -68,7 +68,7 @@
       <item>
        <widget class="QLabel" name="lotLabel">
         <property name="text">
-         <string>Lot #</string>
+         <string>LOT</string>
         </property>
        </widget>
       </item>
@@ -107,7 +107,7 @@
       <item>
        <widget class="QLabel" name="filledLabel">
         <property name="text">
-         <string>Filled</string>
+         <string>FILLED</string>
         </property>
        </widget>
       </item>
@@ -153,7 +153,7 @@
       <item>
        <widget class="QLabel" name="lastLabel">
         <property name="text">
-         <string>Last</string>
+         <string>LAST NAME</string>
         </property>
        </widget>
       </item>
@@ -192,7 +192,7 @@
       <item>
        <widget class="QLabel" name="firstLabel">
         <property name="text">
-         <string>First</string>
+         <string>FIRST NAME</string>
         </property>
        </widget>
       </item>
@@ -231,7 +231,7 @@
       <item>
        <widget class="QLabel" name="dobLabel">
         <property name="text">
-         <string>D.O.B.</string>
+         <string>DOB</string>
         </property>
        </widget>
       </item>
@@ -331,57 +331,57 @@
      </property>
      <column>
       <property name="text">
-       <string>M.R. Number</string>
+       <string>MR NUMBER</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Last name</string>
+       <string>LAST NAME</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>First name</string>
+       <string>FIRST NAME</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>D.O.B.</string>
+       <string>DOB</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Medication</string>
+       <string>MEDICATION</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Form</string>
+       <string>FORM</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Strength</string>
+       <string>STRENGTH</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Amount</string>
+       <string>AMOUNT</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Written date</string>
+       <string>WRITTEN</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Filled date</string>
+       <string>FILLED</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Lot number</string>
+       <string>LOT</string>
       </property>
      </column>
     </widget>

@@ -19,6 +19,44 @@ NMW_Page00::NMW_Page00(QWidget *parent) :
 {
     ui->setupUi(this);
 
+	// Set the various UI strings and tooltips
+	ui->medicationLabel->setText(MedicationRecord::name_Label);
+	ui->medicationLabel->setToolTip(MedicationRecord::name_Tooltip);
+	ui->medicationField->setToolTip(MedicationRecord::name_Tooltip);
+
+	ui->genericLabel->setText(MedicationRecord::generic_Label);
+	ui->genericLabel->setToolTip(MedicationRecord::generic_Tooltip);
+	ui->genericField->setToolTip(MedicationRecord::generic_Tooltip);
+
+	ui->manufacturerLabel ->setText(MedicationRecord::manufacturer_Label);
+	ui->manufacturerLabel->setToolTip(MedicationRecord::manufacturer_Tooltip);
+	ui->manufacturerField->setToolTip(MedicationRecord::manufacturer_Tooltip);
+
+	ui->ndcLabel->setText(MedicationRecord::ndc_Label);
+	ui->ndcLabel->setToolTip(MedicationRecord::ndc_Tooltip);
+	ui->ndcField->setToolTip(MedicationRecord::ndc_Tooltip);
+
+	ui->strengthLabel->setText(MedicationRecord::strength_Label);
+	ui->strengthLabel->setToolTip(MedicationRecord::strength_Tooltip);
+	ui->strengthField->setToolTip(MedicationRecord::strength_Tooltip);
+
+	ui->strUnitsLabel->setText(MedicationRecord::str_units_Label);
+	ui->strUnitsLabel->setToolTip(MedicationRecord::str_units_Tooltip);
+	ui->strUnitsField->setToolTip(MedicationRecord::str_units_Tooltip);
+
+	ui->formLabel->setText(MedicationRecord::form_Label);
+	ui->formLabel->setToolTip(MedicationRecord::form_Tooltip);
+	ui->formField->setToolTip(MedicationRecord::form_Tooltip);
+
+	ui->dispenseLabel->setText(MedicationRecord::dispense_units_Label);
+	ui->dispenseLabel->setToolTip(MedicationRecord::dispense_units_Tooltip);
+	ui->dispenseUnitsField->setToolTip(MedicationRecord::dispense_units_Tooltip);
+
+	ui->unitSizeLabel->setText(MedicationRecord::unit_size_Label);
+	ui->unitSizeLabel->setToolTip(MedicationRecord::unit_size_Tooltip);
+	ui->unitSizeField->setToolTip(MedicationRecord::unit_size_Tooltip);
+
+	// Set validators
 	QValidator *numbers = new QDoubleValidator(this);
 	ui->strengthField->setValidator(numbers);
 

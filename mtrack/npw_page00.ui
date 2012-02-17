@@ -50,14 +50,14 @@
    <item row="0" column="0">
     <widget class="QLabel" name="mrNumberLabel">
      <property name="text">
-      <string>MR Number</string>
+      <string>MR NUMBER</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="lastLabel">
      <property name="text">
-      <string>Last</string>
+      <string>LAST NAME</string>
      </property>
     </widget>
    </item>
@@ -130,7 +130,7 @@
    <item row="2" column="0">
     <widget class="QLabel" name="firstLabel">
      <property name="text">
-      <string>First</string>
+      <string>FIRST NAME</string>
      </property>
     </widget>
    </item>
@@ -161,7 +161,7 @@
    <item row="3" column="0">
     <widget class="QLabel" name="dobLabel">
      <property name="text">
-      <string>D.O.B.</string>
+      <string>DOB</string>
      </property>
     </widget>
    </item>

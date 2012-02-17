@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QLabel" name="lastLabel">
      <property name="text">
-      <string>Last name</string>
+      <string>LAST NAME</string>
      </property>
     </widget>
    </item>
@@ -57,7 +57,7 @@
    <item row="1" column="0">
     <widget class="QLabel" name="firstLabel">
      <property name="text">
-      <string>First name</string>
+      <string>FIRST NAME</string>
      </property>
     </widget>
    </item>
@@ -97,7 +97,7 @@
    <item row="2" column="0">
     <widget class="QLabel" name="initialsLabel">
      <property name="text">
-      <string>Initials</string>
+      <string>INITIALS</string>
      </property>
     </widget>
    </item>

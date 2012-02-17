@@ -34,7 +34,8 @@ const QString MedicationRecord::form_Label("Form");
 const QString MedicationRecord::form_Tooltip("Medication form");
 
 const QString MedicationRecord::strength_Label("Strength");
-const QString MedicationRecord::strength_Tooltip("Strength (only numbers)");
+const QString MedicationRecord::strength_Tooltip("Strength");
+const QString MedicationRecord::strength_Tooltip_edit("Strength (only numbers)");
 
 const QString MedicationRecord::str_units_Label("Strength units");
 const QString MedicationRecord::str_units_Tooltip("Units of measurement for strength");

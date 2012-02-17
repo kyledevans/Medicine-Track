@@ -25,7 +25,7 @@
      <item>
       <widget class="QLabel" name="lastLabel">
        <property name="text">
-        <string>Last name</string>
+        <string>LAST NAME</string>
        </property>
       </widget>
      </item>
@@ -51,7 +51,7 @@
      <item>
       <widget class="QLabel" name="firstLabel">
        <property name="text">
-        <string>First name</string>
+        <string>FIRST NAME</string>
        </property>
       </widget>
      </item>
@@ -180,17 +180,17 @@
      </property>
      <column>
       <property name="text">
-       <string>Last name</string>
+       <string>LAST NAME</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>First name</string>
+       <string>FIRST NAME</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Full name</string>
+       <string>FULL NAME</string>
       </property>
      </column>
     </widget>

@@ -17,6 +17,15 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
+const QString PrescriberRecord::last_Label("Last name");
+const QString PrescriberRecord::last_Tooltip("Last name");
+
+const QString PrescriberRecord::first_Label("First name");
+const QString PrescriberRecord::first_Tooltip("First name");
+
+const QString PrescriberRecord::full_name_Label("Full name");
+const QString PrescriberRecord::full_name_Tooltip("Full name as it appears on a prescription label");
+
 PrescriberRecord::PrescriberRecord(QObject *parent):
 	QObject(parent),
 	id(SQL::Undefined_ID),

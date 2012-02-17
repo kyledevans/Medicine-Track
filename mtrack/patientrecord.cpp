@@ -15,6 +15,18 @@ Released under the GPL version 2 only.
 #include "alertinterface.h"
 #include "globals.h"
 
+const QString PatientRecord::allscripts_id_Label("M.R. Number");
+const QString PatientRecord::allscripts_id_Tooltip("Allscripts medical record number");
+
+const QString PatientRecord::last_Label("Last name");
+const QString PatientRecord::last_Tooltip("Last name");
+
+const QString PatientRecord::first_Label("First name");
+const QString PatientRecord::first_Tooltip("First name");
+
+const QString PatientRecord::dob_Label("D.O.B.");
+const QString PatientRecord::dob_Tooltip("Date of birth");
+
 PatientRecord::PatientRecord(QObject *parent):
 	QObject(parent),
 	id(SQL::Undefined_ID),

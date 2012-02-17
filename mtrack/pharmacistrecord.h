@@ -27,10 +27,19 @@ public:
 	bool exists;			// True if the record is already in the database
 
 	bool retrieve(int);		// (int) is the pharmacist id.  Returns false if the retrieve failed
-
-public slots:
 	bool commitRecord();	// Inserts (or Updates) the record in the db
+
 	void print();			// Prints to the debug interface
+
+	/* Use these to keep UI strings consistent and sane. */
+	static const QString last_Label;
+	static const QString last_Tooltip;
+
+	static const QString first_Label;
+	static const QString first_Tooltip;
+
+	static const QString initials_Label;
+	static const QString initials_Tooltip;
 };
 
 #endif // PHARMACISTRECORD_H
