@@ -45,11 +45,11 @@ MainWindow::MainWindow(QWidget *parent) :
 	PharmacistFrame *pharmacistFrame = new PharmacistFrame();
 
 	ui->mainTabs->addTab(patientFrame, QString("Patients"));
-	ui->mainTabs->addTab(prescriptionsFrame, QString("Prescriptions"));
+	ui->mainTabs->addTab(prescriptionsFrame, QString("Prescription log"));
 	ui->mainTabs->addTab(medicationsFrame, QString("Medications"));
-	ui->mainTabs->addTab(inventoryFrame, QString("Inventory"));
 	ui->mainTabs->addTab(prescriberFrame, QString("Prescribers"));
 	ui->mainTabs->addTab(pharmacistFrame, QString("Pharmacists"));
+	ui->mainTabs->addTab(inventoryFrame, QString("Inventory"));
 
 	connect(ui->optionsAction, SIGNAL(triggered()), this, SLOT(initiateOptions()));
 }
