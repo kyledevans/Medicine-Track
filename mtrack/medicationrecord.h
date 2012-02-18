@@ -25,7 +25,6 @@ public:
 	QString ndc;			// drugs.ndc
 	int form;				// drugs.form
 	QString strength;		// drugs.strength
-	QString str_units;		// drugs.str_units
 	QString dispense_units;	// drugs.dispense_units
 	QString unit_size;		// drugs.unit_size
 	QString instructions;	// drugs.instructions
@@ -57,9 +56,6 @@ public:
 	static const QString strength_Label;
 	static const QString strength_Tooltip;
 	static const QString strength_Tooltip_edit;
-
-	static const QString str_units_Label;
-	static const QString str_units_Tooltip;
 
 	static const QString dispense_units_Label;
 	static const QString dispense_units_Tooltip;

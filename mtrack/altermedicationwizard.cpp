@@ -34,7 +34,6 @@ AlterMedicationWizard::AlterMedicationWizard(MedicationRecord *new_med, QWidget 
 		setField("manufacturerField", med->manufacturer);
 		setField("ndcField", med->ndc);
 		setField("strengthField", med->strength);
-		setField("strUnitsField", med->str_units);
 		ui->page0->setForm(med->form);
 		setField("dispenseUnitsField", med->dispense_units);
 		setField("unitSizeField", med->unit_size);

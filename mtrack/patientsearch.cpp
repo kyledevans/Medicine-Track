@@ -249,7 +249,7 @@ void PatientSearch::initiateNewPatient()
 void PatientSearch::submitNewPrescription(PrescriptionRecord *prescription)
 {
 	prescription->commitRecord();
-	initiatePrint(prescription);
+	//initiatePrint(prescription);
 	newPrescriptionCleanup(prescription);
 }
 

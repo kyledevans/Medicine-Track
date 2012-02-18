@@ -41,7 +41,8 @@ PrescriptionRecord::PrescriptionRecord(QObject *parent):
 	shipment_id(SQL::Undefined_ID),
 	prescriber_id(SQL::Undefined_ID),
 	pharmacist_id(SQL::Undefined_ID),
-	amount(1)
+	amount(1),
+	exists(false)
 {
 }
 
@@ -141,18 +142,14 @@ bool PrescriptionRecord::commitRecord()
 
 		if (!alert.attemptQuery(model, &query)) {
 			db.rollback();
-			qDebug() << "db.rollback()";
 			delete model;
 			return false;
 		} else {
 			db.commit();
-			qDebug() << "db.commit()";
 			delete model;
 			return true;
 		}
 	}
-
-	// TODO: This does not update an existing record yet
 
 	if (!exists) {
 		id = model->query().lastInsertId().toInt();

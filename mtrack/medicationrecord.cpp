@@ -36,9 +36,6 @@ const QString MedicationRecord::form_Tooltip("Medication form");
 const QString MedicationRecord::strength_Label("Strength");
 const QString MedicationRecord::strength_Tooltip("Strength");
 
-const QString MedicationRecord::str_units_Label("Strength units");
-const QString MedicationRecord::str_units_Tooltip("Units of measurement for strength");
-
 const QString MedicationRecord::dispense_units_Label("Dispense units");
 const QString MedicationRecord::dispense_units_Tooltip("Dispense units can be anything: bottles, capsules, etc.");
 
@@ -58,7 +55,7 @@ MedicationRecord::MedicationRecord(QObject *parent):
 }
 
 /*
-SELECT name, generic, manufacturer, ndc, form, strength, str_units, dispense_units, unit_size, instructions, active
+SELECT name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active
 FROM drugs
 WHERE id = 'SOME_VAR';
 */
@@ -73,7 +70,7 @@ bool MedicationRecord::retrieve(int newId)
 	}
 
 	model = new QSqlQueryModel;
-	query += QString("SELECT name, generic, manufacturer, ndc, form, strength, str_units, dispense_units, unit_size, instructions, active FROM drugs WHERE id = '");
+    query += QString("SELECT name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active FROM drugs WHERE id = '");
 	query += QString().setNum(newId) + QString("';");
 
 	if (!alert.attemptQuery(model, &query)) {
@@ -88,11 +85,10 @@ bool MedicationRecord::retrieve(int newId)
 	ndc = model->record(0).value(3).toString();
 	form = FORM_INT::strToInt(model->record(0).value(4).toString());
 	strength = model->record(0).value(5).toString();
-	str_units = model->record(0).value(6).toString();
-	dispense_units = model->record(0).value(7).toString();
-	unit_size = model->record(0).value(8).toString();
-	instructions = model->record(0).value(9).toString();
-	active = model->record(0).value(10).toBool();
+    dispense_units = model->record(0).value(6).toString();
+    unit_size = model->record(0).value(7).toString();
+    instructions = model->record(0).value(8).toString();
+    active = model->record(0).value(9).toBool();
 	exists = true;
 
 	delete model;
@@ -100,12 +96,12 @@ bool MedicationRecord::retrieve(int newId)
 }
 
 /* SQL without C++:
-INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, str_units, dispense_units, unit_size, instructions, active)
+INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active)
 VALUES ('SOME_VAL', ....);
 
 UPDATE drugs
 SET name = 'SOME_VAL', generic = 'SOME_VAL', manufacturer = 'SOME_VAL', ndc = 'SOME_VAL', form = 'SOME_VAL',
-strength = 'SOME_VAL', str_units = 'SOME_VAL', dispense_units = 'SOME_VAL', unit_size = 'SOME_VAL',
+strength = 'SOME_VAL', dispense_units = 'SOME_VAL', unit_size = 'SOME_VAL',
 instructions = 'SOME_VAL', active = 'SOME_VAL'
 WHERE id = 'SOME_VAL';
 */
@@ -118,14 +114,13 @@ bool MedicationRecord::commitRecord()
 	model = new QSqlQueryModel;
 
 	if (!exists) {	// Do an INSERT
-		query = QString("INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, str_units, dispense_units, unit_size, instructions, active) VALUES ('");
+        query = QString("INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) VALUES ('");
 		query += SQL::cleanNoMatching(name) + QString("', '");
 		query += SQL::cleanNoMatching(generic) + QString("', '");
 		query += SQL::cleanNoMatching(manufacturer) + QString("', '");
 		query += SQL::cleanNoMatching(ndc) + QString("', '");
 		query += FORM_STR::intToStr(form) + QString("', '");
 		query += SQL::cleanNoMatching(strength) + QString("', '");
-		query += SQL::cleanNoMatching(str_units) +QString("', '");
 		query += SQL::cleanNoMatching(dispense_units) + QString("', '");
 		query += SQL::cleanNoMatching(unit_size) + QString("', '");
 		query += SQL::cleanNoMatching(instructions) + QString("', '");
@@ -141,8 +136,7 @@ bool MedicationRecord::commitRecord()
 		query += SQL::cleanNoMatching(manufacturer) + QString("', ndc = '");
 		query += SQL::cleanNoMatching(ndc) + QString("', form = '");
 		query += FORM_STR::intToStr(form) + QString("', strength = '");
-		query += SQL::cleanNoMatching(strength) + QString("', str_units = '");
-		query += SQL::cleanNoMatching(str_units) + QString("', dispense_units = '");
+        query += SQL::cleanNoMatching(strength) + QString("', dispense_units = '");
 		query += SQL::cleanNoMatching(dispense_units) + QString("', unit_size = '");
 		query += SQL::cleanNoMatching(unit_size) + QString("', instructions = '");
 		query += SQL::cleanNoMatching(instructions) + QString("', active = '");
