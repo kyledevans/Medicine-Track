@@ -15,6 +15,10 @@ Released under the GPL version 2 only.
 12.  Combine the prescribers and pharmacists tables into 1
 
 13.  Need to add some usage documentation and help.
+	- Adding/modifying a patient
+	- Adding a prescription
+	- Adding new/modifying formulary
+	- Adding new/modifying inventory
 
 -----
 

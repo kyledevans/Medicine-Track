@@ -10,6 +10,7 @@ TARGET = mtrack
 TEMPLATE = app
 CONFIG += embed_manifests_exe
 
+include(doc/docs.pri)
 
 SOURCES += main.cpp\
 	mainwindow.cpp \
