@@ -24,6 +24,19 @@ public:
 	static QString db_user;
 	static QString db_password;
 
+	/* Use these to keep UI strings consistent and sane. */
+	static const QString db_host_Label;
+	static const QString db_host_Tooltip;
+
+	static const QString db_name_Label;
+	static const QString db_name_Tooltip;
+
+	static const QString db_user_Label;
+	static const QString db_user_Tooltip;
+
+	static const QString db_password_Label;
+	static const QString db_password_Tooltip;
+
 private:
 	static QSettings *settings;
 };

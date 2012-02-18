@@ -19,6 +19,18 @@ QString MTSettings::db_user;
 QString MTSettings::db_password;
 QSettings * MTSettings::settings = 0;
 
+const QString MTSettings::db_host_Label("Host");
+const QString MTSettings::db_host_Tooltip("IP address of the database");
+
+const QString MTSettings::db_name_Label("Database name");
+const QString MTSettings::db_name_Tooltip("Database name");
+
+const QString MTSettings::db_user_Label("Username");
+const QString MTSettings::db_user_Tooltip("Username");
+
+const QString MTSettings::db_password_Label("Password");
+const QString MTSettings::db_password_Tooltip("Password");
+
 MTSettings::MTSettings()
 {
 
