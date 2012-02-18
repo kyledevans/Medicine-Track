@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <QHelpCollectionProject version="1.0">
+	<assistant>
+		<title>Medicine Track Manual</title>
+		<cacheDirectory>EPC/MTrack</cacheDirectory>
+		<enableDocumentationManager>false</enableDocumentationManager>
+		<enableAddressBar>false</enableAddressBar>
+		<enableFilterFunctionality>false</enableFilterFunctionality>
+	</assistant>
 	<docFiles>
 		<generate>
 			<file>

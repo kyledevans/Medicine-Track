@@ -4,6 +4,10 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QProcess>
+#include <QStringList>
+#include <QByteArray>
+
 #include "mtsettings.h"
 
 #include "mainwindow.h"
@@ -22,7 +26,8 @@ Released under the GPL version 2 only.
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+	ui(new Ui::MainWindow),
+	help_process(0)
 {
 	ui->setupUi(this);
 
@@ -52,12 +57,31 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->mainTabs->addTab(inventoryFrame, QString("Inventory"));
 
 	connect(ui->optionsAction, SIGNAL(triggered()), this, SLOT(initiateOptions()));
+	connect(ui->helpAction, SIGNAL(triggered()), this, SLOT(initiateHelp()));
 }
 
 void MainWindow::initiateOptions()
 {
 	MTConfig config;
 	config.exec();
+}
+
+void MainWindow::initiateHelp()
+{
+	QStringList args;
+	QByteArray cmds;
+
+	help_process = new QProcess;
+	args	<< QLatin1String("-collectionFile")
+			<< QLatin1String("mtrack-collection.qhc")
+			<< QLatin1String("-enableRemoteControl");
+
+	help_process->start(QLatin1String("assistant"), args);
+
+	help_process->waitForStarted();
+	cmds.append("setSource qthelp://medicine-track/doc/index.html\n");
+	help_process->write(cmds);
+	connect(help_process, SIGNAL(finished(int)), help_process, SLOT(deleteLater()));
 }
 
 MainWindow::~MainWindow()

@@ -10,11 +10,10 @@
 		<filterAttribute>medicine-track</filterAttribute>
 		<filterAttribute>1.0</filterAttribute>
 		<toc>
-			<section title="Medicine Track Manual" ref="index.html">
-				<section title="Patients" ref="new_patient.html"/>
-				<section title="Formulary" ref="new_formulary.html"/>
-				<section title="Prescriptions" ref="new_inventory.html"/>
-			</section>
+			<section title="Medicine Track Manual" ref="index.html" />
+			<section title="Patients" ref="new_patient.html" />
+			<section title="Formulary" ref="new_formulary.html" />
+			<section title="Prescriptions" ref="new_inventory.html" />
 		</toc>
 		<keywords>
 			<keyword name="patient" id="MyApplication::foo" ref="new_patient.html"/>

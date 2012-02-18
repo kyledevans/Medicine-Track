@@ -9,6 +9,7 @@ Released under the GPL version 2 only.
 
 #include <QMainWindow>
 #include <QSqlDatabase>
+#include <QProcess>
 
 namespace Ui {
     class MainWindow;
@@ -25,9 +26,12 @@ public:
 public slots:
 	void connectDB();
 	void initiateOptions();
+	void initiateHelp();
 
 private:
     Ui::MainWindow *ui;
+
+	QProcess *help_process;
 	QSqlDatabase db;
 
 	bool importSettings();				// Returns true if it was able to import settings

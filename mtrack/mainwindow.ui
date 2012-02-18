@@ -47,6 +47,7 @@
      <string>Application</string>
     </property>
     <addaction name="optionsAction"/>
+    <addaction name="helpAction"/>
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
@@ -72,6 +73,11 @@
    </property>
    <property name="toolTip">
     <string>Reconnect to the database</string>
+   </property>
+  </action>
+  <action name="helpAction">
+   <property name="text">
+    <string>Help</string>
    </property>
   </action>
  </widget>
