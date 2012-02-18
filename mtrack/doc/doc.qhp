@@ -21,6 +21,7 @@
 		</keywords>
 		<files>
 			<file>*.html</file>
+			<file>images\*.png</file>
 		</files>
 	</filterSection>
 </QtHelpProject>

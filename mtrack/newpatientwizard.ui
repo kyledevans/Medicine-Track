@@ -2,26 +2,36 @@
 <ui version="4.0">
  <class>NewPatientWizard</class>
  <widget class="QWizard" name="NewPatientWizard">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>588</width>
-    <height>410</height>
-   </rect>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>700</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>700</width>
+    <height>500</height>
+   </size>
   </property>
   <property name="windowTitle">
-   <string>Wizard</string>
+   <string>New Patient Wizard</string>
   </property>
   <property name="modal">
    <bool>true</bool>
   </property>
   <widget class="NPW_Page00" name="page00">
    <property name="title">
-    <string>New Patient</string>
+    <string>Demographic Information</string>
    </property>
    <property name="subTitle">
-    <string>Enter the patient's name and date of birth.</string>
+    <string>Enter the patient's demographic information.</string>
    </property>
   </widget>
  </widget>
