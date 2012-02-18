@@ -145,7 +145,7 @@ void APW_Page01::medUpdated()
 {
 	ui->medicationLabel->setText(medication->name);
 	ui->formLabel->setText(FORM_STR::intToStr(medication->form));
-	ui->strengthLabel->setText(QString().setNum(medication->strength) + QString(" ") + medication->str_units);
+	ui->strengthLabel->setText(medication->strength);
 	ui->unitSizeLabel->setText(medication->unit_size);
 	ui->dispenseUnitsLabel->setText(medication->dispense_units);
 }

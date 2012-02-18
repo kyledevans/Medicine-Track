@@ -69,13 +69,12 @@ void PrescriptionLabel::print(QPrinter *printer)
 	printer->setPageMargins(0.25, 0.0, 0.0, 0.6, QPrinter::Inch);
 	printer->setOrientation(QPrinter::Landscape);
 
-	// TODO: This needs to be updated to reflect current data structures
 	ui->lastLabel->setText(patient->last);
 	ui->firstLabel->setText(patient->first);
 	ui->medicationLabel->setText(medication->name);
 	ui->manufacturerLabel->setText(medication->manufacturer);
 	ui->formLabel->setText(FORM_STR::intToStr(medication->form));
-	ui->strengthLabel->setText(QString().setNum(medication->strength) + QString(" ") + medication->str_units);
+	ui->strengthLabel->setText(medication->strength);
 	ui->prescriberLabel->setText(prescriber->full_name);
 	ui->instructionsLabel->setText(prescription->instructions);
 	ui->filledLabel->setText(prescription->filled.toString("MM/d/yyyy"));

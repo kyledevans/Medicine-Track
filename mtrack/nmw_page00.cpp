@@ -70,7 +70,6 @@ NMW_Page00::NMW_Page00(QWidget *parent) :
 	registerField("ndcField", ui->ndcField);
 	registerField("formField", ui->formField);
 	registerField("strengthField", ui->strengthField);
-	registerField("strUnitsField", ui->strUnitsField);
 	registerField("dispenseUnitsField", ui->dispenseUnitsField);
 	registerField("unitSizeField", ui->unitSizeField);
 	registerField("activeField", ui->activeField);
