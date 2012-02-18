@@ -8,17 +8,13 @@ Released under the GPL version 2 only.
 
 4.  Need to be able to print new barcodes after a shipment has been registered in the database.  IE: The barcodes are destroyed somehow.
 
-5.  It would be nice if when in the inventory screen, the user could print a report detailing who received a prescription by lot number.  IE: There is a recall on the drug and we need to start making calls to patients.
-
 7.  Every time the user does something that changes information on the database, post a message to the status bar at the bottom.
 
 8.  The application needs to always indicate whether or not it is connected to the database.
 
-9.  Figure out how the database will handle users being idle for a long time.
-
 12.  Combine the prescribers and pharmacists tables into 1
 
-13.  See if converting the resultTables into QTableWidgets helps when trying to detect if a user has made a selection.
+13.  Need to add some usage documentation and help.
 
 -----
 
