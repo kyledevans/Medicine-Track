@@ -71,6 +71,8 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
 	connect(ui->newStockAction, SIGNAL(triggered()), this, SLOT(initiateNewShipment()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 
+	// Add items to resultTable right-click menu
+	ui->resultTable->addAction(ui->newStockAction);
 	ui->resultTable->addAction(ui->modifyAction);
 
 	selectionChanged();

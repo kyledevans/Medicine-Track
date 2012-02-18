@@ -286,7 +286,7 @@
   </layout>
   <action name="prescribeAction">
    <property name="text">
-    <string>Prescribe</string>
+    <string>Prescribe Medication</string>
    </property>
    <property name="toolTip">
     <string>Prescribe a medication</string>
@@ -294,7 +294,7 @@
   </action>
   <action name="modifyAction">
    <property name="text">
-    <string>Modify</string>
+    <string>Modify Patient</string>
    </property>
    <property name="toolTip">
     <string>Modify demographic information</string>

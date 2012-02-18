@@ -105,7 +105,6 @@ PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 
 	// Add items to resultTable right-click menu
-	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->printAction);
 
 	// Disable actions that require an item selected in the resultTable

@@ -168,7 +168,7 @@
         <bool>false</bool>
        </property>
        <property name="text">
-        <string>New Stock</string>
+        <string>Add Stock</string>
        </property>
       </widget>
      </item>
@@ -260,7 +260,7 @@
   </action>
   <action name="newStockAction">
    <property name="text">
-    <string>New Stock</string>
+    <string>Add Stock</string>
    </property>
    <property name="toolTip">
     <string>Add new stock of a medication.</string>
