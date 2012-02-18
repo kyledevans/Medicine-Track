@@ -62,7 +62,7 @@
      <item>
       <widget class="QLabel" name="medicationLabel">
        <property name="text">
-        <string>Medication/Barcode</string>
+        <string>MEDICATION/BARCODE</string>
        </property>
       </widget>
      </item>
@@ -122,36 +122,38 @@
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
-     <property name="rowCount">
-      <number>1</number>
-     </property>
      <property name="columnCount">
       <number>5</number>
      </property>
-     <row/>
+     <attribute name="horizontalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderMinimumSectionSize">
+      <number>100</number>
+     </attribute>
      <column>
       <property name="text">
-       <string>Medication</string>
+       <string>MEDICATION</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Form</string>
+       <string>FORM</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Strength</string>
+       <string>STRENGTH</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Unit size</string>
+       <string>UNIT SIZE</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Stock</string>
+       <string>STOCK</string>
       </property>
      </column>
     </widget>

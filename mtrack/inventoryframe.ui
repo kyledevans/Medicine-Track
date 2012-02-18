@@ -302,6 +302,9 @@
      <property name="columnCount">
       <number>7</number>
      </property>
+     <attribute name="horizontalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
      <attribute name="horizontalHeaderMinimumSectionSize">
       <number>100</number>
      </attribute>

@@ -24,8 +24,38 @@ APW_Page00::APW_Page00(QWidget *parent) :
 	prescription(0),
 	db_queried(false)
 {
-    ui->setupUi(this);
+	QTableWidgetItem *header;
+	ui->setupUi(this);
 
+	// Setup UI strings and tooltips
+	ui->medicationLabel->setText(ShipmentRecord::name_barcode_Label);
+	ui->medicationLabel->setToolTip(ShipmentRecord::name_barcode_Tooltip);
+	ui->medicationField->setToolTip(ShipmentRecord::name_barcode_Tooltip);
+
+	// Set the various strings and tooltips for the resultTable
+	header = ui->resultTable->horizontalHeaderItem(0);
+	header->setText(MedicationRecord::name_Label);
+	header->setToolTip(MedicationRecord::name_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(1);
+	header->setText(MedicationRecord::form_Label);
+	header->setToolTip(MedicationRecord::form_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(2);
+	header->setText(MedicationRecord::strength_Label);
+	header->setToolTip(MedicationRecord::strength_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(3);
+	header->setText(MedicationRecord::unit_size_Label);
+	header->setToolTip(MedicationRecord::unit_size_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(4);
+	header->setText(ShipmentRecord::product_left_Label);
+	header->setToolTip(ShipmentRecord::product_left_Tooltip);
+
+	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+
+	// Connect signals/slots
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SIGNAL(completeChanged()));
 	connect(ui->resultTable, SIGNAL(clicked(QModelIndex)), this, SLOT(resultSelected()));
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));

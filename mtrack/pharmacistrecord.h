@@ -40,6 +40,9 @@ public:
 
 	static const QString initials_Label;
 	static const QString initials_Tooltip;
+
+	static const QString initials_Label_secondary;
+	static const QString initials_Tooltip_secondary;
 };
 
 #endif // PHARMACISTRECORD_H

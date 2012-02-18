@@ -38,7 +38,7 @@ NMW_Page00::NMW_Page00(QWidget *parent) :
 
 	ui->strengthLabel->setText(MedicationRecord::strength_Label);
 	ui->strengthLabel->setToolTip(MedicationRecord::strength_Tooltip);
-	ui->strengthField->setToolTip(MedicationRecord::strength_Tooltip);
+    ui->strengthField->setToolTip(MedicationRecord::strength_Tooltip_edit);
 
 	ui->strUnitsLabel->setText(MedicationRecord::str_units_Label);
 	ui->strUnitsLabel->setToolTip(MedicationRecord::str_units_Tooltip);

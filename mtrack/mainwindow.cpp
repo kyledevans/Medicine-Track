@@ -46,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	ui->mainTabs->addTab(patientFrame, QString("Patients"));
 	ui->mainTabs->addTab(prescriptionsFrame, QString("Prescription log"));
-	ui->mainTabs->addTab(medicationsFrame, QString("Medications"));
+    ui->mainTabs->addTab(medicationsFrame, QString("Formulary"));
 	ui->mainTabs->addTab(prescriberFrame, QString("Prescribers"));
 	ui->mainTabs->addTab(pharmacistFrame, QString("Pharmacists"));
 	ui->mainTabs->addTab(inventoryFrame, QString("Inventory"));

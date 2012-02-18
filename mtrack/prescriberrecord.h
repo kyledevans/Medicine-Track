@@ -38,6 +38,8 @@ public:
 
 	static const QString full_name_Label;
 	static const QString full_name_Tooltip;
+	static const QString full_name_Label_secondary;
+	static const QString full_name_Tooltip_secondary;
 };
 
 #endif // PRESCRIBERRECORD_H

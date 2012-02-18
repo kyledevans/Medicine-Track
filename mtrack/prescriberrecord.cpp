@@ -26,6 +26,9 @@ const QString PrescriberRecord::first_Tooltip("First name");
 const QString PrescriberRecord::full_name_Label("Full name");
 const QString PrescriberRecord::full_name_Tooltip("Full name as it appears on a prescription label");
 
+const QString PrescriberRecord::full_name_Label_secondary("Written by");
+const QString PrescriberRecord::full_name_Tooltip_secondary("Who wrote the prescription");
+
 PrescriberRecord::PrescriberRecord(QObject *parent):
 	QObject(parent),
 	id(SQL::Undefined_ID),

@@ -163,7 +163,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="amountLabel_2">
        <property name="text">
-        <string>Amount dispensed</string>
+        <string>AMOUNT DISPENSED</string>
        </property>
       </widget>
      </item>
@@ -210,7 +210,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="doseLabel">
        <property name="text">
-        <string>Dose size</string>
+        <string>DOSE SIZE</string>
        </property>
       </widget>
      </item>
@@ -250,7 +250,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="writtenLabel">
        <property name="text">
-        <string>Written date</string>
+        <string>WRITTEN</string>
        </property>
       </widget>
      </item>
@@ -281,7 +281,7 @@
      <item row="3" column="0">
       <widget class="QLabel" name="filledLabel">
        <property name="text">
-        <string>Filled date</string>
+        <string>FILLED</string>
        </property>
       </widget>
      </item>
@@ -312,7 +312,7 @@
      <item row="4" column="0">
       <widget class="QLabel" name="writtenByLabel">
        <property name="text">
-        <string>Written by</string>
+        <string>WRITTEN BY</string>
        </property>
       </widget>
      </item>
@@ -339,7 +339,7 @@
      <item row="5" column="0">
       <widget class="QLabel" name="filledByLabel">
        <property name="text">
-        <string>Filled by</string>
+        <string>FILLED BY</string>
        </property>
       </widget>
      </item>
