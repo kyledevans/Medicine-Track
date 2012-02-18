@@ -24,6 +24,7 @@ AlterPharmacistWizard::AlterPharmacistWizard(PharmacistRecord *new_pharm, QWidge
 	pharm = new_pharm;
 
 	if (pharm->exists) {
+		this->setWindowTitle("Alter Pharmacist Wizard");
 		setField("lastField", pharm->last);
 		setField("firstField", pharm->first);
 		setField("initialsField", pharm->initials);

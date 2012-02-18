@@ -23,6 +23,7 @@ AlterPrescriberWizard::AlterPrescriberWizard(PrescriberRecord *new_pres, QWidget
 	pres = new_pres;
 
 	if (pres->exists) {
+		this->setWindowTitle("Alter Prescriber Wizard");
 		setField("lastField", pres->last);
 		setField("firstField", pres->first);
 		setField("fullField", pres->full_name);

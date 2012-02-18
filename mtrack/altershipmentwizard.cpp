@@ -26,6 +26,7 @@ AlterShipmentWizard::AlterShipmentWizard(ShipmentRecord *new_shipment, QWidget *
 	shipment = new_shipment;
 
 	if (shipment->exists) {
+		this->setWindowTitle("Alter Inventory Wizard");
 		setField("expireField", shipment->expiration);
 		setField("lotField", shipment->lot);
 		setField("unitsField", shipment->product_count);

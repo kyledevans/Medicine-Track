@@ -29,6 +29,7 @@ AlterMedicationWizard::AlterMedicationWizard(MedicationRecord *new_med, QWidget 
 
 	// Fill in the information into the form if the wizard is modifying an existing record
 	if (med->exists) {
+		this->setWindowTitle("Alter Medication Wizard");
 		setField("medicationField", med->name);
 		setField("genericField", med->generic);
 		setField("manufacturerField", med->manufacturer);

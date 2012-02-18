@@ -86,6 +86,9 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->writeOffAction);
 	ui->resultTable->addAction(ui->printBarcodeAction);
+
+	// Disable actions that require a selection in the resultTable
+	selectionChanged();
 }
 
 InventoryFrame::~InventoryFrame()
@@ -174,10 +177,12 @@ void InventoryFrame::selectionChanged()
 		ui->modifyButton->setEnabled(true);
 		ui->printBarcodeAction->setEnabled(true);
 		ui->modifyAction->setEnabled(true);
+		ui->writeOffAction->setEnabled(true);
 	} else {
 		ui->modifyButton->setEnabled(false);
 		ui->printBarcodeAction->setEnabled(false);
 		ui->modifyAction->setEnabled(false);
+		ui->writeOffAction->setEnabled(false);
 	}
 }
 

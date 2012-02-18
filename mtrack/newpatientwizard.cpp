@@ -27,6 +27,7 @@ NewPatientWizard::NewPatientWizard(PatientRecord *new_patient, QWidget *parent) 
 	patient = new_patient;
 
 	if (patient->exists) {
+		this->setWindowTitle("Alter Patient Wizard");
 		setField("mrNumberField", patient->allscripts_id);
 		setField("lastField", patient->last);
 		setField("firstField", patient->first);
