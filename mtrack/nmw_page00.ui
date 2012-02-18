@@ -203,45 +203,6 @@
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer_5">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>60</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="strUnitsLabel">
-       <property name="text">
-        <string>STR UNITS</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="strUnitsField">
-       <property name="minimumSize">
-        <size>
-         <width>150</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>150</width>
-         <height>16777215</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer name="horizontalSpacer_8">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -381,7 +342,6 @@
   <tabstop>manufacturerField</tabstop>
   <tabstop>ndcField</tabstop>
   <tabstop>strengthField</tabstop>
-  <tabstop>strUnitsField</tabstop>
   <tabstop>formField</tabstop>
   <tabstop>dispenseUnitsField</tabstop>
   <tabstop>unitSizeField</tabstop>

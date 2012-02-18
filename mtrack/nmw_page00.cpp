@@ -38,11 +38,7 @@ NMW_Page00::NMW_Page00(QWidget *parent) :
 
 	ui->strengthLabel->setText(MedicationRecord::strength_Label);
 	ui->strengthLabel->setToolTip(MedicationRecord::strength_Tooltip);
-    ui->strengthField->setToolTip(MedicationRecord::strength_Tooltip_edit);
-
-	ui->strUnitsLabel->setText(MedicationRecord::str_units_Label);
-	ui->strUnitsLabel->setToolTip(MedicationRecord::str_units_Tooltip);
-	ui->strUnitsField->setToolTip(MedicationRecord::str_units_Tooltip);
+	ui->strengthField->setToolTip(MedicationRecord::strength_Tooltip);
 
 	ui->formLabel->setText(MedicationRecord::form_Label);
 	ui->formLabel->setToolTip(MedicationRecord::form_Tooltip);
@@ -55,10 +51,6 @@ NMW_Page00::NMW_Page00(QWidget *parent) :
 	ui->unitSizeLabel->setText(MedicationRecord::unit_size_Label);
 	ui->unitSizeLabel->setToolTip(MedicationRecord::unit_size_Tooltip);
 	ui->unitSizeField->setToolTip(MedicationRecord::unit_size_Tooltip);
-
-	// Set validators
-	QValidator *numbers = new QDoubleValidator(this);
-	ui->strengthField->setValidator(numbers);
 
 	// Add entries to the "form" field
 	ui->formField->addItem("Capsule", QVariant(FORM_INT::Capsule));
@@ -101,8 +93,7 @@ void NMW_Page00::getResults(MedicationRecord *med)
 	med->manufacturer = ui->manufacturerField->text();
 	med->ndc = ui->ndcField->text();
 	med->form = ui->formField->itemData(ui->formField->currentIndex()).toInt();
-	med->strength = ui->strengthField->text().toDouble();
-	med->str_units = ui->strUnitsField->text();
+	med->strength = ui->strengthField->text();
 	med->dispense_units = ui->dispenseUnitsField->text();
 	med->unit_size = ui->unitSizeField->text();
 	med->active = ui->activeField->isChecked();

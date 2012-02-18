@@ -125,7 +125,7 @@ void PrescriptionsFrame::resetPressed()
 
 /* SQL query without C++:
 SELECT prescriptions.id, patients.allscripts_id, patients.last, patients.first, patients.dob, drugs.name,
-drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), CONCAT(prescriptions.amount, ' ', drugs.dispense_units), prescriptions.written, prescriptions.filled, shipments.lot
+drugs.form, drugs.strength, CONCAT(prescriptions.amount, ' ', drugs.dispense_units), prescriptions.written, prescriptions.filled, shipments.lot
 FROM prescriptions
 JOIN patients ON prescriptions.patient_id = patients.id
 JOIN drugs ON prescriptions.drug_id = drugs.id
@@ -155,7 +155,7 @@ void PrescriptionsFrame::initiateSearch()
 		return;
 	}
 
-	query = QString("SELECT prescriptions.id, patients.allscripts_id, patients.last, patients.first, patients.dob, drugs.name, drugs.form, CONCAT(drugs.strength, ' ', drugs.str_units), CONCAT(prescriptions.amount, ' ', drugs.dispense_units), prescriptions.written, prescriptions.filled, shipments.lot FROM prescriptions JOIN patients ON prescriptions.patient_id = patients.id JOIN drugs ON prescriptions.drug_id = drugs.id JOIN shipments ON prescriptions.shipment_id = shipments.id WHERE drugs.name LIKE '%");
+	query = QString("SELECT prescriptions.id, patients.allscripts_id, patients.last, patients.first, patients.dob, drugs.name, drugs.form, drugs.strength, CONCAT(prescriptions.amount, ' ', drugs.dispense_units), prescriptions.written, prescriptions.filled, shipments.lot FROM prescriptions JOIN patients ON prescriptions.patient_id = patients.id JOIN drugs ON prescriptions.drug_id = drugs.id JOIN shipments ON prescriptions.shipment_id = shipments.id WHERE drugs.name LIKE '%");
 	query += SQL::cleanInput(ui->medicationNameField->text()) + QString("%' AND shipments.lot LIKE '%");
 	query += SQL::cleanInput(ui->lotField->text()) + QString("%'");
 	if (ui->filledField->date() != DEFAULTS::Date) {	// Search by filled date if necessary

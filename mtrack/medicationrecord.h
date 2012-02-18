@@ -24,7 +24,7 @@ public:
 	QString manufacturer;	// drugs.manufacturer
 	QString ndc;			// drugs.ndc
 	int form;				// drugs.form
-	double strength;		// drugs.strength
+	QString strength;		// drugs.strength
 	QString str_units;		// drugs.str_units
 	QString dispense_units;	// drugs.dispense_units
 	QString unit_size;		// drugs.unit_size

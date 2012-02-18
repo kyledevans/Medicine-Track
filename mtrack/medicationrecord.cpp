@@ -35,7 +35,6 @@ const QString MedicationRecord::form_Tooltip("Medication form");
 
 const QString MedicationRecord::strength_Label("Strength");
 const QString MedicationRecord::strength_Tooltip("Strength");
-const QString MedicationRecord::strength_Tooltip_edit("Strength (only numbers)");
 
 const QString MedicationRecord::str_units_Label("Strength units");
 const QString MedicationRecord::str_units_Tooltip("Units of measurement for strength");
@@ -88,7 +87,7 @@ bool MedicationRecord::retrieve(int newId)
 	manufacturer = model->record(0).value(2).toString();
 	ndc = model->record(0).value(3).toString();
 	form = FORM_INT::strToInt(model->record(0).value(4).toString());
-	strength = model->record(0).value(5).toDouble();
+	strength = model->record(0).value(5).toString();
 	str_units = model->record(0).value(6).toString();
 	dispense_units = model->record(0).value(7).toString();
 	unit_size = model->record(0).value(8).toString();
@@ -125,7 +124,7 @@ bool MedicationRecord::commitRecord()
 		query += SQL::cleanNoMatching(manufacturer) + QString("', '");
 		query += SQL::cleanNoMatching(ndc) + QString("', '");
 		query += FORM_STR::intToStr(form) + QString("', '");
-		query += QString().setNum(strength) + QString("', '");
+		query += SQL::cleanNoMatching(strength) + QString("', '");
 		query += SQL::cleanNoMatching(str_units) +QString("', '");
 		query += SQL::cleanNoMatching(dispense_units) + QString("', '");
 		query += SQL::cleanNoMatching(unit_size) + QString("', '");
@@ -142,7 +141,7 @@ bool MedicationRecord::commitRecord()
 		query += SQL::cleanNoMatching(manufacturer) + QString("', ndc = '");
 		query += SQL::cleanNoMatching(ndc) + QString("', form = '");
 		query += FORM_STR::intToStr(form) + QString("', strength = '");
-		query += QString().setNum(strength) + QString("', str_units = '");
+		query += SQL::cleanNoMatching(strength) + QString("', str_units = '");
 		query += SQL::cleanNoMatching(str_units) + QString("', dispense_units = '");
 		query += SQL::cleanNoMatching(dispense_units) + QString("', unit_size = '");
 		query += SQL::cleanNoMatching(unit_size) + QString("', instructions = '");
