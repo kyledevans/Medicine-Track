@@ -21,3 +21,4 @@ INSERT INTO patients (id, allscripts_id, last, first, dob, active) VALUES(231, 1
 INSERT INTO patients (id, allscripts_id, last, first, dob, active) VALUES(232, 222, 'Washington', 'George', '2003-05-31', 1);
 INSERT INTO patients (id, allscripts_id, last, first, dob, active) VALUES(233, 233, 'Galifianakis', 'Zach', '2006-01-31', 1);
 INSERT INTO patients (id, allscripts_id, last, first, dob, active) VALUES(234, 465, 'Feynman', 'Richard', '2012-02-27', 0);
+ALTER TABLE patients AUTO_INCREMENT=235;

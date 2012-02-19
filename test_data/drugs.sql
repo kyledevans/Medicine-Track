@@ -7,3 +7,4 @@ INSERT INTO drugs (id, name, generic, manufacturer, ndc, form, strength, dispens
 INSERT INTO drugs (id, name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) VALUES(200, 'Azithromycin', 'Zithromax', 'Greenstowne', '123-1234-12', 'suspension', '200 mg / 5 ml', 'bottle', '22.5 ml', 'Take _ ml by mouth today, then _ ml daily for 4 days.', 1);
 INSERT INTO drugs (id, name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) VALUES(201, 'Prednisolone', 'Prelone', 'McKesson', '234-2345-23', 'syrup', '15 mg / 5 ml', 'ml', '', '', 1);
 INSERT INTO drugs (id, name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) VALUES(202, 'Azithromycin', 'Zithromax', 'Greenstowne', '222-3333-11', 'suspension', '100 mg / 5 ml', 'bottle', '30 ml', 'Take  ml by mouth today then  ml one a day for 4 days.', 1);
+ALTER TABLE drugs AUTO_INCREMENT=203;

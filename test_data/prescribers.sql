@@ -7,3 +7,4 @@ INSERT INTO prescribers (id, last, first, full_name, active) VALUES(6, 'Barnard'
 INSERT INTO prescribers (id, last, first, full_name, active) VALUES(7, 'Drew', 'Charles', 'C. Drew, MD', 1);
 INSERT INTO prescribers (id, last, first, full_name, active) VALUES(8, 'Apgar', 'Virginia', 'V. Apgar, MD', 1);
 INSERT INTO prescribers (id, last, first, full_name, active) VALUES(9, 'Safar', 'Peter', 'P. Safar, MD', 0);
+ALTER TABLE prescribers AUTO_INCREMENT=10;
