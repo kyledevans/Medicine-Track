@@ -57,7 +57,7 @@ void PrescriptionLabel::printLabel()
 	connect(diag, SIGNAL(accepted(QPrinter*)), this, SLOT(print(QPrinter*)));
 	diag->exec();*/
 
-	printer.setOutputFileName("C:\\Users\\Evans\\Desktop\\epc_db\\print.pdf");
+	printer.setOutputFileName("C:\\Users\\Evans\\Desktop\\print.pdf");
 	printer.setOutputFormat(QPrinter::PdfFormat);
 	print(&printer);
 }
@@ -81,7 +81,12 @@ void PrescriptionLabel::print(QPrinter *printer)
 	ui->writtenLabel->setText(prescription->written.toString(DEFAULTS::DateDisplayFormat));
 	ui->ndcLabel->setText(medication->ndc);
 	ui->genericLabel->setText(medication->generic);
-	ui->lotLabel->setText(shipment->lot);
+	if (medication->unit_size.isEmpty()) {	// Display the amount dispensed
+		ui->dispensedLabel->setText(QString().setNum(prescription->amount) + QString(" ") + medication->dispense_units);
+	} else {	// Display the size of the bottle, tube, etc. If they come in fixed sizes instead
+		ui->dispensedLabel->setText(medication->unit_size);
+	}
+
 	ui->fillerLabel->setText(pharmacist->initials);
 
 	painter.begin(printer);

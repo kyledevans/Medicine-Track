@@ -551,7 +551,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="lotLabel">
+      <widget class="QLabel" name="dispensedLabel">
        <property name="font">
         <font>
          <family>Arial</family>
