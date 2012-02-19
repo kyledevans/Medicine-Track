@@ -1,9 +1,9 @@
-﻿INSERT INTO prescribers (last, first, full_name, active) VALUES('Riviera', 'Nick', 'N. Riviera, DO', 1);
-INSERT INTO prescribers (last, first, full_name, active) VALUES('Billroth', 'Theodor', 'T. Billroth, MD', 0);
-INSERT INTO prescribers (last, first, full_name, active) VALUES('Hibbert', 'Julius', 'J. Hibbert, MD', 1);
-INSERT INTO prescribers (last, first, full_name, active) VALUES('Suess', 'Theodor', 'T. Suess, DO', 1);
-INSERT INTO prescribers (last, first, full_name, active) VALUES('Gray', 'Henry', 'J. Hibbert, MD', 1);
-INSERT INTO prescribers (last, first, full_name, active) VALUES('Barnard', 'Christiaan', 'C. Barnard, MD', 0);
-INSERT INTO prescribers (last, first, full_name, active) VALUES('Drew', 'Charles', 'C. Drew, MD', 1);
-INSERT INTO prescribers (last, first, full_name, active) VALUES('Apgar', 'Virginia', 'V. Apgar, MD', 1);
-INSERT INTO prescribers (last, first, full_name, active) VALUES('Safar', 'Peter', 'P. Safar, MD', 0);
+﻿INSERT INTO prescribers (id, last, first, full_name, active) VALUES(1, 'Riviera', 'Nick', 'N. Riviera, DO', 1);
+INSERT INTO prescribers (id, last, first, full_name, active) VALUES(2, 'Billroth', 'Theodor', 'T. Billroth, MD', 0);
+INSERT INTO prescribers (id, last, first, full_name, active) VALUES(3, 'Hibbert', 'Julius', 'J. Hibbert, MD', 1);
+INSERT INTO prescribers (id, last, first, full_name, active) VALUES(4, 'Suess', 'Theodor', 'T. Suess, DO', 1);
+INSERT INTO prescribers (id, last, first, full_name, active) VALUES(5, 'Gray', 'Henry', 'J. Hibbert, MD', 1);
+INSERT INTO prescribers (id, last, first, full_name, active) VALUES(6, 'Barnard', 'Christiaan', 'C. Barnard, MD', 0);
+INSERT INTO prescribers (id, last, first, full_name, active) VALUES(7, 'Drew', 'Charles', 'C. Drew, MD', 1);
+INSERT INTO prescribers (id, last, first, full_name, active) VALUES(8, 'Apgar', 'Virginia', 'V. Apgar, MD', 1);
+INSERT INTO prescribers (id, last, first, full_name, active) VALUES(9, 'Safar', 'Peter', 'P. Safar, MD', 0);
