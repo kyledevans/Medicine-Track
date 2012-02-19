@@ -43,6 +43,7 @@ namespace FORM_STR {
 
 namespace DEFAULTS {
 	const QDate Date(1970, 1, 31);
+	const QString DateDisplayFormat("M/d/yyyy");
 	const QString Organization("EPC");
 	const QString Domain("evanspediatric.com");
 	const QString Application("MTrack");

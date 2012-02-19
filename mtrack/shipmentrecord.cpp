@@ -29,8 +29,11 @@ const QString ShipmentRecord::product_count_Tooltip("How many units were receive
 const QString ShipmentRecord::product_left_Label("Inventory left");
 const QString ShipmentRecord::product_left_Tooltip("How much inventory is left after prescriptions and write-offs");
 
-const QString ShipmentRecord::write_off_Label("Write off");
-const QString ShipmentRecord::write_off_Tooltip("Write off inventory");
+const QString ShipmentRecord::write_off_Label("Written off");
+const QString ShipmentRecord::write_off_Tooltip("Inventory that has been written off");
+
+const QString ShipmentRecord::write_off_Label_edit("Write off");
+const QString ShipmentRecord::write_off_Tooltip_edit("Write off inventory");
 
 const QString ShipmentRecord::name_barcode_Label("Medication/Barcode");
 const QString ShipmentRecord::name_barcode_Tooltip("Medication name or shipment barcode");

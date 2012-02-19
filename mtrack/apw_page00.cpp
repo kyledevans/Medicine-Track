@@ -53,6 +53,10 @@ APW_Page00::APW_Page00(QWidget *parent) :
 	header->setText(ShipmentRecord::product_left_Label);
 	header->setToolTip(ShipmentRecord::product_left_Tooltip);
 
+	header = ui->resultTable->horizontalHeaderItem(5);
+	header->setText(ShipmentRecord::expiration_Label);
+	header->setToolTip(ShipmentRecord::expiration_Tooltip);
+
 	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
 
 	// Connect signals/slots
@@ -80,7 +84,7 @@ void APW_Page00::setPrescription(PrescriptionRecord *new_prescription)
 
 /* SQL without C++:
 SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength,
-drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units)
+drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration
 FROM shipments
 JOIN drugs ON drugs.id = shipments.drug_id
 WHERE shipments.active = '1'
@@ -98,13 +102,13 @@ void APW_Page00::initiateSearch()
 
 	model = new QSqlQuery;
 
-	query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units) FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.active = '1' AND drugs.active = '1' AND shipments.expiration > CURDATE() AND drugs.name LIKE '%");
+	query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.active = '1' AND drugs.active = '1' AND shipments.expiration > CURDATE() AND drugs.name LIKE '%");
 	query += SQL::cleanInput(ui->medicationField->text()) + QString("%';");
 
 	if (!ui->medicationField->text().isEmpty()) {
 		barcode.setBarcode(ui->medicationField->text());
 		if (barcode.toID() != SQL::Undefined_ID) {
-			query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units) FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.id = '");
+			query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.id = '");
 			query += QString().setNum(barcode.toID()) + QString("';");
 		}
 	}
@@ -125,6 +129,7 @@ void APW_Page00::initiateSearch()
 		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(4).toString()));
 		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(5).toString()));
 		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(6).toString()));
+		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(7).toString()));
 	}
 
 	db_queried = true;

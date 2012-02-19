@@ -51,6 +51,9 @@ public:
 	static const QString write_off_Label;
 	static const QString write_off_Tooltip;
 
+	static const QString write_off_Label_edit;
+	static const QString write_off_Tooltip_edit;
+
 	static const QString name_barcode_Label;
 	static const QString name_barcode_Tooltip;
 

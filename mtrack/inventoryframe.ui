@@ -285,7 +285,7 @@
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
      <property name="columnCount">
-      <number>7</number>
+      <number>8</number>
      </property>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
@@ -326,6 +326,11 @@
      <column>
       <property name="text">
        <string>UNITS LEFT</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>WRITE OFF</string>
       </property>
      </column>
     </widget>

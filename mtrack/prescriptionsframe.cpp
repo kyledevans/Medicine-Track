@@ -185,13 +185,13 @@ void PrescriptionsFrame::initiateSearch()
 		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
 		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
 		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
-		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toDate().toString("M/d/yyyy")));
+		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toDate().toString(DEFAULTS::DateDisplayFormat)));
 		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(5).toString()));
 		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(6).toString()));
 		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(7).toString()));
 		ui->resultTable->setItem(i, 7, new QTableWidgetItem(model->value(8).toString()));
-		ui->resultTable->setItem(i, 8, new QTableWidgetItem(model->value(9).toDate().toString("M/d/yyyy")));
-		ui->resultTable->setItem(i, 9, new QTableWidgetItem(model->value(10).toDate().toString("M/d/yyyy")));
+		ui->resultTable->setItem(i, 8, new QTableWidgetItem(model->value(9).toDate().toString(DEFAULTS::DateDisplayFormat)));
+		ui->resultTable->setItem(i, 9, new QTableWidgetItem(model->value(10).toDate().toString(DEFAULTS::DateDisplayFormat)));
 		ui->resultTable->setItem(i, 10, new QTableWidgetItem(model->value(11).toString()));
 	}
 

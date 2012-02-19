@@ -33,9 +33,9 @@ ASW_Page00::ASW_Page00(QWidget *parent) :
 	ui->stockLabel->setToolTip(ShipmentRecord::product_left_Tooltip);
 	ui->stockField->setToolTip(ShipmentRecord::product_left_Tooltip);
 
-	ui->writeOffLabel->setText(ShipmentRecord::write_off_Label);
-	ui->writeOffLabel->setToolTip(ShipmentRecord::write_off_Tooltip);
-	ui->writeOffField->setToolTip(ShipmentRecord::write_off_Tooltip);
+	ui->writeOffLabel->setText(ShipmentRecord::write_off_Label_edit);
+	ui->writeOffLabel->setToolTip(ShipmentRecord::write_off_Tooltip_edit);
+	ui->writeOffField->setToolTip(ShipmentRecord::write_off_Tooltip_edit);
 
 	QValidator *numbers = new QIntValidator(this);
 	ui->stockField->setValidator(numbers);

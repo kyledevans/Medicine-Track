@@ -126,7 +126,7 @@
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
      <property name="columnCount">
-      <number>5</number>
+      <number>6</number>
      </property>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
@@ -157,6 +157,11 @@
      <column>
       <property name="text">
        <string>STOCK</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>EXPIRATION</string>
       </property>
      </column>
     </widget>

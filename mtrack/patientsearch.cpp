@@ -140,7 +140,7 @@ void PatientSearch::initiateSearch(int patientID)
 		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
 		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
 		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
-		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toDate().toString("MM-dd-yyyy")));
+		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toDate().toString(DEFAULTS::DateDisplayFormat)));
 	}
 
 	db_queried = true;	// Let other functions start accessing values in the table

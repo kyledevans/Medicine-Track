@@ -77,8 +77,8 @@ void PrescriptionLabel::print(QPrinter *printer)
 	ui->strengthLabel->setText(medication->strength);
 	ui->prescriberLabel->setText(prescriber->full_name);
 	ui->instructionsLabel->setText(prescription->instructions);
-	ui->filledLabel->setText(prescription->filled.toString("MM/d/yyyy"));
-	ui->writtenLabel->setText(prescription->written.toString("MM/d/yyyy"));
+	ui->filledLabel->setText(prescription->filled.toString(DEFAULTS::DateDisplayFormat));
+	ui->writtenLabel->setText(prescription->written.toString(DEFAULTS::DateDisplayFormat));
 	ui->ndcLabel->setText(medication->ndc);
 	ui->genericLabel->setText(medication->generic);
 	ui->lotLabel->setText(shipment->lot);

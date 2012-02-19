@@ -72,6 +72,10 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 	header->setText(ShipmentRecord::product_left_Label);
 	header->setToolTip(ShipmentRecord::product_left_Tooltip);
 
+	header = ui->resultTable->horizontalHeaderItem(7);
+	header->setText(ShipmentRecord::write_off_Label);
+	header->setToolTip(ShipmentRecord::write_off_Tooltip);
+
 	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
 
 	// Connecting various signals/slots...
@@ -102,7 +106,7 @@ void InventoryFrame::resetPressed()
 
 /*  SQL without C++:
 SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot,
-shipments.product_count, shipments.product_left
+shipments.product_count, shipments.product_left, shipments.write_off
 FROM shipments
 JOIN drugs ON shipments.drug_id = drugs.id
 WHERE drugs.name LIKE '%SOME_VAR%'
@@ -121,7 +125,7 @@ void InventoryFrame::initiateSearch(int shipID)
 	int i;					// Increment var
 
 	if (shipID == SQL::Undefined_ID) {
-		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE drugs.name LIKE '%");
+		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left, shipments.write_off FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE drugs.name LIKE '%");
 		query += SQL::cleanInput(ui->nameField->text()) + QString("%' AND shipments.lot LIKE '%");
 		query += SQL::cleanInput(ui->lotField->text()) + QString("%'");
 		if (ui->stockCheckbox->isChecked()) {	// Stocked checkbox
@@ -135,13 +139,13 @@ void InventoryFrame::initiateSearch(int shipID)
 			query += QString(" AND shipments.expiration < CURDATE()");
 		}
 		if (!ui->barcodeField->text().isEmpty()) {	// If we're searching based on barcode, just ignore every other qualifier
-			query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE shipments.id = '");
+			query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left, shipments.write_off FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE shipments.id = '");
 			barcode.setBarcode(ui->barcodeField->text());
 			query += QString().setNum(barcode.toID()) + QString("'");
 		}
 		query += QString(";");
 	} else {
-		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE shipments.id = '");
+		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left, shipments.write_off FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE shipments.id = '");
 		query += QString().setNum(shipID) + QString("';");
 	}
 
@@ -164,6 +168,7 @@ void InventoryFrame::initiateSearch(int shipID)
 		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(5).toString()));
 		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(6).toString()));
 		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(7).toString()));
+		ui->resultTable->setItem(i, 7, new QTableWidgetItem(model->value(8).toString()));
 	}
 
 	db_queried = true;
