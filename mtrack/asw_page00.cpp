@@ -29,26 +29,14 @@ ASW_Page00::ASW_Page00(QWidget *parent) :
 	ui->unitsLabel->setToolTip(ShipmentRecord::product_count_Tooltip);
 	ui->unitsField->setToolTip(ShipmentRecord::product_count_Tooltip);
 
-	ui->stockLabel->setText(ShipmentRecord::product_left_Label);
-	ui->stockLabel->setToolTip(ShipmentRecord::product_left_Tooltip);
-	ui->stockField->setToolTip(ShipmentRecord::product_left_Tooltip);
-
-	ui->writeOffLabel->setText(ShipmentRecord::write_off_Label_edit);
-	ui->writeOffLabel->setToolTip(ShipmentRecord::write_off_Tooltip_edit);
-	ui->writeOffField->setToolTip(ShipmentRecord::write_off_Tooltip_edit);
-
 	QValidator *numbers = new QIntValidator(this);
-	ui->stockField->setValidator(numbers);
 	ui->unitsField->setValidator(numbers);
-	ui->writeOffField->setValidator(numbers);
 
 	ui->expireField->setDate(DEFAULTS::Date);
 
 	registerField("expireField", ui->expireField);
 	registerField("lotField", ui->lotField);
 	registerField("unitsField", ui->unitsField);
-	registerField("stockField", ui->stockField);
-	registerField("writeOffField", ui->writeOffField);
 	registerField("activeField", ui->activeField);
 }
 
@@ -62,7 +50,7 @@ void ASW_Page00::getResults(ShipmentRecord *shipment)
 	shipment->expiration = ui->expireField->date();
 	shipment->lot = ui->lotField->text();
 	shipment->product_count = ui->unitsField->text().toInt();
-	shipment->product_left = ui->stockField->text().toInt();
-	shipment->write_off = ui->writeOffField->text().toInt();
 	shipment->active = ui->activeField->isChecked();
+    shipment->product_left = shipment->product_count;
+    shipment->write_off = 0;
 }

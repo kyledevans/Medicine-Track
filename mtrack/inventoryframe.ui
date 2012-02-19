@@ -360,8 +360,8 @@
   <tabstop>stockCheckbox</tabstop>
   <tabstop>activeCheckbox</tabstop>
   <tabstop>expiredCheckbox</tabstop>
-  <tabstop>resetButton</tabstop>
   <tabstop>searchButton</tabstop>
+  <tabstop>resetButton</tabstop>
   <tabstop>resultTable</tabstop>
  </tabstops>
  <resources/>

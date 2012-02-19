@@ -146,6 +146,12 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>lastField</tabstop>
+  <tabstop>firstField</tabstop>
+  <tabstop>initialsField</tabstop>
+  <tabstop>activeField</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

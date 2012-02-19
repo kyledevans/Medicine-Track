@@ -46,6 +46,9 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>instructionsField</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

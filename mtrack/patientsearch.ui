@@ -309,6 +309,17 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>lastNameField</tabstop>
+  <tabstop>firstNameField</tabstop>
+  <tabstop>dobField</tabstop>
+  <tabstop>searchButton</tabstop>
+  <tabstop>resetButton</tabstop>
+  <tabstop>newPatientButton</tabstop>
+  <tabstop>prescribeButton</tabstop>
+  <tabstop>modifyButton</tabstop>
+  <tabstop>resultTable</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

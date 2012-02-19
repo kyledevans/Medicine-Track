@@ -413,6 +413,17 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>medicationNameField</tabstop>
+  <tabstop>lotField</tabstop>
+  <tabstop>filledField</tabstop>
+  <tabstop>lastField</tabstop>
+  <tabstop>firstField</tabstop>
+  <tabstop>dobField</tabstop>
+  <tabstop>searchButton</tabstop>
+  <tabstop>resetButton</tabstop>
+  <tabstop>resultTable</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

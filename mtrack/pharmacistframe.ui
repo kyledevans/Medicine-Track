@@ -234,6 +234,15 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>lastField</tabstop>
+  <tabstop>firstField</tabstop>
+  <tabstop>searchButton</tabstop>
+  <tabstop>resetButton</tabstop>
+  <tabstop>newButton</tabstop>
+  <tabstop>modifyButton</tabstop>
+  <tabstop>resultTable</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
