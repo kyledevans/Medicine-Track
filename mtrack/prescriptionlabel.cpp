@@ -80,7 +80,12 @@ void PrescriptionLabel::print(QPrinter *printer)
 	ui->filledLabel->setText(prescription->filled.toString(DEFAULTS::DateDisplayFormat));
 	ui->writtenLabel->setText(prescription->written.toString(DEFAULTS::DateDisplayFormat));
 	ui->ndcLabel->setText(medication->ndc);
-	ui->genericLabel->setText(medication->generic);
+	if (medication->generic.isEmpty()) {	// Don't display "generic for..." if it doesn't make sense
+		ui->genericHeaderLabel->setText(QString(" "));
+		ui->genericLabel->setText(QString(" "));
+	} else {
+		ui->genericLabel->setText(medication->generic);
+	}
 	if (medication->unit_size.isEmpty()) {	// Display the amount dispensed
 		ui->dispensedLabel->setText(QString().setNum(prescription->amount) + QString(" ") + medication->dispense_units);
 	} else {	// Display the size of the bottle, tube, etc. If they come in fixed sizes instead

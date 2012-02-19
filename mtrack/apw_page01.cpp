@@ -4,7 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QSqlQueryModel>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QVariant>
@@ -93,44 +92,48 @@ ORDER BY last, first;
 */
 bool APW_Page01::initCustom()
 {
-	int i;
-	QString query;
-	QSqlQueryModel *model;
+	QSqlQuery *model;				// Contains the query
+	QString query;					// Contains the SQL query string
 	AlertInterface alert;
 	PrescriberRecord *presTemp;
 	PharmacistRecord *pharmTemp;
+	int i;							// Increment var
 
-	model = new QSqlQueryModel();
+	model = new QSqlQuery;
 	query = QString("SELECT id, last, first, full_name, active FROM prescribers WHERE active = '1' ORDER BY last, first;");
 
 	if (!alert.attemptQuery(model, &query)) {
 		delete model;
 		return false;
 	}
-	for (i = 0; i < model->query().size(); i++) {
+	for (i = 0; i < model->size(); i++) {
+		model->next();
 		presTemp = new PrescriberRecord();
-		presTemp->id = model->record(i).value(0).toInt();
-		presTemp->last = model->record(i).value(1).toString();
-		presTemp->first = model->record(i).value(2).toString();
-		presTemp->full_name = model->record(i).value(3).toString();
-		presTemp->active = model->record(i).value(4).toBool();
+		presTemp->id = model->value(0).toInt();
+		presTemp->last = model->value(1).toString();
+		presTemp->first = model->value(2).toString();
+		presTemp->full_name = model->value(3).toString();
+		presTemp->active = model->value(4).toBool();
 		prescribers.append(presTemp);
 	}
+	delete model;
 
 	query = QString("SELECT id, last, first, initials, active FROM pharmacists WHERE active = '1' ORDER BY last, first;");
 
+	model = new QSqlQuery;
 	if (!alert.attemptQuery(model, &query)) {
 		deleteLists();
 		delete model;
 		return false;
 	}
-	for (i = 0; i < model->query().size(); i++) {
+	for (i = 0; i < model->size(); i++) {
+		model->next();
 		pharmTemp = new PharmacistRecord();
-		pharmTemp->id = model->record(i).value(0).toInt();
-		pharmTemp->last = model->record(i).value(1).toString();
-		pharmTemp->first = model->record(i).value(2).toString();
-		pharmTemp->initials = model->record(i).value(3).toString();
-		pharmTemp->active = model->record(i).value(4).toBool();
+		pharmTemp->id = model->value(0).toInt();
+		pharmTemp->last = model->value(1).toString();
+		pharmTemp->first = model->value(2).toString();
+		pharmTemp->initials = model->value(3).toString();
+		pharmTemp->active = model->value(4).toBool();
 		pharmacists.append(pharmTemp);
 	}
 
@@ -154,16 +157,16 @@ void APW_Page01::setupComboBoxes()
 {
 	int i;
 
-	for (i = 0; i < pharmacists.size(); i++) {
-		ui->filledByField->addItem(pharmacists[i]->last + QString(", ") + pharmacists[i]->first, QVariant(pharmacists[i]->id));
-	}
-
 	for (i = 0; i < prescribers.size(); i++) {
 		ui->writtenByField->addItem(prescribers[i]->full_name, QVariant(prescribers[i]->id));
 	}
 
-	ui->filledByField->setCurrentIndex(-1);
+	for (i = 0; i < pharmacists.size(); i++) {
+		ui->filledByField->addItem(pharmacists[i]->last + QString(", ") + pharmacists[i]->first, QVariant(pharmacists[i]->id));
+	}
+
 	ui->writtenByField->setCurrentIndex(-1);
+	ui->filledByField->setCurrentIndex(-1);
 }
 
 void APW_Page01::getResults()
