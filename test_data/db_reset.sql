@@ -1,0 +1,13 @@
+﻿DELETE FROM prescriptions;
+DELETE FROM shipments;
+DELETE FROM pharmacists;
+DELETE FROM prescribers;
+DELETE FROM drugs;
+DELETE FROM patients;
+
+ALTER TABLE drugs AUTO_INCREMENT=1;
+ALTER TABLE patients AUTO_INCREMENT=1;
+ALTER TABLE pharmacists AUTO_INCREMENT=1;
+ALTER TABLE prescribers AUTO_INCREMENT=1;
+ALTER TABLE prescriptions AUTO_INCREMENT=1;
+ALTER TABLE shipments AUTO_INCREMENT=1;
