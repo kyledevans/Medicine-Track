@@ -12,7 +12,7 @@
 		<toc>
 			<section title="Medicine Track Manual" ref="index.html" />
 			<section title="Patients" ref="new_patient.html" />
-			<section title="Formulary" ref="new_formulary.html" />
+			<section title="Formulary" ref="new_medication.html" />
 			<section title="Prescriptions" ref="new_inventory.html" />
 		</toc>
 		<keywords>
