@@ -76,14 +76,12 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 
 	// Connecting various signals/slots...
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
-	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->writeOffAction, SIGNAL(triggered()), this, SLOT(initiateWriteOff()));
 	connect(ui->printBarcodeAction, SIGNAL(triggered()), this, SLOT(initiatePrintBarcode()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
 
 	// Add items to the resultTable right-click menu
-	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->writeOffAction);
 	ui->resultTable->addAction(ui->printBarcodeAction);
 
@@ -174,14 +172,10 @@ void InventoryFrame::initiateSearch(int shipID)
 void InventoryFrame::selectionChanged()
 {
 	if (ui->resultTable->selectionModel()->hasSelection()) {
-		ui->modifyButton->setEnabled(true);
 		ui->printBarcodeAction->setEnabled(true);
-		ui->modifyAction->setEnabled(true);
 		ui->writeOffAction->setEnabled(true);
 	} else {
-		ui->modifyButton->setEnabled(false);
 		ui->printBarcodeAction->setEnabled(false);
-		ui->modifyAction->setEnabled(false);
 		ui->writeOffAction->setEnabled(false);
 	}
 }
