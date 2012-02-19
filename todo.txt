@@ -20,6 +20,8 @@ Released under the GPL version 2 only.
 	- Adding new/modifying formulary
 	- Adding new/modifying inventory
 
+14.  Remove the "active" checkbox from all wizards.  Should only be able to active/reactive by right clicking them on a resultTable.
+
 -----
 
 Questions:
