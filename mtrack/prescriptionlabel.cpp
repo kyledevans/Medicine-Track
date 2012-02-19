@@ -84,7 +84,11 @@ void PrescriptionLabel::print(QPrinter *printer)
 	if (medication->unit_size.isEmpty()) {	// Display the amount dispensed
 		ui->dispensedLabel->setText(QString().setNum(prescription->amount) + QString(" ") + medication->dispense_units);
 	} else {	// Display the size of the bottle, tube, etc. If they come in fixed sizes instead
-		ui->dispensedLabel->setText(medication->unit_size);
+		if (prescription->amount > 1) {	// Indicate how many units were given and their size
+			ui->dispensedLabel->setText(QString().setNum(prescription->amount) + QString(" x ") + medication->unit_size);
+		} else {	// Only 1 unit was given, just show the size
+			ui->dispensedLabel->setText(medication->unit_size);
+		}
 	}
 
 	ui->fillerLabel->setText(pharmacist->initials);
