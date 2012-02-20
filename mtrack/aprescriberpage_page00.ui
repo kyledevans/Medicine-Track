@@ -40,6 +40,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="maxLength">
+        <number>32</number>
+       </property>
       </widget>
      </item>
      <item>
@@ -80,6 +83,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="maxLength">
+        <number>32</number>
+       </property>
       </widget>
      </item>
      <item>
@@ -119,6 +125,9 @@
          <width>200</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="maxLength">
+        <number>64</number>
        </property>
       </widget>
      </item>
