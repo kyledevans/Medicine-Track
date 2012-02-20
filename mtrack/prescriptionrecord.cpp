@@ -4,7 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QSqlQueryModel>
 #include <QString>
 #include <QVariant>
 #include <QSqlRecord>
@@ -47,41 +46,46 @@ PrescriptionRecord::PrescriptionRecord(QObject *parent):
 }
 
 /* SQL without C++:
-SELECT patient_id, drug_id, shipment_id, prescriber_id, pharmacist_id, amount, dose_size, written, filled, instructions, comments, active
+SELECT patient_id, drug_id, shipment_id, prescriber_id, pharmacist_id, amount,
+dose_size, written, filled, instructions, comments, active
 FROM prescriptions
 WHERE id = 'SOME_VAL';
 */
 bool PrescriptionRecord::retrieve(int newId)
 {
-	QSqlQueryModel *model;
-	QString query;
+	QSqlQuery *model;
 	AlertInterface alert;
 
 	if (newId == SQL::Undefined_ID)	{
 		return false;
 	}
 
-	model = new QSqlQueryModel;
-	query += QString("SELECT patient_id, drug_id, shipment_id, prescriber_id, pharmacist_id, amount, dose_size, written, filled, instructions, comments, active FROM prescriptions WHERE id = '");
-	query += QString().setNum(newId) + QString("';");
+	model = new QSqlQuery;
+	model->prepare("SELECT patient_id, drug_id, shipment_id, prescriber_id, pharmacist_id, amount, "
+				   "dose_size, written, filled, instructions, comments, active "
+				   "FROM prescriptions "
+				   "WHERE id = ?;");
+	model->bindValue(0, QVariant(newId));
 
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(model)) {
+		delete model;
 		return false;	// Query failed
 	}
 
+	model->next();
 	id = newId;
-	patient_id = model->record(0).value(0).toInt();
-	drug_id = model->record(0).value(1).toInt();
-	shipment_id = model->record(0).value(2).toInt();
-	prescriber_id = model->record(0).value(3).toInt();
-	pharmacist_id = model->record(0).value(4).toInt();
-	amount = model->record(0).value(5).toInt();
-	dose_size = model->record(0).value(6).toString();
-	written = QDate().fromString(model->record(0).value(7).toString(), "yyyy-MM-dd");
-	filled = QDate().fromString(model->record(0).value(8).toString(), "yyyy-MM-dd");
-	instructions = model->record(0).value(9).toString();
-	comments = model->record(0).value(10).toString();
-	active = model->record(0).value(11).toBool();
+	patient_id = model->value(0).toInt();
+	drug_id = model->value(1).toInt();
+	shipment_id = model->value(2).toInt();
+	prescriber_id = model->value(3).toInt();
+	pharmacist_id = model->value(4).toInt();
+	amount = model->value(5).toInt();
+	dose_size = model->value(6).toString();
+	written = model->value(7).toDate();
+	filled = model->value(8).toDate();
+	instructions = model->value(9).toString();
+	comments = model->value(10).toString();
+	active = model->value(11).toBool();
 	exists = true;
 
 	delete model;
@@ -107,40 +111,43 @@ WHERE id = 'SOME_VAL';
 */
 bool PrescriptionRecord::commitRecord()
 {
-	QSqlQueryModel *model;
-	QString query;
+	QSqlQuery *model;
 	AlertInterface alert;
 	QSqlDatabase db;
 
-	model = new QSqlQueryModel();
+	model = new QSqlQuery;
 
 	if (!exists) {
 		db = QSqlDatabase::database();	// Get the default DB
 		db.transaction();
-		query = QString("INSERT INTO prescriptions (patient_id, drug_id, shipment_id, prescriber_id, pharmacist_id, amount, dose_size, written, filled, instructions) VALUES ('");
-		query += QString().setNum(patient_id) + QString("', '");
-		query += QString().setNum(drug_id) + QString("', '");
-		query += QString().setNum(shipment_id) + QString("', '");
-		query += QString().setNum(prescriber_id) + QString("', '");
-		query += QString().setNum(pharmacist_id) + QString("', '");
-		query += QString().setNum(amount) + QString("', '");
-		query += SQL::cleanNoMatching(dose_size) + QString("', '");
-		query += written.toString("yyyy-MM-dd") + QString("', '");
-		query += filled.toString("yyyy-MM-dd") + QString("', '");
-		query += SQL::cleanNoMatching(instructions) + QString("');");
+		model->prepare("INSERT INTO prescriptions (patient_id, drug_id, shipment_id, prescriber_id, "
+					   "pharmacist_id, amount, dose_size, written, filled, instructions) "
+					   "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+		model->bindValue(0, QVariant(patient_id));
+		model->bindValue(1, QVariant(drug_id));
+		model->bindValue(2, QVariant(shipment_id));
+		model->bindValue(3, QVariant(prescriber_id));
+		model->bindValue(4, QVariant(pharmacist_id));
+		model->bindValue(5, QVariant(amount));
+		model->bindValue(6, SQL::prepNoMatching(dose_size));
+		model->bindValue(7, QVariant(written));
+		model->bindValue(8, QVariant(filled));
+		model->bindValue(9, SQL::prepNoMatching(instructions));
 
-		if (!alert.attemptQuery(model, &query)) {
-			delete model;
+		if (!alert.attemptQuery(model)) {
 			db.rollback();
+			delete model;
 			return false;
 		}
 
 		// Update the inventory
-		query = QString("UPDATE shipments SET shipments.product_left = (shipments.product_left - '");
-		query += QString().setNum(amount) + QString("') WHERE shipments.id = '");
-		query += QString().setNum(shipment_id) + QString("';");
+		model->prepare("UPDATE shipments "
+					   "SET shipments.product_left = (shipments.product_left - ?) "
+					   "WHERE shipments.id = ?;");
+		model->bindValue(0, QVariant(amount));
+		model->bindValue(1, QVariant(shipment_id));
 
-		if (!alert.attemptQuery(model, &query)) {
+		if (!alert.attemptQuery(model)) {
 			db.rollback();
 			delete model;
 			return false;
@@ -152,7 +159,7 @@ bool PrescriptionRecord::commitRecord()
 	}
 
 	if (!exists) {
-		id = model->query().lastInsertId().toInt();
+		id = model->lastInsertId().toInt();
 		exists = true;
 	}
 
