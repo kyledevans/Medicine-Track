@@ -231,26 +231,44 @@ void InventoryFrame::initiateWriteOff()
 {
 	unsigned int row, wo_amount;
 	ShipmentRecord *shipment;
+	MedicationRecord *medication;
+	QString message;
 	bool ok;
 
-	shipment = new ShipmentRecord();
-
-	if (db_queried) {
-		if (!ui->resultTable->selectionModel()->hasSelection()) {
-			return;
-		}
-	} else {
+	if (!db_queried) {
 		return;
 	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return;
+	}
+
+	shipment = new ShipmentRecord;
+	medication = new MedicationRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 	if (!shipment->retrieve(ids[row])) {
+		delete shipment;
+		delete medication;
+		return;
+	}
+	if (!medication->retrieve(shipment->drug_id)) {
+		delete shipment;
+		delete medication;
 		return;
 	}
 
+	message = QString();
+
 	// Get from the user how many to write off
-	wo_amount = QInputDialog::getInt(this, "Write off inventory", "How many additional units do you want to write off?", 0, 0, shipment->product_left, 1, &ok);
+	wo_amount = QInputDialog::getInt(this,
+									 "Write off inventory",
+									 "How many additional units do you want to write off?\nCurrently " + QString().setNum(shipment->write_off) + " " + medication->dispense_units + " are already written off.",
+									 0,
+									 0,
+									 shipment->product_left,
+									 1,
+									 &ok);
 	if (ok && wo_amount > 0) {
 		shipment->addWriteOff(wo_amount);
 	}
