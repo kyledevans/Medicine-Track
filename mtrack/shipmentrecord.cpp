@@ -79,7 +79,7 @@ bool ShipmentRecord::retrieve(int newId)
 	model->next();
 	id = newId;
 	drug_id = model->value(0).toInt();
-	expiration = QDate().fromString(model->value(1).toString(), "yyyy-MM-dd");
+	expiration = model->value(1).toDate();
 	lot = model->value(2).toString();
 	product_count = model->value(3).toInt();
 	product_left = model->value(4).toInt();
@@ -111,7 +111,7 @@ bool ShipmentRecord::commitRecord()
 		model->prepare("INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left, write_off, active) "
 					   "VALUES (?, ?, ?, ?, ?, ?, ?);");
 		model->bindValue(0, QVariant(drug_id));
-		model->bindValue(1, QVariant(expiration.toString("yyyy-MM-dd")));
+		model->bindValue(1, QVariant(expiration));
 		model->bindValue(2, QVariant(SQL::prepNoMatching(lot)));
 		model->bindValue(3, QVariant(product_count));
 		model->bindValue(4, QVariant(product_left));
@@ -123,7 +123,7 @@ bool ShipmentRecord::commitRecord()
 					   "write_off = ?, active = ? "
 					   "WHERE id = ?;");
 		model->bindValue(0, QVariant(drug_id));
-		model->bindValue(1, QVariant(expiration.toString("yyyy-MM-dd")));
+		model->bindValue(1, QVariant(expiration));
 		model->bindValue(2, QVariant(SQL::prepNoMatching(lot)));
 		model->bindValue(3, QVariant(product_count));
 		model->bindValue(4, QVariant(product_left));
@@ -132,13 +132,13 @@ bool ShipmentRecord::commitRecord()
 		model->bindValue(7, QVariant(id));
 	}
 
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(model)) {
 		delete model;
 		return false;
 	}
 
 	if (!exists) {
-		id = model->query().lastInsertId().toInt();
+		id = model->lastInsertId().toInt();
 		exists = true;
 	}
 
@@ -153,8 +153,7 @@ WHERE id = 'SOME_VAL';
 */
 bool ShipmentRecord::addWriteOff(int wo_amount)
 {
-	QSqlQueryModel *model;
-	QString query;
+	QSqlQuery *model;
 	AlertInterface alert;
 
 	if (!exists) {
@@ -162,14 +161,16 @@ bool ShipmentRecord::addWriteOff(int wo_amount)
 		product_left -= wo_amount;
 		return commitRecord();
 	}
+	// TODO: Make this a little better
+	model = new QSqlQuery;
+	model->prepare("UPDATE shipments "
+				   "SET product_left = (shipments.product_left - ?), write_off = (shipments.write_off + ?) "
+				   "WHERE id = ?;");
+	model->bindValue(0, QVariant(wo_amount));
+	model->bindValue(1, QVariant(wo_amount));
+	model->bindValue(2, QVariant(id));
 
-	model = new QSqlQueryModel;
-	query = QString("UPDATE shipments SET product_left = (shipments.product_left - ");
-	query += QString().setNum(wo_amount) + QString("), write_off = (shipments.write_off + ");
-	query += QString().setNum(wo_amount) + QString(") WHERE id = '");
-	query += QString().setNum(id) + QString("';");
-
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(model)) {
 		delete model;
 		return false;
 	}
