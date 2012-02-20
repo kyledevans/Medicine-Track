@@ -8,6 +8,8 @@ Released under the GPL version 2 only.
 
 #include "globals.h"
 
+#include <QDebug>
+
 int FORM_INT::strToInt(QString val)
 {
 	QString temp = val.toLower();
@@ -87,4 +89,28 @@ QString SQL::cleanNoMatching(QString str)
 	str.replace(esc2, "\\\"");
 
 	return str;
+}
+
+QVariant SQL::prep(QString str)
+{
+	str = SQL::cleanInput(str);
+	str = str.trimmed();
+
+	if (str.isEmpty()) {	// Return a NULL QVariant if it's empty
+		return QVariant(QString());
+	} else {
+		return QVariant(str);
+	}
+}
+
+QVariant SQL::prepNoMatching(QString str)
+{
+	str = SQL::cleanNoMatching(str);
+	str = str.trimmed();
+
+	if (str.isEmpty()) {
+		return QVariant(QString());
+	} else {
+		return QVariant(str);
+	}
 }

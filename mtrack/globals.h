@@ -9,6 +9,7 @@ Released under the GPL version 2 only.
 
 #include <QString>
 #include <QDate>
+#include <QVariant>
 
 namespace FORM_INT {
 	const int Capsule = 0;
@@ -64,6 +65,9 @@ namespace SQL {
 
 	QString cleanInput(QString);		// Used when doing pattern matching (IE: SELECT ... WHEN x LIKE ___)
 	QString cleanNoMatching(QString);	// Doesn't clean '%' and '_' because it's safe
+
+	QVariant prep(QString);				// Cleans and returns a value ready for inserting into SQL (uses cleanInput())
+	QVariant prepNoMatching(QString);	// Cleans and returns a value ready for inserting into SQL (uses cleanNoMatching())
 }
 
 #endif // GLOBALS_H

@@ -4,11 +4,10 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QSqlQueryModel>
+#include <QSqlQuery>
 #include <QString>
 #include <QVariant>
 #include <QSqlRecord>
-#include <QSqlQuery>
 
 #include "medicationrecord.h"
 
@@ -107,54 +106,52 @@ WHERE id = 'SOME_VAL';
 */
 bool MedicationRecord::commitRecord()
 {
-	QSqlQueryModel *model;
-	QString query;
+	QSqlQuery *model;
 	AlertInterface alert;
 
-	model = new QSqlQueryModel;
+	model = new QSqlQuery;
+
+	model->prepare("INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) "
+				   "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
 
 	if (!exists) {	// Do an INSERT
-        query = QString("INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) VALUES ('");
-		query += SQL::cleanNoMatching(name) + QString("', '");
-		query += SQL::cleanNoMatching(generic) + QString("', '");
-		query += SQL::cleanNoMatching(manufacturer) + QString("', '");
-		query += SQL::cleanNoMatching(ndc) + QString("', '");
-		query += FORM_STR::intToStr(form) + QString("', '");
-		query += SQL::cleanNoMatching(strength) + QString("', '");
-		query += SQL::cleanNoMatching(dispense_units) + QString("', '");
-		query += SQL::cleanNoMatching(unit_size) + QString("', '");
-		query += SQL::cleanNoMatching(instructions) + QString("', '");
-		if (active) {
-			query += QString("1');");
-		} else {
-			query += QString("0');");
-		}
+		model->prepare("INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) "
+					   "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+		model->bindValue(0, SQL::prepNoMatching(name));
+		model->bindValue(1, SQL::prepNoMatching(generic));
+		model->bindValue(2, SQL::prepNoMatching(manufacturer));
+		model->bindValue(3, SQL::prepNoMatching(ndc));
+		model->bindValue(4, QVariant(FORM_STR::intToStr(form)));
+		model->bindValue(5, SQL::prepNoMatching(strength));
+		model->bindValue(6, SQL::prepNoMatching(dispense_units));
+		model->bindValue(7, SQL::prepNoMatching(unit_size));
+		model->bindValue(8, SQL::prepNoMatching(instructions));
+		model->bindValue(9, QVariant(active));
 	} else {	// Need to to an UPDATE instead
-		query = QString("UPDATE drugs SET name = '");
-		query += SQL::cleanNoMatching(name) + QString("', generic = '");
-		query += SQL::cleanNoMatching(generic) + QString("', manufacturer = '");
-		query += SQL::cleanNoMatching(manufacturer) + QString("', ndc = '");
-		query += SQL::cleanNoMatching(ndc) + QString("', form = '");
-		query += FORM_STR::intToStr(form) + QString("', strength = '");
-        query += SQL::cleanNoMatching(strength) + QString("', dispense_units = '");
-		query += SQL::cleanNoMatching(dispense_units) + QString("', unit_size = '");
-		query += SQL::cleanNoMatching(unit_size) + QString("', instructions = '");
-		query += SQL::cleanNoMatching(instructions) + QString("', active = '");
-		if (active) {
-			query += QString("1' WHERE id = '");
-		} else {
-			query += QString("0' WHERE id = '");
-		}
-		query += QString().setNum(id) + QString("';");
+		model->prepare("UPDATE drugs "
+					   "SET name = ?, generic = ?, manufacturer = ?, ndc = ?, form = ?, strength = ?, "
+					   "dispense_units = ?, unit_size = ?, instructions = ?, active = ? "
+					   "WHERE id = ?;");
+		model->bindValue(0, SQL::prepNoMatching(name));
+		model->bindValue(1, SQL::prepNoMatching(generic));
+		model->bindValue(2, SQL::prepNoMatching(manufacturer));
+		model->bindValue(3, SQL::prepNoMatching(ndc));
+		model->bindValue(4, QVariant(FORM_STR::intToStr(form)));
+		model->bindValue(5, SQL::prepNoMatching(strength));
+		model->bindValue(6, SQL::prepNoMatching(dispense_units));
+		model->bindValue(7, SQL::prepNoMatching(unit_size));
+		model->bindValue(8, SQL::prepNoMatching(instructions));
+		model->bindValue(9, QVariant(active));
+		model->bindValue(10, QVariant(id));
 	}
 
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(model)) {
 		delete model;
 		return false;
 	}
 
 	if (!exists) {
-		id = model->query().lastInsertId().toInt();
+		id = model->lastInsertId().toInt();
 		exists = true;
 	}
 

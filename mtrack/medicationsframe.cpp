@@ -197,7 +197,7 @@ void MedicationsFrame::initiateModify()
 	}
 
 	wiz = new AlterMedicationWizard(med);
-	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitNewMed(MedicationRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitModify(MedicationRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(MedicationRecord*)), this, SLOT(medCleanup(MedicationRecord*)));
 	wiz->exec();
 
@@ -206,7 +206,9 @@ void MedicationsFrame::initiateModify()
 
 void MedicationsFrame::submitModify(MedicationRecord *med)
 {
-	// TODO: Implement or remove
+	med->commitRecord();
+	initiateSearch(med->id);
+	medCleanup(med);
 }
 
 void MedicationsFrame::submitNewMed(MedicationRecord *med)
