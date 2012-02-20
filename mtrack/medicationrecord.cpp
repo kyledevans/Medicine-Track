@@ -60,34 +60,36 @@ WHERE id = 'SOME_VAR';
 */
 bool MedicationRecord::retrieve(int newId)
 {
-	QSqlQueryModel *model;
-	QString query;
+	QSqlQuery *model;
 	AlertInterface alert;
 
 	if (newId == SQL::Undefined_ID)	{
 		return false;
 	}
 
-	model = new QSqlQueryModel;
-    query += QString("SELECT name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active FROM drugs WHERE id = '");
-	query += QString().setNum(newId) + QString("';");
+	model = new QSqlQuery;
+	model->prepare("SELECT name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active "
+				   "FROM drugs "
+				   "WHERE id = ?;");
+	model->bindValue(0, QVariant(newId));
 
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(model)) {
 		delete model;
 		return false;	// Query failed
 	}
 
+	model->next();
 	id = newId;
-	name = model->record(0).value(0).toString();
-	generic = model->record(0).value(1).toString();
-	manufacturer = model->record(0).value(2).toString();
-	ndc = model->record(0).value(3).toString();
-	form = FORM_INT::strToInt(model->record(0).value(4).toString());
-	strength = model->record(0).value(5).toString();
-    dispense_units = model->record(0).value(6).toString();
-    unit_size = model->record(0).value(7).toString();
-    instructions = model->record(0).value(8).toString();
-    active = model->record(0).value(9).toBool();
+	name = model->value(0).toString();
+	generic = model->value(1).toString();
+	manufacturer = model->value(2).toString();
+	ndc = model->value(3).toString();
+	form = FORM_INT::strToInt(model->value(4).toString());
+	strength = model->value(5).toString();
+	dispense_units = model->value(6).toString();
+	unit_size = model->value(7).toString();
+	instructions = model->value(8).toString();
+	active = model->value(9).toBool();
 	exists = true;
 
 	delete model;
