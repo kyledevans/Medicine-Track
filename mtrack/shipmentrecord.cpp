@@ -59,30 +59,32 @@ WHERE id = 'SOME_VAL';
 */
 bool ShipmentRecord::retrieve(int newId)
 {
-	QSqlQueryModel *model;
-	QString query;
+	QSqlQuery *model;
 	AlertInterface alert;
 
 	if (newId == SQL::Undefined_ID)	{
 		return false;
 	}
 
-	model = new QSqlQueryModel;
-	query += QString("SELECT drug_id, expiration, lot, product_count, product_left, write_off, active FROM shipments WHERE id = '");
-	query += QString().setNum(newId) + QString("';");
+	model = new QSqlQuery;
+	model->prepare("SELECT drug_id, expiration, lot, product_count, product_left, write_off, active "
+				   "FROM shipments "
+				   "WHERE id = ?;");
+	model->bindValue(0, QVariant(newId));
 
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(model)) {
 		return false;	// Query failed
 	}
 
+	model->next();
 	id = newId;
-	drug_id = model->record(0).value(0).toInt();
-	expiration = QDate().fromString(model->record(0).value(1).toString(), "yyyy-MM-dd");
-	lot = model->record(0).value(2).toString();
-	product_count = model->record(0).value(3).toInt();
-	product_left = model->record(0).value(4).toInt();
-	write_off = model->record(0).value(5).toInt();
-	active = model->record(0).value(6).toBool();
+	drug_id = model->value(0).toInt();
+	expiration = QDate().fromString(model->value(1).toString(), "yyyy-MM-dd");
+	lot = model->value(2).toString();
+	product_count = model->value(3).toInt();
+	product_left = model->value(4).toInt();
+	write_off = model->value(5).toInt();
+	active = model->value(6).toBool();
 	exists = true;
 
 	delete model;
@@ -100,40 +102,34 @@ WHERE id = 'SOME_VAL';
 */
 bool ShipmentRecord::commitRecord()
 {
-	QSqlQueryModel *model;
-	QString query;
+	QSqlQuery *model;
 	AlertInterface alert;
 
-	model = new QSqlQueryModel;
+	model = new QSqlQuery;
 
 	if (!exists) {
-		query = QString("INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left, write_off, active) VALUES ('");
-		query += QString().setNum(drug_id) + QString("', '");
-		query += expiration.toString("yyyy-MM-dd") + QString("', '");
-		query += SQL::cleanNoMatching(lot) + QString("', '");
-		query += QString().setNum(product_count) + QString("', '");
-		query += QString().setNum(product_left) + QString("', '");
-		query += QString().setNum(write_off) + QString("', '");
-		if (active) {
-			query += QString("1');");
-		} else {
-			query += QString("0');");
-		}
+		model->prepare("INSERT INTO shipments (drug_id, expiration, lot, product_count, product_left, write_off, active) "
+					   "VALUES (?, ?, ?, ?, ?, ?, ?);");
+		model->bindValue(0, QVariant(drug_id));
+		model->bindValue(1, QVariant(expiration.toString("yyyy-MM-dd")));
+		model->bindValue(2, QVariant(SQL::prepNoMatching(lot)));
+		model->bindValue(3, QVariant(product_count));
+		model->bindValue(4, QVariant(product_left));
+		model->bindValue(5, QVariant(write_off));
+		model->bindValue(6, QVariant(active));
 	} else {
-		query = QString("UPDATE shipments SET drug_id = '");
-		query += QString().setNum(drug_id) + QString("', expiration = '");
-		query += expiration.toString("yyyy-MM-dd") + QString("', lot = '");
-		query += SQL::cleanNoMatching(lot) + QString("', product_count = '");
-		query += QString().setNum(product_count) + QString("', product_left = '");
-		query += QString().setNum(product_left) + QString("', write_off = '");
-		query += QString().setNum(write_off) + QString("', active = '");
-		if (active) {
-			query += QString("1' ");
-		} else {
-			query += QString("0' ");
-		}
-		query += QString("WHERE id = '");
-		query += QString().setNum(id) + QString("';");
+		model->prepare("UPDATE shipments "
+					   "SET drug_id = ?, expiration = ?, lot = ?, product_count = ?, product_left = ?, "
+					   "write_off = ?, active = ? "
+					   "WHERE id = ?;");
+		model->bindValue(0, QVariant(drug_id));
+		model->bindValue(1, QVariant(expiration.toString("yyyy-MM-dd")));
+		model->bindValue(2, QVariant(SQL::prepNoMatching(lot)));
+		model->bindValue(3, QVariant(product_count));
+		model->bindValue(4, QVariant(product_left));
+		model->bindValue(5, QVariant(write_off));
+		model->bindValue(6, QVariant(active));
+		model->bindValue(7, QVariant(id));
 	}
 
 	if (!alert.attemptQuery(model, &query)) {
