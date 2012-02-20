@@ -4,7 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QSqlQueryModel>
 #include <QString>
 #include <QVariant>
 #include <QSqlRecord>
@@ -43,28 +42,31 @@ WHERE id = 'SOME_VAL';
 */
 bool PatientRecord::retrieve(int newId)
 {
-	QSqlQueryModel *model;
-	QString query;
+	QSqlQuery *model;
 	AlertInterface alert;
 
 	if (newId == SQL::Undefined_ID)	{
 		return false;
 	}
 
-	model = new QSqlQueryModel;
-	query += QString("SELECT allscripts_id, last, first, dob, active FROM patients WHERE id = '");
-	query += QString().setNum(newId) + QString("';");
+	model = new QSqlQuery;
+	model->prepare("SELECT allscripts_id, last, first, dob, active "
+				   "FROM patients "
+				   "WHERE id = ?;");
+	model->bindValue(0, QVariant(newId));
 
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(model)) {
+		delete model;
 		return false;	// Query failed
 	}
 
+	model->next();
 	id = newId;
-	allscripts_id = model->record(0).value(0).toInt();
-	last = model->record(0).value(1).toString();
-	first = model->record(0).value(2).toString();
-	dob = QDate().fromString(model->record(0).value(3).toString(), "yyyy-MM-dd");
-	active = model->record(0).value(4).toBool();
+	allscripts_id = model->value(0).toInt();
+	last = model->value(1).toString();
+	first = model->value(2).toString();
+	dob = model->value(3).toDate();
+	active = model->value(4).toBool();
 	exists = true;
 
 	delete model;
@@ -81,44 +83,38 @@ WHERE id = 'SOME_VAL';
 */
 bool PatientRecord::commitRecord()
 {
-	QSqlQueryModel *model;
-	QString query;
+	QSqlQuery *model;
 	AlertInterface alert;
 
-	model = new QSqlQueryModel;
+	model = new QSqlQuery;
 
 	if (!exists) {
-		query = QString("INSERT INTO patients (allscripts_id, last, first, dob, active) VALUES ('");
-		query += QString().setNum(allscripts_id) + QString("', '");
-		query += SQL::cleanNoMatching(last) + QString("', '");
-		query += SQL::cleanNoMatching(first) + QString("', '");
-		query += dob.toString("yyyy-MM-dd") + QString("', '");
-		if (active) {
-			query += QString("1');");
-		} else {
-			query += QString("0');");
-		}
+		model->prepare("INSERT INTO patients (allscripts_id, last, first, dob, active) "
+					   "VALUES (?, ?, ?, ?, ?);");
+		model->bindValue(0, QVariant(allscripts_id));
+		model->bindValue(1, SQL::prepNoMatching(last));
+		model->bindValue(2, SQL::prepNoMatching(first));
+		model->bindValue(3, QVariant(dob));
+		model->bindValue(4, QVariant(active));
 	} else {
-		query += QString("UPDATE patients SET allscripts_id = '");
-		query += QString().setNum(allscripts_id) + QString("', last = '");
-		query += SQL::cleanNoMatching(last) + QString("', first = '");
-		query += SQL::cleanNoMatching(first) + QString("', dob = '");
-		query += dob.toString("yyyy-MM-dd") + QString("', active = '");
-		if (active) {
-			query += QString("1' WHERE id = '");
-		} else {
-			query += QString("0' WHERE id = '");
-		}
-		query += QString().setNum(id) + QString("';");
+		model->prepare("UPDATE patients "
+					   "SET allscripts_id = ?, last = ?, first = ?, dob = ?, active = ? "
+					   "WHERE id = ?;");
+		model->bindValue(0, QVariant(allscripts_id));
+		model->bindValue(1, SQL::prepNoMatching(last));
+		model->bindValue(2, SQL::prepNoMatching(first));
+		model->bindValue(3, QVariant(dob));
+		model->bindValue(4, QVariant(active));
+		model->bindValue(5, QVariant(id));
 	}
 
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(model)) {
 		delete model;
 		return false;
 	}
 
 	if (!exists) {
-		id = model->query().lastInsertId().toInt();
+		id = model->lastInsertId().toInt();
 		exists = true;
 	}
 
