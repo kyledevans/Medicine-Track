@@ -232,7 +232,6 @@ void InventoryFrame::initiateWriteOff()
 	unsigned int row, wo_amount;
 	ShipmentRecord *shipment;
 	MedicationRecord *medication;
-	QString message;
 	bool ok;
 
 	if (!db_queried) {
@@ -257,8 +256,6 @@ void InventoryFrame::initiateWriteOff()
 		delete medication;
 		return;
 	}
-
-	message = QString();
 
 	// Get from the user how many to write off
 	wo_amount = QInputDialog::getInt(this,
