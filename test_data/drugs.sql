@@ -1,7 +1,7 @@
 ﻿ALTER TABLE drugs AUTO_INCREMENT=1;
 INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) VALUES('Sulfa/Trim', 'Bactrim', 'Hi Tech', '50383-824-16', 'suspension', '200-40 mg / 5 ml', 'ml', NULL, NULL, 1);
 INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) VALUES('Ofloxacin', 'Ocuflox', 'Bausch & Lomb', '24208-434-05', 'solution', '0.3 %', 'bottles', '5 ml', NULL, 1);
-INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) VALUES('Azithromycin', 'Zithromax', 'Teva', '0093-7146-18', 'tablet', '250 mg', 'tablets', '6 - pak', NULL, 1);
+INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) VALUES('Azithromycin', 'Zithromax', 'Teva', '0093-7146-18', 'tablet', '250 mg', 'paks', '6 - pak', NULL, 1);
 ALTER TABLE drugs AUTO_INCREMENT=34;
 INSERT INTO drugs (name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active) VALUES('Azithromycin', 'Zithromax', 'Greenstone', '59762-3110-1', 'suspension', '100 mg / 5 ml', 'bottles', '15 ml', NULL, 1);
 ALTER TABLE drugs AUTO_INCREMENT=29;
