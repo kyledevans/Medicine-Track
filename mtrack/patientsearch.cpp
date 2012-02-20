@@ -88,17 +88,17 @@ PatientSearch::~PatientSearch()
 /* SQL without C++:
 SELECT id, allscripts_id, last, first, dob
 FROM patients
-WHERE last LIKE '%SOME_VAR%'
-AND first LIKE '%SOME_VAR%'
-AND dob = 'SOME_VAR'
-AND active = '1';
+WHERE last LIKE ?
+AND first LIKE ?
+AND (<true if NOT searching by DOB> OR (dob = ?))
+AND active = ?
 */
 void PatientSearch::initiateSearch(int patientID)
 {
 	QSqlQuery *model;
-	QString query;	// Holds the SQL query
 	AlertInterface alert;
 	int i;      // Increment var
+	bool dont_search_dob = true;
 
 	// If the text fields are empty, don't do anything.
 	if (ui->firstNameField->text().isEmpty() &&
@@ -113,20 +113,28 @@ void PatientSearch::initiateSearch(int patientID)
 
 	// Do a normal search when a specific patient ID hasn't been specified
 	if (patientID == SQL::Undefined_ID) {
-		query = QString("SELECT id, allscripts_id, last, first, dob FROM patients WHERE last LIKE '%");
-		query += SQL::cleanInput(ui->lastNameField->text()) + QString("%' AND first LIKE '%");
-		query += SQL::cleanInput(ui->firstNameField->text()) + QString("%' ");
+		model->prepare("SELECT id, allscripts_id, last, first, dob "
+					   "FROM patients "
+					   "WHERE last LIKE ? "
+					   "AND first LIKE ? "
+					   "AND (? OR (dob = ?)) "
+					   "AND active = ?");
+		model->bindValue(0, SQL::prepWildcards(ui->lastNameField->text()));
+		model->bindValue(1, SQL::prepWildcards(ui->firstNameField->text()));
 		if (ui->dobField->date() != DEFAULTS::Date) {
-			query += QString("AND dob = '");
-			query += ui->dobField->date().toString("yyyy-MM-dd") + QString("' ");
+			dont_search_dob = false;
 		}
-		query += QString("AND active = '1';");
+		model->bindValue(2, QVariant(dont_search_dob));
+		model->bindValue(3, QVariant(ui->dobField->date()));
+		model->bindValue(4, QVariant(ui->activeField->isChecked()));
 	} else {	// Otherwise search for the specific patient
-		query = QString("SELECT id, allscripts_id, last, first, dob FROM patients WHERE id = '");
-		query += QString().setNum(patientID) + QString("';");
+		model->prepare("SELECT id, allscripts_id, last, first, dob "
+					   "FROM patients "
+					   "WHERE id LIKE ?;");
+		model->bindValue(0, QVariant(patientID));
 	}
 
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(model)) {
 		delete model;
 		return;
 	}

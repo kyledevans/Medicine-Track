@@ -103,6 +103,18 @@ QVariant SQL::prep(QString str)
 	}
 }
 
+QVariant SQL::prepWildcards(QString str)
+{
+	str = SQL::cleanInput(str);
+	str = str.trimmed();
+
+	if (str.isEmpty()) {	// Return a NULL QVariant if it's empty
+		return QVariant(QString("%%"));
+	} else {
+		return QVariant("%" + str + "%");
+	}
+}
+
 QVariant SQL::prepNoMatching(QString str)
 {
 	str = SQL::cleanNoMatching(str);

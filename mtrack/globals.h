@@ -67,6 +67,7 @@ namespace SQL {
 	QString cleanNoMatching(QString);	// Doesn't clean '%' and '_' because it's safe
 
 	QVariant prep(QString);				// Cleans and returns a value ready for inserting into SQL (uses cleanInput())
+	QVariant prepWildcards(QString);	// Cleans and returns a value ready for inserting into SQL (uses cleanInput()) surrounds string with '%'
 	QVariant prepNoMatching(QString);	// Cleans and returns a value ready for inserting into SQL (uses cleanNoMatching())
 }
 
