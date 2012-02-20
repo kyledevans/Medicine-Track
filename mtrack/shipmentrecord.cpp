@@ -112,7 +112,7 @@ bool ShipmentRecord::commitRecord()
 					   "VALUES (?, ?, ?, ?, ?, ?, ?);");
 		model->bindValue(0, QVariant(drug_id));
 		model->bindValue(1, QVariant(expiration));
-		model->bindValue(2, QVariant(SQL::prepNoMatching(lot)));
+		model->bindValue(2, SQL::prepNoMatching(lot));
 		model->bindValue(3, QVariant(product_count));
 		model->bindValue(4, QVariant(product_left));
 		model->bindValue(5, QVariant(write_off));
