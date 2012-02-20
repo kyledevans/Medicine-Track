@@ -20,7 +20,6 @@ class AlterShipmentWizard : public QWizard
     Q_OBJECT
 
 public:
-    explicit AlterShipmentWizard(QWidget *parent = 0);
 	explicit AlterShipmentWizard(ShipmentRecord *, QWidget *parent = 0);
     ~AlterShipmentWizard();
 

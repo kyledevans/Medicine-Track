@@ -17,6 +17,7 @@ ASW_Page00::ASW_Page00(QWidget *parent) :
 {
     ui->setupUi(this);
 
+	// Set UI strings and tooltips
 	ui->expireLabel->setText(ShipmentRecord::expiration_Label);
 	ui->expireLabel->setToolTip(ShipmentRecord::expiration_Tooltip);
 	ui->expireField->setToolTip(ShipmentRecord::expiration_Tooltip);
@@ -29,15 +30,17 @@ ASW_Page00::ASW_Page00(QWidget *parent) :
 	ui->unitsLabel->setToolTip(ShipmentRecord::product_count_Tooltip);
 	ui->unitsField->setToolTip(ShipmentRecord::product_count_Tooltip);
 
+	// Setup validators
 	QValidator *numbers = new QIntValidator(this);
 	ui->unitsField->setValidator(numbers);
 
+	// Set default values
 	ui->expireField->setDate(DEFAULTS::Date);
 
+	// Register fields
 	registerField("expireField", ui->expireField);
 	registerField("lotField", ui->lotField);
 	registerField("unitsField", ui->unitsField);
-	registerField("activeField", ui->activeField);
 }
 
 ASW_Page00::~ASW_Page00()
@@ -45,12 +48,21 @@ ASW_Page00::~ASW_Page00()
     delete ui;
 }
 
+void ASW_Page00::setMedication(MedicationRecord *med)
+{
+	// Show medication that was selected
+	ui->medicationLabel->setText(med->name);
+	ui->strengthLabel->setText(med->strength);
+	ui->formLabel->setText(FORM_STR::intToStr(med->form));
+	ui->unitSizeLabel->setText(med->unit_size);
+	ui->dispenseUnitLabel->setText(med->dispense_units);
+}
+
 void ASW_Page00::getResults(ShipmentRecord *shipment)
 {
 	shipment->expiration = ui->expireField->date();
 	shipment->lot = ui->lotField->text();
 	shipment->product_count = ui->unitsField->text().toInt();
-	shipment->active = ui->activeField->isChecked();
     shipment->product_left = shipment->product_count;
     shipment->write_off = 0;
 }

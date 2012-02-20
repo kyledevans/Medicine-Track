@@ -11,29 +11,19 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-AlterShipmentWizard::AlterShipmentWizard(QWidget *parent) :
-    QWizard(parent),
-    ui(new Ui::AlterShipmentWizard)
-{
-    ui->setupUi(this);
-}
+#include "medicationrecord.h"
 
 AlterShipmentWizard::AlterShipmentWizard(ShipmentRecord *new_shipment, QWidget *parent) :
 	QWizard(parent),
 	ui(new Ui::AlterShipmentWizard)
 {
-	ui->setupUi(this);
+	MedicationRecord *med;
 	shipment = new_shipment;
+	med = new MedicationRecord;
+	med->retrieve(shipment->drug_id);
+	ui->setupUi(this);
 
-	if (shipment->exists) {
-		this->setWindowTitle("Alter Inventory Wizard");
-		setField("expireField", shipment->expiration);
-		setField("lotField", shipment->lot);
-		setField("unitsField", shipment->product_count);
-		setField("stockField", shipment->product_left);
-		setField("writeOffField", shipment->write_off);
-		setField("activeField", shipment->active);
-	}
+	ui->page00->setMedication(med);
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));
 	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));

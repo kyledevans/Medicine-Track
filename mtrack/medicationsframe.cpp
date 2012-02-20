@@ -206,7 +206,7 @@ void MedicationsFrame::initiateModify()
 
 void MedicationsFrame::submitModify(MedicationRecord *med)
 {
-
+	// TODO: Implement or remove
 }
 
 void MedicationsFrame::submitNewMed(MedicationRecord *med)
@@ -235,11 +235,12 @@ void MedicationsFrame::initiateNewShipment()
 	}
 
 	ship = new ShipmentRecord();
-	wiz = new AlterShipmentWizard(ship);
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 	ship->drug_id = ids[row];
+
+	wiz = new AlterShipmentWizard(ship);
 
 	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitNewShipment(ShipmentRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(ShipmentRecord*)), this, SLOT(shipmentCleanup(ShipmentRecord*)));
