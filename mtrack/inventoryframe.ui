@@ -31,7 +31,7 @@
         <item>
          <widget class="QLabel" name="nameLabel">
           <property name="text">
-           <string>NAME</string>
+           <string>MEDICATION / BARCODE</string>
           </property>
          </widget>
         </item>
@@ -45,7 +45,7 @@
           </property>
           <property name="maximumSize">
            <size>
-            <width>250</width>
+            <width>200</width>
             <height>16777215</height>
            </size>
           </property>
@@ -79,45 +79,6 @@
           <property name="minimumSize">
            <size>
             <width>200</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>250</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>60</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="barcodeLabel">
-          <property name="text">
-           <string>BARCODE</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="barcodeField">
-          <property name="minimumSize">
-           <size>
-            <width>150</width>
             <height>0</height>
            </size>
           </property>
@@ -199,9 +160,12 @@
          </spacer>
         </item>
         <item>
-         <widget class="QCheckBox" name="expiredCheckbox">
+         <widget class="QCheckBox" name="notExpiredCheckbox">
           <property name="text">
-           <string>Expired</string>
+           <string>Not Expired</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -356,10 +320,9 @@
  <tabstops>
   <tabstop>nameField</tabstop>
   <tabstop>lotField</tabstop>
-  <tabstop>barcodeField</tabstop>
   <tabstop>stockCheckbox</tabstop>
   <tabstop>activeCheckbox</tabstop>
-  <tabstop>expiredCheckbox</tabstop>
+  <tabstop>notExpiredCheckbox</tabstop>
   <tabstop>searchButton</tabstop>
   <tabstop>resetButton</tabstop>
   <tabstop>resultTable</tabstop>
@@ -399,22 +362,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>barcodeField</sender>
-   <signal>returnPressed()</signal>
-   <receiver>searchButton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>739</x>
-     <y>20</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>129</x>
-     <y>78</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>resetButton</sender>
    <signal>clicked()</signal>
    <receiver>nameField</receiver>
@@ -442,22 +389,6 @@
     </hint>
     <hint type="destinationlabel">
      <x>447</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>resetButton</sender>
-   <signal>clicked()</signal>
-   <receiver>barcodeField</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>48</x>
-     <y>78</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>739</x>
      <y>20</y>
     </hint>
    </hints>

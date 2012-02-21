@@ -31,17 +31,13 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
     ui->setupUi(this);
 
 	// Set the various strings and tooltips for the search interface
-	ui->nameLabel->setText(MedicationRecord::name_Label);
-	ui->nameLabel->setToolTip(MedicationRecord::name_Tooltip);
-	ui->nameField->setToolTip(MedicationRecord::name_Tooltip);
+	ui->nameLabel->setText(ShipmentRecord::name_barcode_Label);
+	ui->nameLabel->setToolTip(ShipmentRecord::name_barcode_Tooltip);
+	ui->nameField->setToolTip(ShipmentRecord::name_barcode_Tooltip);
 
 	ui->lotLabel->setText(ShipmentRecord::lot_Label);
 	ui->lotLabel->setToolTip(ShipmentRecord::lot_Tooltip);
 	ui->lotField->setToolTip(ShipmentRecord::lot_Tooltip);
-
-	ui->barcodeLabel->setText(ShipmentRecord::barcode_Label);
-	ui->barcodeLabel->setToolTip(ShipmentRecord::barcode_Tooltip);
-	ui->barcodeField->setToolTip(ShipmentRecord::barcode_Tooltip);
 
 	// Set the various strings and tooltips for the resultTable
 	header = ui->resultTable->horizontalHeaderItem(0);
@@ -109,48 +105,52 @@ SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiratio
 shipments.product_count, shipments.product_left, shipments.write_off
 FROM shipments
 JOIN drugs ON shipments.drug_id = drugs.id
-WHERE drugs.name LIKE '%SOME_VAR%'
-AND shipments.lot LIKE '%SOME_VAR%'
-AND shipments.product_left > 0
-AND drugs.active = 'SOME_VAR'
-AND shipments.active = 'SOME_VAR'
-AND shipments.expiration < CURDATE();
+WHERE drugs.name LIKE ?
+AND drugs.active = 1
+AND shipments.lot LIKE ?
+AND (<true if NOT searching by active> OR (shipments.active = ?))
+AND (<true if NOT searching by expired> OR (shipments.expiration > CURDATE()))
+AND (<true if NOT searching by 'in stock'> OR (shipments.product_left > 0));
 */
 void InventoryFrame::initiateSearch(int shipID)
 {
-	QString query;
 	QSqlQuery *model;
 	AlertInterface alert;
 	BarcodeLabel barcode;
 	int i;					// Increment var
 
-	if (shipID == SQL::Undefined_ID) {
-		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left, shipments.write_off FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE drugs.name LIKE '%");
-		query += SQL::cleanInput(ui->nameField->text()) + QString("%' AND shipments.lot LIKE '%");
-		query += SQL::cleanInput(ui->lotField->text()) + QString("%'");
-		if (ui->stockCheckbox->isChecked()) {	// Stocked checkbox
-			query += QString(" AND shipments.product_left > 0");
-		}
-		if (ui->activeCheckbox->isChecked()) {	// Active checkbox
-			query += QString(" AND drugs.active = '1'");
-			query += QString(" AND shipments.active = '1'");
-		}
-		if (ui->expiredCheckbox->isChecked()) {	// Expired checkbox
-			query += QString(" AND shipments.expiration < CURDATE()");
-		}
-		if (!ui->barcodeField->text().isEmpty()) {	// If we're searching based on barcode, just ignore every other qualifier
-			query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left, shipments.write_off FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE shipments.id = '");
-			barcode.setBarcode(ui->barcodeField->text());
-			query += QString().setNum(barcode.toID()) + QString("'");
-		}
-		query += QString(";");
-	} else {
-		query = QString("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, shipments.product_count, shipments.product_left, shipments.write_off FROM shipments JOIN drugs ON shipments.drug_id = drugs.id WHERE shipments.id = '");
-		query += QString().setNum(shipID) + QString("';");
+	model = new QSqlQuery;
+	barcode.setBarcode(ui->nameField->text());
+
+	if (shipID != SQL::Undefined_ID) {	// TODO: Implement or remove this case
+
+	} else if (barcode.toID() != SQL::Undefined_ID) {	// Doing a barcode search
+		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, "
+					   "shipments.product_count, shipments.product_left, shipments.write_off "
+					   "FROM shipments "
+					   "JOIN drugs ON shipments.drug_id = drugs.id "
+					   "WHERE shipments.id = ?;");
+		model->bindValue(0, QVariant(barcode.toID()));
+	} else {	// Doing a normal search
+		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, "
+					   "shipments.product_count, shipments.product_left, shipments.write_off "
+					   "FROM shipments "
+					   "JOIN drugs ON shipments.drug_id = drugs.id "
+					   "WHERE drugs.name LIKE ? "
+					   "AND drugs.active = 1 "
+					   "AND shipments.lot LIKE ? "
+					   "AND shipments.active = ? "
+					   "AND (? OR (shipments.expiration > CURDATE())) "
+					   "AND (? OR (shipments.product_left > 0));");
+		model->bindValue(0, SQL::prepWildcards(ui->nameField->text()));
+		model->bindValue(1, SQL::prepWildcards(ui->lotField->text()));
+		model->bindValue(2, QVariant(ui->activeCheckbox->isChecked()));
+		model->bindValue(3, QVariant(!ui->notExpiredCheckbox->isChecked()));
+		model->bindValue(4, QVariant(!ui->stockCheckbox->isChecked()));
 	}
 
-		model = new QSqlQuery;
-	if (!alert.attemptQuery(model, &query)) {
+
+	if (!alert.attemptQuery(model)) {
 		delete model;
 		return;
 	}
