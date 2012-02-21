@@ -130,7 +130,7 @@ void PatientSearch::initiateSearch(int patientID)
 	} else {	// Otherwise search for the specific patient
 		model->prepare("SELECT id, allscripts_id, last, first, dob "
 					   "FROM patients "
-					   "WHERE id LIKE ?;");
+					   "WHERE id = ?;");
 		model->bindValue(0, QVariant(patientID));
 	}
 
