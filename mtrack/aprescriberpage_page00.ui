@@ -146,23 +146,12 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="0">
-    <widget class="QCheckBox" name="activeField">
-     <property name="text">
-      <string>Active</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>lastField</tabstop>
   <tabstop>firstField</tabstop>
   <tabstop>fullField</tabstop>
-  <tabstop>activeField</tabstop>
  </tabstops>
  <resources/>
  <connections/>

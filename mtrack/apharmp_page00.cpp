@@ -31,7 +31,6 @@ APharmP_Page00::APharmP_Page00(QWidget *parent) :
 	registerField("lastField", ui->lastField);
 	registerField("firstField", ui->firstField);
 	registerField("initialsField", ui->initialsField);
-	registerField("activeField", ui->activeField);
 }
 
 APharmP_Page00::~APharmP_Page00()
@@ -44,5 +43,4 @@ void APharmP_Page00::getResults(PharmacistRecord *pharm)
 	pharm->last = ui->lastField->text();
 	pharm->first = ui->firstField->text();
 	pharm->initials = ui->initialsField->text();
-	pharm->active = ui->activeField->isChecked();
 }

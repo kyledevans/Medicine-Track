@@ -302,16 +302,6 @@
      </item>
     </layout>
    </item>
-   <item row="9" column="0">
-    <widget class="QCheckBox" name="activeField">
-     <property name="text">
-      <string>Active</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="8" column="0">
     <widget class="QLabel" name="unitSizeLabel">
      <property name="text">
@@ -366,7 +356,6 @@
   <tabstop>formField</tabstop>
   <tabstop>dispenseUnitsField</tabstop>
   <tabstop>unitSizeField</tabstop>
-  <tabstop>activeField</tabstop>
  </tabstops>
  <resources/>
  <connections/>

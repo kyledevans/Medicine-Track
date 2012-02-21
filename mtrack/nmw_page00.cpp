@@ -72,7 +72,6 @@ NMW_Page00::NMW_Page00(QWidget *parent) :
 	registerField("strengthField", ui->strengthField);
 	registerField("dispenseUnitsField", ui->dispenseUnitsField);
 	registerField("unitSizeField", ui->unitSizeField);
-	registerField("activeField", ui->activeField);
 }
 
 NMW_Page00::~NMW_Page00()
@@ -95,5 +94,4 @@ void NMW_Page00::getResults(MedicationRecord *med)
 	med->strength = ui->strengthField->text();
 	med->dispense_units = ui->dispenseUnitsField->text();
 	med->unit_size = ui->unitSizeField->text();
-	med->active = ui->activeField->isChecked();
 }
