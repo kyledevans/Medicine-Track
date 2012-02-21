@@ -41,6 +41,7 @@ PrescriptionRecord::PrescriptionRecord(QObject *parent):
 	prescriber_id(SQL::Undefined_ID),
 	pharmacist_id(SQL::Undefined_ID),
 	amount(1),
+	active(true),
 	exists(false)
 {
 }
@@ -95,19 +96,13 @@ bool PrescriptionRecord::retrieve(int newId)
 /* SQL without C++:
 START TRANSACTION;
 INSERT INTO prescriptions (patient_id, drug_id, shipment_id, prescriber_id,
-pharmacist_id, amount, dose_size, written, filled, instructions)
+pharmacist_id, amount, dose_size, written, filled, instructions, active)
 VALUES (...);
 
 UPDATE shipments
 SET shipments.product_left = (shipments.product_left - 'SOME_VAL')
 WHERE shipments.id = 'SOME_VAL';
 COMMIT;
-
-UPDATE prescriptions
-SET patient_id = 'SOME_VAL', drug_id = 'SOME_VAL', shipment_id = 'SOME_VAL',
-prescriber_id = 'SOME_VAL', pharmacist_id = 'SOME_VAL', amount = 'SOME_VAL',
-dose_size = 'SOME_VAL', written = 'SOME_VAL', filled = 'SOME_VAL', instructions = 'SOME_VAL'
-WHERE id = 'SOME_VAL';
 */
 bool PrescriptionRecord::commitRecord()
 {
@@ -117,45 +112,44 @@ bool PrescriptionRecord::commitRecord()
 
 	model = new QSqlQuery;
 
-	if (!exists) {
-		db = QSqlDatabase::database();	// Get the default DB
-		db.transaction();
-		model->prepare("INSERT INTO prescriptions (patient_id, drug_id, shipment_id, prescriber_id, "
-					   "pharmacist_id, amount, dose_size, written, filled, instructions) "
-					   "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-		model->bindValue(0, QVariant(patient_id));
-		model->bindValue(1, QVariant(drug_id));
-		model->bindValue(2, QVariant(shipment_id));
-		model->bindValue(3, QVariant(prescriber_id));
-		model->bindValue(4, QVariant(pharmacist_id));
-		model->bindValue(5, QVariant(amount));
-		model->bindValue(6, SQL::prepNoMatching(dose_size));
-		model->bindValue(7, QVariant(written));
-		model->bindValue(8, QVariant(filled));
-		model->bindValue(9, SQL::prepNoMatching(instructions));
+	db = QSqlDatabase::database();	// Get the default DB
+	db.transaction();
+	model->prepare("INSERT INTO prescriptions (patient_id, drug_id, shipment_id, prescriber_id, "
+				   "pharmacist_id, amount, dose_size, written, filled, instructions, active) "
+				   "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+	model->bindValue(0, QVariant(patient_id));
+	model->bindValue(1, QVariant(drug_id));
+	model->bindValue(2, QVariant(shipment_id));
+	model->bindValue(3, QVariant(prescriber_id));
+	model->bindValue(4, QVariant(pharmacist_id));
+	model->bindValue(5, QVariant(amount));
+	model->bindValue(6, SQL::prepNoMatching(dose_size));
+	model->bindValue(7, QVariant(written));
+	model->bindValue(8, QVariant(filled));
+	model->bindValue(9, SQL::prepNoMatching(instructions));
+	model->bindValue(10, QVariant(active));
 
-		if (!alert.attemptQuery(model)) {
-			db.rollback();
-			delete model;
-			return false;
-		}
+	if (!alert.attemptQuery(model)) {
+		db.rollback();
+		delete model;
+		return false;
+	}
 
-		// Update the inventory
-		model->prepare("UPDATE shipments "
-					   "SET shipments.product_left = (shipments.product_left - ?) "
-					   "WHERE shipments.id = ?;");
-		model->bindValue(0, QVariant(amount));
-		model->bindValue(1, QVariant(shipment_id));
+	// Update the inventory
+	model->prepare("UPDATE shipments "
+				   "SET shipments.product_left = (shipments.product_left - ?) "
+				   "WHERE shipments.id = ?;");
+	model->bindValue(0, QVariant(amount));
+	model->bindValue(1, QVariant(shipment_id));
 
-		if (!alert.attemptQuery(model)) {
-			db.rollback();
-			delete model;
-			return false;
-		} else {
-			db.commit();
-			delete model;
-			return true;
-		}
+	if (!alert.attemptQuery(model)) {
+		db.rollback();
+		delete model;
+		return false;
+	} else {
+		db.commit();
+		delete model;
+		return true;
 	}
 
 	if (!exists) {

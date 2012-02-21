@@ -174,7 +174,8 @@ void PrescriptionsFrame::initiateSearch()
                    "AND (? OR (prescriptions.filled = ?)) "
                    "AND patients.last LIKE ? "
                    "AND patients.first LIKE ? "
-                   "AND (? OR (patients.dob = ?));");
+                   "AND (? OR (patients.dob = ?)) "
+                   "AND patients.active = ?;");
 	model->bindValue(0, SQL::prepWildcards(ui->medicationNameField->text()));
     model->bindValue(1, SQL::prepWildcards(ui->lotField->text()));
     if (ui->filledField->date() != DEFAULTS::Date) {    // Enables searching by filled date if the user made a change
@@ -189,6 +190,7 @@ void PrescriptionsFrame::initiateSearch()
 	}
 	model->bindValue(6, QVariant(dont_search_dob));
 	model->bindValue(7, QVariant(ui->dobField->date()));
+    model->bindValue(8, QVariant(ui->activeField->isChecked()));
 
 	if (!alert.attemptQuery(model)) {
 		delete model;
