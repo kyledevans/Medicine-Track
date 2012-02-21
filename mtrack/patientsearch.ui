@@ -339,6 +339,14 @@
     <string>Add a new patient</string>
    </property>
   </action>
+  <action name="toggleAction">
+   <property name="text">
+    <string>Toggle active</string>
+   </property>
+   <property name="toolTip">
+    <string>Toggle active/inactive</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>searchButton</tabstop>

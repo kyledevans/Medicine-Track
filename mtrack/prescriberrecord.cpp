@@ -74,6 +74,39 @@ bool PrescriberRecord::retrieve(int newId)
 }
 
 /* SQL without C++:
+UPDATE prescribers
+SET active = ?
+WHERE id = ?;
+*/
+bool PrescriberRecord::toggleActive()
+{
+	QSqlQuery *model;
+	AlertInterface alert;
+
+	if (!exists) {		// Entry doesn't exist - do nothing
+		return false;
+	}
+
+	model = new QSqlQuery;
+
+	model->prepare("UPDATE prescribers "
+				   "SET active = ? "
+				   "WHERE id = ?;");
+	model->bindValue(0, !active);
+	model->bindValue(1, QVariant(id));
+
+	if (!alert.attemptQuery(model)) {
+		delete model;
+		return false;
+	}
+
+	active = !active;
+
+	delete model;
+	return true;
+}
+
+/* SQL without C++:
 INSERT INTO prescribers (last, first, full_name, active)
 VALUES ('SOME_VAL', 'SOME_VAL', 'SOME_VAL', 'SOME_VAL');
 

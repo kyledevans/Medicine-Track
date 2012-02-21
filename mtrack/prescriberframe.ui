@@ -260,6 +260,14 @@
     <string>Modify details of the prescriber.</string>
    </property>
   </action>
+  <action name="toggleAction">
+   <property name="text">
+    <string>Toggle Active</string>
+   </property>
+   <property name="toolTip">
+    <string>Toggle active/inactive</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>lastField</tabstop>

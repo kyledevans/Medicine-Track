@@ -41,6 +41,8 @@ public slots:
 
 	void selectionChanged();
 
+	void toggleActive();
+
 private:
 	void initiatePrint(PrescriptionRecord *);
 

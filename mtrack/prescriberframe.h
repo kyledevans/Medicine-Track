@@ -33,6 +33,8 @@ public slots:
 
 	void selectionChanged();
 
+	void toggleActive();
+
 private:
     Ui::PrescriberFrame *ui;
 

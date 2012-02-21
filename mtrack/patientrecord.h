@@ -27,8 +27,9 @@ public:
 
 	bool exists;		// True if the record is already in the database
 
-	bool retrieve(int);	// (int) is the patient id. Returns false if the retrieve failed
-	bool commitRecord();	// Inserts (or updates) the record in the db
+	bool retrieve(int);			// (int) is the patient id. Returns false if the retrieve failed
+	bool commitRecord();		// Inserts (or updates) the record in the db
+	bool toggleActive();		// Sets the active state to (bool)
 
 	/* Use these to keep UI strings consistent and sane. */
 	static const QString allscripts_id_Label;

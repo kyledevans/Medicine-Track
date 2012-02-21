@@ -52,9 +52,11 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
+	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
 
 	// Add actions to the resultTable menu
 	ui->resultTable->addAction(ui->modifyAction);
+	ui->resultTable->addAction(ui->toggleAction);
 
 	selectionChanged();
 }
@@ -62,6 +64,25 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
 PrescriberFrame::~PrescriberFrame()
 {
     delete ui;
+}
+
+void PrescriberFrame::toggleActive()
+{
+	unsigned int row;
+	PrescriberRecord prescriber;
+
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return;
+	}
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	prescriber.retrieve(ids[row]);
+	prescriber.toggleActive();
 }
 
 /* SQL without C++:

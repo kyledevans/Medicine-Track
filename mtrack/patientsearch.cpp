@@ -71,10 +71,12 @@ PatientSearch::PatientSearch(QWidget *parent) :
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModification()));
 	connect(ui->newPatientAction, SIGNAL(triggered()), this, SLOT(initiateNewPatient()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
+	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
 
 	// Add actions to resultTable right-click menu
 	ui->resultTable->addAction(ui->prescribeAction);
 	ui->resultTable->addAction(ui->modifyAction);
+	ui->resultTable->addAction(ui->toggleAction);
 
 	// Deactivate actions that require an item selected in resultTable
 	selectionChanged();
@@ -83,6 +85,25 @@ PatientSearch::PatientSearch(QWidget *parent) :
 PatientSearch::~PatientSearch()
 {
     delete ui;
+}
+
+void PatientSearch::toggleActive()
+{
+	unsigned int row;
+	PatientRecord patient;
+
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return;
+	}
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	patient.retrieve(ids[row]);
+	patient.toggleActive();
 }
 
 /* SQL without C++:
@@ -160,14 +181,16 @@ void PatientSearch::selectionChanged()
 	// Enable/disable buttons if there is a selection
 	if (ui->resultTable->selectionModel()->hasSelection()) {
 		ui->prescribeButton->setEnabled(true);
-		ui->modifyButton->setEnabled(true);
 		ui->prescribeAction->setEnabled(true);
+		ui->modifyButton->setEnabled(true);
 		ui->modifyAction->setEnabled(true);
+		ui->toggleAction->setEnabled(true);
 	} else {
 		ui->prescribeButton->setEnabled(false);
-		ui->modifyButton->setEnabled(false);
 		ui->prescribeAction->setEnabled(false);
+		ui->modifyButton->setEnabled(false);
 		ui->modifyAction->setEnabled(false);
+		ui->toggleAction->setEnabled(false);
 	}
 }
 

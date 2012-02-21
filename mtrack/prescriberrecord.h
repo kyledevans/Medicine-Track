@@ -26,6 +26,7 @@ public:
 
 	bool retrieve(int);		// (int) is the prescriber id.  Returns false on failure
 	bool commitRecord();	// Inserts (or updates) the record in the db
+	bool toggleActive();	// Toggles the active state
 
 	void print();			// Prints to the debug interface
 

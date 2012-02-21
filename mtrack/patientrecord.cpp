@@ -74,6 +74,39 @@ bool PatientRecord::retrieve(int newId)
 }
 
 /* SQL without C++:
+UPDATE patients
+SET active = ?
+WHERE id = ?;
+*/
+bool PatientRecord::toggleActive()
+{
+	QSqlQuery *model;
+	AlertInterface alert;
+
+	if (!exists) {		// Entry doesn't exist - do nothing
+		return false;
+	}
+
+	model = new QSqlQuery;
+
+	model->prepare("UPDATE patients "
+				   "SET active = ? "
+				   "WHERE id = ?;");
+	model->bindValue(0, !active);
+	model->bindValue(1, QVariant(id));
+
+	if (!alert.attemptQuery(model)) {
+		delete model;
+		return false;
+	}
+
+	active = !active;
+
+	delete model;
+	return true;
+}
+
+/* SQL without C++:
 INSERT INTO patients (allscripts_id, last, first, dob, active)
 VALUES ('SOME_VAL', 'SOME_VAL', 'SOME_VAL', 'SOME_VAL', 'SOME_VAL');
 
