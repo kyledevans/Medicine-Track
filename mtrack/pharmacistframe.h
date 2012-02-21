@@ -31,6 +31,7 @@ public slots:
 	void submitNew(PharmacistRecord *);		// Commits to the db and cleans up
 	void newCleanup(PharmacistRecord *);	// Cleans up after the new/modify wizard
 	void initiateModify();
+	void toggleActive();
 
 	void selectionChanged();
 

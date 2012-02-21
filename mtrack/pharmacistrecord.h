@@ -28,6 +28,7 @@ public:
 
 	bool retrieve(int);		// (int) is the pharmacist id.  Returns false if the retrieve failed
 	bool commitRecord();	// Inserts (or Updates) the record in the db
+	bool toggleActive();	// Toggles the active state
 
 	void print();			// Prints to the debug interface
 

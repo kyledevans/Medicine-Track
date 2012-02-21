@@ -37,6 +37,39 @@ PharmacistRecord::PharmacistRecord(QObject *parent):
 }
 
 /* SQL without C++:
+UPDATE pharmacists
+SET active = ?
+WHERE id = ?;
+*/
+bool PharmacistRecord::toggleActive()
+{
+	QSqlQuery *model;
+	AlertInterface alert;
+
+	if (!exists) {		// Entry doesn't exist - do nothing
+		return false;
+	}
+
+	model = new QSqlQuery;
+
+	model->prepare("UPDATE pharmacists "
+				   "SET active = ? "
+				   "WHERE id = ?;");
+	model->bindValue(0, !active);
+	model->bindValue(1, QVariant(id));
+
+	if (!alert.attemptQuery(model)) {
+		delete model;
+		return false;
+	}
+
+	active = !active;
+
+	delete model;
+	return true;
+}
+
+/* SQL without C++:
 SELECT last, first, initials, active
 FROM pharmacists
 WHERE id = 'SOME_VAL';
