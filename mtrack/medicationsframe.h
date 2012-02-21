@@ -40,6 +40,8 @@ public slots:
 	void submitNewShipment(ShipmentRecord *);
 	void shipmentCleanup(ShipmentRecord *);
 
+	void toggleActive();
+
 	void selectionChanged();
 
 private:

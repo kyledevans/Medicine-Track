@@ -53,6 +53,39 @@ MedicationRecord::MedicationRecord(QObject *parent):
 {
 }
 
+/* SQL without C++:
+UPDATE drugs
+SET active = ?
+WHERE id = ?;
+*/
+bool MedicationRecord::toggleActive()
+{
+	QSqlQuery *model;
+	AlertInterface alert;
+
+	if (!exists) {		// Entry doesn't exist - do nothing
+		return false;
+	}
+
+	model = new QSqlQuery;
+
+	model->prepare("UPDATE drugs "
+				   "SET active = ? "
+				   "WHERE id = ?;");
+	model->bindValue(0, !active);
+	model->bindValue(1, QVariant(id));
+
+	if (!alert.attemptQuery(model)) {
+		delete model;
+		return false;
+	}
+
+	active = !active;
+
+	delete model;
+	return true;
+}
+
 /*
 SELECT name, generic, manufacturer, ndc, form, strength, dispense_units, unit_size, instructions, active
 FROM drugs

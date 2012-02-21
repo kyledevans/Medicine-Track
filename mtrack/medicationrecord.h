@@ -34,6 +34,7 @@ public:
 
 	bool retrieve(int);		// (int) is the id.  Returns false if the retrieve failed
 	bool commitRecord();	// Inserts (or updates) the record in the db
+	bool toggleActive();	// Sets the record as active/inactive
 
 	void print();			// Prints to the debug interface
 

@@ -69,10 +69,12 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
 	connect(ui->newMedicationAction, SIGNAL(triggered()), this, SLOT(initiateNewMed()));
 	connect(ui->newStockAction, SIGNAL(triggered()), this, SLOT(initiateNewShipment()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
+	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
 
 	// Add items to resultTable right-click menu
 	ui->resultTable->addAction(ui->newStockAction);
 	ui->resultTable->addAction(ui->modifyAction);
+	ui->resultTable->addAction(ui->toggleAction);
 
 	selectionChanged();
 }
@@ -80,6 +82,25 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
 MedicationsFrame::~MedicationsFrame()
 {
     delete ui;
+}
+
+void MedicationsFrame::toggleActive()
+{
+	unsigned int row;
+	MedicationRecord medication;
+
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return;
+	}
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	medication.retrieve(ids[row]);
+	medication.toggleActive();
 }
 
 /* SQL command without C++
