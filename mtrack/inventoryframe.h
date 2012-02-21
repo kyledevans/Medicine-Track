@@ -33,6 +33,8 @@ public slots:
 	void initiateWriteOff();
 	void initiatePrintBarcode();
 
+	void toggleActive();
+
 	void resetPressed();
 
 	void selectionChanged();

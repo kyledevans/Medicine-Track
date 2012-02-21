@@ -316,6 +316,14 @@
     <string>Print a barcode</string>
    </property>
   </action>
+  <action name="toggleAction">
+   <property name="text">
+    <string>Toggle Active</string>
+   </property>
+   <property name="toolTip">
+    <string>Toggle active/inactive</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>nameField</tabstop>

@@ -80,10 +80,12 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 	connect(ui->printBarcodeAction, SIGNAL(triggered()), this, SLOT(initiatePrintBarcode()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
+	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
 
 	// Add items to the resultTable right-click menu
 	ui->resultTable->addAction(ui->writeOffAction);
 	ui->resultTable->addAction(ui->printBarcodeAction);
+	ui->resultTable->addAction(ui->toggleAction);
 
 	// Disable actions that require a selection in the resultTable
 	selectionChanged();
@@ -92,6 +94,25 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 InventoryFrame::~InventoryFrame()
 {
     delete ui;
+}
+
+void InventoryFrame::toggleActive()
+{
+	unsigned int row;
+	ShipmentRecord shipment;
+
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return;
+	}
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	shipment.retrieve(ids[row]);
+	shipment.toggleActive();
 }
 
 void InventoryFrame::resetPressed()

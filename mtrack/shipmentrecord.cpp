@@ -53,6 +53,39 @@ ShipmentRecord::ShipmentRecord(QObject *parent):
 }
 
 /* SQL without C++:
+UPDATE shipments
+SET active = ?
+WHERE id = ?;
+*/
+bool ShipmentRecord::toggleActive()
+{
+	QSqlQuery *model;
+	AlertInterface alert;
+
+	if (!exists) {		// Entry doesn't exist - do nothing
+		return false;
+	}
+
+	model = new QSqlQuery;
+
+	model->prepare("UPDATE shipments "
+				   "SET active = ? "
+				   "WHERE id = ?;");
+	model->bindValue(0, !active);
+	model->bindValue(1, QVariant(id));
+
+	if (!alert.attemptQuery(model)) {
+		delete model;
+		return false;
+	}
+
+	active = !active;
+
+	delete model;
+	return true;
+}
+
+/* SQL without C++:
 SELECT drug_id, expiration, lot, product_count, product_left, write_off, active
 FROM shipments
 WHERE id = 'SOME_VAL';
