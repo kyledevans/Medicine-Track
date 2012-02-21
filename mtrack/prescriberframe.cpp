@@ -67,29 +67,35 @@ PrescriberFrame::~PrescriberFrame()
 /* SQL without C++:
 SELECT id, last, first, full_name
 FROM prescribers
-WHERE last LIKE '%SOME_VAR%'
-AND first LIKE '%SOME_VAR%'
-AND active = '1';
+WHERE last LIKE ?
+AND first LIKE ?
+AND active = 1;
 */
 void PrescriberFrame::initiateSearch(int presID)
 {
 	QSqlQuery *model;       // DB interface
-	QString query;			// Holds the SQL query
 	AlertInterface alert;	// Handles problems
 	int i;                  // Increment var
 
-	if (presID == SQL::Undefined_ID) {
-		query = QString("SELECT id, last, first, full_name FROM prescribers WHERE last LIKE '%");
-		query += SQL::cleanInput(ui->lastField->text()) + QString("%' AND first LIKE '%");
-		query += SQL::cleanInput(ui->firstField->text()) + QString("%' AND active = '1';");
-	} else {
-		query = QString("SELECT id, last, first, full_name FROM prescribers WHERE id = '");
-		query += QString().setNum(presID) + QString("';");
-	}
-
 	model = new QSqlQuery;
 
-	if (!alert.attemptQuery(model, &query)) {	// On error, cleanup and exit
+	if (presID == SQL::Undefined_ID) {
+		model->prepare("SELECT id, last, first, full_name "
+					   "FROM prescribers "
+					   "WHERE last LIKE ? "
+					   "AND first LIKE ? "
+					   "AND active = ?;");
+		model->bindValue(0, SQL::prepWildcards(ui->lastField->text()));
+		model->bindValue(1, SQL::prepWildcards(ui->firstField->text()));
+		model->bindValue(2, QVariant(ui->activeField->isChecked()));
+	} else {
+		model->prepare("SELECT id, last, first, full_name "
+					   "FROM prescribers "
+					   "WHERE id = ?;");
+		model->bindValue(0, QVariant(presID));
+	}
+
+	if (!alert.attemptQuery(model)) {	// On error, cleanup and exit
 		delete model;
 		return;
 	}
