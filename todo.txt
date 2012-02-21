@@ -19,6 +19,12 @@ Released under the GPL version 2 only.
 	- Adding a prescription
 	- Adding new/modifying formulary
 	- Adding new/modifying inventory
+	- Search for patients
+	- Search for prescriptions
+	- Search formulations
+	- Search inventory
+	- Search pharmacists
+	- Search prescribers
 
 14.  Remove the "active" checkbox from all wizards.  Should only be able to active/reactive by right clicking them on a resultTable.
 	- Also need to add the ability to search for inactive records
