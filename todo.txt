@@ -29,6 +29,9 @@ Released under the GPL version 2 only.
 14.  Remove the "active" checkbox from all wizards.  Should only be able to active/reactive by right clicking them on a resultTable.
 	- Also need to add the ability to search for inactive records
 
+15.  Remove the ability to modify anything (possible exception being patients)
+	- It will make the prescription log be inacurate if say the name of a medication is changed after the prescription has been given.
+
 -----
 
 Questions:
