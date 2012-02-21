@@ -87,33 +87,47 @@ SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength,
 drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration
 FROM shipments
 JOIN drugs ON drugs.id = shipments.drug_id
-WHERE shipments.active = '1'
-AND drugs.active = '1'
+WHERE shipments.active = 1
+AND drugs.active = 1
 AND shipments.expiration > CURDATE()
-AND drugs.name LIKE '%SOME_VAL%';
+AND shipments.product_left >= 1
+AND drugs.name LIKE ?;
 */
 void APW_Page00::initiateSearch()
 {
-	QString query;
 	QSqlQuery *model;
 	AlertInterface alert;
 	BarcodeLabel barcode;
-	int i;		// Increment variable
+	int i;					// Increment variable
 
 	model = new QSqlQuery;
+	barcode.setBarcode(ui->medicationField->text());
 
-	query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.active = '1' AND drugs.active = '1' AND shipments.expiration > CURDATE() AND drugs.name LIKE '%");
-	query += SQL::cleanInput(ui->medicationField->text()) + QString("%';");
-
-	if (!ui->medicationField->text().isEmpty()) {
-		barcode.setBarcode(ui->medicationField->text());
-		if (barcode.toID() != SQL::Undefined_ID) {
-			query = QString("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration FROM shipments JOIN drugs ON drugs.id = shipments.drug_id WHERE shipments.id = '");
-			query += QString().setNum(barcode.toID()) + QString("';");
-		}
+	if (barcode.toID() == SQL::Undefined_ID) {	// Normal search
+		model->prepare("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength, "
+					   "drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration "
+					   "FROM shipments "
+					   "JOIN drugs ON drugs.id = shipments.drug_id "
+					   "WHERE shipments.active = 1 "
+					   "AND drugs.active = 1 "
+					   "AND shipments.expiration > CURDATE() "
+					   "AND shipments.product_left >= 1 "
+					   "AND drugs.name LIKE ?;");
+		model->bindValue(0, SQL::prepWildcards(ui->medicationField->text()));
+	} else {		// Searching by barcode
+		model->prepare("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength, "
+					   "drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration "
+					   "FROM shipments "
+					   "JOIN drugs ON drugs.id = shipments.drug_id "
+					   "WHERE shipments.active = 1 "
+					   "AND drugs.active = 1 "
+					   "AND shipments.expiration > CURDATE() "
+					   "AND shipments.product_left >= 1 "
+					   "AND shipments.id = ?;");
+		model->bindValue(0, QVariant(barcode.toID()));
 	}
 
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(model)) {
 		delete model;
 		return;
 	}
