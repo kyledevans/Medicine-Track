@@ -16,6 +16,8 @@ Released under the GPL version 2 only.
 #include "pharmacistrecord.h"
 #include "alertinterface.h"
 
+#include <QDebug>
+
 PharmacistFrame::PharmacistFrame(QWidget *parent) :
     QFrame(parent),
 	ui(new Ui::PharmacistFrame),
@@ -65,28 +67,35 @@ PharmacistFrame::~PharmacistFrame()
 /* SQL without C++:
 SELECT id, last, first, initials
 FROM pharmacists
-WHERE last LIKE '%SOME_VAR%'
-AND first LIKE '%SOME_VAR%'
-AND active = '1';
+WHERE last LIKE ?
+AND first LIKE ?
+AND active = ?;
 */
 void PharmacistFrame::initiateSearch(int pharmID)
 {
 	QSqlQuery *model;		// DB interface
-	QString query;			// Holds the SQL query
 	AlertInterface alert;	// Handles problems
 	int i;					// Increment var
 
+	model = new QSqlQuery;
+
 	if (pharmID == SQL::Undefined_ID) {
-		query = QString("SELECT id, last, first, initials FROM pharmacists WHERE last LIKE '%");
-		query += SQL::cleanInput(ui->lastField->text()) + QString("%' AND first LIKE '%");
-		query += SQL::cleanInput(ui->firstField->text()) + QString("%' AND active = '1';");
+		model->prepare("SELECT id, last, first, initials "
+					   "FROM pharmacists "
+					   "WHERE last LIKE ? "
+					   "AND first LIKE ? "
+					   "AND active = ?;");
+		model->bindValue(0, SQL::prepWildcards(ui->lastField->text()));
+		model->bindValue(1, SQL::prepWildcards(ui->firstField->text()));
+		model->bindValue(2, QVariant(ui->activeField->isChecked()));
 	} else {
-		query = QString("SELECT id, last, first, initials FROM pharmacists WHERE id = '");
-		query += QString().setNum(pharmID) + QString("';");
+		model->prepare("SELECT id, last, first, initials "
+					   "FROM pharmacists "
+					   "WHERE id = ?;");
+		model->bindValue(0, QVariant(pharmID));
 	}
 
-	model = new QSqlQuery;
-	if (!alert.attemptQuery(model, &query)) {	// On error, cleanup and exit
+	if (!alert.attemptQuery(model)) {	// On error, cleanup and exit
 		delete model;
 		return;
 	}
