@@ -31,7 +31,7 @@ BarcodeLabel::~BarcodeLabel()
 
 void BarcodeLabel::setBarcode(QString new_barcode)
 {
-	barcode = QString("*") + (new_barcode.toUpper()) + QString("*");
+	barcode = "*" + new_barcode.toUpper() + "*";
 	has_barcode = true;
 }
 

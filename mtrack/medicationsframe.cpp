@@ -6,7 +6,6 @@ Released under the GPL version 2 only.
 
 #include <QString>
 #include <QVariant>
-#include <QSqlQueryModel>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QTableWidgetItem>
@@ -84,43 +83,71 @@ MedicationsFrame::~MedicationsFrame()
 }
 
 /* SQL command without C++
-SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units)
+SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size,
+CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units)
 FROM drugs
 LEFT JOIN shipments ON drugs.id = shipments.drug_id
 WHERE drugs.name LIKE 'SOME_VAR'
 AND drugs.active = 'SOME_VAR'
+AND shipments.active = 1
+GROUP BY drugs.id;
+
+SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size,
+CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units)
+FROM drugs
+LEFT JOIN shipments ON drugs.id = shipments.drug_id
+WHERE drugs.id = (
+	SELECT shipments.drug_id
+	FROM shipments
+	WHERE shipments.id = ?)
+AND shipments.active = 1
 GROUP BY drugs.id;
 */
 void MedicationsFrame::initiateSearch(int medID)
 {
-	QString query;
     QSqlQuery *model;
 	AlertInterface alert;
 	BarcodeLabel barcode;
-	ShipmentRecord shipment;
     int i;      // Increment var
 
-	if (medID == SQL::Undefined_ID) {
-		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.name LIKE '%");
-		query += SQL::cleanInput(ui->nameField->text()) + QString("%'");
-		if (ui->activeCheckbox->isChecked()) {
-			query += QString(" AND drugs.active = '1'");
-		}
-		query += QString(" GROUP BY drugs.id;");
-		barcode.setBarcode(ui->nameField->text());
-		if (barcode.toID() != SQL::Undefined_ID) {
-			shipment.retrieve(barcode.toID());
-			query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) FROM drugs LEFT OUTER JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
-			query += QString().setNum(shipment.drug_id) + QString("' GROUP BY drugs.id;");
-		}
-	} else {
-		query = QString("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) FROM drugs LEFT JOIN shipments ON drugs.id = shipments.drug_id WHERE drugs.id = '");
-		query += QString().setNum(medID) + QString("' GROUP BY drugs.id;");
+	barcode.setBarcode(ui->nameField->text());
+	model = new QSqlQuery;
+
+	if (medID != SQL::Undefined_ID) {	// Searching for a specific drug ID
+		model->prepare("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, "
+					   "CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) "
+					   "FROM drugs "
+					   "LEFT JOIN shipments ON drugs.id = shipments.drug_id "
+					   "WHERE drugs.id = ? "
+					   "AND shipments.active = 1 "
+					   "GROUP BY drugs.id;");
+		model->bindValue(0, medID);
+	} else if (barcode.toID() != SQL::Undefined_ID) {	// There was a barcode, so search only for a matching barcode
+		model->prepare("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, "
+					   "CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) "
+					   "FROM drugs "
+					   "LEFT JOIN shipments ON drugs.id = shipments.drug_id "
+					   "WHERE drugs.id = ( "
+					   "	SELECT shipments.drug_id "
+					   "	FROM shipments "
+					   "	WHERE shipments.id = ?) "
+					   "AND shipments.active = 1 "
+					   "GROUP BY drugs.id;");
+		model->bindValue(0, QVariant(barcode.toID()));
+	} else {		// Searching based on user input
+		model->prepare("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, "
+					   "CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) "
+					   "FROM drugs "
+					   "LEFT JOIN shipments ON drugs.id = shipments.drug_id "
+					   "WHERE drugs.name LIKE ? "
+					   "AND drugs.active = ? "
+					   "AND shipments.active = 1 "
+					   "GROUP BY drugs.id;");
+		model->bindValue(0, SQL::prepWildcards(ui->nameField->text()));
+		model->bindValue(1, QVariant(ui->activeCheckbox->isChecked()));
 	}
 
-    model = new QSqlQuery;
-
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(model)) {
 		delete model;
 		return;
 	}
