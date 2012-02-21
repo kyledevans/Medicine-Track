@@ -123,25 +123,28 @@ void PrescriptionsFrame::resetPressed()
 }
 
 /* SQL query without C++:
-SELECT prescriptions.id, patients.allscripts_id, patients.last, patients.first, patients.dob, drugs.name,
-drugs.form, drugs.strength, CONCAT(prescriptions.amount, ' ', drugs.dispense_units), prescriptions.written, prescriptions.filled, shipments.lot
+SELECT prescriptions.id, patients.allscripts_id, patients.last,
+patients.first, patients.dob, drugs.name, drugs.form, drugs.strength,
+CONCAT(prescriptions.amount, ' ', drugs.dispense_units),
+prescriptions.written, prescriptions.filled, shipments.lot
 FROM prescriptions
 JOIN patients ON prescriptions.patient_id = patients.id
 JOIN drugs ON prescriptions.drug_id = drugs.id
 JOIN shipments ON prescriptions.shipment_id = shipments.id
-WHERE drugs.name LIKE SOMEVAR
-AND shipments.lot LIKE SOMEVAR
-AND prescriptions.filled = SOMEVAR
-AND patients.last LIKE SOMEVAR
-AND patients.first LIKE SOMEVAR
-AND patients.dob = SOMEVAR;
+WHERE drugs.name LIKE ?
+AND shipments.lot LIKE ?
+AND (<true if NOT searching by filled date> OR (prescriptions.filled = ?))
+AND patients.last LIKE ?
+AND patients.first LIKE ?
+AND (<true if NOT searching by dob> OR (patients.dob = ?));
 */
 void PrescriptionsFrame::initiateSearch()
 {
 	QSqlQuery *model;		// SQL interface
-	QString query;			// SQL query string
 	AlertInterface alert;	// Submits query and handles errors
 	int i;					// Increment var
+	bool dont_search_filled = true;
+	bool dont_search_dob = true;
 
 	// Test if any field has been altered
 	if (ui->medicationNameField->text().isEmpty() &&
@@ -154,24 +157,38 @@ void PrescriptionsFrame::initiateSearch()
 		return;
 	}
 
-	query = QString("SELECT prescriptions.id, patients.allscripts_id, patients.last, patients.first, patients.dob, drugs.name, drugs.form, drugs.strength, CONCAT(prescriptions.amount, ' ', drugs.dispense_units), prescriptions.written, prescriptions.filled, shipments.lot FROM prescriptions JOIN patients ON prescriptions.patient_id = patients.id JOIN drugs ON prescriptions.drug_id = drugs.id JOIN shipments ON prescriptions.shipment_id = shipments.id WHERE drugs.name LIKE '%");
-	query += SQL::cleanInput(ui->medicationNameField->text()) + QString("%' AND shipments.lot LIKE '%");
-	query += SQL::cleanInput(ui->lotField->text()) + QString("%'");
-	if (ui->filledField->date() != DEFAULTS::Date) {	// Search by filled date if necessary
-		query += QString(" AND prescriptions.filled = '");
-		query += ui->filledField->date().toString("yyyy-MM-dd") + QString("'");
-	}
-	query += QString(" AND patients.last LIKE '%");
-	query += SQL::cleanInput(ui->lastField->text()) + QString("%' AND patients.first LIKE '%");
-	query += SQL::cleanInput(ui->firstField->text()) + QString("%'");
-	if (ui->dobField->date() != DEFAULTS::Date) {		// Search by dob if necessary
-		query += QString(" AND patients.dob = '");
-		query += ui->dobField->date().toString("yyyy-MM-dd") + QString("'");
-	}
-	query += QString(";");
-
 	model = new QSqlQuery;
-	if (!alert.attemptQuery(model, &query)) {
+
+	model->prepare("SELECT prescriptions.id, patients.allscripts_id, patients.last, "
+				   "patients.first, patients.dob, drugs.name, drugs.form, drugs.strength, "
+				   "CONCAT(prescriptions.amount, ' ', drugs.dispense_units), "
+				   "prescriptions.written, prescriptions.filled, shipments.lot "
+				   "FROM prescriptions "
+				   "JOIN patients ON prescriptions.patient_id = patients.id "
+				   "JOIN drugs ON prescriptions.drug_id = drugs.id "
+				   "JOIN shipments ON prescriptions.shipment_id = shipments.id "
+				   "WHERE drugs.name LIKE ? "
+				   "AND shipments.lot LIKE ? "
+				   "AND (? OR (prescriptions.filled = ?)) "
+				   "AND patients.last LIKE ? "
+				   "AND patients.first LIKE ? "
+				   "AND (? OR (patients.dob = ?);");
+	model->bindValue(0, SQL::prepWildcards(ui->medicationNameField->text()));
+	model->bindValue(1, SQL::prep(ui->lotField->text()));
+	if (ui->filledField->date() != DEFAULTS::Date) {
+		dont_search_filled = false;
+	}
+	model->bindValue(2, QVariant(dont_search_filled));
+	model->bindValue(3, QVariant(ui->filledField->date()));
+	model->bindValue(4, SQL::prepWildcards(ui->lastField->text()));
+	model->bindValue(5, SQL::prepWildcards(ui->firstField->text()));
+	if (ui->dobField->date() != DEFAULTS::Date) {
+		dont_search_dob = false;
+	}
+	model->bindValue(6, QVariant(dont_search_dob));
+	model->bindValue(7, QVariant(ui->dobField->date()));
+
+	if (!alert.attemptQuery(model)) {
 		delete model;
 		return;
 	}
