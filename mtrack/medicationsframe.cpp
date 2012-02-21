@@ -105,23 +105,29 @@ void MedicationsFrame::toggleActive()
 
 /* SQL command without C++
 SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size,
-CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units)
+CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units)
 FROM drugs
-LEFT JOIN shipments ON drugs.id = shipments.drug_id
-WHERE drugs.name LIKE 'SOME_VAR'
-AND drugs.active = 'SOME_VAR'
-AND shipments.active = 1
+LEFT JOIN (
+	SELECT shipments.id, shipments.drug_id, shipments.product_left
+	FROM shipments
+	WHERE shipments.active = 1
+	AND shipments.expiration > CURDATE()) AS s_temp ON drugs.id = s_temp.drug_id
+WHERE drugs.name LIKE ?
+AND drugs.active = ?
 GROUP BY drugs.id;
 
 SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size,
-CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units)
+CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units)
 FROM drugs
-LEFT JOIN shipments ON drugs.id = shipments.drug_id
+LEFT JOIN (
+	SELECT shipments.id, shipments.drug_id, shipments.product_left
+	FROM shipments
+	WHERE shipments.active = 1
+	AND shipments.expiration > CURDATE()) AS s_temp ON drugs.id = s_temp.drug_id
 WHERE drugs.id = (
 	SELECT shipments.drug_id
 	FROM shipments
 	WHERE shipments.id = ?)
-AND shipments.active = 1
 GROUP BY drugs.id;
 */
 void MedicationsFrame::initiateSearch(int medID)
@@ -136,33 +142,42 @@ void MedicationsFrame::initiateSearch(int medID)
 
 	if (medID != SQL::Undefined_ID) {	// Searching for a specific drug ID
 		model->prepare("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, "
-					   "CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) "
+					   "CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units) "
 					   "FROM drugs "
-					   "LEFT JOIN shipments ON drugs.id = shipments.drug_id "
+					   "LEFT JOIN ("
+					   "	SELECT shipments.id, shipments.drug_id, shipments.product_left "
+					   "	FROM shipments "
+					   "	WHERE shipments.active = 1 "
+					   "	AND shipments.expiration > CURDATE()) AS s_temp ON drugs.id = s_temp.drug_id "
 					   "WHERE drugs.id = ? "
-					   "AND shipments.active = 1 "
 					   "GROUP BY drugs.id;");
 		model->bindValue(0, medID);
 	} else if (barcode.toID() != SQL::Undefined_ID) {	// There was a barcode, so search only for a matching barcode
 		model->prepare("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, "
-					   "CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) "
+					   "CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units) "
 					   "FROM drugs "
-					   "LEFT JOIN shipments ON drugs.id = shipments.drug_id "
+					   "LEFT JOIN ( "
+					   "	SELECT shipments.id, shipments.drug_id, shipments.product_left "
+					   "	FROM shipments "
+					   "	WHERE shipments.active = 1 "
+					   "	AND shipments.expiration > CURDATE()) AS s_temp ON drugs.id = s_temp.drug_id "
 					   "WHERE drugs.id = ( "
 					   "	SELECT shipments.drug_id "
 					   "	FROM shipments "
 					   "	WHERE shipments.id = ?) "
-					   "AND shipments.active = 1 "
 					   "GROUP BY drugs.id;");
 		model->bindValue(0, QVariant(barcode.toID()));
 	} else {		// Searching based on user input
 		model->prepare("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, "
-					   "CONCAT(SUM( shipments.product_left ), ' ', drugs.dispense_units) "
+					   "CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units) "
 					   "FROM drugs "
-					   "LEFT JOIN shipments ON drugs.id = shipments.drug_id "
+					   "LEFT JOIN ( "
+					   "	SELECT shipments.id, shipments.drug_id, shipments.product_left "
+					   "	FROM shipments "
+					   "	WHERE shipments.active = 1 "
+					   "	AND shipments.expiration > CURDATE()) AS s_temp ON drugs.id = s_temp.drug_id "
 					   "WHERE drugs.name LIKE ? "
 					   "AND drugs.active = ? "
-					   "AND shipments.active = 1 "
 					   "GROUP BY drugs.id;");
 		model->bindValue(0, SQL::prepWildcards(ui->nameField->text()));
 		model->bindValue(1, QVariant(ui->activeCheckbox->isChecked()));
