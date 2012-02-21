@@ -7,6 +7,7 @@ Released under the GPL version 2 only.
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QMessageBox>
 
 #include <QDebug>
 
@@ -103,9 +104,11 @@ PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->printAction, SIGNAL(triggered()), this, SLOT(initiatePrint()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
+	connect(ui->invalidateAction, SIGNAL(triggered()), this, SLOT(invalidatePrescription()));
 
 	// Add items to resultTable right-click menu
 	ui->resultTable->addAction(ui->printAction);
+	ui->resultTable->addAction(ui->invalidateAction);
 
 	// Disable actions that require an item selected in the resultTable
 	selectionChanged();
@@ -114,6 +117,36 @@ PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :
 PrescriptionsFrame::~PrescriptionsFrame()
 {
     delete ui;
+}
+
+void PrescriptionsFrame::invalidatePrescription()
+{
+	QMessageBox msg;
+	PrescriptionRecord prescription;
+	int val;
+	unsigned int row;
+
+	msg.setText("Verify prescription removal");
+	msg.setInformativeText("Are you sure you want to remove this prescription permanently?");
+	msg.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+	msg.setDefaultButton(QMessageBox::No);
+	val = msg.exec();
+
+	if (val == QMessageBox::Yes) {	// Yes pressed
+		if (!db_queried) {
+			return;
+		}
+		if (!ui->resultTable->selectionModel()->hasSelection()) {
+			return;
+		}
+
+		// This line finds the top row that was selected by the user
+		row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+		// Retrieve and invalidate prescription
+		prescription.retrieve(ids[row]);
+		prescription.invalidate();
+	}
 }
 
 void PrescriptionsFrame::resetPressed()
@@ -138,7 +171,8 @@ AND shipments.lot LIKE ?
 AND (<true if NOT searching by filled date> OR (prescriptions.filled = ?))
 AND patients.last LIKE ?
 AND patients.first LIKE ?
-AND (<true if NOT searching by dob> OR (patients.dob = ?));
+AND (<true if NOT searching by dob> OR (patients.dob = ?))
+AND prescriptions.active = 1;
 */
 void PrescriptionsFrame::initiateSearch()
 {
@@ -175,7 +209,8 @@ void PrescriptionsFrame::initiateSearch()
                    "AND patients.last LIKE ? "
                    "AND patients.first LIKE ? "
                    "AND (? OR (patients.dob = ?)) "
-                   "AND patients.active = ?;");
+				   "AND patients.active = ? "
+				   "AND prescriptions.active = 1;");
 	model->bindValue(0, SQL::prepWildcards(ui->medicationNameField->text()));
     model->bindValue(1, SQL::prepWildcards(ui->lotField->text()));
     if (ui->filledField->date() != DEFAULTS::Date) {    // Enables searching by filled date if the user made a change

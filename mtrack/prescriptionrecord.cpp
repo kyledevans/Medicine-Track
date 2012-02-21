@@ -47,6 +47,90 @@ PrescriptionRecord::PrescriptionRecord(QObject *parent):
 }
 
 /* SQL without C++:
+START TRANSACTION;
+
+SELECT amount, shipment_id
+FROM prescriptions
+WHERE id = ?;
+
+UPDATE prescriptions
+SET active = ?
+WHERE id = ?;
+
+UPDATE shipments
+SET product_left = (product_left + ?)
+WHERE id = ?;
+
+COMMIT;
+*/
+bool PrescriptionRecord::invalidate()
+{
+	QSqlDatabase db;
+	QSqlQuery *model;
+	AlertInterface alert;
+	int amount_temp;
+	int ship_id_temp;
+
+	if (!exists) {		// Entry doesn't exist - do nothing
+		return false;
+	}
+
+	model = new QSqlQuery;
+
+	db = QSqlDatabase::database();	// Get the default DB
+	db.transaction();
+
+	// Get the most up to date prescription amount
+	model->prepare("SELECT amount, shipment_id "
+				   "FROM prescriptions "
+				   "WHERE id = ?;");
+	model->bindValue(0, QVariant(id));
+
+	if (!alert.attemptQuery(model)) {
+		db.rollback();
+		delete model;
+		return false;
+	}
+
+	model->next();
+	amount_temp = model->value(0).toInt();
+	ship_id_temp = model->value(1).toInt();
+
+	// Deactivate the prescription
+	model->prepare("UPDATE prescriptions "
+				   "SET active = 0 "
+				   "WHERE id = ?;");
+	model->bindValue(0, QVariant(id));
+
+	if (!alert.attemptQuery(model)) {
+		db.rollback();
+		delete model;
+		return false;
+	}
+
+	// Add the inventory back
+	model->prepare("UPDATE shipments "
+				   "SET product_left = (product_left + ?) "
+				   "WHERE id = ?;");
+	model->bindValue(0, QVariant(amount_temp));
+	model->bindValue(1, QVariant(ship_id_temp));
+
+	if (!alert.attemptQuery(model)) {
+		db.rollback();
+		delete model;
+		return false;
+	}
+
+	db.commit();
+	qDebug() << "here";
+
+	active = !active;
+
+	delete model;
+	return true;
+}
+
+/* SQL without C++:
 SELECT patient_id, drug_id, shipment_id, prescriber_id, pharmacist_id, amount,
 dose_size, written, filled, instructions, comments, active
 FROM prescriptions

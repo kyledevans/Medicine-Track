@@ -38,6 +38,8 @@ public:
 	bool commitRecord();	// Returns false if the procedure failed
 	void print();			// Prints to the default debug interface
 
+	bool invalidate();
+
 	/* Use these to keep UI strings consistent and sane. */
 	static const QString amount_Label;
 	static const QString amount_Tooltip;

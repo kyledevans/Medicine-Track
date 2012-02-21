@@ -23,7 +23,7 @@
    <item>
     <widget class="QGroupBox" name="medicationBox">
      <property name="title">
-      <string>Medication search</string>
+      <string>Prescriptions search</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
@@ -441,6 +441,14 @@
    </property>
    <property name="toolTip">
     <string>Print a label for the prescription</string>
+   </property>
+  </action>
+  <action name="invalidateAction">
+   <property name="text">
+    <string>Invalidate</string>
+   </property>
+   <property name="toolTip">
+    <string>Marks the prescription as invalid.</string>
    </property>
   </action>
  </widget>

@@ -30,6 +30,8 @@ public slots:
 
 	void selectionChanged();
 
+	void invalidatePrescription();
+
 private:
     Ui::PrescriptionsFrame *ui;
 
