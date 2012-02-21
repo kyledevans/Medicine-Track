@@ -96,6 +96,9 @@ InventoryFrame::~InventoryFrame()
 
 void InventoryFrame::resetPressed()
 {
+	ui->activeCheckbox->setChecked(true);
+	ui->notExpiredCheckbox->setChecked(true);
+	ui->stockCheckbox->setChecked(true);
 	ui->resultTable->clearContents();
 	ui->resultTable->setRowCount(0);
 }
