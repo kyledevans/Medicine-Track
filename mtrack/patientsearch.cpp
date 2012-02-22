@@ -125,8 +125,12 @@ void PatientSearch::initiateSearch(int patientID)
 	if (ui->firstNameField->text().isEmpty() &&
 		ui->lastNameField->text().isEmpty() &&
 		ui->firstNameField->text().isEmpty() &&
-		(ui->dobField->date() == DEFAULTS::Date))
+		(ui->dobField->date() == DEFAULTS::Date) &&
+		(patientID == SQL::Undefined_ID))
 	{
+		if (ui->resultTable->rowCount() > 0) {
+			ui->resetButton->click();
+		}
 		return;
 	}
 

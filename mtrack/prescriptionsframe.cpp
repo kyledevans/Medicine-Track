@@ -192,6 +192,9 @@ void PrescriptionsFrame::initiateSearch()
 		(ui->filledField->date() == DEFAULTS::Date) &&
 		(ui->dobField->date() == DEFAULTS::Date)) {
 
+		if (ui->resultTable->rowCount() > 0) {
+			ui->resetButton->click();
+		}
 		return;
 	}
 
