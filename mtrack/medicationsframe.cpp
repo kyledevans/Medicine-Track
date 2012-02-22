@@ -317,8 +317,11 @@ void MedicationsFrame::initiateNewShipment()
 
 void MedicationsFrame::submitNewShipment(ShipmentRecord *shipment)
 {
+	BarcodeLabel barcode;
 	shipment->commitRecord();
 	initiateSearch(shipment->drug_id);
+	barcode.setBarcode(QString("SID") + QString().setNum(shipment->id));
+	barcode.print();
 	shipmentCleanup(shipment);
 }
 

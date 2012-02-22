@@ -53,13 +53,13 @@ PrescriptionLabel::~PrescriptionLabel()
 void PrescriptionLabel::printLabel()
 {
 	QPrinter printer(QPrinter::HighResolution);
-	/*QPrintDialog *diag = new QPrintDialog(&printer);
+	QPrintDialog *diag = new QPrintDialog(&printer);
 	connect(diag, SIGNAL(accepted(QPrinter*)), this, SLOT(print(QPrinter*)));
-	diag->exec();*/
+	diag->exec();
 
-	printer.setOutputFileName("C:\\Users\\Evans\\Desktop\\print.pdf");
+	/*printer.setOutputFileName("C:\\Users\\Evans\\Desktop\\print.pdf");
 	printer.setOutputFormat(QPrinter::PdfFormat);
-	print(&printer);
+	print(&printer);*/
 }
 
 void PrescriptionLabel::print(QPrinter *printer)

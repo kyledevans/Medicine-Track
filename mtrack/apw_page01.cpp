@@ -56,6 +56,10 @@ APW_Page01::APW_Page01(QWidget *parent) :
 	// Set default values
 	ui->filledField->setDate(QDate::currentDate());
 	ui->writtenField->setDate(QDate::currentDate());
+
+	registerField("amountField*", ui->amountField);
+	registerField("writtenByField*", ui->writtenByField);
+	registerField("filledByField*", ui->filledByField);
 }
 
 APW_Page01::~APW_Page01()

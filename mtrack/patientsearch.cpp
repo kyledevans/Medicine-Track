@@ -283,8 +283,10 @@ void PatientSearch::initiateNewPatient()
 
 void PatientSearch::submitNewPrescription(PrescriptionRecord *prescription)
 {
-	prescription->commitRecord();
-	//initiatePrint(prescription);
+	PrescriptionLabel label(prescription);
+	if (prescription->commitRecord()) {
+		label.printLabel();
+	}
 	newPrescriptionCleanup(prescription);
 }
 
@@ -308,25 +310,4 @@ void PatientSearch::newPatientCleanup(PatientRecord *patient)
 void PatientSearch::submitModify(PatientRecord *patient)
 {
 	// TODO: Implement this
-}
-
-void PatientSearch::initiatePrint(PrescriptionRecord *prescription)
-{
-	PrescriptionLabel *label;
-	unsigned int row;
-
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
-
-	// This line finds the top row that was selected by the user
-	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-
-	label = new PrescriptionLabel(prescription);
-	label->printLabel();
-
-	delete label;
 }
