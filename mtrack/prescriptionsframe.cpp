@@ -146,6 +146,7 @@ void PrescriptionsFrame::invalidatePrescription()
 		// Retrieve and invalidate prescription
 		prescription.retrieve(ids[row]);
 		prescription.invalidate();
+		initiateSearch();
 	}
 }
 
@@ -155,6 +156,7 @@ void PrescriptionsFrame::resetPressed()
     ui->dobField->setDate(DEFAULTS::Date);
     ui->resultTable->clearContents();
     ui->resultTable->setRowCount(0);
+	ui->invalidField->setChecked(false);
 }
 
 /* SQL query without C++:
@@ -172,7 +174,7 @@ AND (<true if NOT searching by filled date> OR (prescriptions.filled = ?))
 AND patients.last LIKE ?
 AND patients.first LIKE ?
 AND (<true if NOT searching by dob> OR (patients.dob = ?))
-AND prescriptions.active = 1;
+AND prescriptions.active = ?;
 */
 void PrescriptionsFrame::initiateSearch()
 {
@@ -210,7 +212,7 @@ void PrescriptionsFrame::initiateSearch()
                    "AND patients.first LIKE ? "
                    "AND (? OR (patients.dob = ?)) "
 				   "AND patients.active = ? "
-				   "AND prescriptions.active = 1;");
+				   "AND prescriptions.active = ?;");
 	model->bindValue(0, SQL::prepWildcards(ui->medicationNameField->text()));
     model->bindValue(1, SQL::prepWildcards(ui->lotField->text()));
     if (ui->filledField->date() != DEFAULTS::Date) {    // Enables searching by filled date if the user made a change
@@ -226,6 +228,7 @@ void PrescriptionsFrame::initiateSearch()
 	model->bindValue(6, QVariant(dont_search_dob));
 	model->bindValue(7, QVariant(ui->dobField->date()));
     model->bindValue(8, QVariant(ui->activeField->isChecked()));
+	model->bindValue(9, QVariant(!ui->invalidField->isChecked()));
 
 	if (!alert.attemptQuery(model)) {
 		delete model;
@@ -260,9 +263,11 @@ void PrescriptionsFrame::selectionChanged()
 	if (ui->resultTable->selectionModel()->hasSelection()) {
 		ui->modifyAction->setEnabled(true);
 		ui->printAction->setEnabled(true);
+		ui->invalidateAction->setEnabled(true);
 	} else {
 		ui->modifyAction->setEnabled(false);
 		ui->printAction->setEnabled(false);
+		ui->invalidateAction->setEnabled(false);
 	}
 }
 

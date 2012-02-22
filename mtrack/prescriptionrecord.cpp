@@ -75,6 +75,10 @@ bool PrescriptionRecord::invalidate()
 		return false;
 	}
 
+	if (!active) {		// Entry is already inactive
+		return false;
+	}
+
 	model = new QSqlQuery;
 
 	db = QSqlDatabase::database();	// Get the default DB
