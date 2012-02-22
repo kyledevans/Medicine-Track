@@ -35,10 +35,10 @@ NPW_Page00::NPW_Page00(QWidget *parent) :
 
 	ui->dobField->setDate(DEFAULTS::Date);
 
-	registerField("mrNumberField", ui->mrNumberField);
-	registerField("lastField", ui->lastField);
-	registerField("firstField", ui->firstField);
-	registerField("dobField", ui->dobField);
+	registerField("mrNumberField*", ui->mrNumberField);
+	registerField("lastField*", ui->lastField);
+	registerField("firstField*", ui->firstField);
+	registerField("dobField*", ui->dobField);
 }
 
 NPW_Page00::~NPW_Page00()
