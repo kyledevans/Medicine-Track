@@ -318,6 +318,7 @@ void MedicationsFrame::initiateNewShipment()
 void MedicationsFrame::submitNewShipment(ShipmentRecord *shipment)
 {
 	shipment->commitRecord();
+	initiateSearch(shipment->drug_id);
 	shipmentCleanup(shipment);
 }
 

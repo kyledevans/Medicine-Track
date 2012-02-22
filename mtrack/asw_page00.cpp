@@ -38,9 +38,9 @@ ASW_Page00::ASW_Page00(QWidget *parent) :
 	ui->expireField->setDate(DEFAULTS::Date);
 
 	// Register fields
-	registerField("expireField", ui->expireField);
-	registerField("lotField", ui->lotField);
-	registerField("unitsField", ui->unitsField);
+	registerField("expireField*", ui->expireField);
+	registerField("lotField*", ui->lotField);
+	registerField("unitsField*", ui->unitsField);
 }
 
 ASW_Page00::~ASW_Page00()
