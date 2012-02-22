@@ -1,4 +1,4 @@
-Copyright (C) 2011 Kyle Evans <kyledevans@gmail.com>
+﻿Copyright (C) 2011 Kyle Evans <kyledevans@gmail.com>
 
 Released under the GPL version 2 only.
 
@@ -31,6 +31,41 @@ Released under the GPL version 2 only.
 
 15.  Remove the ability to modify anything (possible exception being patients)
 	- It will make the prescription log be inacurate if say the name of a medication is changed after the prescription has been given.
+
+-----
+1.1 TODO List (and wishlist)
+
+1.  Some maintenance stuff (do in order):
+	- Make database record classes no longer QObjects
+	- Rename MedicationRecord to DrugRecord
+	- Rename the tab classes consistently
+	- Rename the wizards in a consistent manner
+	- Rename the wizard pages in a consistent manner
+	- Move the wizards into 1 "wizard" directory
+	- Move the database record classes into 1 "database" directory
+
+2.  Make database record classes use accessors/mutators instead of public members
+
+3.  Document the database record classes in a way similar to how Qt documents
+	- Need to use Doxygen which then can create documentation files for Qt Assistant and Qt Creator
+
+4.  Make resultTables easily sortable
+
+5.  Make simple display widgets for the database record classes.  All fields will be displayed.
+
+6.  Where appropriate, indicate that database records are unusable by use of the color red.  How this is done will vary.
+	- IE: When doing a search in the Formulary tab, inactive medications could have a red arrow or marker in the _row_ header along with possibly highlighting the field that is causing the problem.
+
+7.  When there is no inventory, searches should display a '0' instead of nothing at all.
+
+8.  Consider adding a new table called write_offs that will replace the shipments.write_off column.  write_offs could have the following columns:
+	- id
+	- shipment_id
+	- amount_written_off
+
+9.  Add verification routines. IE: A SQL function that adds up the prescriptions.amount from every prescription that references a particular shipment_id.  It will then verify that the current stock is consistent with the amount prescribed and written off.
+
+10.  A 'management' UI that is used to do run the verification routines and do the initial database setup calls.
 
 -----
 
