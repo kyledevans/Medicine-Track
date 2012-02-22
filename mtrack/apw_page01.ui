@@ -211,56 +211,13 @@
       </layout>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="doseLabel">
-       <property name="text">
-        <string>DOSE SIZE</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QLineEdit" name="doseField">
-         <property name="minimumSize">
-          <size>
-           <width>150</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>150</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="maxLength">
-          <number>64</number>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-     <item row="2" column="0">
       <widget class="QLabel" name="writtenLabel">
        <property name="text">
         <string>WRITTEN</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="1" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
         <widget class="QDateEdit" name="writtenField">
@@ -284,14 +241,14 @@
        </item>
       </layout>
      </item>
-     <item row="3" column="0">
+     <item row="2" column="0">
       <widget class="QLabel" name="filledLabel">
        <property name="text">
         <string>FILLED</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="2" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
         <widget class="QDateEdit" name="filledField">
@@ -315,14 +272,14 @@
        </item>
       </layout>
      </item>
-     <item row="4" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="writtenByLabel">
        <property name="text">
         <string>WRITTEN BY</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
+     <item row="3" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QComboBox" name="writtenByField"/>
@@ -342,14 +299,14 @@
        </item>
       </layout>
      </item>
-     <item row="5" column="0">
+     <item row="4" column="0">
       <widget class="QLabel" name="filledByLabel">
        <property name="text">
         <string>FILLED BY</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
+     <item row="4" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QComboBox" name="filledByField"/>
@@ -388,7 +345,6 @@
  </widget>
  <tabstops>
   <tabstop>amountField</tabstop>
-  <tabstop>doseField</tabstop>
   <tabstop>writtenField</tabstop>
   <tabstop>filledField</tabstop>
   <tabstop>writtenByField</tabstop>

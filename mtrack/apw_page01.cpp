@@ -33,10 +33,6 @@ APW_Page01::APW_Page01(QWidget *parent) :
 	ui->amountLabel_2->setToolTip(PrescriptionRecord::amount_Tooltip);
 	ui->amountField->setToolTip(PrescriptionRecord::amount_Tooltip);
 
-	ui->doseLabel->setText(PrescriptionRecord::dose_size_Label);
-	ui->doseLabel->setToolTip(PrescriptionRecord::dose_size_Tooltip);
-	ui->doseField->setToolTip(PrescriptionRecord::dose_size_Tooltip);
-
 	ui->writtenLabel->setText(PrescriptionRecord::written_Label);
 	ui->writtenLabel->setToolTip(PrescriptionRecord::written_Tooltip);
 	ui->writtenField->setToolTip(PrescriptionRecord::written_Tooltip);
@@ -99,6 +95,7 @@ bool APW_Page01::initCustom()
 	PharmacistRecord *pharmTemp;
 	int i;							// Increment var
 
+	// TODO: This isn't using model.prepare()
 	model = new QSqlQuery;
 	query = QString("SELECT id, last, first, full_name, active FROM prescribers WHERE active = '1' ORDER BY last, first;");
 
@@ -173,7 +170,6 @@ void APW_Page01::getResults()
 {
 	int temp;
 	prescription->amount = ui->amountField->text().toInt();
-	prescription->dose_size = ui->doseField->text();
 	prescription->written = ui->writtenField->date();
 	prescription->filled = ui->filledField->date();
 

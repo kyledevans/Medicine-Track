@@ -22,12 +22,12 @@ CREATE TABLE drugs (
   `name` varchar(128) collate utf8_unicode_ci NOT NULL COMMENT 'Drug Name',
   generic varchar(128) collate utf8_unicode_ci default NULL COMMENT 'Non-generic name',
   manufacturer varchar(128) collate utf8_unicode_ci NOT NULL COMMENT 'Manufacturer Name',
-  ndc char(12) collate utf8_unicode_ci NOT NULL COMMENT 'National Drug Code number',
+  ndc char(14) collate utf8_unicode_ci NOT NULL COMMENT 'National Drug Code number',
   form enum('capsule','cream','drops','elixir','ointment','solution','suspension','syrup','tablet') collate utf8_unicode_ci NOT NULL COMMENT 'Inhale, capsule, etc.',
   strength varchar(64) collate utf8_unicode_ci NOT NULL COMMENT 'Strength of prescription',
   dispense_units varchar(32) collate utf8_unicode_ci NOT NULL COMMENT 'Dispensed units',
   unit_size varchar(32) collate utf8_unicode_ci default NULL COMMENT 'The size of a unit',
-  instructions varchar(512) collate utf8_unicode_ci NOT NULL COMMENT 'Default instructions',
+  instructions varchar(512) collate utf8_unicode_ci default NULL COMMENT 'Default instructions',
   active tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='A list of drugs';
@@ -92,7 +92,7 @@ CREATE TABLE prescriptions (
   prescriber_id int(10) unsigned NOT NULL COMMENT 'Person who prescribed the medication',
   pharmacist_id int(10) unsigned NOT NULL COMMENT 'Pharmacist who filled the prescription',
   amount int(10) unsigned NOT NULL default '1' COMMENT 'Total amount in the prescription',
-  dose_size varchar(64) collate utf8_unicode_ci NOT NULL COMMENT 'Size of an individual dose',
+  dose_size varchar(64) collate utf8_unicode_ci default NULL COMMENT 'Size of an individual dose',
   written date NOT NULL,
   filled date NOT NULL,
   instructions varchar(512) collate utf8_unicode_ci NOT NULL COMMENT 'Medication instructions',

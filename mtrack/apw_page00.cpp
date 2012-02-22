@@ -38,22 +38,26 @@ APW_Page00::APW_Page00(QWidget *parent) :
 	header->setToolTip(MedicationRecord::name_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(1);
+	header->setText(ShipmentRecord::lot_Label);
+	header->setToolTip(ShipmentRecord::lot_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(2);
 	header->setText(MedicationRecord::form_Label);
 	header->setToolTip(MedicationRecord::form_Tooltip);
 
-	header = ui->resultTable->horizontalHeaderItem(2);
+	header = ui->resultTable->horizontalHeaderItem(3);
 	header->setText(MedicationRecord::strength_Label);
 	header->setToolTip(MedicationRecord::strength_Tooltip);
 
-	header = ui->resultTable->horizontalHeaderItem(3);
+	header = ui->resultTable->horizontalHeaderItem(4);
 	header->setText(MedicationRecord::unit_size_Label);
 	header->setToolTip(MedicationRecord::unit_size_Tooltip);
 
-	header = ui->resultTable->horizontalHeaderItem(4);
+	header = ui->resultTable->horizontalHeaderItem(5);
 	header->setText(ShipmentRecord::product_left_Label);
 	header->setToolTip(ShipmentRecord::product_left_Tooltip);
 
-	header = ui->resultTable->horizontalHeaderItem(5);
+	header = ui->resultTable->horizontalHeaderItem(6);
 	header->setText(ShipmentRecord::expiration_Label);
 	header->setToolTip(ShipmentRecord::expiration_Tooltip);
 
@@ -83,7 +87,7 @@ void APW_Page00::setPrescription(PrescriptionRecord *new_prescription)
 }
 
 /* SQL without C++:
-SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength,
+SELECT shipments.id, shipments.drug_id, drugs.name, shipments.lot, drugs.form, drugs.strength,
 drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration
 FROM shipments
 JOIN drugs ON drugs.id = shipments.drug_id
@@ -104,7 +108,7 @@ void APW_Page00::initiateSearch()
 	barcode.setBarcode(ui->medicationField->text());
 
 	if (barcode.toID() == SQL::Undefined_ID) {	// Normal search
-		model->prepare("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength, "
+		model->prepare("SELECT shipments.id, shipments.drug_id, drugs.name, shipments.lot, drugs.form, drugs.strength, "
 					   "drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration "
 					   "FROM shipments "
 					   "JOIN drugs ON drugs.id = shipments.drug_id "
@@ -115,7 +119,7 @@ void APW_Page00::initiateSearch()
 					   "AND drugs.name LIKE ?;");
 		model->bindValue(0, SQL::prepWildcards(ui->medicationField->text()));
 	} else {		// Searching by barcode
-		model->prepare("SELECT shipments.id, shipments.drug_id, drugs.name, drugs.form, drugs.strength, "
+		model->prepare("SELECT shipments.id, shipments.drug_id, drugs.name, shipments.lot, drugs.form, drugs.strength, "
 					   "drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration "
 					   "FROM shipments "
 					   "JOIN drugs ON drugs.id = shipments.drug_id "
@@ -144,6 +148,7 @@ void APW_Page00::initiateSearch()
 		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(5).toString()));
 		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(6).toString()));
 		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(7).toString()));
+		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(8).toString()));
 	}
 
 	db_queried = true;
