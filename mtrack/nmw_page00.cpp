@@ -62,15 +62,16 @@ NMW_Page00::NMW_Page00(QWidget *parent) :
 	ui->formField->addItem("Suspension", QVariant(FORM_INT::Suspension));
 	ui->formField->addItem("Syrup", QVariant(FORM_INT::Syrup));
 	ui->formField->addItem("Tablet", QVariant(FORM_INT::Tablet));
+	ui->formField->setCurrentIndex(-1);
 
 	// Register all the fields
-	registerField("medicationField", ui->medicationField);
+	registerField("medicationField*", ui->medicationField);
 	registerField("genericField", ui->genericField);
-	registerField("manufacturerField", ui->manufacturerField);
-	registerField("ndcField", ui->ndcField);
-	registerField("formField", ui->formField);
-	registerField("strengthField", ui->strengthField);
-	registerField("dispenseUnitsField", ui->dispenseUnitsField);
+	registerField("manufacturerField*", ui->manufacturerField);
+	registerField("ndcField*", ui->ndcField);
+	registerField("formField*", ui->formField);
+	registerField("strengthField*", ui->strengthField);
+	registerField("dispenseUnitsField*", ui->dispenseUnitsField);
 	registerField("unitSizeField", ui->unitSizeField);
 }
 
