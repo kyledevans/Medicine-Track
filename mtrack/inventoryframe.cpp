@@ -53,22 +53,26 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 	header->setToolTip(MedicationRecord::strength_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(3);
+	header->setText(MedicationRecord::unit_size_Label);
+	header->setToolTip(MedicationRecord::unit_size_Tooltip);
+
+	header = ui->resultTable->horizontalHeaderItem(4);
 	header->setText(ShipmentRecord::expiration_Label);
 	header->setToolTip(ShipmentRecord::expiration_Tooltip);
 
-	header = ui->resultTable->horizontalHeaderItem(4);
+	header = ui->resultTable->horizontalHeaderItem(5);
 	header->setText(ShipmentRecord::lot_Label);
 	header->setToolTip(ShipmentRecord::lot_Tooltip);
 
-	header = ui->resultTable->horizontalHeaderItem(5);
+	header = ui->resultTable->horizontalHeaderItem(6);
 	header->setText(ShipmentRecord::product_count_Label);
 	header->setToolTip(ShipmentRecord::product_count_Tooltip);
 
-	header = ui->resultTable->horizontalHeaderItem(6);
+	header = ui->resultTable->horizontalHeaderItem(7);
 	header->setText(ShipmentRecord::product_left_Label);
 	header->setToolTip(ShipmentRecord::product_left_Tooltip);
 
-	header = ui->resultTable->horizontalHeaderItem(7);
+	header = ui->resultTable->horizontalHeaderItem(8);
 	header->setText(ShipmentRecord::write_off_Label);
 	header->setToolTip(ShipmentRecord::write_off_Tooltip);
 
@@ -125,7 +129,7 @@ void InventoryFrame::resetPressed()
 }
 
 /*  SQL without C++:
-SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot,
+SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, shipments.expiration, shipments.lot,
 shipments.product_count, shipments.product_left, shipments.write_off
 FROM shipments
 JOIN drugs ON shipments.drug_id = drugs.id
@@ -147,21 +151,21 @@ void InventoryFrame::initiateSearch(int shipID)
 	barcode.setBarcode(ui->nameField->text());
 
 	if (shipID != SQL::Undefined_ID) {
-		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, "
+		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, shipments.expiration, shipments.lot, "
 					   "shipments.product_count, shipments.product_left, shipments.write_off "
 					   "FROM shipments "
 					   "JOIN drugs ON shipments.drug_id = drugs.id "
 					   "WHERE shipments.id = ?;");
 		model->bindValue(0, QVariant(shipID));
 	} else if (barcode.toID() != SQL::Undefined_ID) {	// Doing a barcode search
-		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, "
+		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, shipments.expiration, shipments.lot, "
 					   "shipments.product_count, shipments.product_left, shipments.write_off "
 					   "FROM shipments "
 					   "JOIN drugs ON shipments.drug_id = drugs.id "
 					   "WHERE shipments.id = ?;");
 		model->bindValue(0, QVariant(barcode.toID()));
 	} else {	// Doing a normal search
-		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, "
+		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, shipments.expiration, shipments.lot, "
 					   "shipments.product_count, shipments.product_left, shipments.write_off "
 					   "FROM shipments "
 					   "JOIN drugs ON shipments.drug_id = drugs.id "
@@ -198,6 +202,7 @@ void InventoryFrame::initiateSearch(int shipID)
 		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(6).toString()));
 		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(7).toString()));
 		ui->resultTable->setItem(i, 7, new QTableWidgetItem(model->value(8).toString()));
+		ui->resultTable->setItem(i, 8, new QTableWidgetItem(model->value(9).toString()));
 	}
 
 	db_queried = true;
