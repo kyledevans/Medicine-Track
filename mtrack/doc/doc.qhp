@@ -12,12 +12,13 @@
 		<toc>
 			<section title="Medicine Track Manual" ref="index.html" />
 			<section title="Patients" ref="new_patient.html" />
-			<section title="Formulary" ref="new_medication.html" />
-			<section title="Prescriptions" ref="new_inventory.html" />
+			<section title="New Medications" ref="new_medication.html" />
+			<section title="New Inventory" ref="new_inventory.html" />
 		</toc>
 		<keywords>
 			<keyword name="patient" id="MyApplication::foo" ref="new_patient.html"/>
-			<keyword name="formulary" ref="new_formulary.html"/>
+			<keyword name="formulary" ref="new_medication.html"/>
+			<keyword name="medication" ref="new_medication.html"/>
 		</keywords>
 		<files>
 			<file>*.html</file>
