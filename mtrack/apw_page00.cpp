@@ -148,7 +148,7 @@ void APW_Page00::initiateSearch()
 		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(5).toString()));
 		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(6).toString()));
 		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(7).toString()));
-		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(8).toString()));
+		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(8).toDate().toString(DEFAULTS::DateDisplayFormat)));
 	}
 
 	db_queried = true;

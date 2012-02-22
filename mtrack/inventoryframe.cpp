@@ -198,7 +198,7 @@ void InventoryFrame::initiateSearch(int shipID)
 		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
 		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
 		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toString()));
-		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(5).toString()));
+		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(5).toDate().toString(DEFAULTS::DateDisplayFormat)));
 		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(6).toString()));
 		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(7).toString()));
 		ui->resultTable->setItem(i, 7, new QTableWidgetItem(model->value(8).toString()));
