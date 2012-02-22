@@ -12,4 +12,6 @@ OTHER_FILES += \
 	doc/new_inventory.html \
 	doc/doc.qhp \
 	doc/mtrack-collection.qhcp \
-    doc/new_medication.html
+	doc/new_medication.html \
+	doc/new_prescription.html \
+	doc/printing_labels.html

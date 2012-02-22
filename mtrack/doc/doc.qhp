@@ -14,6 +14,7 @@
 			<section title="Patients" ref="new_patient.html" />
 			<section title="New Medications" ref="new_medication.html" />
 			<section title="New Inventory" ref="new_inventory.html" />
+			<section title="Printing Labels" ref="printing_labels.html" />
 		</toc>
 		<keywords>
 			<keyword name="patient" id="MyApplication::foo" ref="new_patient.html"/>

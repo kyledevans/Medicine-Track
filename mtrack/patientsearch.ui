@@ -317,7 +317,7 @@
   </layout>
   <action name="prescribeAction">
    <property name="text">
-    <string>Prescribe Medication</string>
+    <string>New Prescription</string>
    </property>
    <property name="toolTip">
     <string>Prescribe a medication</string>
