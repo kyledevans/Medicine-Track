@@ -146,8 +146,13 @@ void InventoryFrame::initiateSearch(int shipID)
 	model = new QSqlQuery;
 	barcode.setBarcode(ui->nameField->text());
 
-	if (shipID != SQL::Undefined_ID) {	// TODO: Implement or remove this case
-
+	if (shipID != SQL::Undefined_ID) {
+		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, "
+					   "shipments.product_count, shipments.product_left, shipments.write_off "
+					   "FROM shipments "
+					   "JOIN drugs ON shipments.drug_id = drugs.id "
+					   "WHERE shipments.id = ?;");
+		model->bindValue(0, QVariant(shipID));
 	} else if (barcode.toID() != SQL::Undefined_ID) {	// Doing a barcode search
 		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, shipments.expiration, shipments.lot, "
 					   "shipments.product_count, shipments.product_left, shipments.write_off "
@@ -296,6 +301,7 @@ void InventoryFrame::initiateWriteOff()
 
 	initiateSearch(shipment->id);
 	delete shipment;
+	delete medication;
 }
 
 void InventoryFrame::initiatePrintBarcode()

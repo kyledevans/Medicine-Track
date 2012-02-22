@@ -181,8 +181,8 @@ bool ShipmentRecord::commitRecord()
 
 /* SQL without C++:
 UPDATE shipments
-SET product_left = (shipments.product_left - SOME_VAL), write_off = (shipments.write_off + SOME_VAL)
-WHERE id = 'SOME_VAL';
+SET product_left = (shipments.product_left - ?), write_off = (shipments.write_off + ?)
+WHERE id = ?;
 */
 bool ShipmentRecord::addWriteOff(int wo_amount)
 {
@@ -190,11 +190,9 @@ bool ShipmentRecord::addWriteOff(int wo_amount)
 	AlertInterface alert;
 
 	if (!exists) {
-		write_off += wo_amount;
-		product_left -= wo_amount;
-		return commitRecord();
+		return false;
 	}
-	// TODO: Make this a little better
+
 	model = new QSqlQuery;
 	model->prepare("UPDATE shipments "
 				   "SET product_left = (shipments.product_left - ?), write_off = (shipments.write_off + ?) "
