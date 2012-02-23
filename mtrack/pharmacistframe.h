@@ -33,6 +33,8 @@ public slots:
 	void initiateModify();
 	void toggleActive();
 
+	void resetPressed();
+
 	void selectionChanged();
 
 private:

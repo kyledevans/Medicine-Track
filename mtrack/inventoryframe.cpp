@@ -213,9 +213,11 @@ void InventoryFrame::selectionChanged()
 	if (ui->resultTable->selectionModel()->hasSelection()) {
 		ui->printBarcodeAction->setEnabled(true);
 		ui->writeOffAction->setEnabled(true);
+		ui->toggleAction->setEnabled(true);
 	} else {
 		ui->printBarcodeAction->setEnabled(false);
 		ui->writeOffAction->setEnabled(false);
+		ui->toggleAction->setEnabled(false);
 	}
 }
 

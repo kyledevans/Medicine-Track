@@ -53,6 +53,7 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
+	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
 
 	// Add actions to the resultTable menu
 	ui->resultTable->addAction(ui->modifyAction);
@@ -64,6 +65,13 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
 PrescriberFrame::~PrescriberFrame()
 {
     delete ui;
+}
+
+void PrescriberFrame::resetPressed()
+{
+	ui->activeField->setChecked(true);
+	ui->resultTable->clearContents();
+	ui->resultTable->setRowCount(0);
 }
 
 void PrescriberFrame::toggleActive()
@@ -141,9 +149,11 @@ void PrescriberFrame::selectionChanged()
 	if (ui->resultTable->selectionModel()->hasSelection()) {
 		ui->modifyButton->setEnabled(true);
 		ui->modifyAction->setEnabled(true);
+		ui->toggleAction->setEnabled(true);
 	} else {
 		ui->modifyButton->setEnabled(false);
 		ui->modifyAction->setEnabled(false);
+		ui->toggleAction->setEnabled(false);
 	}
 }
 

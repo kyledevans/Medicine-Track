@@ -54,6 +54,7 @@ PharmacistFrame::PharmacistFrame(QWidget *parent) :
 	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
+	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
 
 	// Add items to the resultTable right-click menu
 	ui->resultTable->addAction(ui->modifyAction);
@@ -65,6 +66,13 @@ PharmacistFrame::PharmacistFrame(QWidget *parent) :
 PharmacistFrame::~PharmacistFrame()
 {
     delete ui;
+}
+
+void PharmacistFrame::resetPressed()
+{
+	ui->activeField->setChecked(true);
+	ui->resultTable->clearContents();
+	ui->resultTable->setRowCount(0);
 }
 
 void PharmacistFrame::toggleActive()
@@ -142,9 +150,11 @@ void PharmacistFrame::selectionChanged()
 	if (ui->resultTable->selectionModel()->hasSelection()) {
 		ui->modifyButton->setEnabled(true);
 		ui->modifyAction->setEnabled(true);
+		ui->toggleAction->setEnabled(true);
 	} else {
 		ui->modifyButton->setEnabled(false);
 		ui->modifyAction->setEnabled(false);
+		ui->toggleAction->setEnabled(false);
 	}
 }
 

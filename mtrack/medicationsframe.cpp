@@ -70,6 +70,7 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
 	connect(ui->newStockAction, SIGNAL(triggered()), this, SLOT(initiateNewShipment()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
+	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
 
 	// Add items to resultTable right-click menu
 	ui->resultTable->addAction(ui->newStockAction);
@@ -82,6 +83,13 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
 MedicationsFrame::~MedicationsFrame()
 {
     delete ui;
+}
+
+void MedicationsFrame::resetPressed()
+{
+	ui->activeCheckbox->setChecked(true);
+	ui->resultTable->clearContents();
+	ui->resultTable->setRowCount(0);
 }
 
 void MedicationsFrame::toggleActive()
@@ -213,11 +221,13 @@ void MedicationsFrame::selectionChanged()
 		ui->newStockAction->setEnabled(true);
 		ui->modifyButton->setEnabled(true);
 		ui->modifyAction->setEnabled(true);
+		ui->toggleAction->setEnabled(true);
 	} else {
 		ui->newStockButton->setEnabled(false);
 		ui->newStockAction->setEnabled(false);
 		ui->modifyButton->setEnabled(false);
 		ui->modifyAction->setEnabled(false);
+		ui->toggleAction->setEnabled(false);
 	}
 }
 
