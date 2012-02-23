@@ -136,7 +136,7 @@ JOIN drugs ON shipments.drug_id = drugs.id
 WHERE drugs.name LIKE ?
 AND drugs.active = 1
 AND shipments.lot LIKE ?
-AND (<true if NOT searching by active> OR (shipments.active = ?))
+AND shipments.active = ?
 AND (<true if NOT searching by expired> OR (shipments.expiration > CURDATE()))
 AND (<true if NOT searching by 'in stock'> OR (shipments.product_left > 0));
 */

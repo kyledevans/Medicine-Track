@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Making Things Active or Inactive</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<h1>Making things active or inactive</h1>
+<hr />
+<p>You can make patients, pharmacists, prescribers, medication, or specific inventory active or inactive.  For each the results are:</p>
+<ul>
+<li><b>Inactivating Patients</b> - Filters patients from appearing in patient searches.</li>
+<li><b>Inactivating Medications</b> - Prevents new inventory from being created as well as new prescriptions from using the medication.</li>
+<li><b>Inactivating Pharmacists</b> - Prevents new prescriptions from being filled by the pharmacist.</li>
+<li><b>Inactivating Prescribers</b> - Prevent new prescriptions from being written by the prescriber.</li>
+<li><b>Inactivating Inventory</b> - Prevents new prescriptions from using the medicine.  Also no longer includes any remaining inventory in the Formulary.</li>
+<p>Note that the active / inactive state of any of these should never effect the Prescription log.  If you find a case where it does.  Make note of it so that it can be fixed.</p>
+<p>For all cases in order to mark an item as invalid first search for it in the relevant tab.  Right click the entry and select <b>Toggle active</b>.  If you need to re-activate an item then you will need to uncheck <b>Active</b> when searching in order to have inactive items displayed.
+<p style="display: block; margin-left: auto; margin-right: auto;"><img src="images/scr_20.png" alt="Searching for inventory" /></p>
+<h2>Marking prescriptions as invalid</h2>
+<p>Only mark a prescription as invalid when the prescription entry has an error or the patient never received the medication.  If a prescription entry needs to be invalidated because of an error, then a new prescription entry needs to be created with the correct information.</p>
+<p>To invalidate a prescription, search for it in the <b>Prescription log</b> tab.  Right-click the entry and select <b>Invalidate</b>.  Note that you cannot re-validate a prescription once it has become invalid.</p>
+<hr />
+<h2>See also</h2>
+<p><a href="TODO">Adding new inventory</a></p>
+<p><a href="TODO">Writing off inventory</a></p>
+<p><a href="TODO">Make inventory active or inactive</a></p>
+</body>
+</html>

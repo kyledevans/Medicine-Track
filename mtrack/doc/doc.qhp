@@ -11,10 +11,20 @@
 		<filterAttribute>1.0</filterAttribute>
 		<toc>
 			<section title="Medicine Track Manual" ref="index.html" />
-			<section title="Patients" ref="new_patient.html" />
-			<section title="New Medications" ref="new_medication.html" />
+			<section title="New Patient" ref="new_patient.html" />
+			<section title="New Prescription" ref="new_prescription.html" />
+			<section title="New Medication" ref="new_medication.html" />
+			<section title="New Prescriber" ref="new_prescriber.html" />
+			<section title="New Pharmacist" ref="new_pharmacist.html" />
 			<section title="New Inventory" ref="new_inventory.html" />
 			<section title="Printing Labels" ref="printing_labels.html" />
+			<section title="Search Patients" ref="search_patients.html" />
+			<section title="Search Prescriptions" ref="search_prescriptions.html" />
+			<section title="Search Formulary" ref="search_formulary.html" />
+			<section title="Search Prescribers" ref="search_prescribers.html" />
+			<section title="Search Pharmacists" ref="search_pharmacists.html" />
+			<section title="Search Inventory" ref="search_inventory.html" />
+			<section title="Active / Inactive" ref="toggle_active.html" />
 		</toc>
 		<keywords>
 			<keyword name="patient" id="MyApplication::foo" ref="new_patient.html"/>
