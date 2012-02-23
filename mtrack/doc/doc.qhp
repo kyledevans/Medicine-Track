@@ -17,6 +17,7 @@
 			<section title="New Prescriber" ref="new_prescriber.html" />
 			<section title="New Pharmacist" ref="new_pharmacist.html" />
 			<section title="New Inventory" ref="new_inventory.html" />
+			<section title="Write-off Inventory" ref="write_off_inventory.html" />
 			<section title="Printing Labels" ref="printing_labels.html" />
 			<section title="Search Patients" ref="search_patients.html" />
 			<section title="Search Prescriptions" ref="search_prescriptions.html" />
