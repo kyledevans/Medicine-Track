@@ -31,6 +31,8 @@ Released under the GPL version 2 only.
 
 16.  Every time a search is done, make sure the resultTable is reset even when there are zero hits.
 
+17.  When new stock is received and it has the same exact lot # and expiration date, allow the user to increase the stock.  It will increase both product_count and product_left by the same amount.
+
 -----
 1.1 TODO List (and wishlist)
 
