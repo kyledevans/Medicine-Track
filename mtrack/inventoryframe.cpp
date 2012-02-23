@@ -85,11 +85,13 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
 	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
+	connect(ui->increaseAction, SIGNAL(triggered()), this, SLOT(initiateIncrease()));
 
 	// Add items to the resultTable right-click menu
 	ui->resultTable->addAction(ui->writeOffAction);
 	ui->resultTable->addAction(ui->printBarcodeAction);
 	ui->resultTable->addAction(ui->toggleAction);
+	ui->resultTable->addAction(ui->increaseAction);
 
 	// Disable actions that require a selection in the resultTable
 	selectionChanged();
@@ -214,10 +216,12 @@ void InventoryFrame::selectionChanged()
 		ui->printBarcodeAction->setEnabled(true);
 		ui->writeOffAction->setEnabled(true);
 		ui->toggleAction->setEnabled(true);
+		ui->increaseAction->setEnabled(true);
 	} else {
 		ui->printBarcodeAction->setEnabled(false);
 		ui->writeOffAction->setEnabled(false);
 		ui->toggleAction->setEnabled(false);
+		ui->increaseAction->setEnabled(false);
 	}
 }
 
@@ -304,6 +308,54 @@ void InventoryFrame::initiateWriteOff()
 									 &ok);
 	if (ok && wo_amount > 0) {
 		shipment->addWriteOff(wo_amount);
+	}
+
+	initiateSearch(shipment->id);
+	delete shipment;
+	delete medication;
+}
+
+void InventoryFrame::initiateIncrease()
+{
+	unsigned int row, delta;
+	ShipmentRecord *shipment;
+	MedicationRecord *medication;
+	bool ok;
+
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return;
+	}
+
+	shipment = new ShipmentRecord;
+	medication = new MedicationRecord;
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+	if (!shipment->retrieve(ids[row])) {
+		delete shipment;
+		delete medication;
+		return;
+	}
+	if (!medication->retrieve(shipment->drug_id)) {
+		delete shipment;
+		delete medication;
+		return;
+	}
+
+	// Get from the user how many to write off
+	delta = QInputDialog::getInt(this,
+									 "Increase Inventory",
+									 "How many units do you want to add to the inventory?",
+									 0,
+									 0,
+									 9999999999,
+									 1,
+									 &ok);
+	if (ok && delta > 0) {
+		shipment->addInventory(delta);
 	}
 
 	initiateSearch(shipment->id);

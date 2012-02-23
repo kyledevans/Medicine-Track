@@ -32,6 +32,7 @@ public slots:
 	void shipmentCleanup(ShipmentRecord *);
 	void initiateWriteOff();
 	void initiatePrintBarcode();
+	void initiateIncrease();
 
 	void toggleActive();
 

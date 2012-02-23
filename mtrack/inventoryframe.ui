@@ -329,6 +329,14 @@
     <string>Toggle active/inactive</string>
    </property>
   </action>
+  <action name="increaseAction">
+   <property name="text">
+    <string>Increase Inventory</string>
+   </property>
+   <property name="toolTip">
+    <string>Increase the inventory received and remaining</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>nameField</tabstop>

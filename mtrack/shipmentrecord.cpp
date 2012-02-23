@@ -54,6 +54,41 @@ ShipmentRecord::ShipmentRecord(QObject *parent):
 
 /* SQL without C++:
 UPDATE shipments
+SET product_count = (product_count + ?), product_left = (product_left + ?)
+WHERE id = ?;
+*/
+bool ShipmentRecord::addInventory(int delta)
+{
+	QSqlQuery *model;
+	AlertInterface alert;
+
+	if (!exists) {
+		return false;
+	}
+
+	model = new QSqlQuery;
+
+	model->prepare("UPDATE shipments "
+				   "SET product_count = (product_count + ?), product_left = (product_left + ?) "
+				   "WHERE id = ?;");
+	model->bindValue(0, QVariant(delta));
+	model->bindValue(1, QVariant(delta));
+	model->bindValue(2, QVariant(id));
+
+	if (!alert.attemptQuery(model)) {
+		delete model;
+		return false;
+	}
+
+	product_count += delta;
+	product_left += delta;
+
+	delete model;
+	return true;
+}
+
+/* SQL without C++:
+UPDATE shipments
 SET active = ?
 WHERE id = ?;
 */
