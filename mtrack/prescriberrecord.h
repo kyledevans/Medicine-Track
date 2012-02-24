@@ -5,16 +5,14 @@ Released under the GPL version 2 only.
 */
 
 #include <QString>
-#include <QObject>
 
 #ifndef PRESCRIBERRECORD_H
 #define PRESCRIBERRECORD_H
 
-class PrescriberRecord : public QObject
+class PrescriberRecord
 {
-	Q_OBJECT
 public:
-	explicit PrescriberRecord(QObject *parent = 0);
+	explicit PrescriberRecord();
 
 	int id;					// prescribers.id
 	QString last;			// prescribers.last

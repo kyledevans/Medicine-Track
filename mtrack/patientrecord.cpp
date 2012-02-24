@@ -26,8 +26,7 @@ const QString PatientRecord::first_Tooltip("First name");
 const QString PatientRecord::dob_Label("D.O.B.");
 const QString PatientRecord::dob_Tooltip("Date of birth");
 
-PatientRecord::PatientRecord(QObject *parent):
-	QObject(parent),
+PatientRecord::PatientRecord():
 	id(SQL::Undefined_ID),
 	allscripts_id(SQL::Undefined_ID),
 	active(true),

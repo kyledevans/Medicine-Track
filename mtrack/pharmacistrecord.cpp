@@ -28,8 +28,7 @@ const QString PharmacistRecord::initials_Tooltip("Initials as they appear on a p
 const QString PharmacistRecord::initials_Label_secondary("Filled by");
 const QString PharmacistRecord::initials_Tooltip_secondary("Who filled the prescription");
 
-PharmacistRecord::PharmacistRecord(QObject *parent):
-	QObject(parent),
+PharmacistRecord::PharmacistRecord():
 	id(SQL::Undefined_ID),
 	active(true),
 	exists(false)

@@ -29,11 +29,11 @@ PrescriptionLabel::PrescriptionLabel(PrescriptionRecord *new_prescription, QWidg
 {
 	ui->setupUi(this);
 
-	prescriber = new PrescriberRecord(this);
-	pharmacist = new PharmacistRecord(this);
-	patient = new PatientRecord(this);
-	medication = new MedicationRecord(this);
-	shipment = new ShipmentRecord(this);
+	prescriber = new PrescriberRecord;
+	pharmacist = new PharmacistRecord;
+	patient = new PatientRecord;
+	medication = new MedicationRecord;
+	shipment = new ShipmentRecord;
 
 	prescription = new_prescription;
 	prescriber->retrieve(prescription->prescriber_id);
@@ -48,6 +48,12 @@ PrescriptionLabel::PrescriptionLabel(PrescriptionRecord *new_prescription, QWidg
 PrescriptionLabel::~PrescriptionLabel()
 {
 	delete ui;
+
+	delete prescriber;
+	delete pharmacist;
+	delete patient;
+	delete medication;
+	delete shipment;
 }
 
 void PrescriptionLabel::printLabel()

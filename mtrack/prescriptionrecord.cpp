@@ -32,8 +32,7 @@ const QString PrescriptionRecord::filled_Tooltip("Date the prescription was fill
 const QString PrescriptionRecord::instructions_Label("Instructions");
 const QString PrescriptionRecord::instructions_Tooltip("Medication instructions for the patient");
 
-PrescriptionRecord::PrescriptionRecord(QObject *parent):
-	QObject(parent),
+PrescriptionRecord::PrescriptionRecord():
 	id(SQL::Undefined_ID),
 	patient_id(SQL::Undefined_ID),
 	drug_id(SQL::Undefined_ID),

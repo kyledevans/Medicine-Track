@@ -44,8 +44,7 @@ const QString MedicationRecord::unit_size_Tooltip("Size of a single unit. IE: A 
 const QString MedicationRecord::instructions_Label("Instructions");
 const QString MedicationRecord::instructions_Tooltip("Default instructions for the patient");
 
-MedicationRecord::MedicationRecord(QObject *parent):
-	QObject(parent),
+MedicationRecord::MedicationRecord():
 	id(SQL::Undefined_ID),
 	form(FORM_INT::Undefined),
 	active(true),

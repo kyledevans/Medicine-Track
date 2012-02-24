@@ -6,17 +6,13 @@ Released under the GPL version 2 only.
 
 #include <QString>
 
-#include <QObject>
-
 #ifndef PHARMACISTRECORD_H
 #define PHARMACISTRECORD_H
 
-class PharmacistRecord : public QObject
+class PharmacistRecord
 {
-	Q_OBJECT
-
 public:
-	explicit PharmacistRecord(QObject *parent = 0);
+	explicit PharmacistRecord();
 
 	int id;					// pharmacists.id
 	QString last;			// pharmacists.last

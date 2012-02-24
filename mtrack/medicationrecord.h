@@ -6,16 +6,13 @@ Released under the GPL version 2 only.
 
 #include <QString>
 
-#include <QObject>
-
 #ifndef MEDICATIONRECORD_H
 #define MEDICATIONRECORD_H
 
-class MedicationRecord : public QObject
+class MedicationRecord
 {
-	Q_OBJECT
 public:
-	explicit MedicationRecord(QObject *parent = 0);
+	explicit MedicationRecord();
 
 	// Table 'drugs' columns
 	int id;					// drugs.id
