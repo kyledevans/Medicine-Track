@@ -16,8 +16,8 @@ Released under the GPL version 2 only.
 
 #include "prescriptionlabel.h"
 #include "globals.h"
-#include "alertinterface.h"
-#include "prescriptionrecord.h"
+#include "db/alertinterface.h"
+#include "db/prescriptionrecord.h"
 #include "shipmentrecord.h"
 
 PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :

@@ -12,7 +12,7 @@ Released under the GPL version 2 only.
 #include "patientrecord.h"
 
 #include "alertinterface.h"
-#include "globals.h"
+#include "../globals.h"
 
 const QString PatientRecord::allscripts_id_Label("M.R. Number");
 const QString PatientRecord::allscripts_id_Tooltip("Allscripts medical record number");

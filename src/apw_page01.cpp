@@ -12,7 +12,7 @@ Released under the GPL version 2 only.
 #include "apw_page01.h"
 #include "ui_apw_page01.h"
 
-#include "alertinterface.h"
+#include "db/alertinterface.h"
 #include "prescriberrecord.h"
 #include "globals.h"
 

@@ -6,7 +6,7 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-#include "patientrecord.h"
+#include "db/patientrecord.h"
 #include "newpatientwizard.h"
 #include "ui_newpatientwizard.h"
 

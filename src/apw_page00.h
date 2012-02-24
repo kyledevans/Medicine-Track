@@ -11,9 +11,9 @@ Released under the GPL version 2 only.
 
 #include <QList>
 
-#include "patientrecord.h"
+#include "db/patientrecord.h"
 #include "medicationrecord.h"
-#include "prescriptionrecord.h"
+#include "db/prescriptionrecord.h"
 #include "shipmentrecord.h"
 
 namespace Ui {

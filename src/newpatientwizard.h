@@ -9,7 +9,7 @@ Released under the GPL version 2 only.
 
 #include <QWizard>
 
-#include "patientrecord.h"
+#include "db/patientrecord.h"
 
 namespace Ui {
     class NewPatientWizard;

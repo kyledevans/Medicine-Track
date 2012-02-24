@@ -8,7 +8,7 @@ Released under the GPL version 2 only.
 #define NPW_PAGE00_H
 
 #include <QWizardPage>
-#include "patientrecord.h"
+#include "db/patientrecord.h"
 
 namespace Ui {
     class NPW_Page00;

@@ -9,7 +9,7 @@ Released under the GPL version 2 only.
 
 #include <QWizardPage>
 
-#include "prescriptionrecord.h"
+#include "db/prescriptionrecord.h"
 #include "medicationrecord.h"
 
 namespace Ui {

@@ -17,7 +17,7 @@ Released under the GPL version 2 only.
 #include "medicationsframe.h"
 #include "inventoryframe.h"
 #include "globals.h"
-#include "alertinterface.h"
+#include "db/alertinterface.h"
 #include "prescriberframe.h"
 #include "pharmacistframe.h"
 #include "mtconfig.h"

@@ -13,7 +13,7 @@ Released under the GPL version 2 only.
 #include "prescriptionrecord.h"
 
 #include "globals.h"
-#include "alertinterface.h"
+#include "db/alertinterface.h"
 
 #include <QDebug>
 

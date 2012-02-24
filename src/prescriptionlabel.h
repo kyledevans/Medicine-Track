@@ -10,10 +10,10 @@ Released under the GPL version 2 only.
 #include <QFrame>
 #include <QPrinter>
 
-#include "prescriptionrecord.h"
+#include "db/prescriptionrecord.h"
 #include "prescriberrecord.h"
 #include "pharmacistrecord.h"
-#include "patientrecord.h"
+#include "db/patientrecord.h"
 #include "medicationrecord.h"
 #include "shipmentrecord.h"
 

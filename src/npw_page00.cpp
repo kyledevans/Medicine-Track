@@ -7,7 +7,7 @@ Released under the GPL version 2 only.
 #include "npw_page00.h"
 #include "ui_npw_page00.h"
 
-#include "patientrecord.h"
+#include "db/patientrecord.h"
 #include "globals.h"
 
 NPW_Page00::NPW_Page00(QWidget *parent) :

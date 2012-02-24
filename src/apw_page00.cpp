@@ -11,7 +11,7 @@ Released under the GPL version 2 only.
 #include "apw_page00.h"
 #include "ui_apw_page00.h"
 
-#include "alertinterface.h"
+#include "db/alertinterface.h"
 #include "globals.h"
 #include "barcodelabel.h"
 

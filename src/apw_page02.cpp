@@ -7,7 +7,7 @@ Released under the GPL version 2 only.
 #include "apw_page02.h"
 #include "ui_apw_page02.h"
 
-#include "prescriptionrecord.h"
+#include "db/prescriptionrecord.h"
 
 APW_Page02::APW_Page02(QWidget *parent) :
     QWizardPage(parent),

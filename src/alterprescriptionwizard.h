@@ -9,8 +9,8 @@ Released under the GPL version 2 only.
 
 #include <QWizard>
 
-#include "prescriptionrecord.h"
-#include "patientrecord.h"
+#include "db/prescriptionrecord.h"
+#include "db/patientrecord.h"
 #include "medicationrecord.h"
 #include "shipmentrecord.h"
 

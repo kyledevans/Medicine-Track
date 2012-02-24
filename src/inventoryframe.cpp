@@ -17,7 +17,7 @@ Released under the GPL version 2 only.
 #include "ui_inventoryframe.h"
 
 #include "altershipmentwizard.h"
-#include "alertinterface.h"
+#include "db/alertinterface.h"
 #include "barcodelabel.h"
 #include "shipmentrecord.h"
 #include "medicationrecord.h"

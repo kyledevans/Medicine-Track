@@ -18,7 +18,7 @@ Released under the GPL version 2 only.
 #include "altermedicationwizard.h"
 #include "altershipmentwizard.h"
 #include "globals.h"
-#include "alertinterface.h"
+#include "db/alertinterface.h"
 #include "shipmentrecord.h"
 #include "barcodelabel.h"
 #include "medicationrecord.h"
