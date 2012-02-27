@@ -1,4 +1,4 @@
-Note that the only version of the GPL that Medicine Track will use is version 2.
+﻿Note that the only version of the GPL that Medicine Track will use is version 2.
 
 	- Kyle Evans
 

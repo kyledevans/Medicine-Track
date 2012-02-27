@@ -1,4 +1,4 @@
-QTHELP_FILES = doc/mtrack-collection.qhcp
+﻿QTHELP_FILES = doc/mtrack-collection.qhcp
 
 qthelp_gen.input = QTHELP_FILES
 qthelp_gen.output = $(QMAKE_FILE_BASE).qhc

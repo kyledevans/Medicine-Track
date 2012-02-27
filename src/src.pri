@@ -1,4 +1,4 @@
-QT += core gui sql
+﻿QT += core gui sql
 
 SOURCES += src/main.cpp\
 	src/mainwindow.cpp \

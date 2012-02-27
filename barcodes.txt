@@ -1,4 +1,4 @@
-Using the Code 39 standard for barcodes.  A TTF has been included with this application.
+﻿Using the Code 39 standard for barcodes.  A TTF has been included with this application.
 I recommend using Code-39-Logitogo.ttf.
 
 Encodings:
