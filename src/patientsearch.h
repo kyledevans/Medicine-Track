@@ -15,16 +15,16 @@ Released under the GPL version 2 only.
 #include "globals.h"
 
 namespace Ui {
-    class PatientSearch;
+	class PatientSearch;
 }
 
 class PatientSearch : public QFrame
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit PatientSearch(QWidget *parent = 0);
-    ~PatientSearch();
+	explicit PatientSearch(QWidget *parent = 0);
+	~PatientSearch();
 
 public slots:
 	void initiateSearch(int patientID = SQL::Undefined_ID);
@@ -46,7 +46,7 @@ public slots:
 private:
 	void initiatePrint(PrescriptionRecord *);
 
-    Ui::PatientSearch *ui;
+	Ui::PatientSearch *ui;
 
 	QList<int> ids;		// Contains the patient id's of the current query
 	bool db_queried;	// Indicates if the result table has a model

@@ -13,16 +13,16 @@ Released under the GPL version 2 only.
 #include "globals.h"
 
 namespace Ui {
-    class PrescriberFrame;
+	class PrescriberFrame;
 }
 
 class PrescriberFrame : public QFrame
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit PrescriberFrame(QWidget *parent = 0);
-    ~PrescriberFrame();
+	explicit PrescriberFrame(QWidget *parent = 0);
+	~PrescriberFrame();
 
 public slots:
 	void initiateSearch(int presID = SQL::Undefined_ID);
@@ -38,7 +38,7 @@ public slots:
 	void toggleActive();
 
 private:
-    Ui::PrescriberFrame *ui;
+	Ui::PrescriberFrame *ui;
 
 	QList<int> ids;		// Contains the prescriber id's of the current query
 	bool db_queried;	// True if there is data in the resultTable

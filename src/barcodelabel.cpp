@@ -17,16 +17,16 @@ Released under the GPL version 2 only.
 #include "globals.h"
 
 BarcodeLabel::BarcodeLabel(QWidget *parent) :
-    QFrame(parent),
+	QFrame(parent),
 	ui(new Ui::BarcodeLabel),
 	has_barcode(false)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 BarcodeLabel::~BarcodeLabel()
 {
-    delete ui;
+	delete ui;
 }
 
 void BarcodeLabel::setBarcode(QString new_barcode)

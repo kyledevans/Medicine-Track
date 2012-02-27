@@ -15,16 +15,16 @@ Released under the GPL version 2 only.
 #include "globals.h"
 
 namespace Ui {
-    class MedicationsFrame;
+	class MedicationsFrame;
 }
 
 class MedicationsFrame : public QFrame
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit MedicationsFrame(QWidget *parent = 0);
-    ~MedicationsFrame();
+	explicit MedicationsFrame(QWidget *parent = 0);
+	~MedicationsFrame();
 
 public slots:
 	void initiateSearch(int medID = SQL::Undefined_ID);
@@ -47,7 +47,7 @@ public slots:
 	void selectionChanged();
 
 private:
-    Ui::MedicationsFrame *ui;
+	Ui::MedicationsFrame *ui;
 	QList<int> ids;					// Contains the drug id's of the current query
 	bool db_queried;				// Indicates if the result table has a model
 };

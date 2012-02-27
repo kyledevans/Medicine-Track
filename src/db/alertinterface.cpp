@@ -12,7 +12,7 @@ Released under the GPL version 2 only.
 #include <QDebug>
 
 AlertInterface::AlertInterface(QWidget *parent) :
-    QWidget(parent)
+	QWidget(parent)
 {
 }
 

@@ -15,8 +15,8 @@ Released under the GPL version 2 only.
 #include "medicationsframe.h"
 #include "ui_medicationsframe.h"
 
-#include "altermedicationwizard.h"
-#include "altershipmentwizard.h"
+#include "medicationwizard.h"
+#include "shipmentwizard.h"
 #include "globals.h"
 #include "db/alertinterface.h"
 #include "shipmentrecord.h"
@@ -24,12 +24,12 @@ Released under the GPL version 2 only.
 #include "medicationrecord.h"
 
 MedicationsFrame::MedicationsFrame(QWidget *parent) :
-    QFrame(parent),
+	QFrame(parent),
 	ui(new Ui::MedicationsFrame),
 	db_queried(false)
 {
 	QTableWidgetItem *header;
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	// Set the search UI strings and tooltips
 	ui->nameLabel->setText(ShipmentRecord::name_barcode_Label);
@@ -82,7 +82,7 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
 
 MedicationsFrame::~MedicationsFrame()
 {
-    delete ui;
+	delete ui;
 }
 
 void MedicationsFrame::resetPressed()
@@ -140,10 +140,10 @@ GROUP BY drugs.id;
 */
 void MedicationsFrame::initiateSearch(int medID)
 {
-    QSqlQuery *model;
+	QSqlQuery *model;
 	AlertInterface alert;
 	BarcodeLabel barcode;
-    int i;      // Increment var
+	int i;      // Increment var
 
 	barcode.setBarcode(ui->nameField->text());
 	model = new QSqlQuery;
@@ -196,22 +196,22 @@ void MedicationsFrame::initiateSearch(int medID)
 		return;
 	}
 
-    ids.clear();
-    ui->resultTable->clearContents();
-    ui->resultTable->setRowCount(model->size());
-    for (i = 0; i < model->size(); i++) {
-        model->next();
+	ids.clear();
+	ui->resultTable->clearContents();
+	ui->resultTable->setRowCount(model->size());
+	for (i = 0; i < model->size(); i++) {
+		model->next();
 		ids.append(model->value(0).toInt());	// Retrieve the ID's before they get deleted
-        ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
-        ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
-        ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
-        ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toString()));
-        ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(5).toString()));
-        ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(6).toString()));
-    }
+		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
+		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
+		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
+		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toString()));
+		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(5).toString()));
+		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(6).toString()));
+	}
 
 	db_queried = true;
-    delete model;
+	delete model;
 }
 
 void MedicationsFrame::selectionChanged()
@@ -233,12 +233,12 @@ void MedicationsFrame::selectionChanged()
 
 void MedicationsFrame::initiateNewMed()
 {
-	AlterMedicationWizard *wiz;
+	MedicationWizard *wiz;
 	MedicationRecord *med;
 
 	med = new MedicationRecord();
 
-	wiz = new AlterMedicationWizard(med);
+	wiz = new MedicationWizard(med);
 	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitNewMed(MedicationRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(MedicationRecord*)), this, SLOT(medCleanup(MedicationRecord*)));
 	wiz->exec();
@@ -249,7 +249,7 @@ void MedicationsFrame::initiateNewMed()
 void MedicationsFrame::initiateModify()
 {
 	unsigned int row;
-	AlterMedicationWizard *wiz;
+	MedicationWizard *wiz;
 	MedicationRecord *med;
 
 	if (db_queried) {
@@ -269,7 +269,7 @@ void MedicationsFrame::initiateModify()
 		return;
 	}
 
-	wiz = new AlterMedicationWizard(med);
+	wiz = new MedicationWizard(med);
 	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitModify(MedicationRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(MedicationRecord*)), this, SLOT(medCleanup(MedicationRecord*)));
 	wiz->exec();
@@ -300,7 +300,7 @@ void MedicationsFrame::initiateNewShipment()
 {
 	unsigned int row;
 	ShipmentRecord *ship;
-	AlterShipmentWizard *wiz;
+	ShipmentWizard *wiz;
 
 	if (!db_queried) {
 		return;
@@ -315,7 +315,7 @@ void MedicationsFrame::initiateNewShipment()
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 	ship->drug_id = ids[row];
 
-	wiz = new AlterShipmentWizard(ship);
+	wiz = new ShipmentWizard(ship);
 
 	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitNewShipment(ShipmentRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(ShipmentRecord*)), this, SLOT(shipmentCleanup(ShipmentRecord*)));

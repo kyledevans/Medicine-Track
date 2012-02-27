@@ -15,4 +15,3 @@ HEADERS += src/db/alertinterface.h \
 	src/db/prescriberrecord.h \
 	src/db/pharmacistrecord.h \
 	src/db/shipmentrecord.h
-

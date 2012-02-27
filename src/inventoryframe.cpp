@@ -16,19 +16,19 @@ Released under the GPL version 2 only.
 #include "inventoryframe.h"
 #include "ui_inventoryframe.h"
 
-#include "altershipmentwizard.h"
+#include "shipmentwizard.h"
 #include "db/alertinterface.h"
 #include "barcodelabel.h"
 #include "shipmentrecord.h"
 #include "medicationrecord.h"
 
 InventoryFrame::InventoryFrame(QWidget *parent) :
-    QFrame(parent),
+	QFrame(parent),
 	ui(new Ui::InventoryFrame),
 	db_queried(false)
 {
 	QTableWidgetItem *header;
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	// Set the various strings and tooltips for the search interface
 	ui->nameLabel->setText(ShipmentRecord::name_barcode_Label);
@@ -99,7 +99,7 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 
 InventoryFrame::~InventoryFrame()
 {
-    delete ui;
+	delete ui;
 }
 
 void InventoryFrame::toggleActive()
@@ -184,7 +184,6 @@ void InventoryFrame::initiateSearch(int shipID)
 		model->bindValue(4, QVariant(!ui->stockCheckbox->isChecked()));
 	}
 
-
 	if (!alert.attemptQuery(model)) {
 		delete model;
 		return;
@@ -228,7 +227,7 @@ void InventoryFrame::selectionChanged()
 void InventoryFrame::initiateModify()
 {
 	unsigned int row;
-	AlterShipmentWizard *wiz;
+	ShipmentWizard *wiz;
 	ShipmentRecord *shipment;
 
 	shipment = new ShipmentRecord();
@@ -247,7 +246,7 @@ void InventoryFrame::initiateModify()
 		return;
 	}
 
-	wiz = new AlterShipmentWizard(shipment);
+	wiz = new ShipmentWizard(shipment);
 	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitModify(ShipmentRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(ShipmentRecord*)), this, SLOT(shipmentCleanup(ShipmentRecord*)));
 	wiz->exec();
@@ -351,7 +350,7 @@ void InventoryFrame::initiateIncrease()
 									 "How many units do you want to add to the inventory?",
 									 0,
 									 0,
-									 9999999999,
+                                     99999999,
 									 1,
 									 &ok);
 	if (ok && delta > 0) {

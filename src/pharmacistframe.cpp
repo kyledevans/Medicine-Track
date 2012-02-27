@@ -12,19 +12,19 @@ Released under the GPL version 2 only.
 #include "pharmacistframe.h"
 #include "ui_pharmacistframe.h"
 
-#include "alterpharmacistwizard.h"
+#include "pharmacistwizard.h"
 #include "pharmacistrecord.h"
 #include "db/alertinterface.h"
 
 #include <QDebug>
 
 PharmacistFrame::PharmacistFrame(QWidget *parent) :
-    QFrame(parent),
+	QFrame(parent),
 	ui(new Ui::PharmacistFrame),
 	db_queried(false)
 {
 	QTableWidgetItem *header;
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	// Setup the search UI strings and tooltips
 	ui->lastLabel->setText(PharmacistRecord::last_Label);
@@ -65,7 +65,7 @@ PharmacistFrame::PharmacistFrame(QWidget *parent) :
 
 PharmacistFrame::~PharmacistFrame()
 {
-    delete ui;
+	delete ui;
 }
 
 void PharmacistFrame::resetPressed()
@@ -160,10 +160,10 @@ void PharmacistFrame::selectionChanged()
 
 void PharmacistFrame::initiateNew()
 {
-	AlterPharmacistWizard *wiz;
+	PharmacistWizard *wiz;
 	PharmacistRecord *pharm = new PharmacistRecord();
 
-	wiz = new AlterPharmacistWizard(pharm);
+	wiz = new PharmacistWizard(pharm);
 	connect(wiz, SIGNAL(wizardComplete(PharmacistRecord*)), this, SLOT(submitNew(PharmacistRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(PharmacistRecord*)), this, SLOT(newCleanup(PharmacistRecord*)));
 	wiz->exec();
@@ -174,7 +174,7 @@ void PharmacistFrame::initiateNew()
 void PharmacistFrame::initiateModify()
 {
 	unsigned int row;
-	AlterPharmacistWizard *wiz;
+	PharmacistWizard *wiz;
 	PharmacistRecord *pharm;
 
 	if (db_queried) {
@@ -194,7 +194,7 @@ void PharmacistFrame::initiateModify()
 		return;
 	}
 
-	wiz = new AlterPharmacistWizard(pharm);
+	wiz = new PharmacistWizard(pharm);
 	connect(wiz, SIGNAL(wizardComplete(PharmacistRecord*)), this, SLOT(submitNew(PharmacistRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(PharmacistRecord*)), this, SLOT(newCleanup(PharmacistRecord*)));
 	wiz->exec();

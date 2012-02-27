@@ -11,16 +11,16 @@ Released under the GPL version 2 only.
 #include <QList>
 
 namespace Ui {
-    class PrescriptionsFrame;
+	class PrescriptionsFrame;
 }
 
 class PrescriptionsFrame : public QFrame
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit PrescriptionsFrame(QWidget *parent = 0);
-    ~PrescriptionsFrame();
+	explicit PrescriptionsFrame(QWidget *parent = 0);
+	~PrescriptionsFrame();
 
 public slots:
 	void initiateSearch();
@@ -33,7 +33,7 @@ public slots:
 	void invalidatePrescription();
 
 private:
-    Ui::PrescriptionsFrame *ui;
+	Ui::PrescriptionsFrame *ui;
 
 	QList<int> ids;				// Contains prescription id's
 	bool db_queried;			// Indicates if the result table has a model

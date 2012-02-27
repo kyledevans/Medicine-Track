@@ -14,16 +14,16 @@ Released under the GPL version 2 only.
 #include "globals.h"
 
 namespace Ui {
-    class InventoryFrame;
+	class InventoryFrame;
 }
 
 class InventoryFrame : public QFrame
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit InventoryFrame(QWidget *parent = 0);
-    ~InventoryFrame();
+	explicit InventoryFrame(QWidget *parent = 0);
+	~InventoryFrame();
 
 public slots:
 	void initiateSearch(int shipID = SQL::Undefined_ID);
@@ -41,7 +41,7 @@ public slots:
 	void selectionChanged();
 
 private:
-    Ui::InventoryFrame *ui;
+	Ui::InventoryFrame *ui;
 
 	QList<int> ids;				// Contains the shipment id's of the current search
 	bool db_queried;			// Indicates if the result table has a model

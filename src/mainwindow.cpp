@@ -25,7 +25,7 @@ Released under the GPL version 2 only.
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+	QMainWindow(parent),
 	ui(new Ui::MainWindow),
 	help_process(0)
 {
@@ -51,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	ui->mainTabs->addTab(patientFrame, QString("Patients"));
 	ui->mainTabs->addTab(prescriptionsFrame, QString("Prescription log"));
-    ui->mainTabs->addTab(medicationsFrame, QString("Formulary"));
+	ui->mainTabs->addTab(medicationsFrame, QString("Formulary"));
 	ui->mainTabs->addTab(prescriberFrame, QString("Prescribers"));
 	ui->mainTabs->addTab(pharmacistFrame, QString("Pharmacists"));
 	ui->mainTabs->addTab(inventoryFrame, QString("Inventory"));
@@ -86,7 +86,7 @@ void MainWindow::initiateHelp()
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+	delete ui;
 	db.close();
 }
 

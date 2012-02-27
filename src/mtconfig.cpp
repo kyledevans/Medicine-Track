@@ -10,11 +10,11 @@ Released under the GPL version 2 only.
 #include "mtsettings.h"
 
 MTConfig::MTConfig(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::MTConfig)
+	QDialog(parent),
+	ui(new Ui::MTConfig)
 {
 	MTSettings *settings;
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	// Setup UI strings and tooltips
 	ui->hostLabel->setText(MTSettings::db_host_Label);
@@ -50,7 +50,7 @@ MTConfig::MTConfig(QWidget *parent) :
 
 MTConfig::~MTConfig()
 {
-    delete ui;
+	delete ui;
 }
 
 void MTConfig::commit()

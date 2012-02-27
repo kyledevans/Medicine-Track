@@ -37,13 +37,13 @@ Released under the GPL version 2 only.
 1.1 TODO List (and wishlist)
 
 1.  Some maintenance stuff (do in order):
-	- Make database record classes no longer QObjects
+	check - Make database record classes no longer QObjects
 	- Rename MedicationRecord to DrugRecord
 	- Rename the tab classes consistently
 	- Rename the wizards in a consistent manner
 	- Rename the wizard pages in a consistent manner
 	- Move the wizards into 1 "wizard" directory
-	- Move the database record classes into 1 "database" directory
+	check - Move the database record classes into 1 "database" directory
 
 2.  Make database record classes use accessors/mutators instead of public members
 
@@ -67,6 +67,8 @@ Released under the GPL version 2 only.
 9.  Add verification routines. IE: A SQL function that adds up the prescriptions.amount from every prescription that references a particular shipment_id.  It will then verify that the current stock is consistent with the amount prescribed and written off.
 
 10.  A 'management' UI that is used to do run the verification routines and do the initial database setup calls.
+
+11.  Go through code and address all TODO comments
 
 -----
 

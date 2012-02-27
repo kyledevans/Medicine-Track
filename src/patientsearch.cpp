@@ -19,9 +19,9 @@ Released under the GPL version 2 only.
 
 #include "globals.h"
 #include "patientrecord.h"
-#include "newpatientwizard.h"
+#include "patientwizard.h"
 #include "alertinterface.h"
-#include "alterprescriptionwizard.h"
+#include "prescriptionwizard.h"
 #include "prescriptionlabel.h"
 
 PatientSearch::PatientSearch(QWidget *parent) :
@@ -30,7 +30,7 @@ PatientSearch::PatientSearch(QWidget *parent) :
 	db_queried(false)
 {
 	QTableWidgetItem *header;
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	// Setup the search UI strings and tooltips
 	ui->lastNameLabel->setText(PatientRecord::last_Label);
@@ -84,7 +84,7 @@ PatientSearch::PatientSearch(QWidget *parent) :
 
 PatientSearch::~PatientSearch()
 {
-    delete ui;
+	delete ui;
 }
 
 void PatientSearch::toggleActive()
@@ -210,7 +210,7 @@ void PatientSearch::initiatePrescription()
 	unsigned int row;
 	PrescriptionRecord *prescription;
 
-	AlterPrescriptionWizard *wiz;
+	PrescriptionWizard *wiz;
 
 	if (!db_queried) {
 		return;
@@ -219,7 +219,7 @@ void PatientSearch::initiatePrescription()
 		return;
 	}
 
-	wiz = new AlterPrescriptionWizard();
+	wiz = new PrescriptionWizard();
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -240,7 +240,7 @@ void PatientSearch::initiatePrescription()
 void PatientSearch::initiateModification()
 {
 	unsigned int row;
-	NewPatientWizard *wiz;
+    PatientWizard *wiz;
 	PatientRecord *patient;
 
 	if (db_queried) {
@@ -260,7 +260,7 @@ void PatientSearch::initiateModification()
 		return;
 	}
 
-	wiz = new NewPatientWizard(patient);
+    wiz = new PatientWizard(patient);
 	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitNewPatient(PatientRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(PatientRecord*)), this, SLOT(newPatientCleanup(PatientRecord*)));
 	wiz->exec();
@@ -270,10 +270,10 @@ void PatientSearch::initiateModification()
 
 void PatientSearch::initiateNewPatient()
 {
-	NewPatientWizard *wiz;
+    PatientWizard *wiz;
 	PatientRecord *patient = new PatientRecord();
 
-	wiz = new NewPatientWizard(patient);
+    wiz = new PatientWizard(patient);
 	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitNewPatient(PatientRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(PatientRecord*)), this, SLOT(newPatientCleanup(PatientRecord*)));
 	wiz->exec();

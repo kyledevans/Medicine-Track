@@ -5,7 +5,8 @@ TEMPLATE = app
 CONFIG += embed_manifests_exe
 
 INCLUDEPATH = src \
-	src/db
+	src/db \
+	src/wizards
 
 DESTDIR = build
 
@@ -15,8 +16,10 @@ MOC_DIR = build
 
 OTHER_FILES = database_info.txt \
 	barcodes.txt \
-	build_instructions.txt
+	build_instructions.txt \
+	todo.txt
 
 include(src/db/db.pri)
+include(src/wizards/wizards.pri)
 include(src/src.pri)
 include(doc/doc.pri)

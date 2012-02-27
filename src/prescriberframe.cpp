@@ -12,18 +12,18 @@ Released under the GPL version 2 only.
 #include "prescriberframe.h"
 #include "ui_prescriberframe.h"
 
-#include "alterprescriberwizard.h"
+#include "prescriberwizard.h"
 #include "prescriberrecord.h"
 #include "db/alertinterface.h"
 #include "globals.h"
 
 PrescriberFrame::PrescriberFrame(QWidget *parent) :
-    QFrame(parent),
+	QFrame(parent),
 	ui(new Ui::PrescriberFrame),
 	db_queried(false)
 {
 	QTableWidgetItem *header;
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	// Setup the search UI strings and tooltips
 	ui->lastLabel->setText(PrescriberRecord::last_Label);
@@ -64,7 +64,7 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
 
 PrescriberFrame::~PrescriberFrame()
 {
-    delete ui;
+	delete ui;
 }
 
 void PrescriberFrame::resetPressed()
@@ -159,10 +159,10 @@ void PrescriberFrame::selectionChanged()
 
 void PrescriberFrame::initiateNew()
 {
-	AlterPrescriberWizard *wiz;
+	PrescriberWizard *wiz;
 	PrescriberRecord *pres = new PrescriberRecord();
 
-	wiz = new AlterPrescriberWizard(pres);
+	wiz = new PrescriberWizard(pres);
 	connect(wiz, SIGNAL(wizardComplete(PrescriberRecord*)), this, SLOT(submitNew(PrescriberRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(PrescriberRecord*)), this, SLOT(newCleanup(PrescriberRecord*)));
 	wiz->exec();
@@ -185,7 +185,7 @@ void PrescriberFrame::newCleanup(PrescriberRecord *pres)
 void PrescriberFrame::initiateModify()
 {
 	unsigned int row;
-	AlterPrescriberWizard *wiz;
+	PrescriberWizard *wiz;
 	PrescriberRecord *pres;
 
 	if (db_queried) {
@@ -205,7 +205,7 @@ void PrescriberFrame::initiateModify()
 		return;
 	}
 
-	wiz = new AlterPrescriberWizard(pres);
+	wiz = new PrescriberWizard(pres);
 	connect(wiz, SIGNAL(wizardComplete(PrescriberRecord*)), this, SLOT(submitNew(PrescriberRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(PrescriberRecord*)), this, SLOT(newCleanup(PrescriberRecord*)));
 	wiz->exec();

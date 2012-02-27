@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Medicine Tracker</string>
+   <string>Medicine Track</string>
   </property>
   <property name="documentMode">
    <bool>true</bool>

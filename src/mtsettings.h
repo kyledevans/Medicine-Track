@@ -12,7 +12,7 @@ Released under the GPL version 2 only.
 class MTSettings
 {
 public:
-	MTSettings();
+	MTSettings();	// TODO: Remove if not intended to be used
 	MTSettings(QString, QString);	// QCoreApplication::organizationName(), QCoreApplication::applicationName()
 
 	bool importSettings();

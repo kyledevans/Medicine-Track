@@ -13,16 +13,16 @@ Released under the GPL version 2 only.
 #include <QString>
 
 namespace Ui {
-    class BarcodeLabel;
+	class BarcodeLabel;
 }
 
 class BarcodeLabel : public QFrame
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit BarcodeLabel(QWidget *parent = 0);
-    ~BarcodeLabel();
+	explicit BarcodeLabel(QWidget *parent = 0);
+	~BarcodeLabel();
 
 	void setBarcode(QString);
 	QString getBarcode();
@@ -36,7 +36,7 @@ private slots:
 	void printLabel(QPrinter*);
 
 private:
-    Ui::BarcodeLabel *ui;
+	Ui::BarcodeLabel *ui;
 
 	QString barcode;
 	bool has_barcode;

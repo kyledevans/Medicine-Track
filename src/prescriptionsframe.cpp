@@ -21,12 +21,12 @@ Released under the GPL version 2 only.
 #include "shipmentrecord.h"
 
 PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :
-    QFrame(parent),
+	QFrame(parent),
 	ui(new Ui::PrescriptionsFrame),
 	db_queried(false)
 {
 	QTableWidgetItem *header;
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	// Setup the search UI strings and tooltips
 	ui->medicationNameLabel->setText(MedicationRecord::name_Label);
@@ -116,7 +116,7 @@ PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :
 
 PrescriptionsFrame::~PrescriptionsFrame()
 {
-    delete ui;
+	delete ui;
 }
 
 void PrescriptionsFrame::invalidatePrescription()
@@ -152,10 +152,10 @@ void PrescriptionsFrame::invalidatePrescription()
 
 void PrescriptionsFrame::resetPressed()
 {
-    ui->filledField->setDate(DEFAULTS::Date);
-    ui->dobField->setDate(DEFAULTS::Date);
-    ui->resultTable->clearContents();
-    ui->resultTable->setRowCount(0);
+	ui->filledField->setDate(DEFAULTS::Date);
+	ui->dobField->setDate(DEFAULTS::Date);
+	ui->resultTable->clearContents();
+	ui->resultTable->setRowCount(0);
 	ui->invalidField->setChecked(false);
 }
 
@@ -200,37 +200,37 @@ void PrescriptionsFrame::initiateSearch()
 
 	model = new QSqlQuery;
 
-    model->prepare("SELECT prescriptions.id, patients.allscripts_id, patients.last, "
-                   "patients.first, patients.dob, drugs.name, drugs.form, drugs.strength, "
-                   "CONCAT(prescriptions.amount, ' ', drugs.dispense_units), "
-                   "prescriptions.written, prescriptions.filled, shipments.lot "
-                   "FROM prescriptions "
-                   "JOIN patients ON prescriptions.patient_id = patients.id \n"
-                   "JOIN drugs ON prescriptions.drug_id = drugs.id "
-                   "JOIN shipments ON prescriptions.shipment_id = shipments.id "
-                   "WHERE drugs.name LIKE ? "
-                   "AND shipments.lot LIKE ? "
-                   "AND (? OR (prescriptions.filled = ?)) "
-                   "AND patients.last LIKE ? "
-                   "AND patients.first LIKE ? "
-                   "AND (? OR (patients.dob = ?)) "
+	model->prepare("SELECT prescriptions.id, patients.allscripts_id, patients.last, "
+				   "patients.first, patients.dob, drugs.name, drugs.form, drugs.strength, "
+				   "CONCAT(prescriptions.amount, ' ', drugs.dispense_units), "
+				   "prescriptions.written, prescriptions.filled, shipments.lot "
+				   "FROM prescriptions "
+				   "JOIN patients ON prescriptions.patient_id = patients.id \n"
+				   "JOIN drugs ON prescriptions.drug_id = drugs.id "
+				   "JOIN shipments ON prescriptions.shipment_id = shipments.id "
+				   "WHERE drugs.name LIKE ? "
+				   "AND shipments.lot LIKE ? "
+				   "AND (? OR (prescriptions.filled = ?)) "
+				   "AND patients.last LIKE ? "
+				   "AND patients.first LIKE ? "
+				   "AND (? OR (patients.dob = ?)) "
 				   "AND patients.active = ? "
 				   "AND prescriptions.active = ?;");
 	model->bindValue(0, SQL::prepWildcards(ui->medicationNameField->text()));
     model->bindValue(1, SQL::prepWildcards(ui->lotField->text()));
-    if (ui->filledField->date() != DEFAULTS::Date) {    // Enables searching by filled date if the user made a change
+	if (ui->filledField->date() != DEFAULTS::Date) {    // Enables searching by filled date if the user made a change
 		dont_search_filled = false;
 	}
 	model->bindValue(2, QVariant(dont_search_filled));
 	model->bindValue(3, QVariant(ui->filledField->date()));
 	model->bindValue(4, SQL::prepWildcards(ui->lastField->text()));
 	model->bindValue(5, SQL::prepWildcards(ui->firstField->text()));
-    if (ui->dobField->date() != DEFAULTS::Date) {       // Enables searching by dob if the user made a change
+	if (ui->dobField->date() != DEFAULTS::Date) {       // Enables searching by dob if the user made a change
 		dont_search_dob = false;
 	}
 	model->bindValue(6, QVariant(dont_search_dob));
 	model->bindValue(7, QVariant(ui->dobField->date()));
-    model->bindValue(8, QVariant(ui->activeField->isChecked()));
+	model->bindValue(8, QVariant(ui->activeField->isChecked()));
 	model->bindValue(9, QVariant(!ui->invalidField->isChecked()));
 
 	if (!alert.attemptQuery(model)) {
@@ -274,6 +274,7 @@ void PrescriptionsFrame::selectionChanged()
 	}
 }
 
+// TODO: This doesn't do anything
 void PrescriptionsFrame::initiateModify()
 {
 	unsigned int row;
