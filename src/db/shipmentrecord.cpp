@@ -220,6 +220,7 @@ bool ShipmentRecord::retrieve(int newId)
 	model->bindValue(0, QVariant(newId));
 
 	if (!alert.attemptQuery(model)) {
+		delete model;
 		return false;	// Query failed
 	}
 

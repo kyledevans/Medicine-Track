@@ -16,8 +16,6 @@ Released under the GPL version 2 only.
 -----
 1.1 TODO List (and wishlist)
 
-2.  Make database record classes use accessors/mutators instead of public members
-
 3.  Document the database record classes in a way similar to how Qt documents
 	- Need to use Doxygen which then can create documentation files for Qt Assistant and Qt Creator
 
@@ -30,16 +28,13 @@ Released under the GPL version 2 only.
 
 7.  When there is no inventory, searches should display a '0' instead of nothing at all.
 
-8.  Consider adding a new table called write_offs that will replace the shipments.write_off column.  write_offs could have the following columns:
-	- id
-	- shipment_id
-	- amount_written_off
-
 9.  Add verification routines. IE: A SQL function that adds up the prescriptions.amount from every prescription that references a particular shipment_id.  It will then verify that the current stock is consistent with the amount prescribed and written off.
 
 10.  A 'management' UI that is used to run the verification routines and do the initial database setup calls.
 
 13.  After adding a patient, have it be auto-selected after wizard completes
+
+14.  Make the DB record classes use more appropriate data types. IE: id's start using 'unsigned int'.
 
 -----
 
