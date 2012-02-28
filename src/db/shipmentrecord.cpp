@@ -7,6 +7,7 @@ Released under the GPL version 2 only.
 #include "shipmentrecord.h"
 
 #include "alertinterface.h"
+#include "writeoffrecord.h"
 #include "../globals.h"
 
 #include <QDebug>
@@ -302,9 +303,21 @@ WHERE id = ?;
 bool ShipmentRecord::addWriteOff(int wo_amount)
 {
 	QSqlQuery *model;
+	QSqlDatabase db;
 	AlertInterface alert;
+	WriteOffRecord rec;
 
 	if (!exists) {
+		return false;
+	}
+
+	db = QSqlDatabase::database();	// Get the default DB
+	db.transaction();
+
+	rec.setShipment_id(id);
+	rec.setAmount(wo_amount);
+	if (!rec.commitRecord()) {
+		db.rollback();
 		return false;
 	}
 
@@ -317,9 +330,11 @@ bool ShipmentRecord::addWriteOff(int wo_amount)
 	model->bindValue(2, QVariant(id));
 
 	if (!alert.attemptQuery(model)) {
+		db.rollback();
 		delete model;
 		return false;
 	}
+	db.commit();
 
 	delete model;
 	return true;

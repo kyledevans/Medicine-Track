@@ -113,12 +113,11 @@ bool WriteOffRecord::commitRecord()
 		return false;
 	}
 
-	model.prepare("INSERT INTO shipments (shipment_id, amount, timestamp, active) "
-				  "VALUES (?, ?, ?, ?);");
+	model.prepare("INSERT INTO write_offs (shipment_id, amount, timestamp, active) "
+				  "VALUES (?, ?, CURDATE(), ?);");
 	model.bindValue(0, QVariant(shipment_id));
 	model.bindValue(1, QVariant(amount));
-	model.bindValue(2, QVariant(timestamp));
-	model.bindValue(3, QVariant(active));
+	model.bindValue(2, QVariant(active));
 
 	if (!alert.attemptQuery(&model)) {
 		return false;	// Query failed
