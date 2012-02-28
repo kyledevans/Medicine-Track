@@ -39,8 +39,6 @@ Released under the GPL version 2 only.
 
 10.  A 'management' UI that is used to run the verification routines and do the initial database setup calls.
 
-11.  Go through code and address all TODO comments
-
 13.  After adding a patient, have it be auto-selected after wizard completes
 
 -----
