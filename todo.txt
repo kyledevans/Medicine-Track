@@ -52,6 +52,8 @@ Released under the GPL version 2 only.
 
 12.  Rearrange and set a consistent way to #include files
 
+13.  After adding a patient, have it be auto-selected after wizard completes
+
 -----
 
 Questions:
