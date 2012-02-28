@@ -19,9 +19,9 @@ OTHER_FILES = barcodes.txt \
 	COPYING.txt \
 	copyright_template.txt \
 	database_info.txt \
-	license_template.txt
+	license_template.txt \
 	README.txt \
-	todo.txt \
+	todo.txt
 
 include(src/db/db.pri)
 include(src/wizards/wizards.pri)
