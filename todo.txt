@@ -14,24 +14,8 @@ Released under the GPL version 2 only.
 
 12.  Combine the prescribers and pharmacists tables into 1
 
-13.  Need to add some usage documentation and help.
-	- Adding/modifying a patient
-	- Adding a prescription
-	- Adding new/modifying formulary
-	- Adding new/modifying inventory
-	- Search for patients
-	- Search for prescriptions
-	- Search formulations
-	- Search inventory
-	- Search pharmacists
-	- Search prescribers
-
 15.  Remove the ability to modify anything (possible exception being patients)
 	- It will make the prescription log be inacurate if say the name of a medication is changed after the prescription has been given.
-
-16.  Every time a search is done, make sure the resultTable is reset even when there are zero hits.
-
-17.  When new stock is received and it has the same exact lot # and expiration date, allow the user to increase the stock.  It will increase both product_count and product_left by the same amount.
 
 -----
 1.1 TODO List (and wishlist)
@@ -69,6 +53,8 @@ Released under the GPL version 2 only.
 10.  A 'management' UI that is used to do run the verification routines and do the initial database setup calls.
 
 11.  Go through code and address all TODO comments
+
+12.  Rearrange and set a consistent way to #include files
 
 -----
 

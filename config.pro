@@ -1,4 +1,4 @@
-﻿QT += core gui sql
+QT += core gui sql
 
 TARGET = mtrack
 TEMPLATE = app

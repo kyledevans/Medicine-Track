@@ -12,8 +12,8 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-#include "medicationsframe.h"
-#include "ui_medicationsframe.h"
+#include "formularyframe.h"
+#include "ui_formularyframe.h"
 
 #include "medicationwizard.h"
 #include "shipmentwizard.h"
@@ -23,9 +23,9 @@ Released under the GPL version 2 only.
 #include "barcodelabel.h"
 #include "medicationrecord.h"
 
-MedicationsFrame::MedicationsFrame(QWidget *parent) :
+FormularyFrame::FormularyFrame(QWidget *parent) :
 	QFrame(parent),
-	ui(new Ui::MedicationsFrame),
+    ui(new Ui::FormularyFrame),
 	db_queried(false)
 {
 	QTableWidgetItem *header;
@@ -80,19 +80,19 @@ MedicationsFrame::MedicationsFrame(QWidget *parent) :
 	selectionChanged();
 }
 
-MedicationsFrame::~MedicationsFrame()
+FormularyFrame::~FormularyFrame()
 {
 	delete ui;
 }
 
-void MedicationsFrame::resetPressed()
+void FormularyFrame::resetPressed()
 {
 	ui->activeCheckbox->setChecked(true);
 	ui->resultTable->clearContents();
 	ui->resultTable->setRowCount(0);
 }
 
-void MedicationsFrame::toggleActive()
+void FormularyFrame::toggleActive()
 {
 	unsigned int row;
 	MedicationRecord medication;
@@ -138,7 +138,7 @@ WHERE drugs.id = (
 	WHERE shipments.id = ?)
 GROUP BY drugs.id;
 */
-void MedicationsFrame::initiateSearch(int medID)
+void FormularyFrame::initiateSearch(int medID)
 {
 	QSqlQuery *model;
 	AlertInterface alert;
@@ -214,7 +214,7 @@ void MedicationsFrame::initiateSearch(int medID)
 	delete model;
 }
 
-void MedicationsFrame::selectionChanged()
+void FormularyFrame::selectionChanged()
 {
 	if (ui->resultTable->selectionModel()->hasSelection()) {
 		ui->newStockButton->setEnabled(true);
@@ -231,7 +231,7 @@ void MedicationsFrame::selectionChanged()
 	}
 }
 
-void MedicationsFrame::initiateNewMed()
+void FormularyFrame::initiateNewMed()
 {
 	MedicationWizard *wiz;
 	MedicationRecord *med;
@@ -246,7 +246,7 @@ void MedicationsFrame::initiateNewMed()
 	delete wiz;
 }
 
-void MedicationsFrame::initiateModify()
+void FormularyFrame::initiateModify()
 {
 	unsigned int row;
 	MedicationWizard *wiz;
@@ -277,26 +277,26 @@ void MedicationsFrame::initiateModify()
 	delete wiz;
 }
 
-void MedicationsFrame::submitModify(MedicationRecord *med)
+void FormularyFrame::submitModify(MedicationRecord *med)
 {
 	med->commitRecord();
 	initiateSearch(med->id);
 	medCleanup(med);
 }
 
-void MedicationsFrame::submitNewMed(MedicationRecord *med)
+void FormularyFrame::submitNewMed(MedicationRecord *med)
 {
 	med->commitRecord();
 	initiateSearch(med->id);
 	medCleanup(med);
 }
 
-void MedicationsFrame::medCleanup(MedicationRecord *med)
+void FormularyFrame::medCleanup(MedicationRecord *med)
 {
 	delete med;
 }
 
-void MedicationsFrame::initiateNewShipment()
+void FormularyFrame::initiateNewShipment()
 {
 	unsigned int row;
 	ShipmentRecord *ship;
@@ -325,7 +325,7 @@ void MedicationsFrame::initiateNewShipment()
 	delete wiz;
 }
 
-void MedicationsFrame::submitNewShipment(ShipmentRecord *shipment)
+void FormularyFrame::submitNewShipment(ShipmentRecord *shipment)
 {
 	BarcodeLabel barcode;
 	shipment->commitRecord();
@@ -335,7 +335,7 @@ void MedicationsFrame::submitNewShipment(ShipmentRecord *shipment)
 	shipmentCleanup(shipment);
 }
 
-void MedicationsFrame::shipmentCleanup(ShipmentRecord *shipment)
+void FormularyFrame::shipmentCleanup(ShipmentRecord *shipment)
 {
 	delete shipment;
 }

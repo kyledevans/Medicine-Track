@@ -4,8 +4,8 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#ifndef MEDICATIONSFRAME_H
-#define MEDICATIONSFRAME_H
+#ifndef FORMULARYFRAME_H
+#define FORMULARYFRAME_H
 
 #include <QFrame>
 #include <QList>
@@ -15,16 +15,16 @@ Released under the GPL version 2 only.
 #include "globals.h"
 
 namespace Ui {
-	class MedicationsFrame;
+    class FormularyFrame;
 }
 
-class MedicationsFrame : public QFrame
+class FormularyFrame : public QFrame
 {
 	Q_OBJECT
 
 public:
-	explicit MedicationsFrame(QWidget *parent = 0);
-	~MedicationsFrame();
+    explicit FormularyFrame(QWidget *parent = 0);
+    ~FormularyFrame();
 
 public slots:
 	void initiateSearch(int medID = SQL::Undefined_ID);
@@ -47,9 +47,9 @@ public slots:
 	void selectionChanged();
 
 private:
-	Ui::MedicationsFrame *ui;
+    Ui::FormularyFrame *ui;
 	QList<int> ids;					// Contains the drug id's of the current query
 	bool db_queried;				// Indicates if the result table has a model
 };
 
-#endif // MEDICATIONSFRAME_H
+#endif // FORMULARYFRAME_H

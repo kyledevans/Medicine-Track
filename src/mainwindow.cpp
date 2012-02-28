@@ -12,9 +12,9 @@ Released under the GPL version 2 only.
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "patientsearch.h"
-#include "prescriptionsframe.h"
-#include "medicationsframe.h"
+#include "patientframe.h"
+#include "prescriptionframe.h"
+#include "formularyframe.h"
 #include "inventoryframe.h"
 #include "globals.h"
 #include "db/alertinterface.h"
@@ -42,16 +42,16 @@ MainWindow::MainWindow(QWidget *parent) :
 		connectDB();
 	}
 
-	PatientSearch *patientFrame = new PatientSearch();
-	PrescriptionsFrame *prescriptionsFrame = new PrescriptionsFrame();
-	MedicationsFrame *medicationsFrame = new MedicationsFrame();
+    PatientFrame *patientFrame = new PatientFrame();
+    PrescriptionFrame *prescriptionFrame = new PrescriptionFrame();
+    FormularyFrame *formularyFrame = new FormularyFrame();
 	InventoryFrame *inventoryFrame = new InventoryFrame();
 	PrescriberFrame *prescriberFrame = new PrescriberFrame();
 	PharmacistFrame *pharmacistFrame = new PharmacistFrame();
 
 	ui->mainTabs->addTab(patientFrame, QString("Patients"));
-	ui->mainTabs->addTab(prescriptionsFrame, QString("Prescription log"));
-	ui->mainTabs->addTab(medicationsFrame, QString("Formulary"));
+    ui->mainTabs->addTab(prescriptionFrame, QString("Prescription log"));
+    ui->mainTabs->addTab(formularyFrame, QString("Formulary"));
 	ui->mainTabs->addTab(prescriberFrame, QString("Prescribers"));
 	ui->mainTabs->addTab(pharmacistFrame, QString("Pharmacists"));
 	ui->mainTabs->addTab(inventoryFrame, QString("Inventory"));

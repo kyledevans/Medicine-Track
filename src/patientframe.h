@@ -4,8 +4,8 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#ifndef PATIENTSEARCH_H
-#define PATIENTSEARCH_H
+#ifndef PATIENTFRAME_H
+#define PATIENTFRAME_H
 
 #include <QFrame>
 #include <QList>
@@ -15,16 +15,16 @@ Released under the GPL version 2 only.
 #include "globals.h"
 
 namespace Ui {
-	class PatientSearch;
+    class PatientFrame;
 }
 
-class PatientSearch : public QFrame
+class PatientFrame : public QFrame
 {
 	Q_OBJECT
 
 public:
-	explicit PatientSearch(QWidget *parent = 0);
-	~PatientSearch();
+    explicit PatientFrame(QWidget *parent = 0);
+    ~PatientFrame();
 
 public slots:
 	void initiateSearch(int patientID = SQL::Undefined_ID);
@@ -46,10 +46,10 @@ public slots:
 private:
 	void initiatePrint(PrescriptionRecord *);
 
-	Ui::PatientSearch *ui;
+    Ui::PatientFrame *ui;
 
 	QList<int> ids;		// Contains the patient id's of the current query
 	bool db_queried;	// Indicates if the result table has a model
 };
 
-#endif // PATIENTSEARCH_H
+#endif // PATIENTFRAME_H

@@ -14,8 +14,8 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-#include "patientsearch.h"
-#include "ui_patientsearch.h"
+#include "patientframe.h"
+#include "ui_patientframe.h"
 
 #include "globals.h"
 #include "patientrecord.h"
@@ -24,9 +24,9 @@ Released under the GPL version 2 only.
 #include "prescriptionwizard.h"
 #include "prescriptionlabel.h"
 
-PatientSearch::PatientSearch(QWidget *parent) :
+PatientFrame::PatientFrame(QWidget *parent) :
 	QFrame(parent),
-	ui(new Ui::PatientSearch),
+    ui(new Ui::PatientFrame),
 	db_queried(false)
 {
 	QTableWidgetItem *header;
@@ -82,12 +82,12 @@ PatientSearch::PatientSearch(QWidget *parent) :
 	selectionChanged();
 }
 
-PatientSearch::~PatientSearch()
+PatientFrame::~PatientFrame()
 {
 	delete ui;
 }
 
-void PatientSearch::toggleActive()
+void PatientFrame::toggleActive()
 {
 	unsigned int row;
 	PatientRecord patient;
@@ -114,7 +114,7 @@ AND first LIKE ?
 AND (<true if NOT searching by DOB> OR (dob = ?))
 AND active = ?
 */
-void PatientSearch::initiateSearch(int patientID)
+void PatientFrame::initiateSearch(int patientID)
 {
 	QSqlQuery *model;
 	AlertInterface alert;
@@ -180,7 +180,7 @@ void PatientSearch::initiateSearch(int patientID)
 	delete model;
 }
 
-void PatientSearch::selectionChanged()
+void PatientFrame::selectionChanged()
 {
 	// Enable/disable buttons if there is a selection
 	if (ui->resultTable->selectionModel()->hasSelection()) {
@@ -198,14 +198,14 @@ void PatientSearch::selectionChanged()
 	}
 }
 
-void PatientSearch::resetPressed()
+void PatientFrame::resetPressed()
 {
 	ui->dobField->setDate(DEFAULTS::Date);
 	ui->resultTable->clearContents();
 	ui->resultTable->setRowCount(0);
 }
 
-void PatientSearch::initiatePrescription()
+void PatientFrame::initiatePrescription()
 {
 	unsigned int row;
 	PrescriptionRecord *prescription;
@@ -237,7 +237,7 @@ void PatientSearch::initiatePrescription()
 	wiz->exec();
 }
 
-void PatientSearch::initiateModification()
+void PatientFrame::initiateModification()
 {
 	unsigned int row;
     PatientWizard *wiz;
@@ -268,7 +268,7 @@ void PatientSearch::initiateModification()
 	delete wiz;
 }
 
-void PatientSearch::initiateNewPatient()
+void PatientFrame::initiateNewPatient()
 {
     PatientWizard *wiz;
 	PatientRecord *patient = new PatientRecord();
@@ -281,7 +281,7 @@ void PatientSearch::initiateNewPatient()
 	delete wiz;
 }
 
-void PatientSearch::submitNewPrescription(PrescriptionRecord *prescription)
+void PatientFrame::submitNewPrescription(PrescriptionRecord *prescription)
 {
 	PrescriptionLabel label(prescription);
 	if (prescription->commitRecord()) {
@@ -290,24 +290,24 @@ void PatientSearch::submitNewPrescription(PrescriptionRecord *prescription)
 	newPrescriptionCleanup(prescription);
 }
 
-void PatientSearch::newPrescriptionCleanup(PrescriptionRecord *prescription)
+void PatientFrame::newPrescriptionCleanup(PrescriptionRecord *prescription)
 {
 	delete prescription;
 }
 
-void PatientSearch::submitNewPatient(PatientRecord *patient)
+void PatientFrame::submitNewPatient(PatientRecord *patient)
 {
 	patient->commitRecord();
 	initiateSearch(patient->id);
 	newPatientCleanup(patient);
 }
 
-void PatientSearch::newPatientCleanup(PatientRecord *patient)
+void PatientFrame::newPatientCleanup(PatientRecord *patient)
 {
 	delete patient;
 }
 
-void PatientSearch::submitModify(PatientRecord *patient)
+void PatientFrame::submitModify(PatientRecord *patient)
 {
 	// TODO: Implement this
 }

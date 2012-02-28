@@ -11,8 +11,8 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-#include "prescriptionsframe.h"
-#include "ui_prescriptionsframe.h"
+#include "prescriptionframe.h"
+#include "ui_prescriptionframe.h"
 
 #include "prescriptionlabel.h"
 #include "globals.h"
@@ -20,9 +20,9 @@ Released under the GPL version 2 only.
 #include "db/prescriptionrecord.h"
 #include "shipmentrecord.h"
 
-PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :
+PrescriptionFrame::PrescriptionFrame(QWidget *parent) :
 	QFrame(parent),
-	ui(new Ui::PrescriptionsFrame),
+    ui(new Ui::PrescriptionFrame),
 	db_queried(false)
 {
 	QTableWidgetItem *header;
@@ -114,12 +114,12 @@ PrescriptionsFrame::PrescriptionsFrame(QWidget *parent) :
 	selectionChanged();
 }
 
-PrescriptionsFrame::~PrescriptionsFrame()
+PrescriptionFrame::~PrescriptionFrame()
 {
 	delete ui;
 }
 
-void PrescriptionsFrame::invalidatePrescription()
+void PrescriptionFrame::invalidatePrescription()
 {
 	QMessageBox msg;
 	PrescriptionRecord prescription;
@@ -150,7 +150,7 @@ void PrescriptionsFrame::invalidatePrescription()
 	}
 }
 
-void PrescriptionsFrame::resetPressed()
+void PrescriptionFrame::resetPressed()
 {
 	ui->filledField->setDate(DEFAULTS::Date);
 	ui->dobField->setDate(DEFAULTS::Date);
@@ -176,7 +176,7 @@ AND patients.first LIKE ?
 AND (<true if NOT searching by dob> OR (patients.dob = ?))
 AND prescriptions.active = ?;
 */
-void PrescriptionsFrame::initiateSearch()
+void PrescriptionFrame::initiateSearch()
 {
 	QSqlQuery *model;		// SQL interface
 	AlertInterface alert;	// Submits query and handles errors
@@ -261,7 +261,7 @@ void PrescriptionsFrame::initiateSearch()
 	delete model;
 }
 
-void PrescriptionsFrame::selectionChanged()
+void PrescriptionFrame::selectionChanged()
 {
 	if (ui->resultTable->selectionModel()->hasSelection()) {
 		ui->modifyAction->setEnabled(true);
@@ -275,7 +275,7 @@ void PrescriptionsFrame::selectionChanged()
 }
 
 // TODO: This doesn't do anything
-void PrescriptionsFrame::initiateModify()
+void PrescriptionFrame::initiateModify()
 {
 	unsigned int row;
 
@@ -288,7 +288,7 @@ void PrescriptionsFrame::initiateModify()
 	}
 }
 
-void PrescriptionsFrame::initiatePrint()
+void PrescriptionFrame::initiatePrint()
 {
 	PrescriptionLabel *label;
 	unsigned int row;

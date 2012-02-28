@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PrescriptionsFrame</class>
- <widget class="QFrame" name="PrescriptionsFrame">
+ <class>PrescriptionFrame</class>
+ <widget class="QFrame" name="PrescriptionFrame">
   <property name="geometry">
    <rect>
     <x>0</x>

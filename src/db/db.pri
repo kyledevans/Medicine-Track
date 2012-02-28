@@ -1,4 +1,4 @@
-﻿QT += core gui sql
+QT += core gui sql
 
 SOURCES += src/db/alertinterface.cpp \
 	src/db/patientrecord.cpp \

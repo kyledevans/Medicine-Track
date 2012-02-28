@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MedicationsFrame</class>
- <widget class="QFrame" name="MedicationsFrame">
+ <class>PatientFrame</class>
+ <widget class="QFrame" name="PatientFrame">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>913</width>
-    <height>640</height>
+    <width>866</width>
+    <height>535</height>
    </rect>
   </property>
   <property name="frameShape">
@@ -16,24 +16,24 @@
   <property name="frameShadow">
    <enum>QFrame::Plain</enum>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="patientBox">
      <property name="title">
-      <string>Medication search</string>
+      <string>Patient search</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLabel" name="nameLabel">
+         <widget class="QLabel" name="lastNameLabel">
           <property name="text">
-           <string>MEDICATION/BARCODE</string>
+           <string>LAST</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="nameField">
+         <widget class="QLineEdit" name="lastNameField">
           <property name="minimumSize">
            <size>
             <width>200</width>
@@ -42,7 +42,7 @@
           </property>
           <property name="maximumSize">
            <size>
-            <width>250</width>
+            <width>200</width>
             <height>16777215</height>
            </size>
           </property>
@@ -50,6 +50,75 @@
         </item>
         <item>
          <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>60</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="firstNameLabel">
+          <property name="text">
+           <string>FIRST</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="firstNameField">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>60</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="dobLabel">
+          <property name="text">
+           <string>DOB</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDateEdit" name="dobField">
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_7">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -66,7 +135,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QCheckBox" name="activeCheckbox">
+         <widget class="QCheckBox" name="activeField">
           <property name="text">
            <string>Active</string>
           </property>
@@ -76,7 +145,7 @@
          </widget>
         </item>
         <item>
-         <spacer name="horizontalSpacer_2">
+         <spacer name="horizontalSpacer_6">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -94,7 +163,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <layout class="QHBoxLayout" name="buttonLayout">
      <item>
       <widget class="QPushButton" name="resetButton">
        <property name="text">
@@ -129,14 +198,14 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="newMedicationButton">
+      <widget class="QPushButton" name="newPatientButton">
        <property name="text">
-        <string>New Medication</string>
+        <string>New Patient</string>
        </property>
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer_3">
+      <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -167,14 +236,14 @@
     </spacer>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <layout class="QHBoxLayout" name="buttonLayout2">
      <item>
-      <widget class="QPushButton" name="newStockButton">
+      <widget class="QPushButton" name="prescribeButton">
        <property name="enabled">
         <bool>false</bool>
        </property>
        <property name="text">
-        <string>Add Stock</string>
+        <string>New Prescription</string>
        </property>
       </widget>
      </item>
@@ -197,7 +266,7 @@
         <bool>false</bool>
        </property>
        <property name="text">
-        <string>Modify Medication</string>
+        <string>Modify Patient</string>
        </property>
       </widget>
      </item>
@@ -215,7 +284,7 @@
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
      <property name="columnCount">
-      <number>6</number>
+      <number>4</number>
      </property>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
@@ -225,113 +294,143 @@
      </attribute>
      <column>
       <property name="text">
-       <string>MEDICATION</string>
+       <string>MR NUMBER</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>NDC</string>
+       <string>LAST</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>FORM</string>
+       <string>FIRST</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>STRENGTH</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>UNIT SIZE</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>STOCK</string>
+       <string>DOB</string>
       </property>
      </column>
     </widget>
    </item>
   </layout>
-  <action name="newMedicationAction">
+  <action name="prescribeAction">
    <property name="text">
-    <string>New Medication</string>
+    <string>New Prescription</string>
    </property>
    <property name="toolTip">
-    <string>Add a new medication.</string>
-   </property>
-  </action>
-  <action name="newStockAction">
-   <property name="text">
-    <string>Add Stock</string>
-   </property>
-   <property name="toolTip">
-    <string>Add new stock of a medication.</string>
+    <string>Prescribe a medication</string>
    </property>
   </action>
   <action name="modifyAction">
    <property name="text">
-    <string>Modify Medication</string>
+    <string>Modify Patient</string>
    </property>
    <property name="toolTip">
-    <string>Modify medication information.</string>
+    <string>Modify demographic information</string>
+   </property>
+  </action>
+  <action name="newPatientAction">
+   <property name="text">
+    <string>New Patient</string>
+   </property>
+   <property name="toolTip">
+    <string>Add a new patient</string>
    </property>
   </action>
   <action name="toggleAction">
    <property name="text">
-    <string>Toggle Active</string>
+    <string>Toggle active</string>
    </property>
    <property name="toolTip">
     <string>Toggle active/inactive</string>
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>searchButton</tabstop>
+  <tabstop>resetButton</tabstop>
+  <tabstop>newPatientButton</tabstop>
+  <tabstop>prescribeButton</tabstop>
+  <tabstop>modifyButton</tabstop>
+  <tabstop>resultTable</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
-   <sender>nameField</sender>
+   <sender>firstNameField</sender>
    <signal>returnPressed()</signal>
    <receiver>searchButton</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>168</x>
-     <y>20</y>
+     <x>162</x>
+     <y>42</y>
     </hint>
     <hint type="destinationlabel">
      <x>129</x>
-     <y>78</y>
+     <y>81</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lastNameField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>492</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>81</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>resetButton</sender>
    <signal>clicked()</signal>
-   <receiver>nameField</receiver>
+   <receiver>firstNameField</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>48</x>
-     <y>78</y>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
-     <x>168</x>
-     <y>20</y>
+     <x>162</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>newStockButton</sender>
+   <sender>resetButton</sender>
    <signal>clicked()</signal>
-   <receiver>newStockAction</receiver>
-   <slot>trigger()</slot>
+   <receiver>lastNameField</receiver>
+   <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>48</x>
-     <y>175</y>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>492</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>prescribeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>prescribeAction</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>54</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
@@ -346,8 +445,8 @@
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>854</x>
-     <y>175</y>
+     <x>816</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
@@ -356,14 +455,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>newMedicationButton</sender>
+   <sender>newPatientButton</sender>
    <signal>clicked()</signal>
-   <receiver>newMedicationAction</receiver>
+   <receiver>newPatientAction</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>280</x>
-     <y>78</y>
+     <x>256</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
