@@ -15,7 +15,6 @@ OBJECTS_DIR = build
 MOC_DIR = build
 
 OTHER_FILES = barcodes.txt \
-	build_instructions.txt \
 	COPYING.txt \
 	copyright_template.txt \
 	database_info.txt \
