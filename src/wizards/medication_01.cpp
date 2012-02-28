@@ -26,5 +26,5 @@ Medication_01::~Medication_01()
 
 void Medication_01::getResults(DrugRecord *med)
 {
-	med->instructions = ui->instructionsField->toPlainText();
+	med->setInstructions(ui->instructionsField->toPlainText());
 }

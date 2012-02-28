@@ -15,12 +15,12 @@ PrescriberWizard::PrescriberWizard(PrescriberRecord *new_pres, QWidget *parent) 
 
 	pres = new_pres;
 
-	if (pres->exists) {
+	if (pres->getExists()) {
 		this->setWindowTitle("Alter Prescriber Wizard");
-		setField("lastField", pres->last);
-		setField("firstField", pres->first);
-		setField("fullField", pres->full_name);
-		setField("activeField", pres->active);
+		setField("lastField", pres->getLast());
+		setField("firstField", pres->getFirst());
+		setField("fullField", pres->getFull_name());
+		setField("activeField", pres->getActive());	// TODO: Does this still exist?
 	}
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));

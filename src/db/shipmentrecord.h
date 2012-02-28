@@ -15,17 +15,28 @@ class ShipmentRecord
 public:
 	explicit ShipmentRecord();
 
-	int id;					// shipments.id
-	int drug_id;			// shipments.drug_id
-	QDate expiration;		// shipments.expiration
-	QString lot;			// shipments.lot
-	int product_count;		// shipments.product_count
-	int product_left;		// shipments.product_left
-	int write_off;			// shipments.write_off
-	bool active;			// shipments.active
+	// Accessors
+	int getId();
+	int getDrug_id();
+	QDate getExpiration();
+	QString getLot();
+	int getProduct_count();
+	int getProduct_left();
+	int getWrite_off();
+	bool getActive();
+	bool getExists();
 
-	bool exists;			// True if the db already contains this record
+	// Mutators
+	void setId(int);
+	void setDrug_id(int);
+	void setExpiration(QDate);
+	void setLot(QString);
+	void setProduct_count(int);
+	void setProduct_left(int);
+	void setWrite_off(int);
+	void setActive(bool);
 
+	// Methods
 	bool retrieve(int);		// (int) is the shipment id.  Returns false if retrieve failed
 	bool commitRecord();	// Inserts (or updates) the record in the db
 	bool toggleActive();	// Toggles the active state
@@ -59,6 +70,18 @@ public:
 
 	static const QString barcode_Label;
 	static const QString barcode_Tooltip;
+
+private:
+	int id;					// shipments.id
+	int drug_id;			// shipments.drug_id
+	QDate expiration;		// shipments.expiration
+	QString lot;			// shipments.lot
+	int product_count;		// shipments.product_count
+	int product_left;		// shipments.product_left
+	int write_off;			// shipments.write_off
+	bool active;			// shipments.active
+
+	bool exists;			// True if the db already contains this record
 };
 
 #endif // SHIPMENTRECORD_H

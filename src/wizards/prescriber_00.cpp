@@ -38,7 +38,7 @@ Prescriber_00::~Prescriber_00()
 
 void Prescriber_00::getResults(PrescriberRecord *pres)
 {
-	pres->last = ui->lastField->text();
-	pres->first = ui->firstField->text();
-	pres->full_name = ui->fullField->text();
+	pres->setLast(ui->lastField->text());
+	pres->setFirst(ui->firstField->text());
+	pres->setFull_name(ui->fullField->text());
 }

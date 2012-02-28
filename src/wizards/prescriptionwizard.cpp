@@ -65,9 +65,9 @@ void PrescriptionWizard::rejectedWizard()
 void PrescriptionWizard::changeMedication(int new_id)
 {
 	shipment->retrieve(new_id);
-	medication->retrieve(shipment->drug_id);
-	prescription->shipment_id = shipment->id;
-	prescription->drug_id = medication->id;
+	medication->retrieve(shipment->getDrug_id());
+	prescription->setShipment_id(shipment->getId());
+	prescription->setDrug_id(medication->getId());
 	ui->page1->medUpdated();
 	ui->page2->medUpdated();
 }

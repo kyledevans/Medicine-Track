@@ -20,7 +20,7 @@ ShipmentWizard::ShipmentWizard(ShipmentRecord *new_shipment, QWidget *parent) :
     DrugRecord *med;
 	shipment = new_shipment;
     med = new DrugRecord;
-	med->retrieve(shipment->drug_id);
+	med->retrieve(shipment->getDrug_id());
 	ui->setupUi(this);
 
 	ui->page0->setMedication(med);

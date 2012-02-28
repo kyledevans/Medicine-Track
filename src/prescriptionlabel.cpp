@@ -27,11 +27,11 @@ PrescriptionLabel::PrescriptionLabel(PrescriptionRecord *new_prescription, QWidg
 	shipment = new ShipmentRecord;
 
 	prescription = new_prescription;
-	prescriber->retrieve(prescription->prescriber_id);
-	pharmacist->retrieve(prescription->pharmacist_id);
-	patient->retrieve(prescription->patient_id);
-	medication->retrieve(prescription->drug_id);
-	shipment->retrieve(prescription->shipment_id);
+	prescriber->retrieve(prescription->getPrescriber_id());
+	pharmacist->retrieve(prescription->getPharmacist_id());
+	patient->retrieve(prescription->getPatient_id());
+	medication->retrieve(prescription->getDrug_id());
+	shipment->retrieve(prescription->getShipment_id());
 
 	setFixedWidth(700);
 }
@@ -66,34 +66,34 @@ void PrescriptionLabel::printLabel(QPrinter *printer)
 	printer->setPageMargins(0.25, 0.0, 0.0, 0.6, QPrinter::Inch);
 	printer->setOrientation(QPrinter::Landscape);
 
-	ui->lastLabel->setText(patient->last);
-	ui->firstLabel->setText(patient->first);
-	ui->medicationLabel->setText(medication->name);
-	ui->manufacturerLabel->setText(medication->manufacturer);
-	ui->formLabel->setText(FORM_STR::intToStr(medication->form));
-	ui->strengthLabel->setText(medication->strength);
-	ui->prescriberLabel->setText(prescriber->full_name);
-	ui->instructionsLabel->setText(prescription->instructions);
-	ui->filledLabel->setText(prescription->filled.toString(DEFAULTS::DateDisplayFormat));
-	ui->writtenLabel->setText(prescription->written.toString(DEFAULTS::DateDisplayFormat));
-	ui->ndcLabel->setText(medication->ndc);
-	if (medication->generic.isEmpty()) {	// Don't display "generic for..." if it doesn't make sense
+	ui->lastLabel->setText(patient->getLast());
+	ui->firstLabel->setText(patient->getFirst());
+	ui->medicationLabel->setText(medication->getName());
+	ui->manufacturerLabel->setText(medication->getManufacturer());
+	ui->formLabel->setText(FORM_STR::intToStr(medication->getForm()));
+	ui->strengthLabel->setText(medication->getStrength());
+	ui->prescriberLabel->setText(prescriber->getFull_name());
+	ui->instructionsLabel->setText(prescription->getInstructions());
+	ui->filledLabel->setText(prescription->getFilled().toString(DEFAULTS::DateDisplayFormat));
+	ui->writtenLabel->setText(prescription->getWritten().toString(DEFAULTS::DateDisplayFormat));
+	ui->ndcLabel->setText(medication->getNdc());
+	if (medication->getGeneric().isEmpty()) {	// Don't display "generic for..." if it doesn't make sense
 		ui->genericHeaderLabel->setText(QString(" "));
 		ui->genericLabel->setText(QString(" "));
 	} else {
-		ui->genericLabel->setText(medication->generic);
+		ui->genericLabel->setText(medication->getGeneric());
 	}
-	if (medication->unit_size.isEmpty()) {	// Display the amount dispensed
-		ui->dispensedLabel->setText(QString().setNum(prescription->amount) + QString(" ") + medication->dispense_units);
+	if (medication->getUnit_size().isEmpty()) {	// Display the amount dispensed
+		ui->dispensedLabel->setText(QString().setNum(prescription->getAmount()) + QString(" ") + medication->getDispense_units());
 	} else {	// Display the size of the bottle, tube, etc. If they come in fixed sizes instead
-		if (prescription->amount > 1) {	// Indicate how many units were given and their size
-			ui->dispensedLabel->setText(QString().setNum(prescription->amount) + QString(" x ") + medication->unit_size);
+		if (prescription->getAmount() > 1) {	// Indicate how many units were given and their size
+			ui->dispensedLabel->setText(QString().setNum(prescription->getAmount()) + QString(" x ") + medication->getUnit_size());
 		} else {	// Only 1 unit was given, just show the size
-			ui->dispensedLabel->setText(medication->unit_size);
+			ui->dispensedLabel->setText(medication->getUnit_size());
 		}
 	}
 
-	ui->fillerLabel->setText(pharmacist->initials);
+	ui->fillerLabel->setText(pharmacist->getInitials());
 
 	painter.begin(printer);
 	this->render(&painter);

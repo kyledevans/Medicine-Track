@@ -38,7 +38,7 @@ Pharmacist_00::~Pharmacist_00()
 
 void Pharmacist_00::getResults(PharmacistRecord *pharm)
 {
-	pharm->last = ui->lastField->text();
-	pharm->first = ui->firstField->text();
-	pharm->initials = ui->initialsField->text();
+	pharm->setLast(ui->lastField->text());
+	pharm->setFirst(ui->firstField->text());
+	pharm->setInitials(ui->initialsField->text());
 }

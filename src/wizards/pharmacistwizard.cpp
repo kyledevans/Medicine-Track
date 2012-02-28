@@ -15,12 +15,12 @@ PharmacistWizard::PharmacistWizard(PharmacistRecord *new_pharm, QWidget *parent)
 
 	pharm = new_pharm;
 
-	if (pharm->exists) {
+	if (pharm->getExists()) {
 		this->setWindowTitle("Alter Pharmacist Wizard");
-		setField("lastField", pharm->last);
-		setField("firstField", pharm->first);
-		setField("initialsField", pharm->initials);
-		setField("activeField", pharm->active);
+		setField("lastField", pharm->getLast());
+		setField("firstField", pharm->getFirst());
+		setField("initialsField", pharm->getInitials());
+		setField("activeField", pharm->getActive());	// TODO: Does this still exist?
 	}
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));

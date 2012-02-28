@@ -15,22 +15,38 @@ class PrescriptionRecord
 public:
 	explicit PrescriptionRecord();
 
-	int id;					// prescriptions.id
-	int patient_id;			// prescriptions.patient_id
-	int drug_id;			// prescriptions.drug_id
-	int shipment_id;		// prescriptions.shipment_id
-	int prescriber_id;		// prescriptions.prescriber_id
-	int pharmacist_id;		// prescriptions.pharmacist_id
-	int amount;				// prescriptions.amount
-	QString dose_size;		// prescriptions.dose_size
-	QDate written;			// prescriptions.written
-	QDate filled;			// prescriptions.filled
-	QString instructions;	// prescriptions.instructions
-	QString comments;		// prescriptions.comments
-	bool active;			// prescriptions.active
+	// Accessors
+	int getId();
+	int getPatient_id();
+	int getDrug_id();
+	int getShipment_id();
+	int getPrescriber_id();
+	int getPharmacist_id();
+	int getAmount();
+	QString getDose_size();
+	QDate getWritten();
+	QDate getFilled();
+	QString getInstructions();
+	QString getComments();
+	bool getActive();
+	bool getExists();
 
-	bool exists;			// True if the record is already in the database
+	// Mutators
+	void setId(int);
+	void setPatient_id(int);
+	void setDrug_id(int);
+	void setShipment_id(int);
+	void setPrescriber_id(int);
+	void setPharmacist_id(int);
+	void setAmount(int);
+	void setDose_size(QString);
+	void setWritten(QDate);
+	void setFilled(QDate);
+	void setInstructions(QString);
+	void setComments(QString);
+	void setActive(bool);
 
+	// Methods
 	bool retrieve(int);		// (int) is the prescription id.  Returns false if retrieve fails
 	bool commitRecord();	// Returns false if the procedure failed
 	bool toggleActive();
@@ -52,6 +68,23 @@ public:
 
 	static const QString instructions_Label;
 	static const QString instructions_Tooltip;
+
+private:
+	int id;					// prescriptions.id
+	int patient_id;			// prescriptions.patient_id
+	int drug_id;			// prescriptions.drug_id
+	int shipment_id;		// prescriptions.shipment_id
+	int prescriber_id;		// prescriptions.prescriber_id
+	int pharmacist_id;		// prescriptions.pharmacist_id
+	int amount;				// prescriptions.amount
+	QString dose_size;		// prescriptions.dose_size
+	QDate written;			// prescriptions.written
+	QDate filled;			// prescriptions.filled
+	QString instructions;	// prescriptions.instructions
+	QString comments;		// prescriptions.comments
+	bool active;			// prescriptions.active
+
+	bool exists;			// True if the record is already in the database
 };
 
 #endif // PRESCRIPTIONRECORD_H

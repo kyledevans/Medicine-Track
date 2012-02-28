@@ -46,6 +46,121 @@ DrugRecord::DrugRecord():
 {
 }
 
+int DrugRecord::getId()
+{
+	return id;
+}
+
+QString DrugRecord::getName()
+{
+	return name;
+}
+
+QString DrugRecord::getGeneric()
+{
+	return generic;
+}
+
+QString DrugRecord::getManufacturer()
+{
+	return manufacturer;
+}
+
+QString DrugRecord::getNdc()
+{
+	return ndc;
+}
+
+int DrugRecord::getForm()
+{
+	return form;
+}
+
+QString DrugRecord::getStrength()
+{
+	return strength;
+}
+
+QString DrugRecord::getDispense_units()
+{
+	return dispense_units;
+}
+
+QString DrugRecord::getUnit_size()
+{
+	return unit_size;
+}
+
+QString DrugRecord::getInstructions()
+{
+	return instructions;
+}
+
+bool DrugRecord::getActive()
+{
+	return active;
+}
+
+bool DrugRecord::getExists()
+{
+	return exists;
+}
+
+void DrugRecord::setId(int new_id)
+{
+	id = new_id;
+}
+
+void DrugRecord::setName(QString new_name)
+{
+	name = new_name;
+}
+
+void DrugRecord::setGeneric(QString new_generic)
+{
+	generic = new_generic;
+}
+
+void DrugRecord::setManufacturer(QString new_manufacturer)
+{
+	manufacturer = new_manufacturer;
+}
+
+void DrugRecord::setNdc(QString new_ndc)
+{
+	ndc = new_ndc;
+}
+
+void DrugRecord::setForm(int new_form)
+{
+	form = new_form;
+}
+
+void DrugRecord::setStrength(QString new_strength)
+{
+	strength = new_strength;
+}
+
+void DrugRecord::setDispense_units(QString new_dispense_units)
+{
+	dispense_units = new_dispense_units;
+}
+
+void DrugRecord::setUnit_size(QString new_unit_size)
+{
+	unit_size = new_unit_size;
+}
+
+void DrugRecord::setInstructions(QString new_instructions)
+{
+	instructions = new_instructions;
+}
+
+void DrugRecord::setActive(bool new_active)
+{
+	active = new_active;
+}
+
 /* SQL without C++:
 UPDATE drugs
 SET active = ?

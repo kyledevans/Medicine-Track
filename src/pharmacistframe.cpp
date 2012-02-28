@@ -198,7 +198,7 @@ void PharmacistFrame::initiateModify()
 void PharmacistFrame::submitPharmacist(PharmacistRecord *pharm)
 {
 	pharm->commitRecord();
-	initiateSearch(pharm->id);
+	initiateSearch(pharm->getId());
 	delete pharm;
 }
 

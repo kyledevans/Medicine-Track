@@ -196,7 +196,7 @@ void PrescriberFrame::initiateModify()
 void PrescriberFrame::submitPrescriber(PrescriberRecord *pres)
 {
 	pres->commitRecord();
-	initiateSearch(pres->id);
+	initiateSearch(pres->getId());
 	delete pres;
 }
 

@@ -31,6 +31,71 @@ PatientRecord::PatientRecord():
 {
 }
 
+int PatientRecord::getId()
+{
+	return id;
+}
+
+int PatientRecord::getAllscripts_id()
+{
+	return allscripts_id;
+}
+
+QString PatientRecord::getLast()
+{
+	return last;
+}
+
+QString PatientRecord::getFirst()
+{
+	return first;
+}
+
+QDate PatientRecord::getDob()
+{
+	return dob;
+}
+
+bool PatientRecord::getActive()
+{
+	return active;
+}
+
+bool PatientRecord::getExists()
+{
+	return exists;
+}
+
+void PatientRecord::setId(int new_id)
+{
+	id = new_id;
+}
+
+void PatientRecord::setAllscripts_id(int new_allscripts_id)
+{
+	allscripts_id = new_allscripts_id;
+}
+
+void PatientRecord::setLast(QString new_last)
+{
+	last = new_last;
+}
+
+void PatientRecord::setFirst(QString new_first)
+{
+	first = new_first;
+}
+
+void PatientRecord::setDob(QDate new_dob)
+{
+	dob = new_dob;
+}
+
+void PatientRecord::setActive(bool new_active)
+{
+	active = new_active;
+}
+
 /* SQL without C++:
 SELECT allscripts_id, last, first, dob, active
 FROM patients

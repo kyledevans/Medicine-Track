@@ -47,8 +47,8 @@ Patient_00::~Patient_00()
 
 void Patient_00::getResults(PatientRecord *patient)
 {
-	patient->allscripts_id = field("mrNumberField").toInt();
-	patient->last = field("lastField").toString();
-	patient->first = field("firstField").toString();
-	patient->dob = field("dobField").toDate();
+	patient->setAllscripts_id(field("mrNumberField").toInt());
+	patient->setLast(field("lastField").toString());
+	patient->setFirst(field("firstField").toString());
+	patient->setDob(field("dobField").toDate());
 }

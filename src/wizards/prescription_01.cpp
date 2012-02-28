@@ -105,11 +105,11 @@ bool Prescription_01::initCustom()
 	for (i = 0; i < model.size(); i++) {
 		model.next();
 		presTemp = new PrescriberRecord;
-		presTemp->id = model.value(0).toInt();
-		presTemp->last = model.value(1).toString();
-		presTemp->first = model.value(2).toString();
-		presTemp->full_name = model.value(3).toString();
-		presTemp->active = model.value(4).toBool();
+		presTemp->setId(model.value(0).toInt());
+		presTemp->setLast(model.value(1).toString());
+		presTemp->setFirst(model.value(2).toString());
+		presTemp->setFull_name(model.value(3).toString());
+		presTemp->setActive(model.value(4).toBool());
 		prescribers.append(presTemp);
 	}
 
@@ -125,11 +125,11 @@ bool Prescription_01::initCustom()
 	for (i = 0; i < model.size(); i++) {
 		model.next();
 		pharmTemp = new PharmacistRecord;
-		pharmTemp->id = model.value(0).toInt();
-		pharmTemp->last = model.value(1).toString();
-		pharmTemp->first = model.value(2).toString();
-		pharmTemp->initials = model.value(3).toString();
-		pharmTemp->active = model.value(4).toBool();
+		pharmTemp->setId(model.value(0).toInt());
+		pharmTemp->setLast(model.value(1).toString());
+		pharmTemp->setFirst(model.value(2).toString());
+		pharmTemp->setInitials(model.value(3).toString());
+		pharmTemp->setActive(model.value(4).toBool());
 		pharmacists.append(pharmTemp);
 	}
 
@@ -140,11 +140,11 @@ bool Prescription_01::initCustom()
 
 void Prescription_01::medUpdated()
 {
-	ui->medicationLabel->setText(medication->name);
-	ui->formLabel->setText(FORM_STR::intToStr(medication->form));
-	ui->strengthLabel->setText(medication->strength);
-	ui->unitSizeLabel->setText(medication->unit_size);
-	ui->dispenseUnitsLabel->setText(medication->dispense_units);
+	ui->medicationLabel->setText(medication->getName());
+	ui->formLabel->setText(FORM_STR::intToStr(medication->getForm()));
+	ui->strengthLabel->setText(medication->getStrength());
+	ui->unitSizeLabel->setText(medication->getUnit_size());
+	ui->dispenseUnitsLabel->setText(medication->getDispense_units());
 }
 
 void Prescription_01::setupComboBoxes()
@@ -152,11 +152,11 @@ void Prescription_01::setupComboBoxes()
 	int i;
 
 	for (i = 0; i < prescribers.size(); i++) {
-		ui->writtenByField->addItem(prescribers[i]->full_name, QVariant(prescribers[i]->id));
+		ui->writtenByField->addItem(prescribers[i]->getFull_name(), QVariant(prescribers[i]->getId()));
 	}
 
 	for (i = 0; i < pharmacists.size(); i++) {
-		ui->filledByField->addItem(pharmacists[i]->last + QString(", ") + pharmacists[i]->first, QVariant(pharmacists[i]->id));
+		ui->filledByField->addItem(pharmacists[i]->getLast() + QString(", ") + pharmacists[i]->getFirst(), QVariant(pharmacists[i]->getId()));
 	}
 
 	ui->writtenByField->setCurrentIndex(-1);
@@ -166,22 +166,22 @@ void Prescription_01::setupComboBoxes()
 void Prescription_01::getResults()
 {
 	int temp;
-	prescription->amount = ui->amountField->text().toInt();
-	prescription->written = ui->writtenField->date();
-	prescription->filled = ui->filledField->date();
+	prescription->setAmount(ui->amountField->text().toInt());
+	prescription->setWritten(ui->writtenField->date());
+	prescription->setFilled(ui->filledField->date());
 
 	temp = ui->writtenByField->currentIndex();
-	prescription->prescriber_id = ui->writtenByField->itemData(temp).toInt();
+	prescription->setPrescriber_id(ui->writtenByField->itemData(temp).toInt());
 	temp = ui->filledByField->currentIndex();
-	prescription->pharmacist_id = ui->filledByField->itemData(temp).toInt();
+	prescription->setPharmacist_id(ui->filledByField->itemData(temp).toInt());
 }
 
 void Prescription_01::setPatient(PatientRecord *new_patient)
 {
 	patient = new_patient;
 
-	ui->lastLabel->setText(patient->last);
-	ui->firstLabel->setText(patient->first);
+	ui->lastLabel->setText(patient->getLast());
+	ui->firstLabel->setText(patient->getFirst());
 }
 
 void Prescription_01::setMedication(DrugRecord *new_medication)

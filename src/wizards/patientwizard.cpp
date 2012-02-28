@@ -17,12 +17,12 @@ PatientWizard::PatientWizard(PatientRecord *new_patient, QWidget *parent) :
 
 	patient = new_patient;
 
-	if (patient->exists) {
+	if (patient->getExists()) {
 		this->setWindowTitle("Alter Patient Wizard");
-		setField("mrNumberField", patient->allscripts_id);
-		setField("lastField", patient->last);
-		setField("firstField", patient->first);
-		setField("dobField", patient->dob);
+		setField("mrNumberField", patient->getAllscripts_id());
+		setField("lastField", patient->getLast());
+		setField("firstField", patient->getFirst());
+		setField("dobField", patient->getDob());
 	}
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));

@@ -270,7 +270,7 @@ void FormularyFrame::initiateModify()
 void FormularyFrame::submitDrug(DrugRecord *med)
 {
 	med->commitRecord();
-	initiateSearch(med->id);
+	initiateSearch(med->getId());
 	delete med;
 }
 
@@ -296,7 +296,7 @@ void FormularyFrame::initiateNewShipment()
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-	ship->drug_id = ids[row];
+	ship->setDrug_id(ids[row]);
 
 	wiz = new ShipmentWizard(ship);
 
@@ -312,8 +312,8 @@ void FormularyFrame::submitShipment(ShipmentRecord *shipment)
 {
 	BarcodeLabel barcode;
 	shipment->commitRecord();
-	initiateSearch(shipment->drug_id);
-	barcode.setBarcode(QString("SID") + QString().setNum(shipment->id));
+	initiateSearch(shipment->getDrug_id());
+	barcode.setBarcode(QString("SID") + QString().setNum(shipment->getId()));
 	barcode.print();
 	delete shipment;
 }

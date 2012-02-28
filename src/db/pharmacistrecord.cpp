@@ -30,6 +30,63 @@ PharmacistRecord::PharmacistRecord():
 {
 }
 
+int PharmacistRecord::getId()
+{
+	return id;
+}
+
+QString PharmacistRecord::getLast()
+{
+	return last;
+}
+
+QString PharmacistRecord::getFirst()
+{
+	return first;
+}
+
+QString PharmacistRecord::getInitials()
+{
+	return initials;
+}
+
+bool PharmacistRecord::getActive()
+{
+	return active;
+}
+
+bool PharmacistRecord::getExists()
+{
+	return exists;
+}
+
+void PharmacistRecord::setId(int new_id)
+{
+	id = new_id;
+}
+
+void PharmacistRecord::setLast(QString new_last)
+{
+	last = new_last;
+}
+
+void PharmacistRecord::setFirst(QString new_first)
+{
+	first = new_first;
+}
+
+void PharmacistRecord::setInitials(QString new_initials)
+{
+	initials = new_initials;
+}
+
+void PharmacistRecord::setActive(bool new_active)
+{
+	active = new_active;
+}
+
+
+
 /* SQL without C++:
 UPDATE pharmacists
 SET active = ?

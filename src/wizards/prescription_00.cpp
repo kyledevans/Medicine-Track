@@ -75,8 +75,8 @@ Prescription_00::~Prescription_00()
 void Prescription_00::setPatient(PatientRecord *new_patient)
 {
 	patient = new_patient;
-	ui->lastLabel->setText(patient->last);
-	ui->firstLabel->setText(patient->first);
+	ui->lastLabel->setText(patient->getLast());
+	ui->firstLabel->setText(patient->getFirst());
 }
 
 void Prescription_00::setPrescription(PrescriptionRecord *new_prescription)

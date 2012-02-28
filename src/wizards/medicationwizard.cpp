@@ -20,17 +20,17 @@ MedicationWizard::MedicationWizard(DrugRecord *new_med, QWidget *parent) :
 	med = new_med;
 
 	// Fill in the information into the form if the wizard is modifying an existing record
-	if (med->exists) {
+	if (med->getExists()) {
 		this->setWindowTitle("Alter Medication Wizard");
-		setField("medicationField", med->name);
-		setField("genericField", med->generic);
-		setField("manufacturerField", med->manufacturer);
-		setField("ndcField", med->ndc);
-		setField("strengthField", med->strength);
-		ui->page0->setForm(med->form);
-		setField("dispenseUnitsField", med->dispense_units);
-		setField("unitSizeField", med->unit_size);
-		setField("instructionsField", med->instructions);
+		setField("medicationField", med->getName());
+		setField("genericField", med->getGeneric());
+		setField("manufacturerField", med->getManufacturer());
+		setField("ndcField", med->getNdc());
+		setField("strengthField", med->getStrength());
+		ui->page0->setForm(med->getForm());
+		setField("dispenseUnitsField", med->getDispense_units());
+		setField("unitSizeField", med->getUnit_size());
+		setField("instructionsField", med->getInstructions());
 	}
 
 	connect(this, SIGNAL(accepted()), this, SLOT(returnResults()));

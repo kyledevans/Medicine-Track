@@ -86,12 +86,12 @@ void Medication_00::setForm(int new_form)
 
 void Medication_00::getResults(DrugRecord *med)
 {
-	med->name = ui->medicationField->text();
-	med->generic = ui->genericField->text();
-	med->manufacturer = ui->manufacturerField->text();
-	med->ndc = ui->ndcField->text();
-	med->form = ui->formField->itemData(ui->formField->currentIndex()).toInt();
-	med->strength = ui->strengthField->text();
-	med->dispense_units = ui->dispenseUnitsField->text();
-	med->unit_size = ui->unitSizeField->text();
+	med->setName(ui->medicationField->text());
+	med->setGeneric(ui->genericField->text());
+	med->setManufacturer(ui->manufacturerField->text());
+	med->setNdc(ui->ndcField->text());
+	med->setForm(ui->formField->itemData(ui->formField->currentIndex()).toInt());
+	med->setStrength(ui->strengthField->text());
+	med->setDispense_units(ui->dispenseUnitsField->text());
+	med->setUnit_size(ui->unitSizeField->text());
 }

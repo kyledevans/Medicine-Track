@@ -51,18 +51,18 @@ Shipment_00::~Shipment_00()
 void Shipment_00::setMedication(DrugRecord *med)
 {
 	// Show medication that was selected
-	ui->medicationLabel->setText(med->name);
-	ui->strengthLabel->setText(med->strength);
-	ui->formLabel->setText(FORM_STR::intToStr(med->form));
-	ui->unitSizeLabel->setText(med->unit_size);
-	ui->dispenseUnitLabel->setText(med->dispense_units);
+	ui->medicationLabel->setText(med->getName());
+	ui->strengthLabel->setText(med->getStrength());
+	ui->formLabel->setText(FORM_STR::intToStr(med->getForm()));
+	ui->unitSizeLabel->setText(med->getUnit_size());
+	ui->dispenseUnitLabel->setText(med->getDispense_units());
 }
 
 void Shipment_00::getResults(ShipmentRecord *shipment)
 {
-	shipment->expiration = ui->expireField->date();
-	shipment->lot = ui->lotField->text();
-	shipment->product_count = ui->unitsField->text().toInt();
-	shipment->product_left = shipment->product_count;
-	shipment->write_off = 0;
+	shipment->setExpiration(ui->expireField->date());
+	shipment->setLot(ui->lotField->text());
+	shipment->setProduct_count(ui->unitsField->text().toInt());
+	shipment->setProduct_left(shipment->getProduct_count());
+	shipment->setWrite_off(0);
 }

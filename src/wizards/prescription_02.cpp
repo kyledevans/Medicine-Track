@@ -37,10 +37,10 @@ void Prescription_02::setMedication(DrugRecord *new_medication)
 
 void Prescription_02::medUpdated()
 {
-	ui->instructionsField->setPlainText(medication->instructions);
+	ui->instructionsField->setPlainText(medication->getInstructions());
 }
 
 void Prescription_02::getResults()
 {
-	prescription->instructions = ui->instructionsField->toPlainText();
+	prescription->setInstructions(ui->instructionsField->toPlainText());
 }

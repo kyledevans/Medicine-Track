@@ -14,14 +14,22 @@ class PrescriberRecord
 public:
 	explicit PrescriberRecord();
 
-	int id;					// prescribers.id
-	QString last;			// prescribers.last
-	QString first;			// prescribers.first
-	QString full_name;		// prescribers.full_name
-	bool active;			// prescribers.active
+	// Accessors
+	int getId();
+	QString getLast();
+	QString getFirst();
+	QString getFull_name();
+	bool getActive();
+	bool getExists();
 
-	bool exists;			// True if the record is already in the database
+	// Mutators
+	void setId(int);
+	void setLast(QString);
+	void setFirst(QString);
+	void setFull_name(QString);
+	void setActive(bool);
 
+	// Methods
 	bool retrieve(int);		// (int) is the prescriber id.  Returns false on failure
 	bool commitRecord();	// Inserts (or updates) the record in the db
 	bool toggleActive();	// Toggles the active state
@@ -39,6 +47,15 @@ public:
 	static const QString full_name_Tooltip;
 	static const QString full_name_Label_secondary;
 	static const QString full_name_Tooltip_secondary;
+
+private:
+	int id;					// prescribers.id
+	QString last;			// prescribers.last
+	QString first;			// prescribers.first
+	QString full_name;		// prescribers.full_name
+	bool active;			// prescribers.active
+
+	bool exists;			// True if the record is already in the database
 };
 
 #endif // PRESCRIBERRECORD_H

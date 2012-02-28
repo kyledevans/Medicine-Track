@@ -242,7 +242,7 @@ void InventoryFrame::initiateWriteOff()
 		delete medication;
 		return;
 	}
-	if (!medication->retrieve(shipment->drug_id)) {
+	if (!medication->retrieve(shipment->getDrug_id())) {
 		delete shipment;
 		delete medication;
 		return;
@@ -251,17 +251,17 @@ void InventoryFrame::initiateWriteOff()
 	// Get from the user how many to write off
 	wo_amount = QInputDialog::getInt(this,
 									 "Write off inventory",
-									 "How many additional units do you want to write off?\nCurrently " + QString().setNum(shipment->write_off) + " " + medication->dispense_units + " are already written off.",
+									 "How many additional units do you want to write off?\nCurrently " + QString().setNum(shipment->getWrite_off()) + " " + medication->getDispense_units() + " are already written off.",
 									 0,
 									 0,
-									 shipment->product_left,
+									 shipment->getProduct_left(),
 									 1,
 									 &ok);
 	if (ok && wo_amount > 0) {
 		shipment->addWriteOff(wo_amount);
 	}
 
-	initiateSearch(shipment->id);
+	initiateSearch(shipment->getId());
 	delete shipment;
 	delete medication;
 }
@@ -290,7 +290,7 @@ void InventoryFrame::initiateIncrease()
 		delete medication;
 		return;
 	}
-	if (!medication->retrieve(shipment->drug_id)) {
+	if (!medication->retrieve(shipment->getDrug_id())) {
 		delete shipment;
 		delete medication;
 		return;
@@ -309,7 +309,7 @@ void InventoryFrame::initiateIncrease()
 		shipment->addInventory(delta);
 	}
 
-	initiateSearch(shipment->id);
+	initiateSearch(shipment->getId());
 	delete shipment;
 	delete medication;
 }

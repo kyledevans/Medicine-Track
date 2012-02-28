@@ -30,6 +30,61 @@ PrescriberRecord::PrescriberRecord():
 {
 }
 
+int PrescriberRecord::getId()
+{
+	return id;
+}
+
+QString PrescriberRecord::getLast()
+{
+	return last;
+}
+
+QString PrescriberRecord::getFirst()
+{
+	return first;
+}
+
+QString PrescriberRecord::getFull_name()
+{
+	return full_name;
+}
+
+bool PrescriberRecord::getActive()
+{
+	return active;
+}
+
+bool PrescriberRecord::getExists()
+{
+	return exists;
+}
+
+void PrescriberRecord::setId(int new_id)
+{
+	id = new_id;
+}
+
+void PrescriberRecord::setLast(QString new_last)
+{
+	last = new_last;
+}
+
+void PrescriberRecord::setFirst(QString new_first)
+{
+	first = new_first;
+}
+
+void PrescriberRecord::setFull_name(QString new_full_name)
+{
+	full_name = new_full_name;
+}
+
+void PrescriberRecord::setActive(bool new_active)
+{
+	active = new_active;
+}
+
 /* SQL without C++:
 SELECT last, first, full_name, active
 FROM prescribers

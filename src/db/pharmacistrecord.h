@@ -14,14 +14,22 @@ class PharmacistRecord
 public:
 	explicit PharmacistRecord();
 
-	int id;					// pharmacists.id
-	QString last;			// pharmacists.last
-	QString first;			// pharmacists.first
-	QString initials;		// pharmacists.initials
-	bool active;			// pharmacists.active
+	// Accessors
+	int getId();
+	QString getLast();
+	QString getFirst();
+	QString getInitials();
+	bool getActive();
+	bool getExists();
 
-	bool exists;			// True if the record is already in the database
+	// Mutators
+	void setId(int);
+	void setLast(QString);
+	void setFirst(QString);
+	void setInitials(QString);
+	void setActive(bool);
 
+	// Methods
 	bool retrieve(int);		// (int) is the pharmacist id.  Returns false if the retrieve failed
 	bool commitRecord();	// Inserts (or Updates) the record in the db
 	bool toggleActive();	// Toggles the active state
@@ -40,6 +48,15 @@ public:
 
 	static const QString initials_Label_secondary;
 	static const QString initials_Tooltip_secondary;
+
+private:
+	int id;					// pharmacists.id
+	QString last;			// pharmacists.last
+	QString first;			// pharmacists.first
+	QString initials;		// pharmacists.initials
+	bool active;			// pharmacists.active
+
+	bool exists;			// True if the record is already in the database
 };
 
 #endif // PHARMACISTRECORD_H

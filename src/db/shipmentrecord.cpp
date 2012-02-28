@@ -46,6 +46,91 @@ ShipmentRecord::ShipmentRecord():
 {
 }
 
+int ShipmentRecord::getId()
+{
+	return id;
+}
+
+int ShipmentRecord::getDrug_id()
+{
+	return drug_id;
+}
+
+QDate ShipmentRecord::getExpiration()
+{
+	return expiration;
+}
+
+QString ShipmentRecord::getLot()
+{
+	return lot;
+}
+
+int ShipmentRecord::getProduct_count()
+{
+	return product_count;
+}
+
+int ShipmentRecord::getProduct_left()
+{
+	return product_left;
+}
+
+int ShipmentRecord::getWrite_off()
+{
+	return write_off;
+}
+
+bool ShipmentRecord::getActive()
+{
+	return active;
+}
+
+bool ShipmentRecord::getExists()
+{
+	return exists;
+}
+
+void ShipmentRecord::setId(int new_id)
+{
+	id = new_id;
+}
+
+void ShipmentRecord::setDrug_id(int new_drug_id)
+{
+	drug_id = new_drug_id;
+}
+
+void ShipmentRecord::setExpiration(QDate new_expiration)
+{
+	expiration = new_expiration;
+}
+
+void ShipmentRecord::setLot(QString new_lot)
+{
+	lot = new_lot;
+}
+
+void ShipmentRecord::setProduct_count(int new_product_count)
+{
+	product_count = new_product_count;
+}
+
+void ShipmentRecord::setProduct_left(int new_product_left)
+{
+	product_left = new_product_left;
+}
+
+void ShipmentRecord::setWrite_off(int new_write_off)
+{
+	write_off = new_write_off;
+}
+
+void ShipmentRecord::setActive(bool new_active)
+{
+	active = new_active;
+}
+
 /* SQL without C++:
 UPDATE shipments
 SET product_count = (product_count + ?), product_left = (product_left + ?)

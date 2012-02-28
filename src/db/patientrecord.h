@@ -15,20 +15,29 @@ class PatientRecord
 public:
 	explicit PatientRecord();
 
-	int id;				// patients.id
-	int allscripts_id;	// patients.allscripts_id
-	QString first;		// patients.first
-	QString last;		// patients.last
-	QDate dob;			// patients.dob
-	bool active;		// patients.active
+	// Accessors
+	int getId();
+	int getAllscripts_id();
+	QString getLast();
+	QString getFirst();
+	QDate getDob();
+	bool getActive();
+	bool getExists();
 
-	bool exists;		// True if the record is already in the database
+	// Mutators
+	void setId(int);
+	void setAllscripts_id(int);
+	void setLast(QString);
+	void setFirst(QString);
+	void setDob(QDate);
+	void setActive(bool);
 
-	bool retrieve(int);			// (int) is the patient id. Returns false if the retrieve failed
-	bool commitRecord();		// Inserts (or updates) the record in the db
-	bool toggleActive();		// Sets the active state to (bool)
+	// Methods
+	bool retrieve(int);		// (int) is the patient id. Returns false if the retrieve failed
+	bool commitRecord();	// Inserts (or updates) the record in the db
+	bool toggleActive();	// Sets the active state to (bool)
 
-	void print();		// Prints to the debug interface
+	void print();			// Prints to the debug interface
 
 	/* Use these to keep UI strings consistent and sane. */
 	static const QString allscripts_id_Label;
@@ -42,6 +51,16 @@ public:
 
 	static const QString dob_Label;
 	static const QString dob_Tooltip;
+
+private:
+	int id;				// patients.id
+	int allscripts_id;	// patients.allscripts_id
+	QString first;		// patients.first
+	QString last;		// patients.last
+	QDate dob;			// patients.dob
+	bool active;		// patients.active
+
+	bool exists;		// True if the record is already in the database
 };
 
 #endif // PATIENTRECORD_H

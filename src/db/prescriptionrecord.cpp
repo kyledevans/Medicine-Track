@@ -41,6 +41,141 @@ PrescriptionRecord::PrescriptionRecord():
 {
 }
 
+int PrescriptionRecord::getId()
+{
+	return id;
+}
+
+int PrescriptionRecord::getPatient_id()
+{
+	return patient_id;
+}
+
+int PrescriptionRecord::getDrug_id()
+{
+	return drug_id;
+}
+
+int PrescriptionRecord::getShipment_id()
+{
+	return shipment_id;
+}
+
+int PrescriptionRecord::getPrescriber_id()
+{
+	return prescriber_id;
+}
+
+int PrescriptionRecord::getPharmacist_id()
+{
+	return pharmacist_id;
+}
+
+int PrescriptionRecord::getAmount()
+{
+	return amount;
+}
+
+QString PrescriptionRecord::getDose_size()
+{
+	return dose_size;
+}
+
+QDate PrescriptionRecord::getWritten()
+{
+	return written;
+}
+
+QDate PrescriptionRecord::getFilled()
+{
+	return filled;
+}
+
+QString PrescriptionRecord::getInstructions()
+{
+	return instructions;
+}
+
+QString PrescriptionRecord::getComments()
+{
+	return comments;
+}
+
+bool PrescriptionRecord::getActive()
+{
+	return active;
+}
+
+bool PrescriptionRecord::getExists()
+{
+	return exists;
+}
+
+void PrescriptionRecord::setId(int new_id)
+{
+	id = new_id;
+}
+
+void PrescriptionRecord::setPatient_id(int new_patient_id)
+{
+	patient_id = new_patient_id;
+}
+
+void PrescriptionRecord::setDrug_id(int new_drug_id)
+{
+	drug_id = new_drug_id;
+}
+
+void PrescriptionRecord::setShipment_id(int new_shipment_id)
+{
+	shipment_id = new_shipment_id;
+}
+
+void PrescriptionRecord::setPrescriber_id(int new_prescriber_id)
+{
+	prescriber_id = new_prescriber_id;
+}
+
+void PrescriptionRecord::setPharmacist_id(int new_pharmacist_id)
+{
+	pharmacist_id = new_pharmacist_id;
+}
+
+void PrescriptionRecord::setAmount(int new_amount)
+{
+	amount = new_amount;
+}
+
+void PrescriptionRecord::setDose_size(QString new_dose_size)
+{
+	dose_size = new_dose_size;
+}
+
+void PrescriptionRecord::setWritten(QDate new_written)
+{
+	written = new_written;
+}
+
+void PrescriptionRecord::setFilled(QDate new_filled)
+{
+	filled = new_filled;
+}
+
+void PrescriptionRecord::setInstructions(QString new_instructions)
+{
+	instructions = new_instructions;
+}
+
+void PrescriptionRecord::setComments(QString new_comments)
+{
+	comments = new_comments;
+}
+
+void PrescriptionRecord::setActive(bool new_active)
+{
+	active = new_active;
+}
+
 /* SQL without C++:
 START TRANSACTION;
 

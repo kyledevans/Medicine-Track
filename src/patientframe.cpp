@@ -219,7 +219,7 @@ void PatientFrame::initiatePrescription()
 	}
 
 	prescription = new PrescriptionRecord;
-	prescription->patient_id = ids[row];
+	prescription->setPatient_id(ids[row]);
 	wiz->setPrescription(prescription);
 
 	connect(wiz, SIGNAL(wizardComplete(PrescriptionRecord*)), this, SLOT(submitNewPrescription(PrescriptionRecord*)));
@@ -287,7 +287,7 @@ void PatientFrame::prescriptionCleanup(PrescriptionRecord *prescription)
 void PatientFrame::submitPatient(PatientRecord *patient)
 {
 	patient->commitRecord();
-	initiateSearch(patient->id);
+	initiateSearch(patient->getId());
 	delete patient;
 }
 
