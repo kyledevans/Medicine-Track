@@ -9,14 +9,6 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-PatientWizard::PatientWizard(QWidget *parent) :
-	QWizard(parent),
-	ui(new Ui::PatientWizard),
-	patient(NULL)
-{
-	ui->setupUi(this);
-}
-
 PatientWizard::PatientWizard(PatientRecord *new_patient, QWidget *parent) :
 	QWizard(parent),
 	ui(new Ui::PatientWizard)

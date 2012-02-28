@@ -218,48 +218,6 @@ void InventoryFrame::selectionChanged()
 	}
 }
 
-void InventoryFrame::initiateModify()
-{
-	unsigned int row;
-	ShipmentWizard *wiz;
-	ShipmentRecord *shipment;
-
-    shipment = new ShipmentRecord;
-
-	if (db_queried) {
-		if (!ui->resultTable->selectionModel()->hasSelection()) {
-			return;
-		}
-	} else {
-		return;
-	}
-
-	// This line finds the top row that was selected by the user
-	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-	if (!shipment->retrieve(ids[row])) {
-		return;
-	}
-
-	wiz = new ShipmentWizard(shipment);
-	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitModify(ShipmentRecord*)));
-	connect(wiz, SIGNAL(wizardRejected(ShipmentRecord*)), this, SLOT(shipmentCleanup(ShipmentRecord*)));
-	wiz->exec();
-
-	delete wiz;
-}
-
-void InventoryFrame::submitModify(ShipmentRecord *shipment)
-{
-	shipment->commitRecord();
-	initiateSearch(shipment->id);
-	shipmentCleanup(shipment);
-}
-
-void InventoryFrame::shipmentCleanup(ShipmentRecord *shipment)
-{
-	delete shipment;
-}
-
 void InventoryFrame::initiateWriteOff()
 {
 	unsigned int row, wo_amount;

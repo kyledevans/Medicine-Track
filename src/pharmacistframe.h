@@ -4,8 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QList>
-
 #include "db/pharmacistrecord.h"
 #include "globals.h"
 
@@ -29,14 +27,17 @@ public:
 public slots:
 	void initiateSearch(int pharmID = SQL::Undefined_ID);
 	void initiateNew();
-	void submitNew(PharmacistRecord *);		// Commits to the db and cleans up
-	void newCleanup(PharmacistRecord *);	// Cleans up after the new/modify wizard
 	void initiateModify();
+
+	void submitNew(PharmacistRecord *);		// TODO: Rename to be more accurate
+	void newCleanup(PharmacistRecord *);	// TODO: Remove
+
 	void toggleActive();
 
 	void resetPressed();
-
 	void selectionChanged();
+
+
 
 private:
 	Ui::PharmacistFrame *ui;

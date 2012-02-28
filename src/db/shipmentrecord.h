@@ -28,8 +28,9 @@ public:
 
 	bool retrieve(int);		// (int) is the shipment id.  Returns false if retrieve failed
 	bool commitRecord();	// Inserts (or updates) the record in the db
-	bool addWriteOff(int);	// Removes (int) amount of stock.  False on failure.
 	bool toggleActive();	// Toggles the active state
+
+	bool addWriteOff(int);	// Removes (int) amount of stock.  False on failure.
     bool addInventory(int); // Increases the amount received and amount left by (int)
 
 	void print();			// Prints to the debug interface

@@ -20,7 +20,6 @@ class PharmacistWizard : public QWizard
 	Q_OBJECT
 
 public:
-	explicit PharmacistWizard(QWidget *parent = 0);	// TODO: Remove this if it's not intended to be used
 	explicit PharmacistWizard(PharmacistRecord *, QWidget *parent = 0);
 	~PharmacistWizard();
 

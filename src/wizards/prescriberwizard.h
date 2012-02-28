@@ -20,7 +20,6 @@ class PrescriberWizard : public QWizard
 	Q_OBJECT
 
 public:
-	explicit PrescriberWizard(QWidget *parent = 0);	// TODO: Remove this if it's never intended to be used
 	explicit PrescriberWizard(PrescriberRecord *, QWidget *parent = 0);
 	~PrescriberWizard();
 

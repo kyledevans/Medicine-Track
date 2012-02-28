@@ -18,12 +18,8 @@ class AlertInterface : public QWidget
 public:
 	explicit AlertInterface(QWidget *parent = 0);
 
-	bool attemptQuery(QSqlQueryModel *, QString *);	// Returns true if succesful
-	bool attemptQuery(QSqlQuery *, QString *);      // Returns true if succesful
-	bool attemptQuery(QSqlQuery *);					// Returns true if succesful
-	void databaseInaccessible();
-
-	void criticalError(QString);
+	bool attemptQuery(QSqlQuery *);		// Returns true if succesful
+	void databaseInaccessible();		// Pops up an error to the user
 
 signals:
 

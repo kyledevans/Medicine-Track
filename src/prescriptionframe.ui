@@ -452,14 +452,6 @@
     </widget>
    </item>
   </layout>
-  <action name="modifyAction">
-   <property name="text">
-    <string>Modify Prescription</string>
-   </property>
-   <property name="toolTip">
-    <string>Modify past prescription information</string>
-   </property>
-  </action>
   <action name="printAction">
    <property name="text">
     <string>Print Label</string>

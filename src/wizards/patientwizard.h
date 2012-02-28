@@ -20,7 +20,6 @@ class PatientWizard : public QWizard
 	Q_OBJECT
 
 public:
-    explicit PatientWizard(QWidget *parent = 0);    // TODO: Does this need to exist?
 	explicit PatientWizard(PatientRecord *, QWidget *parent = 0);
 	~PatientWizard();
 

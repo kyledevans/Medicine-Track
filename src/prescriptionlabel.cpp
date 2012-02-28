@@ -14,14 +14,6 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-PrescriptionLabel::PrescriptionLabel(QWidget *parent) :
-	QFrame(parent),
-	ui(new Ui::PrescriptionLabel),
-	prescription(NULL)
-{
-	ui->setupUi(this);
-}
-
 PrescriptionLabel::PrescriptionLabel(PrescriptionRecord *new_prescription, QWidget *parent) :
 	QFrame(parent),
 	ui(new Ui::PrescriptionLabel)

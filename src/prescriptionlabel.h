@@ -27,7 +27,6 @@ class PrescriptionLabel : public QFrame
 	Q_OBJECT
 
 public:
-	explicit PrescriptionLabel(QWidget *parent = 0);
 	explicit PrescriptionLabel(PrescriptionRecord *, QWidget *parent = 0);
 	~PrescriptionLabel();
 

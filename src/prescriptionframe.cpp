@@ -99,7 +99,6 @@ PrescriptionFrame::PrescriptionFrame(QWidget *parent) :
 	// Setup signals/slots
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
-	connect(ui->modifyAction, SIGNAL(triggered()), this, SLOT(initiateModify()));
 	connect(ui->printAction, SIGNAL(triggered()), this, SLOT(initiatePrint()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->invalidateAction, SIGNAL(triggered()), this, SLOT(invalidatePrescription()));
@@ -143,7 +142,7 @@ void PrescriptionFrame::invalidatePrescription()
 
 		// Retrieve and invalidate prescription
 		prescription.retrieve(ids[row]);
-		prescription.invalidate();
+		prescription.toggleActive();
 		initiateSearch();
 	}
 }
@@ -262,27 +261,11 @@ void PrescriptionFrame::initiateSearch()
 void PrescriptionFrame::selectionChanged()
 {
 	if (ui->resultTable->selectionModel()->hasSelection()) {
-		ui->modifyAction->setEnabled(true);
 		ui->printAction->setEnabled(true);
 		ui->invalidateAction->setEnabled(true);
 	} else {
-		ui->modifyAction->setEnabled(false);
 		ui->printAction->setEnabled(false);
 		ui->invalidateAction->setEnabled(false);
-	}
-}
-
-// TODO: This doesn't do anything
-void PrescriptionFrame::initiateModify()
-{
-	unsigned int row;
-
-	if (db_queried) {
-		if (ui->resultTable->selectionModel()->hasSelection()) {
-			// This line finds the top row that was selected by the user
-			row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-//			qDebug() << "prescriptions.id = " << presIds[row] << " | patients.id = " << patientIds[row] << " | drugs.id = " << drugIds[row] << " | shipments.id = " << shipmentIds[row];
-		}
 	}
 }
 

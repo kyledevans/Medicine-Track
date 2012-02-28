@@ -227,7 +227,7 @@ void FormularyFrame::initiateNewMed()
 	MedicationWizard *wiz;
     DrugRecord *med;
 
-    med = new DrugRecord;
+	med = new DrugRecord;
 
 	wiz = new MedicationWizard(med);
     connect(wiz, SIGNAL(wizardComplete(DrugRecord*)), this, SLOT(submitNewMed(DrugRecord*)));
@@ -251,7 +251,7 @@ void FormularyFrame::initiateModify()
 		return;
 	}
 
-    med = new DrugRecord;
+	med = new DrugRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -261,18 +261,11 @@ void FormularyFrame::initiateModify()
 	}
 
 	wiz = new MedicationWizard(med);
-    connect(wiz, SIGNAL(wizardComplete(DrugRecord*)), this, SLOT(submitModify(DrugRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(DrugRecord*)), this, SLOT(submitNewMed(DrugRecord*)));
     connect(wiz, SIGNAL(wizardRejected(DrugRecord*)), this, SLOT(medCleanup(DrugRecord*)));
 	wiz->exec();
 
 	delete wiz;
-}
-
-void FormularyFrame::submitModify(DrugRecord *med)
-{
-	med->commitRecord();
-	initiateSearch(med->id);
-	medCleanup(med);
 }
 
 void FormularyFrame::submitNewMed(DrugRecord *med)
@@ -300,7 +293,7 @@ void FormularyFrame::initiateNewShipment()
 		return;
 	}
 
-    ship = new ShipmentRecord;
+	ship = new ShipmentRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();

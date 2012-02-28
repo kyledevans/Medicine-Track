@@ -4,8 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QList>
-
 #include "db/drugrecord.h"
 #include "db/shipmentrecord.h"
 #include "globals.h"
@@ -31,8 +29,6 @@ public slots:
 	void initiateSearch(int medID = SQL::Undefined_ID);
 
 	void initiateModify();
-	void submitModify(DrugRecord *);
-
 	void initiateNewMed();
 	void submitNewMed(DrugRecord *);
 	void medCleanup(DrugRecord *);

@@ -33,9 +33,9 @@ public:
 
 	bool retrieve(int);		// (int) is the prescription id.  Returns false if retrieve fails
 	bool commitRecord();	// Returns false if the procedure failed
-	void print();			// Prints to the default debug interface
+	bool toggleActive();
 
-	bool invalidate();
+	void print();			// Prints to the default debug interface
 
 	/* Use these to keep UI strings consistent and sane. */
 	static const QString amount_Label;

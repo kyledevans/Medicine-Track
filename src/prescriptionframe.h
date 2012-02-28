@@ -4,8 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QList>
-
 #ifndef PRESCRIPTIONFRAME_H
 #define PRESCRIPTIONFRAME_H
 
@@ -25,10 +23,9 @@ public:
 
 public slots:
 	void initiateSearch();
-	void resetPressed();
-	void initiateModify();
 	void initiatePrint();
 
+	void resetPressed();
 	void selectionChanged();
 
 	void invalidatePrescription();

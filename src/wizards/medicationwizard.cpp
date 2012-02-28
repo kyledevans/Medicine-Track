@@ -11,14 +11,6 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-MedicationWizard::MedicationWizard(QWidget *parent) :
-	QWizard(parent),
-	ui(new Ui::MedicationWizard),
-	med(NULL)
-{
-	ui->setupUi(this);
-}
-
 MedicationWizard::MedicationWizard(DrugRecord *new_med, QWidget *parent) :
 	QWizard(parent),
 	ui(new Ui::MedicationWizard)

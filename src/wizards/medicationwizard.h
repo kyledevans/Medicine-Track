@@ -20,8 +20,7 @@ class MedicationWizard : public QWizard
 	Q_OBJECT
 
 public:
-    explicit MedicationWizard(QWidget *parent = 0); // TODO: Should this exist?
-    explicit MedicationWizard(DrugRecord *, QWidget *parent = 0);
+	explicit MedicationWizard(DrugRecord *, QWidget *parent = 0);
 	~MedicationWizard();
 
 public slots:
@@ -29,13 +28,13 @@ public slots:
 	void rejectedWizard();
 
 signals:
-    void wizardComplete(DrugRecord *);
-    void wizardRejected(DrugRecord *);
+	void wizardComplete(DrugRecord *);
+	void wizardRejected(DrugRecord *);
 
 private:
 	Ui::MedicationWizard *ui;
 
-    DrugRecord *med;
+	DrugRecord *med;
 };
 
 #endif // MEDICATIONWIZARD_H

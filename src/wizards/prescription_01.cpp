@@ -78,63 +78,60 @@ void Prescription_01::deleteLists()
 /* SQL without C++:
 SELECT id, last, first, full_name, active
 FROM prescribers
-WHERE active = '1'
+WHERE active = 1
 ORDER BY last, first;
 
 SELECT id, last, first, initials, active
 FROM pharmacists
-WHERE active = '1'
+WHERE active = 1
 ORDER BY last, first;
 */
 bool Prescription_01::initCustom()
 {
-	QSqlQuery *model;				// Contains the query
-	QString query;					// Contains the SQL query string
+	QSqlQuery model;				// Contains the query
 	AlertInterface alert;
-	PrescriberRecord *presTemp;
-	PharmacistRecord *pharmTemp;
+	PrescriberRecord *presTemp;		// TODO: Convert from pointer
+	PharmacistRecord *pharmTemp;	// TODO: Convert from pointer
 	int i;							// Increment var
 
-	// TODO: This isn't using model.prepare()
-	model = new QSqlQuery;
-	query = QString("SELECT id, last, first, full_name, active FROM prescribers WHERE active = '1' ORDER BY last, first;");
+	model.prepare("SELECT id, last, first, full_name, active "
+				  "FROM prescribers "
+				  "WHERE active = 1 "
+				  "ORDER BY last, first;");
 
-	if (!alert.attemptQuery(model, &query)) {
-		delete model;
+	if (!alert.attemptQuery(&model)) {
 		return false;
 	}
-	for (i = 0; i < model->size(); i++) {
-		model->next();
-        presTemp = new PrescriberRecord;
-		presTemp->id = model->value(0).toInt();
-		presTemp->last = model->value(1).toString();
-		presTemp->first = model->value(2).toString();
-		presTemp->full_name = model->value(3).toString();
-		presTemp->active = model->value(4).toBool();
+	for (i = 0; i < model.size(); i++) {
+		model.next();
+		presTemp = new PrescriberRecord;
+		presTemp->id = model.value(0).toInt();
+		presTemp->last = model.value(1).toString();
+		presTemp->first = model.value(2).toString();
+		presTemp->full_name = model.value(3).toString();
+		presTemp->active = model.value(4).toBool();
 		prescribers.append(presTemp);
 	}
-	delete model;
 
-	query = QString("SELECT id, last, first, initials, active FROM pharmacists WHERE active = '1' ORDER BY last, first;");
+	model.prepare("SELECT id, last, first, initials, active "
+				  "FROM pharmacists "
+				  "WHERE active = 1 "
+				  "ORDER BY last, first;");
 
-	model = new QSqlQuery;
-	if (!alert.attemptQuery(model, &query)) {
+	if (!alert.attemptQuery(&model)) {
 		deleteLists();
-		delete model;
 		return false;
 	}
-	for (i = 0; i < model->size(); i++) {
-		model->next();
-        pharmTemp = new PharmacistRecord;
-		pharmTemp->id = model->value(0).toInt();
-		pharmTemp->last = model->value(1).toString();
-		pharmTemp->first = model->value(2).toString();
-		pharmTemp->initials = model->value(3).toString();
-		pharmTemp->active = model->value(4).toBool();
+	for (i = 0; i < model.size(); i++) {
+		model.next();
+		pharmTemp = new PharmacistRecord;
+		pharmTemp->id = model.value(0).toInt();
+		pharmTemp->last = model.value(1).toString();
+		pharmTemp->first = model.value(2).toString();
+		pharmTemp->initials = model.value(3).toString();
+		pharmTemp->active = model.value(4).toBool();
 		pharmacists.append(pharmTemp);
 	}
-
-	delete model;
 
 	setupComboBoxes();
 

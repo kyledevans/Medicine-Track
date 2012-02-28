@@ -4,8 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QList>
-
 #include "db/patientrecord.h"
 #include "db/prescriptionrecord.h"
 #include "globals.h"
@@ -29,17 +27,18 @@ public:
 
 public slots:
 	void initiateSearch(int patientID = SQL::Undefined_ID);
-	void resetPressed();
+
 	void initiatePrescription();
 	void initiateModification();
 	void initiateNewPatient();
 	void submitNewPatient(PatientRecord *);
-	void submitModify(PatientRecord *);
+
 	void newPatientCleanup(PatientRecord *);
 
 	void submitNewPrescription(PrescriptionRecord *);
 	void newPrescriptionCleanup(PrescriptionRecord *);
 
+	void resetPressed();
 	void selectionChanged();
 
 	void toggleActive();

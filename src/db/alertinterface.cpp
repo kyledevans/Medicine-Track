@@ -16,41 +16,6 @@ AlertInterface::AlertInterface(QWidget *parent) :
 {
 }
 
-bool AlertInterface::attemptQuery(QSqlQueryModel *model, QString *query)
-{
-	/*// TODO: Comment out the next 2 lines for production builds
-	qDebug() << *query;
-	return true;*/
-
-	model->setQuery(*query);
-	if (!model->lastError().isValid()) {
-		return true;	// Everything went well
-	}
-	qDebug() << "DB ERROR:" << model->lastError().text();	// TODO: Remove this for production
-	qDebug() << "query:" << *query;	// TODO: Remove this as well
-
-	databaseInaccessible();
-	return false;
-}
-
-bool AlertInterface::attemptQuery(QSqlQuery *model, QString *query)
-{
-	/*// TODO: Comment out the next 2 lines for production builds
-	qDebug() << *query;
-	return true;*/
-
-	//model->setQuery(*query);
-	model->exec(*query);
-	if (!model->lastError().isValid()) {
-		return true;	// Everything went well
-	}
-	qDebug() << "DB ERROR:" << model->lastError().text();	// TODO: Remove this for production
-	qDebug() << "query:" << *query;	// TODO: Remove this as well
-
-	databaseInaccessible();
-	return false;
-}
-
 bool AlertInterface::attemptQuery(QSqlQuery *model)
 {
 	/*// TODO: Comment out the next 2 lines for production builds

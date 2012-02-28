@@ -7,13 +7,6 @@ Released under the GPL version 2 only.
 #include "prescriberwizard.h"
 #include "ui_prescriberwizard.h"
 
-PrescriberWizard::PrescriberWizard(QWidget *parent) :
-	QWizard(parent),
-	ui(new Ui::PrescriberWizard)
-{
-	ui->setupUi(this);
-}
-
 PrescriberWizard::PrescriberWizard(PrescriberRecord *new_pres, QWidget *parent) :
 	QWizard(parent),
 	ui(new Ui::PrescriberWizard)

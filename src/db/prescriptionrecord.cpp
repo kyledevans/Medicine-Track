@@ -58,7 +58,7 @@ WHERE id = ?;
 
 COMMIT;
 */
-bool PrescriptionRecord::invalidate()
+bool PrescriptionRecord::toggleActive()
 {
 	QSqlDatabase db;
 	QSqlQuery *model;

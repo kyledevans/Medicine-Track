@@ -4,8 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QList>
-
 #include "db/shipmentrecord.h"
 #include "globals.h"
 
@@ -28,9 +26,7 @@ public:
 
 public slots:
 	void initiateSearch(int shipID = SQL::Undefined_ID);
-	void initiateModify();
-	void submitModify(ShipmentRecord *);
-	void shipmentCleanup(ShipmentRecord *);
+
 	void initiateWriteOff();
 	void initiatePrintBarcode();
 	void initiateIncrease();
@@ -38,7 +34,6 @@ public slots:
 	void toggleActive();
 
 	void resetPressed();
-
 	void selectionChanged();
 
 private:

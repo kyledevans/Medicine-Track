@@ -209,7 +209,7 @@ void PatientFrame::initiatePrescription()
 		return;
 	}
 
-    wiz = new PrescriptionWizard;
+	wiz = new PrescriptionWizard;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -233,6 +233,7 @@ void PatientFrame::initiateModification()
     PatientWizard *wiz;
 	PatientRecord *patient;
 
+	// TODO: Get these checks to appear consistent
 	if (db_queried) {
 		if (!ui->resultTable->selectionModel()->hasSelection()) {
 			return;
@@ -241,7 +242,7 @@ void PatientFrame::initiateModification()
 		return;
 	}
 
-    patient = new PatientRecord;
+	patient = new PatientRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -261,7 +262,7 @@ void PatientFrame::initiateModification()
 void PatientFrame::initiateNewPatient()
 {
     PatientWizard *wiz;
-    PatientRecord *patient = new PatientRecord;
+	PatientRecord *patient = new PatientRecord;
 
     wiz = new PatientWizard(patient);
 	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitNewPatient(PatientRecord*)));
@@ -295,9 +296,4 @@ void PatientFrame::submitNewPatient(PatientRecord *patient)
 void PatientFrame::newPatientCleanup(PatientRecord *patient)
 {
 	delete patient;
-}
-
-void PatientFrame::submitModify(PatientRecord *patient)
-{
-	// TODO: Implement this
 }

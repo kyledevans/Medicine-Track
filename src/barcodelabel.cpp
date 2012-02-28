@@ -44,11 +44,6 @@ QString BarcodeLabel::getBarcode()
 	return temp;
 }
 
-bool BarcodeLabel::hasBarcode()
-{
-	return has_barcode;
-}
-
 void BarcodeLabel::print()
 {
 	QPrinter printer(QPrinter::HighResolution);

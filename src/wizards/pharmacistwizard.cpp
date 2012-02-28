@@ -7,14 +7,6 @@ Released under the GPL version 2 only.
 #include "pharmacistwizard.h"
 #include "ui_pharmacistwizard.h"
 
-PharmacistWizard::PharmacistWizard(QWidget *parent) :
-	QWizard(parent),
-	ui(new Ui::PharmacistWizard),
-	pharm(0)
-{
-	ui->setupUi(this);
-}
-
 PharmacistWizard::PharmacistWizard(PharmacistRecord *new_pharm, QWidget *parent) :
 	QWizard(parent),
 	ui(new Ui::PharmacistWizard)

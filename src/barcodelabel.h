@@ -26,7 +26,6 @@ public:
 
 	void setBarcode(QString);
 	QString getBarcode();
-	bool hasBarcode();
 
 	int toID();
 

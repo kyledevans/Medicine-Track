@@ -27,15 +27,15 @@ public:
 public slots:
 	void initiateSearch(int presID = SQL::Undefined_ID);
 	void initiateNew();
-	void submitNew(PrescriberRecord *);
-	void newCleanup(PrescriberRecord *);
 	void initiateModify();
 
-	void resetPressed();
-
-	void selectionChanged();
+	void submitNew(PrescriberRecord *);		// TODO: Rename to be more accurate
+	void newCleanup(PrescriberRecord *);	// TODO: Remove
 
 	void toggleActive();
+
+	void resetPressed();
+	void selectionChanged();
 
 private:
 	Ui::PrescriberFrame *ui;
