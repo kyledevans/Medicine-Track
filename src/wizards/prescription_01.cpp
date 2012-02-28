@@ -105,7 +105,7 @@ bool Prescription_01::initCustom()
 	}
 	for (i = 0; i < model->size(); i++) {
 		model->next();
-		presTemp = new PrescriberRecord();
+        presTemp = new PrescriberRecord;
 		presTemp->id = model->value(0).toInt();
 		presTemp->last = model->value(1).toString();
 		presTemp->first = model->value(2).toString();
@@ -125,7 +125,7 @@ bool Prescription_01::initCustom()
 	}
 	for (i = 0; i < model->size(); i++) {
 		model->next();
-		pharmTemp = new PharmacistRecord();
+        pharmTemp = new PharmacistRecord;
 		pharmTemp->id = model->value(0).toInt();
 		pharmTemp->last = model->value(1).toString();
 		pharmTemp->first = model->value(2).toString();

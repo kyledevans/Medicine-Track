@@ -153,7 +153,7 @@ void PrescriberFrame::selectionChanged()
 void PrescriberFrame::initiateNew()
 {
 	PrescriberWizard *wiz;
-	PrescriberRecord *pres = new PrescriberRecord();
+    PrescriberRecord *pres = new PrescriberRecord;
 
 	wiz = new PrescriberWizard(pres);
 	connect(wiz, SIGNAL(wizardComplete(PrescriberRecord*)), this, SLOT(submitNew(PrescriberRecord*)));
@@ -189,7 +189,7 @@ void PrescriberFrame::initiateModify()
 		return;
 	}
 
-	pres = new PrescriberRecord();
+    pres = new PrescriberRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();

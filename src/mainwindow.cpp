@@ -42,12 +42,12 @@ MainWindow::MainWindow(QWidget *parent) :
 		connectDB();
 	}
 
-    PatientFrame *patientFrame = new PatientFrame();
-    PrescriptionFrame *prescriptionFrame = new PrescriptionFrame();
-    FormularyFrame *formularyFrame = new FormularyFrame();
-	InventoryFrame *inventoryFrame = new InventoryFrame();
-	PrescriberFrame *prescriberFrame = new PrescriberFrame();
-	PharmacistFrame *pharmacistFrame = new PharmacistFrame();
+    PatientFrame *patientFrame = new PatientFrame;
+    PrescriptionFrame *prescriptionFrame = new PrescriptionFrame;
+    FormularyFrame *formularyFrame = new FormularyFrame;
+    InventoryFrame *inventoryFrame = new InventoryFrame;
+    PrescriberFrame *prescriberFrame = new PrescriberFrame;
+    PharmacistFrame *pharmacistFrame = new PharmacistFrame;
 
 	ui->mainTabs->addTab(patientFrame, QString("Patients"));
     ui->mainTabs->addTab(prescriptionFrame, QString("Prescription log"));
@@ -118,7 +118,7 @@ void MainWindow::connectDB()
 	}
 	db.open();
 	if (!db.isOpen()) {
-		AlertInterface alert(this);
+        AlertInterface alert;
 		alert.databaseInaccessible();
 	}
 }

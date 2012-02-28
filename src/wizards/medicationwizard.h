@@ -20,7 +20,7 @@ class MedicationWizard : public QWizard
 	Q_OBJECT
 
 public:
-	explicit MedicationWizard(QWidget *parent = 0);
+    explicit MedicationWizard(QWidget *parent = 0); // TODO: Should this exist?
     explicit MedicationWizard(DrugRecord *, QWidget *parent = 0);
 	~MedicationWizard();
 

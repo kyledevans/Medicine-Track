@@ -224,7 +224,7 @@ void InventoryFrame::initiateModify()
 	ShipmentWizard *wiz;
 	ShipmentRecord *shipment;
 
-	shipment = new ShipmentRecord();
+    shipment = new ShipmentRecord;
 
 	if (db_queried) {
 		if (!ui->resultTable->selectionModel()->hasSelection()) {
