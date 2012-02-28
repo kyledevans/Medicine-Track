@@ -26,9 +26,9 @@ public:
 
 public slots:
 	void initiateSearch(int shipID = SQL::Undefined_ID);
+	void initiatePrintBarcode();
 
 	void initiateWriteOff();
-	void initiatePrintBarcode();
 	void initiateIncrease();
 
 	void toggleActive();

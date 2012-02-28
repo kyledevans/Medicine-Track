@@ -155,11 +155,11 @@ void PharmacistFrame::selectionChanged()
 void PharmacistFrame::initiateNew()
 {
 	PharmacistWizard *wiz;
-    PharmacistRecord *pharm = new PharmacistRecord;
+	PharmacistRecord *pharm = new PharmacistRecord;
 
 	wiz = new PharmacistWizard(pharm);
-	connect(wiz, SIGNAL(wizardComplete(PharmacistRecord*)), this, SLOT(submitNew(PharmacistRecord*)));
-	connect(wiz, SIGNAL(wizardRejected(PharmacistRecord*)), this, SLOT(newCleanup(PharmacistRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(PharmacistRecord*)), this, SLOT(submitPharmacist(PharmacistRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PharmacistRecord*)), this, SLOT(pharmacistCleanup(PharmacistRecord*)));
 	wiz->exec();
 
 	delete wiz;
@@ -171,15 +171,14 @@ void PharmacistFrame::initiateModify()
 	PharmacistWizard *wiz;
 	PharmacistRecord *pharm;
 
-	if (db_queried) {
-		if (!ui->resultTable->selectionModel()->hasSelection()) {
-			return;
-		}
-	} else {
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
 		return;
 	}
 
-    pharm = new PharmacistRecord;
+	pharm = new PharmacistRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -189,21 +188,21 @@ void PharmacistFrame::initiateModify()
 	}
 
 	wiz = new PharmacistWizard(pharm);
-	connect(wiz, SIGNAL(wizardComplete(PharmacistRecord*)), this, SLOT(submitNew(PharmacistRecord*)));
-	connect(wiz, SIGNAL(wizardRejected(PharmacistRecord*)), this, SLOT(newCleanup(PharmacistRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(PharmacistRecord*)), this, SLOT(submitPharmacist(PharmacistRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PharmacistRecord*)), this, SLOT(pharmacistCleanup(PharmacistRecord*)));
 	wiz->exec();
 
 	delete wiz;
 }
 
-void PharmacistFrame::submitNew(PharmacistRecord *pharm)
+void PharmacistFrame::submitPharmacist(PharmacistRecord *pharm)
 {
 	pharm->commitRecord();
 	initiateSearch(pharm->id);
-	newCleanup(pharm);
+	delete pharm;
 }
 
-void PharmacistFrame::newCleanup(PharmacistRecord *pharm)
+void PharmacistFrame::pharmacistCleanup(PharmacistRecord *pharm)
 {
 	delete pharm;
 }

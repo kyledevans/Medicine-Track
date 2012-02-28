@@ -153,26 +153,14 @@ void PrescriberFrame::selectionChanged()
 void PrescriberFrame::initiateNew()
 {
 	PrescriberWizard *wiz;
-    PrescriberRecord *pres = new PrescriberRecord;
+	PrescriberRecord *pres = new PrescriberRecord;
 
 	wiz = new PrescriberWizard(pres);
-	connect(wiz, SIGNAL(wizardComplete(PrescriberRecord*)), this, SLOT(submitNew(PrescriberRecord*)));
-	connect(wiz, SIGNAL(wizardRejected(PrescriberRecord*)), this, SLOT(newCleanup(PrescriberRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(PrescriberRecord*)), this, SLOT(submitPrescriber(PrescriberRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PrescriberRecord*)), this, SLOT(prescriberCleanup(PrescriberRecord*)));
 	wiz->exec();
 
 	delete wiz;
-}
-
-void PrescriberFrame::submitNew(PrescriberRecord *pres)
-{
-	pres->commitRecord();
-	initiateSearch(pres->id);
-	newCleanup(pres);
-}
-
-void PrescriberFrame::newCleanup(PrescriberRecord *pres)
-{
-	delete pres;
 }
 
 void PrescriberFrame::initiateModify()
@@ -181,15 +169,14 @@ void PrescriberFrame::initiateModify()
 	PrescriberWizard *wiz;
 	PrescriberRecord *pres;
 
-	if (db_queried) {
-		if (!ui->resultTable->selectionModel()->hasSelection()) {
-			return;
-		}
-	} else {
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
 		return;
 	}
 
-    pres = new PrescriberRecord;
+	pres = new PrescriberRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -199,9 +186,21 @@ void PrescriberFrame::initiateModify()
 	}
 
 	wiz = new PrescriberWizard(pres);
-	connect(wiz, SIGNAL(wizardComplete(PrescriberRecord*)), this, SLOT(submitNew(PrescriberRecord*)));
-	connect(wiz, SIGNAL(wizardRejected(PrescriberRecord*)), this, SLOT(newCleanup(PrescriberRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(PrescriberRecord*)), this, SLOT(submitPrescriber(PrescriberRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PrescriberRecord*)), this, SLOT(prescriberCleanup(PrescriberRecord*)));
 	wiz->exec();
 
 	delete wiz;
+}
+
+void PrescriberFrame::submitPrescriber(PrescriberRecord *pres)
+{
+	pres->commitRecord();
+	initiateSearch(pres->id);
+	delete pres;
+}
+
+void PrescriberFrame::prescriberCleanup(PrescriberRecord *pres)
+{
+	delete pres;
 }

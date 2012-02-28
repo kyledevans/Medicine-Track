@@ -116,37 +116,6 @@ PrescriptionFrame::~PrescriptionFrame()
 	delete ui;
 }
 
-void PrescriptionFrame::invalidatePrescription()
-{
-	QMessageBox msg;
-	PrescriptionRecord prescription;
-	int val;
-	unsigned int row;
-
-	msg.setText("Verify prescription removal");
-	msg.setInformativeText("Are you sure you want to remove this prescription permanently?");
-	msg.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-	msg.setDefaultButton(QMessageBox::No);
-	val = msg.exec();
-
-	if (val == QMessageBox::Yes) {	// Yes pressed
-		if (!db_queried) {
-			return;
-		}
-		if (!ui->resultTable->selectionModel()->hasSelection()) {
-			return;
-		}
-
-		// This line finds the top row that was selected by the user
-		row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-
-		// Retrieve and invalidate prescription
-		prescription.retrieve(ids[row]);
-		prescription.toggleActive();
-		initiateSearch();
-	}
-}
-
 void PrescriptionFrame::resetPressed()
 {
 	ui->filledField->setDate(DEFAULTS::Date);
@@ -154,6 +123,17 @@ void PrescriptionFrame::resetPressed()
 	ui->resultTable->clearContents();
 	ui->resultTable->setRowCount(0);
 	ui->invalidField->setChecked(false);
+}
+
+void PrescriptionFrame::selectionChanged()
+{
+	if (ui->resultTable->selectionModel()->hasSelection()) {
+		ui->printAction->setEnabled(true);
+		ui->invalidateAction->setEnabled(true);
+	} else {
+		ui->printAction->setEnabled(false);
+		ui->invalidateAction->setEnabled(false);
+	}
 }
 
 /* SQL query without C++:
@@ -258,17 +238,6 @@ void PrescriptionFrame::initiateSearch()
 	delete model;
 }
 
-void PrescriptionFrame::selectionChanged()
-{
-	if (ui->resultTable->selectionModel()->hasSelection()) {
-		ui->printAction->setEnabled(true);
-		ui->invalidateAction->setEnabled(true);
-	} else {
-		ui->printAction->setEnabled(false);
-		ui->invalidateAction->setEnabled(false);
-	}
-}
-
 void PrescriptionFrame::initiatePrint()
 {
 	PrescriptionLabel *label;
@@ -288,8 +257,38 @@ void PrescriptionFrame::initiatePrint()
 	pres = new PrescriptionRecord;
 	pres->retrieve(ids[row]);
 	label = new PrescriptionLabel(pres);
-	label->printLabel();
+	label->print();
 
 	delete label;
 }
 
+void PrescriptionFrame::invalidatePrescription()
+{
+	QMessageBox msg;
+	PrescriptionRecord prescription;
+	int val;
+	unsigned int row;
+
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return;
+	}
+
+	msg.setText("Verify prescription removal");
+	msg.setInformativeText("Are you sure you want to remove this prescription permanently?");
+	msg.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+	msg.setDefaultButton(QMessageBox::No);
+	val = msg.exec();
+
+	if (val == QMessageBox::Yes) {	// Yes pressed
+		// This line finds the top row that was selected by the user
+		row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+		// Retrieve and invalidate prescription
+		prescription.retrieve(ids[row]);
+		prescription.toggleActive();
+		initiateSearch();
+	}
+}

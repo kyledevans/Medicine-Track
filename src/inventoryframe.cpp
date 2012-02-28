@@ -319,11 +319,10 @@ void InventoryFrame::initiatePrintBarcode()
 	unsigned int row;
 	BarcodeLabel label;
 
-	if (db_queried) {
-		if (!ui->resultTable->selectionModel()->hasSelection()) {
-			return;
-		}
-	} else {
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
 		return;
 	}
 

@@ -26,18 +26,17 @@ public:
 
 public slots:
 	void initiateSearch(int pharmID = SQL::Undefined_ID);
+
 	void initiateNew();
 	void initiateModify();
 
-	void submitNew(PharmacistRecord *);		// TODO: Rename to be more accurate
-	void newCleanup(PharmacistRecord *);	// TODO: Remove
+	void submitPharmacist(PharmacistRecord *);
+	void pharmacistCleanup(PharmacistRecord *);
 
 	void toggleActive();
 
 	void resetPressed();
 	void selectionChanged();
-
-
 
 private:
 	Ui::PharmacistFrame *ui;

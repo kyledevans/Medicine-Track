@@ -31,12 +31,12 @@ public slots:
 	void initiatePrescription();
 	void initiateModification();
 	void initiateNewPatient();
-	void submitNewPatient(PatientRecord *);
 
-	void newPatientCleanup(PatientRecord *);
+	void submitPatient(PatientRecord *);
+	void patientCleanup(PatientRecord *);
 
-	void submitNewPrescription(PrescriptionRecord *);
-	void newPrescriptionCleanup(PrescriptionRecord *);
+	void submitPrescription(PrescriptionRecord *);
+	void prescriptionCleanup(PrescriptionRecord *);
 
 	void resetPressed();
 	void selectionChanged();

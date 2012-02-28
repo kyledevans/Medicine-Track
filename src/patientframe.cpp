@@ -233,12 +233,10 @@ void PatientFrame::initiateModification()
     PatientWizard *wiz;
 	PatientRecord *patient;
 
-	// TODO: Get these checks to appear consistent
-	if (db_queried) {
-		if (!ui->resultTable->selectionModel()->hasSelection()) {
-			return;
-		}
-	} else {
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
 		return;
 	}
 
@@ -252,8 +250,8 @@ void PatientFrame::initiateModification()
 	}
 
     wiz = new PatientWizard(patient);
-	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitNewPatient(PatientRecord*)));
-	connect(wiz, SIGNAL(wizardRejected(PatientRecord*)), this, SLOT(newPatientCleanup(PatientRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitPatient(PatientRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PatientRecord*)), this, SLOT(patientCleanup(PatientRecord*)));
 	wiz->exec();
 
 	delete wiz;
@@ -265,35 +263,35 @@ void PatientFrame::initiateNewPatient()
 	PatientRecord *patient = new PatientRecord;
 
     wiz = new PatientWizard(patient);
-	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitNewPatient(PatientRecord*)));
-	connect(wiz, SIGNAL(wizardRejected(PatientRecord*)), this, SLOT(newPatientCleanup(PatientRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitPatient(PatientRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PatientRecord*)), this, SLOT(patientCleanup(PatientRecord*)));
 	wiz->exec();
 
 	delete wiz;
 }
 
-void PatientFrame::submitNewPrescription(PrescriptionRecord *prescription)
+void PatientFrame::submitPrescription(PrescriptionRecord *prescription)
 {
 	PrescriptionLabel label(prescription);
 	if (prescription->commitRecord()) {
-		label.printLabel();
+		label.print();
 	}
-	newPrescriptionCleanup(prescription);
+	prescriptionCleanup(prescription);
 }
 
-void PatientFrame::newPrescriptionCleanup(PrescriptionRecord *prescription)
+void PatientFrame::prescriptionCleanup(PrescriptionRecord *prescription)
 {
 	delete prescription;
 }
 
-void PatientFrame::submitNewPatient(PatientRecord *patient)
+void PatientFrame::submitPatient(PatientRecord *patient)
 {
 	patient->commitRecord();
 	initiateSearch(patient->id);
-	newPatientCleanup(patient);
+	delete patient;
 }
 
-void PatientFrame::newPatientCleanup(PatientRecord *patient)
+void PatientFrame::patientCleanup(PatientRecord *patient)
 {
 	delete patient;
 }

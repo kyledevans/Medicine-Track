@@ -230,7 +230,7 @@ void FormularyFrame::initiateNewMed()
 	med = new DrugRecord;
 
 	wiz = new MedicationWizard(med);
-    connect(wiz, SIGNAL(wizardComplete(DrugRecord*)), this, SLOT(submitNewMed(DrugRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(DrugRecord*)), this, SLOT(submitDrug(DrugRecord*)));
     connect(wiz, SIGNAL(wizardRejected(DrugRecord*)), this, SLOT(medCleanup(DrugRecord*)));
 	wiz->exec();
 
@@ -243,11 +243,10 @@ void FormularyFrame::initiateModify()
 	MedicationWizard *wiz;
     DrugRecord *med;
 
-	if (db_queried) {
-		if (!ui->resultTable->selectionModel()->hasSelection()) {
-			return;
-		}
-	} else {
+	if (!db_queried) {
+		return;
+	}
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
 		return;
 	}
 
@@ -261,18 +260,18 @@ void FormularyFrame::initiateModify()
 	}
 
 	wiz = new MedicationWizard(med);
-	connect(wiz, SIGNAL(wizardComplete(DrugRecord*)), this, SLOT(submitNewMed(DrugRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(DrugRecord*)), this, SLOT(submitDrug(DrugRecord*)));
     connect(wiz, SIGNAL(wizardRejected(DrugRecord*)), this, SLOT(medCleanup(DrugRecord*)));
 	wiz->exec();
 
 	delete wiz;
 }
 
-void FormularyFrame::submitNewMed(DrugRecord *med)
+void FormularyFrame::submitDrug(DrugRecord *med)
 {
 	med->commitRecord();
 	initiateSearch(med->id);
-	medCleanup(med);
+	delete med;
 }
 
 void FormularyFrame::medCleanup(DrugRecord *med)
@@ -301,7 +300,7 @@ void FormularyFrame::initiateNewShipment()
 
 	wiz = new ShipmentWizard(ship);
 
-	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitNewShipment(ShipmentRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(ShipmentRecord*)), this, SLOT(submitShipment(ShipmentRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(ShipmentRecord*)), this, SLOT(shipmentCleanup(ShipmentRecord*)));
 
 	wiz->exec();
@@ -309,14 +308,14 @@ void FormularyFrame::initiateNewShipment()
 	delete wiz;
 }
 
-void FormularyFrame::submitNewShipment(ShipmentRecord *shipment)
+void FormularyFrame::submitShipment(ShipmentRecord *shipment)
 {
 	BarcodeLabel barcode;
 	shipment->commitRecord();
 	initiateSearch(shipment->drug_id);
 	barcode.setBarcode(QString("SID") + QString().setNum(shipment->id));
 	barcode.print();
-	shipmentCleanup(shipment);
+	delete shipment;
 }
 
 void FormularyFrame::shipmentCleanup(ShipmentRecord *shipment)

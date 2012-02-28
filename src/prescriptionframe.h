@@ -25,10 +25,10 @@ public slots:
 	void initiateSearch();
 	void initiatePrint();
 
+	void invalidatePrescription();
+
 	void resetPressed();
 	void selectionChanged();
-
-	void invalidatePrescription();
 
 private:
     Ui::PrescriptionFrame *ui;

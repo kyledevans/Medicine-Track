@@ -47,19 +47,19 @@ PrescriptionLabel::~PrescriptionLabel()
 	delete shipment;
 }
 
-void PrescriptionLabel::printLabel()
+void PrescriptionLabel::print()
 {
 	QPrinter printer(QPrinter::HighResolution);
 	QPrintDialog *diag = new QPrintDialog(&printer);
-	connect(diag, SIGNAL(accepted(QPrinter*)), this, SLOT(print(QPrinter*)));
+	connect(diag, SIGNAL(accepted(QPrinter*)), this, SLOT(printLabel(QPrinter*)));
 	diag->exec();
 
 	/*printer.setOutputFileName("C:\\Users\\Evans\\Desktop\\print.pdf");
 	printer.setOutputFormat(QPrinter::PdfFormat);
-	print(&printer);*/
+	printLabel(&printer);*/
 }
 
-void PrescriptionLabel::print(QPrinter *printer)
+void PrescriptionLabel::printLabel(QPrinter *printer)
 {
 	QPainter painter;
 

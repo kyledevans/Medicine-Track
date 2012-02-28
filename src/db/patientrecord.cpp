@@ -9,6 +9,8 @@ Released under the GPL version 2 only.
 #include "alertinterface.h"
 #include "../globals.h"
 
+#include <QDebug>
+
 const QString PatientRecord::allscripts_id_Label("M.R. Number");
 const QString PatientRecord::allscripts_id_Tooltip("Allscripts medical record number");
 
@@ -147,4 +149,9 @@ bool PatientRecord::commitRecord()
 
 	delete model;
 	return true;
+}
+
+void PatientRecord::print()
+{
+	qDebug() << "id =" << id << ", allscripts_id =" << allscripts_id << ", last =" << last << ", first =" << first << ", dob =" << dob << ", active =" << active;
 }

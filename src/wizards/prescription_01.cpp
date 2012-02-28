@@ -90,8 +90,8 @@ bool Prescription_01::initCustom()
 {
 	QSqlQuery model;				// Contains the query
 	AlertInterface alert;
-	PrescriberRecord *presTemp;		// TODO: Convert from pointer
-	PharmacistRecord *pharmTemp;	// TODO: Convert from pointer
+	PrescriberRecord *presTemp;
+	PharmacistRecord *pharmTemp;
 	int i;							// Increment var
 
 	model.prepare("SELECT id, last, first, full_name, active "

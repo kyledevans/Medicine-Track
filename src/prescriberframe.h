@@ -26,11 +26,12 @@ public:
 
 public slots:
 	void initiateSearch(int presID = SQL::Undefined_ID);
+
 	void initiateNew();
 	void initiateModify();
 
-	void submitNew(PrescriberRecord *);		// TODO: Rename to be more accurate
-	void newCleanup(PrescriberRecord *);	// TODO: Remove
+	void submitPrescriber(PrescriberRecord *);
+	void prescriberCleanup(PrescriberRecord *);
 
 	void toggleActive();
 

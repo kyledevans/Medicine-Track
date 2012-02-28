@@ -16,15 +16,6 @@ Released under the GPL version 2 only.
 -----
 1.1 TODO List (and wishlist)
 
-1.  Some maintenance stuff (do in order):
-	check - Make database record classes no longer QObjects
-	- Rename MedicationRecord to DrugRecord
-	check - Rename the tab classes consistently
-	check - Rename the wizards in a consistent manner
-	check - Rename the wizard pages in a consistent manner
-	check - Move the wizards into 1 "wizard" directory
-	check - Move the database record classes into 1 "database" directory
-
 2.  Make database record classes use accessors/mutators instead of public members
 
 3.  Document the database record classes in a way similar to how Qt documents
@@ -50,11 +41,7 @@ Released under the GPL version 2 only.
 
 11.  Go through code and address all TODO comments
 
-12.  Rearrange and set a consistent way to #include files
-
 13.  After adding a patient, have it be auto-selected after wizard completes
-
-14.  Make consistent use of "()" when declaring variables.  Doesn't make sense to always put them there.
 
 -----
 

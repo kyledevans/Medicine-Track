@@ -30,17 +30,16 @@ public slots:
 
 	void initiateModify();
 	void initiateNewMed();
-	void submitNewMed(DrugRecord *);
+	void submitDrug(DrugRecord *);
 	void medCleanup(DrugRecord *);
 
-	void resetPressed();
-
 	void initiateNewShipment();
-	void submitNewShipment(ShipmentRecord *);
+	void submitShipment(ShipmentRecord *);
 	void shipmentCleanup(ShipmentRecord *);
 
 	void toggleActive();
 
+	void resetPressed();
 	void selectionChanged();
 
 private:

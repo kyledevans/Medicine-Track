@@ -30,10 +30,10 @@ public:
 	explicit PrescriptionLabel(PrescriptionRecord *, QWidget *parent = 0);
 	~PrescriptionLabel();
 
-	void printLabel();	// Deletes the value in pres (TODO: this needs to change)
+	void print();
 
-public slots:
-	void print(QPrinter *);
+private slots:
+	void printLabel(QPrinter *);
 
 private:
 	Ui::PrescriptionLabel *ui;

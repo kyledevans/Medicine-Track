@@ -28,7 +28,7 @@ public:
 	bool commitRecord();		// Inserts (or updates) the record in the db
 	bool toggleActive();		// Sets the active state to (bool)
 
-	// TODO: Add a print() method
+	void print();		// Prints to the debug interface
 
 	/* Use these to keep UI strings consistent and sane. */
 	static const QString allscripts_id_Label;

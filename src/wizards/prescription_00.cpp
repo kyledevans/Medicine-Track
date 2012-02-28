@@ -163,10 +163,9 @@ bool Prescription_00::isComplete() const
 	if (!db_queried) {
 		return false;
 	}
-
-	if (ui->resultTable->selectionModel()->hasSelection()) {
-		return true;
+	if (!ui->resultTable->selectionModel()->hasSelection()) {
+		return false;
 	}
 
-	return false;
+	return true;
 }
