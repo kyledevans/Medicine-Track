@@ -6,13 +6,9 @@ Released under the GPL version 2 only.
 
 2.  Possible feature is to be able to combine patients into 1.  IE: the clerk fails to find the existing patient record when filling a prescription and instead creates a duplicate patient record.
 
-4.  Need to be able to print new barcodes after a shipment has been registered in the database.  IE: The barcodes are destroyed somehow.
-
 7.  Every time the user does something that changes information on the database, post a message to the status bar at the bottom.
 
 8.  The application needs to always indicate whether or not it is connected to the database.
-
-12.  Combine the prescribers and pharmacists tables into 1
 
 15.  Remove the ability to modify anything (possible exception being patients)
 	- It will make the prescription log be inacurate if say the name of a medication is changed after the prescription has been given.
@@ -23,10 +19,10 @@ Released under the GPL version 2 only.
 1.  Some maintenance stuff (do in order):
 	check - Make database record classes no longer QObjects
 	- Rename MedicationRecord to DrugRecord
-	- Rename the tab classes consistently
-	- Rename the wizards in a consistent manner
-	- Rename the wizard pages in a consistent manner
-	- Move the wizards into 1 "wizard" directory
+	check - Rename the tab classes consistently
+	check - Rename the wizards in a consistent manner
+	check - Rename the wizard pages in a consistent manner
+	check - Move the wizards into 1 "wizard" directory
 	check - Move the database record classes into 1 "database" directory
 
 2.  Make database record classes use accessors/mutators instead of public members
@@ -50,7 +46,7 @@ Released under the GPL version 2 only.
 
 9.  Add verification routines. IE: A SQL function that adds up the prescriptions.amount from every prescription that references a particular shipment_id.  It will then verify that the current stock is consistent with the amount prescribed and written off.
 
-10.  A 'management' UI that is used to do run the verification routines and do the initial database setup calls.
+10.  A 'management' UI that is used to run the verification routines and do the initial database setup calls.
 
 11.  Go through code and address all TODO comments
 
