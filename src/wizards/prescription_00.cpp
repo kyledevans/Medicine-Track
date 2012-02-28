@@ -4,14 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QSqlQuery>
-#include <QSqlRecord>
-#include <QTableWidgetItem>
-
 #include "prescription_00.h"
 #include "ui_prescription_00.h"
 
 #include "db/alertinterface.h"
+#include "db/drugrecord.h"
+#include "db/shipmentrecord.h"
 #include "globals.h"
 #include "barcodelabel.h"
 
@@ -34,24 +32,24 @@ Prescription_00::Prescription_00(QWidget *parent) :
 
 	// Set the various strings and tooltips for the resultTable
 	header = ui->resultTable->horizontalHeaderItem(0);
-	header->setText(MedicationRecord::name_Label);
-	header->setToolTip(MedicationRecord::name_Tooltip);
+    header->setText(DrugRecord::name_Label);
+    header->setToolTip(DrugRecord::name_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(1);
 	header->setText(ShipmentRecord::lot_Label);
 	header->setToolTip(ShipmentRecord::lot_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(2);
-	header->setText(MedicationRecord::form_Label);
-	header->setToolTip(MedicationRecord::form_Tooltip);
+    header->setText(DrugRecord::form_Label);
+    header->setToolTip(DrugRecord::form_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(3);
-	header->setText(MedicationRecord::strength_Label);
-	header->setToolTip(MedicationRecord::strength_Tooltip);
+    header->setText(DrugRecord::strength_Label);
+    header->setToolTip(DrugRecord::strength_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(4);
-	header->setText(MedicationRecord::unit_size_Label);
-	header->setToolTip(MedicationRecord::unit_size_Tooltip);
+    header->setText(DrugRecord::unit_size_Label);
+    header->setToolTip(DrugRecord::unit_size_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(5);
 	header->setText(ShipmentRecord::product_left_Label);

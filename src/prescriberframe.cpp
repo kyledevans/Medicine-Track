@@ -4,18 +4,11 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QString>
-#include <QSqlQuery>
-#include <QSqlRecord>
-#include <QList>
-
 #include "prescriberframe.h"
 #include "ui_prescriberframe.h"
 
-#include "prescriberwizard.h"
-#include "prescriberrecord.h"
 #include "db/alertinterface.h"
-#include "globals.h"
+#include "prescriberwizard.h"
 
 PrescriberFrame::PrescriberFrame(QWidget *parent) :
 	QFrame(parent),

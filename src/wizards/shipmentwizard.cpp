@@ -9,17 +9,17 @@ Released under the GPL version 2 only.
 
 #include <QString>
 
-#include <QDebug>
+#include "db/drugrecord.h"
 
-#include "medicationrecord.h"
+#include <QDebug>
 
 ShipmentWizard::ShipmentWizard(ShipmentRecord *new_shipment, QWidget *parent) :
 	QWizard(parent),
 	ui(new Ui::ShipmentWizard)
 {
-	MedicationRecord *med;
+    DrugRecord *med;
 	shipment = new_shipment;
-	med = new MedicationRecord;
+    med = new DrugRecord;
 	med->retrieve(shipment->drug_id);
 	ui->setupUi(this);
 

@@ -4,13 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QVariant>
-#include <QDoubleValidator>
-
 #include "medication_00.h"
 #include "ui_medication_00.h"
 
-#include "medicationrecord.h"
+#include <QVariant>
+#include <QDoubleValidator>
+
 #include "globals.h"
 
 Medication_00::Medication_00(QWidget *parent) :
@@ -20,37 +19,37 @@ Medication_00::Medication_00(QWidget *parent) :
 	ui->setupUi(this);
 
 	// Set the various UI strings and tooltips
-	ui->medicationLabel->setText(MedicationRecord::name_Label);
-	ui->medicationLabel->setToolTip(MedicationRecord::name_Tooltip);
-	ui->medicationField->setToolTip(MedicationRecord::name_Tooltip);
+    ui->medicationLabel->setText(DrugRecord::name_Label);
+    ui->medicationLabel->setToolTip(DrugRecord::name_Tooltip);
+    ui->medicationField->setToolTip(DrugRecord::name_Tooltip);
 
-	ui->genericLabel->setText(MedicationRecord::generic_Label);
-	ui->genericLabel->setToolTip(MedicationRecord::generic_Tooltip);
-	ui->genericField->setToolTip(MedicationRecord::generic_Tooltip);
+    ui->genericLabel->setText(DrugRecord::generic_Label);
+    ui->genericLabel->setToolTip(DrugRecord::generic_Tooltip);
+    ui->genericField->setToolTip(DrugRecord::generic_Tooltip);
 
-	ui->manufacturerLabel ->setText(MedicationRecord::manufacturer_Label);
-	ui->manufacturerLabel->setToolTip(MedicationRecord::manufacturer_Tooltip);
-	ui->manufacturerField->setToolTip(MedicationRecord::manufacturer_Tooltip);
+    ui->manufacturerLabel ->setText(DrugRecord::manufacturer_Label);
+    ui->manufacturerLabel->setToolTip(DrugRecord::manufacturer_Tooltip);
+    ui->manufacturerField->setToolTip(DrugRecord::manufacturer_Tooltip);
 
-	ui->ndcLabel->setText(MedicationRecord::ndc_Label);
-	ui->ndcLabel->setToolTip(MedicationRecord::ndc_Tooltip);
-	ui->ndcField->setToolTip(MedicationRecord::ndc_Tooltip);
+    ui->ndcLabel->setText(DrugRecord::ndc_Label);
+    ui->ndcLabel->setToolTip(DrugRecord::ndc_Tooltip);
+    ui->ndcField->setToolTip(DrugRecord::ndc_Tooltip);
 
-	ui->strengthLabel->setText(MedicationRecord::strength_Label);
-	ui->strengthLabel->setToolTip(MedicationRecord::strength_Tooltip);
-	ui->strengthField->setToolTip(MedicationRecord::strength_Tooltip);
+    ui->strengthLabel->setText(DrugRecord::strength_Label);
+    ui->strengthLabel->setToolTip(DrugRecord::strength_Tooltip);
+    ui->strengthField->setToolTip(DrugRecord::strength_Tooltip);
 
-	ui->formLabel->setText(MedicationRecord::form_Label);
-	ui->formLabel->setToolTip(MedicationRecord::form_Tooltip);
-	ui->formField->setToolTip(MedicationRecord::form_Tooltip);
+    ui->formLabel->setText(DrugRecord::form_Label);
+    ui->formLabel->setToolTip(DrugRecord::form_Tooltip);
+    ui->formField->setToolTip(DrugRecord::form_Tooltip);
 
-	ui->dispenseLabel->setText(MedicationRecord::dispense_units_Label);
-	ui->dispenseLabel->setToolTip(MedicationRecord::dispense_units_Tooltip);
-	ui->dispenseUnitsField->setToolTip(MedicationRecord::dispense_units_Tooltip);
+    ui->dispenseLabel->setText(DrugRecord::dispense_units_Label);
+    ui->dispenseLabel->setToolTip(DrugRecord::dispense_units_Tooltip);
+    ui->dispenseUnitsField->setToolTip(DrugRecord::dispense_units_Tooltip);
 
-	ui->unitSizeLabel->setText(MedicationRecord::unit_size_Label);
-	ui->unitSizeLabel->setToolTip(MedicationRecord::unit_size_Tooltip);
-	ui->unitSizeField->setToolTip(MedicationRecord::unit_size_Tooltip);
+    ui->unitSizeLabel->setText(DrugRecord::unit_size_Label);
+    ui->unitSizeLabel->setToolTip(DrugRecord::unit_size_Tooltip);
+    ui->unitSizeField->setToolTip(DrugRecord::unit_size_Tooltip);
 
 	// Add entries to the "form" field
 	ui->formField->addItem("Capsule", QVariant(FORM_INT::Capsule));
@@ -85,7 +84,7 @@ void Medication_00::setForm(int new_form)
 	ui->formField->setCurrentIndex(ui->formField->findData(new_form));
 }
 
-void Medication_00::getResults(MedicationRecord *med)
+void Medication_00::getResults(DrugRecord *med)
 {
 	med->name = ui->medicationField->text();
 	med->generic = ui->genericField->text();

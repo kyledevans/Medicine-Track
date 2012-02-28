@@ -4,25 +4,15 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QString>
-#include <QSqlQuery>
-#include <QSqlRecord>
-#include <QSqlError>
-#include <QAction>
-#include <QList>
-#include <QTableWidgetItem>
-
-#include <QDebug>
-
 #include "patientframe.h"
 #include "ui_patientframe.h"
 
-#include "globals.h"
-#include "patientrecord.h"
+#include "db/alertinterface.h"
 #include "patientwizard.h"
-#include "alertinterface.h"
 #include "prescriptionwizard.h"
 #include "prescriptionlabel.h"
+
+#include <QDebug>
 
 PatientFrame::PatientFrame(QWidget *parent) :
 	QFrame(parent),

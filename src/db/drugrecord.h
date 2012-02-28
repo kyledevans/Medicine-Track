@@ -6,13 +6,13 @@ Released under the GPL version 2 only.
 
 #include <QString>
 
-#ifndef MEDICATIONRECORD_H
-#define MEDICATIONRECORD_H
+#ifndef DRUGRECORD_H
+#define DRUGRECORD_H
 
-class MedicationRecord
+class DrugRecord
 {
 public:
-	explicit MedicationRecord();
+    explicit DrugRecord();
 
 	// Table 'drugs' columns
 	int id;					// drugs.id
@@ -65,4 +65,4 @@ public:
 	static const QString instructions_Tooltip;
 };
 
-#endif // MEDICATIONRECORD_H
+#endif // DRUGRECORD_H

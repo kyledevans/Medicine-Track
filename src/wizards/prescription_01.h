@@ -4,19 +4,19 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QList>
+
+#include "db/patientrecord.h"
+#include "db/prescriptionrecord.h"
+#include "db/drugrecord.h"
+#include "db/shipmentrecord.h"
+#include "db/prescriberrecord.h"
+#include "db/pharmacistrecord.h"
+
 #ifndef PRESCRIPTION_01_H
 #define PRESCRIPTION_01_H
 
-#include <QList>
-
 #include <QWizardPage>
-
-#include "db/patientrecord.h"
-#include "medicationrecord.h"
-#include "db/prescriptionrecord.h"
-#include "shipmentrecord.h"
-#include "prescriberrecord.h"
-#include "pharmacistrecord.h"
 
 namespace Ui {
 	class Prescription_01;
@@ -32,7 +32,7 @@ public:
 
 	void setPatient(PatientRecord *);
 	void setPrescription(PrescriptionRecord *);
-	void setMedication(MedicationRecord *);
+    void setMedication(DrugRecord *);
 	void setShipment(ShipmentRecord *);
 
 	bool initCustom();
@@ -48,7 +48,7 @@ private:
 
 	PatientRecord *patient;
 	PrescriptionRecord *prescription;
-	MedicationRecord *medication;
+    DrugRecord *medication;
 	ShipmentRecord *shipment;
 
 	QList<PrescriberRecord *> prescribers;

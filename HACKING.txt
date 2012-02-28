@@ -1,0 +1,24 @@
+﻿Coding style guidelines:
+
+1.  Use tabs for indentation not spaces.
+
+When putting includes do it as follows for all *.h files:
+#include <SYSTEM_INCLUDES>
+
+#include "local_includes"
+
+#ifndef FILE_H
+#define FILE_H
+#include <parant_class_include_only>
+#endif
+
+
+For all *.cpp files.  Note the location of QDebug include:
+#include "class_file"
+#include "ui_class_file"
+
+#include <SYSTEM_INCLUDES>
+
+#include "local_includes"
+
+#include <QDebug>

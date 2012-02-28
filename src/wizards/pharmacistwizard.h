@@ -4,12 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include "db/pharmacistrecord.h"
+
 #ifndef PHARMACISTWIZARD_H
 #define PHARMACISTWIZARD_H
 
 #include <QWizard>
-
-#include "pharmacistrecord.h"
 
 namespace Ui {
 	class PharmacistWizard;

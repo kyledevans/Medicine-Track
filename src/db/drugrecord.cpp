@@ -4,47 +4,41 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QSqlQuery>
-#include <QString>
-#include <QVariant>
-#include <QSqlRecord>
+#include "drugrecord.h"
 
-#include "medicationrecord.h"
-
-#include "globals.h"
-#include "db/alertinterface.h"
+#include "alertinterface.h"
+#include "../globals.h"
 
 #include <QDebug>
 
+const QString DrugRecord::name_Label("Medication");
+const QString DrugRecord::name_Tooltip("Name of the medication");
 
-const QString MedicationRecord::name_Label("Medication");
-const QString MedicationRecord::name_Tooltip("Name of the medication");
+const QString DrugRecord::generic_Label("Generic for");
+const QString DrugRecord::generic_Tooltip("Brand name of medication (empty for none)");
 
-const QString MedicationRecord::generic_Label("Generic for");
-const QString MedicationRecord::generic_Tooltip("Brand name of medication (empty for none)");
+const QString DrugRecord::manufacturer_Label("Manufacturer");
+const QString DrugRecord::manufacturer_Tooltip("Manufacturer");
 
-const QString MedicationRecord::manufacturer_Label("Manufacturer");
-const QString MedicationRecord::manufacturer_Tooltip("Manufacturer");
+const QString DrugRecord::ndc_Label("NDC");
+const QString DrugRecord::ndc_Tooltip("National Drug Code");
 
-const QString MedicationRecord::ndc_Label("NDC");
-const QString MedicationRecord::ndc_Tooltip("National Drug Code");
+const QString DrugRecord::form_Label("Form");
+const QString DrugRecord::form_Tooltip("Medication form");
 
-const QString MedicationRecord::form_Label("Form");
-const QString MedicationRecord::form_Tooltip("Medication form");
+const QString DrugRecord::strength_Label("Strength");
+const QString DrugRecord::strength_Tooltip("Strength");
 
-const QString MedicationRecord::strength_Label("Strength");
-const QString MedicationRecord::strength_Tooltip("Strength");
+const QString DrugRecord::dispense_units_Label("Dispense units");
+const QString DrugRecord::dispense_units_Tooltip("Dispense units can be anything: bottles, capsules, etc.");
 
-const QString MedicationRecord::dispense_units_Label("Dispense units");
-const QString MedicationRecord::dispense_units_Tooltip("Dispense units can be anything: bottles, capsules, etc.");
+const QString DrugRecord::unit_size_Label("Unit size (optional)");
+const QString DrugRecord::unit_size_Tooltip("Size of a single unit. IE: A \"75 ml\" bottle");
 
-const QString MedicationRecord::unit_size_Label("Unit size (optional)");
-const QString MedicationRecord::unit_size_Tooltip("Size of a single unit. IE: A \"75 ml\" bottle");
+const QString DrugRecord::instructions_Label("Instructions");
+const QString DrugRecord::instructions_Tooltip("Default instructions for the patient");
 
-const QString MedicationRecord::instructions_Label("Instructions");
-const QString MedicationRecord::instructions_Tooltip("Default instructions for the patient");
-
-MedicationRecord::MedicationRecord():
+DrugRecord::DrugRecord():
 	id(SQL::Undefined_ID),
 	form(FORM_INT::Undefined),
 	active(true),
@@ -57,7 +51,7 @@ UPDATE drugs
 SET active = ?
 WHERE id = ?;
 */
-bool MedicationRecord::toggleActive()
+bool DrugRecord::toggleActive()
 {
 	QSqlQuery *model;
 	AlertInterface alert;
@@ -90,7 +84,7 @@ SELECT name, generic, manufacturer, ndc, form, strength, dispense_units, unit_si
 FROM drugs
 WHERE id = 'SOME_VAR';
 */
-bool MedicationRecord::retrieve(int newId)
+bool DrugRecord::retrieve(int newId)
 {
 	QSqlQuery *model;
 	AlertInterface alert;
@@ -138,7 +132,7 @@ strength = 'SOME_VAL', dispense_units = 'SOME_VAL', unit_size = 'SOME_VAL',
 instructions = 'SOME_VAL', active = 'SOME_VAL'
 WHERE id = 'SOME_VAL';
 */
-bool MedicationRecord::commitRecord()
+bool DrugRecord::commitRecord()
 {
 	QSqlQuery *model;
 	AlertInterface alert;
@@ -193,7 +187,7 @@ bool MedicationRecord::commitRecord()
 	return true;
 }
 
-void MedicationRecord::print()
+void DrugRecord::print()
 {
 	qDebug() << "id =" << id << ", name =" << name << ", generic =" << generic << ", manufacturer =" << manufacturer << ", ndc =" << ndc << ", form =" << FORM_STR::intToStr(form) << ", strength =" << strength << ", dispense_units =" << dispense_units << ", unit_size =" << unit_size << ", instructions =" << instructions << ", active =" << active;
 }

@@ -4,16 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QSqlQuery>
-#include <QSqlRecord>
-#include <QVariant>
-#include <QIntValidator>
-
 #include "prescription_01.h"
 #include "ui_prescription_01.h"
 
+#include <QIntValidator>
+
 #include "db/alertinterface.h"
-#include "prescriberrecord.h"
 #include "globals.h"
 
 #include <QDebug>
@@ -191,7 +187,7 @@ void Prescription_01::setPatient(PatientRecord *new_patient)
 	ui->firstLabel->setText(patient->first);
 }
 
-void Prescription_01::setMedication(MedicationRecord *new_medication)
+void Prescription_01::setMedication(DrugRecord *new_medication)
 {
 	medication = new_medication;
 }

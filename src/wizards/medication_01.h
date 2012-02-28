@@ -4,12 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include "db/drugrecord.h"
+
 #ifndef MEDICATION_01_H
 #define MEDICATION_01_H
 
 #include <QWizardPage>
-
-#include "medicationrecord.h"
 
 namespace Ui {
 	class Medication_01;
@@ -23,7 +23,7 @@ public:
 	explicit Medication_01(QWidget *parent = 0);
 	~Medication_01();
 
-	void getResults(MedicationRecord *);
+    void getResults(DrugRecord *);
 
 private:
 	Ui::Medication_01 *ui;

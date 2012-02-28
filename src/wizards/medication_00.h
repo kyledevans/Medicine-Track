@@ -4,12 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include "db/drugrecord.h"
+
 #ifndef MEDICATION_00_H
 #define MEDICATION_00_H
 
 #include <QWizardPage>
-
-#include "medicationrecord.h"
 
 namespace Ui {
 	class Medication_00;
@@ -25,7 +25,7 @@ public:
 
 	void setForm(int);
 
-	void getResults(MedicationRecord *);
+    void getResults(DrugRecord *);
 
 private:
 	Ui::Medication_00 *ui;

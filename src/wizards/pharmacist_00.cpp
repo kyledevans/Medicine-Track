@@ -7,8 +7,6 @@ Released under the GPL version 2 only.
 #include "pharmacist_00.h"
 #include "ui_pharmacist_00.h"
 
-#include "pharmacistrecord.h"
-
 Pharmacist_00::Pharmacist_00(QWidget *parent) :
 	QWizardPage(parent),
 	ui(new Ui::Pharmacist_00)

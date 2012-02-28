@@ -4,11 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QList>
+
 #ifndef PRESCRIPTIONFRAME_H
 #define PRESCRIPTIONFRAME_H
 
 #include <QFrame>
-#include <QList>
 
 namespace Ui {
     class PrescriptionFrame;

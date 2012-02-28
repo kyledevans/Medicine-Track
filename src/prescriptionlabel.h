@@ -4,18 +4,19 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QPrinter>
+
+#include "db/prescriptionrecord.h"
+#include "db/prescriberrecord.h"
+#include "db/pharmacistrecord.h"
+#include "db/patientrecord.h"
+#include "db/drugrecord.h"
+#include "db/shipmentrecord.h"
+
 #ifndef PRESCRIPTIONLABEL_H
 #define PRESCRIPTIONLABEL_H
 
 #include <QFrame>
-#include <QPrinter>
-
-#include "db/prescriptionrecord.h"
-#include "prescriberrecord.h"
-#include "pharmacistrecord.h"
-#include "db/patientrecord.h"
-#include "medicationrecord.h"
-#include "shipmentrecord.h"
 
 namespace Ui {
 	class PrescriptionLabel;
@@ -42,7 +43,7 @@ private:
 	PrescriberRecord *prescriber;
 	PharmacistRecord *pharmacist;
 	PatientRecord *patient;
-	MedicationRecord *medication;
+	DrugRecord *medication;
 	ShipmentRecord *shipment;
 };
 

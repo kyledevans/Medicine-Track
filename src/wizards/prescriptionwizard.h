@@ -4,15 +4,15 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include "db/prescriptionrecord.h"
+#include "db/patientrecord.h"
+#include "db/drugrecord.h"
+#include "db/shipmentrecord.h"
+
 #ifndef PRESCRIPTIONWIZARD_H
 #define PRESCRIPTIONWIZARD_H
 
 #include <QWizard>
-
-#include "db/prescriptionrecord.h"
-#include "db/patientrecord.h"
-#include "medicationrecord.h"
-#include "shipmentrecord.h"
 
 namespace Ui {
 	class PrescriptionWizard;
@@ -41,9 +41,9 @@ signals:
 private:
 	Ui::PrescriptionWizard *ui;
 
+    PrescriptionRecord *prescription;
 	PatientRecord *patient;
-	MedicationRecord *medication;
-	PrescriptionRecord *prescription;
+    DrugRecord *medication;
 	ShipmentRecord *shipment;
 };
 

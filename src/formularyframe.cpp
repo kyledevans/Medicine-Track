@@ -4,24 +4,15 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QString>
-#include <QVariant>
-#include <QSqlQuery>
-#include <QSqlRecord>
-#include <QTableWidgetItem>
-
-#include <QDebug>
-
 #include "formularyframe.h"
 #include "ui_formularyframe.h"
 
+#include "db/alertinterface.h"
 #include "medicationwizard.h"
 #include "shipmentwizard.h"
-#include "globals.h"
-#include "db/alertinterface.h"
-#include "shipmentrecord.h"
 #include "barcodelabel.h"
-#include "medicationrecord.h"
+
+#include <QDebug>
 
 FormularyFrame::FormularyFrame(QWidget *parent) :
 	QFrame(parent),
@@ -38,24 +29,24 @@ FormularyFrame::FormularyFrame(QWidget *parent) :
 
 	// Set the various strings and tooltips for the resultTable
 	header = ui->resultTable->horizontalHeaderItem(0);
-	header->setText(MedicationRecord::name_Label);
-	header->setToolTip(MedicationRecord::name_Tooltip);
+    header->setText(DrugRecord::name_Label);
+    header->setToolTip(DrugRecord::name_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(1);
-	header->setText(MedicationRecord::ndc_Label);
-	header->setToolTip(MedicationRecord::ndc_Tooltip);
+    header->setText(DrugRecord::ndc_Label);
+    header->setToolTip(DrugRecord::ndc_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(2);
-	header->setText(MedicationRecord::form_Label);
-	header->setToolTip(MedicationRecord::form_Tooltip);
+    header->setText(DrugRecord::form_Label);
+    header->setToolTip(DrugRecord::form_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(3);
-	header->setText(MedicationRecord::strength_Label);
-	header->setToolTip(MedicationRecord::strength_Tooltip);
+    header->setText(DrugRecord::strength_Label);
+    header->setToolTip(DrugRecord::strength_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(4);
-	header->setText(MedicationRecord::unit_size_Label);
-	header->setToolTip(MedicationRecord::unit_size_Tooltip);
+    header->setText(DrugRecord::unit_size_Label);
+    header->setToolTip(DrugRecord::unit_size_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(5);
 	header->setText(ShipmentRecord::product_left_Label);
@@ -95,7 +86,7 @@ void FormularyFrame::resetPressed()
 void FormularyFrame::toggleActive()
 {
 	unsigned int row;
-	MedicationRecord medication;
+    DrugRecord medication;
 
 	if (!db_queried) {
 		return;
@@ -234,13 +225,13 @@ void FormularyFrame::selectionChanged()
 void FormularyFrame::initiateNewMed()
 {
 	MedicationWizard *wiz;
-	MedicationRecord *med;
+    DrugRecord *med;
 
-	med = new MedicationRecord();
+    med = new DrugRecord();
 
 	wiz = new MedicationWizard(med);
-	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitNewMed(MedicationRecord*)));
-	connect(wiz, SIGNAL(wizardRejected(MedicationRecord*)), this, SLOT(medCleanup(MedicationRecord*)));
+    connect(wiz, SIGNAL(wizardComplete(DrugRecord*)), this, SLOT(submitNewMed(DrugRecord*)));
+    connect(wiz, SIGNAL(wizardRejected(DrugRecord*)), this, SLOT(medCleanup(DrugRecord*)));
 	wiz->exec();
 
 	delete wiz;
@@ -250,7 +241,7 @@ void FormularyFrame::initiateModify()
 {
 	unsigned int row;
 	MedicationWizard *wiz;
-	MedicationRecord *med;
+    DrugRecord *med;
 
 	if (db_queried) {
 		if (!ui->resultTable->selectionModel()->hasSelection()) {
@@ -260,7 +251,7 @@ void FormularyFrame::initiateModify()
 		return;
 	}
 
-	med = new MedicationRecord();
+    med = new DrugRecord();
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -270,28 +261,28 @@ void FormularyFrame::initiateModify()
 	}
 
 	wiz = new MedicationWizard(med);
-	connect(wiz, SIGNAL(wizardComplete(MedicationRecord*)), this, SLOT(submitModify(MedicationRecord*)));
-	connect(wiz, SIGNAL(wizardRejected(MedicationRecord*)), this, SLOT(medCleanup(MedicationRecord*)));
+    connect(wiz, SIGNAL(wizardComplete(DrugRecord*)), this, SLOT(submitModify(DrugRecord*)));
+    connect(wiz, SIGNAL(wizardRejected(DrugRecord*)), this, SLOT(medCleanup(DrugRecord*)));
 	wiz->exec();
 
 	delete wiz;
 }
 
-void FormularyFrame::submitModify(MedicationRecord *med)
+void FormularyFrame::submitModify(DrugRecord *med)
 {
 	med->commitRecord();
 	initiateSearch(med->id);
 	medCleanup(med);
 }
 
-void FormularyFrame::submitNewMed(MedicationRecord *med)
+void FormularyFrame::submitNewMed(DrugRecord *med)
 {
 	med->commitRecord();
 	initiateSearch(med->id);
 	medCleanup(med);
 }
 
-void FormularyFrame::medCleanup(MedicationRecord *med)
+void FormularyFrame::medCleanup(DrugRecord *med)
 {
 	delete med;
 }

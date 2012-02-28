@@ -4,12 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#ifndef GLOBALS_H
-#define GLOBALS_H
-
 #include <QString>
 #include <QDate>
 #include <QVariant>
+
+#ifndef GLOBALS_H
+#define GLOBALS_H
 
 namespace FORM_INT {
 	const int Capsule = 0;

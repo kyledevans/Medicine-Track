@@ -4,13 +4,13 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include "db/prescriptionrecord.h"
+#include "db/drugrecord.h"
+
 #ifndef PRESCRIPTION_02_H
 #define PRESCRIPTION_02_H
 
 #include <QWizardPage>
-
-#include "db/prescriptionrecord.h"
-#include "medicationrecord.h"
 
 namespace Ui {
 	class Prescription_02;
@@ -25,7 +25,7 @@ public:
 	~Prescription_02();
 
 	void setPrescription(PrescriptionRecord *);
-	void setMedication(MedicationRecord *);
+    void setMedication(DrugRecord *);
 	void medUpdated();
 
 	bool initCustom();
@@ -35,7 +35,7 @@ private:
 	Ui::Prescription_02 *ui;
 
 	PrescriptionRecord *prescription;
-	MedicationRecord *medication;
+    DrugRecord *medication;
 };
 
 #endif // PRESCRIPTION_02_H

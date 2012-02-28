@@ -4,22 +4,22 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
 #include <QProcess>
 #include <QStringList>
 #include <QByteArray>
 
+#include "db/alertinterface.h"
 #include "mtsettings.h"
-
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include "patientframe.h"
-#include "prescriptionframe.h"
 #include "formularyframe.h"
 #include "inventoryframe.h"
-#include "globals.h"
-#include "db/alertinterface.h"
-#include "prescriberframe.h"
+#include "patientframe.h"
 #include "pharmacistframe.h"
+#include "prescriberframe.h"
+#include "prescriptionframe.h"
+#include "globals.h"
 #include "mtconfig.h"
 
 #include <QDebug>

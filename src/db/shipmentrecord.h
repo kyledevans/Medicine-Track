@@ -4,11 +4,11 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#ifndef SHIPMENTRECORD_H
-#define SHIPMENTRECORD_H
-
 #include <QDate>
 #include <QString>
+
+#ifndef SHIPMENTRECORD_H
+#define SHIPMENTRECORD_H
 
 class ShipmentRecord
 {

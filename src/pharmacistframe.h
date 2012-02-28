@@ -4,14 +4,15 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QList>
+
+#include "db/pharmacistrecord.h"
+#include "globals.h"
+
 #ifndef PHARMACISTFRAME_H
 #define PHARMACISTFRAME_H
 
 #include <QFrame>
-#include <QList>
-
-#include "pharmacistrecord.h"
-#include "globals.h"
 
 namespace Ui {
 	class PharmacistFrame;

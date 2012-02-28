@@ -4,9 +4,9 @@ TARGET = mtrack
 TEMPLATE = app
 CONFIG += embed_manifests_exe
 
-INCLUDEPATH = src \
-	src/db \
-	src/wizards
+INCLUDEPATH = src/db \
+	src/wizards \
+	src
 
 DESTDIR = build
 
@@ -18,6 +18,7 @@ OTHER_FILES = barcodes.txt \
 	COPYING.txt \
 	copyright_template.txt \
 	database_info.txt \
+	HACKING.txt \
 	license_template.txt \
 	README.txt \
 	todo.txt

@@ -4,12 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include "db/drugrecord.h"
+
 #ifndef MEDICATIONWIZARD_H
 #define MEDICATIONWIZARD_H
 
 #include <QWizard>
-
-#include "medicationrecord.h"
 
 namespace Ui {
 	class MedicationWizard;
@@ -21,7 +21,7 @@ class MedicationWizard : public QWizard
 
 public:
 	explicit MedicationWizard(QWidget *parent = 0);
-	explicit MedicationWizard(MedicationRecord *, QWidget *parent = 0);
+    explicit MedicationWizard(DrugRecord *, QWidget *parent = 0);
 	~MedicationWizard();
 
 public slots:
@@ -29,13 +29,13 @@ public slots:
 	void rejectedWizard();
 
 signals:
-	void wizardComplete(MedicationRecord *);
-	void wizardRejected(MedicationRecord *);
+    void wizardComplete(DrugRecord *);
+    void wizardRejected(DrugRecord *);
 
 private:
 	Ui::MedicationWizard *ui;
 
-	MedicationRecord *med;
+    DrugRecord *med;
 };
 
 #endif // MEDICATIONWIZARD_H

@@ -4,14 +4,15 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QList>
+
+#include "db/shipmentrecord.h"
+#include "globals.h"
+
 #ifndef INVENTORYFRAME_H
 #define INVENTORYFRAME_H
 
 #include <QFrame>
-#include <QList>
-
-#include "shipmentrecord.h"
-#include "globals.h"
 
 namespace Ui {
 	class InventoryFrame;

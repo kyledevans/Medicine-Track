@@ -4,17 +4,16 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QPrintDialog>
-#include <QPrinter>
-#include <QPainter>
-#include <QSizeF>
-
-#include <QDebug>
-
 #include "barcodelabel.h"
 #include "ui_barcodelabel.h"
 
+#include <QPrintDialog>
+#include <QPainter>
+#include <QSizeF>
+
 #include "globals.h"
+
+#include <QDebug>
 
 BarcodeLabel::BarcodeLabel(QWidget *parent) :
 	QFrame(parent),

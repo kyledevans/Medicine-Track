@@ -4,16 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QString>
-#include <QVariant>
-#include <QSqlRecord>
-#include <QSqlQuery>
-#include <QSqlDatabase>
-
 #include "prescriptionrecord.h"
 
-#include "globals.h"
-#include "db/alertinterface.h"
+#include <QSqlDatabase>
+
+#include "alertinterface.h"
+#include "../globals.h"
 
 #include <QDebug>
 

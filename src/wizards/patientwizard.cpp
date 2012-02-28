@@ -4,11 +4,10 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QDebug>
-
-#include "db/patientrecord.h"
 #include "patientwizard.h"
 #include "ui_patientwizard.h"
+
+#include <QDebug>
 
 PatientWizard::PatientWizard(QWidget *parent) :
 	QWizard(parent),

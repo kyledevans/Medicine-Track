@@ -4,17 +4,15 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QList>
+
+#include "db/patientrecord.h"
+#include "db/prescriptionrecord.h"
+
 #ifndef PRESCRIPTION_00_H
 #define PRESCRIPTION_00_H
 
 #include <QWizardPage>
-
-#include <QList>
-
-#include "db/patientrecord.h"
-#include "medicationrecord.h"
-#include "db/prescriptionrecord.h"
-#include "shipmentrecord.h"
 
 namespace Ui {
 	class Prescription_00;

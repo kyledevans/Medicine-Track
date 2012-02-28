@@ -4,12 +4,13 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QSqlQueryModel>
+#include <QSqlQuery>
+
 #ifndef ALERTINTERFACE_H
 #define ALERTINTERFACE_H
 
 #include <QWidget>
-#include <QSqlQueryModel>
-#include <QSqlQuery>
 
 class AlertInterface : public QWidget
 {

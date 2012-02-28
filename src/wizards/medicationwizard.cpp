@@ -19,7 +19,7 @@ MedicationWizard::MedicationWizard(QWidget *parent) :
 	ui->setupUi(this);
 }
 
-MedicationWizard::MedicationWizard(MedicationRecord *new_med, QWidget *parent) :
+MedicationWizard::MedicationWizard(DrugRecord *new_med, QWidget *parent) :
 	QWizard(parent),
 	ui(new Ui::MedicationWizard)
 {

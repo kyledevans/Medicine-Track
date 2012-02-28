@@ -4,12 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include "db/patientrecord.h"
+
 #ifndef PATIENTWIZARD_H
 #define PATIENTWIZARD_H
 
 #include <QWizard>
-
-#include "db/patientrecord.h"
 
 namespace Ui {
 	class PatientWizard;

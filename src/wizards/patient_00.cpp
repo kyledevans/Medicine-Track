@@ -7,7 +7,6 @@ Released under the GPL version 2 only.
 #include "patient_00.h"
 #include "ui_patient_00.h"
 
-#include "db/patientrecord.h"
 #include "globals.h"
 
 Patient_00::Patient_00(QWidget *parent) :

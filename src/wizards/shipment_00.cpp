@@ -4,10 +4,10 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QIntValidator>
-
 #include "shipment_00.h"
 #include "ui_shipment_00.h"
+
+#include <QIntValidator>
 
 #include "globals.h"
 
@@ -48,7 +48,7 @@ Shipment_00::~Shipment_00()
 	delete ui;
 }
 
-void Shipment_00::setMedication(MedicationRecord *med)
+void Shipment_00::setMedication(DrugRecord *med)
 {
 	// Show medication that was selected
 	ui->medicationLabel->setText(med->name);

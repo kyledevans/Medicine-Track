@@ -4,17 +4,11 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QString>
-#include <QSqlQuery>
-#include <QSqlRecord>
-#include <QList>
-
 #include "pharmacistframe.h"
 #include "ui_pharmacistframe.h"
 
-#include "pharmacistwizard.h"
-#include "pharmacistrecord.h"
 #include "db/alertinterface.h"
+#include "pharmacistwizard.h"
 
 #include <QDebug>
 

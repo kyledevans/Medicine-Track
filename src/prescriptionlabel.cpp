@@ -4,16 +4,15 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QPrintDialog>
-#include <QPrinter>
-#include <QPainter>
-
-#include <QDebug>
-
 #include "prescriptionlabel.h"
 #include "ui_prescriptionlabel.h"
 
+#include <QPrintDialog>
+#include <QPainter>
+
 #include "globals.h"
+
+#include <QDebug>
 
 PrescriptionLabel::PrescriptionLabel(QWidget *parent) :
 	QFrame(parent),
@@ -32,7 +31,7 @@ PrescriptionLabel::PrescriptionLabel(PrescriptionRecord *new_prescription, QWidg
 	prescriber = new PrescriberRecord;
 	pharmacist = new PharmacistRecord;
 	patient = new PatientRecord;
-	medication = new MedicationRecord;
+    medication = new DrugRecord;
 	shipment = new ShipmentRecord;
 
 	prescription = new_prescription;

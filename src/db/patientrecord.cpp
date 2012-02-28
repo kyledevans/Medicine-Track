@@ -4,11 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QString>
-#include <QVariant>
-#include <QSqlRecord>
-#include <QSqlQuery>
-
 #include "patientrecord.h"
 
 #include "alertinterface.h"

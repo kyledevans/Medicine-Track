@@ -4,13 +4,13 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QPrinter>
+#include <QString>
+
 #ifndef BARCODELABEL_H
 #define BARCODELABEL_H
 
 #include <QFrame>
-
-#include <QPrinter>
-#include <QString>
 
 namespace Ui {
 	class BarcodeLabel;

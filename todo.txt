@@ -54,6 +54,8 @@ Released under the GPL version 2 only.
 
 13.  After adding a patient, have it be auto-selected after wizard completes
 
+14.  Make consistent use of "()" when declaring variables.  Doesn't make sense to always put them there.
+
 -----
 
 Questions:

@@ -4,23 +4,17 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include <QString>
-#include <QSqlQuery>
-#include <QSqlRecord>
-#include <QSqlError>
-#include <QInputDialog>
-#include <QTableWidgetItem>
-
-#include <QDebug>
-
 #include "inventoryframe.h"
 #include "ui_inventoryframe.h"
 
-#include "shipmentwizard.h"
+#include <QInputDialog>
+
 #include "db/alertinterface.h"
+#include "db/drugrecord.h"
+#include "shipmentwizard.h"
 #include "barcodelabel.h"
-#include "shipmentrecord.h"
-#include "medicationrecord.h"
+
+#include <QDebug>
 
 InventoryFrame::InventoryFrame(QWidget *parent) :
 	QFrame(parent),
@@ -41,20 +35,20 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 
 	// Set the various strings and tooltips for the resultTable
 	header = ui->resultTable->horizontalHeaderItem(0);
-	header->setText(MedicationRecord::name_Label);
-	header->setToolTip(MedicationRecord::name_Tooltip);
+    header->setText(DrugRecord::name_Label);
+    header->setToolTip(DrugRecord::name_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(1);
-	header->setText(MedicationRecord::form_Label);
-	header->setToolTip(MedicationRecord::form_Tooltip);
+    header->setText(DrugRecord::form_Label);
+    header->setToolTip(DrugRecord::form_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(2);
-	header->setText(MedicationRecord::strength_Label);
-	header->setToolTip(MedicationRecord::strength_Tooltip);
+    header->setText(DrugRecord::strength_Label);
+    header->setToolTip(DrugRecord::strength_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(3);
-	header->setText(MedicationRecord::unit_size_Label);
-	header->setToolTip(MedicationRecord::unit_size_Tooltip);
+    header->setText(DrugRecord::unit_size_Label);
+    header->setToolTip(DrugRecord::unit_size_Tooltip);
 
 	header = ui->resultTable->horizontalHeaderItem(4);
 	header->setText(ShipmentRecord::expiration_Label);
@@ -270,7 +264,7 @@ void InventoryFrame::initiateWriteOff()
 {
 	unsigned int row, wo_amount;
 	ShipmentRecord *shipment;
-	MedicationRecord *medication;
+    DrugRecord *medication;
 	bool ok;
 
 	if (!db_queried) {
@@ -281,7 +275,7 @@ void InventoryFrame::initiateWriteOff()
 	}
 
 	shipment = new ShipmentRecord;
-	medication = new MedicationRecord;
+    medication = new DrugRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -318,7 +312,7 @@ void InventoryFrame::initiateIncrease()
 {
 	unsigned int row, delta;
 	ShipmentRecord *shipment;
-	MedicationRecord *medication;
+    DrugRecord *medication;
 	bool ok;
 
 	if (!db_queried) {
@@ -329,7 +323,7 @@ void InventoryFrame::initiateIncrease()
 	}
 
 	shipment = new ShipmentRecord;
-	medication = new MedicationRecord;
+    medication = new DrugRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();

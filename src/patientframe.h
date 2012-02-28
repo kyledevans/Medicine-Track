@@ -4,15 +4,16 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#ifndef PATIENTFRAME_H
-#define PATIENTFRAME_H
-
-#include <QFrame>
 #include <QList>
 
 #include "db/patientrecord.h"
 #include "db/prescriptionrecord.h"
 #include "globals.h"
+
+#ifndef PATIENTFRAME_H
+#define PATIENTFRAME_H
+
+#include <QFrame>
 
 namespace Ui {
     class PatientFrame;

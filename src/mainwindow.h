@@ -4,12 +4,13 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QSqlDatabase>
+#include <QProcess>
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSqlDatabase>
-#include <QProcess>
 
 namespace Ui {
 	class MainWindow;

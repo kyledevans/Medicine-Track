@@ -4,12 +4,12 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include "db/prescriberrecord.h"
+
 #ifndef PRESCRIBERWIZARD_H
 #define PRESCRIBERWIZARD_H
 
 #include <QWizard>
-
-#include "prescriberrecord.h"
 
 namespace Ui {
 	class PrescriberWizard;
