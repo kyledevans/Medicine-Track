@@ -39,6 +39,8 @@ public slots:
 
 	void toggleActive();
 
+	void viewMedication();
+
 	void resetPressed();
 	void selectionChanged();
 

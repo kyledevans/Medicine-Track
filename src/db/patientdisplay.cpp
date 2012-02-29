@@ -45,7 +45,6 @@ PatientDisplay::PatientDisplay(int new_id, QWidget *parent) :
 	ui->lastLabel->setText(patient.getLast());
 	ui->firstLabel->setText(patient.getFirst());
 	ui->dobLabel->setText(patient.getDob().toString(DEFAULTS::DateDisplayFormat));
-
 	if (patient.getActive()) {
 		ui->activeLabel->setText("Active");
 	} else {

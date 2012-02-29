@@ -77,6 +77,9 @@ public:
 	static const QString instructions_Label;
 	static const QString instructions_Tooltip;
 
+	static const QString active_Label;
+	static const QString active_Tooltip;
+
 private:
 	// Table 'drugs' columns
 	int id;					// drugs.id

@@ -38,6 +38,9 @@ const QString DrugRecord::unit_size_Tooltip("Size of a single unit. IE: A \"75 m
 const QString DrugRecord::instructions_Label("Instructions");
 const QString DrugRecord::instructions_Tooltip("Default instructions for the patient");
 
+const QString DrugRecord::active_Label("Status");
+const QString DrugRecord::active_Tooltip("Active or inactive status");
+
 DrugRecord::DrugRecord():
 	id(SQL::Undefined_ID),
 	form(FORM_INT::Undefined),

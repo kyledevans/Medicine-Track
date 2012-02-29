@@ -6,9 +6,10 @@ SOURCES += src/db/alertinterface.cpp \
 	src/db/prescriberrecord.cpp \
 	src/db/pharmacistrecord.cpp \
 	src/db/shipmentrecord.cpp \
-    src/db/drugrecord.cpp \
+	src/db/drugrecord.cpp \
 	src/db/writeoffrecord.cpp \
-	src/db/patientdisplay.cpp
+	src/db/patientdisplay.cpp \
+	src/db/drugdisplay.cpp
 
 HEADERS += src/db/alertinterface.h \
 	src/db/patientrecord.h \
@@ -16,8 +17,10 @@ HEADERS += src/db/alertinterface.h \
 	src/db/prescriberrecord.h \
 	src/db/pharmacistrecord.h \
 	src/db/shipmentrecord.h \
-    src/db/drugrecord.h \
+	src/db/drugrecord.h \
 	src/db/writeoffrecord.h \
-	src/db/patientdisplay.h
+	src/db/patientdisplay.h \
+	src/db/drugdisplay.h
 
-FORMS += src/db/patientdisplay.ui
+FORMS += src/db/patientdisplay.ui \
+	src/db/drugdisplay.ui

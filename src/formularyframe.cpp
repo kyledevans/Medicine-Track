@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #include "ui_formularyframe.h"
 
 #include "db/alertinterface.h"
+#include "db/drugdisplay.h"
 #include "medicationwizard.h"
 #include "shipmentwizard.h"
 #include "barcodelabel.h"
@@ -62,11 +63,13 @@ FormularyFrame::FormularyFrame(QWidget *parent) :
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
+	connect(ui->viewAction, SIGNAL(triggered()), this, SLOT(viewMedication()));
 
 	// Add items to resultTable right-click menu
 	ui->resultTable->addAction(ui->newStockAction);
 	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->toggleAction);
+	ui->resultTable->addAction(ui->viewAction);
 
 	selectionChanged();
 }
@@ -74,6 +77,17 @@ FormularyFrame::FormularyFrame(QWidget *parent) :
 FormularyFrame::~FormularyFrame()
 {
 	delete ui;
+}
+
+void FormularyFrame::viewMedication()
+{
+	unsigned int row;
+	DrugDisplay *display;
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	display = new DrugDisplay(ids[row]);
 }
 
 void FormularyFrame::resetPressed()
@@ -213,12 +227,14 @@ void FormularyFrame::selectionChanged()
 		ui->modifyButton->setEnabled(true);
 		ui->modifyAction->setEnabled(true);
 		ui->toggleAction->setEnabled(true);
+		ui->viewAction->setEnabled(true);
 	} else {
 		ui->newStockButton->setEnabled(false);
 		ui->newStockAction->setEnabled(false);
 		ui->modifyButton->setEnabled(false);
 		ui->modifyAction->setEnabled(false);
 		ui->toggleAction->setEnabled(false);
+		ui->viewAction->setEnabled(false);
 	}
 }
 
