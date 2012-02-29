@@ -23,6 +23,9 @@ const QString PrescriberRecord::full_name_Tooltip("Full name as it appears on a 
 const QString PrescriberRecord::full_name_Label_secondary("Written by");
 const QString PrescriberRecord::full_name_Tooltip_secondary("Who wrote the prescription");
 
+const QString PrescriberRecord::active_Label("Status");
+const QString PrescriberRecord::active_Tooltip("Active or inactive status");
+
 PrescriberRecord::PrescriberRecord():
 	id(SQL::Undefined_ID),
 	active(true),

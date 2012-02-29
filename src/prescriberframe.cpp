@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #include "ui_prescriberframe.h"
 
 #include "db/alertinterface.h"
+#include "db/prescriberdisplay.h"
 #include "prescriberwizard.h"
 
 PrescriberFrame::PrescriberFrame(QWidget *parent) :
@@ -47,10 +48,12 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
+	connect(ui->viewAction, SIGNAL(triggered()), this, SLOT(viewPrescriber()));
 
 	// Add actions to the resultTable menu
 	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->toggleAction);
+	ui->resultTable->addAction(ui->viewAction);
 
 	selectionChanged();
 }
@@ -58,6 +61,17 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
 PrescriberFrame::~PrescriberFrame()
 {
 	delete ui;
+}
+
+void PrescriberFrame::viewPrescriber()
+{
+	unsigned int row;
+	PrescriberDisplay *display;
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	display = new PrescriberDisplay(ids[row]);
 }
 
 void PrescriberFrame::resetPressed()
@@ -143,10 +157,12 @@ void PrescriberFrame::selectionChanged()
 		ui->modifyButton->setEnabled(true);
 		ui->modifyAction->setEnabled(true);
 		ui->toggleAction->setEnabled(true);
+		ui->viewAction->setEnabled(true);
 	} else {
 		ui->modifyButton->setEnabled(false);
 		ui->modifyAction->setEnabled(false);
 		ui->toggleAction->setEnabled(false);
+		ui->viewAction->setEnabled(false);
 	}
 }
 

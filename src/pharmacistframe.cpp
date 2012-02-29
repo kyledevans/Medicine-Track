@@ -159,10 +159,12 @@ void PharmacistFrame::selectionChanged()
 		ui->modifyButton->setEnabled(true);
 		ui->modifyAction->setEnabled(true);
 		ui->toggleAction->setEnabled(true);
+		ui->viewAction->setEnabled(true);
 	} else {
 		ui->modifyButton->setEnabled(false);
 		ui->modifyAction->setEnabled(false);
 		ui->toggleAction->setEnabled(false);
+		ui->viewAction->setEnabled(false);
 	}
 }
 

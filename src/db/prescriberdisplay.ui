@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PharmacistDisplay</class>
- <widget class="QDialog" name="PharmacistDisplay">
+ <class>PrescriberDisplay</class>
+ <widget class="QDialog" name="PrescriberDisplay">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Pharmacist Information</string>
+   <string>Prescriber Information</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Pharmacist Information</string>
+      <string>Prescriber Information</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -33,9 +33,6 @@
          <widget class="QLabel" name="lastLabel">
           <property name="text">
            <string>LASTNAME2</string>
-          </property>
-          <property name="textInteractionFlags">
-           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
           </property>
          </widget>
         </item>
@@ -68,9 +65,6 @@
           <property name="text">
            <string>FIRSTNAME2</string>
           </property>
-          <property name="textInteractionFlags">
-           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-          </property>
          </widget>
         </item>
         <item>
@@ -91,19 +85,16 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
-         <widget class="QLabel" name="initialsTitle">
+         <widget class="QLabel" name="fullTitle">
           <property name="text">
-           <string>INITIALS</string>
+           <string>FULL NAME</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="initialsLabel">
+         <widget class="QLabel" name="fullLabel">
           <property name="text">
-           <string>INITIALS2</string>
-          </property>
-          <property name="textInteractionFlags">
-           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+           <string>FULLNAME2</string>
           </property>
          </widget>
         </item>
@@ -135,9 +126,6 @@
          <widget class="QLabel" name="activeLabel">
           <property name="text">
            <string>ACTIVE2</string>
-          </property>
-          <property name="textInteractionFlags">
-           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
           </property>
          </widget>
         </item>
