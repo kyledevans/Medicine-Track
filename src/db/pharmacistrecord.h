@@ -49,6 +49,9 @@ public:
 	static const QString initials_Label_secondary;
 	static const QString initials_Tooltip_secondary;
 
+	static const QString active_Label;
+	static const QString active_Tooltip;
+
 private:
 	int id;					// pharmacists.id
 	QString last;			// pharmacists.last

@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #include "ui_pharmacistframe.h"
 
 #include "db/alertinterface.h"
+#include "db/pharmacistdisplay.h"
 #include "pharmacistwizard.h"
 
 #include <QDebug>
@@ -49,10 +50,12 @@ PharmacistFrame::PharmacistFrame(QWidget *parent) :
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
+	connect(ui->viewAction, SIGNAL(triggered()), this, SLOT(viewPharmacist()));
 
 	// Add items to the resultTable right-click menu
 	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->toggleAction);
+	ui->resultTable->addAction(ui->viewAction);
 
 	selectionChanged();
 }
@@ -60,6 +63,17 @@ PharmacistFrame::PharmacistFrame(QWidget *parent) :
 PharmacistFrame::~PharmacistFrame()
 {
 	delete ui;
+}
+
+void PharmacistFrame::viewPharmacist()
+{
+	unsigned int row;
+	PharmacistDisplay *display;
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	display = new PharmacistDisplay(ids[row]);
 }
 
 void PharmacistFrame::resetPressed()

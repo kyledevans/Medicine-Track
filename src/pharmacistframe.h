@@ -33,6 +33,8 @@ public slots:
 	void submitPharmacist(PharmacistRecord *);
 	void pharmacistCleanup(PharmacistRecord *);
 
+	void viewPharmacist();
+
 	void toggleActive();
 
 	void resetPressed();

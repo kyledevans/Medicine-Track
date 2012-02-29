@@ -23,6 +23,9 @@ const QString PharmacistRecord::initials_Tooltip("Initials as they appear on a p
 const QString PharmacistRecord::initials_Label_secondary("Filled by");
 const QString PharmacistRecord::initials_Tooltip_secondary("Who filled the prescription");
 
+const QString PharmacistRecord::active_Label("Status");
+const QString PharmacistRecord::active_Tooltip("Active or inactive status");
+
 PharmacistRecord::PharmacistRecord():
 	id(SQL::Undefined_ID),
 	active(true),
