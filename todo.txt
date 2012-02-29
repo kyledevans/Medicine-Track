@@ -16,7 +16,7 @@ Released under the GPL version 2 only.
 -----
 1.1 TODO List (and wishlist)
 
-3.  Document the database record classes in a way similar to how Qt documents
+3.  Document the database record classes in a way similar to how the Qt API is documented.
 	- Need to use Doxygen which then can create documentation files for Qt Assistant and Qt Creator
 
 4.  Make resultTables easily sortable
@@ -42,6 +42,8 @@ Released under the GPL version 2 only.
 	- Doubt INSERTs will be affected, but it's best to investigate.
 
 16.  Need to go through every call that attempts an SQL query and see to it that the rest of the code can handle a failed query.
+
+17.  Use the Qt translation infrastructure to help keep UI strings sane.  This should significantly reduce the amount of code being written just for string assignments.
 
 -----
 
