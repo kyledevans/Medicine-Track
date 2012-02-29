@@ -38,6 +38,8 @@ public slots:
 	void submitPrescription(PrescriptionRecord *);
 	void prescriptionCleanup(PrescriptionRecord *);
 
+	void viewPatient();
+
 	void resetPressed();
 	void selectionChanged();
 

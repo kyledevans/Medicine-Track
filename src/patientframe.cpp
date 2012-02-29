@@ -8,6 +8,7 @@ Released under the GPL version 2 only.
 #include "ui_patientframe.h"
 
 #include "db/alertinterface.h"
+#include "patientdisplay.h"
 #include "patientwizard.h"
 #include "prescriptionwizard.h"
 #include "prescriptionlabel.h"
@@ -62,11 +63,13 @@ PatientFrame::PatientFrame(QWidget *parent) :
 	connect(ui->newPatientAction, SIGNAL(triggered()), this, SLOT(initiateNewPatient()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
+	connect(ui->viewAction, SIGNAL(triggered()), this, SLOT(viewPatient()));
 
 	// Add actions to resultTable right-click menu
 	ui->resultTable->addAction(ui->prescribeAction);
 	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->toggleAction);
+	ui->resultTable->addAction(ui->viewAction);
 
 	// Deactivate actions that require an item selected in resultTable
 	selectionChanged();
@@ -75,6 +78,17 @@ PatientFrame::PatientFrame(QWidget *parent) :
 PatientFrame::~PatientFrame()
 {
 	delete ui;
+}
+
+void PatientFrame::viewPatient()
+{
+	unsigned int row;
+	PatientDisplay *display;
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	display = new PatientDisplay(ids[row]);
 }
 
 void PatientFrame::toggleActive()
@@ -179,12 +193,14 @@ void PatientFrame::selectionChanged()
 		ui->modifyButton->setEnabled(true);
 		ui->modifyAction->setEnabled(true);
 		ui->toggleAction->setEnabled(true);
+		ui->viewAction->setEnabled(true);
 	} else {
 		ui->prescribeButton->setEnabled(false);
 		ui->prescribeAction->setEnabled(false);
 		ui->modifyButton->setEnabled(false);
 		ui->modifyAction->setEnabled(false);
 		ui->toggleAction->setEnabled(false);
+		ui->viewAction->setEnabled(false);
 	}
 }
 

@@ -347,6 +347,14 @@
     <string>Toggle active/inactive</string>
    </property>
   </action>
+  <action name="viewAction">
+   <property name="text">
+    <string>View Patient</string>
+   </property>
+   <property name="toolTip">
+    <string>View the patient's record</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>searchButton</tabstop>

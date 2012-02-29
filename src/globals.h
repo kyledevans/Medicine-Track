@@ -60,6 +60,10 @@ namespace DEFAULTS {
 	const bool ManagerEnabled = false;		// Default value for "manager" setting
 }
 
+namespace MTCOLORS {
+	const QString Problem = QString("FF0000");
+}
+
 namespace SQL {
 	const int Undefined_ID = -1;
 

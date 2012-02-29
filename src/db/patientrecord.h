@@ -52,6 +52,9 @@ public:
 	static const QString dob_Label;
 	static const QString dob_Tooltip;
 
+	static const QString active_Label;
+	static const QString active_Tooltip;
+
 private:
 	int id;				// patients.id
 	int allscripts_id;	// patients.allscripts_id
