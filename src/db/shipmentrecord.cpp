@@ -36,6 +36,9 @@ const QString ShipmentRecord::name_barcode_Tooltip("Medication name or shipment 
 const QString ShipmentRecord::barcode_Label("Barcode");
 const QString ShipmentRecord::barcode_Tooltip("Shipment barcode");
 
+const QString ShipmentRecord::active_Label("Status");
+const QString ShipmentRecord::active_Tooltip("Active or inactive status");
+
 ShipmentRecord::ShipmentRecord():
 	id(SQL::Undefined_ID),
 	drug_id(SQL::Undefined_ID),

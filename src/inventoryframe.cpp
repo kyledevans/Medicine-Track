@@ -11,6 +11,7 @@ Released under the GPL version 2 only.
 
 #include "db/alertinterface.h"
 #include "db/drugrecord.h"
+#include "db/shipmentdisplay.h"
 #include "shipmentwizard.h"
 #include "barcodelabel.h"
 
@@ -80,12 +81,14 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
 	connect(ui->toggleAction, SIGNAL(triggered()), this, SLOT(toggleActive()));
 	connect(ui->increaseAction, SIGNAL(triggered()), this, SLOT(initiateIncrease()));
+	connect(ui->viewAction, SIGNAL(triggered()), this, SLOT(viewInventory()));
 
 	// Add items to the resultTable right-click menu
 	ui->resultTable->addAction(ui->writeOffAction);
 	ui->resultTable->addAction(ui->printBarcodeAction);
 	ui->resultTable->addAction(ui->toggleAction);
 	ui->resultTable->addAction(ui->increaseAction);
+	ui->resultTable->addAction(ui->viewAction);
 
 	// Disable actions that require a selection in the resultTable
 	selectionChanged();
@@ -94,6 +97,17 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 InventoryFrame::~InventoryFrame()
 {
 	delete ui;
+}
+
+void InventoryFrame::viewInventory()
+{
+	unsigned int row;
+	ShipmentDisplay *display;
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	display = new ShipmentDisplay(ids[row]);
 }
 
 void InventoryFrame::toggleActive()
@@ -210,11 +224,13 @@ void InventoryFrame::selectionChanged()
 		ui->writeOffAction->setEnabled(true);
 		ui->toggleAction->setEnabled(true);
 		ui->increaseAction->setEnabled(true);
+		ui->viewAction->setEnabled(true);
 	} else {
 		ui->printBarcodeAction->setEnabled(false);
 		ui->writeOffAction->setEnabled(false);
 		ui->toggleAction->setEnabled(false);
 		ui->increaseAction->setEnabled(false);
+		ui->viewAction->setEnabled(false);
 	}
 }
 

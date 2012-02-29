@@ -71,6 +71,9 @@ public:
 	static const QString barcode_Label;
 	static const QString barcode_Tooltip;
 
+	static const QString active_Label;
+	static const QString active_Tooltip;
+
 private:
 	int id;					// shipments.id
 	int drug_id;			// shipments.drug_id

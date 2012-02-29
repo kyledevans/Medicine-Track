@@ -7,7 +7,7 @@ Released under the GPL version 2 only.
 #include "patientdisplay.h"
 #include "ui_patientdisplay.h"
 
-#include "globals.h"
+#include "../globals.h"
 
 PatientDisplay::PatientDisplay(int new_id, QWidget *parent) :
 	QDialog(parent),

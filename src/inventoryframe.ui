@@ -334,6 +334,14 @@
     <string>Increase the inventory received and remaining</string>
    </property>
   </action>
+  <action name="viewAction">
+   <property name="text">
+    <string>View Inventory</string>
+   </property>
+   <property name="toolTip">
+    <string>View inventory record information</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>nameField</tabstop>

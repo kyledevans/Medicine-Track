@@ -7,7 +7,7 @@ Released under the GPL version 2 only.
 #include "prescriberdisplay.h"
 #include "ui_prescriberdisplay.h"
 
-#include "globals.h"
+#include "../globals.h"
 
 PrescriberDisplay::PrescriberDisplay(int new_id, QWidget *parent) :
 	QDialog(parent),

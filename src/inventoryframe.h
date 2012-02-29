@@ -33,6 +33,8 @@ public slots:
 
 	void toggleActive();
 
+	void viewInventory();
+
 	void resetPressed();
 	void selectionChanged();
 

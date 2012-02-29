@@ -7,7 +7,7 @@ Released under the GPL version 2 only.
 #include "pharmacistdisplay.h"
 #include "ui_pharmacistdisplay.h"
 
-#include "globals.h"
+#include "../globals.h"
 
 PharmacistDisplay::PharmacistDisplay(int new_id, QWidget *parent) :
 	QDialog(parent),

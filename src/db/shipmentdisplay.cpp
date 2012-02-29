@@ -4,22 +4,46 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "drugdisplay.h"
-#include "ui_drugdisplay.h"
+#include "shipmentdisplay.h"
+#include "ui_shipmentdisplay.h"
 
+#include "db/drugrecord.h"
 #include "../globals.h"
 
-DrugDisplay::DrugDisplay(int new_id, QWidget *parent) :
+ShipmentDisplay::ShipmentDisplay(int new_id, QWidget *parent) :
 	QDialog(parent),
-	ui(new Ui::DrugDisplay)
+	ui(new Ui::ShipmentDisplay)
 {
 	QString temp;
+	DrugRecord drug;
 	ui->setupUi(this);
 
-	drug.retrieve(new_id);	// TODO: doesn't handle failed queries
+	shipment.retrieve(new_id);	// TODO: Does not handle query failure
+	drug.retrieve(shipment.getDrug_id());
 	setAttribute(Qt::WA_DeleteOnClose);
 
-	// Set UI strings
+	// Set UI strings for Shipment group
+	ui->expirationTitle->setText(ShipmentRecord::expiration_Label + ":");
+	ui->expirationTitle->setToolTip(ShipmentRecord::expiration_Tooltip);
+	ui->expirationLabel->setToolTip(ShipmentRecord::expiration_Tooltip);
+
+	ui->lotTitle->setText(ShipmentRecord::lot_Label + ":");
+	ui->lotTitle->setToolTip(ShipmentRecord::lot_Tooltip);
+	ui->lotLabel->setToolTip(ShipmentRecord::lot_Tooltip);
+
+	ui->countTitle->setText(ShipmentRecord::product_count_Label + ":");
+	ui->countTitle->setToolTip(ShipmentRecord::product_count_Tooltip);
+	ui->countLabel->setToolTip(ShipmentRecord::product_count_Tooltip);
+
+	ui->leftTitle->setText(ShipmentRecord::product_left_Label + ":");
+	ui->leftTitle->setToolTip(ShipmentRecord::product_left_Tooltip);
+	ui->leftLabel->setToolTip(ShipmentRecord::product_left_Tooltip);
+
+	ui->activeTitle->setText(ShipmentRecord::active_Label + ":");
+	ui->activeTitle->setToolTip(ShipmentRecord::active_Tooltip);
+	ui->activeLabel->setToolTip(ShipmentRecord::active_Tooltip);
+
+	// Set UI strings for Drug group
 	ui->medicationTitle->setText(DrugRecord::name_Label + ":");
 	ui->medicationTitle->setToolTip(DrugRecord::name_Tooltip);
 	ui->medicationLabel->setToolTip(DrugRecord::name_Tooltip);
@@ -56,11 +80,23 @@ DrugDisplay::DrugDisplay(int new_id, QWidget *parent) :
 	ui->instructionsTitle->setToolTip(DrugRecord::instructions_Tooltip);
 	ui->instructionsLabel->setToolTip(DrugRecord::instructions_Tooltip);
 
-	ui->activeTitle->setText(DrugRecord::active_Label + ":");
-	ui->activeTitle->setToolTip(DrugRecord::active_Tooltip);
-	ui->activeLabel->setToolTip(DrugRecord::active_Tooltip);
+	ui->activeTitle_2->setText(DrugRecord::active_Label + ":");
+	ui->activeTitle_2->setToolTip(DrugRecord::active_Tooltip);
+	ui->activeLabel_2->setToolTip(DrugRecord::active_Tooltip);
 
-	// Set the values from the medication record
+	// Set values from shipment record
+	ui->expirationLabel->setText(shipment.getExpiration().toString(DEFAULTS::DateDisplayFormat));
+	ui->lotLabel->setText(shipment.getLot());
+	ui->countLabel->setText(QString().setNum(shipment.getProduct_count()));
+	ui->leftLabel->setText(QString().setNum(shipment.getProduct_left()));
+	if (shipment.getActive()) {
+		ui->activeLabel->setText("Active");
+	} else {
+		temp = QString("<font color='#%1'>%2</font>");
+		ui->activeLabel->setText(temp.arg(MTCOLORS::Problem, QString("Inactive")));
+	}
+
+	// Set values from drug record
 	ui->medicationLabel->setText(drug.getName());
 	ui->genericLabel->setText(drug.getGeneric());
 	ui->manufacturerLabel->setText(drug.getManufacturer());
@@ -71,16 +107,16 @@ DrugDisplay::DrugDisplay(int new_id, QWidget *parent) :
 	ui->unitLabel->setText(drug.getUnit_size());
 	ui->instructionsLabel->setText(drug.getInstructions());
 	if (drug.getActive()) {
-		ui->activeLabel->setText("Active");
+		ui->activeLabel_2->setText("Active");
 	} else {
 		temp = QString("<font color='#%1'>%2</font>");
-		ui->activeLabel->setText(temp.arg(MTCOLORS::Problem, QString("Inactive")));
+		ui->activeLabel_2->setText(temp.arg(MTCOLORS::Problem, QString("Inactive")));
 	}
 
 	this->show();
 }
 
-DrugDisplay::~DrugDisplay()
+ShipmentDisplay::~ShipmentDisplay()
 {
 	delete ui;
 }
