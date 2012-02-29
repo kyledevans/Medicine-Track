@@ -12,17 +12,17 @@ Released under the GPL version 2 only.
 #include <QDialog>
 
 namespace Ui {
-class PrescriberDisplay;
+	class PrescriberDisplay;
 }
 
 class PrescriberDisplay : public QDialog
 {
 	Q_OBJECT
-	
+
 public:
 	explicit PrescriberDisplay(int, QWidget *parent = 0);
 	~PrescriberDisplay();
-	
+
 private:
 	Ui::PrescriberDisplay *ui;
 

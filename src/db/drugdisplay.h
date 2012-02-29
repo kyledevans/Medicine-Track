@@ -4,8 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "drugrecord.h"
-
 #ifndef DRUGDISPLAY_H
 #define DRUGDISPLAY_H
 
@@ -25,8 +23,6 @@ public:
 	
 private:
 	Ui::DrugDisplay *ui;
-
-	DrugRecord drug;
 };
 
 #endif // DRUGDISPLAY_H

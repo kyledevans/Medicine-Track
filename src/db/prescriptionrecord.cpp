@@ -28,6 +28,9 @@ const QString PrescriptionRecord::filled_Tooltip("Date the prescription was fill
 const QString PrescriptionRecord::instructions_Label("Instructions");
 const QString PrescriptionRecord::instructions_Tooltip("Medication instructions for the patient");
 
+const QString PrescriptionRecord::active_Label("Status");
+const QString PrescriptionRecord::active_Tooltip("Valid or invalid status");
+
 PrescriptionRecord::PrescriptionRecord():
 	id(SQL::Undefined_ID),
 	patient_id(SQL::Undefined_ID),

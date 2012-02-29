@@ -4,8 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "pharmacistrecord.h"
-
 #ifndef PHARMACISTDISPLAY_H
 #define PHARMACISTDISPLAY_H
 
@@ -25,8 +23,6 @@ public:
 	
 private:
 	Ui::PharmacistDisplay *ui;
-
-	PharmacistRecord pharmacist;
 };
 
 #endif // PHARMACISTDISPLAY_H

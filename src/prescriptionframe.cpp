@@ -11,6 +11,7 @@ Released under the GPL version 2 only.
 
 #include "db/alertinterface.h"
 #include "db/prescriptionrecord.h"
+#include "db/prescriptiondisplay.h"
 #include "db/drugrecord.h"
 #include "db/shipmentrecord.h"
 #include "prescriptionlabel.h"
@@ -102,10 +103,12 @@ PrescriptionFrame::PrescriptionFrame(QWidget *parent) :
 	connect(ui->printAction, SIGNAL(triggered()), this, SLOT(initiatePrint()));
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(ui->invalidateAction, SIGNAL(triggered()), this, SLOT(invalidatePrescription()));
+	connect(ui->viewAction, SIGNAL(triggered()), this, SLOT(viewPrescription()));
 
 	// Add items to resultTable right-click menu
 	ui->resultTable->addAction(ui->printAction);
 	ui->resultTable->addAction(ui->invalidateAction);
+	ui->resultTable->addAction(ui->viewAction);
 
 	// Disable actions that require an item selected in the resultTable
 	selectionChanged();
@@ -114,6 +117,17 @@ PrescriptionFrame::PrescriptionFrame(QWidget *parent) :
 PrescriptionFrame::~PrescriptionFrame()
 {
 	delete ui;
+}
+
+void PrescriptionFrame::viewPrescription()
+{
+	unsigned int row;
+	PrescriptionDisplay *display;
+
+	// This line finds the top row that was selected by the user
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+
+	display = new PrescriptionDisplay(ids[row]);
 }
 
 void PrescriptionFrame::resetPressed()

@@ -69,6 +69,9 @@ public:
 	static const QString instructions_Label;
 	static const QString instructions_Tooltip;
 
+	static const QString active_Label;
+	static const QString active_Tooltip;
+
 private:
 	int id;					// prescriptions.id
 	int patient_id;			// prescriptions.patient_id

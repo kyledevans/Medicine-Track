@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrescriptionDisplay</class>
+ <widget class="QDialog" name="PrescriptionDisplay">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>469</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Prescription Information</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QTabWidget" name="tabs">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="documentMode">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="prescriptionTab">
+      <attribute name="title">
+       <string>Prescription</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="PrescriptionGroupBox" name="prescriptionBox"/>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="patientTab">
+      <attribute name="title">
+       <string>Patient</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="PatientGroupBox" name="patientBox"/>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="medicationTab">
+      <attribute name="title">
+       <string>Medication</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="DrugGroupBox" name="drugBox"/>
+       </item>
+       <item>
+        <widget class="ShipmentGroupBox" name="shipmentBox"/>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="prescriberTab">
+      <attribute name="title">
+       <string>Prescriber</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="PrescriberGroupBox" name="prescriberBox"/>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="pharmacistTab">
+      <attribute name="title">
+       <string>Pharmacist</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="PharmacistGroupBox" name="pharmacistBox"/>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PrescriberGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>prescribergroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PrescriptionGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>prescriptiongroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ShipmentGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>shipmentgroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DrugGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>druggroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PatientGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>patientgroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PharmacistGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>pharmacistgroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

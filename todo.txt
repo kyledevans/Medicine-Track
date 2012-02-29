@@ -36,6 +36,11 @@ Released under the GPL version 2 only.
 
 14.  Make the DB record classes use more appropriate data types. IE: id's start using 'unsigned int'.
 
+15.  Fix bugs where SQL queries succeed, but return or affect nothing.  In some(all?) cases the program only checks on errors, not empty results.
+	- This might happen if an UPDATE tries to update a record that does not exist.
+	- A SELECT that returns 0 rows.
+	- Doubt INSERTs will be affected, but it's best to investigate.
+
 -----
 
 Questions:

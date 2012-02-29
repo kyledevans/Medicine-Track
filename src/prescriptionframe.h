@@ -27,6 +27,8 @@ public slots:
 
 	void invalidatePrescription();
 
+	void viewPrescription();
+
 	void resetPressed();
 	void selectionChanged();
 

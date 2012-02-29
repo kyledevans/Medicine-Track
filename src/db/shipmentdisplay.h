@@ -4,8 +4,6 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "shipmentrecord.h"
-
 #ifndef SHIPMENTDISPLAY_H
 #define SHIPMENTDISPLAY_H
 
@@ -25,8 +23,6 @@ public:
 	
 private:
 	Ui::ShipmentDisplay *ui;
-
-	ShipmentRecord shipment;
 };
 
 #endif // SHIPMENTDISPLAY_H
