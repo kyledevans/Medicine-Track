@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Prescription Information</string>
+   <string notr="true">Prescription Information</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
@@ -30,7 +30,7 @@
      </property>
      <widget class="QWidget" name="prescriptionTab">
       <attribute name="title">
-       <string>Prescription</string>
+       <string notr="true">Prescription</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -53,7 +53,7 @@
      </widget>
      <widget class="QWidget" name="patientTab">
       <attribute name="title">
-       <string>Patient</string>
+       <string notr="true">Patient</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
@@ -76,7 +76,7 @@
      </widget>
      <widget class="QWidget" name="medicationTab">
       <attribute name="title">
-       <string>Medication</string>
+       <string notr="true">Medication</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
@@ -102,7 +102,7 @@
      </widget>
      <widget class="QWidget" name="prescriberTab">
       <attribute name="title">
-       <string>Prescriber</string>
+       <string notr="true">Prescriber</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
@@ -125,7 +125,7 @@
      </widget>
      <widget class="QWidget" name="pharmacistTab">
       <attribute name="title">
-       <string>Pharmacist</string>
+       <string notr="true">Pharmacist</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
@@ -152,24 +152,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>PrescriberGroupBox</class>
-   <extends>QGroupBox</extends>
-   <header>prescribergroupbox.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>PrescriptionGroupBox</class>
-   <extends>QGroupBox</extends>
-   <header>prescriptiongroupbox.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ShipmentGroupBox</class>
-   <extends>QGroupBox</extends>
-   <header>shipmentgroupbox.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>DrugGroupBox</class>
    <extends>QGroupBox</extends>
    <header>druggroupbox.h</header>
@@ -185,6 +167,24 @@
    <class>PharmacistGroupBox</class>
    <extends>QGroupBox</extends>
    <header>pharmacistgroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PrescriberGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>prescribergroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PrescriptionGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>prescriptiongroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ShipmentGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>shipmentgroupbox.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

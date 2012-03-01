@@ -25,6 +25,8 @@ public:
 	explicit FormularyFrame(QWidget *parent = 0);
 	~FormularyFrame();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void initiateSearch(int medID = SQL::Undefined_ID);
 

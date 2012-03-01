@@ -25,6 +25,8 @@ public:
     explicit PatientFrame(QWidget *parent = 0);
     ~PatientFrame();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void initiateSearch(int patientID = SQL::Undefined_ID);
 

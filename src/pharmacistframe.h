@@ -24,6 +24,8 @@ public:
 	explicit PharmacistFrame(QWidget *parent = 0);
 	~PharmacistFrame();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void initiateSearch(int pharmID = SQL::Undefined_ID);
 

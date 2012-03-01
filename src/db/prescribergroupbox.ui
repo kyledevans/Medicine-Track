@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="title">
-   <string>Prescriber Information</string>
+   <string notr="true">Prescriber Information</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -26,7 +26,7 @@
      <item>
       <widget class="QLabel" name="lastLabel">
        <property name="text">
-        <string>LASTNAME2</string>
+        <string notr="true">LASTNAME2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -60,7 +60,7 @@
      <item>
       <widget class="QLabel" name="firstLabel">
        <property name="text">
-        <string>FIRSTNAME2</string>
+        <string notr="true">FIRSTNAME2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -94,7 +94,7 @@
      <item>
       <widget class="QLabel" name="fullLabel">
        <property name="text">
-        <string>FULLNAME2</string>
+        <string notr="true">FULLNAME2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -128,7 +128,7 @@
      <item>
       <widget class="QLabel" name="activeLabel">
        <property name="text">
-        <string>ACTIVE2</string>
+        <string notr="true">ACTIVE2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>

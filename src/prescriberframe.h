@@ -24,6 +24,8 @@ public:
 	explicit PrescriberFrame(QWidget *parent = 0);
 	~PrescriberFrame();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void initiateSearch(int presID = SQL::Undefined_ID);
 

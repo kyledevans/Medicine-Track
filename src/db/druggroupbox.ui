@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="title">
-   <string>Medication Information</string>
+   <string notr="true">Medication Information</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -26,7 +26,7 @@
      <item>
       <widget class="QLabel" name="medicationLabel">
        <property name="text">
-        <string>MEDICATION2</string>
+        <string notr="true">MEDICATION2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -60,7 +60,7 @@
      <item>
       <widget class="QLabel" name="genericLabel">
        <property name="text">
-        <string>GENERIC2</string>
+        <string notr="true">GENERIC2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -94,7 +94,7 @@
      <item>
       <widget class="QLabel" name="manufacturerLabel">
        <property name="text">
-        <string>MANUFACTURER2</string>
+        <string notr="true">MANUFACTURER2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -128,7 +128,7 @@
      <item>
       <widget class="QLabel" name="ndcLabel">
        <property name="text">
-        <string>NDC2</string>
+        <string notr="true">NDC2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -162,7 +162,7 @@
      <item>
       <widget class="QLabel" name="formLabel">
        <property name="text">
-        <string>FORM2</string>
+        <string notr="true">FORM2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -196,7 +196,7 @@
      <item>
       <widget class="QLabel" name="strengthLabel">
        <property name="text">
-        <string>STRENGTH2</string>
+        <string notr="true">STRENGTH2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -230,7 +230,7 @@
      <item>
       <widget class="QLabel" name="dispenseLabel">
        <property name="text">
-        <string>DISPENSE UNITS2</string>
+        <string notr="true">DISPENSE UNITS2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -264,7 +264,7 @@
      <item>
       <widget class="QLabel" name="unitLabel">
        <property name="text">
-        <string>UNIT SIZE2</string>
+        <string notr="true">UNIT SIZE2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -307,7 +307,7 @@
         <enum>QFrame::Box</enum>
        </property>
        <property name="text">
-        <string>INSTRUCTIONS2</string>
+        <string notr="true">INSTRUCTIONS2</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -331,7 +331,7 @@
      <item>
       <widget class="QLabel" name="activeLabel">
        <property name="text">
-        <string>ACTIVE2</string>
+        <string notr="true">ACTIVE2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>

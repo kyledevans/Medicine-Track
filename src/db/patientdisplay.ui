@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Patient Information</string>
+   <string notr="true">Patient Information</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

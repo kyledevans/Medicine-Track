@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="title">
-   <string>Prescription Information</string>
+   <string notr="true">Prescription Information</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -26,7 +26,7 @@
      <item>
       <widget class="QLabel" name="amountLabel">
        <property name="text">
-        <string>AMOUNT2</string>
+        <string notr="true">AMOUNT2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -60,7 +60,7 @@
      <item>
       <widget class="QLabel" name="writtenLabel">
        <property name="text">
-        <string>WRITTEN2</string>
+        <string notr="true">WRITTEN2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -94,7 +94,7 @@
      <item>
       <widget class="QLabel" name="filledLabel">
        <property name="text">
-        <string>FILLED2</string>
+        <string notr="true">FILLED2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -137,7 +137,7 @@
         <enum>QFrame::Box</enum>
        </property>
        <property name="text">
-        <string>INSTRUCTIONS2</string>
+        <string notr="true">INSTRUCTIONS2</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -161,7 +161,7 @@
      <item>
       <widget class="QLabel" name="validLabel">
        <property name="text">
-        <string>VALID2</string>
+        <string notr="true">VALID2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>

@@ -10,8 +10,11 @@
     <height>300</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string notr="true"/>
+  </property>
   <property name="title">
-   <string>Patient Information</string>
+   <string notr="true">Patient Information</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -26,7 +29,7 @@
      <item>
       <widget class="QLabel" name="allscriptsLabel">
        <property name="text">
-        <string>ALLSCRIPTSID</string>
+        <string notr="true">ALLSCRIPTSID</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -60,7 +63,7 @@
      <item>
       <widget class="QLabel" name="lastLabel">
        <property name="text">
-        <string>LASTNAME</string>
+        <string notr="true">LASTNAME</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -94,7 +97,7 @@
      <item>
       <widget class="QLabel" name="firstLabel">
        <property name="text">
-        <string>FIRSTNAME</string>
+        <string notr="true">FIRSTNAME</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -128,7 +131,7 @@
      <item>
       <widget class="QLabel" name="dobLabel">
        <property name="text">
-        <string>DOB</string>
+        <string notr="true">DOB</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -162,7 +165,7 @@
      <item>
       <widget class="QLabel" name="activeLabel">
        <property name="text">
-        <string>ACTIVE</string>
+        <string notr="true">ACTIVE</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>

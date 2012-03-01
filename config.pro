@@ -3,16 +3,16 @@ QT += core gui sql
 TARGET = mtrack
 TEMPLATE = app
 CONFIG += embed_manifests_exe
+TRANSLATIONS = mtrack.ts
 
 INCLUDEPATH = src/db \
 	src/wizards \
 	src
 
 DESTDIR = build
-
 OBJECTS_DIR = build
-
 MOC_DIR = build
+UI_DIR = build
 
 OTHER_FILES = barcodes.txt \
 	COPYING.txt \

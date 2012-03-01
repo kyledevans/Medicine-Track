@@ -90,6 +90,19 @@ MainWindow::~MainWindow()
 	db.close();
 }
 
+void MainWindow::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}
+
 bool MainWindow::importSettings()
 {
 	MTSettings *settings;

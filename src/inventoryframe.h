@@ -24,6 +24,8 @@ public:
 	explicit InventoryFrame(QWidget *parent = 0);
 	~InventoryFrame();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void initiateSearch(int shipID = SQL::Undefined_ID);
 	void initiatePrintBarcode();

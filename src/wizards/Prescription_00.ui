@@ -20,7 +20,7 @@
       <item>
        <widget class="QLabel" name="lastLabel">
         <property name="text">
-         <string>LASTNAME</string>
+         <string notr="true">LASTNAME</string>
         </property>
        </widget>
       </item>
@@ -34,7 +34,7 @@
       <item>
        <widget class="QLabel" name="firstLabel">
         <property name="text">
-         <string>FIRSTNAME</string>
+         <string notr="true">FIRSTNAME</string>
         </property>
        </widget>
       </item>

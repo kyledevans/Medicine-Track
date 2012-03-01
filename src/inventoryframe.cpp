@@ -99,6 +99,19 @@ InventoryFrame::~InventoryFrame()
 	delete ui;
 }
 
+void InventoryFrame::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}
+
 void InventoryFrame::viewInventory()
 {
 	unsigned int row;

@@ -119,6 +119,19 @@ PrescriptionFrame::~PrescriptionFrame()
 	delete ui;
 }
 
+void PrescriptionFrame::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}
+
 void PrescriptionFrame::viewPrescription()
 {
 	unsigned int row;

@@ -10,6 +10,9 @@
     <height>124</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string notr="true"/>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color: #FFFFFF</string>
   </property>
@@ -45,7 +48,7 @@
        </font>
       </property>
       <property name="text">
-       <string>*SID15*</string>
+       <string notr="true">*SID15*</string>
       </property>
      </widget>
     </item>
@@ -75,7 +78,7 @@
        </font>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string notr="true">TextLabel</string>
       </property>
      </widget>
     </item>

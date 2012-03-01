@@ -21,6 +21,8 @@ public:
     explicit PrescriptionFrame(QWidget *parent = 0);
     ~PrescriptionFrame();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void initiateSearch();
 	void initiatePrint();

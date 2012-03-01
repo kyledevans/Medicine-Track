@@ -24,6 +24,8 @@ public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void connectDB();
 	void initiateOptions();

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Shipment Information</string>
+   <string notr="true">Shipment Information</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -37,15 +37,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ShipmentGroupBox</class>
-   <extends>QGroupBox</extends>
-   <header>shipmentgroupbox.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>DrugGroupBox</class>
    <extends>QGroupBox</extends>
    <header>druggroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ShipmentGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>shipmentgroupbox.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

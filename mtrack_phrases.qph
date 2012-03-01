@@ -1,0 +1,333 @@
+<!DOCTYPE QPH>
+<QPH language="en">
+<phrase>
+    <source>MEDICATION</source>
+    <target>Medication</target>
+    <definition>MEDICATION DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>MEDICATION</source>
+    <target>Medication</target>
+    <definition>MEDICATION DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MEDICATION</source>
+    <target>Medication</target>
+    <definition>MEDICATION SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>MEDICATION</source>
+    <target>Medication</target>
+    <definition>MEDICATION SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MEDICATION</source>
+    <target>Medication</target>
+    <definition>MEDICATION EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>MEDICATION</source>
+    <target>Medication</target>
+    <definition>MEDICATION EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>GENERIC</source>
+    <target>Generic</target>
+    <definition>GENERIC DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>GENERIC</source>
+    <target>Generic</target>
+    <definition>GENERIC DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>GENERIC</source>
+    <target>Generic</target>
+    <definition>GENERIC SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>GENERIC</source>
+    <target>Generic</target>
+    <definition>GENERIC SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>GENERIC</source>
+    <target>Generic</target>
+    <definition>GENERIC EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>GENERIC</source>
+    <target>Generic</target>
+    <definition>GENERIC EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MANUFACTURER</source>
+    <target>Manufacturer</target>
+    <definition>MANUFACTURER DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>MANUFACTURER</source>
+    <target>Manufacturer</target>
+    <definition>MANUFACTURER DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FORM</source>
+    <target>Form</target>
+    <definition>FORM EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>MANUFACTURER</source>
+    <target>Manufacturer</target>
+    <definition>MANUFACTURER SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>MANUFACTURER</source>
+    <target>Manufacturer</target>
+    <definition>MANUFACTURER SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MANUFACTURER</source>
+    <target>Manufacturer</target>
+    <definition>MANUFACTURER EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>MANUFACTURER</source>
+    <target>Manufacturer</target>
+    <definition>MANUFACTURER EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>NDC</source>
+    <target>NDC</target>
+    <definition>NDC DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>NDC</source>
+    <target>NDC</target>
+    <definition>NDC DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>NDC</source>
+    <target>NDC</target>
+    <definition>NDC SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>NDC</source>
+    <target>NDC</target>
+    <definition>NDC SEARCH TOOLTOP</definition>
+</phrase>
+<phrase>
+    <source>NDC</source>
+    <target>NDC</target>
+    <definition>NDC EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>NDC</source>
+    <target>NDC</target>
+    <definition>NDC EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FORM</source>
+    <target>Form</target>
+    <definition>FORM DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>FORM</source>
+    <target>Form</target>
+    <definition>FORM DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FORM</source>
+    <target>Form</target>
+    <definition>FORM SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>FORM</source>
+    <target>Form</target>
+    <definition>FORM SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FORM</source>
+    <target>Form</target>
+    <definition>FORM EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>STRENGTH</source>
+    <target>Strength</target>
+    <definition>STRENGTH DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>STRENGTH</source>
+    <target>Strength</target>
+    <definition>STRENGTH DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>STRENGTH</source>
+    <target>Strength</target>
+    <definition>STRENGTH SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>STRENGTH</source>
+    <target>Strength</target>
+    <definition>STRENGTH SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>STRENGTH</source>
+    <target>Strength</target>
+    <definition>STRENGTH EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>STRENGTH</source>
+    <target>Strength</target>
+    <definition>STRENGTH EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>DISPENSE UNITS</source>
+    <target>Dispense units</target>
+    <definition>DISPENSE UNITS DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>DISPENSE UNITS</source>
+    <target>Dispense units can be anything: bottles, capsules, etc.</target>
+    <definition>DISPENSE UNITS DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>DISPENSE UNITS</source>
+    <target>Dispense units</target>
+    <definition>DISPENSE UNITS SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>DISPENSE UNITS</source>
+    <target>Dispense units can be anything: bottles, capsules, etc.</target>
+    <definition>DISPENSE UNITS SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>DISPENSE UNITS</source>
+    <target>Dispense units</target>
+    <definition>DISPENSE UNITS EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>DISPENSE UNITS</source>
+    <target>Dispense units can be anything: bottles, capsules, etc.</target>
+    <definition>DISPENSE UNITS EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>UNIT SIZE</source>
+    <target>Unit size</target>
+    <definition>UNIT SIZE DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>UNIT SIZE</source>
+    <target>Unit size (optional)</target>
+    <definition>UNIT SIZE DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>UNIT SIZE</source>
+    <target>Unit size</target>
+    <definition>UNIT SIZE SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>UNIT SIZE</source>
+    <target>Unit size (optional)</target>
+    <definition>UNIT SIZE SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>UNIT SIZE</source>
+    <target>Unit size (optional)</target>
+    <definition>UNIT SIZE EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>UNIT SIZE</source>
+    <target>Size of a single unit. IE: A &quot;75 ml&quot; bottle</target>
+    <definition>UNIT SIZE EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>DEFAULT INSTRUCTIONS</source>
+    <target>Default instructions</target>
+    <definition>DEFAULT INSTRUCTIONS DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>DEFAULT INSTRUCTIONS</source>
+    <target>Default instructions for prescriptions using this medication</target>
+    <definition>DEFAULT INSTRUCTIONS DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>DEFAULT INSTRUCTIONS</source>
+    <target>Default instructions</target>
+    <definition>DEFAULT INSTRUCTIONS SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>DEFAULT INSTRUCTIONS</source>
+    <target>Default instructions for prescriptions using this medication</target>
+    <definition>DEFAULT INSTRUCTIONS SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>DEFAULT INSTRUCTIONS</source>
+    <target>Default instructions</target>
+    <definition>DEFAULT INSTRUCTIONS EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>DEFAULT INSTRUCTIONS</source>
+    <target>Default instructions for prescriptions using this medication</target>
+    <definition>DEFAULT INSTRUCTIONS EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MED ACTIVE</source>
+    <target>Status</target>
+    <definition>MED ACTIVE DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>MED ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>MED ACTIVE DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MED ACTIVE</source>
+    <target>Active</target>
+    <definition>MED ACTIVE SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>MED ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>MED ACTIVE SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MED ACTIVE</source>
+    <target>Active</target>
+    <definition>MED ACTIVE EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>MED ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>MED ACTIVE EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MED ID</source>
+    <target>id</target>
+    <definition>MED ID DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>MED ID</source>
+    <target>drugs.id</target>
+    <definition>MED ID DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MED ID</source>
+    <target>id</target>
+    <definition>MED ID SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>MED ID</source>
+    <target>drugs.id</target>
+    <definition>MED ID SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MED ID</source>
+    <target>id</target>
+    <definition>MED ID EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>MED ID</source>
+    <target>drugs.id</target>
+    <definition>MED ID EDIT TOOLTIP</definition>
+</phrase>
+</QPH>

@@ -53,6 +53,19 @@ MTConfig::~MTConfig()
 	delete ui;
 }
 
+void MTConfig::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}
+
 void MTConfig::commit()
 {
 	MTSettings *settings;

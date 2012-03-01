@@ -22,3 +22,22 @@ For all *.cpp files.  Note the location of QDebug include:
 #include "local_includes"
 
 #include <QDebug>
+
+
+UI Strings.  I'm using the Qt Translating infrastructure to keep similar strings consistent when used in several places throughout the application.
+
+In order to use the tools effectively, here are some rules.  Strings that are meant to be "translated" will be in ALL CAPS.
+
+Always add a disambiguation for QLabels and tooltips.  The format for the disambiguation will be:
+	- All caps
+	- Use the form: <data> <EDIT, DISPLAY, SEARCH> <LABEL, TOOLTIP>
+
+An example would be a widget that appears like so: "Medication: Amoxicillin" where "Medication" is a
+QLabel followed by a QLabel that has the medication name inserted by C++.  The disambiguation would
+read as such:
+	MEDICATION DISPLAY LABEL
+Now the tooltip for the "Medication" QLabel would be as such:
+	MEDICATION DISPLAY TOOLTIP
+
+
+For every column in the database there should be a string for every EDIT, DISPLAY, SEARCH and corresponding LABEL and TOOLTIP versions.

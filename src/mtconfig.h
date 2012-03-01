@@ -21,6 +21,8 @@ public:
 	explicit MTConfig(QWidget *parent = 0);
 	~MTConfig();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void commit();
     

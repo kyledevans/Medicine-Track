@@ -20,16 +20,16 @@ FormularyFrame::FormularyFrame(QWidget *parent) :
     ui(new Ui::FormularyFrame),
 	db_queried(false)
 {
-	QTableWidgetItem *header;
+	//QTableWidgetItem *header;
 	ui->setupUi(this);
 
 	// Set the search UI strings and tooltips
-	ui->nameLabel->setText(ShipmentRecord::name_barcode_Label);
+    /*ui->nameLabel->setText(ShipmentRecord::name_barcode_Label);
 	ui->nameLabel->setToolTip(ShipmentRecord::name_barcode_Tooltip);
-	ui->nameField->setToolTip(ShipmentRecord::name_barcode_Tooltip);
+    ui->nameField->setToolTip(ShipmentRecord::name_barcode_Tooltip);
 
 	// Set the various strings and tooltips for the resultTable
-	header = ui->resultTable->horizontalHeaderItem(0);
+    header = ui->resultTable->horizontalHeaderItem(0);
     header->setText(DrugRecord::name_Label);
     header->setToolTip(DrugRecord::name_Tooltip);
 
@@ -51,7 +51,7 @@ FormularyFrame::FormularyFrame(QWidget *parent) :
 
 	header = ui->resultTable->horizontalHeaderItem(5);
 	header->setText(ShipmentRecord::product_left_Label);
-	header->setToolTip(ShipmentRecord::product_left_Tooltip);
+    header->setToolTip(ShipmentRecord::product_left_Tooltip);*/
 
 	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
 
@@ -77,6 +77,19 @@ FormularyFrame::FormularyFrame(QWidget *parent) :
 FormularyFrame::~FormularyFrame()
 {
 	delete ui;
+}
+void FormularyFrame::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		qDebug() << "here";
+		break;
+	default:
+		break;
+	}
 }
 
 void FormularyFrame::viewMedication()

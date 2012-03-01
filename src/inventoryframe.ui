@@ -20,13 +20,16 @@
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Medication search</string>
+      <string notr="true">Medication search</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="nameLabel">
+          <property name="toolTip">
+           <string comment="MEDICATION/BARCODE SEARCH"/>
+          </property>
           <property name="text">
            <string>MEDICATION / BARCODE</string>
           </property>
@@ -45,6 +48,12 @@
             <width>200</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string comment="MEDICATION/BARCODE SEARCH"/>
+          </property>
+          <property name="text">
+           <string notr="true"/>
           </property>
          </widget>
         </item>
@@ -66,8 +75,11 @@
         </item>
         <item>
          <widget class="QLabel" name="lotLabel">
+          <property name="toolTip">
+           <string comment="LOT SEARCH"/>
+          </property>
           <property name="text">
-           <string>LOT NUMBER</string>
+           <string comment="LOT LABEL SEARCH">LOT NUMBER</string>
           </property>
          </widget>
         </item>
@@ -84,6 +96,12 @@
             <width>200</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string comment="LOT SEARCH"/>
+          </property>
+          <property name="text">
+           <string notr="true"/>
           </property>
          </widget>
         </item>
@@ -107,7 +125,7 @@
         <item>
          <widget class="QCheckBox" name="stockCheckbox">
           <property name="text">
-           <string>In stock</string>
+           <string notr="true">In stock</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -133,7 +151,7 @@
         <item>
          <widget class="QCheckBox" name="activeCheckbox">
           <property name="text">
-           <string>Active</string>
+           <string notr="true">Active</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -159,7 +177,7 @@
         <item>
          <widget class="QCheckBox" name="notExpiredCheckbox">
           <property name="text">
-           <string>Not Expired</string>
+           <string notr="true">Not Expired</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -189,14 +207,14 @@
      <item>
       <widget class="QPushButton" name="resetButton">
        <property name="text">
-        <string>Reset</string>
+        <string notr="true">Reset</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="searchButton">
        <property name="text">
-        <string>Search</string>
+        <string notr="true">Search</string>
        </property>
        <property name="default">
         <bool>true</bool>
@@ -304,7 +322,7 @@
   </layout>
   <action name="writeOffAction">
    <property name="text">
-    <string>Write Off...</string>
+    <string notr="true">Write Off...</string>
    </property>
    <property name="toolTip">
     <string>Write off a specified amount of stock.</string>
@@ -312,7 +330,7 @@
   </action>
   <action name="printBarcodeAction">
    <property name="text">
-    <string>Print Barcode</string>
+    <string notr="true">Print Barcode</string>
    </property>
    <property name="toolTip">
     <string>Print a barcode</string>
@@ -320,7 +338,7 @@
   </action>
   <action name="toggleAction">
    <property name="text">
-    <string>Toggle Active</string>
+    <string notr="true">Toggle Active</string>
    </property>
    <property name="toolTip">
     <string>Toggle active/inactive</string>
@@ -328,7 +346,7 @@
   </action>
   <action name="increaseAction">
    <property name="text">
-    <string>Increase Inventory</string>
+    <string notr="true">Increase Inventory</string>
    </property>
    <property name="toolTip">
     <string>Increase the inventory received and remaining</string>
@@ -336,7 +354,7 @@
   </action>
   <action name="viewAction">
    <property name="text">
-    <string>View Inventory</string>
+    <string notr="true">View Inventory</string>
    </property>
    <property name="toolTip">
     <string>View inventory record information</string>

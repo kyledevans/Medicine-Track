@@ -20,7 +20,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Prescriber search</string>
+      <string notr="true">Prescriber search</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -33,7 +33,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lastField"/>
+         <widget class="QLineEdit" name="lastField">
+          <property name="text">
+           <string notr="true"/>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="horizontalSpacer">
@@ -59,7 +63,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="firstField"/>
+         <widget class="QLineEdit" name="firstField">
+          <property name="text">
+           <string notr="true"/>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="horizontalSpacer_2">
@@ -81,7 +89,7 @@
         <item>
          <widget class="QCheckBox" name="activeField">
           <property name="text">
-           <string>Active</string>
+           <string notr="true">Active</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -111,14 +119,14 @@
      <item>
       <widget class="QPushButton" name="resetButton">
        <property name="text">
-        <string>Reset</string>
+        <string notr="true">Reset</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="searchButton">
        <property name="text">
-        <string>Search</string>
+        <string notr="true">Search</string>
        </property>
        <property name="default">
         <bool>true</bool>
@@ -144,7 +152,7 @@
      <item>
       <widget class="QPushButton" name="newButton">
        <property name="text">
-        <string>New Prescriber</string>
+        <string notr="true">New Prescriber</string>
        </property>
       </widget>
      </item>
@@ -197,7 +205,7 @@
      <item>
       <widget class="QPushButton" name="modifyButton">
        <property name="text">
-        <string>Modify Prescriber</string>
+        <string notr="true">Modify Prescriber</string>
        </property>
       </widget>
      </item>

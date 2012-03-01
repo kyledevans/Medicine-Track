@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="title">
-   <string>Inventory Information</string>
+   <string notr="true">Inventory Information</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -26,7 +26,7 @@
      <item>
       <widget class="QLabel" name="expirationLabel">
        <property name="text">
-        <string>EXPIRATION2</string>
+        <string notr="true">EXPIRATION2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -60,7 +60,7 @@
      <item>
       <widget class="QLabel" name="lotLabel">
        <property name="text">
-        <string>LOT2</string>
+        <string notr="true">LOT2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -94,7 +94,7 @@
      <item>
       <widget class="QLabel" name="countLabel">
        <property name="text">
-        <string>PRODUCTCOUNT2</string>
+        <string notr="true">PRODUCTCOUNT2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -128,7 +128,7 @@
      <item>
       <widget class="QLabel" name="leftLabel">
        <property name="text">
-        <string>PRODUCTLEFT2</string>
+        <string notr="true">PRODUCTLEFT2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -162,7 +162,7 @@
      <item>
       <widget class="QLabel" name="activeLabel">
        <property name="text">
-        <string>ACTIVE2</string>
+        <string notr="true">ACTIVE2</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>

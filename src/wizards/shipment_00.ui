@@ -22,7 +22,7 @@
         <item>
          <widget class="QLabel" name="medicationLabel">
           <property name="text">
-           <string>MEDICATION</string>
+           <string notr="true">MEDICATION</string>
           </property>
          </widget>
         </item>
@@ -45,7 +45,7 @@
         <item>
          <widget class="QLabel" name="strengthLabel">
           <property name="text">
-           <string>STRENGTH</string>
+           <string notr="true">STRENGTH</string>
           </property>
          </widget>
         </item>
@@ -68,7 +68,7 @@
         <item>
          <widget class="QLabel" name="formLabel">
           <property name="text">
-           <string>FORM</string>
+           <string notr="true">FORM</string>
           </property>
          </widget>
         </item>
@@ -92,7 +92,7 @@
         <item>
          <widget class="QLabel" name="unitSizeLabel">
           <property name="text">
-           <string>UNIT_SIZE</string>
+           <string notr="true">UNIT_SIZE</string>
           </property>
          </widget>
         </item>
