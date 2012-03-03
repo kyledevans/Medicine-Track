@@ -95,3 +95,16 @@ void Medication_00::getResults(DrugRecord *med)
 	med->setDispense_units(ui->dispenseUnitsField->text());
 	med->setUnit_size(ui->unitSizeField->text());
 }
+
+void Medication_00::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

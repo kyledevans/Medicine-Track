@@ -23,6 +23,8 @@ public:
 	explicit PatientGroupBox(QWidget *parent = 0);
 	~PatientGroupBox();
 
+	void changeEvent(QEvent *);
+
 	void setId(int);
 	
 private:

@@ -23,6 +23,8 @@ public:
 	explicit PrescriberWizard(PrescriberRecord *, QWidget *parent = 0);
 	~PrescriberWizard();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void returnResults();
 	void rejectedWizard();

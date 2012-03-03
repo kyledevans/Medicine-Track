@@ -42,3 +42,16 @@ void Pharmacist_00::getResults(PharmacistRecord *pharm)
 	pharm->setFirst(ui->firstField->text());
 	pharm->setInitials(ui->initialsField->text());
 }
+
+void Pharmacist_00::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

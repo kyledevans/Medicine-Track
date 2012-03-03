@@ -22,6 +22,8 @@ class PrescriptionDisplay : public QDialog
 public:
 	explicit PrescriptionDisplay(int, QWidget *parent = 0);
 	~PrescriptionDisplay();
+
+	void changeEvent(QEvent *);
 	
 private:
 	Ui::PrescriptionDisplay *ui;

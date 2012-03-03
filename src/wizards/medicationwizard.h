@@ -23,6 +23,8 @@ public:
 	explicit MedicationWizard(DrugRecord *, QWidget *parent = 0);
 	~MedicationWizard();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void returnResults();
 	void rejectedWizard();

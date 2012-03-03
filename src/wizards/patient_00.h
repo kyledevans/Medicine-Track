@@ -23,6 +23,8 @@ public:
 	explicit Patient_00(QWidget *parent = 0);
 	~Patient_00();
 
+	void changeEvent(QEvent *);
+
 	void getResults(PatientRecord *);
 
 private:

@@ -43,3 +43,16 @@ void PharmacistWizard::rejectedWizard()
 {
 	emit(wizardRejected(pharm));
 }
+
+void PharmacistWizard::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

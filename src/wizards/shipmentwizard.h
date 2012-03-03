@@ -23,6 +23,8 @@ public:
 	explicit ShipmentWizard(ShipmentRecord *, QWidget *parent = 0);
 	~ShipmentWizard();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void returnResults();
 	void rejectedWizard();

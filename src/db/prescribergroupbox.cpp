@@ -55,3 +55,16 @@ void PrescriberGroupBox::setId(int new_id)
 		ui->activeLabel->setText(temp.arg(MTCOLORS::Problem, QString("Inactive")));
 	}
 }
+
+void PrescriberGroupBox::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

@@ -28,3 +28,16 @@ void Medication_01::getResults(DrugRecord *med)
 {
 	med->setInstructions(ui->instructionsField->toPlainText());
 }
+
+void Medication_01::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

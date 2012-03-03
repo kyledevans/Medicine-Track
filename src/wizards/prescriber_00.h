@@ -23,6 +23,8 @@ public:
 	explicit Prescriber_00(QWidget *parent = 0);
 	~Prescriber_00();
 
+	void changeEvent(QEvent *);
+
 	void getResults(PrescriberRecord *);
 
 private:

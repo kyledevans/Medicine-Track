@@ -73,3 +73,16 @@ int ShipmentGroupBox::getDrug_id()
 {
 	return shipment.getDrug_id();
 }
+
+void ShipmentGroupBox::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

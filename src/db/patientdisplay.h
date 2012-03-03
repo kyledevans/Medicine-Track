@@ -20,6 +20,8 @@ class PatientDisplay : public QDialog
 public:
 	explicit PatientDisplay(int, QWidget *parent = 0);
 	~PatientDisplay();
+
+	void changeEvent(QEvent *);
 	
 private:
 	Ui::PatientDisplay *ui;

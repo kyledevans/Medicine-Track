@@ -23,6 +23,8 @@ public:
 	explicit ShipmentGroupBox(QWidget *parent = 0);
 	~ShipmentGroupBox();
 
+	void changeEvent(QEvent *);
+
 	void setId(int);
 	int getId();
 	int getDrug_id();

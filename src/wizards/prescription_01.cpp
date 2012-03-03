@@ -198,3 +198,16 @@ void Prescription_01::setShipment(ShipmentRecord *new_shipment)
 {
 	shipment = new_shipment;
 }
+
+void Prescription_01::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

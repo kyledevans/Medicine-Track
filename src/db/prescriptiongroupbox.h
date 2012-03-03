@@ -23,6 +23,8 @@ public:
 	explicit PrescriptionGroupBox(QWidget *parent = 0);
 	~PrescriptionGroupBox();
 
+	void changeEvent(QEvent *);
+
 	void setId(int);
 	int getId();
 	int getPatient_id();

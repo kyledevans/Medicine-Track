@@ -30,6 +30,8 @@ public:
 	explicit Prescription_01(QWidget *parent = 0);
 	~Prescription_01();
 
+	void changeEvent(QEvent *);
+
 	void setPatient(PatientRecord *);
 	void setPrescription(PrescriptionRecord *);
     void setMedication(DrugRecord *);

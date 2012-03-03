@@ -42,3 +42,16 @@ void Prescriber_00::getResults(PrescriberRecord *pres)
 	pres->setFirst(ui->firstField->text());
 	pres->setFull_name(ui->fullField->text());
 }
+
+void Prescriber_00::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

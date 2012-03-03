@@ -66,3 +66,16 @@ void Shipment_00::getResults(ShipmentRecord *shipment)
 	shipment->setProduct_left(shipment->getProduct_count());
 	shipment->setWrite_off(0);
 }
+
+void Shipment_00::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

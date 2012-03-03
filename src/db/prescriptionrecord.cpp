@@ -259,7 +259,7 @@ bool PrescriptionRecord::toggleActive()
 	}
 
 	db.commit();
-	qDebug() << "here";
+	;
 
 	active = !active;
 

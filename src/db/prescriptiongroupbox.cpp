@@ -92,3 +92,16 @@ int PrescriptionGroupBox::getPharmacist_id()
 {
 	return prescription.getPharmacist_id();
 }
+
+void PrescriptionGroupBox::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

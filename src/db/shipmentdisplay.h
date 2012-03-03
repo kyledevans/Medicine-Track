@@ -20,6 +20,8 @@ class ShipmentDisplay : public QDialog
 public:
 	explicit ShipmentDisplay(int, QWidget *parent = 0);
 	~ShipmentDisplay();
+
+	void changeEvent(QEvent *);
 	
 private:
 	Ui::ShipmentDisplay *ui;

@@ -23,6 +23,8 @@ public:
 	explicit Medication_00(QWidget *parent = 0);
 	~Medication_00();
 
+	void changeEvent(QEvent *);
+
 	void setForm(int);
 
     void getResults(DrugRecord *);

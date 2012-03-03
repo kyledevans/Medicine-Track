@@ -79,3 +79,16 @@ void PrescriptionWizard::setPrescription(PrescriptionRecord *new_prescription)
 	ui->page1->setPrescription(prescription);
 	ui->page2->setPrescription(prescription);
 }
+
+void PrescriptionWizard::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

@@ -20,6 +20,8 @@ class DrugDisplay : public QDialog
 public:
 	explicit DrugDisplay(int, QWidget *parent = 0);
 	~DrugDisplay();
+
+	void changeEvent(QEvent *);
 	
 private:
 	Ui::DrugDisplay *ui;

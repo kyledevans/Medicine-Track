@@ -24,6 +24,8 @@ public:
 	explicit Shipment_00(QWidget *parent = 0);
 	~Shipment_00();
 
+	void changeEvent(QEvent *);
+
 	void getResults(ShipmentRecord *);
     void setMedication(DrugRecord *);
 

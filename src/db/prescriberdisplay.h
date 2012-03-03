@@ -23,6 +23,8 @@ public:
 	explicit PrescriberDisplay(int, QWidget *parent = 0);
 	~PrescriberDisplay();
 
+	void changeEvent(QEvent *);
+
 private:
 	Ui::PrescriberDisplay *ui;
 

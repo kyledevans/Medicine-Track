@@ -25,3 +25,16 @@ DrugDisplay::~DrugDisplay()
 {
 	delete ui;
 }
+
+void DrugDisplay::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

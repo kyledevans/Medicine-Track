@@ -44,3 +44,16 @@ void PatientWizard::rejectedWizard()
 {
 	emit(wizardRejected(patient));
 }
+
+void PatientWizard::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

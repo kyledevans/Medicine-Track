@@ -26,6 +26,8 @@ public:
 	explicit PrescriptionWizard(QWidget *parent = 0);
 	~PrescriptionWizard();
 
+	void changeEvent(QEvent *);
+
 	void setPrescription(PrescriptionRecord *);
 	bool getPatient(int);
 

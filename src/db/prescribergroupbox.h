@@ -23,6 +23,8 @@ public:
 	explicit PrescriberGroupBox(QWidget *parent = 0);
 	~PrescriberGroupBox();
 
+	void changeEvent(QEvent *);
+
 	void setId(int);
 
 private:

@@ -52,3 +52,16 @@ void Patient_00::getResults(PatientRecord *patient)
 	patient->setFirst(field("firstField").toString());
 	patient->setDob(field("dobField").toDate());
 }
+
+void Patient_00::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}

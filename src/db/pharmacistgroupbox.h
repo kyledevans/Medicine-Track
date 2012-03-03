@@ -23,6 +23,8 @@ public:
 	explicit PharmacistGroupBox(QWidget *parent = 0);
 	~PharmacistGroupBox();
 
+	void changeEvent(QEvent *);
+
 	void setId(int);
 	
 private:

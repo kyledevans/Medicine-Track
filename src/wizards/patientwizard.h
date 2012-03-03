@@ -23,6 +23,8 @@ public:
 	explicit PatientWizard(PatientRecord *, QWidget *parent = 0);
 	~PatientWizard();
 
+	void changeEvent(QEvent *);
+
 public slots:
 	void returnResults();
 	void rejectedWizard();

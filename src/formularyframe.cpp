@@ -78,6 +78,7 @@ FormularyFrame::~FormularyFrame()
 {
 	delete ui;
 }
+
 void FormularyFrame::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -85,7 +86,7 @@ void FormularyFrame::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
-		qDebug() << "here";
+		;
 		break;
 	default:
 		break;

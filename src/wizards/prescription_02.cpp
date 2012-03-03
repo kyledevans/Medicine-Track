@@ -44,3 +44,16 @@ void Prescription_02::getResults()
 {
 	prescription->setInstructions(ui->instructionsField->toPlainText());
 }
+
+void Prescription_02::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+
+	switch(e->type()) {
+	case QEvent::LanguageChange:
+		ui->retranslateUi(this);
+		break;
+	default:
+		break;
+	}
+}
