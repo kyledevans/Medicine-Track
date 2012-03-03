@@ -27,13 +27,19 @@
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="lastLabel">
+          <property name="toolTip">
+           <string comment="PRESCRIBER LAST SEARCH TOOLTIP">PRESCRIBER LAST</string>
+          </property>
           <property name="text">
-           <string>LAST NAME</string>
+           <string comment="PRESCRIBER LAST SEARCH LABEL">PRESCRIBER LAST</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="lastField">
+          <property name="toolTip">
+           <string comment="PRESCRIBER LAST SEARCH TOOLTIP">PRESCRIBER LAST</string>
+          </property>
           <property name="text">
            <string notr="true"/>
           </property>
@@ -57,13 +63,19 @@
         </item>
         <item>
          <widget class="QLabel" name="firstLabel">
+          <property name="toolTip">
+           <string comment="PRESCRIBER FIRST SEARCH TOOLTIP">PRESCRIBER FIRST</string>
+          </property>
           <property name="text">
-           <string>FIRST NAME</string>
+           <string comment="PRESCRIBER FIRST SEARCH LABEL">PRESCRIBER FIRST</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="firstField">
+          <property name="toolTip">
+           <string comment="PRESCRIBER FIRST SEARCH TOOLTIP">PRESCRIBER FIRST</string>
+          </property>
           <property name="text">
            <string notr="true"/>
           </property>
@@ -233,17 +245,26 @@
      </attribute>
      <column>
       <property name="text">
-       <string>LAST NAME</string>
+       <string comment="PRESCRIBER LAST DISPLAY LABEL">PRESCRIBER LAST</string>
+      </property>
+      <property name="toolTip">
+       <string comment="PRESCRIBER LAST DISPLAY TOOLTIP">PRESCRIBER LAST</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>FIRST NAME</string>
+       <string comment="PRESCRIBER FIRST DISPLAY LABEL">PRESCRIBER FIRST</string>
+      </property>
+      <property name="toolTip">
+       <string comment="PRESCRIBER FIRST DISPLAY TOOLTIP">PRESCRIBER FIRST</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>FULL NAME</string>
+       <string comment="FULL NAME DISPLAY LABEL">FULL NAME</string>
+      </property>
+      <property name="toolTip">
+       <string comment="FULL NAME DISPLAY TOOLTIP">FULL NAME</string>
       </property>
      </column>
     </widget>

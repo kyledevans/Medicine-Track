@@ -27,8 +27,11 @@
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="lastNameLabel">
+          <property name="toolTip">
+           <string comment="PATIENT LAST SEARCH TOOLTIP">PATIENT LAST</string>
+          </property>
           <property name="text">
-           <string>LAST</string>
+           <string comment="PATIENT LAST SEARCH LABEL">PATIENT LAST</string>
           </property>
          </widget>
         </item>
@@ -45,6 +48,9 @@
             <width>200</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string comment="PATIENT LAST SEARCH TOOLTIP">PATIENT LAST</string>
           </property>
           <property name="text">
            <string notr="true"/>
@@ -69,8 +75,11 @@
         </item>
         <item>
          <widget class="QLabel" name="firstNameLabel">
+          <property name="toolTip">
+           <string comment="PATIENT FIRST SEARCH TOOLTIP">PATIENT FIRST</string>
+          </property>
           <property name="text">
-           <string>FIRST</string>
+           <string comment="PATIENT FIRST SEARCH LABEL">PATIENT FIRST</string>
           </property>
          </widget>
         </item>
@@ -87,6 +96,9 @@
             <width>200</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string comment="PATIENT FIRST SEARCH TOOLTIP">PATIENT FIRST</string>
           </property>
           <property name="text">
            <string notr="true"/>
@@ -111,13 +123,19 @@
         </item>
         <item>
          <widget class="QLabel" name="dobLabel">
+          <property name="toolTip">
+           <string comment="DOB SEARCH TOOLTIP">DOB</string>
+          </property>
           <property name="text">
-           <string>DOB</string>
+           <string comment="DOB SEARCH LABEL">DOB</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QDateEdit" name="dobField">
+          <property name="toolTip">
+           <string comment="DOB SEARCH TOOLTIP">DOB</string>
+          </property>
           <property name="calendarPopup">
            <bool>true</bool>
           </property>
@@ -300,22 +318,34 @@
      </attribute>
      <column>
       <property name="text">
-       <string>MR NUMBER</string>
+       <string comment="ALLSCRIPTS ID DISPLAY LABEL">ALLSCRIPTS ID</string>
+      </property>
+      <property name="toolTip">
+       <string comment="ALLSCRIPTS ID DISPLAY TOOLTIP">ALLSCRIPTS ID</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>LAST</string>
+       <string comment="PATIENT LAST DISPLAY LABEL">PATIENT LAST</string>
+      </property>
+      <property name="toolTip">
+       <string comment="PATIENT LAST DISPLAY TOOLTIP">PATIENT LAST</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>FIRST</string>
+       <string comment="PATIENT FIRST DISPLAY LABEL">PATIENT FIRST</string>
+      </property>
+      <property name="toolTip">
+       <string comment="PATIENT FIRST DISPLAY TOOLTIP">PATIENT FIRST</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>DOB</string>
+       <string comment="DOB DISPLAY LABEL">DOB</string>
+      </property>
+      <property name="toolTip">
+       <string comment="DOB DISPLAY TOOLTIP">DOB</string>
       </property>
      </column>
     </widget>

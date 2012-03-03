@@ -27,15 +27,18 @@
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="lastLabel">
+          <property name="toolTip">
+           <string comment="PHARMACIST LAST SEARCH TOOLTIP">PHARMACIST LAST</string>
+          </property>
           <property name="text">
-           <string>LAST NAME</string>
+           <string comment="PHARMACIST LAST SEARCH LABEL">PHARMACIST LAST</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="lastField">
-          <property name="text">
-           <string notr="true"/>
+          <property name="toolTip">
+           <string comment="PHARMACIST LAST SEARCH TOOLTIP">PHARMACIST LAST</string>
           </property>
          </widget>
         </item>
@@ -57,15 +60,18 @@
         </item>
         <item>
          <widget class="QLabel" name="firstLabel">
+          <property name="toolTip">
+           <string comment="PHARMACIST FIRST SEARCH LABEL">PHARMACIST FIRST</string>
+          </property>
           <property name="text">
-           <string>FIRST NAME</string>
+           <string comment="PHARMACIST FIRST SEARCH LABEL">PHARMACIST FIRST</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="firstField">
-          <property name="text">
-           <string notr="true"/>
+          <property name="toolTip">
+           <string comment="PHARMACIST FIRST SEARCH TOOLTIP">PHARMACIST FIRST</string>
           </property>
          </widget>
         </item>
@@ -236,17 +242,26 @@
      </attribute>
      <column>
       <property name="text">
-       <string>LAST NAME</string>
+       <string comment="PHARMACIST LAST DISPLAY LABEL">PHARMACIST LAST</string>
+      </property>
+      <property name="toolTip">
+       <string comment="PHARMACIST LAST DISPLAY TOOLTIP">PHARMACIST LAST</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>FIRST NAME</string>
+       <string comment="PHARMACIST FIRST DISPLAY LABEL">PHARMACIST FIRST</string>
+      </property>
+      <property name="toolTip">
+       <string comment="PHARMACIST FIRST DISPLAY TOOLTIP">PHARMACIST FIRST</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>INITIALS</string>
+       <string comment="INITIALS DISPLAY LABEL">INITIALS</string>
+      </property>
+      <property name="toolTip">
+       <string comment="INITIALS DISPLAY TOOLTIP">INITIALS</string>
       </property>
      </column>
     </widget>

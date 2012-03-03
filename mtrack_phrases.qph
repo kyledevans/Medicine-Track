@@ -510,4 +510,124 @@
     <target>Active or inactive status</target>
     <definition>SHIPMENT ACTIVE EDIT TOOLTIP</definition>
 </phrase>
+<phrase>
+    <source>PATIENT LAST</source>
+    <target>Last</target>
+    <definition>PATIENT LAST DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PATIENT LAST</source>
+    <target>Last</target>
+    <definition>PATIENT LAST DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PATIENT LAST</source>
+    <target>Last</target>
+    <definition>PATIENT LAST SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PATIENT LAST</source>
+    <target>Last</target>
+    <definition>PATIENT LAST SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PATIENT LAST</source>
+    <target>Last</target>
+    <definition>PATIENT LAST EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PATIENT LAST</source>
+    <target>Last</target>
+    <definition>PATIENT LAST EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PATIENT FIRST</source>
+    <target>First</target>
+    <definition>PATIENT FIRST DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PATIENT FIRST</source>
+    <target>First</target>
+    <definition>PATIENT FIRST DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PATIENT FIRST</source>
+    <target>First</target>
+    <definition>PATIENT FIRST SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PATIENT FIRST</source>
+    <target>First</target>
+    <definition>PATIENT FIRST SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PATIENT FIRST</source>
+    <target>First</target>
+    <definition>PATIENT FIRST EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PATIENT FIRST</source>
+    <target>First</target>
+    <definition>PATIENT FIRST EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>DOB</source>
+    <target>DOB</target>
+    <definition>DOB DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>DOB</source>
+    <target>DOB</target>
+    <definition>DOB DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>DOB</source>
+    <target>DOB</target>
+    <definition>DOB SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>DOB</source>
+    <target>DOB</target>
+    <definition>DOB SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>DOB</source>
+    <target>DOB</target>
+    <definition>DOB EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>DOB</source>
+    <target>DOB</target>
+    <definition>DOB EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>ALLSCRIPTS ID</source>
+    <target>MR Number</target>
+    <definition>ALLSCRIPTS ID DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>ALLSCRIPTS ID</source>
+    <target>MR Number</target>
+    <definition>ALLSCRIPTS ID DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>ALLSCRIPTS ID</source>
+    <target>MR Number</target>
+    <definition>ALLSCRIPTS ID SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>ALLSCRIPTS ID</source>
+    <target>MR Number</target>
+    <definition>ALLSCRIPTS ID SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>ALLSCRIPTS ID</source>
+    <target>MR Number</target>
+    <definition>ALLSCRIPTS ID EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>ALLSCRIPTS ID</source>
+    <target>MR Number</target>
+    <definition>ALLSCRIPTS ID EDIT TOOLTIP</definition>
+</phrase>
 </QPH>
