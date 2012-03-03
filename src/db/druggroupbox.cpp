@@ -15,46 +15,7 @@ DrugGroupBox::DrugGroupBox(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	// Set UI strings
-	ui->medicationTitle->setText(DrugRecord::name_Label + ":");
-	ui->medicationTitle->setToolTip(DrugRecord::name_Tooltip);
-	ui->medicationLabel->setToolTip(DrugRecord::name_Tooltip);
-
-	ui->genericTitle->setText(DrugRecord::generic_Label + ":");
-	ui->genericTitle->setToolTip(DrugRecord::generic_Tooltip);
-	ui->genericLabel->setToolTip(DrugRecord::generic_Tooltip);
-
-	ui->manufacturerTitle->setText(DrugRecord::manufacturer_Label + ":");
-	ui->manufacturerTitle->setToolTip(DrugRecord::manufacturer_Tooltip);
-	ui->manufacturerLabel->setToolTip(DrugRecord::manufacturer_Tooltip);
-
-	ui->ndcTitle->setText(DrugRecord::ndc_Label + ":");
-	ui->ndcTitle->setToolTip(DrugRecord::ndc_Tooltip);
-	ui->ndcLabel->setToolTip(DrugRecord::ndc_Tooltip);
-
-	ui->formTitle->setText(DrugRecord::form_Label + ":");
-	ui->formTitle->setToolTip(DrugRecord::form_Label);
-	ui->formLabel->setToolTip(DrugRecord::form_Tooltip);
-
-	ui->strengthTitle->setText(DrugRecord::strength_Label + ":");
-	ui->strengthTitle->setToolTip(DrugRecord::strength_Tooltip);
-	ui->strengthLabel->setToolTip(DrugRecord::strength_Tooltip);
-
-	ui->dispenseTitle->setText(DrugRecord::dispense_units_Label + ":");
-	ui->dispenseTitle->setToolTip(DrugRecord::dispense_units_Tooltip);
-	ui->dispenseLabel->setToolTip(DrugRecord::dispense_units_Tooltip);
-
-	ui->unitTitle->setText(DrugRecord::unit_size_Label + ":");
-	ui->unitTitle->setToolTip(DrugRecord::unit_size_Tooltip);
-	ui->unitLabel->setToolTip(DrugRecord::unit_size_Tooltip);
-
-	ui->instructionsTitle->setText(DrugRecord::instructions_Label + ":");
-	ui->instructionsTitle->setToolTip(DrugRecord::instructions_Tooltip);
-	ui->instructionsLabel->setToolTip(DrugRecord::instructions_Tooltip);
-
-	ui->activeTitle->setText(DrugRecord::active_Label + ":");
-	ui->activeTitle->setToolTip(DrugRecord::active_Tooltip);
-	ui->activeLabel->setToolTip(DrugRecord::active_Tooltip);
+	setStrings();
 }
 
 void DrugGroupBox::setId(int new_id)
@@ -86,6 +47,21 @@ DrugGroupBox::~DrugGroupBox()
 	delete ui;
 }
 
+void DrugGroupBox::setStrings()
+{
+	// Set UI strings
+	ui->medicationTitle->setText(ui->medicationTitle->text() + ":");
+	ui->genericTitle->setText(ui->genericTitle->text() + ":");
+	ui->manufacturerTitle->setText(ui->manufacturerTitle->text() + ":");
+	ui->ndcTitle->setText(ui->ndcTitle->text() + ":");
+	ui->formTitle->setText(ui->formTitle->text() + ":");
+	ui->strengthTitle->setText(ui->strengthTitle->text() + ":");
+	ui->dispenseTitle->setText(ui->dispenseTitle->text() + ":");
+	ui->unitTitle->setText(ui->unitTitle->text() + ":");
+	ui->instructionsTitle->setText(ui->instructionsTitle->text() + ":");
+	ui->activeTitle->setText(ui->activeTitle->text() + ":");
+}
+
 void DrugGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -93,6 +69,7 @@ void DrugGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
+		setStrings();
 		break;
 	default:
 		break;

@@ -330,4 +330,184 @@
     <target>drugs.id</target>
     <definition>MED ID EDIT TOOLTIP</definition>
 </phrase>
+<phrase>
+    <source>PRODUCT LEFT</source>
+    <target>Inventory left</target>
+    <definition>PRODUCT LEFT DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRODUCT LEFT</source>
+    <target>Inventory left</target>
+    <definition>PRODUCT LEFT DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRODUCT LEFT</source>
+    <target>Inventory left</target>
+    <definition>PRODUCT LEFT SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRODUCT LEFT</source>
+    <target>Inventory left</target>
+    <definition>PRODUCT LEFT SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRODUCT LEFT</source>
+    <target>Inventory left</target>
+    <definition>PRODUCT LEFT EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRODUCT LEFT</source>
+    <target>Inventory left</target>
+    <definition>PRODUCT LEFT EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRODUCT COUNT</source>
+    <target>Inventory received</target>
+    <definition>PRODUCT COUNT DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRODUCT COUNT</source>
+    <target>Inventory received</target>
+    <definition>PRODUCT COUNT DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRODUCT COUNT</source>
+    <target>Inventory received</target>
+    <definition>PRODUCT COUNT SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRODUCT COUNT</source>
+    <target>Inventory received</target>
+    <definition>PRODUCT COUNT SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRODUCT COUNT</source>
+    <target>Inventory received</target>
+    <definition>PRODUCT COUNT EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRODUCT COUNT</source>
+    <target>Inventory received</target>
+    <definition>PRODUCT COUNT EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>EXPIRATION</source>
+    <target>Expiration</target>
+    <definition>EXPIRATION DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>EXPIRATION</source>
+    <target>Expiration date</target>
+    <definition>EXPIRATION DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>EXPIRATION</source>
+    <target>Expiration</target>
+    <definition>EXPIRATION SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>EXPIRATION</source>
+    <target>Expiration date</target>
+    <definition>EXPIRATION SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>EXPIRATION</source>
+    <target>Expiration</target>
+    <definition>EXPIRATION EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>EXPIRATION</source>
+    <target>Expiration date</target>
+    <definition>EXPIRATION EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>LOT</source>
+    <target>Lot #</target>
+    <definition>LOT DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>LOT</source>
+    <target>Lot number</target>
+    <definition>LOT DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>LOT</source>
+    <target>Lot #</target>
+    <definition>LOT SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>LOT</source>
+    <target>Lot number</target>
+    <definition>LOT SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>LOT</source>
+    <target>Lot #</target>
+    <definition>LOT EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>LOT</source>
+    <target>Lot number</target>
+    <definition>LOT EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>WRITE OFF</source>
+    <target>Write off</target>
+    <definition>WRITE OFF DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>WRITE OFF</source>
+    <target>Write off</target>
+    <definition>WRITE OFF DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>WRITE OFF</source>
+    <target>Write off</target>
+    <definition>WRITE OFF SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>WRITE OFF</source>
+    <target>Write off</target>
+    <definition>WRITE OFF SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>WRITE OFF</source>
+    <target>Write off</target>
+    <definition>WRITE OFF EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>WRITE OFF</source>
+    <target>Write off</target>
+    <definition>WRITE OFF EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>SHIPMENT ACTIVE</source>
+    <target>Status</target>
+    <definition>SHIPMENT ACTIVE DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>SHIPMENT ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>SHIPMENT ACTIVE DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>SHIPMENT ACTIVE</source>
+    <target>Active</target>
+    <definition>SHIPMENT ACTIVE SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>SHIPMENT ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>SHIPMENT ACTIVE SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>SHIPMENT ACTIVE</source>
+    <target>Active</target>
+    <definition>SHIPMENT ACTIVE EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>SHIPMENT ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>SHIPMENT ACTIVE EDIT TOOLTIP</definition>
+</phrase>
 </QPH>

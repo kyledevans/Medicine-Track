@@ -16,26 +16,7 @@ ShipmentGroupBox::ShipmentGroupBox(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	// Set UI strings for Shipment group
-	ui->expirationTitle->setText(ShipmentRecord::expiration_Label + ":");
-	ui->expirationTitle->setToolTip(ShipmentRecord::expiration_Tooltip);
-	ui->expirationLabel->setToolTip(ShipmentRecord::expiration_Tooltip);
-
-	ui->lotTitle->setText(ShipmentRecord::lot_Label + ":");
-	ui->lotTitle->setToolTip(ShipmentRecord::lot_Tooltip);
-	ui->lotLabel->setToolTip(ShipmentRecord::lot_Tooltip);
-
-	ui->countTitle->setText(ShipmentRecord::product_count_Label + ":");
-	ui->countTitle->setToolTip(ShipmentRecord::product_count_Tooltip);
-	ui->countLabel->setToolTip(ShipmentRecord::product_count_Tooltip);
-
-	ui->leftTitle->setText(ShipmentRecord::product_left_Label + ":");
-	ui->leftTitle->setToolTip(ShipmentRecord::product_left_Tooltip);
-	ui->leftLabel->setToolTip(ShipmentRecord::product_left_Tooltip);
-
-	ui->activeTitle->setText(ShipmentRecord::active_Label + ":");
-	ui->activeTitle->setToolTip(ShipmentRecord::active_Tooltip);
-	ui->activeLabel->setToolTip(ShipmentRecord::active_Tooltip);
+	setStrings();
 }
 
 ShipmentGroupBox::~ShipmentGroupBox()
@@ -74,6 +55,16 @@ int ShipmentGroupBox::getDrug_id()
 	return shipment.getDrug_id();
 }
 
+void ShipmentGroupBox::setStrings()
+{
+	// Set UI strings for Shipment group
+	ui->expirationTitle->setText(ShipmentRecord::expiration_Label + ":");
+	ui->lotTitle->setText(ShipmentRecord::lot_Label + ":");
+	ui->countTitle->setText(ShipmentRecord::product_count_Label + ":");
+	ui->leftTitle->setText(ShipmentRecord::product_left_Label + ":");
+	ui->activeTitle->setText(ShipmentRecord::active_Label + ":");
+}
+
 void ShipmentGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -81,6 +72,7 @@ void ShipmentGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
+		setStrings();
 		break;
 	default:
 		break;

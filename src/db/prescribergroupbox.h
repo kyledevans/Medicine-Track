@@ -24,6 +24,7 @@ public:
 	~PrescriberGroupBox();
 
 	void changeEvent(QEvent *);
+	void setStrings();
 
 	void setId(int);
 

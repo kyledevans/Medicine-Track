@@ -15,22 +15,7 @@ PharmacistGroupBox::PharmacistGroupBox(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	// Set UI strings
-	ui->lastTitle->setText(PharmacistRecord::last_Label + ":");
-	ui->lastTitle->setToolTip(PharmacistRecord::last_Tooltip);
-	ui->lastLabel->setToolTip(PharmacistRecord::last_Tooltip);
-
-	ui->firstTitle->setText(PharmacistRecord::first_Label + ":");
-	ui->firstTitle->setToolTip(PharmacistRecord::first_Tooltip);
-	ui->firstLabel->setToolTip(PharmacistRecord::first_Tooltip);
-
-	ui->initialsTitle->setText(PharmacistRecord::initials_Label + ":");
-	ui->initialsTitle->setToolTip(PharmacistRecord::initials_Tooltip);
-	ui->initialsLabel->setToolTip(PharmacistRecord::initials_Tooltip);
-
-	ui->activeTitle->setText(PharmacistRecord::active_Label + ":");
-	ui->activeTitle->setToolTip(PharmacistRecord::active_Tooltip);
-	ui->activeLabel->setToolTip(PharmacistRecord::active_Tooltip);
+	setStrings();
 }
 
 PharmacistGroupBox::~PharmacistGroupBox()
@@ -56,6 +41,15 @@ void PharmacistGroupBox::setId(int new_id)
 	}
 }
 
+void PharmacistGroupBox::setStrings()
+{
+	// Set UI strings
+	ui->lastTitle->setText(ui->lastTitle->text() + ":");
+	ui->firstTitle->setText(ui->firstTitle->text() + ":");
+	ui->initialsTitle->setText(ui->initialsTitle->text() + ":");
+	ui->activeTitle->setText(ui->activeTitle->text() + ":");
+}
+
 void PharmacistGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -63,6 +57,7 @@ void PharmacistGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
+		setStrings();
 		break;
 	default:
 		break;

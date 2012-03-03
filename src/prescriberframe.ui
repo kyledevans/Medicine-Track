@@ -251,34 +251,34 @@
   </layout>
   <action name="newAction">
    <property name="text">
-    <string>New Prescriber</string>
+    <string notr="true">New Prescriber</string>
    </property>
    <property name="toolTip">
-    <string>Enter a new prescriber.</string>
+    <string notr="true">Enter a new prescriber.</string>
    </property>
   </action>
   <action name="modifyAction">
    <property name="text">
-    <string>Modify Prescriber</string>
+    <string notr="true">Modify Prescriber</string>
    </property>
    <property name="toolTip">
-    <string>Modify details of the prescriber.</string>
+    <string notr="true">Modify details of the prescriber.</string>
    </property>
   </action>
   <action name="toggleAction">
    <property name="text">
-    <string>Toggle Active</string>
+    <string notr="true">Toggle Active</string>
    </property>
    <property name="toolTip">
-    <string>Toggle active/inactive</string>
+    <string notr="true">Toggle active/inactive</string>
    </property>
   </action>
   <action name="viewAction">
    <property name="text">
-    <string>View Prescriber</string>
+    <string notr="true">View Prescriber</string>
    </property>
    <property name="toolTip">
-    <string>View the prescriber record</string>
+    <string notr="true">View the prescriber record</string>
    </property>
   </action>
  </widget>

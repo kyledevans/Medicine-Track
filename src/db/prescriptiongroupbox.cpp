@@ -16,26 +16,7 @@ PrescriptionGroupBox::PrescriptionGroupBox(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	// Set UI strings
-	ui->amountTitle->setText(PrescriptionRecord::amount_Label + ":");
-	ui->amountTitle->setToolTip(PrescriptionRecord::amount_Tooltip);
-	ui->amountLabel->setToolTip(PrescriptionRecord::amount_Tooltip);
-
-	ui->writtenTitle->setText(PrescriptionRecord::written_Label + ":");
-	ui->writtenTitle->setToolTip(PrescriptionRecord::written_Tooltip);
-	ui->writtenLabel->setToolTip(PrescriptionRecord::written_Tooltip);
-
-	ui->filledTitle->setText(PrescriptionRecord::filled_Label + ":");
-	ui->filledTitle->setToolTip(PrescriptionRecord::filled_Tooltip);
-	ui->filledLabel->setToolTip(PrescriptionRecord::filled_Tooltip);
-
-	ui->instructionsTitle->setText(PrescriptionRecord::instructions_Label + ":");
-	ui->instructionsTitle->setToolTip(PrescriptionRecord::instructions_Tooltip);
-	ui->instructionsLabel->setToolTip(PrescriptionRecord::instructions_Tooltip);
-
-	ui->validTitle->setText(PrescriptionRecord::active_Label + ":");
-	ui->validTitle->setToolTip(PrescriptionRecord::active_Tooltip);
-	ui->validLabel->setToolTip(PrescriptionRecord::active_Tooltip);
+	setStrings();
 }
 
 PrescriptionGroupBox::~PrescriptionGroupBox()
@@ -93,6 +74,16 @@ int PrescriptionGroupBox::getPharmacist_id()
 	return prescription.getPharmacist_id();
 }
 
+void PrescriptionGroupBox::setStrings()
+{
+	// Set UI strings
+	ui->amountTitle->setText(PrescriptionRecord::amount_Label + ":");
+	ui->writtenTitle->setText(PrescriptionRecord::written_Label + ":");
+	ui->filledTitle->setText(PrescriptionRecord::filled_Label + ":");
+	ui->instructionsTitle->setText(PrescriptionRecord::instructions_Label + ":");
+	ui->validTitle->setText(PrescriptionRecord::active_Label + ":");
+}
+
 void PrescriptionGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -100,6 +91,7 @@ void PrescriptionGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
+		setStrings();
 		break;
 	default:
 		break;

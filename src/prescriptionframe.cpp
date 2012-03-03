@@ -24,78 +24,7 @@ PrescriptionFrame::PrescriptionFrame(QWidget *parent) :
     ui(new Ui::PrescriptionFrame),
 	db_queried(false)
 {
-	QTableWidgetItem *header;
 	ui->setupUi(this);
-
-	// Setup the search UI strings and tooltips
-    ui->medicationNameLabel->setText(DrugRecord::name_Label);
-    ui->medicationNameLabel->setToolTip(DrugRecord::name_Tooltip);
-    ui->medicationNameField->setToolTip(DrugRecord::name_Tooltip);
-
-	ui->lotLabel->setText(ShipmentRecord::lot_Label);
-	ui->lotLabel->setToolTip(ShipmentRecord::lot_Tooltip);
-	ui->lotField->setToolTip(ShipmentRecord::lot_Tooltip);
-
-	ui->filledLabel->setText(PrescriptionRecord::filled_Label);
-	ui->filledLabel->setToolTip(PrescriptionRecord::filled_Tooltip);
-	ui->filledField->setToolTip(PrescriptionRecord::filled_Tooltip);
-
-	ui->lastLabel->setText(PatientRecord::last_Label);
-	ui->lastLabel->setToolTip(PatientRecord::last_Tooltip);
-	ui->lastField->setToolTip(PatientRecord::last_Tooltip);
-
-	ui->firstLabel->setText(PatientRecord::first_Label);
-	ui->firstLabel->setToolTip(PatientRecord::first_Tooltip);
-	ui->firstField->setToolTip(PatientRecord::first_Tooltip);
-
-	ui->dobLabel->setText(PatientRecord::dob_Label);
-	ui->dobLabel->setToolTip(PatientRecord::dob_Tooltip);
-	ui->dobField->setToolTip(PatientRecord::dob_Tooltip);
-
-	// Setup the resultTable strings and tooltips
-	header = ui->resultTable->horizontalHeaderItem(0);
-	header->setText(PatientRecord::allscripts_id_Label);
-	header->setToolTip(PatientRecord::allscripts_id_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(1);
-	header->setText(PatientRecord::last_Label);
-	header->setToolTip(PatientRecord::last_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(2);
-	header->setText(PatientRecord::first_Label);
-	header->setToolTip(PatientRecord::first_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(3);
-	header->setText(PatientRecord::dob_Label);
-	header->setToolTip(PatientRecord::dob_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(4);
-    header->setText(DrugRecord::name_Label);
-    header->setToolTip(DrugRecord::name_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(5);
-    header->setText(DrugRecord::form_Label);
-    header->setToolTip(DrugRecord::form_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(6);
-    header->setText(DrugRecord::strength_Label);
-    header->setToolTip(DrugRecord::strength_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(7);
-	header->setText(PrescriptionRecord::amount_Label);
-	header->setToolTip(PrescriptionRecord::amount_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(8);
-	header->setText(PrescriptionRecord::filled_Label);
-	header->setToolTip(PrescriptionRecord::filled_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(9);
-	header->setText(PrescriptionRecord::written_Label);
-	header->setToolTip(PrescriptionRecord::written_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(10);
-	header->setText(ShipmentRecord::lot_Label);
-	header->setToolTip(ShipmentRecord::lot_Tooltip);
 
 	// Setup signals/slots
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));

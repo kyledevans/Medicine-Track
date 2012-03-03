@@ -76,10 +76,10 @@
         <item>
          <widget class="QLabel" name="lotLabel">
           <property name="toolTip">
-           <string comment="LOT SEARCH"/>
+           <string comment="LOT SEARCH TOOLTIP"/>
           </property>
           <property name="text">
-           <string comment="LOT LABEL SEARCH">LOT NUMBER</string>
+           <string comment="LOT SEARCH LABEL">LOT NUMBER</string>
           </property>
          </widget>
         </item>
@@ -98,10 +98,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="LOT SEARCH"/>
-          </property>
-          <property name="text">
-           <string notr="true"/>
+           <string comment="LOT SEARCH TOOLTIP"/>
           </property>
          </widget>
         </item>
@@ -274,47 +271,74 @@
      </attribute>
      <column>
       <property name="text">
-       <string>MEDICATION</string>
+       <string comment="MEDICATION DISPLAY LABEL">MEDICATION</string>
+      </property>
+      <property name="toolTip">
+       <string comment="MEDICATION DISPLAY TOOLTIP"/>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>FORM</string>
+       <string comment="FORM DISPLAY LABEL">FORM</string>
+      </property>
+      <property name="toolTip">
+       <string comment="FORM DISPLAY TOOLTIP"/>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>STRENGTH</string>
+       <string comment="STRENGTH DISPLAY LABEL">STRENGTH</string>
+      </property>
+      <property name="toolTip">
+       <string comment="STRENGTH DISPLAY TOOLTIP"/>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>UNIT SIZE</string>
+       <string comment="UNIT SIZE DISPLAY LABEL">UNIT SIZE</string>
+      </property>
+      <property name="toolTip">
+       <string comment="UNIT SIZE DISPLAY TOOLTIP"/>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>EXPIRATION</string>
+       <string comment="EXPIRATION DISPLAY LABEL">EXPIRATION</string>
+      </property>
+      <property name="toolTip">
+       <string comment="EXPIRATION DISPLAY TOOLTIP"/>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>LOT NUMBER</string>
+       <string comment="LOT DISPLAY LABEL">LOT NUMBER</string>
+      </property>
+      <property name="toolTip">
+       <string comment="LOT DISPLAY TOOLTIP"/>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>UNITS ORDERED</string>
+       <string comment="PRODUCT COUNT DISPLAY LABEL">PRODUCT COUNT</string>
+      </property>
+      <property name="toolTip">
+       <string comment="PRODUCT COUNT DISPLAY TOOLTIP"/>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>UNITS LEFT</string>
+       <string comment="PRODUCT LEFT DISPLAY LABEL">PRODUCT LEFT</string>
+      </property>
+      <property name="toolTip">
+       <string comment="PRODUCT LEFT DISPLAY TOOLTIP"/>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>WRITE OFF</string>
+       <string comment="WRITE OFF DISPLAY LABEL">WRITE OFF</string>
+      </property>
+      <property name="toolTip">
+       <string comment="WRITE OFF DISPLAY TOOLTIP"/>
       </property>
      </column>
     </widget>
@@ -325,7 +349,7 @@
     <string notr="true">Write Off...</string>
    </property>
    <property name="toolTip">
-    <string>Write off a specified amount of stock.</string>
+    <string notr="true">Write off a specified amount of stock.</string>
    </property>
   </action>
   <action name="printBarcodeAction">
@@ -333,7 +357,7 @@
     <string notr="true">Print Barcode</string>
    </property>
    <property name="toolTip">
-    <string>Print a barcode</string>
+    <string notr="true">Print a barcode</string>
    </property>
   </action>
   <action name="toggleAction">
@@ -341,7 +365,7 @@
     <string notr="true">Toggle Active</string>
    </property>
    <property name="toolTip">
-    <string>Toggle active/inactive</string>
+    <string notr="true">Toggle active/inactive</string>
    </property>
   </action>
   <action name="increaseAction">
@@ -349,7 +373,7 @@
     <string notr="true">Increase Inventory</string>
    </property>
    <property name="toolTip">
-    <string>Increase the inventory received and remaining</string>
+    <string notr="true">Increase the inventory received and remaining</string>
    </property>
   </action>
   <action name="viewAction">
@@ -357,7 +381,7 @@
     <string notr="true">View Inventory</string>
    </property>
    <property name="toolTip">
-    <string>View inventory record information</string>
+    <string notr="true">View inventory record information</string>
    </property>
   </action>
  </widget>

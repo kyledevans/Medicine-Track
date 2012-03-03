@@ -15,22 +15,7 @@ PrescriberGroupBox::PrescriberGroupBox(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	// Set UI strings
-	ui->lastTitle->setText(PrescriberRecord::last_Label + ":");
-	ui->lastTitle->setToolTip(PrescriberRecord::last_Tooltip);
-	ui->lastLabel->setToolTip(PrescriberRecord::last_Tooltip);
-
-	ui->firstTitle->setText(PrescriberRecord::first_Label + ":");
-	ui->firstTitle->setToolTip(PrescriberRecord::first_Tooltip);
-	ui->firstLabel->setToolTip(PrescriberRecord::first_Tooltip);
-
-	ui->fullTitle->setText(PrescriberRecord::full_name_Label + ":");
-	ui->fullTitle->setToolTip(PrescriberRecord::full_name_Tooltip);
-	ui->fullLabel->setToolTip(PrescriberRecord::full_name_Tooltip);
-
-	ui->activeTitle->setText(PrescriberRecord::active_Label + ":");
-	ui->activeTitle->setToolTip(PrescriberRecord::active_Tooltip);
-	ui->activeLabel->setToolTip(PrescriberRecord::active_Tooltip);
+	setStrings();
 }
 
 PrescriberGroupBox::~PrescriberGroupBox()
@@ -56,6 +41,15 @@ void PrescriberGroupBox::setId(int new_id)
 	}
 }
 
+void PrescriberGroupBox::setStrings()
+{
+	// Set UI strings
+	ui->lastTitle->setText(ui->lastTitle->text() + ":");
+	ui->firstTitle->setText(ui->firstTitle->text() + ":");
+	ui->fullTitle->setText(ui->fullTitle->text() + ":");
+	ui->activeTitle->setText(ui->activeTitle->text() + ":");
+}
+
 void PrescriberGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -63,6 +57,7 @@ void PrescriberGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
+		setStrings();
 		break;
 	default:
 		break;

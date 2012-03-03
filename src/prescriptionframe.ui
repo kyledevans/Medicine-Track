@@ -466,26 +466,26 @@
   </layout>
   <action name="printAction">
    <property name="text">
-    <string>Print Label</string>
+    <string notr="true">Print Label</string>
    </property>
    <property name="toolTip">
-    <string>Print a label for the prescription</string>
+    <string notr="true">Print a label for the prescription</string>
    </property>
   </action>
   <action name="invalidateAction">
    <property name="text">
-    <string>Invalidate</string>
+    <string notr="true">Invalidate</string>
    </property>
    <property name="toolTip">
-    <string>Marks the prescription as invalid.</string>
+    <string notr="true">Marks the prescription as invalid.</string>
    </property>
   </action>
   <action name="viewAction">
    <property name="text">
-    <string>View Prescription</string>
+    <string notr="true">View Prescription</string>
    </property>
    <property name="toolTip">
-    <string>View prescription record information</string>
+    <string notr="true">View prescription record information</string>
    </property>
   </action>
  </widget>

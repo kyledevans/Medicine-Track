@@ -254,34 +254,34 @@
   </layout>
   <action name="newAction">
    <property name="text">
-    <string>New Pharmacist</string>
+    <string notr="true">New Pharmacist</string>
    </property>
    <property name="toolTip">
-    <string>Enter a new pharmacist</string>
+    <string notr="true">Enter a new pharmacist</string>
    </property>
   </action>
   <action name="modifyAction">
    <property name="text">
-    <string>Modify Pharmacist</string>
+    <string notr="true">Modify Pharmacist</string>
    </property>
    <property name="toolTip">
-    <string>Modify details of the pharmacist</string>
+    <string notr="true">Modify details of the pharmacist</string>
    </property>
   </action>
   <action name="toggleAction">
    <property name="text">
-    <string>Toggle Active</string>
+    <string notr="true">Toggle Active</string>
    </property>
    <property name="toolTip">
-    <string>Toggle active/inactive</string>
+    <string notr="true">Toggle active/inactive</string>
    </property>
   </action>
   <action name="viewAction">
    <property name="text">
-    <string>View Pharmacist</string>
+    <string notr="true">View Pharmacist</string>
    </property>
    <property name="toolTip">
-    <string>View the pharmacist record</string>
+    <string notr="true">View the pharmacist record</string>
    </property>
   </action>
  </widget>

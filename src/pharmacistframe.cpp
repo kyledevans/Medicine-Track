@@ -18,30 +18,7 @@ PharmacistFrame::PharmacistFrame(QWidget *parent) :
 	ui(new Ui::PharmacistFrame),
 	db_queried(false)
 {
-	QTableWidgetItem *header;
 	ui->setupUi(this);
-
-	// Setup the search UI strings and tooltips
-	ui->lastLabel->setText(PharmacistRecord::last_Label);
-	ui->lastLabel->setToolTip(PharmacistRecord::last_Tooltip);
-	ui->lastField->setToolTip(PharmacistRecord::last_Tooltip);
-
-	ui->firstLabel->setText(PharmacistRecord::first_Label);
-	ui->firstLabel->setToolTip(PharmacistRecord::first_Tooltip);
-	ui->firstField->setToolTip(PharmacistRecord::first_Tooltip);
-
-	// Setup the resultTable strings and tooltips
-	header = ui->resultTable->horizontalHeaderItem(0);
-	header->setText(PharmacistRecord::last_Label);
-	header->setToolTip(PharmacistRecord::last_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(1);
-	header->setText(PharmacistRecord::first_Label);
-	header->setToolTip(PharmacistRecord::first_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(2);
-	header->setText(PharmacistRecord::initials_Label);
-	header->setToolTip(PharmacistRecord::initials_Tooltip);
 
 	// Setup signals/slots
 	connect(ui->newAction, SIGNAL(triggered()), this, SLOT(initiateNew()));

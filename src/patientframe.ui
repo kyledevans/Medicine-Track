@@ -323,42 +323,42 @@
   </layout>
   <action name="prescribeAction">
    <property name="text">
-    <string>New Prescription</string>
+    <string notr="true">New Prescription</string>
    </property>
    <property name="toolTip">
-    <string>Prescribe a medication</string>
+    <string notr="true">Prescribe a medication</string>
    </property>
   </action>
   <action name="modifyAction">
    <property name="text">
-    <string>Modify Patient</string>
+    <string notr="true">Modify Patient</string>
    </property>
    <property name="toolTip">
-    <string>Modify demographic information</string>
+    <string notr="true">Modify demographic information</string>
    </property>
   </action>
   <action name="newPatientAction">
    <property name="text">
-    <string>New Patient</string>
+    <string notr="true">New Patient</string>
    </property>
    <property name="toolTip">
-    <string>Add a new patient</string>
+    <string notr="true">Add a new patient</string>
    </property>
   </action>
   <action name="toggleAction">
    <property name="text">
-    <string>Toggle active</string>
+    <string notr="true">Toggle active</string>
    </property>
    <property name="toolTip">
-    <string>Toggle active/inactive</string>
+    <string notr="true">Toggle active/inactive</string>
    </property>
   </action>
   <action name="viewAction">
    <property name="text">
-    <string>View Patient</string>
+    <string notr="true">View Patient</string>
    </property>
    <property name="toolTip">
-    <string>View the patient's record</string>
+    <string notr="true">View the patient's record</string>
    </property>
   </action>
  </widget>

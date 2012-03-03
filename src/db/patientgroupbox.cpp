@@ -15,26 +15,7 @@ PatientGroupBox::PatientGroupBox(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	// Set UI strings
-	ui->allscriptsTitle->setText(PatientRecord::allscripts_id_Label + ":");
-	ui->allscriptsTitle->setToolTip(PatientRecord::allscripts_id_Tooltip);
-	ui->allscriptsLabel->setToolTip(PatientRecord::allscripts_id_Tooltip);
-
-	ui->lastTitle->setText(PatientRecord::last_Label + ":");
-	ui->lastTitle->setToolTip(PatientRecord::last_Tooltip);
-	ui->lastLabel->setToolTip(PatientRecord::last_Tooltip);
-
-	ui->firstTitle->setText(PatientRecord::first_Label + ":");
-	ui->firstTitle->setToolTip(PatientRecord::first_Tooltip);
-	ui->firstLabel->setToolTip(PatientRecord::first_Tooltip);
-
-	ui->dobTitle->setText(PatientRecord::dob_Label + ":");
-	ui->dobTitle->setToolTip(PatientRecord::dob_Tooltip);
-	ui->dobLabel->setToolTip(PatientRecord::dob_Tooltip);
-
-	ui->activeTitle->setText(PatientRecord::active_Label + ":");
-	ui->activeTitle->setToolTip(PatientRecord::active_Tooltip);
-	ui->activeLabel->setToolTip(PatientRecord::active_Tooltip);
+	setStrings();
 }
 
 void PatientGroupBox::setId(int new_id)
@@ -61,6 +42,16 @@ PatientGroupBox::~PatientGroupBox()
 	delete ui;
 }
 
+void PatientGroupBox::setStrings()
+{
+	// Set UI strings
+	ui->allscriptsTitle->setText(ui->allscriptsTitle->text() + ":");
+	ui->lastTitle->setText(ui->lastTitle->text() + ":");
+	ui->firstTitle->setText(ui->firstTitle->text() + ":");
+	ui->dobTitle->setText(ui->dobTitle->text() + ":");
+	ui->activeTitle->setText(ui->activeTitle->text() + ":");
+}
+
 void PatientGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -68,6 +59,7 @@ void PatientGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
+		setStrings();
 		break;
 	default:
 		break;

@@ -22,54 +22,7 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 	ui(new Ui::InventoryFrame),
 	db_queried(false)
 {
-	QTableWidgetItem *header;
 	ui->setupUi(this);
-
-	// Set the various strings and tooltips for the search interface
-	ui->nameLabel->setText(ShipmentRecord::name_barcode_Label);
-	ui->nameLabel->setToolTip(ShipmentRecord::name_barcode_Tooltip);
-	ui->nameField->setToolTip(ShipmentRecord::name_barcode_Tooltip);
-
-	ui->lotLabel->setText(ShipmentRecord::lot_Label);
-	ui->lotLabel->setToolTip(ShipmentRecord::lot_Tooltip);
-	ui->lotField->setToolTip(ShipmentRecord::lot_Tooltip);
-
-	// Set the various strings and tooltips for the resultTable
-	header = ui->resultTable->horizontalHeaderItem(0);
-    header->setText(DrugRecord::name_Label);
-    header->setToolTip(DrugRecord::name_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(1);
-    header->setText(DrugRecord::form_Label);
-    header->setToolTip(DrugRecord::form_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(2);
-    header->setText(DrugRecord::strength_Label);
-    header->setToolTip(DrugRecord::strength_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(3);
-    header->setText(DrugRecord::unit_size_Label);
-    header->setToolTip(DrugRecord::unit_size_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(4);
-	header->setText(ShipmentRecord::expiration_Label);
-	header->setToolTip(ShipmentRecord::expiration_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(5);
-	header->setText(ShipmentRecord::lot_Label);
-	header->setToolTip(ShipmentRecord::lot_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(6);
-	header->setText(ShipmentRecord::product_count_Label);
-	header->setToolTip(ShipmentRecord::product_count_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(7);
-	header->setText(ShipmentRecord::product_left_Label);
-	header->setToolTip(ShipmentRecord::product_left_Tooltip);
-
-	header = ui->resultTable->horizontalHeaderItem(8);
-	header->setText(ShipmentRecord::write_off_Label);
-	header->setToolTip(ShipmentRecord::write_off_Tooltip);
 
 	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
 
