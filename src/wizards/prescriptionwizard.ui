@@ -29,30 +29,30 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>New Prescription Wizard</string>
+   <string notr="true">New Prescription Wizard</string>
   </property>
   <widget class="Prescription_00" name="page0">
    <property name="title">
-    <string>Medication Search</string>
+    <string notr="true">Medication Search</string>
    </property>
    <property name="subTitle">
-    <string>Select the medication.</string>
+    <string notr="true">Select the medication.</string>
    </property>
   </widget>
   <widget class="Prescription_01" name="page1">
    <property name="title">
-    <string>Prescription Information</string>
+    <string notr="true">Prescription Information</string>
    </property>
    <property name="subTitle">
-    <string>Enter the prescription details.</string>
+    <string notr="true">Enter the prescription details.</string>
    </property>
   </widget>
   <widget class="Prescription_02" name="page2">
    <property name="title">
-    <string>Instructions</string>
+    <string notr="true">Instructions</string>
    </property>
    <property name="subTitle">
-    <string>Enter the prescription instructions.</string>
+    <string notr="true">Enter the prescription instructions.</string>
    </property>
   </widget>
  </widget>

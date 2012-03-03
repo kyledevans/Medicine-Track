@@ -39,22 +39,6 @@ public:
 
 	void print();			// Prints to the debug interface
 
-	/* Use these to keep UI strings consistent and sane. */
-	static const QString allscripts_id_Label;
-	static const QString allscripts_id_Tooltip;
-
-	static const QString last_Label;
-	static const QString last_Tooltip;
-
-	static const QString first_Label;
-	static const QString first_Tooltip;
-
-	static const QString dob_Label;
-	static const QString dob_Tooltip;
-
-	static const QString active_Label;
-	static const QString active_Tooltip;
-
 private:
 	int id;				// patients.id
 	int allscripts_id;	// patients.allscripts_id

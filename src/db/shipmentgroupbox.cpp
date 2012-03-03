@@ -58,11 +58,11 @@ int ShipmentGroupBox::getDrug_id()
 void ShipmentGroupBox::setStrings()
 {
 	// Set UI strings for Shipment group
-	ui->expirationTitle->setText(ShipmentRecord::expiration_Label + ":");
-	ui->lotTitle->setText(ShipmentRecord::lot_Label + ":");
-	ui->countTitle->setText(ShipmentRecord::product_count_Label + ":");
-	ui->leftTitle->setText(ShipmentRecord::product_left_Label + ":");
-	ui->activeTitle->setText(ShipmentRecord::active_Label + ":");
+	ui->expirationTitle->setText(ui->expirationTitle->text() + ":");
+	ui->lotTitle->setText(ui->lotTitle->text() + ":");
+	ui->countTitle->setText(ui->countTitle->text() + ":");
+	ui->leftTitle->setText(ui->leftTitle->text() + ":");
+	ui->activeTitle->setText(ui->activeTitle->text() + ":");
 }
 
 void ShipmentGroupBox::changeEvent(QEvent *e)

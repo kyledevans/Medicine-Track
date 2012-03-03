@@ -14,27 +14,33 @@
    <item>
     <widget class="QGroupBox" name="patientBox">
      <property name="title">
-      <string>Patient</string>
+      <string notr="true">Patient</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QLabel" name="lastLabel">
+        <property name="toolTip">
+         <string comment="PATIENT LAST DISPLAY TOOLTIP">PATIENT LAST</string>
+        </property>
         <property name="text">
-         <string notr="true">LASTNAME</string>
+         <string notr="true">PH PATIENT LAST</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>,</string>
+         <string notr="true">,</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="firstLabel">
+        <property name="toolTip">
+         <string comment="PATIENT FIRST DISPLAY TOOLTIP">PATIENT FIRST</string>
+        </property>
         <property name="text">
-         <string notr="true">FIRSTNAME</string>
+         <string notr="true">PH PATIENT FIRST</string>
         </property>
        </widget>
       </item>
@@ -58,8 +64,11 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="medicationLabel">
+       <property name="toolTip">
+        <string comment="MEDICATION/BARCODE SEARCH TOOLTIP">MEDICATION/BARCODE</string>
+       </property>
        <property name="text">
-        <string>MEDICATION/BARCODE</string>
+        <string comment="MEDICATION/BARCODE SEARCH LABEL">MEDICATION/BARCODE</string>
        </property>
       </widget>
      </item>
@@ -70,6 +79,9 @@
          <width>250</width>
          <height>0</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="MEDICATION/BARCODE SEARCH TOOLTIP">MEDICATION/BARCODE</string>
        </property>
       </widget>
      </item>
@@ -92,7 +104,7 @@
      <item>
       <widget class="QPushButton" name="searchButton">
        <property name="text">
-        <string>Search</string>
+        <string notr="true">Search</string>
        </property>
        <property name="default">
         <bool>true</bool>
@@ -133,37 +145,58 @@
      </attribute>
      <column>
       <property name="text">
-       <string>MEDICATION</string>
+       <string comment="MEDICATION DISPLAY LABEL">MEDICATION</string>
+      </property>
+      <property name="toolTip">
+       <string comment="MEDICATION DISPLAY TOOLTIP">MEDICATION</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>LOT NUMBER</string>
+       <string comment="LOT DISPLAY LABEL">LOT</string>
+      </property>
+      <property name="toolTip">
+       <string comment="LOT DISPLAY TOOLTIP">LOT</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>FORM</string>
+       <string comment="FORM DISPLAY LABEL">FORM</string>
+      </property>
+      <property name="toolTip">
+       <string comment="FORM DISPLAY TOOLTIP">FORM</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>STRENGTH</string>
+       <string comment="STRENGTH DISPLAY LABEL">STRENGTH</string>
+      </property>
+      <property name="toolTip">
+       <string comment="STRENGTH DISPLAY TOOLTIP">STRENGTH</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>UNIT SIZE</string>
+       <string comment="UNIT SIZE DISPLAY LABEL">UNIT SIZE</string>
+      </property>
+      <property name="toolTip">
+       <string comment="UNIT SIZE DISPLAY TOOLTIP">UNIT SIZE</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>STOCK</string>
+       <string comment="PRODUCT LEFT DISPLAY LABEL">PRODUCT LEFT</string>
+      </property>
+      <property name="toolTip">
+       <string comment="PRODUCT LEFT DISPLAY TOOLTIP">PRODUCT LEFT</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>EXPIRATION</string>
+       <string comment="EXPIRATION DISPLAY LABEL">EXPIRATION</string>
+      </property>
+      <property name="toolTip">
+       <string comment="EXPIRATION DISPLAY TOOLTIP">EXPIRATION</string>
       </property>
      </column>
     </widget>

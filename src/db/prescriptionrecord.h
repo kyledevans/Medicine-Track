@@ -53,25 +53,6 @@ public:
 
 	void print();			// Prints to the default debug interface
 
-	/* Use these to keep UI strings consistent and sane. */
-	static const QString amount_Label;
-	static const QString amount_Tooltip;
-
-	static const QString dose_size_Label;
-	static const QString dose_size_Tooltip;
-
-	static const QString written_Label;
-	static const QString written_Tooltip;
-
-	static const QString filled_Label;
-	static const QString filled_Tooltip;
-
-	static const QString instructions_Label;
-	static const QString instructions_Tooltip;
-
-	static const QString active_Label;
-	static const QString active_Tooltip;
-
 private:
 	int id;					// prescriptions.id
 	int patient_id;			// prescriptions.patient_id

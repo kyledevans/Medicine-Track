@@ -19,6 +19,9 @@
        <height>100</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string comment="DEFAULT INSTRUCTIONS EDIT TOOLTIP">DEFAULT INSTRUCTIONS</string>
+     </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>

@@ -29,14 +29,14 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>New Prescriber Wizard</string>
+   <string notr="true">New Prescriber Wizard</string>
   </property>
   <widget class="Prescriber_00" name="page0">
    <property name="title">
-    <string>Prescriber Information</string>
+    <string notr="true">Prescriber Information</string>
    </property>
    <property name="subTitle">
-    <string>Enter the details of the prescriber.</string>
+    <string notr="true">Enter the details of the prescriber.</string>
    </property>
   </widget>
  </widget>

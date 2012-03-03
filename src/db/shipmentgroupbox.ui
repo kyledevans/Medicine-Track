@@ -18,15 +18,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_10">
      <item>
       <widget class="QLabel" name="expirationTitle">
+       <property name="toolTip">
+        <string comment="EXPIRATION DISPLAY TOOLTIP">EXPIRATION</string>
+       </property>
        <property name="text">
-        <string>EXPIRATION</string>
+        <string comment="EXPIRATION DISPLAY LABEL">EXPIRATION</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="expirationLabel">
+       <property name="toolTip">
+        <string comment="EXPIRATION DISPLAY TOOLTIP">EXPIRATION</string>
+       </property>
        <property name="text">
-        <string notr="true">EXPIRATION2</string>
+        <string notr="true">PH EXPIRATION</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -52,15 +58,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_11">
      <item>
       <widget class="QLabel" name="lotTitle">
+       <property name="toolTip">
+        <string comment="LOT DISPLAY TOOLTIP">LOT</string>
+       </property>
        <property name="text">
-        <string>LOT</string>
+        <string comment="LOT DISPLAY LABEL">LOT</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="lotLabel">
+       <property name="toolTip">
+        <string comment="LOT DISPLAY TOOLTIP">LOT</string>
+       </property>
        <property name="text">
-        <string notr="true">LOT2</string>
+        <string notr="true">PH LOT</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -86,15 +98,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_12">
      <item>
       <widget class="QLabel" name="countTitle">
+       <property name="toolTip">
+        <string comment="PRODUCT COUNT DISPLAY TOOLTIP">PRODUCT COUNT</string>
+       </property>
        <property name="text">
-        <string>PRODUCT COUNT</string>
+        <string comment="PRODUCT COUNT DISPLAY LABEL">PRODUCT COUNT</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="countLabel">
+       <property name="toolTip">
+        <string comment="PRODUCT COUNT DISPLAY TOOLTIP">PRODUCT COUNT</string>
+       </property>
        <property name="text">
-        <string notr="true">PRODUCTCOUNT2</string>
+        <string notr="true">PH PRODUCT COUNT</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -120,15 +138,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_13">
      <item>
       <widget class="QLabel" name="leftTitle">
+       <property name="toolTip">
+        <string comment="PRODUCT LEFT DISPLAY TOOLTIP">PRODUCT LEFT</string>
+       </property>
        <property name="text">
-        <string>PRODUCT LEFT</string>
+        <string comment="PRODUCT LEFT DISPLAY LABEL">PRODUCT LEFT</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="leftLabel">
+       <property name="toolTip">
+        <string comment="PRODUCT LEFT DISPLAY TOOLTIP">PRODUCT LEFT</string>
+       </property>
        <property name="text">
-        <string notr="true">PRODUCTLEFT2</string>
+        <string notr="true">PH PRODUCT LEFT</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -154,15 +178,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_14">
      <item>
       <widget class="QLabel" name="activeTitle">
+       <property name="toolTip">
+        <string comment="SHIPMENT ACTIVE DISPLAY TOOLTIP">SHIPMENT ACTIVE</string>
+       </property>
        <property name="text">
-        <string>ACTIVE</string>
+        <string comment="SHIPMENT ACTIVE DISPLAY LABEL">SHIPMENT ACTIVE</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="activeLabel">
+       <property name="toolTip">
+        <string comment="SHIPMENT ACTIVE DISPLAY TOOLTIP">SHIPMENT ACTIVE</string>
+       </property>
        <property name="text">
-        <string notr="true">ACTIVE2</string>
+        <string notr="true">PH ACTIVE</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>

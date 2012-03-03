@@ -13,9 +13,6 @@ Medication_01::Medication_01(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	// Setup UI strings and tooltips
-    ui->instructionsField->setToolTip(DrugRecord::instructions_Tooltip);
-
 	registerField("instructionsField", ui->instructionsField, "plainText", SIGNAL(textChanged()));
 }
 

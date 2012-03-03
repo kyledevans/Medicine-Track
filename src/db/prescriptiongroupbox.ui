@@ -18,15 +18,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="amountTitle">
+       <property name="toolTip">
+        <string comment="PRESCRIPTION AMOUNT DISPLAY TOOLTIP">PRESCRIPTION AMOUNT</string>
+       </property>
        <property name="text">
-        <string>AMOUNT</string>
+        <string comment="PRESCRIPTION AMOUNT DISPLAY LABEL">PRESCRIPTION AMOUNT</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="amountLabel">
+       <property name="toolTip">
+        <string comment="PRESCRIPTION AMOUNT DISPLAY TOOLTIP">PRESCRIPTION AMOUNT</string>
+       </property>
        <property name="text">
-        <string notr="true">AMOUNT2</string>
+        <string notr="true">PH AMOUNT</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -52,15 +58,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QLabel" name="writtenTitle">
+       <property name="toolTip">
+        <string comment="WRITTEN DISPLAY TOOLTIP">WRITTEN</string>
+       </property>
        <property name="text">
-        <string>WRITTEN</string>
+        <string comment="WRITTEN DISPLAY LABEL">WRITTEN</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="writtenLabel">
+       <property name="toolTip">
+        <string comment="WRITTEN DISPLAY TOOLTIP">WRITTEN</string>
+       </property>
        <property name="text">
-        <string notr="true">WRITTEN2</string>
+        <string notr="true">PH WRITTEN</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -86,15 +98,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <widget class="QLabel" name="filledTitle">
+       <property name="toolTip">
+        <string comment="FILLED DISPLAY TOOLTIP">FILLED</string>
+       </property>
        <property name="text">
-        <string>FILLED</string>
+        <string comment="FILLED DISPLAY LABEL">FILLED</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="filledLabel">
+       <property name="toolTip">
+        <string comment="FILLED DISPLAY TOOLTIP">FILLED</string>
+       </property>
        <property name="text">
-        <string notr="true">FILLED2</string>
+        <string notr="true">PH FILLED</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -120,8 +138,11 @@
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
       <widget class="QLabel" name="instructionsTitle">
+       <property name="toolTip">
+        <string comment="INSTRUCTIONS DISPLAY TOOLTIP">INSTRUCTIONS</string>
+       </property>
        <property name="text">
-        <string>INSTRUCTIONS</string>
+        <string comment="INSTRUCTIONS DISPLAY LABEL">INSTRUCTIONS</string>
        </property>
       </widget>
      </item>
@@ -133,11 +154,14 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="toolTip">
+        <string comment="INSTRUCTIONS DISPLAY TOOLTIP">INSTRUCTIONS</string>
+       </property>
        <property name="frameShape">
         <enum>QFrame::Box</enum>
        </property>
        <property name="text">
-        <string notr="true">INSTRUCTIONS2</string>
+        <string notr="true">PH INSTRUCTIONS</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -153,15 +177,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QLabel" name="validTitle">
+       <property name="toolTip">
+        <string comment="PRESCRIPTION ACTIVE DISPLAY TOOLTIP">PRESCRIPTION ACTIVE</string>
+       </property>
        <property name="text">
-        <string>VALID</string>
+        <string comment="PRESCRIPTION ACTIVE DISPLAY LABEL">PRESCRIPTION ACTIVE</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="validLabel">
+       <property name="toolTip">
+        <string comment="PRESCRIPTION ACTIVE DISPLAY TOOLTIP">PRESCRIPTION ACTIVE</string>
+       </property>
        <property name="text">
-        <string notr="true">VALID2</string>
+        <string notr="true">PH VALID</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>

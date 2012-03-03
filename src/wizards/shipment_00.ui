@@ -14,15 +14,18 @@
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Medication</string>
+      <string notr="true">Medication</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="QLabel" name="medicationLabel">
+          <property name="toolTip">
+           <string comment="MEDICATION DISPLAY TOOLTIP">MEDICATION</string>
+          </property>
           <property name="text">
-           <string notr="true">MEDICATION</string>
+           <string notr="true">PH MEDICATION</string>
           </property>
          </widget>
         </item>
@@ -44,8 +47,11 @@
         </item>
         <item>
          <widget class="QLabel" name="strengthLabel">
+          <property name="toolTip">
+           <string comment="STRENGTH DISPLAY TOOLTIP">STRENGTH</string>
+          </property>
           <property name="text">
-           <string notr="true">STRENGTH</string>
+           <string notr="true">PH STRENGTH</string>
           </property>
          </widget>
         </item>
@@ -67,8 +73,11 @@
         </item>
         <item>
          <widget class="QLabel" name="formLabel">
+          <property name="toolTip">
+           <string comment="FORM DISPLAY TOOLTIP">FORM</string>
+          </property>
           <property name="text">
-           <string notr="true">FORM</string>
+           <string notr="true">PH FORM</string>
           </property>
          </widget>
         </item>
@@ -91,8 +100,11 @@
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
          <widget class="QLabel" name="unitSizeLabel">
+          <property name="toolTip">
+           <string comment="UNIT SIZE DISPLAY TOOLTIP">UNIT SIZE</string>
+          </property>
           <property name="text">
-           <string notr="true">UNIT_SIZE</string>
+           <string notr="true">PH UNIT SIZE</string>
           </property>
          </widget>
         </item>
@@ -121,8 +133,11 @@
      </property>
      <item row="0" column="0">
       <widget class="QLabel" name="expireLabel">
+       <property name="toolTip">
+        <string comment="EXPIRATION EDIT TOOLTIP">EXPIRATION</string>
+       </property>
        <property name="text">
-        <string>EXPIRATION</string>
+        <string comment="EXPIRATION EDIT LABEL">EXPIRATION</string>
        </property>
       </widget>
      </item>
@@ -130,6 +145,9 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QDateEdit" name="expireField">
+         <property name="toolTip">
+          <string comment="EXPIRATION EDIT TOOLTIP">EXPIRATION</string>
+         </property>
          <property name="calendarPopup">
           <bool>true</bool>
          </property>
@@ -152,8 +170,11 @@
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="lotLabel">
+       <property name="toolTip">
+        <string comment="LOT EDIT TOOLTIP">LOT</string>
+       </property>
        <property name="text">
-        <string>LOT</string>
+        <string comment="LOT EDIT LABEL">LOT</string>
        </property>
       </widget>
      </item>
@@ -172,6 +193,9 @@
            <width>150</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string comment="LOT EDIT TOOLTIP">LOT</string>
          </property>
          <property name="maxLength">
           <number>32</number>
@@ -195,8 +219,11 @@
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="unitsLabel">
+       <property name="toolTip">
+        <string comment="PRODUCT COUNT EDIT TOOLTIP">PRODUCT COUNT</string>
+       </property>
        <property name="text">
-        <string>STOCK RECEIVED</string>
+        <string comment="PRODUCT COUNT EDIT LABEL">PRODUCT COUNT</string>
        </property>
       </widget>
      </item>
@@ -216,6 +243,9 @@
            <height>16777215</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string comment="PRODUCT COUNT EDIT TOOLTIP">PRODUCT COUNT</string>
+         </property>
          <property name="maxLength">
           <number>10</number>
          </property>
@@ -223,8 +253,11 @@
        </item>
        <item>
         <widget class="QLabel" name="dispenseUnitLabel">
+         <property name="toolTip">
+          <string comment="DISPENSE UNITS DISPLAY TOOLTIP">DISPENSE UNITS</string>
+         </property>
          <property name="text">
-          <string>DISPENSE_UNITS</string>
+          <string notr="true">PH DISPENSE UNITS</string>
          </property>
         </widget>
        </item>

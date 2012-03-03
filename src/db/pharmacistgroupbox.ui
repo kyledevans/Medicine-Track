@@ -18,15 +18,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_7">
      <item>
       <widget class="QLabel" name="lastTitle">
+       <property name="toolTip">
+        <string comment="PHARMACIST LAST DISPLAY TOOLTIP">PHARMACIST LAST</string>
+       </property>
        <property name="text">
-        <string>LAST NAME</string>
+        <string comment="PHARMACIST LAST DISPLAY LABEL">PHARMACIST LAST</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="lastLabel">
+       <property name="toolTip">
+        <string comment="PHARMACIST LAST DISPLAY TOOLTIP">PHARMACIST LAST</string>
+       </property>
        <property name="text">
-        <string notr="true">LASTNAME2</string>
+        <string notr="true">PH LAST</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -52,15 +58,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
       <widget class="QLabel" name="firstTitle">
+       <property name="toolTip">
+        <string comment="PHARMACIST FIRST DISPLAY TOOLTIP">PHARMACIST FIRST</string>
+       </property>
        <property name="text">
-        <string>FIRST NAME</string>
+        <string comment="PHARMACIST FIRST DISPLAY LABEL">PHARMACIST FIRST</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="firstLabel">
+       <property name="toolTip">
+        <string comment="PHARMACIST FIRST DISPLAY TOOLTIP">PHARMACIST FIRST</string>
+       </property>
        <property name="text">
-        <string notr="true">FIRSTNAME2</string>
+        <string notr="true">PH FIRST</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -86,15 +98,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
       <widget class="QLabel" name="initialsTitle">
+       <property name="toolTip">
+        <string comment="INITIALS DISPLAY TOOLTIP">INITIALS</string>
+       </property>
        <property name="text">
-        <string>INITIALS</string>
+        <string comment="INITIALS DISPLAY LABEL">INITIALS</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="initialsLabel">
+       <property name="toolTip">
+        <string comment="INITIALS DISPLAY TOOLTIP">INITIALS</string>
+       </property>
        <property name="text">
-        <string notr="true">INITIALS2</string>
+        <string notr="true">PH INITIALS</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -120,15 +138,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_6">
      <item>
       <widget class="QLabel" name="activeTitle">
+       <property name="toolTip">
+        <string comment="PHARMACIST ACTIVE DISPLAY TOOLTIP">PHARMACIST ACTIVE</string>
+       </property>
        <property name="text">
-        <string>ACTIVE</string>
+        <string comment="PHARMACIST ACTIVE DISPLAY LABEL">PHARMACIST ACTIVE</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="activeLabel">
+       <property name="toolTip">
+        <string comment="PHARMACIST ACTIVE DISPLAY TOOLTIP">PHARMACIST ACTIVE</string>
+       </property>
        <property name="text">
-        <string notr="true">ACTIVE2</string>
+        <string notr="true">PH ACTIVE</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>

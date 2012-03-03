@@ -27,6 +27,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string comment="ALLSCRIPTS ID EDIT TOOLTIP">ALLSCRIPTS ID</string>
+       </property>
        <property name="maxLength">
         <number>10</number>
        </property>
@@ -49,15 +52,21 @@
    </item>
    <item row="0" column="0">
     <widget class="QLabel" name="mrNumberLabel">
+     <property name="toolTip">
+      <string comment="ALLSCRIPTS ID EDIT TOOLTIP">ALLSCRIPTS ID</string>
+     </property>
      <property name="text">
-      <string>MR NUMBER</string>
+      <string comment="ALLSCRIPTS ID EDIT LABEL">ALLSCRIPTS ID</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="lastLabel">
+     <property name="toolTip">
+      <string comment="PATIENT LAST EDIT TOOLTIP">PATIENT LAST</string>
+     </property>
      <property name="text">
-      <string>LAST NAME</string>
+      <string comment="PATIENT LAST EDIT LABEL">PATIENT LAST</string>
      </property>
     </widget>
    </item>
@@ -76,6 +85,9 @@
          <width>150</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="PATIENT LAST EDIT TOOLTIP">PATIENT LAST</string>
        </property>
        <property name="maxLength">
         <number>64</number>
@@ -113,6 +125,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string comment="PATIENT FIRST EDIT TOOLTIP">PATIENT FIRST</string>
+       </property>
        <property name="maxLength">
         <number>64</number>
        </property>
@@ -135,8 +150,11 @@
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="firstLabel">
+     <property name="toolTip">
+      <string comment="PATIENT FIRST EDIT TOOLTIP">PATIENT FIRST</string>
+     </property>
      <property name="text">
-      <string>FIRST NAME</string>
+      <string comment="PATIENT FIRST EDIT LABEL">PATIENT FIRST</string>
      </property>
     </widget>
    </item>
@@ -144,6 +162,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <widget class="QDateEdit" name="dobField">
+       <property name="toolTip">
+        <string comment="DOB EDIT TOOLTIP">DOB</string>
+       </property>
        <property name="calendarPopup">
         <bool>true</bool>
        </property>
@@ -166,8 +187,11 @@
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="dobLabel">
+     <property name="toolTip">
+      <string comment="DOB EDIT TOOLTIP">DOB</string>
+     </property>
      <property name="text">
-      <string>DOB</string>
+      <string comment="DOB EDIT LABEL">DOB</string>
      </property>
     </widget>
    </item>

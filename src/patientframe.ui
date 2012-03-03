@@ -52,9 +52,6 @@
           <property name="toolTip">
            <string comment="PATIENT LAST SEARCH TOOLTIP">PATIENT LAST</string>
           </property>
-          <property name="text">
-           <string notr="true"/>
-          </property>
          </widget>
         </item>
         <item>
@@ -99,9 +96,6 @@
           </property>
           <property name="toolTip">
            <string comment="PATIENT FIRST SEARCH TOOLTIP">PATIENT FIRST</string>
-          </property>
-          <property name="text">
-           <string notr="true"/>
           </property>
          </widget>
         </item>

@@ -21,15 +21,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <widget class="QLabel" name="allscriptsTitle">
+       <property name="toolTip">
+        <string comment="ALLSCRIPTS ID DISPLAY TOOLTIP">ALLSCRIPTS ID</string>
+       </property>
        <property name="text">
-        <string>ALLSCRIPTS ID</string>
+        <string comment="ALLSCRIPTS ID DISPLAY LABEL">ALLSCRIPTS ID</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="allscriptsLabel">
+       <property name="toolTip">
+        <string comment="ALLSCRIPTS ID DISPLAY TOOLTIP">ALLSCRIPTS ID</string>
+       </property>
        <property name="text">
-        <string notr="true">ALLSCRIPTSID</string>
+        <string notr="true">PH ALLSCRIPTS ID</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -55,15 +61,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="lastTitle">
+       <property name="toolTip">
+        <string comment="PATIENT LAST DISPLAY TOOLTIP">PATIENT LAST</string>
+       </property>
        <property name="text">
-        <string>LAST NAME</string>
+        <string comment="PATIENT LAST DISPLAY LABEL">PATIENT LAST</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="lastLabel">
+       <property name="toolTip">
+        <string comment="PATIENT LAST DISPLAY TOOLTIP">PATIENT LAST</string>
+       </property>
        <property name="text">
-        <string notr="true">LASTNAME</string>
+        <string notr="true">PH LAST</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -89,15 +101,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
       <widget class="QLabel" name="firstTitle">
+       <property name="toolTip">
+        <string comment="PATIENT FIRST DISPLAY TOOLTIP">PATIENT FIRST</string>
+       </property>
        <property name="text">
-        <string>FIRST NAME</string>
+        <string comment="PATIENT FIRST DISPLAY LABEL">PATIENT FIRST</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="firstLabel">
+       <property name="toolTip">
+        <string comment="PATIENT FIRST DISPLAY TOOLTIP">PATIENT FIRST</string>
+       </property>
        <property name="text">
-        <string notr="true">FIRSTNAME</string>
+        <string notr="true">PH FIRST</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -123,15 +141,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QLabel" name="dobTitle">
+       <property name="toolTip">
+        <string comment="DOB DISPLAY TOOLTIP">DOB</string>
+       </property>
        <property name="text">
-        <string>DOB</string>
+        <string comment="DOB DISPLAY LABEL">DOB</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="dobLabel">
+       <property name="toolTip">
+        <string comment="DOB DISPLAY TOOLTIP">DOB</string>
+       </property>
        <property name="text">
-        <string notr="true">DOB</string>
+        <string notr="true">PH DOB</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -157,15 +181,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QLabel" name="activeTitle">
+       <property name="toolTip">
+        <string comment="PATIENT ACTIVE DISPLAY TOOLTIP">PATIENT ACTIVE</string>
+       </property>
        <property name="text">
-        <string>STATUS</string>
+        <string comment="PATIENT ACTIVE DISPLAY LABEL">PATIENT ACTIVE</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="activeLabel">
+       <property name="toolTip">
+        <string comment="PATIENT ACTIVE DISPLAY TOOLTIP">PATIENT ACTIVE</string>
+       </property>
        <property name="text">
-        <string notr="true">ACTIVE</string>
+        <string notr="true" comment="PATIENT ACTIVE DISPLAY LABEL">PH ACTIVE</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>

@@ -11,21 +11,6 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-const QString PrescriberRecord::last_Label("Last name");
-const QString PrescriberRecord::last_Tooltip("Last name");
-
-const QString PrescriberRecord::first_Label("First name");
-const QString PrescriberRecord::first_Tooltip("First name");
-
-const QString PrescriberRecord::full_name_Label("Full name");
-const QString PrescriberRecord::full_name_Tooltip("Full name as it appears on a prescription label");
-
-const QString PrescriberRecord::full_name_Label_secondary("Written by");
-const QString PrescriberRecord::full_name_Tooltip_secondary("Who wrote the prescription");
-
-const QString PrescriberRecord::active_Label("Status");
-const QString PrescriberRecord::active_Tooltip("Active or inactive status");
-
 PrescriberRecord::PrescriberRecord():
 	id(SQL::Undefined_ID),
 	active(true),

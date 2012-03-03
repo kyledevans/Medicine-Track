@@ -46,34 +46,6 @@ public:
 
 	void print();			// Prints to the debug interface
 
-	/* Use these to keep UI strings consistent and sane. */
-	static const QString expiration_Label;
-	static const QString expiration_Tooltip;
-
-	static const QString lot_Label;
-	static const QString lot_Tooltip;
-
-	static const QString product_count_Label;
-	static const QString product_count_Tooltip;
-
-	static const QString product_left_Label;
-	static const QString product_left_Tooltip;
-
-	static const QString write_off_Label;
-	static const QString write_off_Tooltip;
-
-	static const QString write_off_Label_edit;
-	static const QString write_off_Tooltip_edit;
-
-	static const QString name_barcode_Label;
-	static const QString name_barcode_Tooltip;
-
-	static const QString barcode_Label;
-	static const QString barcode_Tooltip;
-
-	static const QString active_Label;
-	static const QString active_Tooltip;
-
 private:
 	int id;					// shipments.id
 	int drug_id;			// shipments.drug_id

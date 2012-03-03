@@ -11,21 +11,6 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-const QString PatientRecord::allscripts_id_Label("M.R. Number");
-const QString PatientRecord::allscripts_id_Tooltip("Allscripts medical record number");
-
-const QString PatientRecord::last_Label("Last name");
-const QString PatientRecord::last_Tooltip("Last name");
-
-const QString PatientRecord::first_Label("First name");
-const QString PatientRecord::first_Tooltip("First name");
-
-const QString PatientRecord::dob_Label("D.O.B.");
-const QString PatientRecord::dob_Tooltip("Date of birth");
-
-const QString PatientRecord::active_Label("Status");
-const QString PatientRecord::active_Tooltip("Active or inactive status");
-
 PatientRecord::PatientRecord():
 	id(SQL::Undefined_ID),
 	allscripts_id(SQL::Undefined_ID),

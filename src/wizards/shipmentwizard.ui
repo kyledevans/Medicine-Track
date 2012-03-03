@@ -29,14 +29,14 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>New Inventory Wizard</string>
+   <string notr="true">New Inventory Wizard</string>
   </property>
   <widget class="Shipment_00" name="page0">
    <property name="title">
-    <string>Inventory Information</string>
+    <string notr="true">Inventory Information</string>
    </property>
    <property name="subTitle">
-    <string>Enter the details for the new medication inventory.</string>
+    <string notr="true">Enter the details for the new medication inventory.</string>
    </property>
   </widget>
  </widget>

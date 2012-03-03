@@ -13,24 +13,6 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-const QString PrescriptionRecord::amount_Label("Amount");
-const QString PrescriptionRecord::amount_Tooltip("How much is dispensed");
-
-const QString PrescriptionRecord::dose_size_Label("Dose size");
-const QString PrescriptionRecord::dose_size_Tooltip("Size of a single dose");
-
-const QString PrescriptionRecord::written_Label("Written");
-const QString PrescriptionRecord::written_Tooltip("Date the prescription was written");
-
-const QString PrescriptionRecord::filled_Label("Filled");
-const QString PrescriptionRecord::filled_Tooltip("Date the prescription was filled");
-
-const QString PrescriptionRecord::instructions_Label("Instructions");
-const QString PrescriptionRecord::instructions_Tooltip("Medication instructions for the patient");
-
-const QString PrescriptionRecord::active_Label("Status");
-const QString PrescriptionRecord::active_Tooltip("Valid or invalid status");
-
 PrescriptionRecord::PrescriptionRecord():
 	id(SQL::Undefined_ID),
 	patient_id(SQL::Undefined_ID),

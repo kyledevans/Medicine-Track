@@ -14,27 +14,33 @@
    <item>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
-      <string>Patient</string>
+      <string notr="true">Patient</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_7">
       <item>
        <widget class="QLabel" name="lastLabel">
+        <property name="toolTip">
+         <string comment="PATIENT LAST DISPLAY TOOLTIP">PATIENT LAST</string>
+        </property>
         <property name="text">
-         <string notr="true">LASTNAME</string>
+         <string notr="true">PH PATIENT LAST</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_10">
         <property name="text">
-         <string>,</string>
+         <string notr="true">,</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="firstLabel">
+        <property name="toolTip">
+         <string comment="PATIENT FIRST DISPLAY TOOLTIP">PATIENT FIRST</string>
+        </property>
         <property name="text">
-         <string notr="true">FIRSTNAME</string>
+         <string notr="true">PH PATIENT FIRST</string>
         </property>
        </widget>
       </item>
@@ -57,13 +63,16 @@
    <item>
     <widget class="QGroupBox" name="groupBox_3">
      <property name="title">
-      <string>Medication</string>
+      <string notr="true">Medication</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_8">
       <item>
        <widget class="QLabel" name="medicationLabel">
+        <property name="toolTip">
+         <string comment="MEDICATION DISPLAY TOOLTIP">MEDICATION</string>
+        </property>
         <property name="text">
-         <string notr="true">MEDICATIONNAME</string>
+         <string notr="true">PH MEDICATION</string>
         </property>
        </widget>
       </item>
@@ -85,8 +94,11 @@
       </item>
       <item>
        <widget class="QLabel" name="formLabel">
+        <property name="toolTip">
+         <string comment="FORM DISPLAY TOOLTIP">FORM</string>
+        </property>
         <property name="text">
-         <string notr="true">FORM</string>
+         <string notr="true">PH FORM</string>
         </property>
        </widget>
       </item>
@@ -108,8 +120,11 @@
       </item>
       <item>
        <widget class="QLabel" name="strengthLabel">
+        <property name="toolTip">
+         <string comment="STRENGTH DISPLAY TOOLTIP">STRENGTH</string>
+        </property>
         <property name="text">
-         <string notr="true">STRENGTH</string>
+         <string notr="true">PH STRENGTH</string>
         </property>
        </widget>
       </item>
@@ -131,8 +146,11 @@
       </item>
       <item>
        <widget class="QLabel" name="unitSizeLabel">
+        <property name="toolTip">
+         <string comment="UNIT SIZE DISPLAY TOOLTIP">UNIT SIZE</string>
+        </property>
         <property name="text">
-         <string notr="true">UNIT_SIZE</string>
+         <string notr="true">PH UNIT SIZE</string>
         </property>
        </widget>
       </item>
@@ -159,8 +177,11 @@
      </property>
      <item row="0" column="0">
       <widget class="QLabel" name="amountLabel_2">
+       <property name="toolTip">
+        <string comment="PRESCRIPTION AMOUNT EDIT TOOLTIP">PRESCRIPTION AMOUNT</string>
+       </property>
        <property name="text">
-        <string>AMOUNT DISPENSED</string>
+        <string comment="PRESCRIPTION AMOUNT EDIT LABEL">PRESCRIPTION AMOUNT</string>
        </property>
       </widget>
      </item>
@@ -180,6 +201,9 @@
            <height>16777215</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string comment="PRESCRIPTION AMOUNT EDIT TOOLTIP">PRESCRIPTION AMOUNT</string>
+         </property>
          <property name="maxLength">
           <number>10</number>
          </property>
@@ -187,8 +211,11 @@
        </item>
        <item>
         <widget class="QLabel" name="dispenseUnitsLabel">
+         <property name="toolTip">
+          <string comment="DISPENSE UNITS DISPLAY TOOLTIP">DISPENSE UNITS</string>
+         </property>
          <property name="text">
-          <string notr="true">DISPENSE UNITS</string>
+          <string notr="true">PH DISPENSE UNITS</string>
          </property>
         </widget>
        </item>
@@ -209,8 +236,11 @@
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="writtenLabel">
+       <property name="toolTip">
+        <string comment="WRITTEN EDIT TOOLTIP">WRITTEN</string>
+       </property>
        <property name="text">
-        <string>WRITTEN</string>
+        <string comment="WRITTEN EDIT LABEL">WRITTEN</string>
        </property>
       </widget>
      </item>
@@ -218,6 +248,9 @@
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
         <widget class="QDateEdit" name="writtenField">
+         <property name="toolTip">
+          <string comment="WRITTEN EDIT TOOLTIP">WRITTEN</string>
+         </property>
          <property name="calendarPopup">
           <bool>true</bool>
          </property>
@@ -240,8 +273,11 @@
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="filledLabel">
+       <property name="toolTip">
+        <string comment="FILLED EDIT TOOLTIP">FILLED</string>
+       </property>
        <property name="text">
-        <string>FILLED</string>
+        <string comment="FILLED EDIT LABEL">FILLED</string>
        </property>
       </widget>
      </item>
@@ -249,6 +285,9 @@
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
         <widget class="QDateEdit" name="filledField">
+         <property name="toolTip">
+          <string comment="FILLED EDIT TOOLTIP">FILLED</string>
+         </property>
          <property name="calendarPopup">
           <bool>true</bool>
          </property>
@@ -271,15 +310,22 @@
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="writtenByLabel">
+       <property name="toolTip">
+        <string comment="PRESCRIBED BY EDIT TOOLTIP">PRESCRIBED BY</string>
+       </property>
        <property name="text">
-        <string>WRITTEN BY</string>
+        <string comment="PRESCRIBED BY EDIT LABEL">PRESCRIBED BY</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QComboBox" name="writtenByField"/>
+        <widget class="QComboBox" name="writtenByField">
+         <property name="toolTip">
+          <string comment="PRESCRIBED BY EDIT TOOLTIP">PRESCRIBED BY</string>
+         </property>
+        </widget>
        </item>
        <item>
         <spacer name="horizontalSpacer">
@@ -298,15 +344,22 @@
      </item>
      <item row="4" column="0">
       <widget class="QLabel" name="filledByLabel">
+       <property name="toolTip">
+        <string comment="FILLED BY EDIT TOOLTIP">FILLED BY</string>
+       </property>
        <property name="text">
-        <string>FILLED BY</string>
+        <string comment="FILLED BY DISPLAY LABEL">FILLED BY</string>
        </property>
       </widget>
      </item>
      <item row="4" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QComboBox" name="filledByField"/>
+        <widget class="QComboBox" name="filledByField">
+         <property name="toolTip">
+          <string comment="FILLED BY EDIT TOOLTIP">FILLED BY</string>
+         </property>
+        </widget>
        </item>
        <item>
         <spacer name="horizontalSpacer_2">

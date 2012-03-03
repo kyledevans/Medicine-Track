@@ -17,19 +17,6 @@ Shipment_00::Shipment_00(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	// Set UI strings and tooltips
-	ui->expireLabel->setText(ShipmentRecord::expiration_Label);
-	ui->expireLabel->setToolTip(ShipmentRecord::expiration_Tooltip);
-	ui->expireField->setToolTip(ShipmentRecord::expiration_Tooltip);
-
-	ui->lotLabel->setText(ShipmentRecord::lot_Label);
-	ui->lotLabel->setToolTip(ShipmentRecord::lot_Tooltip);
-	ui->lotField->setToolTip(ShipmentRecord::lot_Tooltip);
-
-	ui->unitsLabel->setText(ShipmentRecord::product_count_Label);
-	ui->unitsLabel->setToolTip(ShipmentRecord::product_count_Tooltip);
-	ui->unitsField->setToolTip(ShipmentRecord::product_count_Tooltip);
-
 	// Setup validators
 	QValidator *numbers = new QIntValidator(this);
 	ui->unitsField->setValidator(numbers);

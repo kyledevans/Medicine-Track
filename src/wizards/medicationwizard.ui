@@ -29,22 +29,22 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>New Medication Wizard</string>
+   <string notr="true">New Medication Wizard</string>
   </property>
   <widget class="Medication_00" name="page0">
    <property name="title">
-    <string>Medication Information</string>
+    <string notr="true">Medication Information</string>
    </property>
    <property name="subTitle">
-    <string>Enter the medication details.</string>
+    <string notr="true">Enter the medication details.</string>
    </property>
   </widget>
   <widget class="Medication_01" name="page1">
    <property name="title">
-    <string>Default Instructions</string>
+    <string notr="true">Default Instructions</string>
    </property>
    <property name="subTitle">
-    <string>Enter the default medication instructions.</string>
+    <string notr="true">Enter the default medication instructions.</string>
    </property>
   </widget>
  </widget>

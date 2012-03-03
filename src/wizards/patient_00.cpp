@@ -15,23 +15,6 @@ Patient_00::Patient_00(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	// Setup UI strings and tooltips
-	ui->mrNumberLabel->setText(PatientRecord::allscripts_id_Label);
-	ui->mrNumberLabel->setToolTip(PatientRecord::allscripts_id_Tooltip);
-	ui->mrNumberField->setToolTip(PatientRecord::allscripts_id_Tooltip);
-
-	ui->lastLabel->setText(PatientRecord::last_Label);
-	ui->lastLabel->setToolTip(PatientRecord::last_Tooltip);
-	ui->lastField->setToolTip(PatientRecord::last_Tooltip);
-
-	ui->firstLabel->setText(PatientRecord::first_Label);
-	ui->firstLabel->setToolTip(PatientRecord::first_Tooltip);
-	ui->firstField->setToolTip(PatientRecord::first_Tooltip);
-
-	ui->dobLabel->setText(PatientRecord::dob_Label);
-	ui->dobLabel->setToolTip(PatientRecord::dob_Tooltip);
-	ui->dobField->setToolTip(PatientRecord::dob_Tooltip);
-
 	ui->dobField->setDate(DEFAULTS::Date);
 
 	registerField("mrNumberField*", ui->mrNumberField);

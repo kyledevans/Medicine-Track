@@ -16,8 +16,11 @@
    </property>
    <item row="0" column="0">
     <widget class="QLabel" name="medicationLabel">
+     <property name="toolTip">
+      <string comment="MEDICAITON EDIT TOOLTIP">MEDICATION</string>
+     </property>
      <property name="text">
-      <string>MEDICATION</string>
+      <string comment="MEDICATION EDIT LABEL">MEDICATION</string>
      </property>
     </widget>
    </item>
@@ -36,6 +39,9 @@
          <width>200</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="MEDICATION EDIT TOOLTIP">MEDICATION</string>
        </property>
        <property name="maxLength">
         <number>128</number>
@@ -59,8 +65,11 @@
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="genericLabel">
+     <property name="toolTip">
+      <string comment="GENERIC EDIT TOOLTIP">GENERIC</string>
+     </property>
      <property name="text">
-      <string>GENERIC FOR</string>
+      <string comment="GENERIC EDIT LABEL">GENERIC</string>
      </property>
     </widget>
    </item>
@@ -79,6 +88,9 @@
          <width>200</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="GENERIC EDIT TOOLTIP">GENERIC</string>
        </property>
        <property name="maxLength">
         <number>128</number>
@@ -102,8 +114,11 @@
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="manufacturerLabel">
+     <property name="toolTip">
+      <string comment="MANUFACTURER EDIT TOOLTIP">MANUFACTURER</string>
+     </property>
      <property name="text">
-      <string>MANUFACTURER</string>
+      <string comment="MANUFACTURER EDIT LABEL">MANUFACTURER</string>
      </property>
     </widget>
    </item>
@@ -122,6 +137,9 @@
          <width>200</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="MANUFACTURER EDIT TOOLTIP">MANUFACTURER</string>
        </property>
        <property name="maxLength">
         <number>128</number>
@@ -145,8 +163,11 @@
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="ndcLabel">
+     <property name="toolTip">
+      <string comment="NDC EDIT TOOLTIP">NDC</string>
+     </property>
      <property name="text">
-      <string>NDC</string>
+      <string comment="NDC EDIT LABEL">NDC</string>
      </property>
     </widget>
    </item>
@@ -165,6 +186,9 @@
          <width>200</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="NDC EDIT TOOLTIP">NDC</string>
        </property>
        <property name="maxLength">
         <number>14</number>
@@ -188,8 +212,11 @@
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="strengthLabel">
+     <property name="toolTip">
+      <string comment="STRENGTH EDIT TOOLTIP">STRENGTH</string>
+     </property>
      <property name="text">
-      <string>STRENGTH</string>
+      <string comment="STRENGTH EDIT LABEL">STRENGTH</string>
      </property>
     </widget>
    </item>
@@ -208,6 +235,9 @@
          <width>150</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="STRENGTH EDIT TOOLTIP">STRENGTH</string>
        </property>
        <property name="maxLength">
         <number>64</number>
@@ -231,15 +261,22 @@
    </item>
    <item row="6" column="0">
     <widget class="QLabel" name="formLabel">
+     <property name="toolTip">
+      <string comment="FORM EDIT TOOLTIP">FORM</string>
+     </property>
      <property name="text">
-      <string>FORM</string>
+      <string comment="FORM EDIT LABEL">FORM</string>
      </property>
     </widget>
    </item>
    <item row="6" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout_9">
      <item>
-      <widget class="QComboBox" name="formField"/>
+      <widget class="QComboBox" name="formField">
+       <property name="toolTip">
+        <string comment="FORM EDIT TOOLTIP">FORM</string>
+       </property>
+      </widget>
      </item>
      <item>
       <spacer name="horizontalSpacer_6">
@@ -258,8 +295,11 @@
    </item>
    <item row="7" column="0">
     <widget class="QLabel" name="dispenseLabel">
+     <property name="toolTip">
+      <string comment="DISPENSE UNITS EDIT TOOLTIP">DISPENSE UNITS</string>
+     </property>
      <property name="text">
-      <string>DISPENSE UNITS</string>
+      <string comment="DISPENSE UNITS EDIT LABEL">DISPENSE UNITS</string>
      </property>
     </widget>
    </item>
@@ -278,6 +318,9 @@
          <width>150</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="DISPENSE UNITS EDIT TOOLTIP">DISPENSE UNITS</string>
        </property>
        <property name="maxLength">
         <number>32</number>
@@ -301,8 +344,11 @@
    </item>
    <item row="8" column="0">
     <widget class="QLabel" name="unitSizeLabel">
+     <property name="toolTip">
+      <string comment="UNIT SIZE EDIT TOOLTIP">UNIT SIZE</string>
+     </property>
      <property name="text">
-      <string>SIZE (OPTIONAL)</string>
+      <string comment="UNIT SIZE EDIT LABEL">UNIT SIZE</string>
      </property>
     </widget>
    </item>
@@ -321,6 +367,9 @@
          <width>150</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="UNIT SIZE EDIT TOOLTIP">UNIT SIZE</string>
        </property>
        <property name="maxLength">
         <number>32</number>

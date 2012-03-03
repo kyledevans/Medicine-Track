@@ -11,36 +11,6 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
-const QString DrugRecord::name_Label("Medication");
-const QString DrugRecord::name_Tooltip("Name of the medication");
-
-const QString DrugRecord::generic_Label("Generic for");
-const QString DrugRecord::generic_Tooltip("Brand name of medication (empty for none)");
-
-const QString DrugRecord::manufacturer_Label("Manufacturer");
-const QString DrugRecord::manufacturer_Tooltip("Manufacturer");
-
-const QString DrugRecord::ndc_Label("NDC");
-const QString DrugRecord::ndc_Tooltip("National Drug Code");
-
-const QString DrugRecord::form_Label("Form");
-const QString DrugRecord::form_Tooltip("Medication form");
-
-const QString DrugRecord::strength_Label("Strength");
-const QString DrugRecord::strength_Tooltip("Strength");
-
-const QString DrugRecord::dispense_units_Label("Dispense units");
-const QString DrugRecord::dispense_units_Tooltip("Dispense units can be anything: bottles, capsules, etc.");
-
-const QString DrugRecord::unit_size_Label("Unit size (optional)");
-const QString DrugRecord::unit_size_Tooltip("Size of a single unit. IE: A \"75 ml\" bottle");
-
-const QString DrugRecord::instructions_Label("Instructions");
-const QString DrugRecord::instructions_Tooltip("Default instructions for the patient");
-
-const QString DrugRecord::active_Label("Status");
-const QString DrugRecord::active_Tooltip("Active or inactive status");
-
 DrugRecord::DrugRecord():
 	id(SQL::Undefined_ID),
 	form(FORM_INT::Undefined),

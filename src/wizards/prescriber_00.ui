@@ -16,8 +16,11 @@
    </property>
    <item row="0" column="0">
     <widget class="QLabel" name="lastLabel">
+     <property name="toolTip">
+      <string comment="PRESCRIBER LAST EDIT TOOLTIP">PRESCRIBER LAST</string>
+     </property>
      <property name="text">
-      <string>LAST NAME</string>
+      <string comment="PRESCRIBER LAST EDIT LABEL">PRESCRIBER LAST</string>
      </property>
     </widget>
    </item>
@@ -36,6 +39,9 @@
          <width>200</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="PRESCRIBER LAST EDIT TOOLTIP">PRESCRIBER LAST</string>
        </property>
        <property name="maxLength">
         <number>32</number>
@@ -59,8 +65,11 @@
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="firstLabel">
+     <property name="toolTip">
+      <string comment="PRESCRIBER FIRST EDIT TOOLTIP">PRESCRIBER FIRST</string>
+     </property>
      <property name="text">
-      <string>FIRST NAME</string>
+      <string comment="PRESCRIBER FIRST EDIT LABEL">PRESCRIBER FIRST</string>
      </property>
     </widget>
    </item>
@@ -79,6 +88,9 @@
          <width>200</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="PRESCRIBER FIRST EDIT TOOLTIP">PRESCRIBER FIRST</string>
        </property>
        <property name="maxLength">
         <number>32</number>
@@ -102,8 +114,11 @@
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="fullLabel">
+     <property name="toolTip">
+      <string comment="FULL NAME EDIT TOOLTIP">FULL NAME</string>
+     </property>
      <property name="text">
-      <string>FULL NAME</string>
+      <string comment="FULL NAME EDIT LABEL">FULL NAME</string>
      </property>
     </widget>
    </item>
@@ -122,6 +137,9 @@
          <width>200</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string comment="FULL NAME EDIT TOOLTIP">FULL NAME</string>
        </property>
        <property name="maxLength">
         <number>64</number>

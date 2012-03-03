@@ -7,7 +7,7 @@
 </phrase>
 <phrase>
     <source>MEDICATION</source>
-    <target>Medication</target>
+    <target>Name of the medication</target>
     <definition>MEDICATION DISPLAY TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -17,7 +17,7 @@
 </phrase>
 <phrase>
     <source>MEDICATION</source>
-    <target>Medication</target>
+    <target>Name of the medication</target>
     <definition>MEDICATION SEARCH TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -27,7 +27,7 @@
 </phrase>
 <phrase>
     <source>MEDICATION</source>
-    <target>Medication</target>
+    <target>Name of the medication</target>
     <definition>MEDICATION EDIT TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -57,7 +57,7 @@
 </phrase>
 <phrase>
     <source>GENERIC</source>
-    <target>Generic</target>
+    <target>Brand name of medication (empty for none)</target>
     <definition>GENERIC EDIT TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -102,7 +102,7 @@
 </phrase>
 <phrase>
     <source>NDC</source>
-    <target>NDC</target>
+    <target>National Drug Code</target>
     <definition>NDC DISPLAY TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -112,7 +112,7 @@
 </phrase>
 <phrase>
     <source>NDC</source>
-    <target>NDC</target>
+    <target>National Drug Code</target>
     <definition>NDC SEARCH TOOLTOP</definition>
 </phrase>
 <phrase>
@@ -122,7 +122,7 @@
 </phrase>
 <phrase>
     <source>NDC</source>
-    <target>NDC</target>
+    <target>National Drug Code</target>
     <definition>NDC EDIT TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -132,7 +132,7 @@
 </phrase>
 <phrase>
     <source>FORM</source>
-    <target>Form</target>
+    <target>Medication form</target>
     <definition>FORM DISPLAY TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -142,12 +142,12 @@
 </phrase>
 <phrase>
     <source>FORM</source>
-    <target>Form</target>
+    <target>Medication form</target>
     <definition>FORM SEARCH TOOLTIP</definition>
 </phrase>
 <phrase>
     <source>FORM</source>
-    <target>Form</target>
+    <target>Medication form</target>
     <definition>FORM EDIT TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -417,7 +417,7 @@
 </phrase>
 <phrase>
     <source>EXPIRATION</source>
-    <target>Expiration date</target>
+    <target>Expiration date (MM/DD/YYYY)</target>
     <definition>EXPIRATION EDIT TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -477,7 +477,7 @@
 </phrase>
 <phrase>
     <source>WRITE OFF</source>
-    <target>Write off</target>
+    <target>Write off (MM/DD/YYYY)</target>
     <definition>WRITE OFF EDIT TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -512,62 +512,62 @@
 </phrase>
 <phrase>
     <source>PATIENT LAST</source>
-    <target>Last</target>
+    <target>Last name</target>
     <definition>PATIENT LAST DISPLAY LABEL</definition>
 </phrase>
 <phrase>
     <source>PATIENT LAST</source>
-    <target>Last</target>
+    <target>Last name</target>
     <definition>PATIENT LAST DISPLAY TOOLTIP</definition>
 </phrase>
 <phrase>
     <source>PATIENT LAST</source>
-    <target>Last</target>
+    <target>Last name</target>
     <definition>PATIENT LAST SEARCH LABEL</definition>
 </phrase>
 <phrase>
     <source>PATIENT LAST</source>
-    <target>Last</target>
+    <target>Last name</target>
     <definition>PATIENT LAST SEARCH TOOLTIP</definition>
 </phrase>
 <phrase>
     <source>PATIENT LAST</source>
-    <target>Last</target>
+    <target>Last name</target>
     <definition>PATIENT LAST EDIT LABEL</definition>
 </phrase>
 <phrase>
     <source>PATIENT LAST</source>
-    <target>Last</target>
+    <target>Last name</target>
     <definition>PATIENT LAST EDIT TOOLTIP</definition>
 </phrase>
 <phrase>
     <source>PATIENT FIRST</source>
-    <target>First</target>
+    <target>First name</target>
     <definition>PATIENT FIRST DISPLAY LABEL</definition>
 </phrase>
 <phrase>
     <source>PATIENT FIRST</source>
-    <target>First</target>
+    <target>First name</target>
     <definition>PATIENT FIRST DISPLAY TOOLTIP</definition>
 </phrase>
 <phrase>
     <source>PATIENT FIRST</source>
-    <target>First</target>
+    <target>First name</target>
     <definition>PATIENT FIRST SEARCH LABEL</definition>
 </phrase>
 <phrase>
     <source>PATIENT FIRST</source>
-    <target>First</target>
+    <target>First name</target>
     <definition>PATIENT FIRST SEARCH TOOLTIP</definition>
 </phrase>
 <phrase>
     <source>PATIENT FIRST</source>
-    <target>First</target>
+    <target>First name</target>
     <definition>PATIENT FIRST EDIT LABEL</definition>
 </phrase>
 <phrase>
     <source>PATIENT FIRST</source>
-    <target>First</target>
+    <target>First name</target>
     <definition>PATIENT FIRST EDIT TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -577,7 +577,7 @@
 </phrase>
 <phrase>
     <source>DOB</source>
-    <target>DOB</target>
+    <target>Date of birth</target>
     <definition>DOB DISPLAY TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -587,7 +587,7 @@
 </phrase>
 <phrase>
     <source>DOB</source>
-    <target>DOB</target>
+    <target>Date of birth</target>
     <definition>DOB SEARCH TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -597,7 +597,7 @@
 </phrase>
 <phrase>
     <source>DOB</source>
-    <target>DOB</target>
+    <target>Date of birth (MM/DD/YYYY)</target>
     <definition>DOB EDIT TOOLTIP</definition>
 </phrase>
 <phrase>
@@ -629,5 +629,515 @@
     <source>ALLSCRIPTS ID</source>
     <target>MR Number</target>
     <definition>ALLSCRIPTS ID EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MEDICATION/BARCODE</source>
+    <target>Medication / Barcode</target>
+    <definition>MEDICATION/BARCODE DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>MEDICATION/BARCODE</source>
+    <target>Medication / Barcode</target>
+    <definition>MEDICATION/BARCODE DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MEDICATION/BARCODE</source>
+    <target>Medication / Barcode</target>
+    <definition>MEDICATION/BARCODE SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>MEDICATION/BARCODE</source>
+    <target>Medication / Barcode</target>
+    <definition>MEDICATION/BARCODE SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>MEDICATION/BARCODE</source>
+    <target>Medication / Barcode</target>
+    <definition>MEDICATION/BARCODE EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>MEDICATION/BARCODE</source>
+    <target>Medication / Barcode</target>
+    <definition>MEDICATION/BARCODE EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST LAST</source>
+    <target>Last name</target>
+    <definition>PHARMACIST LAST DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST LAST</source>
+    <target>Last name</target>
+    <definition>PHARMACIST LAST DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST LAST</source>
+    <target>Last name</target>
+    <definition>PHARMACIST LAST SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST LAST</source>
+    <target>Last name</target>
+    <definition>PHARMACIST LAST SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST LAST</source>
+    <target>Last name</target>
+    <definition>PHARMACIST LAST EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST LAST</source>
+    <target>Last name</target>
+    <definition>PHARMACIST LAST EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST FIRST</source>
+    <target>First name</target>
+    <definition>PHARMACIST FIRST DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST FIRST</source>
+    <target>First name</target>
+    <definition>PHARMACIST FIRST DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST FIRST</source>
+    <target>First name</target>
+    <definition>PHARMACIST FIRST SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST FIRST</source>
+    <target>First name</target>
+    <definition>PHARMACIST FIRST SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST FIRST</source>
+    <target>First name</target>
+    <definition>PHARMACIST FIRST EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST FIRST</source>
+    <target>First name</target>
+    <definition>PHARMACIST FIRST EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>INITIALS</source>
+    <target>Initials</target>
+    <definition>INITIALS DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>INITIALS</source>
+    <target>Initials</target>
+    <definition>INITIALS DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>INITIALS</source>
+    <target>Initials</target>
+    <definition>INITIALS SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>INITIALS</source>
+    <target>Initials</target>
+    <definition>INITIALS SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>INITIALS</source>
+    <target>Initials</target>
+    <definition>INITIALS EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>INITIALS</source>
+    <target>Initials will appear on prescription bottles</target>
+    <definition>INITIALS EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER LAST</source>
+    <target>Last name</target>
+    <definition>PRESCRIBER LAST DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER LAST</source>
+    <target>Last name</target>
+    <definition>PRESCRIBER LAST DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER LAST</source>
+    <target>Last name</target>
+    <definition>PRESCRIBER LAST SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER LAST</source>
+    <target>Last name</target>
+    <definition>PRESCRIBER LAST SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER LAST</source>
+    <target>Last name</target>
+    <definition>PRESCRIBER LAST EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER LAST</source>
+    <target>Last name</target>
+    <definition>PRESCRIBER LAST EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER FIRST</source>
+    <target>First name</target>
+    <definition>PRESCRIBER FIRST DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER FIRST</source>
+    <target>First name</target>
+    <definition>PRESCRIBER FIRST DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER FIRST</source>
+    <target>First name</target>
+    <definition>PRESCRIBER FIRST SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER FIRST</source>
+    <target>First name</target>
+    <definition>PRESCRIBER FIRST SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER FIRST</source>
+    <target>First name</target>
+    <definition>PRESCRIBER FIRST EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER FIRST</source>
+    <target>First name</target>
+    <definition>PRESCRIBER FIRST EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FULL NAME</source>
+    <target>Full name</target>
+    <definition>FULL NAME DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>FULL NAME</source>
+    <target>Full name</target>
+    <definition>FULL NAME DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FULL NAME</source>
+    <target>Full name</target>
+    <definition>FULL NAME SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>FULL NAME</source>
+    <target>Full name</target>
+    <definition>FULL NAME SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FULL NAME</source>
+    <target>Full name</target>
+    <definition>FULL NAME EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>FULL NAME</source>
+    <target>Full name as it will appear on a prescription bottle</target>
+    <definition>FULL NAME EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FILLED</source>
+    <target>Filled</target>
+    <definition>FILLED DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>FILLED</source>
+    <target>Filled</target>
+    <definition>FILLED DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FILLED</source>
+    <target>Filled</target>
+    <definition>FILLED SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>FILLED</source>
+    <target>Filled</target>
+    <definition>FILLED SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FILLED</source>
+    <target>Filled</target>
+    <definition>FILLED EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>FILLED</source>
+    <target>Filled (MM/DD/YYYY)</target>
+    <definition>FILLED EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>WRITTEN</source>
+    <target>Written</target>
+    <definition>WRITTEN DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>WRITTEN</source>
+    <target>Written</target>
+    <definition>WRITTEN DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>WRITTEN</source>
+    <target>Written</target>
+    <definition>WRITTEN SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>WRITTEN</source>
+    <target>Written</target>
+    <definition>WRITTEN SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>WRITTEN</source>
+    <target>Written</target>
+    <definition>WRITTEN EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>WRITTEN</source>
+    <target>Written (MM/DD/YYYY)</target>
+    <definition>WRITTEN EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION AMOUNT</source>
+    <target>Amount</target>
+    <definition>PRESCRIPTION AMOUNT DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION AMOUNT</source>
+    <target>Amount</target>
+    <definition>PRESCRIPTION AMOUNT DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION AMOUNT</source>
+    <target>Amount</target>
+    <definition>PRESCRIPTION AMOUNT SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION AMOUNT</source>
+    <target>Amount</target>
+    <definition>PRESCRIPTION AMOUNT SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION AMOUNT</source>
+    <target>Amount</target>
+    <definition>PRESCRIPTION AMOUNT EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION AMOUNT</source>
+    <target>Amount</target>
+    <definition>PRESCRIPTION AMOUNT EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBED BY</source>
+    <target>Prescribed by</target>
+    <definition>PRESCRIBED BY DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBED BY</source>
+    <target>Prescribed by</target>
+    <definition>PRESCRIBED BY DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBED BY</source>
+    <target>Prescribed by</target>
+    <definition>PRESCRIBED BY SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBED BY</source>
+    <target>Prescribed by</target>
+    <definition>PRESCRIBED BY SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBED BY</source>
+    <target>Prescribed by</target>
+    <definition>PRESCRIBED BY EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBED BY</source>
+    <target>Prescribed by</target>
+    <definition>PRESCRIBED BY EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FILLED BY</source>
+    <target>Filled by</target>
+    <definition>FILLED BY DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>FILLED BY</source>
+    <target>Who filled the prescription</target>
+    <definition>FILLED BY DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FILLED BY</source>
+    <target>Filled by</target>
+    <definition>FILLED BY SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>FILLED BY</source>
+    <target>Who filled the prescription</target>
+    <definition>FILLED BY SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>FILLED BY</source>
+    <target>Filled by</target>
+    <definition>FILLED BY EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>FILLED BY</source>
+    <target>Who filled the prescription</target>
+    <definition>FILLED BY EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>INSTRUCTIONS</source>
+    <target>Instructions</target>
+    <definition>INSTRUCTIONS EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>INSTRUCTIONS</source>
+    <target>Instructions</target>
+    <definition>INSTRUCTIONS DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>INSTRUCTIONS</source>
+    <target>Prescription instructions</target>
+    <definition>INSTRUCTIONS DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>INSTRUCTIONS</source>
+    <target>Instructions</target>
+    <definition>INSTRUCTIONS SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>INSTRUCTIONS</source>
+    <target>Prescription instructions</target>
+    <definition>INSTRUCTIONS SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>INSTRUCTIONS</source>
+    <target>Prescription instructions</target>
+    <definition>INSTRUCTIONS EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PATIENT ACTIVE</source>
+    <target>Active</target>
+    <definition>PATIENT ACTIVE DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PATIENT ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>PATIENT ACTIVE DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PATIENT ACTIVE</source>
+    <target>Active</target>
+    <definition>PATIENT ACTIVE SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PATIENT ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>PATIENT ACTIVE SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PATIENT ACTIVE</source>
+    <target>Active</target>
+    <definition>PATIENT ACTIVE EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PATIENT ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>PATIENT ACTIVE EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST ACTIVE</source>
+    <target>Status</target>
+    <definition>PHARMACIST ACTIVE DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>PHARMACIST ACTIVE DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST ACTIVE</source>
+    <target>Active</target>
+    <definition>PHARMACIST ACTIVE SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>PHARMACIST ACTIVE SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST ACTIVE</source>
+    <target>PH Active</target>
+    <definition>PHARMACIST ACTIVE EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PHARMACIST ACTIVE</source>
+    <target>PH Active</target>
+    <definition>PHARMACIST ACTIVE EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER ACTIVE</source>
+    <target>Status</target>
+    <definition>PRESCRIBER ACTIVE DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>PRESCRIBER ACTIVE DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER ACTIVE</source>
+    <target>Active</target>
+    <definition>PRESCRIBER ACTIVE SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER ACTIVE</source>
+    <target>Active or inactive status</target>
+    <definition>PRESCRIBER ACTIVE SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER ACTIVE</source>
+    <target>PH ACTIVE</target>
+    <definition>PRESCRIBER ACTIVE EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIBER ACTIVE</source>
+    <target>PH ACTIVE</target>
+    <definition>PRESCRIBER ACTIVE EDIT TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION ACTIVE</source>
+    <target>Status</target>
+    <definition>PRESCRIPTION ACTIVE DISPLAY LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION ACTIVE</source>
+    <target>Valid or invalid status</target>
+    <definition>PRESCRIPTION ACTIVE DISPLAY TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION ACTIVE</source>
+    <target>PH ACTIVE</target>
+    <definition>PRESCRIPTION ACTIVE SEARCH LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION ACTIVE</source>
+    <target>PH ACTIVE</target>
+    <definition>PRESCRIPTION ACTIVE SEARCH TOOLTIP</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION ACTIVE</source>
+    <target>PH ACTIVE</target>
+    <definition>PRESCRIPTION ACTIVE EDIT LABEL</definition>
+</phrase>
+<phrase>
+    <source>PRESCRIPTION ACTIVE</source>
+    <target>PH ACTIVE</target>
+    <definition>PRESCRIPTION ACTIVE EDIT TOOLTIP</definition>
 </phrase>
 </QPH>

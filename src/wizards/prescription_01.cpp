@@ -24,27 +24,6 @@ Prescription_01::Prescription_01(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	// Setup UI strings and tooltips
-	ui->amountLabel_2->setText(PrescriptionRecord::amount_Label);
-	ui->amountLabel_2->setToolTip(PrescriptionRecord::amount_Tooltip);
-	ui->amountField->setToolTip(PrescriptionRecord::amount_Tooltip);
-
-	ui->writtenLabel->setText(PrescriptionRecord::written_Label);
-	ui->writtenLabel->setToolTip(PrescriptionRecord::written_Tooltip);
-	ui->writtenField->setToolTip(PrescriptionRecord::written_Tooltip);
-
-	ui->filledLabel->setText(PrescriptionRecord::filled_Label);
-	ui->filledLabel->setToolTip(PrescriptionRecord::filled_Tooltip);
-	ui->filledField->setToolTip(PrescriptionRecord::filled_Tooltip);
-
-	ui->writtenByLabel->setText(PrescriberRecord::full_name_Label_secondary);
-	ui->writtenByLabel->setToolTip(PrescriberRecord::full_name_Tooltip_secondary);
-	ui->writtenByField->setToolTip(PrescriberRecord::full_name_Tooltip_secondary);
-
-	ui->filledByLabel->setText(PharmacistRecord::initials_Label_secondary);
-	ui->filledByLabel->setToolTip(PharmacistRecord::initials_Tooltip_secondary);
-	ui->filledByField->setToolTip(PharmacistRecord::initials_Tooltip_secondary);
-
 	// Setup validators
 	QValidator *numbers = new QIntValidator(this);
 	ui->amountField->setValidator(numbers);

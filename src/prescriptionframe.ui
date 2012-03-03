@@ -246,7 +246,7 @@
            <string comment="PATIENT FIRST SEARCH TOOLTIP">PATIENT FIRST</string>
           </property>
           <property name="text">
-           <string>PATIENT FIRST</string>
+           <string comment="PATIENT FIRST SEARCH LABEL">PATIENT FIRST</string>
           </property>
          </widget>
         </item>
@@ -291,7 +291,7 @@
            <string comment="DOB SEARCH TOOLTIP">DOB</string>
           </property>
           <property name="text">
-           <string>DOB</string>
+           <string comment="DOB SEARCH LABEL">DOB</string>
           </property>
          </widget>
         </item>
@@ -488,10 +488,10 @@
      </column>
      <column>
       <property name="text">
-       <string comment="PRESCRIPTION AMOUNT DISPLAY LABEL">AMOUNT</string>
+       <string comment="PRESCRIPTION AMOUNT DISPLAY LABEL">PRESCRIPTION AMOUNT</string>
       </property>
       <property name="toolTip">
-       <string comment="AMOUNT DISPLAY TOOLTIP">AMOUNT</string>
+       <string comment="PRESCRIPTION AMOUNT DISPLAY TOOLTIP">PRESCRIPTION AMOUNT</string>
       </property>
      </column>
      <column>

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Medicine Track</string>
+   <string notr="true">Medicine Track</string>
   </property>
   <property name="documentMode">
    <bool>true</bool>
@@ -44,7 +44,7 @@
    </property>
    <widget class="QMenu" name="menuMedicine_Track">
     <property name="title">
-     <string>Application</string>
+     <string notr="true">Application</string>
     </property>
     <addaction name="optionsAction"/>
     <addaction name="helpAction"/>
@@ -58,13 +58,19 @@
    <property name="text">
     <string notr="true">Quit</string>
    </property>
+   <property name="toolTip">
+    <string notr="true">Quit</string>
+   </property>
    <property name="shortcut">
-    <string>Ctrl+Q</string>
+    <string notr="true">Ctrl+Q</string>
    </property>
   </action>
   <action name="optionsAction">
    <property name="text">
-    <string>Options</string>
+    <string notr="true">Options</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Options</string>
    </property>
   </action>
   <action name="reconnectAction">
@@ -72,11 +78,14 @@
     <string notr="true">Reconnect</string>
    </property>
    <property name="toolTip">
-    <string>Reconnect to the database</string>
+    <string notr="true">Reconnect to the database</string>
    </property>
   </action>
   <action name="helpAction">
    <property name="text">
+    <string notr="true">Help</string>
+   </property>
+   <property name="toolTip">
     <string notr="true">Help</string>
    </property>
   </action>

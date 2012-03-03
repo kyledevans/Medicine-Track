@@ -28,7 +28,7 @@
         <item>
          <widget class="QLabel" name="nameLabel">
           <property name="toolTip">
-           <string comment="MEDICATION/BARCODE SEARCH TOOLTIP"/>
+           <string comment="MEDICATION/BARCODE SEARCH TOOLTIP">MEDICATION/BARCODE</string>
           </property>
           <property name="text">
            <string comment="MEDICATION/BARCODE SEARCH LABEL">MEDICATION/BARCODE</string>
@@ -50,7 +50,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="MEDICATION/BARCODE SEARCH TOOLTIP"/>
+           <string comment="MEDICATION/BARCODE SEARCH TOOLTIP">MEDICATION/BARCODE</string>
           </property>
           <property name="text">
            <string notr="true"/>

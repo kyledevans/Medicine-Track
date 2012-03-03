@@ -77,11 +77,11 @@ int PrescriptionGroupBox::getPharmacist_id()
 void PrescriptionGroupBox::setStrings()
 {
 	// Set UI strings
-	ui->amountTitle->setText(PrescriptionRecord::amount_Label + ":");
-	ui->writtenTitle->setText(PrescriptionRecord::written_Label + ":");
-	ui->filledTitle->setText(PrescriptionRecord::filled_Label + ":");
-	ui->instructionsTitle->setText(PrescriptionRecord::instructions_Label + ":");
-	ui->validTitle->setText(PrescriptionRecord::active_Label + ":");
+	ui->amountTitle->setText(ui->amountTitle->text() + ":");
+	ui->writtenTitle->setText(ui->writtenTitle->text() + ":");
+	ui->filledTitle->setText(ui->filledTitle->text() + ":");
+	ui->instructionsTitle->setText(ui->instructionsTitle->text() + ":");
+	ui->validTitle->setText(ui->validTitle->text() + ":");
 }
 
 void PrescriptionGroupBox::changeEvent(QEvent *e)

@@ -13,8 +13,11 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="instructionsLabel">
+     <property name="toolTip">
+      <string comment="INSTRUCTIONS EDIT TOOLTIP">INSTRUCTIONS</string>
+     </property>
      <property name="text">
-      <string>Instructions:</string>
+      <string comment="INSTRUCTIONS EDIT LABEL">INSTRUCTIONS</string>
      </property>
     </widget>
    </item>
@@ -25,6 +28,9 @@
        <width>16777215</width>
        <height>100</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string comment="INSTRUCTIONS EDIT TOOLTIP">INSTRUCTIONS</string>
      </property>
     </widget>
    </item>

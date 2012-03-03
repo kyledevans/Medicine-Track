@@ -18,15 +18,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="lastTitle">
+       <property name="toolTip">
+        <string comment="PRESCRIBER LAST DISPLAY TOOLTIP">PRESCRIBER LAST</string>
+       </property>
        <property name="text">
-        <string>LAST NAME</string>
+        <string comment="PRESCRIBER LAST DISPLAY LABEL">PRESCRIBER LAST</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="lastLabel">
+       <property name="toolTip">
+        <string comment="PRESCRIBER LAST DISPLAY TOOLTIP">PRESCRIBER LAST</string>
+       </property>
        <property name="text">
-        <string notr="true">LASTNAME2</string>
+        <string notr="true">PH LAST</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -52,15 +58,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QLabel" name="firstTitle">
+       <property name="toolTip">
+        <string comment="PRESCRIBER FIRST DISPLAY TOOLTIP">PRESCRIBER FIRST</string>
+       </property>
        <property name="text">
-        <string>FIRST NAME</string>
+        <string comment="PRESCRIBER FIRST DISPLAY LABEL">PRESCRIBER FIRST</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="firstLabel">
+       <property name="toolTip">
+        <string comment="PRESCRIBER FIRST DISPLAY TOOLTIP">PRESCRIBER FIRST</string>
+       </property>
        <property name="text">
-        <string notr="true">FIRSTNAME2</string>
+        <string notr="true">PH FIRST</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -86,15 +98,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <widget class="QLabel" name="fullTitle">
+       <property name="toolTip">
+        <string comment="FULL NAME DISPLAY TOOLTIP">FULL NAME</string>
+       </property>
        <property name="text">
-        <string>FULL NAME</string>
+        <string comment="FULL NAME DISPLAY LABEL">FULL NAME</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="fullLabel">
+       <property name="toolTip">
+        <string comment="FULL NAME DISPLAY TOOLTIP">FULL NAME</string>
+       </property>
        <property name="text">
-        <string notr="true">FULLNAME2</string>
+        <string notr="true">PH FULL NAME</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -120,15 +138,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QLabel" name="activeTitle">
+       <property name="toolTip">
+        <string comment="PRESCRIBER ACTIVE DISPLAY TOOLTIP">PRESCRIBER ACTIVE</string>
+       </property>
        <property name="text">
-        <string>ACTIVE</string>
+        <string comment="PRESCRIBER ACTIVE DISPLAY LABEL">PRESCRIBER ACTIVE</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="activeLabel">
+       <property name="toolTip">
+        <string comment="PRESCRIBER ACTIVE DISPLAY TOOLTIP">PRESCRIBER ACTIVE</string>
+       </property>
        <property name="text">
-        <string notr="true">ACTIVE2</string>
+        <string notr="true">PH ACTIVE</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>

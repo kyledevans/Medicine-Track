@@ -13,11 +13,6 @@ Prescription_02::Prescription_02(QWidget *parent) :
 	prescription(0)
 {
 	ui->setupUi(this);
-
-	// Setup UI strings and tooltips
-	ui->instructionsLabel->setText(PrescriptionRecord::instructions_Label);
-	ui->instructionsLabel->setToolTip(PrescriptionRecord::instructions_Tooltip);
-	ui->instructionsField->setToolTip(PrescriptionRecord::instructions_Tooltip);
 }
 
 Prescription_02::~Prescription_02()

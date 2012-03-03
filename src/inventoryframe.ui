@@ -28,10 +28,10 @@
         <item>
          <widget class="QLabel" name="nameLabel">
           <property name="toolTip">
-           <string comment="MEDICATION/BARCODE SEARCH"/>
+           <string comment="MEDICATION/BARCODE SEARCH TOOLTIP">MEDICATION/BARCODE</string>
           </property>
           <property name="text">
-           <string>MEDICATION / BARCODE</string>
+           <string comment="MEDICATION/BARCODE SEARCH LABEL">MEDICATION/BARCODE</string>
           </property>
          </widget>
         </item>
@@ -50,10 +50,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="MEDICATION/BARCODE SEARCH"/>
-          </property>
-          <property name="text">
-           <string notr="true"/>
+           <string comment="MEDICATION/BARCODE SEARCH TOOLTIP">MEDICATION/BARCODE</string>
           </property>
          </widget>
         </item>
@@ -76,10 +73,10 @@
         <item>
          <widget class="QLabel" name="lotLabel">
           <property name="toolTip">
-           <string comment="LOT SEARCH TOOLTIP"/>
+           <string comment="LOT SEARCH TOOLTIP">LOT</string>
           </property>
           <property name="text">
-           <string comment="LOT SEARCH LABEL">LOT NUMBER</string>
+           <string comment="LOT SEARCH LABEL">LOT</string>
           </property>
          </widget>
         </item>
@@ -98,7 +95,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="LOT SEARCH TOOLTIP"/>
+           <string comment="LOT SEARCH TOOLTIP">LOT</string>
           </property>
          </widget>
         </item>
@@ -274,7 +271,7 @@
        <string comment="MEDICATION DISPLAY LABEL">MEDICATION</string>
       </property>
       <property name="toolTip">
-       <string comment="MEDICATION DISPLAY TOOLTIP"/>
+       <string comment="MEDICATION DISPLAY TOOLTIP">MEDICATION</string>
       </property>
      </column>
      <column>
@@ -282,7 +279,7 @@
        <string comment="FORM DISPLAY LABEL">FORM</string>
       </property>
       <property name="toolTip">
-       <string comment="FORM DISPLAY TOOLTIP"/>
+       <string comment="FORM DISPLAY TOOLTIP">FORM</string>
       </property>
      </column>
      <column>
@@ -290,7 +287,7 @@
        <string comment="STRENGTH DISPLAY LABEL">STRENGTH</string>
       </property>
       <property name="toolTip">
-       <string comment="STRENGTH DISPLAY TOOLTIP"/>
+       <string comment="STRENGTH DISPLAY TOOLTIP">STRENGTH</string>
       </property>
      </column>
      <column>
@@ -298,7 +295,7 @@
        <string comment="UNIT SIZE DISPLAY LABEL">UNIT SIZE</string>
       </property>
       <property name="toolTip">
-       <string comment="UNIT SIZE DISPLAY TOOLTIP"/>
+       <string comment="UNIT SIZE DISPLAY TOOLTIP">UNIT SIZE</string>
       </property>
      </column>
      <column>
@@ -306,7 +303,7 @@
        <string comment="EXPIRATION DISPLAY LABEL">EXPIRATION</string>
       </property>
       <property name="toolTip">
-       <string comment="EXPIRATION DISPLAY TOOLTIP"/>
+       <string comment="EXPIRATION DISPLAY TOOLTIP">EXPIRATION</string>
       </property>
      </column>
      <column>
@@ -314,7 +311,7 @@
        <string comment="LOT DISPLAY LABEL">LOT NUMBER</string>
       </property>
       <property name="toolTip">
-       <string comment="LOT DISPLAY TOOLTIP"/>
+       <string comment="LOT DISPLAY TOOLTIP">LOT</string>
       </property>
      </column>
      <column>
@@ -322,7 +319,7 @@
        <string comment="PRODUCT COUNT DISPLAY LABEL">PRODUCT COUNT</string>
       </property>
       <property name="toolTip">
-       <string comment="PRODUCT COUNT DISPLAY TOOLTIP"/>
+       <string comment="PRODUCT COUNT DISPLAY TOOLTIP">PRODUCT COUNT</string>
       </property>
      </column>
      <column>
@@ -330,7 +327,7 @@
        <string comment="PRODUCT LEFT DISPLAY LABEL">PRODUCT LEFT</string>
       </property>
       <property name="toolTip">
-       <string comment="PRODUCT LEFT DISPLAY TOOLTIP"/>
+       <string comment="PRODUCT LEFT DISPLAY TOOLTIP">PRODUCT LEFT</string>
       </property>
      </column>
      <column>
@@ -338,7 +335,7 @@
        <string comment="WRITE OFF DISPLAY LABEL">WRITE OFF</string>
       </property>
       <property name="toolTip">
-       <string comment="WRITE OFF DISPLAY TOOLTIP"/>
+       <string comment="WRITE OFF DISPLAY TOOLTIP">WRITE OFF</string>
       </property>
      </column>
     </widget>

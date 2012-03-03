@@ -13,19 +13,6 @@ Prescriber_00::Prescriber_00(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	// Setup UI strings and tooltips
-	ui->lastLabel->setText(PrescriberRecord::last_Label);
-	ui->lastLabel->setToolTip(PrescriberRecord::last_Tooltip);
-	ui->lastField->setToolTip(PrescriberRecord::last_Tooltip);
-
-	ui->firstLabel->setText(PrescriberRecord::first_Label);
-	ui->firstLabel->setToolTip(PrescriberRecord::first_Tooltip);
-	ui->firstField->setToolTip(PrescriberRecord::first_Tooltip);
-
-	ui->fullLabel->setText(PrescriberRecord::full_name_Label);
-	ui->fullLabel->setToolTip(PrescriberRecord::full_name_Tooltip);
-	ui->fullField->setToolTip(PrescriberRecord::full_name_Tooltip);
-
 	registerField("lastField", ui->lastField);
 	registerField("firstField", ui->firstField);
 	registerField("fullField", ui->fullField);
