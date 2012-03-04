@@ -14,6 +14,8 @@ OBJECTS_DIR = build
 MOC_DIR = build
 UI_DIR = build
 
+system($$[QT_INSTALL_BINS]/lrelease mtrack.ts -qm build/mtrack.qm)
+
 OTHER_FILES = barcodes.txt \
 	COPYING.txt \
 	copyright_template.txt \

@@ -22,7 +22,6 @@ Prescription_00::Prescription_00(QWidget *parent) :
 	prescription(0),
 	db_queried(false)
 {
-	QTableWidgetItem *header;
 	ui->setupUi(this);
 
 	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
