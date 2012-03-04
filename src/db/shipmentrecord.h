@@ -42,7 +42,7 @@ public:
 	bool toggleActive();	// Toggles the active state
 
 	bool addWriteOff(int);	// Removes (int) amount of stock.  False on failure.
-    bool addInventory(int); // Increases the amount received and amount left by (int)
+	bool addInventory(int); // Increases the amount received and amount left by (int)
 
 	void print();			// Prints to the debug interface
 

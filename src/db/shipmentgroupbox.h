@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 
 Released under the GPL version 2 only.
@@ -12,13 +12,12 @@ Released under the GPL version 2 only.
 #include <QGroupBox>
 
 namespace Ui {
-class ShipmentGroupBox;
+	class ShipmentGroupBox;
 }
 
 class ShipmentGroupBox : public QGroupBox
 {
 	Q_OBJECT
-
 public:
 	explicit ShipmentGroupBox(QWidget *parent = 0);
 	~ShipmentGroupBox();

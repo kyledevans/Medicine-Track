@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 
 Released under the GPL version 2 only.
@@ -12,13 +12,12 @@ Released under the GPL version 2 only.
 #include <QGroupBox>
 
 namespace Ui {
-class PrescriptionGroupBox;
+	class PrescriptionGroupBox;
 }
 
 class PrescriptionGroupBox : public QGroupBox
 {
 	Q_OBJECT
-	
 public:
 	explicit PrescriptionGroupBox(QWidget *parent = 0);
 	~PrescriptionGroupBox();
@@ -33,7 +32,7 @@ public:
 	int getShipment_id();
 	int getPrescriber_id();
 	int getPharmacist_id();
-	
+
 private:
 	Ui::PrescriptionGroupBox *ui;
 

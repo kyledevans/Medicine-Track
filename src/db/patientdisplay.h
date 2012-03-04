@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 
 Released under the GPL version 2 only.
@@ -10,19 +10,18 @@ Released under the GPL version 2 only.
 #include <QDialog>
 
 namespace Ui {
-class PatientDisplay;
+	class PatientDisplay;
 }
 
 class PatientDisplay : public QDialog
 {
 	Q_OBJECT
-	
 public:
 	explicit PatientDisplay(int, QWidget *parent = 0);
 	~PatientDisplay();
 
 	void changeEvent(QEvent *);
-	
+
 private:
 	Ui::PatientDisplay *ui;
 };

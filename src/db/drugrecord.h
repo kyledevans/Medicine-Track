@@ -12,7 +12,7 @@ Released under the GPL version 2 only.
 class DrugRecord
 {
 public:
-    explicit DrugRecord();
+	explicit DrugRecord();
 
 	// Accessors
 	int getId();

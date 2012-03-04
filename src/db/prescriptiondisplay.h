@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 
 Released under the GPL version 2 only.
@@ -12,19 +12,18 @@ Released under the GPL version 2 only.
 #include <QDialog>
 
 namespace Ui {
-class PrescriptionDisplay;
+	class PrescriptionDisplay;
 }
 
 class PrescriptionDisplay : public QDialog
 {
 	Q_OBJECT
-	
 public:
 	explicit PrescriptionDisplay(int, QWidget *parent = 0);
 	~PrescriptionDisplay();
 
 	void changeEvent(QEvent *);
-	
+
 private:
 	Ui::PrescriptionDisplay *ui;
 

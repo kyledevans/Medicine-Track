@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 
 Released under the GPL version 2 only.
@@ -18,7 +18,6 @@ namespace Ui {
 class PrescriberDisplay : public QDialog
 {
 	Q_OBJECT
-
 public:
 	explicit PrescriberDisplay(int, QWidget *parent = 0);
 	~PrescriberDisplay();
