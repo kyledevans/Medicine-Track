@@ -43,7 +43,9 @@ Released under the GPL version 2 only.
 
 16.  Need to go through every call that attempts an SQL query and see to it that the rest of the code can handle a failed query.
 
-17.  Use the Qt translation infrastructure to help keep UI strings sane.  This should significantly reduce the amount of code being written just for string assignments.
+17.  Add the ability to reconnect to the database.
+
+18.  Allow for settings to be changed and then take affect with a reconnect instead of restarting the application.
 
 -----
 
