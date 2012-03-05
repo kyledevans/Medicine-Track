@@ -9,9 +9,9 @@ Released under the GPL version 2 only.
 
 #include <QInputDialog>
 
-#include "db/alertinterface.h"
-#include "db/drugrecord.h"
-#include "db/shipmentdisplay.h"
+#include "alertinterface.h"
+#include "drugrecord.h"
+#include "shipmentdisplay.h"
 #include "shipmentwizard.h"
 #include "barcodelabel.h"
 

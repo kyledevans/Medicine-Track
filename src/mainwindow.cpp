@@ -11,7 +11,7 @@ Released under the GPL version 2 only.
 #include <QStringList>
 #include <QByteArray>
 
-#include "db/alertinterface.h"
+#include "alertinterface.h"
 #include "mtsettings.h"
 #include "formularyframe.h"
 #include "inventoryframe.h"
@@ -73,7 +73,7 @@ void MainWindow::initiateHelp()
 
 	help_process = new QProcess;
 	args	<< QLatin1String("-collectionFile")
-			<< QLatin1String("mtrack-collection.qhc")
+			<< (QCoreApplication::applicationDirPath () + QLatin1String("/mtrack-collection.qhc"))
 			<< QLatin1String("-enableRemoteControl");
 
 	help_process->start(QLatin1String("assistant"), args);

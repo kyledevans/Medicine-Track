@@ -4,8 +4,8 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "db/drugrecord.h"
-#include "db/shipmentrecord.h"
+#include "drugrecord.h"
+#include "shipmentrecord.h"
 #include "globals.h"
 
 #ifndef FORMULARYFRAME_H

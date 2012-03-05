@@ -7,8 +7,8 @@ Released under the GPL version 2 only.
 #include "pharmacistframe.h"
 #include "ui_pharmacistframe.h"
 
-#include "db/alertinterface.h"
-#include "db/pharmacistdisplay.h"
+#include "alertinterface.h"
+#include "pharmacistdisplay.h"
 #include "pharmacistwizard.h"
 
 #include <QDebug>

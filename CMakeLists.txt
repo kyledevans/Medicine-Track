@@ -1,0 +1,38 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+PROJECT(Medicine-Track)
+
+SET(EXE_DIR "src")
+SET(DB_DIR "db")
+SET(WIZARDS_DIR "wizards")
+SET(DOC_DIR "doc")
+
+# Files that should be displayed in the Qt Creator file browser
+SET(OTHER_FILES "COPYING.txt"
+	"HACKING.txt"
+	"README.txt"
+	"barcodes.txt"
+	"copyright_template.txt"
+	"database_info.txt"
+	"todo.txt"
+)
+
+IF(WIN32)
+	SET(CMAKE_BUILD_TYPE "Release")
+ENDIF()
+
+SET(TRANSLATIONS_TS mtrack.ts)
+SET(TRANSLATIONS_QM mtrack.qm)
+
+FIND_PACKAGE(Qt4 REQUIRED)
+SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+FIND_PACKAGE(MySQL REQUIRED)
+SET(QT_USE_QTSQL TRUE)
+
+ADD_SUBDIRECTORY("${PROJECT_SOURCE_DIR}/${DB_DIR}")
+ADD_SUBDIRECTORY("${PROJECT_SOURCE_DIR}/${WIZARDS_DIR}")
+ADD_SUBDIRECTORY("${PROJECT_SOURCE_DIR}/${EXE_DIR}")
+ADD_SUBDIRECTORY("${PROJECT_SOURCE_DIR}/${DOC_DIR}")
+
+# This makes Qt Creator text files in the file browser
+ADD_CUSTOM_TARGET(others true SOURCES ${OTHER_FILES})

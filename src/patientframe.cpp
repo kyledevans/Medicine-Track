@@ -7,7 +7,7 @@ Released under the GPL version 2 only.
 #include "patientframe.h"
 #include "ui_patientframe.h"
 
-#include "db/alertinterface.h"
+#include "alertinterface.h"
 #include "patientdisplay.h"
 #include "patientwizard.h"
 #include "prescriptionwizard.h"

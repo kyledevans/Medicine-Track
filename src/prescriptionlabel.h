@@ -6,12 +6,12 @@ Released under the GPL version 2 only.
 
 #include <QPrinter>
 
-#include "db/prescriptionrecord.h"
-#include "db/prescriberrecord.h"
-#include "db/pharmacistrecord.h"
-#include "db/patientrecord.h"
-#include "db/drugrecord.h"
-#include "db/shipmentrecord.h"
+#include "prescriptionrecord.h"
+#include "prescriberrecord.h"
+#include "pharmacistrecord.h"
+#include "patientrecord.h"
+#include "drugrecord.h"
+#include "shipmentrecord.h"
 
 #ifndef PRESCRIPTIONLABEL_H
 #define PRESCRIPTIONLABEL_H

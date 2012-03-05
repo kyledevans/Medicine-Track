@@ -4,7 +4,7 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "db/pharmacistrecord.h"
+#include "pharmacistrecord.h"
 #include "globals.h"
 
 #ifndef PHARMACISTFRAME_H

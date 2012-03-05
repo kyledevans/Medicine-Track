@@ -7,8 +7,8 @@ Released under the GPL version 2 only.
 #include "formularyframe.h"
 #include "ui_formularyframe.h"
 
-#include "db/alertinterface.h"
-#include "db/drugdisplay.h"
+#include "alertinterface.h"
+#include "drugdisplay.h"
 #include "medicationwizard.h"
 #include "shipmentwizard.h"
 #include "barcodelabel.h"

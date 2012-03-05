@@ -7,8 +7,8 @@ Released under the GPL version 2 only.
 #include "prescriberframe.h"
 #include "ui_prescriberframe.h"
 
-#include "db/alertinterface.h"
-#include "db/prescriberdisplay.h"
+#include "alertinterface.h"
+#include "prescriberdisplay.h"
 #include "prescriberwizard.h"
 
 PrescriberFrame::PrescriberFrame(QWidget *parent) :
