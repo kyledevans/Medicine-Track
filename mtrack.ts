@@ -517,49 +517,54 @@
         <translation>DOB</translation>
     </message>
     <message>
-        <location filename="src/patientframe.ui" line="315"/>
+        <location filename="src/patientframe.ui" line="318"/>
+        <source>patients.id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="src/patientframe.ui" line="323"/>
         <source>ALLSCRIPTS ID</source>
         <comment>ALLSCRIPTS ID DISPLAY LABEL</comment>
         <translation>MR Number</translation>
     </message>
     <message>
-        <location filename="src/patientframe.ui" line="318"/>
+        <location filename="src/patientframe.ui" line="326"/>
         <source>ALLSCRIPTS ID</source>
         <comment>ALLSCRIPTS ID DISPLAY TOOLTIP</comment>
         <translation>MR Number</translation>
     </message>
     <message>
-        <location filename="src/patientframe.ui" line="323"/>
+        <location filename="src/patientframe.ui" line="331"/>
         <source>PATIENT LAST</source>
         <comment>PATIENT LAST DISPLAY LABEL</comment>
         <translation>Last name</translation>
     </message>
     <message>
-        <location filename="src/patientframe.ui" line="326"/>
+        <location filename="src/patientframe.ui" line="334"/>
         <source>PATIENT LAST</source>
         <comment>PATIENT LAST DISPLAY TOOLTIP</comment>
         <translation>Last name</translation>
     </message>
     <message>
-        <location filename="src/patientframe.ui" line="331"/>
+        <location filename="src/patientframe.ui" line="339"/>
         <source>PATIENT FIRST</source>
         <comment>PATIENT FIRST DISPLAY LABEL</comment>
         <translation>First name</translation>
     </message>
     <message>
-        <location filename="src/patientframe.ui" line="334"/>
+        <location filename="src/patientframe.ui" line="342"/>
         <source>PATIENT FIRST</source>
         <comment>PATIENT FIRST DISPLAY TOOLTIP</comment>
         <translation>First name</translation>
     </message>
     <message>
-        <location filename="src/patientframe.ui" line="339"/>
+        <location filename="src/patientframe.ui" line="347"/>
         <source>DOB</source>
         <comment>DOB DISPLAY LABEL</comment>
         <translation>DOB</translation>
     </message>
     <message>
-        <location filename="src/patientframe.ui" line="342"/>
+        <location filename="src/patientframe.ui" line="350"/>
         <source>DOB</source>
         <comment>DOB DISPLAY TOOLTIP</comment>
         <translation>Date of birth</translation>

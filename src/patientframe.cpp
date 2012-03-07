@@ -7,6 +7,8 @@ Released under the GPL version 2 only.
 #include "patientframe.h"
 #include "ui_patientframe.h"
 
+#include <QVariant>
+
 #include "alertinterface.h"
 #include "patientdisplay.h"
 #include "patientwizard.h"
@@ -40,6 +42,9 @@ PatientFrame::PatientFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->toggleAction);
 	ui->resultTable->addAction(ui->viewAction);
 
+	// Hide the column with internal id's from the user
+	ui->resultTable->hideColumn(0);
+
 	// Deactivate actions that require an item selected in resultTable
 	selectionChanged();
 }
@@ -64,18 +69,17 @@ void PatientFrame::changeEvent(QEvent *e)
 
 void PatientFrame::viewPatient()
 {
-	unsigned int row;
+	int row;
 	PatientDisplay *display;
 
-	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-
-	display = new PatientDisplay(ids[row]);
+	display = new PatientDisplay(ui->resultTable->item(row, 0)->text().toInt(), this);
 }
 
+// TODO: this deals with ids[]
 void PatientFrame::toggleActive()
 {
-	unsigned int row;
+	int row;
 	PatientRecord patient;
 
 	if (!db_queried) {
@@ -88,7 +92,7 @@ void PatientFrame::toggleActive()
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 
-	patient.retrieve(ids[row]);
+	patient.retrieve(ui->resultTable->item(row, 0)->text().toInt());
 	patient.toggleActive();
 }
 
@@ -150,17 +154,19 @@ void PatientFrame::initiateSearch(int patientID)
 		return;
 	}
 
-	ids.clear();
 	ui->resultTable->clearContents();
+	ui->resultTable->setSortingEnabled(false);
 	ui->resultTable->setRowCount(model->size());
 	for (i = 0; i < model->size(); i++) {
 		model->next();
-		ids.append(model->value(0).toInt());
-		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
-		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
-		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
-		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toDate().toString(DEFAULTS::DateDisplayFormat)));
+		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(0).toString()));
+		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(1).toString()));
+		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
+		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
+		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(4).toDate().toString(DEFAULTS::DateDisplayFormat)));
 	}
+	ui->resultTable->setSortingEnabled(true);
+	ui->resultTable->sortByColumn(2, Qt::AscendingOrder);
 
 	db_queried = true;	// Let other functions start accessing values in the table
 	delete model;
@@ -193,6 +199,7 @@ void PatientFrame::resetPressed()
 	ui->resultTable->setRowCount(0);
 }
 
+// TODO: This deals with ids[]
 void PatientFrame::initiatePrescription()
 {
 	unsigned int row;
@@ -211,13 +218,13 @@ void PatientFrame::initiatePrescription()
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-	if (!wiz->getPatient(ids[row])) {
+	if (!wiz->getPatient(ui->resultTable->item(row, 0)->text().toInt())) {
 		delete wiz;
 		return;
 	}
 
 	prescription = new PrescriptionRecord;
-	prescription->setPatient_id(ids[row]);
+	prescription->setPatient_id(ui->resultTable->item(row, 0)->text().toInt());
 	wiz->setPrescription(prescription);
 
 	connect(wiz, SIGNAL(wizardComplete(PrescriptionRecord*)), this, SLOT(submitNewPrescription(PrescriptionRecord*)));
@@ -242,7 +249,7 @@ void PatientFrame::initiateModification()
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-	if (!patient->retrieve(ids[row])) {
+	if (!patient->retrieve(ui->resultTable->item(row, 0)->text().toInt())) {
 		delete patient;
 		return;
 	}
