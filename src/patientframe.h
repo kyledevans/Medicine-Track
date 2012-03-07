@@ -51,8 +51,6 @@ private:
 	void initiatePrint(PrescriptionRecord *);
 
     Ui::PatientFrame *ui;
-
-	bool db_queried;	// Indicates if the result table has a model
 };
 
 #endif // PATIENTFRAME_H

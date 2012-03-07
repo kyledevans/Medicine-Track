@@ -36,9 +36,6 @@ public slots:
 
 private:
     Ui::PrescriptionFrame *ui;
-
-	QList<int> ids;				// Contains prescription id's
-	bool db_queried;			// Indicates if the result table has a model
 };
 
 #endif // PRESCRIPTIONFRAME_H

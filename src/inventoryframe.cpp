@@ -19,8 +19,7 @@ Released under the GPL version 2 only.
 
 InventoryFrame::InventoryFrame(QWidget *parent) :
 	QFrame(parent),
-	ui(new Ui::InventoryFrame),
-	db_queried(false)
+	ui(new Ui::InventoryFrame)
 {
 	ui->setupUi(this);
 
@@ -73,7 +72,7 @@ void InventoryFrame::viewInventory()
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 
-	display = new ShipmentDisplay(ids[row]);
+	display = new ShipmentDisplay(ui->resultTable->item(row, 0)->text().toInt());
 }
 
 void InventoryFrame::toggleActive()
@@ -81,17 +80,10 @@ void InventoryFrame::toggleActive()
 	unsigned int row;
 	ShipmentRecord shipment;
 
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
-
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 
-	shipment.retrieve(ids[row]);
+	shipment.retrieve(ui->resultTable->item(row, 0)->text().toInt());
 	shipment.toggleActive();
 }
 
@@ -163,24 +155,26 @@ void InventoryFrame::initiateSearch(int shipID)
 		return;
 	}
 
-	ids.clear();
 	ui->resultTable->clearContents();
+	ui->resultTable->setSortingEnabled(false);
 	ui->resultTable->setRowCount(model->size());
 	for (i = 0; i < model->size(); i++) {
 		model->next();
-		ids.append(model->value(0).toInt());    // Retrieve the ID's before they get deleted
-		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
-		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
-		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
-		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toString()));
-		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(5).toDate().toString(DEFAULTS::DateDisplayFormat)));
-		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(6).toString()));
-		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(7).toString()));
-		ui->resultTable->setItem(i, 7, new QTableWidgetItem(model->value(8).toString()));
-		ui->resultTable->setItem(i, 8, new QTableWidgetItem(model->value(9).toString()));
+		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(0).toString()));
+		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(1).toString()));
+		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
+		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
+		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(4).toString()));
+		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(5).toDate().toString(DEFAULTS::DateDisplayFormat)));
+		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(6).toString()));
+		ui->resultTable->setItem(i, 7, new QTableWidgetItem(model->value(7).toString()));
+		ui->resultTable->setItem(i, 8, new QTableWidgetItem(model->value(8).toString()));
+		ui->resultTable->setItem(i, 9, new QTableWidgetItem(model->value(9).toString()));
 	}
+	ui->resultTable->setSortingEnabled(true);
+	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
 
-	db_queried = true;
+	delete model;
 }
 
 void InventoryFrame::selectionChanged()
@@ -207,19 +201,12 @@ void InventoryFrame::initiateWriteOff()
     DrugRecord *medication;
 	bool ok;
 
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
-
 	shipment = new ShipmentRecord;
     medication = new DrugRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-	if (!shipment->retrieve(ids[row])) {
+	if (!shipment->retrieve(ui->resultTable->item(row, 0)->text().toInt())) {
 		delete shipment;
 		delete medication;
 		return;
@@ -255,19 +242,12 @@ void InventoryFrame::initiateIncrease()
     DrugRecord *medication;
 	bool ok;
 
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
-
 	shipment = new ShipmentRecord;
     medication = new DrugRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-	if (!shipment->retrieve(ids[row])) {
+	if (!shipment->retrieve(ui->resultTable->item(row, 0)->text().toInt())) {
 		delete shipment;
 		delete medication;
 		return;
@@ -301,16 +281,9 @@ void InventoryFrame::initiatePrintBarcode()
 	unsigned int row;
 	BarcodeLabel label;
 
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
-
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 
-	label.setBarcode(QString("SID") + QString().setNum(ids[row]));
+	label.setBarcode(QString("SID") + QString().setNum(ui->resultTable->item(row, 0)->text().toInt()));
 	label.print();
 }

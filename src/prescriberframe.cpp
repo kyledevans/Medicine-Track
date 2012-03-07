@@ -13,8 +13,7 @@ Released under the GPL version 2 only.
 
 PrescriberFrame::PrescriberFrame(QWidget *parent) :
 	QFrame(parent),
-	ui(new Ui::PrescriberFrame),
-	db_queried(false)
+	ui(new Ui::PrescriberFrame)
 {
 	ui->setupUi(this);
 
@@ -61,7 +60,7 @@ void PrescriberFrame::viewPrescriber()
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 
-	display = new PrescriberDisplay(ids[row]);
+	display = new PrescriberDisplay(ui->resultTable->item(row, 0)->text().toInt(), this);
 }
 
 void PrescriberFrame::resetPressed()
@@ -76,17 +75,10 @@ void PrescriberFrame::toggleActive()
 	unsigned int row;
 	PrescriberRecord prescriber;
 
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
-
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 
-	prescriber.retrieve(ids[row]);
+	prescriber.retrieve(ui->resultTable->item(row, 0)->text().toInt());
 	prescriber.toggleActive();
 }
 
@@ -126,18 +118,19 @@ void PrescriberFrame::initiateSearch(int presID)
 		return;
 	}
 
-	ids.clear();
 	ui->resultTable->clearContents();
+	ui->resultTable->setSortingEnabled(false);
 	ui->resultTable->setRowCount(model->size());
 	for (i = 0; i < model->size(); i++) {
 		model->next();
-		ids.append(model->value(0).toInt());	// Retrieve the ID's before they get deleted
-		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
-		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
-		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
+		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(0).toString()));
+		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(1).toString()));
+		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
+		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
 	}
+	ui->resultTable->setSortingEnabled(true);
+	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
 
-	db_queried = true;
 	delete model;
 }
 
@@ -175,18 +168,11 @@ void PrescriberFrame::initiateModify()
 	PrescriberWizard *wiz;
 	PrescriberRecord *pres;
 
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
-
 	pres = new PrescriberRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-	if (!pres->retrieve(ids[row])) {
+	if (!pres->retrieve(ui->resultTable->item(row, 0)->text().toInt())) {
 		delete pres;
 		return;
 	}

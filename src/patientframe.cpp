@@ -19,8 +19,7 @@ Released under the GPL version 2 only.
 
 PatientFrame::PatientFrame(QWidget *parent) :
 	QFrame(parent),
-    ui(new Ui::PatientFrame),
-	db_queried(false)
+	ui(new Ui::PatientFrame)
 {
 	ui->setupUi(this);
 
@@ -76,18 +75,10 @@ void PatientFrame::viewPatient()
 	display = new PatientDisplay(ui->resultTable->item(row, 0)->text().toInt(), this);
 }
 
-// TODO: this deals with ids[]
 void PatientFrame::toggleActive()
 {
 	int row;
 	PatientRecord patient;
-
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -168,7 +159,6 @@ void PatientFrame::initiateSearch(int patientID)
 	ui->resultTable->setSortingEnabled(true);
 	ui->resultTable->sortByColumn(2, Qt::AscendingOrder);
 
-	db_queried = true;	// Let other functions start accessing values in the table
 	delete model;
 }
 
@@ -199,20 +189,12 @@ void PatientFrame::resetPressed()
 	ui->resultTable->setRowCount(0);
 }
 
-// TODO: This deals with ids[]
 void PatientFrame::initiatePrescription()
 {
 	unsigned int row;
 	PrescriptionRecord *prescription;
 
 	PrescriptionWizard *wiz;
-
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
 
 	wiz = new PrescriptionWizard;
 
@@ -237,13 +219,6 @@ void PatientFrame::initiateModification()
 	unsigned int row;
     PatientWizard *wiz;
 	PatientRecord *patient;
-
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
 
 	patient = new PatientRecord;
 

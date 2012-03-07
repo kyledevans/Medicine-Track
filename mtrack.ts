@@ -150,73 +150,78 @@
         <translation>Medication / Barcode</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="237"/>
+        <location filename="src/formularyframe.ui" line="240"/>
+        <source>drugs.id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="src/formularyframe.ui" line="245"/>
         <source>MEDICATION</source>
         <comment>MEDICATION DISPLAY LABEL</comment>
         <translation>Medication</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="240"/>
+        <location filename="src/formularyframe.ui" line="248"/>
         <source>MEDICATION</source>
         <comment>MEDICATION DISPLAY TOOLTIP</comment>
         <translation>Name of the medication</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="245"/>
+        <location filename="src/formularyframe.ui" line="253"/>
         <source>NDC</source>
         <comment>NDC DISPLAY LABEL</comment>
         <translation>NDC</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="248"/>
+        <location filename="src/formularyframe.ui" line="256"/>
         <source>NDC</source>
         <comment>NDC DISPLAY TOOLTIP</comment>
         <translation>National Drug Code</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="253"/>
+        <location filename="src/formularyframe.ui" line="261"/>
         <source>FORM</source>
         <comment>FORM DISPLAY LABEL</comment>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="256"/>
+        <location filename="src/formularyframe.ui" line="264"/>
         <source>FORM</source>
         <comment>FORM DISPLAY TOOLTIP</comment>
         <translation>Medication form</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="261"/>
+        <location filename="src/formularyframe.ui" line="269"/>
         <source>STRENGTH</source>
         <comment>STRENGTH DISPLAY LABEL</comment>
         <translation>Strength</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="264"/>
+        <location filename="src/formularyframe.ui" line="272"/>
         <source>STRENGTH</source>
         <comment>STRENGTH DISPLAY TOOLTIP</comment>
         <translation>Strength</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="269"/>
+        <location filename="src/formularyframe.ui" line="277"/>
         <source>UNIT SIZE</source>
         <comment>UNIT SIZE DISPLAY LABEL</comment>
         <translation>Unit size</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="272"/>
+        <location filename="src/formularyframe.ui" line="280"/>
         <source>UNIT SIZE</source>
         <comment>UNIT SIZE DISPLAY TOOLTIP</comment>
         <translation>Unit size (optional)</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="277"/>
+        <location filename="src/formularyframe.ui" line="285"/>
         <source>PRODUCT LEFT</source>
         <comment>PRODUCT LEFT DISPLAY LABEL</comment>
         <translation>Inventory left</translation>
     </message>
     <message>
-        <location filename="src/formularyframe.ui" line="280"/>
+        <location filename="src/formularyframe.ui" line="288"/>
         <source>PRODUCT LEFT</source>
         <comment>PRODUCT LEFT DISPLAY TOOLTIP</comment>
         <translation>Inventory left</translation>
@@ -251,109 +256,114 @@
         <translation>Lot #</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="271"/>
+        <location filename="src/inventoryframe.ui" line="274"/>
+        <source>shipments.id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="src/inventoryframe.ui" line="279"/>
         <source>MEDICATION</source>
         <comment>MEDICATION DISPLAY LABEL</comment>
         <translation>Medication</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="274"/>
+        <location filename="src/inventoryframe.ui" line="282"/>
         <source>MEDICATION</source>
         <comment>MEDICATION DISPLAY TOOLTIP</comment>
         <translation>Name of the medication</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="279"/>
+        <location filename="src/inventoryframe.ui" line="287"/>
         <source>FORM</source>
         <comment>FORM DISPLAY LABEL</comment>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="282"/>
+        <location filename="src/inventoryframe.ui" line="290"/>
         <source>FORM</source>
         <comment>FORM DISPLAY TOOLTIP</comment>
         <translation>Medication form</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="287"/>
+        <location filename="src/inventoryframe.ui" line="295"/>
         <source>STRENGTH</source>
         <comment>STRENGTH DISPLAY LABEL</comment>
         <translation>Strength</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="290"/>
+        <location filename="src/inventoryframe.ui" line="298"/>
         <source>STRENGTH</source>
         <comment>STRENGTH DISPLAY TOOLTIP</comment>
         <translation>Strength</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="295"/>
+        <location filename="src/inventoryframe.ui" line="303"/>
         <source>UNIT SIZE</source>
         <comment>UNIT SIZE DISPLAY LABEL</comment>
         <translation>Unit size</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="298"/>
+        <location filename="src/inventoryframe.ui" line="306"/>
         <source>UNIT SIZE</source>
         <comment>UNIT SIZE DISPLAY TOOLTIP</comment>
         <translation>Unit size (optional)</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="303"/>
+        <location filename="src/inventoryframe.ui" line="311"/>
         <source>EXPIRATION</source>
         <comment>EXPIRATION DISPLAY LABEL</comment>
         <translation>Expiration</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="306"/>
+        <location filename="src/inventoryframe.ui" line="314"/>
         <source>EXPIRATION</source>
         <comment>EXPIRATION DISPLAY TOOLTIP</comment>
         <translation>Expiration date</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="311"/>
+        <location filename="src/inventoryframe.ui" line="319"/>
         <source>LOT NUMBER</source>
         <comment>LOT DISPLAY LABEL</comment>
         <translation>Lot #</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="314"/>
+        <location filename="src/inventoryframe.ui" line="322"/>
         <source>LOT</source>
         <comment>LOT DISPLAY TOOLTIP</comment>
         <translation>Lot number</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="319"/>
+        <location filename="src/inventoryframe.ui" line="327"/>
         <source>PRODUCT COUNT</source>
         <comment>PRODUCT COUNT DISPLAY LABEL</comment>
         <translation>Inventory received</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="322"/>
+        <location filename="src/inventoryframe.ui" line="330"/>
         <source>PRODUCT COUNT</source>
         <comment>PRODUCT COUNT DISPLAY TOOLTIP</comment>
         <translation>Inventory received</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="327"/>
+        <location filename="src/inventoryframe.ui" line="335"/>
         <source>PRODUCT LEFT</source>
         <comment>PRODUCT LEFT DISPLAY LABEL</comment>
         <translation>Inventory left</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="330"/>
+        <location filename="src/inventoryframe.ui" line="338"/>
         <source>PRODUCT LEFT</source>
         <comment>PRODUCT LEFT DISPLAY TOOLTIP</comment>
         <translation>Inventory left</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="335"/>
+        <location filename="src/inventoryframe.ui" line="343"/>
         <source>WRITE OFF</source>
         <comment>WRITE OFF DISPLAY LABEL</comment>
         <translation>Write off</translation>
     </message>
     <message>
-        <location filename="src/inventoryframe.ui" line="338"/>
+        <location filename="src/inventoryframe.ui" line="346"/>
         <source>WRITE OFF</source>
         <comment>WRITE OFF DISPLAY TOOLTIP</comment>
         <translation>Write off</translation>
@@ -722,37 +732,42 @@
         <translation>First name</translation>
     </message>
     <message>
-        <location filename="src/pharmacistframe.ui" line="245"/>
+        <location filename="src/pharmacistframe.ui" line="248"/>
+        <source>pharmacists.id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="src/pharmacistframe.ui" line="253"/>
         <source>PHARMACIST LAST</source>
         <comment>PHARMACIST LAST DISPLAY LABEL</comment>
         <translation>Last name</translation>
     </message>
     <message>
-        <location filename="src/pharmacistframe.ui" line="248"/>
+        <location filename="src/pharmacistframe.ui" line="256"/>
         <source>PHARMACIST LAST</source>
         <comment>PHARMACIST LAST DISPLAY TOOLTIP</comment>
         <translation>Last name</translation>
     </message>
     <message>
-        <location filename="src/pharmacistframe.ui" line="253"/>
+        <location filename="src/pharmacistframe.ui" line="261"/>
         <source>PHARMACIST FIRST</source>
         <comment>PHARMACIST FIRST DISPLAY LABEL</comment>
         <translation>First name</translation>
     </message>
     <message>
-        <location filename="src/pharmacistframe.ui" line="256"/>
+        <location filename="src/pharmacistframe.ui" line="264"/>
         <source>PHARMACIST FIRST</source>
         <comment>PHARMACIST FIRST DISPLAY TOOLTIP</comment>
         <translation>First name</translation>
     </message>
     <message>
-        <location filename="src/pharmacistframe.ui" line="261"/>
+        <location filename="src/pharmacistframe.ui" line="269"/>
         <source>INITIALS</source>
         <comment>INITIALS DISPLAY LABEL</comment>
         <translation>Initials</translation>
     </message>
     <message>
-        <location filename="src/pharmacistframe.ui" line="264"/>
+        <location filename="src/pharmacistframe.ui" line="272"/>
         <source>INITIALS</source>
         <comment>INITIALS DISPLAY TOOLTIP</comment>
         <translation>Initials</translation>
@@ -884,37 +899,42 @@
         <translation>First name</translation>
     </message>
     <message>
-        <location filename="src/prescriberframe.ui" line="248"/>
+        <location filename="src/prescriberframe.ui" line="251"/>
+        <source>prescribers.id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="src/prescriberframe.ui" line="256"/>
         <source>PRESCRIBER LAST</source>
         <comment>PRESCRIBER LAST DISPLAY LABEL</comment>
         <translation>Last name</translation>
     </message>
     <message>
-        <location filename="src/prescriberframe.ui" line="251"/>
+        <location filename="src/prescriberframe.ui" line="259"/>
         <source>PRESCRIBER LAST</source>
         <comment>PRESCRIBER LAST DISPLAY TOOLTIP</comment>
         <translation>Last name</translation>
     </message>
     <message>
-        <location filename="src/prescriberframe.ui" line="256"/>
+        <location filename="src/prescriberframe.ui" line="264"/>
         <source>PRESCRIBER FIRST</source>
         <comment>PRESCRIBER FIRST DISPLAY LABEL</comment>
         <translation>First name</translation>
     </message>
     <message>
-        <location filename="src/prescriberframe.ui" line="259"/>
+        <location filename="src/prescriberframe.ui" line="267"/>
         <source>PRESCRIBER FIRST</source>
         <comment>PRESCRIBER FIRST DISPLAY TOOLTIP</comment>
         <translation>First name</translation>
     </message>
     <message>
-        <location filename="src/prescriberframe.ui" line="264"/>
+        <location filename="src/prescriberframe.ui" line="272"/>
         <source>FULL NAME</source>
         <comment>FULL NAME DISPLAY LABEL</comment>
         <translation>Full name</translation>
     </message>
     <message>
-        <location filename="src/prescriberframe.ui" line="267"/>
+        <location filename="src/prescriberframe.ui" line="275"/>
         <source>FULL NAME</source>
         <comment>FULL NAME DISPLAY TOOLTIP</comment>
         <translation>Full name</translation>
@@ -1098,133 +1118,138 @@
         <translation>DOB</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="435"/>
+        <location filename="src/prescriptionframe.ui" line="438"/>
+        <source>prescriptions.id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="src/prescriptionframe.ui" line="443"/>
         <source>ALLSCRIPTS ID</source>
         <comment>ALLSCRIPTS ID DISPLAY LABEL</comment>
         <translation>MR Number</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="438"/>
+        <location filename="src/prescriptionframe.ui" line="446"/>
         <source>ALLSCRIPTS ID</source>
         <comment>ALLSCRIPTS ID DISPLAY TOOLTIP</comment>
         <translation>MR Number</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="443"/>
+        <location filename="src/prescriptionframe.ui" line="451"/>
         <source>PATIENT LAST</source>
         <comment>PATIENT LAST DISPLAY LABEL</comment>
         <translation>Last name</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="446"/>
+        <location filename="src/prescriptionframe.ui" line="454"/>
         <source>PATIENT LAST</source>
         <comment>PATIENT LAST DISPLAY TOOLTIP</comment>
         <translation>Last name</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="451"/>
+        <location filename="src/prescriptionframe.ui" line="459"/>
         <source>PATIENT FIRST</source>
         <comment>PATIENT FIRST DISPLAY LABEL</comment>
         <translation>First name</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="454"/>
+        <location filename="src/prescriptionframe.ui" line="462"/>
         <source>PATIENT FIRST</source>
         <comment>PATIENT FIRST DISPLAY TOOLTIP</comment>
         <translation>First name</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="459"/>
+        <location filename="src/prescriptionframe.ui" line="467"/>
         <source>DOB</source>
         <comment>DOB DISPLAY LABEL</comment>
         <translation>DOB</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="462"/>
+        <location filename="src/prescriptionframe.ui" line="470"/>
         <source>DOB</source>
         <comment>DOB DISPLAY TOOLTIP</comment>
         <translation>Date of birth</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="467"/>
+        <location filename="src/prescriptionframe.ui" line="475"/>
         <source>MEDICATION</source>
         <comment>MEDICATION DISPLAY LABEL</comment>
         <translation>Medication</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="470"/>
+        <location filename="src/prescriptionframe.ui" line="478"/>
         <source>MEDICATION</source>
         <comment>MEDICATION DISPLAY TOOLTIP</comment>
         <translation>Name of the medication</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="475"/>
+        <location filename="src/prescriptionframe.ui" line="483"/>
         <source>FORM</source>
         <comment>FORM DISPLAY LABEL</comment>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="478"/>
+        <location filename="src/prescriptionframe.ui" line="486"/>
         <source>FORM</source>
         <comment>FORM DISPLAY TOOLTIP</comment>
         <translation>Medication form</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="483"/>
+        <location filename="src/prescriptionframe.ui" line="491"/>
         <source>STRENGTH</source>
         <comment>STRENGTH DISPLAY LABEL</comment>
         <translation>Strength</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="486"/>
+        <location filename="src/prescriptionframe.ui" line="494"/>
         <source>STRENGTH</source>
         <comment>STRENGTH DISPLAY TOOLTIP</comment>
         <translation>Strength</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="491"/>
+        <location filename="src/prescriptionframe.ui" line="499"/>
         <source>PRESCRIPTION AMOUNT</source>
         <comment>PRESCRIPTION AMOUNT DISPLAY LABEL</comment>
         <translation>Amount</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="494"/>
+        <location filename="src/prescriptionframe.ui" line="502"/>
         <source>PRESCRIPTION AMOUNT</source>
         <comment>PRESCRIPTION AMOUNT DISPLAY TOOLTIP</comment>
         <translation>Amount</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="499"/>
+        <location filename="src/prescriptionframe.ui" line="507"/>
         <source>WRITTEN</source>
         <comment>WRITTEN DISPLAY LABEL</comment>
         <translation>Written</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="502"/>
+        <location filename="src/prescriptionframe.ui" line="510"/>
         <source>WRITTEN</source>
         <comment>WRITTEN DISPLAY TOOLTIP</comment>
         <translation>Written</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="507"/>
+        <location filename="src/prescriptionframe.ui" line="515"/>
         <source>FILLED</source>
         <comment>FILLED DISPLAY LABEL</comment>
         <translation>Filled</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="510"/>
+        <location filename="src/prescriptionframe.ui" line="518"/>
         <source>FILLED</source>
         <comment>FILLED DISPLAY TOOLTIP</comment>
         <translation>Filled</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="515"/>
+        <location filename="src/prescriptionframe.ui" line="523"/>
         <source>LOT</source>
         <comment>LOT DISPLAY LABEL</comment>
         <translation>Lot #</translation>
     </message>
     <message>
-        <location filename="src/prescriptionframe.ui" line="518"/>
+        <location filename="src/prescriptionframe.ui" line="526"/>
         <source>LOT</source>
         <comment>LOT DISPLAY TOOLTIP</comment>
         <translation>Lot number</translation>

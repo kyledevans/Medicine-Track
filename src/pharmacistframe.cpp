@@ -15,8 +15,7 @@ Released under the GPL version 2 only.
 
 PharmacistFrame::PharmacistFrame(QWidget *parent) :
 	QFrame(parent),
-	ui(new Ui::PharmacistFrame),
-	db_queried(false)
+	ui(new Ui::PharmacistFrame)
 {
 	ui->setupUi(this);
 
@@ -33,6 +32,9 @@ PharmacistFrame::PharmacistFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->modifyAction);
 	ui->resultTable->addAction(ui->toggleAction);
 	ui->resultTable->addAction(ui->viewAction);
+
+	// Hide the column with internal id's from the user
+	ui->resultTable->hideColumn(0);
 
 	selectionChanged();
 }
@@ -55,6 +57,7 @@ void PharmacistFrame::changeEvent(QEvent *e)
 	}
 }
 
+// Assumes: that resultTable has results and one is selected
 void PharmacistFrame::viewPharmacist()
 {
 	unsigned int row;
@@ -63,7 +66,7 @@ void PharmacistFrame::viewPharmacist()
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 
-	display = new PharmacistDisplay(ids[row]);
+	display = new PharmacistDisplay(ui->resultTable->item(row, 0)->text().toInt(), this);
 }
 
 void PharmacistFrame::resetPressed()
@@ -73,22 +76,16 @@ void PharmacistFrame::resetPressed()
 	ui->resultTable->setRowCount(0);
 }
 
+// Assumes: that resultTable has results and one is selected
 void PharmacistFrame::toggleActive()
 {
 	unsigned int row;
 	PharmacistRecord pharmacist;
 
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
-
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 
-	pharmacist.retrieve(ids[row]);
+	pharmacist.retrieve(ui->resultTable->item(row, 0)->text().toInt());
 	pharmacist.toggleActive();
 }
 
@@ -128,18 +125,19 @@ void PharmacistFrame::initiateSearch(int pharmID)
 		return;
 	}
 
-	ids.clear();
 	ui->resultTable->clearContents();
+	ui->resultTable->setSortingEnabled(false);
 	ui->resultTable->setRowCount(model->size());
 	for (i = 0; i < model->size(); i++) {
 		model->next();
-		ids.append(model->value(0).toInt());	// Retrieve the ID's before they get deleted
-		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
-		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
-		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
+		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(0).toString()));
+		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(1).toString()));
+		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
+		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
 	}
+	ui->resultTable->setSortingEnabled(true);
+	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
 
-	db_queried = true;
 	delete model;
 }
 
@@ -171,24 +169,18 @@ void PharmacistFrame::initiateNew()
 	delete wiz;
 }
 
+// Assumes: that resultTable has results and one is selected
 void PharmacistFrame::initiateModify()
 {
 	unsigned int row;
 	PharmacistWizard *wiz;
 	PharmacistRecord *pharm;
 
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
-
 	pharm = new PharmacistRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
-	if (!pharm->retrieve(ids[row])) {
+	if (!pharm->retrieve(ui->resultTable->item(row, 0)->text().toInt())) {
 		delete pharm;
 		return;
 	}

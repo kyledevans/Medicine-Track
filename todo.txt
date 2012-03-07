@@ -47,6 +47,10 @@ Released under the GPL version 2 only.
 
 18.  Allow for settings to be changed and then take affect with a reconnect instead of restarting the application.
 
+19.  Go through classes and make members private if possible.
+
+20.  Consider making wizards submit changes and auto-delete themselves on close
+
 -----
 
 Questions:

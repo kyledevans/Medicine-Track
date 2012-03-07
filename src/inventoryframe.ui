@@ -257,8 +257,11 @@
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
      <property name="columnCount">
-      <number>9</number>
+      <number>10</number>
      </property>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
@@ -266,6 +269,11 @@
      <attribute name="horizontalHeaderMinimumSectionSize">
       <number>100</number>
      </attribute>
+     <column>
+      <property name="text">
+       <string>shipments.id</string>
+      </property>
+     </column>
      <column>
       <property name="text">
        <string comment="MEDICATION DISPLAY LABEL">MEDICATION</string>

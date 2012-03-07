@@ -21,8 +21,7 @@ Released under the GPL version 2 only.
 
 PrescriptionFrame::PrescriptionFrame(QWidget *parent) :
 	QFrame(parent),
-    ui(new Ui::PrescriptionFrame),
-	db_queried(false)
+	ui(new Ui::PrescriptionFrame)
 {
 	ui->setupUi(this);
 
@@ -69,7 +68,7 @@ void PrescriptionFrame::viewPrescription()
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 
-	display = new PrescriptionDisplay(ids[row]);
+	display = new PrescriptionDisplay(ui->resultTable->item(row, 0)->text().toInt());
 }
 
 void PrescriptionFrame::resetPressed()
@@ -171,26 +170,27 @@ void PrescriptionFrame::initiateSearch()
 		return;
 	}
 
-	ids.clear();
 	ui->resultTable->clearContents();
+	ui->resultTable->setSortingEnabled(false);
 	ui->resultTable->setRowCount(model->size());
 	for (i = 0; i < model->size(); i++) {
 		model->next();
-		ids.append(model->value(0).toInt());
-		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(1).toString()));
-		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
-		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
-		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toDate().toString(DEFAULTS::DateDisplayFormat)));
-		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(5).toString()));
-		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(6).toString()));
-		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(7).toString()));
-		ui->resultTable->setItem(i, 7, new QTableWidgetItem(model->value(8).toString()));
-		ui->resultTable->setItem(i, 8, new QTableWidgetItem(model->value(9).toDate().toString(DEFAULTS::DateDisplayFormat)));
-		ui->resultTable->setItem(i, 9, new QTableWidgetItem(model->value(10).toDate().toString(DEFAULTS::DateDisplayFormat)));
-		ui->resultTable->setItem(i, 10, new QTableWidgetItem(model->value(11).toString()));
+		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(0).toString()));
+		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(1).toString()));
+		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
+		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
+		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(4).toDate().toString(DEFAULTS::DateDisplayFormat)));
+		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(5).toString()));
+		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(6).toString()));
+		ui->resultTable->setItem(i, 7, new QTableWidgetItem(model->value(7).toString()));
+		ui->resultTable->setItem(i, 8, new QTableWidgetItem(model->value(8).toString()));
+		ui->resultTable->setItem(i, 9, new QTableWidgetItem(model->value(9).toDate().toString(DEFAULTS::DateDisplayFormat)));
+		ui->resultTable->setItem(i, 10, new QTableWidgetItem(model->value(10).toDate().toString(DEFAULTS::DateDisplayFormat)));
+		ui->resultTable->setItem(i, 11, new QTableWidgetItem(model->value(11).toString()));
 	}
+	ui->resultTable->setSortingEnabled(true);
+	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
 
-	db_queried = true;
 	delete model;
 }
 
@@ -200,18 +200,11 @@ void PrescriptionFrame::initiatePrint()
 	unsigned int row;
 	PrescriptionRecord *pres;
 
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
-
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 
 	pres = new PrescriptionRecord;
-	pres->retrieve(ids[row]);
+	pres->retrieve(ui->resultTable->item(row, 0)->text().toInt());
 	label = new PrescriptionLabel(pres);
 	label->print();
 
@@ -225,13 +218,6 @@ void PrescriptionFrame::invalidatePrescription()
 	int val;
 	unsigned int row;
 
-	if (!db_queried) {
-		return;
-	}
-	if (!ui->resultTable->selectionModel()->hasSelection()) {
-		return;
-	}
-
 	msg.setText("Verify prescription removal");
 	msg.setInformativeText("Are you sure you want to remove this prescription permanently?");
 	msg.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
@@ -243,7 +229,7 @@ void PrescriptionFrame::invalidatePrescription()
 		row = ui->resultTable->selectionModel()->selectedRows()[0].row();
 
 		// Retrieve and invalidate prescription
-		prescription.retrieve(ids[row]);
+		prescription.retrieve(ui->resultTable->item(row, 0)->text().toInt());
 		prescription.toggleActive();
 		initiateSearch();
 	}

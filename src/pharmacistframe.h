@@ -44,9 +44,6 @@ public slots:
 
 private:
 	Ui::PharmacistFrame *ui;
-
-	QList<int> ids;		// Contains the pharmacist id's of the current query
-	bool db_queried;	// True if there is data in the resultTable
 };
 
 #endif // PHARMACISTFRAME_H

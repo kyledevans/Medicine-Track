@@ -42,9 +42,6 @@ public slots:
 
 private:
 	Ui::InventoryFrame *ui;
-
-	QList<int> ids;				// Contains the shipment id's of the current search
-	bool db_queried;			// Indicates if the result table has a model
 };
 
 #endif // INVENTORYFRAME_H

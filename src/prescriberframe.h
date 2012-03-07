@@ -44,9 +44,6 @@ public slots:
 
 private:
 	Ui::PrescriberFrame *ui;
-
-	QList<int> ids;		// Contains the prescriber id's of the current query
-	bool db_queried;	// True if there is data in the resultTable
 };
 
 #endif // PRESCRIBERFRAME_H
