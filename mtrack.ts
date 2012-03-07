@@ -1301,110 +1301,110 @@
 <context>
     <name>Prescription_00</name>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="23"/>
+        <location filename="wizards/prescription_00.ui" line="23"/>
         <source>PATIENT LAST</source>
         <comment>PATIENT LAST DISPLAY TOOLTIP</comment>
         <translation>Last name</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="40"/>
+        <location filename="wizards/prescription_00.ui" line="40"/>
         <source>PATIENT FIRST</source>
         <comment>PATIENT FIRST DISPLAY TOOLTIP</comment>
         <translation>First name</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="68"/>
-        <location filename="wizards/Prescription_00.ui" line="84"/>
+        <location filename="wizards/prescription_00.ui" line="68"/>
+        <location filename="wizards/prescription_00.ui" line="84"/>
         <source>MEDICATION/BARCODE</source>
         <comment>MEDICATION/BARCODE SEARCH TOOLTIP</comment>
         <translation>Medication / Barcode</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="71"/>
+        <location filename="wizards/prescription_00.ui" line="71"/>
         <source>MEDICATION/BARCODE</source>
         <comment>MEDICATION/BARCODE SEARCH LABEL</comment>
         <translation>Medication / Barcode</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="148"/>
+        <location filename="wizards/prescription_00.ui" line="148"/>
         <source>MEDICATION</source>
         <comment>MEDICATION DISPLAY LABEL</comment>
         <translation>Medication</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="151"/>
+        <location filename="wizards/prescription_00.ui" line="151"/>
         <source>MEDICATION</source>
         <comment>MEDICATION DISPLAY TOOLTIP</comment>
         <translation>Name of the medication</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="156"/>
+        <location filename="wizards/prescription_00.ui" line="156"/>
         <source>LOT</source>
         <comment>LOT DISPLAY LABEL</comment>
         <translation>Lot #</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="159"/>
+        <location filename="wizards/prescription_00.ui" line="159"/>
         <source>LOT</source>
         <comment>LOT DISPLAY TOOLTIP</comment>
         <translation>Lot number</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="164"/>
+        <location filename="wizards/prescription_00.ui" line="164"/>
         <source>FORM</source>
         <comment>FORM DISPLAY LABEL</comment>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="167"/>
+        <location filename="wizards/prescription_00.ui" line="167"/>
         <source>FORM</source>
         <comment>FORM DISPLAY TOOLTIP</comment>
         <translation>Medication form</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="172"/>
+        <location filename="wizards/prescription_00.ui" line="172"/>
         <source>STRENGTH</source>
         <comment>STRENGTH DISPLAY LABEL</comment>
         <translation>Strength</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="175"/>
+        <location filename="wizards/prescription_00.ui" line="175"/>
         <source>STRENGTH</source>
         <comment>STRENGTH DISPLAY TOOLTIP</comment>
         <translation>Strength</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="180"/>
+        <location filename="wizards/prescription_00.ui" line="180"/>
         <source>UNIT SIZE</source>
         <comment>UNIT SIZE DISPLAY LABEL</comment>
         <translation>Unit size</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="183"/>
+        <location filename="wizards/prescription_00.ui" line="183"/>
         <source>UNIT SIZE</source>
         <comment>UNIT SIZE DISPLAY TOOLTIP</comment>
         <translation>Unit size (optional)</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="188"/>
+        <location filename="wizards/prescription_00.ui" line="188"/>
         <source>PRODUCT LEFT</source>
         <comment>PRODUCT LEFT DISPLAY LABEL</comment>
         <translation>Inventory left</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="191"/>
+        <location filename="wizards/prescription_00.ui" line="191"/>
         <source>PRODUCT LEFT</source>
         <comment>PRODUCT LEFT DISPLAY TOOLTIP</comment>
         <translation>Inventory left</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="196"/>
+        <location filename="wizards/prescription_00.ui" line="196"/>
         <source>EXPIRATION</source>
         <comment>EXPIRATION DISPLAY LABEL</comment>
         <translation>Expiration</translation>
     </message>
     <message>
-        <location filename="wizards/Prescription_00.ui" line="199"/>
+        <location filename="wizards/prescription_00.ui" line="199"/>
         <source>EXPIRATION</source>
         <comment>EXPIRATION DISPLAY TOOLTIP</comment>
         <translation>Expiration date</translation>
