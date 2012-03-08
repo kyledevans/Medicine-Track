@@ -4,6 +4,9 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include <QBrush>
+#include <QPixmap>
+
 #include "patientrecord.h"
 #include "prescriptionrecord.h"
 #include "globals.h"
@@ -51,6 +54,8 @@ private:
 	void initiatePrint(PrescriptionRecord *);
 
     Ui::PatientFrame *ui;
+	QBrush *flag_red;
+	QPixmap *flag_red_pix;
 };
 
 #endif // PATIENTFRAME_H

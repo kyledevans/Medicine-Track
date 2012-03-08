@@ -19,8 +19,6 @@ Released under the GPL version 2 only.
 3.  Document the database record classes in a way similar to how the Qt API is documented.
 	- Need to use Doxygen which then can create documentation files for Qt Assistant and Qt Creator
 
-4.  Make resultTables easily sortable
-
 5.  Make simple display widgets for the database record classes.  All fields will be displayed.
 
 6.  Where appropriate, indicate that database records are unusable by use of the color red.  How this is done will vary.
@@ -66,3 +64,9 @@ Q3.  Are labels that will be printed all the same physical size?
 
 Q4.  Do liquid medications that share the same NDC come in identical same strengths and sizes?
 	A4. Elixers and suspensions do
+
+-----
+
+Useful icons:
+
+/scalable/actions/flag-red.svgz

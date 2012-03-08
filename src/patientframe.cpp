@@ -9,6 +9,10 @@ Released under the GPL version 2 only.
 
 #include <QVariant>
 
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QGraphicsPixmapItem>
+
 #include "alertinterface.h"
 #include "patientdisplay.h"
 #include "patientwizard.h"
@@ -46,6 +50,17 @@ PatientFrame::PatientFrame(QWidget *parent) :
 
 	// Deactivate actions that require an item selected in resultTable
 	selectionChanged();
+
+	flag_red_pix = new QPixmap(QString("flag-red.png"), "PNG");
+	flag_red = new QBrush(*flag_red_pix);
+	/*
+	QDialog *diag = new QDialog;
+	QGraphicsScene *scene = new QGraphicsScene(diag);
+	QGraphicsView *view = new QGraphicsView(scene);
+	QGraphicsPixmapItem *pix = new QGraphicsPixmapItem(*flag_red_pix);
+	scene->addItem(pix);
+	diag->show();
+	view->show();*/
 }
 
 PatientFrame::~PatientFrame()
@@ -88,7 +103,7 @@ void PatientFrame::toggleActive()
 }
 
 /* SQL without C++:
-SELECT id, allscripts_id, last, first, dob
+SELECT id, allscripts_id, last, first, dob, active
 FROM patients
 WHERE last LIKE ?
 AND first LIKE ?
@@ -99,6 +114,7 @@ void PatientFrame::initiateSearch(int patientID)
 {
 	QSqlQuery *model;
 	AlertInterface alert;
+	QTableWidgetItem *item;
 	int i;      // Increment var
 	bool dont_search_dob = true;
 
@@ -119,7 +135,7 @@ void PatientFrame::initiateSearch(int patientID)
 
 	// Do a normal search when a specific patient ID hasn't been specified
 	if (patientID == SQL::Undefined_ID) {
-		model->prepare("SELECT id, allscripts_id, last, first, dob "
+		model->prepare("SELECT id, allscripts_id, last, first, dob, active "
 					   "FROM patients "
 					   "WHERE last LIKE ? "
 					   "AND first LIKE ? "
@@ -134,7 +150,7 @@ void PatientFrame::initiateSearch(int patientID)
 		model->bindValue(3, QVariant(ui->dobField->date()));
 		model->bindValue(4, QVariant(ui->activeField->isChecked()));
 	} else {	// Otherwise search for the specific patient
-		model->prepare("SELECT id, allscripts_id, last, first, dob "
+		model->prepare("SELECT id, allscripts_id, last, first, dob, active "
 					   "FROM patients "
 					   "WHERE id = ?;");
 		model->bindValue(0, QVariant(patientID));
@@ -145,7 +161,7 @@ void PatientFrame::initiateSearch(int patientID)
 		return;
 	}
 
-	ui->resultTable->clearContents();
+	ui->resultTable->clear();	// TODO: this deletes the column headers and it shouldn't
 	ui->resultTable->setSortingEnabled(false);
 	ui->resultTable->setRowCount(model->size());
 	for (i = 0; i < model->size(); i++) {
@@ -155,6 +171,17 @@ void PatientFrame::initiateSearch(int patientID)
 		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
 		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
 		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(4).toDate().toString(DEFAULTS::DateDisplayFormat)));
+		if (model->value(5).toBool()) {
+			item = new QTableWidgetItem("Active");
+			ui->resultTable->setItem(i, 5, item);
+		} else {
+			item = new QTableWidgetItem("Inactive");
+			item->setBackgroundColor(MTCOLORS::Problem_BG);
+			ui->resultTable->setItem(i, 5, item);
+			item = ui->resultTable->verticalHeaderItem(i);
+			item = new QTableWidgetItem(QIcon(*flag_red_pix), " ");
+			ui->resultTable->setVerticalHeaderItem(i, item);
+		}
 	}
 	ui->resultTable->setSortingEnabled(true);
 	ui->resultTable->sortByColumn(2, Qt::AscendingOrder);

@@ -7,6 +7,7 @@ Released under the GPL version 2 only.
 #include <QString>
 #include <QDate>
 #include <QVariant>
+#include <QColor>
 
 #ifndef GLOBALS_H
 #define GLOBALS_H
@@ -62,6 +63,7 @@ namespace DEFAULTS {
 
 namespace MTCOLORS {
 	const QString Problem = QString("FF0000");
+	const QColor Problem_BG(255, 192, 192);
 }
 
 namespace SQL {
