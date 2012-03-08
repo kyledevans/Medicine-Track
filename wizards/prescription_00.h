@@ -47,8 +47,6 @@ private:
 	PrescriptionRecord *prescription;
 
 	bool db_queried;
-
-	QList<int> ids;				// Contains the shipment id's of the current search
 };
 
 #endif // PRESCRIPTION_00_H

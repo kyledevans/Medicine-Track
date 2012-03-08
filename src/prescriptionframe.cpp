@@ -38,6 +38,9 @@ PrescriptionFrame::PrescriptionFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->invalidateAction);
 	ui->resultTable->addAction(ui->viewAction);
 
+	// Hide the column with internal id's from the user
+	ui->resultTable->hideColumn(0);
+
 	// Disable actions that require an item selected in the resultTable
 	selectionChanged();
 }
@@ -189,7 +192,7 @@ void PrescriptionFrame::initiateSearch()
 		ui->resultTable->setItem(i, 11, new QTableWidgetItem(model->value(11).toString()));
 	}
 	ui->resultTable->setSortingEnabled(true);
-	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
+	ui->resultTable->sortByColumn(2, Qt::AscendingOrder);
 
 	delete model;
 }

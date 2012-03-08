@@ -209,8 +209,8 @@ void PatientFrame::initiatePrescription()
 	prescription->setPatient_id(ui->resultTable->item(row, 0)->text().toInt());
 	wiz->setPrescription(prescription);
 
-	connect(wiz, SIGNAL(wizardComplete(PrescriptionRecord*)), this, SLOT(submitNewPrescription(PrescriptionRecord*)));
-	connect(wiz, SIGNAL(wizardRejected(PrescriptionRecord*)), this, SLOT(newPrescriptionCleanup(PrescriptionRecord*)));
+	connect(wiz, SIGNAL(wizardComplete(PrescriptionRecord*)), this, SLOT(submitPrescription(PrescriptionRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(PrescriptionRecord*)), this, SLOT(prescriptionCleanup(PrescriptionRecord*)));
 	wiz->exec();
 }
 

@@ -30,6 +30,9 @@ Prescription_00::Prescription_00(QWidget *parent) :
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SIGNAL(completeChanged()));
 	connect(ui->resultTable, SIGNAL(clicked(QModelIndex)), this, SLOT(resultSelected()));
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
+
+	// Hide the column with internal id's from the user
+	ui->resultTable->hideColumn(0);
 }
 
 Prescription_00::~Prescription_00()
@@ -99,20 +102,22 @@ void Prescription_00::initiateSearch()
 		return;
 	}
 
-	ids.clear();
 	ui->resultTable->clearContents();
+	ui->resultTable->setSortingEnabled(false);
 	ui->resultTable->setRowCount(model->size());
 	for (i = 0; i < model->size(); i++) {
 		model->next();
-		ids.append(model->value(0).toInt());
-		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(2).toString()));
-		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(3).toString()));
-		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(4).toString()));
-		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(5).toString()));
-		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(6).toString()));
-		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(7).toString()));
-		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(8).toDate().toString(DEFAULTS::DateDisplayFormat)));
+		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(0).toString()));
+		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(2).toString()));
+		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(3).toString()));
+		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(4).toString()));
+		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(5).toString()));
+		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(6).toString()));
+		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(7).toString()));
+		ui->resultTable->setItem(i, 7, new QTableWidgetItem(model->value(8).toDate().toString(DEFAULTS::DateDisplayFormat)));
 	}
+	ui->resultTable->setSortingEnabled(true);
+	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
 
 	db_queried = true;
 	delete model;
@@ -120,7 +125,10 @@ void Prescription_00::initiateSearch()
 
 void Prescription_00::resultSelected()
 {
-	emit(medicationChanged(ids[ui->resultTable->selectionModel()->selectedRows()[0].row()]));
+	int row;
+
+	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
+	emit(medicationChanged(ui->resultTable->item(row, 0)->text().toInt()));
 }
 
 bool Prescription_00::isComplete() const
