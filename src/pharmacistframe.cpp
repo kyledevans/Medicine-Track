@@ -19,6 +19,8 @@ PharmacistFrame::PharmacistFrame(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+	ui->resultTable->postSetup();
+
 	// Setup signals/slots
 	connect(ui->newAction, SIGNAL(triggered()), this, SLOT(initiateNew()));
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
@@ -34,7 +36,7 @@ PharmacistFrame::PharmacistFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->viewAction);
 
 	// Hide the column with internal id's from the user
-	ui->resultTable->hideColumn(0);
+	ui->resultTable->hideColumn(1);
 
 	selectionChanged();
 }
@@ -90,7 +92,7 @@ void PharmacistFrame::toggleActive()
 }
 
 /* SQL without C++:
-SELECT id, last, first, initials
+SELECT id, last, first, initials, active
 FROM pharmacists
 WHERE last LIKE ?
 AND first LIKE ?
@@ -105,7 +107,7 @@ void PharmacistFrame::initiateSearch(int pharmID)
 	model = new QSqlQuery;
 
 	if (pharmID == SQL::Undefined_ID) {
-		model->prepare("SELECT id, last, first, initials "
+		model->prepare("SELECT id, last, first, initials, active "
 					   "FROM pharmacists "
 					   "WHERE last LIKE ? "
 					   "AND first LIKE ? "
@@ -114,7 +116,7 @@ void PharmacistFrame::initiateSearch(int pharmID)
 		model->bindValue(1, SQL::prepWildcards(ui->firstField->text()));
 		model->bindValue(2, QVariant(ui->activeField->isChecked()));
 	} else {
-		model->prepare("SELECT id, last, first, initials "
+		model->prepare("SELECT id, last, first, initials, active "
 					   "FROM pharmacists "
 					   "WHERE id = ?;");
 		model->bindValue(0, QVariant(pharmID));
@@ -134,6 +136,11 @@ void PharmacistFrame::initiateSearch(int pharmID)
 		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(1).toString()));
 		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
 		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
+		if (model->value(4).toBool()) {
+			ui->resultTable->setItemFlag(i, 4, new QTableWidgetItem(QString("Active")), true);
+		} else {
+			ui->resultTable->setItemFlag(i, 4, new QTableWidgetItem(QString("Inactive")), false);
+		}
 	}
 	ui->resultTable->setSortingEnabled(true);
 	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);

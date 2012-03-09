@@ -305,17 +305,19 @@
       <bool>true</bool>
      </property>
      <property name="columnCount">
-      <number>6</number>
+      <number>7</number>
      </property>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
      </attribute>
-     <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>100</number>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
      </attribute>
-     <attribute name="verticalHeaderMinimumSectionSize">
-      <number>32</number>
-     </attribute>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
      <column>
       <property name="text">
        <string>patients.id</string>

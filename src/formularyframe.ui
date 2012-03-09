@@ -213,7 +213,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableWidget" name="resultTable">
+    <widget class="DisplayTable" name="resultTable">
      <property name="contextMenuPolicy">
       <enum>Qt::ActionsContextMenu</enum>
      </property>
@@ -227,14 +227,19 @@
       <bool>true</bool>
      </property>
      <property name="columnCount">
-      <number>7</number>
+      <number>9</number>
      </property>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
      </attribute>
-     <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>100</number>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
      </attribute>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
      <column>
       <property name="text">
        <string>drugs.id</string>
@@ -288,6 +293,14 @@
        <string comment="PRODUCT LEFT DISPLAY TOOLTIP">PRODUCT LEFT</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string comment="MED ACTIVE DISPLAY LABEL">MED ACTIVE</string>
+      </property>
+      <property name="toolTip">
+       <string comment="MED ACTIVE DISPLAY TOOLTIP">MED ACTIVE</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>
@@ -332,6 +345,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DisplayTable</class>
+   <extends>QTableWidget</extends>
+   <header>displaytable.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

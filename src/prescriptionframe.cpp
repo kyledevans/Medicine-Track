@@ -25,6 +25,8 @@ PrescriptionFrame::PrescriptionFrame(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+	ui->resultTable->postSetup();
+
 	// Setup signals/slots
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
 	connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetPressed()));
@@ -39,7 +41,7 @@ PrescriptionFrame::PrescriptionFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->viewAction);
 
 	// Hide the column with internal id's from the user
-	ui->resultTable->hideColumn(0);
+	ui->resultTable->hideColumn(1);
 
 	// Disable actions that require an item selected in the resultTable
 	selectionChanged();
@@ -98,7 +100,7 @@ void PrescriptionFrame::selectionChanged()
 SELECT prescriptions.id, patients.allscripts_id, patients.last,
 patients.first, patients.dob, drugs.name, drugs.form, drugs.strength,
 CONCAT(prescriptions.amount, ' ', drugs.dispense_units),
-prescriptions.written, prescriptions.filled, shipments.lot
+prescriptions.written, prescriptions.filled, shipments.lot, prescriptions.active
 FROM prescriptions
 JOIN patients ON prescriptions.patient_id = patients.id
 JOIN drugs ON prescriptions.drug_id = drugs.id
@@ -138,7 +140,7 @@ void PrescriptionFrame::initiateSearch()
 	model->prepare("SELECT prescriptions.id, patients.allscripts_id, patients.last, "
 				   "patients.first, patients.dob, drugs.name, drugs.form, drugs.strength, "
 				   "CONCAT(prescriptions.amount, ' ', drugs.dispense_units), "
-				   "prescriptions.written, prescriptions.filled, shipments.lot "
+				   "prescriptions.written, prescriptions.filled, shipments.lot, prescriptions.active "
 				   "FROM prescriptions "
 				   "JOIN patients ON prescriptions.patient_id = patients.id \n"
 				   "JOIN drugs ON prescriptions.drug_id = drugs.id "
@@ -190,6 +192,11 @@ void PrescriptionFrame::initiateSearch()
 		ui->resultTable->setItem(i, 9, new QTableWidgetItem(model->value(9).toDate().toString(DEFAULTS::DateDisplayFormat)));
 		ui->resultTable->setItem(i, 10, new QTableWidgetItem(model->value(10).toDate().toString(DEFAULTS::DateDisplayFormat)));
 		ui->resultTable->setItem(i, 11, new QTableWidgetItem(model->value(11).toString()));
+		if (model->value(12).toBool()) {	// Active
+			ui->resultTable->setItemFlag(i, 12, new QTableWidgetItem(QString("Valid")), true);
+		} else {	// Inactive
+			ui->resultTable->setItemFlag(i, 12, new QTableWidgetItem(QString("Invalid")), false);
+		}
 	}
 	ui->resultTable->setSortingEnabled(true);
 	ui->resultTable->sortByColumn(2, Qt::AscendingOrder);

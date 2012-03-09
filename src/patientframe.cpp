@@ -27,6 +27,7 @@ PatientFrame::PatientFrame(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+	ui->resultTable->postSetup();
 	ui->dobField->setDate(DEFAULTS::Date);
 
 	// Setup signals/slots
@@ -46,21 +47,10 @@ PatientFrame::PatientFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->viewAction);
 
 	// Hide the column with internal id's from the user
-	ui->resultTable->hideColumn(0);
+	ui->resultTable->hideColumn(1);
 
 	// Deactivate actions that require an item selected in resultTable
 	selectionChanged();
-
-	flag_red_pix = new QPixmap(QString("flag-red.png"), "PNG");
-	flag_red = new QBrush(*flag_red_pix);
-	/*
-	QDialog *diag = new QDialog;
-	QGraphicsScene *scene = new QGraphicsScene(diag);
-	QGraphicsView *view = new QGraphicsView(scene);
-	QGraphicsPixmapItem *pix = new QGraphicsPixmapItem(*flag_red_pix);
-	scene->addItem(pix);
-	diag->show();
-	view->show();*/
 }
 
 PatientFrame::~PatientFrame()
@@ -162,7 +152,6 @@ void PatientFrame::initiateSearch(int patientID)
 	}
 
 	ui->resultTable->clearContents();
-	ui->resultTable->clearVerticalHeaders();
 	ui->resultTable->setSortingEnabled(false);
 	ui->resultTable->setRowCount(model->size());
 	for (i = 0; i < model->size(); i++) {
@@ -172,22 +161,22 @@ void PatientFrame::initiateSearch(int patientID)
 		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
 		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
 		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(4).toDate().toString(DEFAULTS::DateDisplayFormat)));
-		if (model->value(5).toBool()) {
-			item = new QTableWidgetItem("Active");
-			ui->resultTable->setItem(i, 5, item);
+		if (model->value(5).toBool()) {	// Active patient
+			ui->resultTable->setItemFlag(i, 5, new QTableWidgetItem(QString("Active")), true);
 		} else {
-			item = new QTableWidgetItem("Inactive");
-			item->setBackgroundColor(MTCOLORS::Problem_BG);
-			ui->resultTable->setItem(i, 5, item);
-			item = ui->resultTable->verticalHeaderItem(i);
-			item = new QTableWidgetItem(QIcon(*flag_red_pix), " ");
-			ui->resultTable->setVerticalHeaderItem(i, item);
+			ui->resultTable->setItemFlag(i, 5, new QTableWidgetItem(QString("Inactive")), false);
 		}
+
 	}
 	ui->resultTable->setSortingEnabled(true);
-	ui->resultTable->sortByColumn(2, Qt::AscendingOrder);
+	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
 
 	delete model;
+
+	if (patientID != SQL::Undefined_ID) {
+		ui->resultTable->selectRow(0);
+		ui->resultTable->setFocus();
+	}
 }
 
 void PatientFrame::selectionChanged()

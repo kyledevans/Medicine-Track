@@ -16,7 +16,23 @@ public:
 	explicit DisplayTable(QWidget *parent = 0);
 	~DisplayTable();
 
-	void clearVerticalHeaders();
+	void postSetup();
+	void setItemFlag(int, int, QTableWidgetItem *, bool);	// Red flag on false
+
+	// Reimplemented methods
+	void setItem(int, int, QTableWidgetItem *);
+	QTableWidgetItem * item(int row, int column) const;
+	void sortByColumn(int column, Qt::SortOrder order);
+
+public slots:
+	void clearContents();
+
+private:
+	void setRowProblem(int);	// (row)
+	void clearFlags();
+
+private:
+	QPixmap *flag_red_pix;
 };
 
 #endif // DISPLAYTABLE_H

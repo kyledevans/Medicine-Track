@@ -17,6 +17,8 @@ PrescriberFrame::PrescriberFrame(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+	ui->resultTable->postSetup();
+
 	// Setup signals/slots
 	connect(ui->newAction, SIGNAL(triggered()), this, SLOT(initiateNew()));
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
@@ -83,7 +85,7 @@ void PrescriberFrame::toggleActive()
 }
 
 /* SQL without C++:
-SELECT id, last, first, full_name
+SELECT id, last, first, full_name, active
 FROM prescribers
 WHERE last LIKE ?
 AND first LIKE ?
@@ -98,7 +100,7 @@ void PrescriberFrame::initiateSearch(int presID)
 	model = new QSqlQuery;
 
 	if (presID == SQL::Undefined_ID) {
-		model->prepare("SELECT id, last, first, full_name "
+		model->prepare("SELECT id, last, first, full_name, active "
 					   "FROM prescribers "
 					   "WHERE last LIKE ? "
 					   "AND first LIKE ? "
@@ -107,7 +109,7 @@ void PrescriberFrame::initiateSearch(int presID)
 		model->bindValue(1, SQL::prepWildcards(ui->firstField->text()));
 		model->bindValue(2, QVariant(ui->activeField->isChecked()));
 	} else {
-		model->prepare("SELECT id, last, first, full_name "
+		model->prepare("SELECT id, last, first, full_name, active "
 					   "FROM prescribers "
 					   "WHERE id = ?;");
 		model->bindValue(0, QVariant(presID));
@@ -127,6 +129,11 @@ void PrescriberFrame::initiateSearch(int presID)
 		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(1).toString()));
 		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
 		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
+		if (model->value(4).toBool()) {
+			ui->resultTable->setItemFlag(i, 4, new QTableWidgetItem(QString("Active")), true);
+		} else {
+			ui->resultTable->setItemFlag(i, 4, new QTableWidgetItem(QString("Inactive")), false);
+		}
 	}
 	ui->resultTable->setSortingEnabled(true);
 	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);

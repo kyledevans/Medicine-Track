@@ -21,6 +21,7 @@ FormularyFrame::FormularyFrame(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+	ui->resultTable->postSetup();
 	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
 
 	// Setup various signal/slot connections
@@ -40,7 +41,7 @@ FormularyFrame::FormularyFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->viewAction);
 
 	// Hide the column with internal id's from the user
-	ui->resultTable->hideColumn(0);
+	ui->resultTable->hideColumn(1);
 
 	selectionChanged();
 }
@@ -95,7 +96,8 @@ void FormularyFrame::toggleActive()
 
 /* SQL command without C++
 SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size,
-CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units)
+CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units), drugs.active,
+drugs.dispense_units, SUM( s_temp.product_left )
 FROM drugs
 LEFT JOIN (
 	SELECT shipments.id, shipments.drug_id, shipments.product_left
@@ -107,7 +109,8 @@ AND drugs.active = ?
 GROUP BY drugs.id;
 
 SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size,
-CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units)
+CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units), drugs.active,
+drugs.dispense_units, SUM( s_temp.product_left )
 FROM drugs
 LEFT JOIN (
 	SELECT shipments.id, shipments.drug_id, shipments.product_left
@@ -132,7 +135,8 @@ void FormularyFrame::initiateSearch(int medID)
 
 	if (medID != SQL::Undefined_ID) {	// Searching for a specific drug ID
 		model->prepare("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, "
-					   "CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units) "
+					   "CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units), drugs.active, "
+					   "drugs.dispense_units, SUM( s_temp.product_left ) "
 					   "FROM drugs "
 					   "LEFT JOIN ("
 					   "	SELECT shipments.id, shipments.drug_id, shipments.product_left "
@@ -144,7 +148,8 @@ void FormularyFrame::initiateSearch(int medID)
 		model->bindValue(0, medID);
 	} else if (barcode.toID() != SQL::Undefined_ID) {	// There was a barcode, so search only for a matching barcode
 		model->prepare("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, "
-					   "CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units) "
+					   "CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units), drugs.active, "
+					   "drugs.dispense_units, SUM( s_temp.product_left ) "
 					   "FROM drugs "
 					   "LEFT JOIN ( "
 					   "	SELECT shipments.id, shipments.drug_id, shipments.product_left "
@@ -159,7 +164,8 @@ void FormularyFrame::initiateSearch(int medID)
 		model->bindValue(0, QVariant(barcode.toID()));
 	} else {		// Searching based on user input
 		model->prepare("SELECT drugs.id, drugs.name, drugs.ndc, drugs.form, drugs.strength, drugs.unit_size, "
-					   "CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units) "
+					   "CONCAT(SUM( s_temp.product_left ), ' ', drugs.dispense_units), drugs.active, "
+					   "drugs.dispense_units, SUM( s_temp.product_left ) "
 					   "FROM drugs "
 					   "LEFT JOIN ( "
 					   "	SELECT shipments.id, shipments.drug_id, shipments.product_left "
@@ -189,7 +195,16 @@ void FormularyFrame::initiateSearch(int medID)
 		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
 		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(4).toString()));
 		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(5).toString()));
-		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(6).toString()));
+		if (model->value(9).toString() == QString("0")) {	// No inventory
+			ui->resultTable->setItemFlag(i, 6, new QTableWidgetItem(QString("0 ") + model->value(8).toString()), false);
+		} else {
+			ui->resultTable->setItemFlag(i, 6, new QTableWidgetItem(model->value(6).toString()), true);
+		}
+		if (model->value(7).toBool()) {	// Active medication
+			ui->resultTable->setItemFlag(i, 7, new QTableWidgetItem(QString("Active")), true);
+		} else {
+			ui->resultTable->setItemFlag(i, 7, new QTableWidgetItem(QString("Inactive")), false);
+		}
 	}
 	ui->resultTable->setSortingEnabled(true);
 	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);

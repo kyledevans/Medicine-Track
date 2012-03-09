@@ -23,7 +23,6 @@ namespace Ui {
 class PatientFrame : public QFrame
 {
 	Q_OBJECT
-
 public:
     explicit PatientFrame(QWidget *parent = 0);
     ~PatientFrame();
@@ -53,9 +52,7 @@ public slots:
 private:
 	void initiatePrint(PrescriptionRecord *);
 
-    Ui::PatientFrame *ui;
-	QBrush *flag_red;
-	QPixmap *flag_red_pix;
+	Ui::PatientFrame *ui;
 };
 
 #endif // PATIENTFRAME_H

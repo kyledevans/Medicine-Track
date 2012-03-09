@@ -30,8 +30,6 @@ Released under the GPL version 2 only.
 
 10.  A 'management' UI that is used to run the verification routines and do the initial database setup calls.
 
-13.  After adding a patient, have it be auto-selected after wizard completes
-
 14.  Make the DB record classes use more appropriate data types. IE: id's start using 'unsigned int'.
 
 15.  Fix bugs where SQL queries succeed, but return or affect nothing.  In some(all?) cases the program only checks on errors, not empty results.

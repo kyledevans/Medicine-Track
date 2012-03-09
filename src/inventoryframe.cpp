@@ -23,6 +23,7 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+	ui->resultTable->postSetup();
 	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
 
 	// Connecting various signals/slots...
@@ -98,7 +99,7 @@ void InventoryFrame::resetPressed()
 
 /*  SQL without C++:
 SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, shipments.expiration, shipments.lot,
-shipments.product_count, shipments.product_left, shipments.write_off
+shipments.product_count, shipments.product_left, shipments.write_off, active
 FROM shipments
 JOIN drugs ON shipments.drug_id = drugs.id
 WHERE drugs.name LIKE ?
@@ -120,21 +121,21 @@ void InventoryFrame::initiateSearch(int shipID)
 
 	if (shipID != SQL::Undefined_ID) {
 		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, shipments.expiration, shipments.lot, "
-					   "shipments.product_count, shipments.product_left, shipments.write_off "
+					   "shipments.product_count, shipments.product_left, shipments.write_off, shipments.active "
 					   "FROM shipments "
 					   "JOIN drugs ON shipments.drug_id = drugs.id "
 					   "WHERE shipments.id = ?;");
 		model->bindValue(0, QVariant(shipID));
 	} else if (barcode.toID() != SQL::Undefined_ID) {	// Doing a barcode search
 		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, shipments.expiration, shipments.lot, "
-					   "shipments.product_count, shipments.product_left, shipments.write_off "
+					   "shipments.product_count, shipments.product_left, shipments.write_off, shipments.active "
 					   "FROM shipments "
 					   "JOIN drugs ON shipments.drug_id = drugs.id "
 					   "WHERE shipments.id = ?;");
 		model->bindValue(0, QVariant(barcode.toID()));
 	} else {	// Doing a normal search
 		model->prepare("SELECT shipments.id, drugs.name, drugs.form, drugs.strength, drugs.unit_size, shipments.expiration, shipments.lot, "
-					   "shipments.product_count, shipments.product_left, shipments.write_off "
+					   "shipments.product_count, shipments.product_left, shipments.write_off, shipments.active "
 					   "FROM shipments "
 					   "JOIN drugs ON shipments.drug_id = drugs.id "
 					   "WHERE drugs.name LIKE ? "
@@ -165,11 +166,24 @@ void InventoryFrame::initiateSearch(int shipID)
 		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
 		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
 		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(4).toString()));
-		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(5).toDate().toString(DEFAULTS::DateDisplayFormat)));
+		if (model->value(5).toDate() > QDate::currentDate()) {	// Not expired yet
+			ui->resultTable->setItemFlag(i, 5, new QTableWidgetItem(model->value(5).toDate().toString(DEFAULTS::DateDisplayFormat)), true);
+		} else {	// Expired
+			ui->resultTable->setItemFlag(i, 5, new QTableWidgetItem(model->value(5).toDate().toString(DEFAULTS::DateDisplayFormat)), false);
+		}
 		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(6).toString()));
 		ui->resultTable->setItem(i, 7, new QTableWidgetItem(model->value(7).toString()));
-		ui->resultTable->setItem(i, 8, new QTableWidgetItem(model->value(8).toString()));
+		if (model->value(8).toInt() > 0) {	// Current inventory
+			ui->resultTable->setItemFlag(i, 8, new QTableWidgetItem(model->value(8).toString()), true);
+		} else {	// Out of stock
+			ui->resultTable->setItemFlag(i, 8, new QTableWidgetItem(model->value(8).toString()), false);
+		}
 		ui->resultTable->setItem(i, 9, new QTableWidgetItem(model->value(9).toString()));
+		if (model->value(10).toBool()) {	// Active
+			ui->resultTable->setItemFlag(i, 10, new QTableWidgetItem(QString("Active")), true);
+		} else {	// Inactive
+			ui->resultTable->setItemFlag(i, 10, new QTableWidgetItem(QString("Inactive")), false);
+		}
 	}
 	ui->resultTable->setSortingEnabled(true);
 	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);

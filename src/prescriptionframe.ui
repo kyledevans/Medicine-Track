@@ -411,7 +411,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="QTableWidget" name="resultTable">
+    <widget class="DisplayTable" name="resultTable">
      <property name="contextMenuPolicy">
       <enum>Qt::ActionsContextMenu</enum>
      </property>
@@ -425,14 +425,19 @@
       <bool>true</bool>
      </property>
      <property name="columnCount">
-      <number>12</number>
+      <number>14</number>
      </property>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
      </attribute>
-     <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>100</number>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
      </attribute>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
      <column>
       <property name="text">
        <string>prescriptions.id</string>
@@ -526,6 +531,14 @@
        <string comment="LOT DISPLAY TOOLTIP">LOT</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string comment="PRESCRIPTION ACTIVE DISPLAY LABEL">PRESCRIPTION ACTIVE</string>
+      </property>
+      <property name="toolTip">
+       <string comment="PRESCRIPTION ACTIVE DISPLAY TOOLTIP">PRESCRIPTION ACTIVE</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>
@@ -554,6 +567,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DisplayTable</class>
+   <extends>QTableWidget</extends>
+   <header>displaytable.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>searchButton</tabstop>
   <tabstop>resetButton</tabstop>

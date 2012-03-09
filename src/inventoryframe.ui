@@ -247,7 +247,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="QTableWidget" name="resultTable">
+    <widget class="DisplayTable" name="resultTable">
      <property name="contextMenuPolicy">
       <enum>Qt::ActionsContextMenu</enum>
      </property>
@@ -261,14 +261,19 @@
       <bool>true</bool>
      </property>
      <property name="columnCount">
-      <number>10</number>
+      <number>12</number>
      </property>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
      </attribute>
-     <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>100</number>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
      </attribute>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
      <column>
       <property name="text">
        <string>shipments.id</string>
@@ -346,6 +351,14 @@
        <string comment="WRITE OFF DISPLAY TOOLTIP">WRITE OFF</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string comment="SHIPMENT ACTIVE DISPLAY LABEL">SHIPMENT ACTIVE</string>
+      </property>
+      <property name="toolTip">
+       <string comment="SHIPMENT ACTIVE DISPLAY TOOLTIP">SHIPMENT ACTIVE</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>
@@ -390,6 +403,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DisplayTable</class>
+   <extends>QTableWidget</extends>
+   <header>displaytable.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>nameField</tabstop>
   <tabstop>lotField</tabstop>
