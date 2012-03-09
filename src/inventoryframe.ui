@@ -169,12 +169,9 @@
          </spacer>
         </item>
         <item>
-         <widget class="QCheckBox" name="notExpiredCheckbox">
+         <widget class="QCheckBox" name="expiredCheckbox">
           <property name="text">
-           <string notr="true">Not Expired</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
+           <string notr="true">Expired</string>
           </property>
          </widget>
         </item>
@@ -254,6 +251,9 @@
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
@@ -266,17 +266,20 @@
      <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
      </attribute>
+     <attribute name="horizontalHeaderMinimumSectionSize">
+      <number>100</number>
+     </attribute>
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
      </attribute>
      <column>
       <property name="text">
-       <string/>
+       <string notr="true"/>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>shipments.id</string>
+       <string notr="true">shipments.id</string>
       </property>
      </column>
      <column>
@@ -415,7 +418,7 @@
   <tabstop>lotField</tabstop>
   <tabstop>stockCheckbox</tabstop>
   <tabstop>activeCheckbox</tabstop>
-  <tabstop>notExpiredCheckbox</tabstop>
+  <tabstop>expiredCheckbox</tabstop>
   <tabstop>searchButton</tabstop>
   <tabstop>resetButton</tabstop>
   <tabstop>resultTable</tabstop>

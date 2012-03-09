@@ -36,7 +36,7 @@ PharmacistFrame::PharmacistFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->viewAction);
 
 	// Hide the column with internal id's from the user
-	ui->resultTable->hideColumn(1);
+	ui->resultTable->hideColumn(0);
 
 	selectionChanged();
 }

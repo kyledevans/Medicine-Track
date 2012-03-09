@@ -76,6 +76,11 @@ void DisplayTable::sortByColumn(int column, Qt::SortOrder order)
 	QTableWidget::sortByColumn(column + 1, order);
 }
 
+void DisplayTable::hideColumn(int column)
+{
+	QTableWidget::hideColumn(column + 1);
+}
+
 void DisplayTable::clearContents()
 {
 	clearFlags();

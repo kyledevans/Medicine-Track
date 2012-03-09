@@ -127,7 +127,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableWidget" name="resultTable">
+    <widget class="DisplayTable" name="resultTable">
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
@@ -138,7 +138,7 @@
       <bool>true</bool>
      </property>
      <property name="columnCount">
-      <number>8</number>
+      <number>9</number>
      </property>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
@@ -148,7 +148,12 @@
      </attribute>
      <column>
       <property name="text">
-       <string>shipments.id</string>
+       <string notr="true"/>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string notr="true">shipments.id</string>
       </property>
      </column>
      <column>
@@ -211,6 +216,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DisplayTable</class>
+   <extends>QTableWidget</extends>
+   <header>displaytable.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>medicationField</tabstop>
   <tabstop>searchButton</tabstop>

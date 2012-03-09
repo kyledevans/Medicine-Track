@@ -298,6 +298,9 @@
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
@@ -315,12 +318,12 @@
      </attribute>
      <column>
       <property name="text">
-       <string/>
+       <string notr="true"/>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>patients.id</string>
+       <string notr="true">patients.id</string>
       </property>
      </column>
      <column>

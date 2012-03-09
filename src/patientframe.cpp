@@ -47,7 +47,7 @@ PatientFrame::PatientFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->viewAction);
 
 	// Hide the column with internal id's from the user
-	ui->resultTable->hideColumn(1);
+	ui->resultTable->hideColumn(0);
 
 	// Deactivate actions that require an item selected in resultTable
 	selectionChanged();

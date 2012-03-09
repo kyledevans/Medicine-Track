@@ -24,7 +24,6 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 	ui->setupUi(this);
 
 	ui->resultTable->postSetup();
-	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
 
 	// Connecting various signals/slots...
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
@@ -43,6 +42,9 @@ InventoryFrame::InventoryFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->increaseAction);
 	ui->resultTable->addAction(ui->viewAction);
 
+	// Hide the column with internal id's from the user
+	ui->resultTable->hideColumn(0);
+
 	// Disable actions that require a selection in the resultTable
 	selectionChanged();
 }
@@ -59,9 +61,23 @@ void InventoryFrame::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
+		resizeHeaders();
 		break;
 	default:
 		break;
+	}
+}
+
+void InventoryFrame::resizeHeaders()
+{
+	int i;
+	int size;
+
+	// Start at 1 because the first column is the 'flags' column
+	for (i = 1; i < ui->resultTable->columnCount(); i++) {
+		size = ui->resultTable->columnWidth(0);
+		ui->resultTable->resizeColumnsToContents();
+		ui->resultTable->setColumnWidth(0, size);
 	}
 }
 
@@ -91,7 +107,7 @@ void InventoryFrame::toggleActive()
 void InventoryFrame::resetPressed()
 {
 	ui->activeCheckbox->setChecked(true);
-	ui->notExpiredCheckbox->setChecked(true);
+	ui->expiredCheckbox->setChecked(false);
 	ui->stockCheckbox->setChecked(true);
 	ui->resultTable->clearContents();
 	ui->resultTable->setRowCount(0);
@@ -147,7 +163,7 @@ void InventoryFrame::initiateSearch(int shipID)
 		model->bindValue(0, SQL::prepWildcards(ui->nameField->text()));
 		model->bindValue(1, SQL::prepWildcards(ui->lotField->text()));
 		model->bindValue(2, QVariant(ui->activeCheckbox->isChecked()));
-		model->bindValue(3, QVariant(!ui->notExpiredCheckbox->isChecked()));
+		model->bindValue(3, QVariant(ui->expiredCheckbox->isChecked()));
 		model->bindValue(4, QVariant(!ui->stockCheckbox->isChecked()));
 	}
 
@@ -187,6 +203,7 @@ void InventoryFrame::initiateSearch(int shipID)
 	}
 	ui->resultTable->setSortingEnabled(true);
 	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
+	resizeHeaders();
 
 	delete model;
 }

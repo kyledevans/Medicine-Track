@@ -22,7 +22,6 @@ FormularyFrame::FormularyFrame(QWidget *parent) :
 	ui->setupUi(this);
 
 	ui->resultTable->postSetup();
-	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
 
 	// Setup various signal/slot connections
 	connect(ui->searchButton, SIGNAL(clicked()), this, SLOT(initiateSearch()));
@@ -41,7 +40,7 @@ FormularyFrame::FormularyFrame(QWidget *parent) :
 	ui->resultTable->addAction(ui->viewAction);
 
 	// Hide the column with internal id's from the user
-	ui->resultTable->hideColumn(1);
+	ui->resultTable->hideColumn(0);
 
 	selectionChanged();
 }

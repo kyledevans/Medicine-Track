@@ -23,6 +23,7 @@ public:
 	void setItem(int, int, QTableWidgetItem *);
 	QTableWidgetItem * item(int row, int column) const;
 	void sortByColumn(int column, Qt::SortOrder order);
+	void hideColumn(int column);
 
 public slots:
 	void clearContents();

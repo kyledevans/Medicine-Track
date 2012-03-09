@@ -42,6 +42,8 @@ public slots:
 
 private:
 	Ui::InventoryFrame *ui;
+
+	void resizeHeaders();
 };
 
 #endif // INVENTORYFRAME_H
