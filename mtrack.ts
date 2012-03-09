@@ -583,13 +583,13 @@
         <location filename="src/patientframe.ui" line="358"/>
         <source>PATIENT ACTIVE</source>
         <comment>PATIENT ACTIVE DISPLAY LABEL</comment>
-        <translation type="unfinished"></translation>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="src/patientframe.ui" line="361"/>
         <source>PATIENT ACTIVE</source>
         <comment>PATIENT ACTIVE DISPLAY TOOLTIP</comment>
-        <translation type="unfinished"></translation>
+        <translation>Active or inactive status</translation>
     </message>
 </context>
 <context>

@@ -161,7 +161,8 @@ void PatientFrame::initiateSearch(int patientID)
 		return;
 	}
 
-	ui->resultTable->clear();	// TODO: this deletes the column headers and it shouldn't
+	ui->resultTable->clearContents();
+	ui->resultTable->clearVerticalHeaders();
 	ui->resultTable->setSortingEnabled(false);
 	ui->resultTable->setRowCount(model->size());
 	for (i = 0; i < model->size(); i++) {

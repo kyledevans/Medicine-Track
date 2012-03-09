@@ -1022,7 +1022,7 @@
 </phrase>
 <phrase>
     <source>PATIENT ACTIVE</source>
-    <target>Active</target>
+    <target>Status</target>
     <definition>PATIENT ACTIVE DISPLAY LABEL</definition>
 </phrase>
 <phrase>
