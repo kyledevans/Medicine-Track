@@ -6,18 +6,19 @@ Released under the GPL version 2 only.
 
 #include <QDate>
 
-#ifndef WRITEOFFRECORD_H
-#define WRITEOFFRECORD_H
+#ifndef SHIPDELTARECORD_H
+#define SHIPDELTARECORD_H
 
-class WriteOffRecord
+class ShipDeltaRecord
 {
 public:
-	explicit WriteOffRecord();
+	explicit ShipDeltaRecord();
 
 	// Accessors
 	int getId();
 	int getShipment_id();
 	int getAmount();
+	bool getCount_changed();
 	QDate getTimestamp();
 	bool getActive();
 	bool getExists();
@@ -26,6 +27,7 @@ public:
 	void setId(int);
 	void setShipment_id(int);
 	void setAmount(int);
+	void setCount_changed(bool);
 	void setTimestamp(QDate);
 	void setActive(bool);
 
@@ -37,13 +39,14 @@ public:
 	void print();			// Prints to the debug interface
 
 private:
-	int id;				// write_offs.id
-	int shipment_id;	// write_offs.shipment_id
-	int amount;			// write_offs.amount
-	QDate timestamp;	// write_offs.timestamp
-	bool active;		// write_offs.active
+	int id;				// ship_delta.id
+	int shipment_id;	// ship_delta.shipment_id
+	int amount;			// ship_delta.amount
+	bool count_changed;	// ship_delta.count_changed
+	QDate timestamp;	// ship_delta.timestamp
+	bool active;		// ship_delta.active
 
 	bool exists;
 };
 
-#endif // WRITEOFFRECORD_H
+#endif // SHIPDELTARECORD_H

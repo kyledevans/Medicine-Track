@@ -7,7 +7,7 @@ Released under the GPL version 2 only.
 #include "shipmentrecord.h"
 
 #include "alertinterface.h"
-#include "writeoffrecord.h"
+#include "shipdeltarecord.h"
 #include "globals.h"
 
 #include <QDebug>
@@ -116,9 +116,22 @@ WHERE id = ?;
 bool ShipmentRecord::addInventory(int delta)
 {
 	QSqlQuery *model;
+	QSqlDatabase db;
 	AlertInterface alert;
+	ShipDeltaRecord rec;
 
 	if (!exists) {
+		return false;
+	}
+
+	db = QSqlDatabase::database();	// Get the default DB
+	db.transaction();
+
+	rec.setShipment_id(id);
+	rec.setAmount(delta);
+	rec.setCount_changed(true);
+	if (!rec.commitRecord()) {
+		db.rollback();
 		return false;
 	}
 
@@ -132,12 +145,62 @@ bool ShipmentRecord::addInventory(int delta)
 	model->bindValue(2, QVariant(id));
 
 	if (!alert.attemptQuery(model)) {
+		db.rollback();
 		delete model;
 		return false;
 	}
+	db.commit();
 
 	product_count += delta;
 	product_left += delta;
+
+	delete model;
+	return true;
+}
+
+/* SQL without C++:
+UPDATE shipments
+SET product_left = (shipments.product_left - ?), write_off = (shipments.write_off + ?)
+WHERE id = ?;
+*/
+bool ShipmentRecord::addWriteOff(int wo_amount)
+{
+	QSqlQuery *model;
+	QSqlDatabase db;
+	AlertInterface alert;
+	ShipDeltaRecord rec;
+
+	if (!exists) {
+		return false;
+	}
+
+	db = QSqlDatabase::database();	// Get the default DB
+	db.transaction();
+
+	rec.setShipment_id(id);
+	rec.setAmount(wo_amount);
+	if (!rec.commitRecord()) {
+		db.rollback();
+		return false;
+	}
+
+	model = new QSqlQuery;
+	model->prepare("UPDATE shipments "
+				   "SET product_left = (shipments.product_left - ?), write_off = (shipments.write_off + ?) "
+				   "WHERE id = ?;");
+	model->bindValue(0, QVariant(wo_amount));
+	model->bindValue(1, QVariant(wo_amount));
+	model->bindValue(2, QVariant(id));
+
+	if (!alert.attemptQuery(model)) {
+		db.rollback();
+		delete model;
+		return false;
+	}
+	db.commit();
+
+	write_off += wo_amount;
+	product_left -= wo_amount;
 
 	delete model;
 	return true;
@@ -266,51 +329,6 @@ bool ShipmentRecord::commitRecord()
 		id = model->lastInsertId().toInt();
 		exists = true;
 	}
-
-	delete model;
-	return true;
-}
-
-/* SQL without C++:
-UPDATE shipments
-SET product_left = (shipments.product_left - ?), write_off = (shipments.write_off + ?)
-WHERE id = ?;
-*/
-bool ShipmentRecord::addWriteOff(int wo_amount)
-{
-	QSqlQuery *model;
-	QSqlDatabase db;
-	AlertInterface alert;
-	WriteOffRecord rec;
-
-	if (!exists) {
-		return false;
-	}
-
-	db = QSqlDatabase::database();	// Get the default DB
-	db.transaction();
-
-	rec.setShipment_id(id);
-	rec.setAmount(wo_amount);
-	if (!rec.commitRecord()) {
-		db.rollback();
-		return false;
-	}
-
-	model = new QSqlQuery;
-	model->prepare("UPDATE shipments "
-				   "SET product_left = (shipments.product_left - ?), write_off = (shipments.write_off + ?) "
-				   "WHERE id = ?;");
-	model->bindValue(0, QVariant(wo_amount));
-	model->bindValue(1, QVariant(wo_amount));
-	model->bindValue(2, QVariant(id));
-
-	if (!alert.attemptQuery(model)) {
-		db.rollback();
-		delete model;
-		return false;
-	}
-	db.commit();
 
 	delete model;
 	return true;

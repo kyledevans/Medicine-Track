@@ -4,78 +4,89 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "writeoffrecord.h"
+#include "shipdeltarecord.h"
 
 #include "alertinterface.h"
 #include "globals.h"
 
 #include <QDebug>
 
-WriteOffRecord::WriteOffRecord():
+ShipDeltaRecord::ShipDeltaRecord():
 	id(SQL::Undefined_ID),
 	shipment_id(SQL::Undefined_ID),
 	amount(-1),
+	count_changed(false),
 	active(true),
 	exists(false)
 {
 }
 
-int WriteOffRecord::getId()
+int ShipDeltaRecord::getId()
 {
 	return id;
 }
 
-int WriteOffRecord::getShipment_id()
+int ShipDeltaRecord::getShipment_id()
 {
 	return shipment_id;
 }
 
-int WriteOffRecord::getAmount()
+int ShipDeltaRecord::getAmount()
 {
 	return amount;
 }
 
-QDate WriteOffRecord::getTimestamp()
+bool ShipDeltaRecord::getCount_changed()
+{
+	return count_changed;
+}
+
+QDate ShipDeltaRecord::getTimestamp()
 {
 	return timestamp;
 }
 
-bool WriteOffRecord::getActive()
+bool ShipDeltaRecord::getActive()
 {
 	return active;
 }
 
-bool WriteOffRecord::getExists()
+bool ShipDeltaRecord::getExists()
 {
 	return exists;
 }
 
-void WriteOffRecord::setId(int new_id)
+void ShipDeltaRecord::setId(int new_id)
 {
 	id = new_id;
 }
 
-void WriteOffRecord::setShipment_id(int new_shipment_id)
+void ShipDeltaRecord::setShipment_id(int new_shipment_id)
 {
 	shipment_id = new_shipment_id;
 }
 
-void WriteOffRecord::setAmount(int new_amount)
+void ShipDeltaRecord::setAmount(int new_amount)
 {
 	amount = new_amount;
 }
 
-void WriteOffRecord::setTimestamp(QDate new_timestamp)
+void ShipDeltaRecord::setCount_changed(bool new_count_changed)
+{
+	count_changed = new_count_changed;
+}
+
+void ShipDeltaRecord::setTimestamp(QDate new_timestamp)
 {
 	timestamp = new_timestamp;
 }
 
-void WriteOffRecord::setActive(bool new_active)
+void ShipDeltaRecord::setActive(bool new_active)
 {
 	active = new_active;
 }
 
-bool WriteOffRecord::retrieve(int new_id)
+bool ShipDeltaRecord::retrieve(int new_id)
 {
 	QSqlQuery model;
 	AlertInterface alert;
@@ -84,8 +95,8 @@ bool WriteOffRecord::retrieve(int new_id)
 		return false;
 	}
 
-	model.prepare("SELECT shipment_id, amount, timestamp, active "
-				   "FROM write_offs "
+	model.prepare("SELECT shipment_id, amount, count_changed, timestamp, active "
+				   "FROM ship_delta "
 				   "WHERE id = ?;");
 	model.bindValue(0, QVariant(new_id));
 
@@ -97,14 +108,15 @@ bool WriteOffRecord::retrieve(int new_id)
 	id = new_id;
 	shipment_id = model.value(0).toInt();
 	amount = model.value(1).toInt();
-	timestamp = model.value(2).toDate();
-	active = model.value(3).toBool();
+	count_changed = model.value(2).toBool();
+	timestamp = model.value(3).toDate();
+	active = model.value(4).toBool();
 	exists = true;
 
 	return true;
 }
 
-bool WriteOffRecord::commitRecord()
+bool ShipDeltaRecord::commitRecord()
 {
 	QSqlQuery model;
 	AlertInterface alert;
@@ -113,11 +125,12 @@ bool WriteOffRecord::commitRecord()
 		return false;
 	}
 
-	model.prepare("INSERT INTO write_offs (shipment_id, amount, timestamp, active) "
-				  "VALUES (?, ?, CURDATE(), ?);");
+	model.prepare("INSERT INTO ship_delta (shipment_id, amount, count_changed, timestamp, active) "
+				  "VALUES (?, ?, ?, CURDATE(), ?);");
 	model.bindValue(0, QVariant(shipment_id));
 	model.bindValue(1, QVariant(amount));
-	model.bindValue(2, QVariant(active));
+	model.bindValue(2, QVariant(count_changed));
+	model.bindValue(3, QVariant(active));
 
 	if (!alert.attemptQuery(&model)) {
 		return false;	// Query failed
@@ -131,7 +144,7 @@ bool WriteOffRecord::commitRecord()
 	return true;
 }
 
-bool WriteOffRecord::toggleActive()
+bool ShipDeltaRecord::toggleActive()
 {
 	QSqlQuery model;
 	AlertInterface alert;
@@ -140,7 +153,7 @@ bool WriteOffRecord::toggleActive()
 		return false;
 	}
 
-	model.prepare("UPDATE write_offs "
+	model.prepare("UPDATE ship_delta "
 				  "SET active = ? "
 				  "WHERE id = ?;");
 	model.bindValue(0, QVariant(!active));
@@ -155,7 +168,7 @@ bool WriteOffRecord::toggleActive()
 	return true;
 }
 
-void WriteOffRecord::print()
+void ShipDeltaRecord::print()
 {
 	qDebug() << "id =" << id << ", shipment_id =" << shipment_id << ", amount =" << amount << ", timestamp =" << timestamp.toString("yyyy-MM-dd") << ", active =" << active;
 }
