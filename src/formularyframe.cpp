@@ -91,6 +91,7 @@ void FormularyFrame::toggleActive()
 
 	medication.retrieve(ui->resultTable->item(row, 0)->text().toInt());
 	medication.toggleActive();
+	initiateSearch(medication.getId());
 }
 
 /* SQL command without C++

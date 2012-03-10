@@ -233,6 +233,11 @@
         <comment>MED ACTIVE DISPLAY TOOLTIP</comment>
         <translation>Active or inactive status</translation>
     </message>
+    <message>
+        <location filename="src/formularyframe.ui" line="336"/>
+        <source>Activate / Inactivate</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InventoryFrame</name>
@@ -381,6 +386,11 @@
         <source>SHIPMENT ACTIVE</source>
         <comment>SHIPMENT ACTIVE DISPLAY TOOLTIP</comment>
         <translation>Active or inactive status</translation>
+    </message>
+    <message>
+        <location filename="src/inventoryframe.ui" line="386"/>
+        <source>Activate / Inactivate</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -600,6 +610,11 @@
         <comment>PATIENT ACTIVE DISPLAY TOOLTIP</comment>
         <translation>Active or inactive status</translation>
     </message>
+    <message>
+        <location filename="src/patientframe.ui" line="398"/>
+        <source>Activate / Inactivate</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PatientGroupBox</name>
@@ -800,6 +815,11 @@
         <comment>PHARMACIST ACTIVE DISPLAY TOOLTIP</comment>
         <translation>Active or inactive status</translation>
     </message>
+    <message>
+        <location filename="src/pharmacistframe.ui" line="312"/>
+        <source>Activate / Inactivate</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PharmacistGroupBox</name>
@@ -973,6 +993,11 @@
         <source>PRESCRIBER ACTIVE</source>
         <comment>PRESCRIBER ACTIVE DISPLAY TOOLTIP</comment>
         <translation>Active or inactive status</translation>
+    </message>
+    <message>
+        <location filename="src/prescriberframe.ui" line="315"/>
+        <source>Activate / Inactivate</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

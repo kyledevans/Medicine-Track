@@ -102,6 +102,7 @@ void InventoryFrame::toggleActive()
 
 	shipment.retrieve(ui->resultTable->item(row, 0)->text().toInt());
 	shipment.toggleActive();
+	initiateSearch(shipment.getId());
 }
 
 void InventoryFrame::resetPressed()

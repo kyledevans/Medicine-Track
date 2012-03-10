@@ -395,7 +395,7 @@
   </action>
   <action name="toggleAction">
    <property name="text">
-    <string notr="true">Toggle active</string>
+    <string>Activate / Inactivate</string>
    </property>
    <property name="toolTip">
     <string notr="true">Toggle active/inactive</string>

@@ -85,6 +85,7 @@ void PrescriberFrame::toggleActive()
 
 	prescriber.retrieve(ui->resultTable->item(row, 0)->text().toInt());
 	prescriber.toggleActive();
+	initiateSearch(prescriber.getId());
 }
 
 /* SQL without C++:

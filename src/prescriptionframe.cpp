@@ -90,9 +90,11 @@ void PrescriptionFrame::selectionChanged()
 	if (ui->resultTable->selectionModel()->hasSelection()) {
 		ui->printAction->setEnabled(true);
 		ui->invalidateAction->setEnabled(true);
+		ui->viewAction->setEnabled(true);
 	} else {
 		ui->printAction->setEnabled(false);
 		ui->invalidateAction->setEnabled(false);
+		ui->viewAction->setEnabled(false);
 	}
 }
 

@@ -127,6 +127,22 @@ CREATE TABLE shipments (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table 'ship_delta'
+--
+
+CREATE TABLE ship_delta (
+  id int(10) unsigned NOT NULL COMMENT 'Shipment Increase ID',
+  shipment_id int(10) unsigned NOT NULL COMMENT 'Shipment ID',
+  amount int(10) unsigned NOT NULL COMMENT 'Amount of increase',
+  `timestamp` date NOT NULL COMMENT 'Timestamp for the change',
+  active tinyint(1) NOT NULL default '1' COMMENT 'Increase active status',
+  PRIMARY KEY  (id),
+  KEY ship_delta_ibfk_1 (shipment_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Shipment inventory received and current inventory';
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table 'write_offs'
 --
 
@@ -138,7 +154,7 @@ CREATE TABLE write_offs (
   active tinyint(1) NOT NULL default '1' COMMENT 'Whether it is still valid',
   PRIMARY KEY  (id),
   KEY write_offs_ibfk_1 (shipment_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Contains a list of write-offs';
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Contains a list of write-offs';
 
 --
 -- Constraints for dumped tables
@@ -158,6 +174,12 @@ ALTER TABLE `prescriptions`
 --
 ALTER TABLE `shipments`
   ADD CONSTRAINT shipments_ibfk_1 FOREIGN KEY (drug_id) REFERENCES drugs (id) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ship_delta`
+--
+ALTER TABLE `ship_delta`
+  ADD CONSTRAINT ship_delta_ibfk_1 FOREIGN KEY (shipment_id) REFERENCES shipments (id) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `write_offs`

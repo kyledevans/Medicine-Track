@@ -89,6 +89,7 @@ void PharmacistFrame::toggleActive()
 
 	pharmacist.retrieve(ui->resultTable->item(row, 0)->text().toInt());
 	pharmacist.toggleActive();
+	initiateSearch(pharmacist.getId());
 }
 
 /* SQL without C++:

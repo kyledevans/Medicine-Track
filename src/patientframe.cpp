@@ -90,6 +90,7 @@ void PatientFrame::toggleActive()
 
 	patient.retrieve(ui->resultTable->item(row, 0)->text().toInt());
 	patient.toggleActive();
+	initiateSearch(patient.getId());
 }
 
 /* SQL without C++:
