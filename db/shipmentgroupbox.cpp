@@ -33,10 +33,20 @@ void ShipmentGroupBox::setId(int new_id)
 	drug.retrieve(shipment.getDrug_id());
 
 	// Set values from shipment record
-	ui->expirationLabel->setText(shipment.getExpiration().toString(DEFAULTS::DateDisplayFormat));
+	if (shipment.getExpiration() >= QDate::currentDate()) {
+		ui->expirationLabel->setText(shipment.getExpiration().toString(DEFAULTS::DateDisplayFormat));
+	} else {
+		temp = QString("<font color='#%1'>%2</font>");
+		ui->expirationLabel->setText(temp.arg(MTCOLORS::Problem, shipment.getExpiration().toString(DEFAULTS::DateDisplayFormat)));
+	}
 	ui->lotLabel->setText(shipment.getLot());
 	ui->countLabel->setText(QString().setNum(shipment.getProduct_count()) + " " + drug.getDispense_units());
-	ui->leftLabel->setText(QString().setNum(shipment.getProduct_left()) + " " + drug.getDispense_units());
+	if (shipment.getProduct_left() > 0) {	// Items are still in stock
+		ui->leftLabel->setText(QString().setNum(shipment.getProduct_left()) + " " + drug.getDispense_units());
+	} else {	// No units in stock, make it red
+		temp = QString("<font color='#%1'>%2</font>");
+		ui->leftLabel->setText(temp.arg(MTCOLORS::Problem, QString().setNum(shipment.getProduct_left())));
+	}
 	if (shipment.getActive()) {
 		ui->activeLabel->setText("Active");
 	} else {

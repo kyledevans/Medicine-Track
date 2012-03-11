@@ -19,13 +19,6 @@ Released under the GPL version 2 only.
 3.  Document the database record classes in a way similar to how the Qt API is documented.
 	- Need to use Doxygen which then can create documentation files for Qt Assistant and Qt Creator
 
-5.  Make simple display widgets for the database record classes.  All fields will be displayed.
-
-6.  Where appropriate, indicate that database records are unusable by use of the color red.  How this is done will vary.
-	- IE: When doing a search in the Formulary tab, inactive medications could have a red arrow or marker in the _row_ header along with possibly highlighting the field that is causing the problem.
-
-7.  When there is no inventory, searches should display a '0' instead of nothing at all.
-
 9.  Add verification routines. IE: A SQL function that adds up the prescriptions.amount from every prescription that references a particular shipment_id.  It will then verify that the current stock is consistent with the amount prescribed and written off.
 
 10.  A 'management' UI that is used to run the verification routines and do the initial database setup calls.
@@ -46,6 +39,10 @@ Released under the GPL version 2 only.
 19.  Go through classes and make members private if possible.
 
 20.  Consider making wizards submit changes and auto-delete themselves on close
+
+21.  Add icons
+
+22.  Make sure it complies with all external library redistribution licenses
 
 -----
 
