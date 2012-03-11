@@ -134,7 +134,7 @@ CREATE TABLE shipments (
 CREATE TABLE ship_delta (
   id int(10) unsigned NOT NULL auto_increment COMMENT 'Shipment Increase ID',
   shipment_id int(10) unsigned NOT NULL COMMENT 'Shipment ID',
-  amount int(10) unsigned NOT NULL COMMENT 'Amount of increase',
+  amount int(10) NOT NULL COMMENT 'Amount of increase',
   count_changed tinyint(1) NOT NULL default '0' COMMENT 'Whether it affects the product_count',
   `timestamp` date NOT NULL COMMENT 'Timestamp for the change',
   active tinyint(1) NOT NULL default '1' COMMENT 'Increase active status',

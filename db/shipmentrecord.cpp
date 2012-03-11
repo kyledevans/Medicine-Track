@@ -178,7 +178,7 @@ bool ShipmentRecord::addWriteOff(int wo_amount)
 	db.transaction();
 
 	rec.setShipment_id(id);
-	rec.setAmount(wo_amount);
+    rec.setAmount(-wo_amount);
 	if (!rec.commitRecord()) {
 		db.rollback();
 		return false;
