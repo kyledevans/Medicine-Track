@@ -7,6 +7,7 @@ Released under the GPL version 2 only.
 #include "displaytable.h"
 
 #include <QHeaderView>
+#include <QCoreApplication>
 
 #include "globals.h"
 
@@ -16,7 +17,7 @@ DisplayTable::DisplayTable(QWidget *parent) :
 	QTableWidget(parent)
 {
 	// Set up the flag items
-	flag_red_pix = new QPixmap(QString("flag-red.png"), "PNG");
+	flag_red_pix = new QPixmap(QCoreApplication::applicationDirPath() + DEFAULTS::ImageDir + "flag-red.png", "PNG");
 }
 
 void DisplayTable::postSetup()

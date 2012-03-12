@@ -53,6 +53,7 @@ namespace DEFAULTS {
 	const QString DBName("epc");
 	const QString DBUser("kyle");
 	const QString DBPassword("kobalt");
+	const QString ImageDir("/images/");
 	const double AppVersion = 1.1;			// The version of the application
 	const double AppMajor = 1.0;			// The version of the application without any decimal places
 	const double ConfigVersion = 1.0;		// Not the version of the software, simply the config version

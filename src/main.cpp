@@ -13,6 +13,8 @@ Released under the GPL version 2 only.
 
 #include <QDebug>
 
+#include <Windows.h>
+
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
@@ -20,13 +22,9 @@ int main(int argc, char *argv[])
 	QFileInfo exe_location(argv[0]);
 	MainWindow w;
 
-	if (trans.load(exe_location.absolutePath() + "/mtrack.qm")) {
-		qDebug() << "loaded translation";
-	} else {
-		qDebug() << "failed to load";
-	}
+	trans.load(exe_location.absolutePath() + "/mtrack.qm");
 	a.installTranslator(&trans);
-
+	qDebug() << "here";
 	w.show();
 
 	return a.exec();
