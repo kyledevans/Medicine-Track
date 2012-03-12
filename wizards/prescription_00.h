@@ -30,6 +30,7 @@ public:
 
 	void setPatient(PatientRecord *);
 	void setPrescription(PrescriptionRecord *);
+	void resizeHeaders();
 
 	bool isComplete() const;
 

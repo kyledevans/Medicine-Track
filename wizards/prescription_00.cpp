@@ -24,7 +24,7 @@ Prescription_00::Prescription_00(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	ui->resultTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+	ui->resultTable->postSetup();
 
 	// Connect signals/slots
 	connect(ui->resultTable, SIGNAL(itemSelectionChanged()), this, SIGNAL(completeChanged()));
@@ -38,6 +38,19 @@ Prescription_00::Prescription_00(QWidget *parent) :
 Prescription_00::~Prescription_00()
 {
 	delete ui;
+}
+
+void Prescription_00::resizeHeaders()
+{
+	int i;
+	int size;
+
+	// Start at 1 because the first column is the 'flags' column
+	for (i = 1; i < ui->resultTable->columnCount(); i++) {
+		size = ui->resultTable->columnWidth(0);
+		ui->resultTable->resizeColumnsToContents();
+		ui->resultTable->setColumnWidth(0, size);
+	}
 }
 
 void Prescription_00::setPatient(PatientRecord *new_patient)
@@ -118,6 +131,7 @@ void Prescription_00::initiateSearch()
 	}
 	ui->resultTable->setSortingEnabled(true);
 	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
+	resizeHeaders();
 
 	db_queried = true;
 	delete model;

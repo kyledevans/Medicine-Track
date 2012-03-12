@@ -383,7 +383,7 @@
   </action>
   <action name="toggleAction">
    <property name="text">
-    <string>Activate / Inactivate</string>
+    <string notr="true">Activate / Inactivate</string>
    </property>
    <property name="toolTip">
     <string notr="true">Toggle active/inactive</string>

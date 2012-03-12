@@ -9,11 +9,7 @@ Released under the GPL version 2 only.
 #include <QFileInfo>
 #include "mainwindow.h"
 
-#include <QSqlDatabase>
-
 #include <QDebug>
-
-#include <Windows.h>
 
 int main(int argc, char *argv[])
 {
@@ -24,7 +20,6 @@ int main(int argc, char *argv[])
 
 	trans.load(exe_location.absolutePath() + "/mtrack.qm");
 	a.installTranslator(&trans);
-	qDebug() << "here";
 	w.show();
 
 	return a.exec();

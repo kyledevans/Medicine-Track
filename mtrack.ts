@@ -233,11 +233,6 @@
         <comment>MED ACTIVE DISPLAY TOOLTIP</comment>
         <translation>Active or inactive status</translation>
     </message>
-    <message>
-        <location filename="src/formularyframe.ui" line="336"/>
-        <source>Activate / Inactivate</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>InventoryFrame</name>
@@ -386,11 +381,6 @@
         <source>SHIPMENT ACTIVE</source>
         <comment>SHIPMENT ACTIVE DISPLAY TOOLTIP</comment>
         <translation>Active or inactive status</translation>
-    </message>
-    <message>
-        <location filename="src/inventoryframe.ui" line="386"/>
-        <source>Activate / Inactivate</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -610,11 +600,6 @@
         <comment>PATIENT ACTIVE DISPLAY TOOLTIP</comment>
         <translation>Active or inactive status</translation>
     </message>
-    <message>
-        <location filename="src/patientframe.ui" line="398"/>
-        <source>Activate / Inactivate</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>PatientGroupBox</name>
@@ -815,11 +800,6 @@
         <comment>PHARMACIST ACTIVE DISPLAY TOOLTIP</comment>
         <translation>Active or inactive status</translation>
     </message>
-    <message>
-        <location filename="src/pharmacistframe.ui" line="312"/>
-        <source>Activate / Inactivate</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>PharmacistGroupBox</name>
@@ -993,11 +973,6 @@
         <source>PRESCRIBER ACTIVE</source>
         <comment>PRESCRIBER ACTIVE DISPLAY TOOLTIP</comment>
         <translation>Active or inactive status</translation>
-    </message>
-    <message>
-        <location filename="src/prescriberframe.ui" line="315"/>
-        <source>Activate / Inactivate</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1418,85 +1393,85 @@
         <translation>Medication / Barcode</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="161"/>
+        <location filename="wizards/prescription_00.ui" line="164"/>
         <source>MEDICATION</source>
         <comment>MEDICATION DISPLAY LABEL</comment>
         <translation>Medication</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="164"/>
+        <location filename="wizards/prescription_00.ui" line="167"/>
         <source>MEDICATION</source>
         <comment>MEDICATION DISPLAY TOOLTIP</comment>
         <translation>Name of the medication</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="169"/>
+        <location filename="wizards/prescription_00.ui" line="172"/>
         <source>LOT</source>
         <comment>LOT DISPLAY LABEL</comment>
         <translation>Lot #</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="172"/>
+        <location filename="wizards/prescription_00.ui" line="175"/>
         <source>LOT</source>
         <comment>LOT DISPLAY TOOLTIP</comment>
         <translation>Lot number</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="177"/>
+        <location filename="wizards/prescription_00.ui" line="180"/>
         <source>FORM</source>
         <comment>FORM DISPLAY LABEL</comment>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="180"/>
+        <location filename="wizards/prescription_00.ui" line="183"/>
         <source>FORM</source>
         <comment>FORM DISPLAY TOOLTIP</comment>
         <translation>Medication form</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="185"/>
+        <location filename="wizards/prescription_00.ui" line="188"/>
         <source>STRENGTH</source>
         <comment>STRENGTH DISPLAY LABEL</comment>
         <translation>Strength</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="188"/>
+        <location filename="wizards/prescription_00.ui" line="191"/>
         <source>STRENGTH</source>
         <comment>STRENGTH DISPLAY TOOLTIP</comment>
         <translation>Strength</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="193"/>
+        <location filename="wizards/prescription_00.ui" line="196"/>
         <source>UNIT SIZE</source>
         <comment>UNIT SIZE DISPLAY LABEL</comment>
         <translation>Unit size</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="196"/>
+        <location filename="wizards/prescription_00.ui" line="199"/>
         <source>UNIT SIZE</source>
         <comment>UNIT SIZE DISPLAY TOOLTIP</comment>
         <translation>Unit size (optional)</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="201"/>
+        <location filename="wizards/prescription_00.ui" line="204"/>
         <source>PRODUCT LEFT</source>
         <comment>PRODUCT LEFT DISPLAY LABEL</comment>
         <translation>Inventory left</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="204"/>
+        <location filename="wizards/prescription_00.ui" line="207"/>
         <source>PRODUCT LEFT</source>
         <comment>PRODUCT LEFT DISPLAY TOOLTIP</comment>
         <translation>Inventory left</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="209"/>
+        <location filename="wizards/prescription_00.ui" line="212"/>
         <source>EXPIRATION</source>
         <comment>EXPIRATION DISPLAY LABEL</comment>
         <translation>Expiration</translation>
     </message>
     <message>
-        <location filename="wizards/prescription_00.ui" line="212"/>
+        <location filename="wizards/prescription_00.ui" line="215"/>
         <source>EXPIRATION</source>
         <comment>EXPIRATION DISPLAY TOOLTIP</comment>
         <translation>Expiration date</translation>
