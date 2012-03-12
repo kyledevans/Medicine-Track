@@ -105,7 +105,6 @@ void PatientFrame::initiateSearch(int patientID)
 {
 	QSqlQuery *model;
 	AlertInterface alert;
-	QTableWidgetItem *item;
 	int i;      // Increment var
 	bool dont_search_dob = true;
 
