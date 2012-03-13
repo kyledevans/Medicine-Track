@@ -18,7 +18,6 @@ namespace Ui {
 class PharmacistWizard : public QWizard
 {
 	Q_OBJECT
-
 public:
 	explicit PharmacistWizard(PharmacistRecord *, QWidget *parent = 0);
 	~PharmacistWizard();

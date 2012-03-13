@@ -19,7 +19,6 @@ namespace Ui {
 class InventoryFrame : public QFrame
 {
 	Q_OBJECT
-
 public:
 	explicit InventoryFrame(QWidget *parent = 0);
 	~InventoryFrame();

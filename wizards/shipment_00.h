@@ -19,7 +19,6 @@ namespace Ui {
 class Shipment_00 : public QWizardPage
 {
 	Q_OBJECT
-
 public:
 	explicit Shipment_00(QWidget *parent = 0);
 	~Shipment_00();
@@ -27,7 +26,7 @@ public:
 	void changeEvent(QEvent *);
 
 	void getResults(ShipmentRecord *);
-    void setMedication(DrugRecord *);
+	void setMedication(DrugRecord *);
 
 private:
 	Ui::Shipment_00 *ui;

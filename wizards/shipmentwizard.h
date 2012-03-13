@@ -18,7 +18,6 @@ namespace Ui {
 class ShipmentWizard : public QWizard
 {
 	Q_OBJECT
-
 public:
 	explicit ShipmentWizard(ShipmentRecord *, QWidget *parent = 0);
 	~ShipmentWizard();

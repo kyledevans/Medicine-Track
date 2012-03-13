@@ -17,9 +17,9 @@ ShipmentWizard::ShipmentWizard(ShipmentRecord *new_shipment, QWidget *parent) :
 	QWizard(parent),
 	ui(new Ui::ShipmentWizard)
 {
-    DrugRecord *med;
+	DrugRecord *med;
 	shipment = new_shipment;
-    med = new DrugRecord;
+	med = new DrugRecord;
 	med->retrieve(shipment->getDrug_id());
 	ui->setupUi(this);
 

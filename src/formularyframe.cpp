@@ -20,7 +20,6 @@ FormularyFrame::FormularyFrame(QWidget *parent) :
 	ui(new Ui::FormularyFrame)
 {
 	ui->setupUi(this);
-
 	ui->resultTable->postSetup();
 
 	// Setup various signal/slot connections
@@ -84,7 +83,7 @@ void FormularyFrame::resetPressed()
 void FormularyFrame::toggleActive()
 {
 	unsigned int row;
-    DrugRecord medication;
+	DrugRecord medication;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -234,13 +233,13 @@ void FormularyFrame::selectionChanged()
 void FormularyFrame::initiateNewMed()
 {
 	MedicationWizard *wiz;
-    DrugRecord *med;
+	DrugRecord *med;
 
 	med = new DrugRecord;
 
 	wiz = new MedicationWizard(med);
 	connect(wiz, SIGNAL(wizardComplete(DrugRecord*)), this, SLOT(submitDrug(DrugRecord*)));
-    connect(wiz, SIGNAL(wizardRejected(DrugRecord*)), this, SLOT(medCleanup(DrugRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(DrugRecord*)), this, SLOT(medCleanup(DrugRecord*)));
 	wiz->exec();
 
 	delete wiz;
@@ -250,7 +249,7 @@ void FormularyFrame::initiateModify()
 {
 	unsigned int row;
 	MedicationWizard *wiz;
-    DrugRecord *med;
+	DrugRecord *med;
 
 	med = new DrugRecord;
 
@@ -263,7 +262,7 @@ void FormularyFrame::initiateModify()
 
 	wiz = new MedicationWizard(med);
 	connect(wiz, SIGNAL(wizardComplete(DrugRecord*)), this, SLOT(submitDrug(DrugRecord*)));
-    connect(wiz, SIGNAL(wizardRejected(DrugRecord*)), this, SLOT(medCleanup(DrugRecord*)));
+	connect(wiz, SIGNAL(wizardRejected(DrugRecord*)), this, SLOT(medCleanup(DrugRecord*)));
 	wiz->exec();
 
 	delete wiz;

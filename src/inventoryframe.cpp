@@ -230,11 +230,11 @@ void InventoryFrame::initiateWriteOff()
 {
 	unsigned int row, wo_amount;
 	ShipmentRecord *shipment;
-    DrugRecord *medication;
+	DrugRecord *medication;
 	bool ok;
 
 	shipment = new ShipmentRecord;
-    medication = new DrugRecord;
+	medication = new DrugRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -271,11 +271,11 @@ void InventoryFrame::initiateIncrease()
 {
 	unsigned int row, delta;
 	ShipmentRecord *shipment;
-    DrugRecord *medication;
+	DrugRecord *medication;
 	bool ok;
 
 	shipment = new ShipmentRecord;
-    medication = new DrugRecord;
+	medication = new DrugRecord;
 
 	// This line finds the top row that was selected by the user
 	row = ui->resultTable->selectionModel()->selectedRows()[0].row();
@@ -296,7 +296,7 @@ void InventoryFrame::initiateIncrease()
 									 "How many units do you want to add to the inventory?",
 									 0,
 									 0,
-                                     99999999,
+									 99999999,
 									 1,
 									 &ok);
 	if (ok && delta > 0) {

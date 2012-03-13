@@ -14,13 +14,12 @@ Released under the GPL version 2 only.
 #include <QFrame>
 
 namespace Ui {
-    class FormularyFrame;
+	class FormularyFrame;
 }
 
 class FormularyFrame : public QFrame
 {
 	Q_OBJECT
-
 public:
 	explicit FormularyFrame(QWidget *parent = 0);
 	~FormularyFrame();

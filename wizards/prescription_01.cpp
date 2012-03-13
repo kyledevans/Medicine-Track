@@ -16,7 +16,7 @@ Released under the GPL version 2 only.
 
 Prescription_01::Prescription_01(QWidget *parent) :
 	QWizardPage(parent),
-    ui(new Ui::Prescription_01),
+	ui(new Ui::Prescription_01),
 	patient(0),
 	prescription(0),
 	medication(0),

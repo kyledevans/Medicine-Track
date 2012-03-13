@@ -234,7 +234,7 @@ void PatientFrame::initiatePrescription()
 void PatientFrame::initiateModification()
 {
 	unsigned int row;
-    PatientWizard *wiz;
+	PatientWizard *wiz;
 	PatientRecord *patient;
 
 	patient = new PatientRecord;
@@ -246,7 +246,7 @@ void PatientFrame::initiateModification()
 		return;
 	}
 
-    wiz = new PatientWizard(patient);
+	wiz = new PatientWizard(patient);
 	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitPatient(PatientRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(PatientRecord*)), this, SLOT(patientCleanup(PatientRecord*)));
 	wiz->exec();
@@ -256,10 +256,10 @@ void PatientFrame::initiateModification()
 
 void PatientFrame::initiateNewPatient()
 {
-    PatientWizard *wiz;
+	PatientWizard *wiz;
 	PatientRecord *patient = new PatientRecord;
 
-    wiz = new PatientWizard(patient);
+	wiz = new PatientWizard(patient);
 	connect(wiz, SIGNAL(wizardComplete(PatientRecord*)), this, SLOT(submitPatient(PatientRecord*)));
 	connect(wiz, SIGNAL(wizardRejected(PatientRecord*)), this, SLOT(patientCleanup(PatientRecord*)));
 	wiz->exec();

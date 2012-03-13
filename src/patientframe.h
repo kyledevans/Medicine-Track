@@ -17,15 +17,15 @@ Released under the GPL version 2 only.
 #include <QFrame>
 
 namespace Ui {
-    class PatientFrame;
+	class PatientFrame;
 }
 
 class PatientFrame : public QFrame
 {
 	Q_OBJECT
 public:
-    explicit PatientFrame(QWidget *parent = 0);
-    ~PatientFrame();
+	explicit PatientFrame(QWidget *parent = 0);
+	~PatientFrame();
 
 	void changeEvent(QEvent *);
 

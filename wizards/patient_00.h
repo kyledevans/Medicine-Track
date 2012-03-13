@@ -18,7 +18,6 @@ namespace Ui {
 class Patient_00 : public QWizardPage
 {
 	Q_OBJECT
-
 public:
 	explicit Patient_00(QWidget *parent = 0);
 	~Patient_00();

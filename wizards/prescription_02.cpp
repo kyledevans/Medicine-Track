@@ -9,7 +9,7 @@ Released under the GPL version 2 only.
 
 Prescription_02::Prescription_02(QWidget *parent) :
 	QWizardPage(parent),
-    ui(new Ui::Prescription_02),
+	ui(new Ui::Prescription_02),
 	prescription(0)
 {
 	ui->setupUi(this);

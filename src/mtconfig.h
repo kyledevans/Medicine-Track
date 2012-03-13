@@ -16,7 +16,6 @@ namespace Ui {
 class MTConfig : public QDialog
 {
 	Q_OBJECT
-    
 public:
 	explicit MTConfig(QWidget *parent = 0);
 	~MTConfig();
@@ -25,7 +24,7 @@ public:
 
 public slots:
 	void commit();
-    
+
 private:
 	Ui::MTConfig *ui;
 };

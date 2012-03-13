@@ -18,7 +18,6 @@ namespace Ui {
 class Medication_00 : public QWizardPage
 {
 	Q_OBJECT
-
 public:
 	explicit Medication_00(QWidget *parent = 0);
 	~Medication_00();
@@ -27,7 +26,7 @@ public:
 
 	void setForm(int);
 
-    void getResults(DrugRecord *);
+	void getResults(DrugRecord *);
 
 private:
 	Ui::Medication_00 *ui;

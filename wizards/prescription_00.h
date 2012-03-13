@@ -21,7 +21,6 @@ namespace Ui {
 class Prescription_00 : public QWizardPage
 {
 	Q_OBJECT
-
 public:
 	explicit Prescription_00(QWidget *parent = 0);
 	~Prescription_00();

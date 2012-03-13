@@ -21,7 +21,6 @@ namespace Ui {
 class PrescriptionWizard : public QWizard
 {
 	Q_OBJECT
-
 public:
 	explicit PrescriptionWizard(QWidget *parent = 0);
 	~PrescriptionWizard();
@@ -43,9 +42,9 @@ signals:
 private:
 	Ui::PrescriptionWizard *ui;
 
-    PrescriptionRecord *prescription;
+	PrescriptionRecord *prescription;
 	PatientRecord *patient;
-    DrugRecord *medication;
+	DrugRecord *medication;
 	ShipmentRecord *shipment;
 };
 

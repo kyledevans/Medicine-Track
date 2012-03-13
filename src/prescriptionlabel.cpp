@@ -23,7 +23,7 @@ PrescriptionLabel::PrescriptionLabel(PrescriptionRecord *new_prescription, QWidg
 	prescriber = new PrescriberRecord;
 	pharmacist = new PharmacistRecord;
 	patient = new PatientRecord;
-    medication = new DrugRecord;
+	medication = new DrugRecord;
 	shipment = new ShipmentRecord;
 
 	prescription = new_prescription;

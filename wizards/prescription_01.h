@@ -25,7 +25,6 @@ namespace Ui {
 class Prescription_01 : public QWizardPage
 {
 	Q_OBJECT
-
 public:
 	explicit Prescription_01(QWidget *parent = 0);
 	~Prescription_01();
@@ -34,7 +33,7 @@ public:
 
 	void setPatient(PatientRecord *);
 	void setPrescription(PrescriptionRecord *);
-    void setMedication(DrugRecord *);
+	void setMedication(DrugRecord *);
 	void setShipment(ShipmentRecord *);
 
 	bool initCustom();
@@ -50,7 +49,7 @@ private:
 
 	PatientRecord *patient;
 	PrescriptionRecord *prescription;
-    DrugRecord *medication;
+	DrugRecord *medication;
 	ShipmentRecord *shipment;
 
 	QList<PrescriberRecord *> prescribers;

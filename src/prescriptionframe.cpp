@@ -156,7 +156,7 @@ void PrescriptionFrame::initiateSearch()
 				   "AND patients.active = ? "
 				   "AND prescriptions.active = ?;");
 	model->bindValue(0, SQL::prepWildcards(ui->medicationNameField->text()));
-    model->bindValue(1, SQL::prepWildcards(ui->lotField->text()));
+	model->bindValue(1, SQL::prepWildcards(ui->lotField->text()));
 	if (ui->filledField->date() != DEFAULTS::Date) {    // Enables searching by filled date if the user made a change
 		dont_search_filled = false;
 	}

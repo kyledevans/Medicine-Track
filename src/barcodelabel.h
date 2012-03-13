@@ -19,7 +19,6 @@ namespace Ui {
 class BarcodeLabel : public QFrame
 {
 	Q_OBJECT
-
 public:
 	explicit BarcodeLabel(QWidget *parent = 0);
 	~BarcodeLabel();

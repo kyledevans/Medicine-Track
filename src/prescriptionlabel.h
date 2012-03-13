@@ -25,7 +25,6 @@ namespace Ui {
 class PrescriptionLabel : public QFrame
 {
 	Q_OBJECT
-
 public:
 	explicit PrescriptionLabel(PrescriptionRecord *, QWidget *parent = 0);
 	~PrescriptionLabel();

@@ -18,7 +18,6 @@ namespace Ui {
 class PrescriberWizard : public QWizard
 {
 	Q_OBJECT
-
 public:
 	explicit PrescriberWizard(PrescriberRecord *, QWidget *parent = 0);
 	~PrescriberWizard();

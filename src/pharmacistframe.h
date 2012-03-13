@@ -19,7 +19,6 @@ namespace Ui {
 class PharmacistFrame : public QFrame
 {
 	Q_OBJECT
-
 public:
 	explicit PharmacistFrame(QWidget *parent = 0);
 	~PharmacistFrame();

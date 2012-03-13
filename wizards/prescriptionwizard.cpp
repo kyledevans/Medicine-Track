@@ -23,7 +23,7 @@ PrescriptionWizard::PrescriptionWizard(QWidget *parent) :
 	connect(this, SIGNAL(rejected()), this, SLOT(rejectedWizard()));
 
 	patient = new PatientRecord;
-    medication = new DrugRecord;
+	medication = new DrugRecord;
 	shipment = new ShipmentRecord;
 
 	ui->page1->setMedication(medication);

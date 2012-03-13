@@ -18,14 +18,13 @@ namespace Ui {
 class Medication_01 : public QWizardPage
 {
 	Q_OBJECT
-
 public:
 	explicit Medication_01(QWidget *parent = 0);
 	~Medication_01();
 
 	void changeEvent(QEvent *);
 
-    void getResults(DrugRecord *);
+	void getResults(DrugRecord *);
 
 private:
 	Ui::Medication_01 *ui;
