@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+	<Product Id='*' UpgradeCode='1FA928ED-8923-4427-9510-ED77E4AF434E' Name='Medicine Track' Language='1033' Version='1.1.0' Manufacturer='Kyle Evans'>
+		<Package Description='Medicine Track Installer' Platform='x86' InstallPrivileges='elevated' InstallScope='perMachine' InstallerVersion='405' Compressed='yes'/>
+		<Media Id='1' Cabinet='mtrack.cab' EmbedCab='yes'/>
+		<Directory Id='TARGETDIR' Name='SourceDir'>
+			<Directory Id='ProgramFilesFolder'>
+				<Directory Id='APPLICATIONROOTDIRECTORY' Name='MTrack'>
+					<Directory Id='ImgsDir' Name='images'/>
+				</Directory>
+			</Directory>
+		</Directory>
+		<Icon Id='rx_border.ico' SourceFile='src\rx_border.ico'/>
+		<Property Id='ARPPRODUCTICON' Value='rx_border.ico'/>
+		<Property Id='ARPNOMODIFY' Value='1'/>
+		<Property Id='ARPNOREPAIR' Value='1'/>
+		<DirectoryRef Id='APPLICATIONROOTDIRECTORY'>
+			<Component Id='mtrack_exe' Guid='*' Feature='MainApplication'>
+				<File Id='mtrack.exe' Source='build\src\mtrack.exe' KeyPath='yes' Checksum='yes'/>
+			</Component>
+			<Component Id='mtrack_collection_qhc' Guid='*' Feature='MainApplication'>
+				<File Id='mtrack_collection.qhc' Source='build\src\mtrack-collection.qhc' KeyPath='yes'/>
+			</Component>
+			<Component Id='mtrack_qm' Guid='*' Feature='MainApplication'>
+				<File Id='mtrack.qm' Source='build\src\mtrack.qm' KeyPath='yes'/>
+			</Component>
+			<Component Id='assistant_exe' Guid='*' Feature='MainApplication'>
+				<File Id='assistant.exe' Source='C:\Qt\bin\assistant.exe' KeyPath='yes' Checksum='yes'/>
+			</Component>
+			<Component Id='QtCLucene4_dll' Guid='*' Feature='MainApplication'>
+				<File Id='QtCLucene4.dll' Source='C:\Qt\lib\QtCLucene4.dll' KeyPath='yes'/>
+			</Component>
+			<Component Id='QtCore4_dll' Guid='*' Feature='MainApplication'>
+				<File Id='QtCore4.dll' Source='C:\Qt\lib\QtCore4.dll' KeyPath='yes'/>
+			</Component>
+			<Component Id='QtGui4_dll' Guid='*' Feature='MainApplication'>
+				<File Id='QtGui4.dll' Source='C:\Qt\lib\QtGui4.dll' KeyPath='yes'/>
+			</Component>
+			<Component Id='QtHelp4_dll' Guid='*' Feature='MainApplication'>
+				<File Id='QtHelp4.dll' Source='C:\Qt\lib\QtHelp4.dll' KeyPath='yes'/>
+			</Component>
+			<Component Id='QtNetwork4_dll' Guid='*' Feature='MainApplication'>
+				<File Id='QtNetwork4.dll' Source='C:\Qt\lib\QtNetwork4.dll' KeyPath='yes'/>
+			</Component>
+			<Component Id='QtSql4_dll' Guid='*' Feature='MainApplication'>
+				<File Id='QtSql4.dll' Source='C:\Qt\lib\QtSql4.dll' KeyPath='yes'/>
+			</Component>
+		</DirectoryRef>
+		<DirectoryRef Id='ImgsDir'>
+			<Component Id='flag_red_png' Guid='*' Feature='MainApplication'>
+				<File Id='flag_red.png' Source='build\src\images\flag-red.png' KeyPath='yes'/>
+			</Component>
+			<Component Id='OXYGEN_LICENSE_txt' Guid='*' Feature='MainApplication'>
+				<File Id='OXYGEN_LICENSE.txt' Source='build\src\images\OXYGEN_LICENSE.txt' KeyPath='yes'/>
+			</Component>
+		</DirectoryRef>
+		<Feature Id='MainApplication' Title='feature title' Level='1'/>
+	</Product>
+</Wix>

@@ -9,10 +9,6 @@ Released under the GPL version 2 only.
 
 #include <QVariant>
 
-#include <QGraphicsScene>
-#include <QGraphicsView>
-#include <QGraphicsPixmapItem>
-
 #include "alertinterface.h"
 #include "patientdisplay.h"
 #include "patientwizard.h"

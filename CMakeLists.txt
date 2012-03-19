@@ -16,6 +16,8 @@ SET(OTHER_FILES "COPYING.txt"
 	"copyright_template.txt"
 	"database_info.txt"
 	"todo.txt"
+	"mtrack_win_installer.wxs"
+	"src/icons.rc"
 )
 
 SET(TRANSLATIONS_TS mtrack.ts)
