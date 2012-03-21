@@ -3,20 +3,28 @@
 	<Product Id='*' UpgradeCode='1FA928ED-8923-4427-9510-ED77E4AF434E' Name='Medicine Track' Language='1033' Version='1.1.0' Manufacturer='Kyle Evans'>
 		<Package Description='Medicine Track Installer' Platform='x86' InstallPrivileges='elevated' InstallScope='perMachine' InstallerVersion='405' Compressed='yes'/>
 		<Media Id='1' Cabinet='mtrack.cab' EmbedCab='yes'/>
+
 		<Directory Id='TARGETDIR' Name='SourceDir'>
 			<Directory Id='ProgramFilesFolder'>
-				<Directory Id='APPLICATIONROOTDIRECTORY' Name='MTrack'>
+				<Directory Id='MTRACKINSTALLDIR' Name='MTrack'>
 					<Directory Id='ImgsDir' Name='images'/>
 				</Directory>
 			</Directory>
+			<Directory Id='FontsFolder'/>
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="MTrackStartFolder" Name="Medicine Track"/>
+			</Directory>
 		</Directory>
+
 		<Icon Id='rx_border.ico' SourceFile='src\rx_border.ico'/>
 		<Property Id='ARPPRODUCTICON' Value='rx_border.ico'/>
-		<Property Id='ARPNOMODIFY' Value='1'/>
 		<Property Id='ARPNOREPAIR' Value='1'/>
-		<DirectoryRef Id='APPLICATIONROOTDIRECTORY'>
+
+		<DirectoryRef Id='MTRACKINSTALLDIR'>
 			<Component Id='mtrack_exe' Guid='*' Feature='MainApplication'>
-				<File Id='mtrack.exe' Source='build\src\mtrack.exe' KeyPath='yes' Checksum='yes'/>
+				<File Id='mtrack.exe' Source='build\src\mtrack.exe' KeyPath='yes' Checksum='yes'>
+					<Shortcut Id='medicine_track.shortcut' Icon='rx_border.ico' Directory='MTrackStartFolder' Name='Medicine Track' Description='Prescribe medications' WorkingDirectory='MTRACKINSTALLDIR' Advertise='yes'/>
+				</File>
 			</Component>
 			<Component Id='mtrack_collection_qhc' Guid='*' Feature='MainApplication'>
 				<File Id='mtrack_collection.qhc' Source='build\src\mtrack-collection.qhc' KeyPath='yes'/>
@@ -45,6 +53,9 @@
 			<Component Id='QtSql4_dll' Guid='*' Feature='MainApplication'>
 				<File Id='QtSql4.dll' Source='C:\Qt\lib\QtSql4.dll' KeyPath='yes'/>
 			</Component>
+			<Component Id='code_39_license_pdf' Guid='*' Feature='MainApplication'>
+				<File Id='code_39_license.pdf' Source='code_39_license.pdf' KeyPath='yes'/>
+			</Component>
 		</DirectoryRef>
 		<DirectoryRef Id='ImgsDir'>
 			<Component Id='flag_red_png' Guid='*' Feature='MainApplication'>
@@ -54,6 +65,20 @@
 				<File Id='OXYGEN_LICENSE.txt' Source='build\src\images\OXYGEN_LICENSE.txt' KeyPath='yes'/>
 			</Component>
 		</DirectoryRef>
+		<DirectoryRef Id='FontsFolder'>
+			<Component Id='Code_39_Logitogo_ttf' Guid='*' Feature='MainApplication'>
+				<File Id='Code_39_Logitogo.ttf' Source='Code-39-Logitogo.ttf' TrueType='yes'/>
+			</Component>
+		</DirectoryRef>
+		<DirectoryRef Id='MTrackStartFolder'>
+			<Component Id='medicine_track_shortcut' Guid='*' Feature='MainApplication'>
+				<RegistryValue Root='HKMU' Key='Software\Medicine Track' Name='installed' Type='integer' Value='1' KeyPath='yes'/>
+				<RemoveFolder Id="MTrackStartFolder" On="uninstall"/>
+			</Component>
+		</DirectoryRef>
 		<Feature Id='MainApplication' Title='feature title' Level='1'/>
+		<Property Id='WIXUI_INSTALLDIR' Value='MTRACKINSTALLDIR'/>
+		<UIRef Id='WixUI_InstallDirNoLicense'/>
 	</Product>
+	<?include win_install_ui.wxi ?>
 </Wix>

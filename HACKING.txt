@@ -41,3 +41,29 @@ Now the tooltip for the "Medication" QLabel would be as such:
 
 
 For every column in the database there should be a string for every EDIT, DISPLAY, SEARCH and corresponding LABEL and TOOLTIP versions.
+
+
+---------------------------
+
+Deployment (windows)
+
+Prerequisites:
+	1. WiX
+	2. dotNetInstaller
+	3. Microsoft Visual C++ 2010 Redistributable (SP1)
+	4. Unzip "code_39_logitogo.zip".  Place "Code-39-Logitogo.ttf" in the top level directory of the Medicine Track source.
+	6. Assumes that Qt is installed in C:\Qt.  If this is not the case, then either: move it there for this step(easiest) or edit all references to the Qt dir in mtrack_win32.wxs
+
+Instructions:
+	1. Download the MSVC 2010 Redistributable (SP1) (vcredist_x86.exe)
+	2. Font prep:
+		- Unzip "code_39_logitogo.zip"
+		- Place "Code-39-Logitogo.ttf" in the top level directory of the Medicine Track source.
+		- Rename "manual_and_license_V1.2.pdf" to "code_39_license.pdf" and place it in the top level directory of the Medicine Track source.
+	3. Run the batch file "make_win_installers.bat"
+	4. With dotNetInstaller (run InstallerEditor) you will need to edit 2 things.  Start by going to File -> Open -> "dotnet_config.xml".
+		- Navigate to Config File -> install: -> vcredist_x86.exe.  Edit the "sourcefilepath" so that it points to the location of the vcredist_x86.exe that you downloaded.
+		- Navigate to Config File -> install: -> mtrack_win32.msi.  Edit the "sourcefilepath" so that it points to the location of the mtrack_win32.msi that you created.
+	5. Click on File -> Create Exe
+	6. For Template dotNetInstaller.exe File, use one of the exe's included with dotNetInstaller.  Specifically "dotNetInstaller.exe" located in <dotNetInstaller-path>\bin\dotNetInstaller.exe
+	7. Click Make
