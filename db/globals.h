@@ -49,10 +49,10 @@ namespace DEFAULTS {
 	const QString Organization("EPC");
 	const QString Domain("evanspediatric.com");
 	const QString Application("MTrack");
-	const QString DBHost("192.168.1.99");
-	const QString DBName("epc");
-	const QString DBUser("kyle");
-	const QString DBPassword("kobalt");
+	const QString DBHost("127.0.0.1");
+	const QString DBName("mtrack");
+	const QString DBUser("anon_mtrack");
+	const QString DBPassword("anon_mtrack");
 	const QString ImageDir("/images/");
 	const double AppVersion = 1.1;			// The version of the application
 	const double AppMajor = 1.0;			// The version of the application without any decimal places
