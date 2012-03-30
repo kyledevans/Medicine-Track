@@ -27,7 +27,10 @@
 				</File>
 			</Component>
 			<Component Id='mtrack_collection_qhc' Guid='*' Feature='MainApplication'>
-				<File Id='mtrack_collection.qhc' Source='build\src\mtrack-collection.qhc' KeyPath='yes'/>
+				<File Id='mtrack_collection.qhc' Source='doc\mtrack-collection.qhc' KeyPath='yes'/>
+			</Component>
+			<Component Id='doc_qch' Guid='*' Feature='MainApplication'>
+				<File Id='doc.qch' Source='doc\doc.qch' KeyPath='yes'/>
 			</Component>
 			<Component Id='mtrack_qm' Guid='*' Feature='MainApplication'>
 				<File Id='mtrack.qm' Source='build\src\mtrack.qm' KeyPath='yes'/>
