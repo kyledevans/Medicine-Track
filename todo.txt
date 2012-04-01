@@ -45,6 +45,15 @@ Released under the GPL version 2 only.
 22.  Make sure it complies with all external library redistribution licenses
 
 -----
+1.2 TODO List
+
+1.  Let user edit the first two lines of the prescription label
+
+2.  Use Dymo printer library for printing labels.
+
+3.  Check SQL error and make sure it is correct.
+
+-----
 
 Questions:
 

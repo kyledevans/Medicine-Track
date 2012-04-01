@@ -15,6 +15,63 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Prescription Label Headers</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QLineEdit" name="l1s1Field">
+          <property name="toolTip">
+           <string notr="true">First line of prescription label</string>
+          </property>
+          <property name="placeholderText">
+           <string notr="true">Line 1 Left</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="l1s2Field">
+          <property name="toolTip">
+           <string notr="true">First line of prescription label</string>
+          </property>
+          <property name="placeholderText">
+           <string notr="true">Line 1 Right</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QLineEdit" name="l2s1Field">
+          <property name="toolTip">
+           <string notr="true">Second line of prescription label</string>
+          </property>
+          <property name="placeholderText">
+           <string notr="true">Line 2 Left</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="l2s2Field">
+          <property name="toolTip">
+           <string notr="true">Second line prescription label</string>
+          </property>
+          <property name="placeholderText">
+           <string notr="true">Line 2 Right</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string notr="true">Database</string>
@@ -173,6 +230,19 @@
       </item>
      </layout>
     </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">

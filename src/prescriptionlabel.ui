@@ -23,7 +23,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QLabel" name="label_10">
+      <widget class="QLabel" name="l1s1Label">
        <property name="font">
         <font>
          <family>Arial</family>
@@ -32,12 +32,12 @@
         </font>
        </property>
        <property name="text">
-        <string notr="true">Evans Pediatric Clinic PC</string>
+        <string notr="true">LINE 1 SECTION 1</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="l1s2Label">
        <property name="font">
         <font>
          <family>Arial</family>
@@ -46,7 +46,7 @@
         </font>
        </property>
        <property name="text">
-        <string notr="true">(816) 233 - 5959</string>
+        <string notr="true">LINE 1 SECTION 2</string>
        </property>
       </widget>
      </item>
@@ -55,7 +55,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="l2s1Label">
        <property name="font">
         <font>
          <family>Arial</family>
@@ -64,12 +64,12 @@
         </font>
        </property>
        <property name="text">
-        <string notr="true">3912 Sherman Avenue</string>
+        <string notr="true">LINE 2 SECTION 1</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="l2s2Label">
        <property name="font">
         <font>
          <family>Arial</family>
@@ -78,7 +78,7 @@
         </font>
        </property>
        <property name="text">
-        <string notr="true">St. Joseph, MO 64506</string>
+        <string notr="true">LINE 2 SECTION 2</string>
        </property>
       </widget>
      </item>

@@ -46,15 +46,15 @@ namespace FORM_STR {
 namespace DEFAULTS {
 	const QDate Date(1970, 1, 31);
 	const QString DateDisplayFormat("M/d/yyyy");
-	const QString Organization("EPC");
-	const QString Domain("evanspediatric.com");
+	const QString Organization("MTrack");
+	const QString Domain("MTrack");
 	const QString Application("MTrack");
 	const QString DBHost("127.0.0.1");
 	const QString DBName("mtrack");
 	const QString DBUser("anon_mtrack");
 	const QString DBPassword("anon_mtrack");
 	const QString ImageDir("/images/");
-	const double AppVersion = 1.1;			// The version of the application
+	const double AppVersion = 1.2;			// The version of the application
 	const double AppMajor = 1.0;			// The version of the application without any decimal places
 	const double ConfigVersion = 1.0;		// Not the version of the software, simply the config version
 	const double ConfigIncompatible = 2.0;	// The next version of the config file that is not compatible
