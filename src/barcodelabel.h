@@ -25,6 +25,7 @@ public:
 
 	void setBarcode(QString);
 	QString getBarcode();
+	bool isValidSID(QString);
 
 	int toID();
 

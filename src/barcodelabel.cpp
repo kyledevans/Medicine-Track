@@ -28,10 +28,19 @@ BarcodeLabel::~BarcodeLabel()
 	delete ui;
 }
 
-void BarcodeLabel::setBarcode(QString new_barcode)
+void BarcodeLabel::setBarcode(QString new_barcode)	// TODO: Some usages of this might not add SID first
 {
 	barcode = "*" + new_barcode.toUpper() + "*";
 	has_barcode = true;
+}
+
+bool BarcodeLabel::isValidSID(QString str)
+{
+	QRegExp reg("^SID");
+	if (str.contains(reg)) {
+		return true;
+	}
+	return false;
 }
 
 QString BarcodeLabel::getBarcode()

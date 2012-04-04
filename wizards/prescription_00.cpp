@@ -74,7 +74,7 @@ WHERE shipments.active = 1
 AND drugs.active = 1
 AND shipments.expiration > CURDATE()
 AND shipments.product_left >= 1
-AND drugs.name LIKE ?;
+AND (drugs.name LIKE ? OR shipments.lot LIKE ?);
 */
 void Prescription_00::initiateSearch()
 {
@@ -86,7 +86,7 @@ void Prescription_00::initiateSearch()
 	model = new QSqlQuery;
 	barcode.setBarcode(ui->medicationField->text());
 
-	if (barcode.toID() == SQL::Undefined_ID) {	// Normal search
+	if (!barcode.isValidSID(ui->medicationField->text())) {	// Normal search
 		model->prepare("SELECT shipments.id, shipments.drug_id, drugs.name, shipments.lot, drugs.form, drugs.strength, "
 					   "drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration "
 					   "FROM shipments "
@@ -95,8 +95,10 @@ void Prescription_00::initiateSearch()
 					   "AND drugs.active = 1 "
 					   "AND shipments.expiration > CURDATE() "
 					   "AND shipments.product_left >= 1 "
-					   "AND drugs.name LIKE ?;");
+					   "AND (drugs.name LIKE ? "
+					   "OR shipments.lot LIKE ?);");
 		model->bindValue(0, SQL::prepWildcards(ui->medicationField->text()));
+		model->bindValue(1, SQL::prepWildcards(ui->medicationField->text()));
 	} else {		// Searching by barcode
 		model->prepare("SELECT shipments.id, shipments.drug_id, drugs.name, shipments.lot, drugs.form, drugs.strength, "
 					   "drugs.unit_size, CONCAT(shipments.product_left, ' ', drugs.dispense_units), shipments.expiration "
