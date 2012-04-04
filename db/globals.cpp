@@ -65,7 +65,7 @@ QString FORM_STR::intToStr(int val)
 
 QString SQL::cleanInput(QString str)
 {
-	QRegExp esc0("\\\\");
+	QRegExp esc0("\\\\");	// This has 4 slashes because it needs to be escaped for C++ and QRegExp
 	QRegExp esc1("\'");
 	QRegExp esc2("\"");
 	QRegExp esc3("%");
@@ -81,7 +81,7 @@ QString SQL::cleanInput(QString str)
 
 QString SQL::cleanNoMatching(QString str)
 {
-	QRegExp esc0("\\\\");
+	QRegExp esc0("\\\\");	// This has 4 slashes because it needs to be escaped for C++ and QRegExp
 	QRegExp esc1("\'");
 	QRegExp esc2("\"");
 	str.replace(esc0, "\\\\");
@@ -108,7 +108,7 @@ QVariant SQL::prepWildcards(QString str)
 	str = SQL::cleanInput(str);
 	str = str.trimmed();
 
-	if (str.isEmpty()) {	// Return a NULL QVariant if it's empty
+	if (str.isEmpty()) {
 		return QVariant(QString("%%"));
 	} else {
 		return QVariant("%" + str + "%");
