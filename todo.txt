@@ -53,6 +53,10 @@ Released under the GPL version 2 only.
 
 3.  Check SQL error and make sure it is correct.
 
+4.  Use higher density barcode.
+
+5.  Use a smaller barcode label.
+
 -----
 
 Questions:
