@@ -6,6 +6,7 @@ Released under the GPL version 2 only.
 
 #include "prescriptionlabel.h"
 #include "ui_prescriptionlabel.h"
+#include "mtsettings.h"
 
 #include <QPrintDialog>
 #include <QPainter>
@@ -66,8 +67,18 @@ void PrescriptionLabel::printLabel(QPrinter *printer)
 	printer->setPageMargins(0.25, 0.0, 0.0, 0.6, QPrinter::Inch);
 	printer->setOrientation(QPrinter::Landscape);
 
+    MTSettings *settings = new MTSettings;
+
+    ui->l1s1Label->setText(settings->print_l0c0);
+    ui->l1s2Label->setText(settings->print_l0c1);
+    ui->l2s1Label->setText(settings->print_l1c0);
+    ui->l2s2Label->setText(settings->print_l1c1);
+
+    delete settings;
+
 	ui->lastLabel->setText(patient->getLast());
 	ui->firstLabel->setText(patient->getFirst());
+    ui->expireLabel->setText(shipment->getExpiration().toString(DEFAULTS::DateDisplayFormat));
 	ui->medicationLabel->setText(medication->getName());
 	ui->manufacturerLabel->setText(medication->getManufacturer());
 	ui->formLabel->setText(FORM_STR::intToStr(medication->getForm()));

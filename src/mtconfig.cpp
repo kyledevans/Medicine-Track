@@ -37,6 +37,10 @@ MTConfig::MTConfig(QWidget *parent) :
 	settings = new MTSettings;
 
 	// Fill in the values read from the settings file
+    ui->l1s1Field->setText(settings->print_l0c0);
+    ui->l1s2Field->setText(settings->print_l0c1);
+    ui->l2s1Field->setText(settings->print_l1c0);
+    ui->l2s2Field->setText(settings->print_l1c1);
 	ui->hostField->setText(settings->db_host);
 	ui->databaseNameField->setText(settings->db_name);
 	ui->usernameField->setText(settings->db_user);
@@ -71,6 +75,10 @@ void MTConfig::commit()
 	MTSettings *settings;
 	settings = new MTSettings;
 
+    settings->print_l0c0 = ui->l1s1Field->text();
+    settings->print_l0c1 = ui->l1s2Field->text();
+    settings->print_l1c0 = ui->l2s1Field->text();
+    settings->print_l1c1 = ui->l2s2Field->text();
 	settings->db_host = ui->hostField->text();
 	settings->db_name = ui->databaseNameField->text();
 	settings->db_user = ui->usernameField->text();

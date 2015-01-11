@@ -14,12 +14,13 @@ FIND_PATH(MYSQL_INCLUDE_DIR mysql.h
 	/usr/local/include/mysql
 	/usr/include/mysql
 	C:\\PROGRA~2\\MySQL\\MYSQLS~1.5\\include
+	C:\\PROGRA~2\\MySQL\\MYSQLS~1.6\\include
 )
 
 SET(MYSQL_NAMES libmysql)
 FIND_LIBRARY(MYSQL_LIBRARY
 	NAMES ${MYSQL_NAMES}
-	PATHS /usr/lib /usr/local/lib C:\\PROGRA~2\\MySQL\\MYSQLS~1.5\\lib
+	PATHS /usr/lib /usr/local/lib C:\\PROGRA~2\\MySQL\\MYSQLS~1.5\\lib C:\\PROGRA~2\\MySQL\\MYSQLS~1.6\\lib
 	PATH_SUFFIXES mysql
 )
 

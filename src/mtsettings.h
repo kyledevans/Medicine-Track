@@ -19,6 +19,10 @@ public:
 	void writeSettings();
 
 	static double configversion;
+    static QString print_l0c0;
+    static QString print_l0c1;
+    static QString print_l1c0;
+    static QString print_l1c1;
 	static QString db_host;
 	static QString db_name;
 	static QString db_user;

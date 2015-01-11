@@ -13,6 +13,10 @@ Released under the GPL version 2 only.
 #include <QDebug>
 
 double MTSettings::configversion;
+QString MTSettings::print_l0c0;
+QString MTSettings::print_l0c1;
+QString MTSettings::print_l1c0;
+QString MTSettings::print_l1c1;
 QString MTSettings::db_host;
 QString MTSettings::db_name;
 QString MTSettings::db_user;
@@ -47,6 +51,10 @@ void MTSettings::writeSettings()
 	if (settings == 0) {
 		return;
 	}
+    settings->setValue("l0c0", print_l0c0);
+    settings->setValue("l0c1", print_l0c1);
+    settings->setValue("l1c0", print_l1c0);
+    settings->setValue("l1c1", print_l1c1);
 	settings->setValue("db host", db_host);
 	settings->setValue("db name", db_name);
 	settings->setValue("db user", db_user);
@@ -72,6 +80,16 @@ bool MTSettings::importSettings()
 			return false;	// Config file is an earlier version and not compatible
 		}
 	}
+
+    // Fetch the print labels
+    val = settings->value("l0c0", "");
+    print_l0c0 = val.toString();
+    val = settings->value("l0c1", "");
+    print_l0c1 = val.toString();
+    val = settings->value("l1c0", "");
+    print_l1c0 = val.toString();
+    val = settings->value("l1c1", "");
+    print_l1c1 = val.toString();
 
 	val = settings->value("db host", -1.0);
 	val.toDouble(&ok);

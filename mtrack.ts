@@ -384,6 +384,14 @@
     </message>
 </context>
 <context>
+    <name>MTConfig</name>
+    <message>
+        <location filename="src/mtconfig.ui" line="20"/>
+        <source>Prescription Label Headers</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Medication_00</name>
     <message>
         <location filename="wizards/medication_00.ui" line="23"/>
