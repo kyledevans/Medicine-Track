@@ -36,28 +36,28 @@
 				<File Id='mtrack.qm' Source='build\src\mtrack.qm' KeyPath='yes'/>
 			</Component>
 			<Component Id='assistant_exe' Guid='*' Feature='MainApplication'>
-				<File Id='assistant.exe' Source='C:\Qt\bin\assistant.exe' KeyPath='yes' Checksum='yes'/>
+				<File Id='assistant.exe' Source='C:\Qt\4.8.6\bin\assistant.exe' KeyPath='yes' Checksum='yes'/>
 			</Component>
 			<Component Id='QtCLucene4_dll' Guid='*' Feature='MainApplication'>
-				<File Id='QtCLucene4.dll' Source='C:\Qt\lib\QtCLucene4.dll' KeyPath='yes'/>
+				<File Id='QtCLucene4.dll' Source='C:\Qt\4.8.6\bin\QtCLucene4.dll' KeyPath='yes'/>
 			</Component>
 			<Component Id='QtCore4_dll' Guid='*' Feature='MainApplication'>
-				<File Id='QtCore4.dll' Source='C:\Qt\lib\QtCore4.dll' KeyPath='yes'/>
+				<File Id='QtCore4.dll' Source='C:\Qt\4.8.6\bin\QtCore4.dll' KeyPath='yes'/>
 			</Component>
 			<Component Id='QtGui4_dll' Guid='*' Feature='MainApplication'>
-				<File Id='QtGui4.dll' Source='C:\Qt\lib\QtGui4.dll' KeyPath='yes'/>
+				<File Id='QtGui4.dll' Source='C:\Qt\4.8.6\bin\QtGui4.dll' KeyPath='yes'/>
 			</Component>
 			<Component Id='QtHelp4_dll' Guid='*' Feature='MainApplication'>
-				<File Id='QtHelp4.dll' Source='C:\Qt\lib\QtHelp4.dll' KeyPath='yes'/>
+				<File Id='QtHelp4.dll' Source='C:\Qt\4.8.6\bin\QtHelp4.dll' KeyPath='yes'/>
 			</Component>
 			<Component Id='QtNetwork4_dll' Guid='*' Feature='MainApplication'>
-				<File Id='QtNetwork4.dll' Source='C:\Qt\lib\QtNetwork4.dll' KeyPath='yes'/>
+				<File Id='QtNetwork4.dll' Source='C:\Qt\4.8.6\bin\QtNetwork4.dll' KeyPath='yes'/>
 			</Component>
 			<Component Id='QtSql4_dll' Guid='*' Feature='MainApplication'>
-				<File Id='QtSql4.dll' Source='C:\Qt\lib\QtSql4.dll' KeyPath='yes'/>
+				<File Id='QtSql4.dll' Source='C:\Qt\4.8.6\bin\QtSql4.dll' KeyPath='yes'/>
 			</Component>
 			<Component Id='libmysql_dll' Guid='*' Feature='MainApplication'>
-				<File Id='libmysql.dll' Source='C:\Program Files (x86)\MySQL\MySQL Server 5.5\lib\libmysql.dll' KeyPath='yes'/>
+				<File Id='libmysql.dll' Source='C:\Program Files (x86)\MySQL\MySQL Server 5.6\lib\libmysql.dll' KeyPath='yes'/>
 			</Component>
 			<Component Id='code_39_license_pdf' Guid='*' Feature='MainApplication'>
 				<File Id='code_39_license.pdf' Source='code_39_license.pdf' KeyPath='yes'/>
