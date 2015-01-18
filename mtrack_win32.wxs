@@ -8,6 +8,7 @@
 			<Directory Id='ProgramFilesFolder'>
 				<Directory Id='MTRACKINSTALLDIR' Name='MTrack'>
 					<Directory Id='ImgsDir' Name='images'/>
+					<Directory Id='SqlDir' Name='sqldrivers'/>
 				</Directory>
 			</Directory>
 			<Directory Id='FontsFolder'/>
@@ -61,6 +62,11 @@
 			</Component>
 			<Component Id='code_39_license_pdf' Guid='*' Feature='MainApplication'>
 				<File Id='code_39_license.pdf' Source='code_39_license.pdf' KeyPath='yes'/>
+			</Component>
+		</DirectoryRef>
+		<DirectoryRef Id='SqlDir'>
+			<Component Id='qsqlmysql4_dll' Guid='*' Feature='MainApplication'>
+				<File Id='qsqlmysql4.dll' Source='C:\Qt\4.8.6\plugins\sqldrivers\qsqlmysql4.dll' KeyPath='yes'/>
 			</Component>
 		</DirectoryRef>
 		<DirectoryRef Id='ImgsDir'>
