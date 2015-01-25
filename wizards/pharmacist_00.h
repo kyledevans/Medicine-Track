@@ -4,7 +4,7 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "pharmacistrecord.h"
+#include "../db/pharmacistrecord.h"
 
 #ifndef PHARMACIST_00_H
 #define PHARMACIST_00_H

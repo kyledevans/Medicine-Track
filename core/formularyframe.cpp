@@ -7,10 +7,10 @@ Released under the GPL version 2 only.
 #include "formularyframe.h"
 #include "ui_formularyframe.h"
 
-#include "alertinterface.h"
-#include "drugdisplay.h"
-#include "medicationwizard.h"
-#include "shipmentwizard.h"
+#include "../db/alertinterface.h"
+#include "../db/drugdisplay.h"
+#include "../wizards/medicationwizard.h"
+#include "../wizards/shipmentwizard.h"
 #include "barcodelabel.h"
 
 #include <QDebug>

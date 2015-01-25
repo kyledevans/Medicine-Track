@@ -8,7 +8,7 @@ Released under the GPL version 2 only.
 
 #include <QSettings>
 
-#include "globals.h"
+#include "../db/globals.h"
 
 #include <QDebug>
 

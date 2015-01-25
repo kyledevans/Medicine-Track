@@ -7,11 +7,11 @@ Released under the GPL version 2 only.
 #include "prescription_00.h"
 #include "ui_prescription_00.h"
 
-#include "alertinterface.h"
-#include "drugrecord.h"
-#include "shipmentrecord.h"
-#include "globals.h"
-#include "barcodelabel.h"
+#include "../db/alertinterface.h"
+#include "../db/drugrecord.h"
+#include "../db/shipmentrecord.h"
+#include "../db/globals.h"
+#include "../core/barcodelabel.h"
 
 #include <QDebug>
 

@@ -9,13 +9,13 @@ Released under the GPL version 2 only.
 #include "prescriptionframe.h"
 #include "ui_prescriptionframe.h"
 
-#include "alertinterface.h"
-#include "prescriptionrecord.h"
-#include "prescriptiondisplay.h"
-#include "drugrecord.h"
-#include "shipmentrecord.h"
+#include "../db/alertinterface.h"
+#include "../db/prescriptionrecord.h"
+#include "../db/prescriptiondisplay.h"
+#include "../db/drugrecord.h"
+#include "../db/shipmentrecord.h"
 #include "prescriptionlabel.h"
-#include "globals.h"
+#include "../db/globals.h"
 
 #include <QDebug>
 

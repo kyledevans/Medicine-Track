@@ -11,7 +11,7 @@ Released under the GPL version 2 only.
 #include <QStringList>
 #include <QByteArray>
 
-#include "alertinterface.h"
+#include "../db/alertinterface.h"
 #include "mtsettings.h"
 #include "formularyframe.h"
 #include "inventoryframe.h"
@@ -19,7 +19,7 @@ Released under the GPL version 2 only.
 #include "pharmacistframe.h"
 #include "prescriberframe.h"
 #include "prescriptionframe.h"
-#include "globals.h"
+#include "../db/globals.h"
 #include "mtconfig.h"
 
 #include <QDebug>

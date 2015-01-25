@@ -4,7 +4,7 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "patientrecord.h"
+#include "../db/patientrecord.h"
 
 #ifndef PATIENT_00_H
 #define PATIENT_00_H

@@ -4,8 +4,8 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "prescriptionrecord.h"
-#include "drugrecord.h"
+#include "../db/prescriptionrecord.h"
+#include "../db/drugrecord.h"
 
 #ifndef PRESCRIPTION_02_H
 #define PRESCRIPTION_02_H

@@ -4,8 +4,8 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "shipmentrecord.h"
-#include "drugrecord.h"
+#include "../db/shipmentrecord.h"
+#include "../db/drugrecord.h"
 
 #ifndef SHIPMENT_00_H
 #define SHIPMENT_00_H

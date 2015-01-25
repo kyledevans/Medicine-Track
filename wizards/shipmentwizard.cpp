@@ -9,7 +9,7 @@ Released under the GPL version 2 only.
 
 #include <QString>
 
-#include "drugrecord.h"
+#include "../db/drugrecord.h"
 
 #include <QDebug>
 

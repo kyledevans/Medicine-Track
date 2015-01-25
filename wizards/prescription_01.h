@@ -6,12 +6,12 @@ Released under the GPL version 2 only.
 
 #include <QList>
 
-#include "patientrecord.h"
-#include "prescriptionrecord.h"
-#include "drugrecord.h"
-#include "shipmentrecord.h"
-#include "prescriberrecord.h"
-#include "pharmacistrecord.h"
+#include "../db/patientrecord.h"
+#include "../db/prescriptionrecord.h"
+#include "../db/drugrecord.h"
+#include "../db/shipmentrecord.h"
+#include "../db/prescriberrecord.h"
+#include "../db/pharmacistrecord.h"
 
 #ifndef PRESCRIPTION_01_H
 #define PRESCRIPTION_01_H

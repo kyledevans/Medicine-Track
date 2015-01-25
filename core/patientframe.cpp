@@ -9,10 +9,10 @@ Released under the GPL version 2 only.
 
 #include <QVariant>
 
-#include "alertinterface.h"
-#include "patientdisplay.h"
-#include "patientwizard.h"
-#include "prescriptionwizard.h"
+#include "../db/alertinterface.h"
+#include "../db/patientdisplay.h"
+#include "../wizards/patientwizard.h"
+#include "../wizards/prescriptionwizard.h"
 #include "prescriptionlabel.h"
 
 #include <QDebug>

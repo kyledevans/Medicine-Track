@@ -7,7 +7,7 @@ Released under the GPL version 2 only.
 #include "medicationwizard.h"
 #include "ui_medicationwizard.h"
 
-#include "globals.h"
+#include "../db/globals.h"
 
 #include <QDebug>
 

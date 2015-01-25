@@ -4,10 +4,10 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "prescriptionrecord.h"
-#include "patientrecord.h"
-#include "drugrecord.h"
-#include "shipmentrecord.h"
+#include "../db/prescriptionrecord.h"
+#include "../db/patientrecord.h"
+#include "../db/drugrecord.h"
+#include "../db/shipmentrecord.h"
 
 #ifndef PRESCRIPTIONWIZARD_H
 #define PRESCRIPTIONWIZARD_H

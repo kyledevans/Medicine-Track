@@ -4,7 +4,7 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "drugrecord.h"
+#include "../db/drugrecord.h"
 
 #ifndef MEDICATION_00_H
 #define MEDICATION_00_H

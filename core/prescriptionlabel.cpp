@@ -11,7 +11,7 @@ Released under the GPL version 2 only.
 #include <QPrintDialog>
 #include <QPainter>
 
-#include "globals.h"
+#include "../db/globals.h"
 
 #include <QDebug>
 

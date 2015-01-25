@@ -9,7 +9,7 @@ Released under the GPL version 2 only.
 
 #include <QIntValidator>
 
-#include "globals.h"
+#include "../db/globals.h"
 
 Shipment_00::Shipment_00(QWidget *parent) :
 	QWizardPage(parent),

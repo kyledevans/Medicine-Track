@@ -7,9 +7,9 @@ Released under the GPL version 2 only.
 #include <QBrush>
 #include <QPixmap>
 
-#include "patientrecord.h"
-#include "prescriptionrecord.h"
-#include "globals.h"
+#include "../db/patientrecord.h"
+#include "../db/prescriptionrecord.h"
+#include "../db/globals.h"
 
 #ifndef PATIENTFRAME_H
 #define PATIENTFRAME_H

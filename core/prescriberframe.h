@@ -4,8 +4,8 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
-#include "prescriberrecord.h"
-#include "globals.h"
+#include "../db/prescriberrecord.h"
+#include "../db/globals.h"
 
 #ifndef PRESCRIBERFRAME_H
 #define PRESCRIBERFRAME_H

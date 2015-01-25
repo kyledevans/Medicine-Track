@@ -6,8 +6,8 @@ Released under the GPL version 2 only.
 
 #include <QList>
 
-#include "patientrecord.h"
-#include "prescriptionrecord.h"
+#include "../db/patientrecord.h"
+#include "../db/prescriptionrecord.h"
 
 #ifndef PRESCRIPTION_00_H
 #define PRESCRIPTION_00_H

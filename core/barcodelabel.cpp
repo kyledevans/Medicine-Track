@@ -11,7 +11,7 @@ Released under the GPL version 2 only.
 #include <QPainter>
 #include <QSizeF>
 
-#include "globals.h"
+#include "../db/globals.h"
 
 #include <QDebug>
 

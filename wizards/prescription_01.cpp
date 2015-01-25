@@ -9,8 +9,8 @@ Released under the GPL version 2 only.
 
 #include <QIntValidator>
 
-#include "alertinterface.h"
-#include "globals.h"
+#include "../db/alertinterface.h"
+#include "../db/globals.h"
 
 #include <QDebug>
 

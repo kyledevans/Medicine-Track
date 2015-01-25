@@ -10,7 +10,7 @@ Released under the GPL version 2 only.
 #include <QVariant>
 #include <QDoubleValidator>
 
-#include "globals.h"
+#include "../db/globals.h"
 
 Medication_00::Medication_00(QWidget *parent) :
 	QWizardPage(parent),
