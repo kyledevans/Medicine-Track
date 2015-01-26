@@ -14,8 +14,6 @@ PatientGroupBox::PatientGroupBox(QWidget *parent) :
 	ui(new Ui::PatientGroupBox)
 {
 	ui->setupUi(this);
-
-	setStrings();
 }
 
 void PatientGroupBox::setId(int new_id)
@@ -42,16 +40,6 @@ PatientGroupBox::~PatientGroupBox()
 	delete ui;
 }
 
-void PatientGroupBox::setStrings()
-{
-	// Set UI strings
-	ui->allscriptsTitle->setText(ui->allscriptsTitle->text() + ":");
-	ui->lastTitle->setText(ui->lastTitle->text() + ":");
-	ui->firstTitle->setText(ui->firstTitle->text() + ":");
-	ui->dobTitle->setText(ui->dobTitle->text() + ":");
-	ui->activeTitle->setText(ui->activeTitle->text() + ":");
-}
-
 void PatientGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -59,7 +47,6 @@ void PatientGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
-		setStrings();
 		break;
 	default:
 		break;

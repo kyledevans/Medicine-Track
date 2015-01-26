@@ -22,17 +22,17 @@
      <item>
       <widget class="QLabel" name="allscriptsTitle">
        <property name="toolTip">
-        <string comment="ALLSCRIPTS ID DISPLAY TOOLTIP">ALLSCRIPTS ID</string>
+        <string notr="true">MR Number</string>
        </property>
        <property name="text">
-        <string comment="ALLSCRIPTS ID DISPLAY LABEL">ALLSCRIPTS ID</string>
+        <string notr="true">MR Number:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="allscriptsLabel">
        <property name="toolTip">
-        <string comment="ALLSCRIPTS ID DISPLAY TOOLTIP">ALLSCRIPTS ID</string>
+        <string notr="true">MR Number</string>
        </property>
        <property name="text">
         <string notr="true">PH ALLSCRIPTS ID</string>
@@ -62,17 +62,17 @@
      <item>
       <widget class="QLabel" name="lastTitle">
        <property name="toolTip">
-        <string comment="PATIENT LAST DISPLAY TOOLTIP">PATIENT LAST</string>
+        <string notr="true">Last name</string>
        </property>
        <property name="text">
-        <string comment="PATIENT LAST DISPLAY LABEL">PATIENT LAST</string>
+        <string notr="true">Last name:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="lastLabel">
        <property name="toolTip">
-        <string comment="PATIENT LAST DISPLAY TOOLTIP">PATIENT LAST</string>
+        <string notr="true">Last name</string>
        </property>
        <property name="text">
         <string notr="true">PH LAST</string>
@@ -102,17 +102,17 @@
      <item>
       <widget class="QLabel" name="firstTitle">
        <property name="toolTip">
-        <string comment="PATIENT FIRST DISPLAY TOOLTIP">PATIENT FIRST</string>
+        <string notr="true">First name</string>
        </property>
        <property name="text">
-        <string comment="PATIENT FIRST DISPLAY LABEL">PATIENT FIRST</string>
+        <string notr="true">First name:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="firstLabel">
        <property name="toolTip">
-        <string comment="PATIENT FIRST DISPLAY TOOLTIP">PATIENT FIRST</string>
+        <string notr="true">First name</string>
        </property>
        <property name="text">
         <string notr="true">PH FIRST</string>
@@ -142,17 +142,17 @@
      <item>
       <widget class="QLabel" name="dobTitle">
        <property name="toolTip">
-        <string comment="DOB DISPLAY TOOLTIP">DOB</string>
+        <string notr="true">Date of birth</string>
        </property>
        <property name="text">
-        <string comment="DOB DISPLAY LABEL">DOB</string>
+        <string notr="true">DOB:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="dobLabel">
        <property name="toolTip">
-        <string comment="DOB DISPLAY TOOLTIP">DOB</string>
+        <string notr="true">Date of birth</string>
        </property>
        <property name="text">
         <string notr="true">PH DOB</string>
@@ -182,20 +182,20 @@
      <item>
       <widget class="QLabel" name="activeTitle">
        <property name="toolTip">
-        <string comment="PATIENT ACTIVE DISPLAY TOOLTIP">PATIENT ACTIVE</string>
+        <string notr="true">Active or inactive status</string>
        </property>
        <property name="text">
-        <string comment="PATIENT ACTIVE DISPLAY LABEL">PATIENT ACTIVE</string>
+        <string notr="true">Active:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="activeLabel">
        <property name="toolTip">
-        <string comment="PATIENT ACTIVE DISPLAY TOOLTIP">PATIENT ACTIVE</string>
+        <string notr="true">Active or inactive status</string>
        </property>
        <property name="text">
-        <string notr="true" comment="PATIENT ACTIVE DISPLAY LABEL">PH ACTIVE</string>
+        <string notr="true">PH ACTIVE</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>

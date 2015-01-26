@@ -1,0 +1,6 @@
+mtrack.qbs.user
+mtrack.exe
+mtrack_win32.msi
+mtrack_win32.wixobj
+mtrack_win32.wixpdb
+vcredist_x86.exe

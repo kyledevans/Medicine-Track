@@ -15,8 +15,6 @@ PrescriptionGroupBox::PrescriptionGroupBox(QWidget *parent) :
 	ui(new Ui::PrescriptionGroupBox)
 {
 	ui->setupUi(this);
-
-	setStrings();
 }
 
 PrescriptionGroupBox::~PrescriptionGroupBox()
@@ -74,16 +72,6 @@ int PrescriptionGroupBox::getPharmacist_id()
 	return prescription.getPharmacist_id();
 }
 
-void PrescriptionGroupBox::setStrings()
-{
-	// Set UI strings
-	ui->amountTitle->setText(ui->amountTitle->text() + ":");
-	ui->writtenTitle->setText(ui->writtenTitle->text() + ":");
-	ui->filledTitle->setText(ui->filledTitle->text() + ":");
-	ui->instructionsTitle->setText(ui->instructionsTitle->text() + ":");
-	ui->validTitle->setText(ui->validTitle->text() + ":");
-}
-
 void PrescriptionGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -91,7 +79,6 @@ void PrescriptionGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
-		setStrings();
 		break;
 	default:
 		break;

@@ -14,8 +14,6 @@ PharmacistGroupBox::PharmacistGroupBox(QWidget *parent) :
 	ui(new Ui::PharmacistGroupBox)
 {
 	ui->setupUi(this);
-
-	setStrings();
 }
 
 PharmacistGroupBox::~PharmacistGroupBox()
@@ -41,15 +39,6 @@ void PharmacistGroupBox::setId(int new_id)
 	}
 }
 
-void PharmacistGroupBox::setStrings()
-{
-	// Set UI strings
-	ui->lastTitle->setText(ui->lastTitle->text() + ":");
-	ui->firstTitle->setText(ui->firstTitle->text() + ":");
-	ui->initialsTitle->setText(ui->initialsTitle->text() + ":");
-	ui->activeTitle->setText(ui->activeTitle->text() + ":");
-}
-
 void PharmacistGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -57,7 +46,6 @@ void PharmacistGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
-		setStrings();
 		break;
 	default:
 		break;

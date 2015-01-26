@@ -19,17 +19,17 @@
      <item>
       <widget class="QLabel" name="lastTitle">
        <property name="toolTip">
-        <string comment="PHARMACIST LAST DISPLAY TOOLTIP">PHARMACIST LAST</string>
+        <string notr="true">Last name</string>
        </property>
        <property name="text">
-        <string comment="PHARMACIST LAST DISPLAY LABEL">PHARMACIST LAST</string>
+        <string notr="true">Last name:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="lastLabel">
        <property name="toolTip">
-        <string comment="PHARMACIST LAST DISPLAY TOOLTIP">PHARMACIST LAST</string>
+        <string notr="true">Last name</string>
        </property>
        <property name="text">
         <string notr="true">PH LAST</string>
@@ -59,17 +59,17 @@
      <item>
       <widget class="QLabel" name="firstTitle">
        <property name="toolTip">
-        <string comment="PHARMACIST FIRST DISPLAY TOOLTIP">PHARMACIST FIRST</string>
+        <string notr="true">First name</string>
        </property>
        <property name="text">
-        <string comment="PHARMACIST FIRST DISPLAY LABEL">PHARMACIST FIRST</string>
+        <string notr="true">First name:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="firstLabel">
        <property name="toolTip">
-        <string comment="PHARMACIST FIRST DISPLAY TOOLTIP">PHARMACIST FIRST</string>
+        <string notr="true">First name</string>
        </property>
        <property name="text">
         <string notr="true">PH FIRST</string>
@@ -99,17 +99,17 @@
      <item>
       <widget class="QLabel" name="initialsTitle">
        <property name="toolTip">
-        <string comment="INITIALS DISPLAY TOOLTIP">INITIALS</string>
+        <string notr="true">Initials</string>
        </property>
        <property name="text">
-        <string comment="INITIALS DISPLAY LABEL">INITIALS</string>
+        <string notr="true">Initials:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="initialsLabel">
        <property name="toolTip">
-        <string comment="INITIALS DISPLAY TOOLTIP">INITIALS</string>
+        <string notr="true">Initials</string>
        </property>
        <property name="text">
         <string notr="true">PH INITIALS</string>
@@ -139,17 +139,17 @@
      <item>
       <widget class="QLabel" name="activeTitle">
        <property name="toolTip">
-        <string comment="PHARMACIST ACTIVE DISPLAY TOOLTIP">PHARMACIST ACTIVE</string>
+        <string notr="true">Active or inactive status</string>
        </property>
        <property name="text">
-        <string comment="PHARMACIST ACTIVE DISPLAY LABEL">PHARMACIST ACTIVE</string>
+        <string notr="true">Status:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="activeLabel">
        <property name="toolTip">
-        <string comment="PHARMACIST ACTIVE DISPLAY TOOLTIP">PHARMACIST ACTIVE</string>
+        <string notr="true">Active or inactive status</string>
        </property>
        <property name="text">
         <string notr="true">PH ACTIVE</string>

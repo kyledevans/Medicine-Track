@@ -23,7 +23,6 @@ public:
 	~ShipmentGroupBox();
 
 	void changeEvent(QEvent *);
-	void setStrings();
 
 	void setId(int);
 	int getId();

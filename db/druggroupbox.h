@@ -23,8 +23,6 @@ public:
 	~DrugGroupBox();
 
 	void changeEvent(QEvent *);
-	void setStrings();
-
 	void setId(int);
 
 private:

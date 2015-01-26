@@ -28,10 +28,10 @@
         <item>
          <widget class="QLabel" name="medicationNameLabel">
           <property name="toolTip">
-           <string comment="MEDICATION SEARCH TOOLTIP">MEDICATION</string>
+           <string notr="true">Name of the medication</string>
           </property>
           <property name="text">
-           <string comment="MEDICATION SEARCH LABEL">MEDICATION</string>
+           <string notr="true">Medication</string>
           </property>
          </widget>
         </item>
@@ -50,7 +50,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="MEDICATION SEARCH TOOLTIP">MEDICATION</string>
+           <string notr="true">Name of the medication</string>
           </property>
          </widget>
         </item>
@@ -73,10 +73,10 @@
         <item>
          <widget class="QLabel" name="lotLabel">
           <property name="toolTip">
-           <string comment="LOT SEARCH TOOLTIP">LOT</string>
+           <string notr="true">Lot number</string>
           </property>
           <property name="text">
-           <string comment="LOT SEARCH LABEL">LOT</string>
+           <string notr="true">Lot #</string>
           </property>
          </widget>
         </item>
@@ -95,7 +95,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="LOT SEARCH TOOLTIP">LOT</string>
+           <string notr="true">Lot number</string>
           </property>
          </widget>
         </item>
@@ -118,17 +118,17 @@
         <item>
          <widget class="QLabel" name="filledLabel">
           <property name="toolTip">
-           <string comment="FILLED SEARCH TOOLTIP">FILLED</string>
+           <string notr="true">Filled</string>
           </property>
           <property name="text">
-           <string comment="FILLED SEARCH LABEL">FILLED</string>
+           <string notr="true">Filled</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QDateEdit" name="filledField">
           <property name="toolTip">
-           <string comment="FILLED SEARCH TOOLTIP">FILLED</string>
+           <string notr="true">Filled</string>
           </property>
           <property name="dateTime">
            <datetime>
@@ -198,10 +198,10 @@
         <item>
          <widget class="QLabel" name="lastLabel">
           <property name="toolTip">
-           <string comment="PATIENT LAST SEARCH TOOLTIP">PATIENT LAST</string>
+           <string notr="true">Last name</string>
           </property>
           <property name="text">
-           <string comment="PATIENT LAST SEARCH LABEL">PATIENT LAST</string>
+           <string notr="true">Last name</string>
           </property>
          </widget>
         </item>
@@ -220,7 +220,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="PATIENT LAST SEARCH TOOLTIP">PATIENT LAST</string>
+           <string notr="true">Last name</string>
           </property>
          </widget>
         </item>
@@ -243,10 +243,10 @@
         <item>
          <widget class="QLabel" name="firstLabel">
           <property name="toolTip">
-           <string comment="PATIENT FIRST SEARCH TOOLTIP">PATIENT FIRST</string>
+           <string notr="true">First name</string>
           </property>
           <property name="text">
-           <string comment="PATIENT FIRST SEARCH LABEL">PATIENT FIRST</string>
+           <string notr="true">First name</string>
           </property>
          </widget>
         </item>
@@ -265,7 +265,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="PATIENT FIRST SEARCH TOOLTIP">PATIENT FIRST</string>
+           <string notr="true">First name</string>
           </property>
          </widget>
         </item>
@@ -288,17 +288,17 @@
         <item>
          <widget class="QLabel" name="dobLabel">
           <property name="toolTip">
-           <string comment="DOB SEARCH TOOLTIP">DOB</string>
+           <string notr="true">Date of birth</string>
           </property>
           <property name="text">
-           <string comment="DOB SEARCH LABEL">DOB</string>
+           <string notr="true">DOB</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QDateEdit" name="dobField">
           <property name="toolTip">
-           <string comment="DOB SEARCH TOOLTIP">DOB</string>
+           <string notr="true">Date of birth</string>
           </property>
           <property name="dateTime">
            <datetime>
@@ -448,98 +448,98 @@
      </column>
      <column>
       <property name="text">
-       <string comment="ALLSCRIPTS ID DISPLAY LABEL">ALLSCRIPTS ID</string>
+       <string notr="true">MR Number</string>
       </property>
       <property name="toolTip">
-       <string comment="ALLSCRIPTS ID DISPLAY TOOLTIP">ALLSCRIPTS ID</string>
+       <string notr="true">MR Number</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="PATIENT LAST DISPLAY LABEL">PATIENT LAST</string>
+       <string notr="true">Last name</string>
       </property>
       <property name="toolTip">
-       <string comment="PATIENT LAST DISPLAY TOOLTIP">PATIENT LAST</string>
+       <string notr="true">Last name</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="PATIENT FIRST DISPLAY LABEL">PATIENT FIRST</string>
+       <string notr="true">First name</string>
       </property>
       <property name="toolTip">
-       <string comment="PATIENT FIRST DISPLAY TOOLTIP">PATIENT FIRST</string>
+       <string notr="true">First name</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="DOB DISPLAY LABEL">DOB</string>
+       <string notr="true">DOB</string>
       </property>
       <property name="toolTip">
-       <string comment="DOB DISPLAY TOOLTIP">DOB</string>
+       <string notr="true">Date of birth</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="MEDICATION DISPLAY LABEL">MEDICATION</string>
+       <string notr="true">Medication</string>
       </property>
       <property name="toolTip">
-       <string comment="MEDICATION DISPLAY TOOLTIP">MEDICATION</string>
+       <string notr="true">Name of the medication</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="FORM DISPLAY LABEL">FORM</string>
+       <string notr="true">Form</string>
       </property>
       <property name="toolTip">
-       <string comment="FORM DISPLAY TOOLTIP">FORM</string>
+       <string notr="true">Medication form</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="STRENGTH DISPLAY LABEL">STRENGTH</string>
+       <string notr="true">Strength</string>
       </property>
       <property name="toolTip">
-       <string comment="STRENGTH DISPLAY TOOLTIP">STRENGTH</string>
+       <string notr="true">Strength</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="PRESCRIPTION AMOUNT DISPLAY LABEL">PRESCRIPTION AMOUNT</string>
+       <string notr="true">Amount</string>
       </property>
       <property name="toolTip">
-       <string comment="PRESCRIPTION AMOUNT DISPLAY TOOLTIP">PRESCRIPTION AMOUNT</string>
+       <string notr="true">Amount</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="WRITTEN DISPLAY LABEL">WRITTEN</string>
+       <string notr="true">Written</string>
       </property>
       <property name="toolTip">
-       <string comment="WRITTEN DISPLAY TOOLTIP">WRITTEN</string>
+       <string notr="true">Written</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="FILLED DISPLAY LABEL">FILLED</string>
+       <string notr="true">Filled</string>
       </property>
       <property name="toolTip">
-       <string comment="FILLED DISPLAY TOOLTIP">FILLED</string>
+       <string notr="true">Filled</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="LOT DISPLAY LABEL">LOT</string>
+       <string notr="true">Lot #</string>
       </property>
       <property name="toolTip">
-       <string comment="LOT DISPLAY TOOLTIP">LOT</string>
+       <string notr="true">Lot number</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="PRESCRIPTION ACTIVE DISPLAY LABEL">PRESCRIPTION ACTIVE</string>
+       <string notr="true">Status</string>
       </property>
       <property name="toolTip">
-       <string comment="PRESCRIPTION ACTIVE DISPLAY TOOLTIP">PRESCRIPTION ACTIVE</string>
+       <string notr="true">Valid or invalid status</string>
       </property>
      </column>
     </widget>

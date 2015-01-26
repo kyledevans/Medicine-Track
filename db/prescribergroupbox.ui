@@ -19,17 +19,17 @@
      <item>
       <widget class="QLabel" name="lastTitle">
        <property name="toolTip">
-        <string comment="PRESCRIBER LAST DISPLAY TOOLTIP">PRESCRIBER LAST</string>
+        <string notr="true">Last name</string>
        </property>
        <property name="text">
-        <string comment="PRESCRIBER LAST DISPLAY LABEL">PRESCRIBER LAST</string>
+        <string notr="true">Last name:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="lastLabel">
        <property name="toolTip">
-        <string comment="PRESCRIBER LAST DISPLAY TOOLTIP">PRESCRIBER LAST</string>
+        <string notr="true">Last name</string>
        </property>
        <property name="text">
         <string notr="true">PH LAST</string>
@@ -59,17 +59,17 @@
      <item>
       <widget class="QLabel" name="firstTitle">
        <property name="toolTip">
-        <string comment="PRESCRIBER FIRST DISPLAY TOOLTIP">PRESCRIBER FIRST</string>
+        <string notr="true">First name</string>
        </property>
        <property name="text">
-        <string comment="PRESCRIBER FIRST DISPLAY LABEL">PRESCRIBER FIRST</string>
+        <string notr="true">First name:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="firstLabel">
        <property name="toolTip">
-        <string comment="PRESCRIBER FIRST DISPLAY TOOLTIP">PRESCRIBER FIRST</string>
+        <string notr="true">First name</string>
        </property>
        <property name="text">
         <string notr="true">PH FIRST</string>
@@ -99,17 +99,17 @@
      <item>
       <widget class="QLabel" name="fullTitle">
        <property name="toolTip">
-        <string comment="FULL NAME DISPLAY TOOLTIP">FULL NAME</string>
+        <string notr="true">Full name</string>
        </property>
        <property name="text">
-        <string comment="FULL NAME DISPLAY LABEL">FULL NAME</string>
+        <string notr="true">Full name:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="fullLabel">
        <property name="toolTip">
-        <string comment="FULL NAME DISPLAY TOOLTIP">FULL NAME</string>
+        <string notr="true">Full name</string>
        </property>
        <property name="text">
         <string notr="true">PH FULL NAME</string>
@@ -139,17 +139,17 @@
      <item>
       <widget class="QLabel" name="activeTitle">
        <property name="toolTip">
-        <string comment="PRESCRIBER ACTIVE DISPLAY TOOLTIP">PRESCRIBER ACTIVE</string>
+        <string notr="true">Active or inactive status</string>
        </property>
        <property name="text">
-        <string comment="PRESCRIBER ACTIVE DISPLAY LABEL">PRESCRIBER ACTIVE</string>
+        <string notr="true">Status:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="activeLabel">
        <property name="toolTip">
-        <string comment="PRESCRIBER ACTIVE DISPLAY TOOLTIP">PRESCRIBER ACTIVE</string>
+        <string notr="true">Active or inactive status</string>
        </property>
        <property name="text">
         <string notr="true">PH ACTIVE</string>

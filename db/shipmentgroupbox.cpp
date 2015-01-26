@@ -15,8 +15,6 @@ ShipmentGroupBox::ShipmentGroupBox(QWidget *parent) :
 	ui(new Ui::ShipmentGroupBox)
 {
 	ui->setupUi(this);
-
-	setStrings();
 }
 
 ShipmentGroupBox::~ShipmentGroupBox()
@@ -65,16 +63,6 @@ int ShipmentGroupBox::getDrug_id()
 	return shipment.getDrug_id();
 }
 
-void ShipmentGroupBox::setStrings()
-{
-	// Set UI strings for Shipment group
-	ui->expirationTitle->setText(ui->expirationTitle->text() + ":");
-	ui->lotTitle->setText(ui->lotTitle->text() + ":");
-	ui->countTitle->setText(ui->countTitle->text() + ":");
-	ui->leftTitle->setText(ui->leftTitle->text() + ":");
-	ui->activeTitle->setText(ui->activeTitle->text() + ":");
-}
-
 void ShipmentGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -82,7 +70,6 @@ void ShipmentGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
-		setStrings();
 		break;
 	default:
 		break;

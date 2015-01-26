@@ -19,17 +19,17 @@
      <item>
       <widget class="QLabel" name="amountTitle">
        <property name="toolTip">
-        <string comment="PRESCRIPTION AMOUNT DISPLAY TOOLTIP">PRESCRIPTION AMOUNT</string>
+        <string notr="true">Amount</string>
        </property>
        <property name="text">
-        <string comment="PRESCRIPTION AMOUNT DISPLAY LABEL">PRESCRIPTION AMOUNT</string>
+        <string notr="true">Amount:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="amountLabel">
        <property name="toolTip">
-        <string comment="PRESCRIPTION AMOUNT DISPLAY TOOLTIP">PRESCRIPTION AMOUNT</string>
+        <string notr="true">Amount</string>
        </property>
        <property name="text">
         <string notr="true">PH AMOUNT</string>
@@ -59,17 +59,17 @@
      <item>
       <widget class="QLabel" name="writtenTitle">
        <property name="toolTip">
-        <string comment="WRITTEN DISPLAY TOOLTIP">WRITTEN</string>
+        <string notr="true">Written</string>
        </property>
        <property name="text">
-        <string comment="WRITTEN DISPLAY LABEL">WRITTEN</string>
+        <string notr="true">Written:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="writtenLabel">
        <property name="toolTip">
-        <string comment="WRITTEN DISPLAY TOOLTIP">WRITTEN</string>
+        <string notr="true">Written</string>
        </property>
        <property name="text">
         <string notr="true">PH WRITTEN</string>
@@ -99,17 +99,17 @@
      <item>
       <widget class="QLabel" name="filledTitle">
        <property name="toolTip">
-        <string comment="FILLED DISPLAY TOOLTIP">FILLED</string>
+        <string notr="true">Filled</string>
        </property>
        <property name="text">
-        <string comment="FILLED DISPLAY LABEL">FILLED</string>
+        <string notr="true">Filled:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="filledLabel">
        <property name="toolTip">
-        <string comment="FILLED DISPLAY TOOLTIP">FILLED</string>
+        <string notr="true">Filled</string>
        </property>
        <property name="text">
         <string notr="true">PH FILLED</string>
@@ -139,10 +139,10 @@
      <item>
       <widget class="QLabel" name="instructionsTitle">
        <property name="toolTip">
-        <string comment="INSTRUCTIONS DISPLAY TOOLTIP">INSTRUCTIONS</string>
+        <string notr="true">Prescription instructions</string>
        </property>
        <property name="text">
-        <string comment="INSTRUCTIONS DISPLAY LABEL">INSTRUCTIONS</string>
+        <string notr="true">Instructions:</string>
        </property>
       </widget>
      </item>
@@ -155,7 +155,7 @@
         </sizepolicy>
        </property>
        <property name="toolTip">
-        <string comment="INSTRUCTIONS DISPLAY TOOLTIP">INSTRUCTIONS</string>
+        <string notr="true">Prescription instructions</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::Box</enum>
@@ -178,17 +178,17 @@
      <item>
       <widget class="QLabel" name="validTitle">
        <property name="toolTip">
-        <string comment="PRESCRIPTION ACTIVE DISPLAY TOOLTIP">PRESCRIPTION ACTIVE</string>
+        <string notr="true">Active or inactive status</string>
        </property>
        <property name="text">
-        <string comment="PRESCRIPTION ACTIVE DISPLAY LABEL">PRESCRIPTION ACTIVE</string>
+        <string notr="true">Status:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="validLabel">
        <property name="toolTip">
-        <string comment="PRESCRIPTION ACTIVE DISPLAY TOOLTIP">PRESCRIPTION ACTIVE</string>
+        <string notr="true">Active or inactive status</string>
        </property>
        <property name="text">
         <string notr="true">PH VALID</string>

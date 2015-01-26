@@ -28,10 +28,10 @@
         <item>
          <widget class="QLabel" name="nameLabel">
           <property name="toolTip">
-           <string comment="MEDICATION/BARCODE SEARCH TOOLTIP">MEDICATION/BARCODE</string>
+           <string notr="true">Medication / Barcode</string>
           </property>
           <property name="text">
-           <string comment="MEDICATION/BARCODE SEARCH LABEL">MEDICATION/BARCODE</string>
+           <string notr="true">Medication / Barcode</string>
           </property>
          </widget>
         </item>
@@ -50,7 +50,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="MEDICATION/BARCODE SEARCH TOOLTIP">MEDICATION/BARCODE</string>
+           <string notr="true">Medication / Barcode</string>
           </property>
          </widget>
         </item>
@@ -73,10 +73,10 @@
         <item>
          <widget class="QLabel" name="lotLabel">
           <property name="toolTip">
-           <string comment="LOT SEARCH TOOLTIP">LOT</string>
+           <string notr="true">Lot number</string>
           </property>
           <property name="text">
-           <string comment="LOT SEARCH LABEL">LOT</string>
+           <string notr="true">Lot #</string>
           </property>
          </widget>
         </item>
@@ -95,7 +95,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="LOT SEARCH TOOLTIP">LOT</string>
+           <string notr="true">Lot number</string>
           </property>
          </widget>
         </item>
@@ -284,82 +284,82 @@
      </column>
      <column>
       <property name="text">
-       <string comment="MEDICATION DISPLAY LABEL">MEDICATION</string>
+       <string notr="true">Medication</string>
       </property>
       <property name="toolTip">
-       <string comment="MEDICATION DISPLAY TOOLTIP">MEDICATION</string>
+       <string notr="true">Name of the medication</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="FORM DISPLAY LABEL">FORM</string>
+       <string notr="true">Form</string>
       </property>
       <property name="toolTip">
-       <string comment="FORM DISPLAY TOOLTIP">FORM</string>
+       <string notr="true">Medication form</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="STRENGTH DISPLAY LABEL">STRENGTH</string>
+       <string notr="true">Strength</string>
       </property>
       <property name="toolTip">
-       <string comment="STRENGTH DISPLAY TOOLTIP">STRENGTH</string>
+       <string notr="true">Strength</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="UNIT SIZE DISPLAY LABEL">UNIT SIZE</string>
+       <string notr="true">Unit size</string>
       </property>
       <property name="toolTip">
-       <string comment="UNIT SIZE DISPLAY TOOLTIP">UNIT SIZE</string>
+       <string notr="true">Unit size (optional)</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="EXPIRATION DISPLAY LABEL">EXPIRATION</string>
+       <string notr="true">Expiration</string>
       </property>
       <property name="toolTip">
-       <string comment="EXPIRATION DISPLAY TOOLTIP">EXPIRATION</string>
+       <string notr="true">Expiration date</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="LOT DISPLAY LABEL">LOT NUMBER</string>
+       <string notr="true">Lot #</string>
       </property>
       <property name="toolTip">
-       <string comment="LOT DISPLAY TOOLTIP">LOT</string>
+       <string notr="true">Lot number</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="PRODUCT COUNT DISPLAY LABEL">PRODUCT COUNT</string>
+       <string notr="true">Inventory received</string>
       </property>
       <property name="toolTip">
-       <string comment="PRODUCT COUNT DISPLAY TOOLTIP">PRODUCT COUNT</string>
+       <string notr="true">Inventory received</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="PRODUCT LEFT DISPLAY LABEL">PRODUCT LEFT</string>
+       <string notr="true">Inventory left</string>
       </property>
       <property name="toolTip">
-       <string comment="PRODUCT LEFT DISPLAY TOOLTIP">PRODUCT LEFT</string>
+       <string notr="true">Inventory left</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="WRITE OFF DISPLAY LABEL">WRITE OFF</string>
+       <string notr="true">Write off</string>
       </property>
       <property name="toolTip">
-       <string comment="WRITE OFF DISPLAY TOOLTIP">WRITE OFF</string>
+       <string notr="true">Write off</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="SHIPMENT ACTIVE DISPLAY LABEL">SHIPMENT ACTIVE</string>
+       <string notr="true">Status</string>
       </property>
       <property name="toolTip">
-       <string comment="SHIPMENT ACTIVE DISPLAY TOOLTIP">SHIPMENT ACTIVE</string>
+       <string notr="true">Active or inactive status</string>
       </property>
      </column>
     </widget>

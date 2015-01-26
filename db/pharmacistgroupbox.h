@@ -23,7 +23,6 @@ public:
 	~PharmacistGroupBox();
 
 	void changeEvent(QEvent *);
-	void setStrings();
 
 	void setId(int);
 

@@ -28,10 +28,10 @@
         <item>
          <widget class="QLabel" name="nameLabel">
           <property name="toolTip">
-           <string comment="MEDICATION/BARCODE SEARCH TOOLTIP">MEDICATION/BARCODE</string>
+           <string notr="true">Medication / Barcode</string>
           </property>
           <property name="text">
-           <string comment="MEDICATION/BARCODE SEARCH LABEL">MEDICATION/BARCODE</string>
+           <string notr="true">Medication / Barcode</string>
           </property>
          </widget>
         </item>
@@ -50,7 +50,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="MEDICATION/BARCODE SEARCH TOOLTIP">MEDICATION/BARCODE</string>
+           <string notr="true">Medication / Barcode</string>
           </property>
           <property name="text">
            <string notr="true"/>
@@ -250,58 +250,58 @@
      </column>
      <column>
       <property name="text">
-       <string comment="MEDICATION DISPLAY LABEL">MEDICATION</string>
+       <string notr="true">Medication</string>
       </property>
       <property name="toolTip">
-       <string comment="MEDICATION DISPLAY TOOLTIP">MEDICATION</string>
+       <string notr="true">Name of the medication</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="NDC DISPLAY LABEL">NDC</string>
+       <string notr="true">NDC</string>
       </property>
       <property name="toolTip">
-       <string comment="NDC DISPLAY TOOLTIP">NDC</string>
+       <string notr="true">National Drug Code</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="FORM DISPLAY LABEL">FORM</string>
+       <string notr="true">Form</string>
       </property>
       <property name="toolTip">
-       <string comment="FORM DISPLAY TOOLTIP">FORM</string>
+       <string notr="true">Medication form</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="STRENGTH DISPLAY LABEL">STRENGTH</string>
+       <string notr="true">Strength</string>
       </property>
       <property name="toolTip">
-       <string comment="STRENGTH DISPLAY TOOLTIP">STRENGTH</string>
+       <string notr="true">Strength</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="UNIT SIZE DISPLAY LABEL">UNIT SIZE</string>
+       <string notr="true">Unit size</string>
       </property>
       <property name="toolTip">
-       <string comment="UNIT SIZE DISPLAY TOOLTIP">UNIT SIZE</string>
+       <string comment="UNIT SIZE DISPLAY TOOLTIP">Unit size (optional)</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="PRODUCT LEFT DISPLAY LABEL">PRODUCT LEFT</string>
+       <string notr="true">Inventory left</string>
       </property>
       <property name="toolTip">
-       <string comment="PRODUCT LEFT DISPLAY TOOLTIP">PRODUCT LEFT</string>
+       <string notr="true">Inventory left</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="MED ACTIVE DISPLAY LABEL">MED ACTIVE</string>
+       <string notr="true">Status</string>
       </property>
       <property name="toolTip">
-       <string comment="MED ACTIVE DISPLAY TOOLTIP">MED ACTIVE</string>
+       <string notr="true">Active or inactive status</string>
       </property>
      </column>
     </widget>

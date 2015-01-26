@@ -14,8 +14,6 @@ DrugGroupBox::DrugGroupBox(QWidget *parent) :
 	ui(new Ui::DrugGroupBox)
 {
 	ui->setupUi(this);
-
-	setStrings();
 }
 
 void DrugGroupBox::setId(int new_id)
@@ -47,21 +45,6 @@ DrugGroupBox::~DrugGroupBox()
 	delete ui;
 }
 
-void DrugGroupBox::setStrings()
-{
-	// Set UI strings
-	ui->medicationTitle->setText(ui->medicationTitle->text() + ":");
-	ui->genericTitle->setText(ui->genericTitle->text() + ":");
-	ui->manufacturerTitle->setText(ui->manufacturerTitle->text() + ":");
-	ui->ndcTitle->setText(ui->ndcTitle->text() + ":");
-	ui->formTitle->setText(ui->formTitle->text() + ":");
-	ui->strengthTitle->setText(ui->strengthTitle->text() + ":");
-	ui->dispenseTitle->setText(ui->dispenseTitle->text() + ":");
-	ui->unitTitle->setText(ui->unitTitle->text() + ":");
-	ui->instructionsTitle->setText(ui->instructionsTitle->text() + ":");
-	ui->activeTitle->setText(ui->activeTitle->text() + ":");
-}
-
 void DrugGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -69,7 +52,6 @@ void DrugGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
-		setStrings();
 		break;
 	default:
 		break;

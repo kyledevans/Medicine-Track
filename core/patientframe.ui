@@ -28,10 +28,10 @@
         <item>
          <widget class="QLabel" name="lastNameLabel">
           <property name="toolTip">
-           <string comment="PATIENT LAST SEARCH TOOLTIP">PATIENT LAST</string>
+           <string notr="true">Last name</string>
           </property>
           <property name="text">
-           <string comment="PATIENT LAST SEARCH LABEL">PATIENT LAST</string>
+           <string notr="true">Last name</string>
           </property>
          </widget>
         </item>
@@ -50,7 +50,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="PATIENT LAST SEARCH TOOLTIP">PATIENT LAST</string>
+           <string notr="true">Last name</string>
           </property>
          </widget>
         </item>
@@ -73,10 +73,10 @@
         <item>
          <widget class="QLabel" name="firstNameLabel">
           <property name="toolTip">
-           <string comment="PATIENT FIRST SEARCH TOOLTIP">PATIENT FIRST</string>
+           <string notr="true">First name</string>
           </property>
           <property name="text">
-           <string comment="PATIENT FIRST SEARCH LABEL">PATIENT FIRST</string>
+           <string notr="true">First name</string>
           </property>
          </widget>
         </item>
@@ -95,7 +95,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string comment="PATIENT FIRST SEARCH TOOLTIP">PATIENT FIRST</string>
+           <string notr="true">First name</string>
           </property>
          </widget>
         </item>
@@ -118,17 +118,17 @@
         <item>
          <widget class="QLabel" name="dobLabel">
           <property name="toolTip">
-           <string comment="DOB SEARCH TOOLTIP">DOB</string>
+           <string notr="true">Date of birth</string>
           </property>
           <property name="text">
-           <string comment="DOB SEARCH LABEL">DOB</string>
+           <string notr="true">DOB</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QDateEdit" name="dobField">
           <property name="toolTip">
-           <string comment="DOB SEARCH TOOLTIP">DOB</string>
+           <string notr="true">Date of birth</string>
           </property>
           <property name="calendarPopup">
            <bool>true</bool>
@@ -154,6 +154,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QCheckBox" name="activeField">
+          <property name="toolTip">
+           <string>Active or inactive status</string>
+          </property>
           <property name="text">
            <string notr="true">Active</string>
           </property>
@@ -328,42 +331,42 @@
      </column>
      <column>
       <property name="text">
-       <string comment="ALLSCRIPTS ID DISPLAY LABEL">ALLSCRIPTS ID</string>
+       <string notr="true">MR Number</string>
       </property>
       <property name="toolTip">
-       <string comment="ALLSCRIPTS ID DISPLAY TOOLTIP">ALLSCRIPTS ID</string>
+       <string notr="true">MR Number</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="PATIENT LAST DISPLAY LABEL">PATIENT LAST</string>
+       <string notr="true">Last name</string>
       </property>
       <property name="toolTip">
-       <string comment="PATIENT LAST DISPLAY TOOLTIP">PATIENT LAST</string>
+       <string notr="true">Last name</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="PATIENT FIRST DISPLAY LABEL">PATIENT FIRST</string>
+       <string notr="true">First name</string>
       </property>
       <property name="toolTip">
-       <string comment="PATIENT FIRST DISPLAY TOOLTIP">PATIENT FIRST</string>
+       <string notr="true">First name</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="DOB DISPLAY LABEL">DOB</string>
+       <string notr="true">DOB</string>
       </property>
       <property name="toolTip">
-       <string comment="DOB DISPLAY TOOLTIP">DOB</string>
+       <string notr="true">Date of birth</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string comment="PATIENT ACTIVE DISPLAY LABEL">PATIENT ACTIVE</string>
+       <string notr="true">Status</string>
       </property>
       <property name="toolTip">
-       <string comment="PATIENT ACTIVE DISPLAY TOOLTIP">PATIENT ACTIVE</string>
+       <string notr="true">Active or inactive status</string>
       </property>
      </column>
     </widget>

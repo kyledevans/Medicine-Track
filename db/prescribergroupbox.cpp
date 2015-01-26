@@ -14,8 +14,6 @@ PrescriberGroupBox::PrescriberGroupBox(QWidget *parent) :
 	ui(new Ui::PrescriberGroupBox)
 {
 	ui->setupUi(this);
-
-	setStrings();
 }
 
 PrescriberGroupBox::~PrescriberGroupBox()
@@ -41,15 +39,6 @@ void PrescriberGroupBox::setId(int new_id)
 	}
 }
 
-void PrescriberGroupBox::setStrings()
-{
-	// Set UI strings
-	ui->lastTitle->setText(ui->lastTitle->text() + ":");
-	ui->firstTitle->setText(ui->firstTitle->text() + ":");
-	ui->fullTitle->setText(ui->fullTitle->text() + ":");
-	ui->activeTitle->setText(ui->activeTitle->text() + ":");
-}
-
 void PrescriberGroupBox::changeEvent(QEvent *e)
 {
 	QWidget::changeEvent(e);
@@ -57,7 +46,6 @@ void PrescriberGroupBox::changeEvent(QEvent *e)
 	switch(e->type()) {
 	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
-		setStrings();
 		break;
 	default:
 		break;
