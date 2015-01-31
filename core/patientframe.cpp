@@ -14,12 +14,14 @@ Released under the GPL version 2 only.
 #include "../wizards/patientwizard.h"
 #include "../wizards/prescriptionwizard.h"
 #include "prescriptionlabel.h"
+#include "bl.h"
 
 #include <QDebug>
 
 PatientFrame::PatientFrame(QWidget *parent) :
 	QFrame(parent),
-	ui(new Ui::PatientFrame)
+    ui(new Ui::PatientFrame),
+    pPatients(nullptr)
 {
 	ui->setupUi(this);
 
@@ -103,6 +105,7 @@ void PatientFrame::initiateSearch(int patientID)
 	AlertInterface alert;
 	int i;      // Increment var
 	bool dont_search_dob = true;
+    PatientRecord *patient = nullptr;
 
 	// If the text fields are empty, don't do anything.
 	if (ui->firstNameField->text().isEmpty() &&
@@ -117,62 +120,98 @@ void PatientFrame::initiateSearch(int patientID)
 		return;
 	}
 
-	model = new QSqlQuery;
+    QList<PatientRecord*> *patients = bl.searchPatients(ui->firstNameField->text(), ui->lastNameField->text(), ui->dobField->date(), ui->activeField->isChecked());
+    if (patients == nullptr)
+        return;
 
-	// Do a normal search when a specific patient ID hasn't been specified
-	if (patientID == SQL::Undefined_ID) {
-		model->prepare("SELECT id, allscripts_id, last, first, dob, active "
-					   "FROM patients "
-					   "WHERE last LIKE ? "
-					   "AND first LIKE ? "
-					   "AND (? OR (dob = ?)) "
-					   "AND active = ?");
-		model->bindValue(0, SQL::prepWildcards(ui->lastNameField->text()));
-		model->bindValue(1, SQL::prepWildcards(ui->firstNameField->text()));
-		if (ui->dobField->date() != DEFAULTS::Date) {
-			dont_search_dob = false;
-		}
-		model->bindValue(2, QVariant(dont_search_dob));
-		model->bindValue(3, QVariant(ui->dobField->date()));
-		model->bindValue(4, QVariant(ui->activeField->isChecked()));
-	} else {	// Otherwise search for the specific patient
-		model->prepare("SELECT id, allscripts_id, last, first, dob, active "
-					   "FROM patients "
-					   "WHERE id = ?;");
-		model->bindValue(0, QVariant(patientID));
-	}
+    ui->resultTable->clearContents();
+    ui->resultTable->setSortingEnabled(false);
+    ui->resultTable->setRowCount(patients->length());
 
-	if (!alert.attemptQuery(model)) {
-		delete model;
-		return;
-	}
+    if (pPatients != nullptr) {
+        for (int i = pPatients->length() - 1; i >= 0; i--) {
+            delete pPatients->takeAt(i);
+        }
+        delete pPatients;
+    }
 
-	ui->resultTable->clearContents();
-	ui->resultTable->setSortingEnabled(false);
-	ui->resultTable->setRowCount(model->size());
-	for (i = 0; i < model->size(); i++) {
-		model->next();
-		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(0).toString()));
-		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(1).toString()));
-		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
-		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
-		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(4).toDate().toString(DEFAULTS::DateDisplayFormat)));
-		if (model->value(5).toBool()) {	// Active patient
-			ui->resultTable->setItemFlag(i, 5, new QTableWidgetItem(QString("Active")), true);
-		} else {
-			ui->resultTable->setItemFlag(i, 5, new QTableWidgetItem(QString("Inactive")), false);
-		}
+    pPatients = patients;
 
-	}
-	ui->resultTable->setSortingEnabled(true);
-	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
+    for (int i = 0; i < patients->length(); i++) {
+        patient = (*patients)[i];
+        ui->resultTable->setItem(i, 0, new QTableWidgetItem(QString::number(patient->getId())));
+        ui->resultTable->setItem(i, 1, new QTableWidgetItem(QString::number(patient->getAllscripts_id())));
+        ui->resultTable->setItem(i, 2, new QTableWidgetItem(patient->getLast()));
+        ui->resultTable->setItem(i, 3, new QTableWidgetItem(patient->getFirst()));
+        ui->resultTable->setItem(i, 4, new QTableWidgetItem(patient->getDob().toString(DEFAULTS::DateDisplayFormat)));
+        ui->resultTable->setItemFlag(i, 5, new QTableWidgetItem(patient->getActive() ? QString("Active") : QString("Inactive")), true);
+    }
 
-	delete model;
+    ui->resultTable->setSortingEnabled(true);
+    ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
 
-	if (patientID != SQL::Undefined_ID) {
-		ui->resultTable->selectRow(0);
-		ui->resultTable->setFocus();
-	}
+    if (patientID != SQL::Undefined_ID) {
+        ui->resultTable->selectRow(0);
+        ui->resultTable->setFocus();
+    }
+
+
+//	model = new QSqlQuery;
+
+//	// Do a normal search when a specific patient ID hasn't been specified
+//	if (patientID == SQL::Undefined_ID) {
+//		model->prepare("SELECT id, allscripts_id, last, first, dob, active "
+//					   "FROM patients "
+//					   "WHERE last LIKE ? "
+//					   "AND first LIKE ? "
+//					   "AND (? OR (dob = ?)) "
+//					   "AND active = ?");
+//		model->bindValue(0, SQL::prepWildcards(ui->lastNameField->text()));
+//		model->bindValue(1, SQL::prepWildcards(ui->firstNameField->text()));
+//		if (ui->dobField->date() != DEFAULTS::Date) {
+//			dont_search_dob = false;
+//		}
+//		model->bindValue(2, QVariant(dont_search_dob));
+//		model->bindValue(3, QVariant(ui->dobField->date()));
+//		model->bindValue(4, QVariant(ui->activeField->isChecked()));
+//	} else {	// Otherwise search for the specific patient
+//		model->prepare("SELECT id, allscripts_id, last, first, dob, active "
+//					   "FROM patients "
+//					   "WHERE id = ?;");
+//		model->bindValue(0, QVariant(patientID));
+//	}
+
+//	if (!alert.attemptQuery(model)) {
+//		delete model;
+//		return;
+//	}
+
+//	ui->resultTable->clearContents();
+//	ui->resultTable->setSortingEnabled(false);
+//	ui->resultTable->setRowCount(model->size());
+//	for (i = 0; i < model->size(); i++) {
+//		model->next();
+//		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(0).toString()));
+//		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(1).toString()));
+//		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
+//		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
+//		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(4).toDate().toString(DEFAULTS::DateDisplayFormat)));
+//		if (model->value(5).toBool()) {	// Active patient
+//			ui->resultTable->setItemFlag(i, 5, new QTableWidgetItem(QString("Active")), true);
+//		} else {
+//			ui->resultTable->setItemFlag(i, 5, new QTableWidgetItem(QString("Inactive")), false);
+//		}
+
+//	}
+//	ui->resultTable->setSortingEnabled(true);
+//	ui->resultTable->sortByColumn(1, Qt::AscendingOrder);
+
+//	delete model;
+
+//	if (patientID != SQL::Undefined_ID) {
+//		ui->resultTable->selectRow(0);
+//		ui->resultTable->setFocus();
+//	}
 }
 
 void PatientFrame::selectionChanged()

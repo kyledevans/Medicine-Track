@@ -20,7 +20,8 @@ QtGuiApplication {
     ]
 
     files: [
-        // DB headers
+        "core/bl.cpp",
+        "core/bl.h",
         "db/alertinterface.h",
         "db/displaytable.h",
         "db/drugdisplay.h",
@@ -43,7 +44,6 @@ QtGuiApplication {
         "db/shipmentdisplay.h",
         "db/shipmentgroupbox.h",
         "db/shipmentrecord.h",
-        // DB sources
         "db/alertinterface.cpp",
         "db/displaytable.cpp",
         "db/drugdisplay.cpp",
@@ -66,7 +66,6 @@ QtGuiApplication {
         "db/shipmentdisplay.cpp",
         "db/shipmentgroupbox.cpp",
         "db/shipmentrecord.cpp",
-        // DB UI files
         "db/drugdisplay.ui",
         "db/druggroupbox.ui",
         "db/patientdisplay.ui",
@@ -79,8 +78,6 @@ QtGuiApplication {
         "db/prescriptiongroupbox.ui",
         "db/shipmentdisplay.ui",
         "db/shipmentgroupbox.ui",
-
-        // Wizard headers
         "wizards/medication_00.h",
         "wizards/medication_01.h",
         "wizards/medicationwizard.h",
@@ -96,7 +93,6 @@ QtGuiApplication {
         "wizards/prescriptionwizard.h",
         "wizards/shipment_00.h",
         "wizards/shipmentwizard.h",
-        // Wizard sources
         "wizards/medication_00.cpp",
         "wizards/medication_01.cpp",
         "wizards/medicationwizard.cpp",
@@ -112,7 +108,6 @@ QtGuiApplication {
         "wizards/prescriptionwizard.cpp",
         "wizards/shipment_00.cpp",
         "wizards/shipmentwizard.cpp",
-        // Wizard UI files
         "wizards/medication_00.ui",
         "wizards/medication_01.ui",
         "wizards/medicationwizard.ui",
@@ -128,8 +123,6 @@ QtGuiApplication {
         "wizards/prescriptionwizard.ui",
         "wizards/shipment_00.ui",
         "wizards/shipmentwizard.ui",
-
-        // Core headers
         "core/barcodelabel.h",
         "core/formularyframe.h",
         "core/inventoryframe.h",
@@ -141,7 +134,6 @@ QtGuiApplication {
         "core/prescriberframe.h",
         "core/prescriptionframe.h",
         "core/prescriptionlabel.h",
-        // Core sources
         "core/main.cpp",
         "core/barcodelabel.cpp",
         "core/formularyframe.cpp",
@@ -154,7 +146,6 @@ QtGuiApplication {
         "core/prescriberframe.cpp",
         "core/prescriptionframe.cpp",
         "core/prescriptionlabel.cpp",
-        // Core UI files
         "core/barcodelabel.ui",
         "core/formularyframe.ui",
         "core/inventoryframe.ui",
@@ -164,7 +155,7 @@ QtGuiApplication {
         "core/pharmacistframe.ui",
         "core/prescriberframe.ui",
         "core/prescriptionframe.ui",
-        "core/prescriptionlabel.ui"
+        "core/prescriptionlabel.ui",
     ]
 }
 

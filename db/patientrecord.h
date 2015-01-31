@@ -47,6 +47,7 @@ private:
 	QDate dob;			// patients.dob
 	bool active;		// patients.active
 
+    // TODO: This is a pointless property.  If we want to check the existence of the patient record, then we should just check the id.
 	bool exists;		// True if the record is already in the database
 };
 

@@ -10,6 +10,7 @@ Released under the GPL version 2 only.
 #include "../db/patientrecord.h"
 #include "../db/prescriptionrecord.h"
 #include "../db/globals.h"
+#include "bl.h"
 
 #ifndef PATIENTFRAME_H
 #define PATIENTFRAME_H
@@ -51,6 +52,8 @@ public slots:
 
 private:
 	void initiatePrint(PrescriptionRecord *);
+    BL bl;
+    QList<PatientRecord *> *pPatients;
 
 	Ui::PatientFrame *ui;
 };
