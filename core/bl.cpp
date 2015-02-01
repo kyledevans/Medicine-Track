@@ -16,6 +16,14 @@ BL::~BL()
 
 }
 
+/* SQL without C++:
+SELECT id, allscripts_id, last, first, dob, active
+FROM patients
+WHERE last LIKE ?
+AND first LIKE ?
+AND (<true if NOT searching by DOB> OR (dob = ?))
+AND active = ?
+*/
 QList<PatientRecord*> * BL::searchPatients(QString _Firstname, QString _Lastname, QDate _DOB, bool _Active)
 {
     QSqlQuery query;
@@ -59,6 +67,33 @@ QList<PatientRecord*> * BL::searchPatients(QString _Firstname, QString _Lastname
     }
 
     return patients;
+}
+
+PatientRecord *BL::getPatient(int _PatientID)
+{
+    QSqlQuery query;
+    PatientRecord *patient;
+
+    query.prepare(
+                "SELECT id, allscripts_id, last, first, dob, active "
+                "FROM patients "
+                "WHERE id = ?;");
+
+    query.bindValue(0, QVariant(_PatientID));
+
+    if (!execQuery(query))
+        return nullptr;
+
+    query.next();
+    patient = new PatientRecord();
+    patient->setId(query.value(0).toInt());
+    patient->setAllscripts_id(query.value(1).toInt());
+    patient->setLast(query.value(2).toString());
+    patient->setFirst(query.value(3).toString());
+    patient->setDob(query.value(4).toDate());
+    patient->setActive(query.value(5).toBool());
+
+    return patient;
 }
 
 bool BL::execQuery(QSqlQuery &_Query)

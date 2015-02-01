@@ -15,6 +15,7 @@ public:
 
     // Patient queries
     QList<PatientRecord *> *searchPatients(QString _Firstname, QString _Lastname, QDate _DOB, bool _Active);
+    PatientRecord * getPatient(int _PatientID);
 
 private:
     bool execQuery(QSqlQuery &_Query);

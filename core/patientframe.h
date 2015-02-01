@@ -53,7 +53,6 @@ public slots:
 private:
 	void initiatePrint(PrescriptionRecord *);
     BL bl;
-    QList<PatientRecord *> *pPatients;
 
 	Ui::PatientFrame *ui;
 };
