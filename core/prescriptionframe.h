@@ -4,6 +4,8 @@ Copyright (C) 2011-2012 Kyle Evans <kyledevans@gmail.com>
 Released under the GPL version 2 only.
 */
 
+#include "bl.h"
+
 #ifndef PRESCRIPTIONFRAME_H
 #define PRESCRIPTIONFRAME_H
 
@@ -35,6 +37,7 @@ public slots:
 
 private:
 	Ui::PrescriptionFrame *ui;
+    BL bl;
 };
 
 #endif // PRESCRIPTIONFRAME_H

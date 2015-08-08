@@ -7,6 +7,7 @@ Released under the GPL version 2 only.
 #include "../db/drugrecord.h"
 #include "../db/shipmentrecord.h"
 #include "../db/globals.h"
+#include "bl.h"
 
 #ifndef FORMULARYFRAME_H
 #define FORMULARYFRAME_H
@@ -47,6 +48,7 @@ public slots:
 
 private:
 	Ui::FormularyFrame *ui;
+    BL bl;
 };
 
 #endif // FORMULARYFRAME_H

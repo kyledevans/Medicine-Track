@@ -22,6 +22,10 @@ QtGuiApplication {
     files: [
         "core/bl.cpp",
         "core/bl.h",
+        "core/drugsearchitem.cpp",
+        "core/drugsearchitem.h",
+        "core/prescriptionsearchitem.cpp",
+        "core/prescriptionsearchitem.h",
         "db/alertinterface.h",
         "db/displaytable.h",
         "db/drugdisplay.h",

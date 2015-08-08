@@ -21,7 +21,7 @@ Released under the GPL version 2 only.
 
 PrescriptionFrame::PrescriptionFrame(QWidget *parent) :
 	QFrame(parent),
-	ui(new Ui::PrescriptionFrame)
+    ui(new Ui::PrescriptionFrame)
 {
 	ui->setupUi(this);
 
@@ -98,31 +98,8 @@ void PrescriptionFrame::selectionChanged()
 	}
 }
 
-/* SQL query without C++:
-SELECT prescriptions.id, patients.allscripts_id, patients.last,
-patients.first, patients.dob, drugs.name, drugs.form, drugs.strength,
-CONCAT(prescriptions.amount, ' ', drugs.dispense_units),
-prescriptions.written, prescriptions.filled, shipments.lot, prescriptions.active
-FROM prescriptions
-JOIN patients ON prescriptions.patient_id = patients.id
-JOIN drugs ON prescriptions.drug_id = drugs.id
-JOIN shipments ON prescriptions.shipment_id = shipments.id
-WHERE drugs.name LIKE ?
-AND shipments.lot LIKE ?
-AND (<true if NOT searching by filled date> OR (prescriptions.filled = ?))
-AND patients.last LIKE ?
-AND patients.first LIKE ?
-AND (<true if NOT searching by dob> OR (patients.dob = ?))
-AND prescriptions.active = ?;
-*/
 void PrescriptionFrame::initiateSearch()
 {
-	QSqlQuery *model;		// SQL interface
-	AlertInterface alert;	// Submits query and handles errors
-	int i;					// Increment var
-	bool dont_search_filled = true;
-	bool dont_search_dob = true;
-
 	// Test if any field has been altered
 	if (ui->medicationNameField->text().isEmpty() &&
 		ui->lotField->text().isEmpty() &&
@@ -137,73 +114,41 @@ void PrescriptionFrame::initiateSearch()
 		return;
 	}
 
-	model = new QSqlQuery;
+    QList<PrescriptionSearchItem *> *searchItems = bl.searchPrescriptions(ui->medicationNameField->text(), ui->lotField->text(), ui->filledField->date(), ui->firstField->text(), ui->lastField->text(), ui->dobField->date(), ui->activeField->isChecked(), ui->invalidField->isChecked());
 
-	model->prepare("SELECT prescriptions.id, patients.allscripts_id, patients.last, "
-				   "patients.first, patients.dob, drugs.name, drugs.form, drugs.strength, "
-				   "CONCAT(prescriptions.amount, ' ', drugs.dispense_units), "
-				   "prescriptions.written, prescriptions.filled, shipments.lot, prescriptions.active "
-				   "FROM prescriptions "
-				   "JOIN patients ON prescriptions.patient_id = patients.id \n"
-				   "JOIN drugs ON prescriptions.drug_id = drugs.id "
-				   "JOIN shipments ON prescriptions.shipment_id = shipments.id "
-				   "WHERE drugs.name LIKE ? "
-				   "AND shipments.lot LIKE ? "
-				   "AND (? OR (prescriptions.filled = ?)) "
-				   "AND patients.last LIKE ? "
-				   "AND patients.first LIKE ? "
-				   "AND (? OR (patients.dob = ?)) "
-				   "AND patients.active = ? "
-				   "AND prescriptions.active = ?;");
-	model->bindValue(0, SQL::prepWildcards(ui->medicationNameField->text()));
-	model->bindValue(1, SQL::prepWildcards(ui->lotField->text()));
-	if (ui->filledField->date() != DEFAULTS::Date) {    // Enables searching by filled date if the user made a change
-		dont_search_filled = false;
-	}
-	model->bindValue(2, QVariant(dont_search_filled));
-	model->bindValue(3, QVariant(ui->filledField->date()));
-	model->bindValue(4, SQL::prepWildcards(ui->lastField->text()));
-	model->bindValue(5, SQL::prepWildcards(ui->firstField->text()));
-	if (ui->dobField->date() != DEFAULTS::Date) {       // Enables searching by dob if the user made a change
-		dont_search_dob = false;
-	}
-	model->bindValue(6, QVariant(dont_search_dob));
-	model->bindValue(7, QVariant(ui->dobField->date()));
-	model->bindValue(8, QVariant(ui->activeField->isChecked()));
-	model->bindValue(9, QVariant(!ui->invalidField->isChecked()));
+    if (searchItems == nullptr)
+        return;
 
-	if (!alert.attemptQuery(model)) {
-		delete model;
-		return;
-	}
+    ui->resultTable->clearContents();
+    ui->resultTable->setSortingEnabled(false);
+    ui->resultTable->setRowCount(searchItems->size());
 
-	ui->resultTable->clearContents();
-	ui->resultTable->setSortingEnabled(false);
-	ui->resultTable->setRowCount(model->size());
-	for (i = 0; i < model->size(); i++) {
-		model->next();
-		ui->resultTable->setItem(i, 0, new QTableWidgetItem(model->value(0).toString()));
-		ui->resultTable->setItem(i, 1, new QTableWidgetItem(model->value(1).toString()));
-		ui->resultTable->setItem(i, 2, new QTableWidgetItem(model->value(2).toString()));
-		ui->resultTable->setItem(i, 3, new QTableWidgetItem(model->value(3).toString()));
-		ui->resultTable->setItem(i, 4, new QTableWidgetItem(model->value(4).toDate().toString(DEFAULTS::DateDisplayFormat)));
-		ui->resultTable->setItem(i, 5, new QTableWidgetItem(model->value(5).toString()));
-		ui->resultTable->setItem(i, 6, new QTableWidgetItem(model->value(6).toString()));
-		ui->resultTable->setItem(i, 7, new QTableWidgetItem(model->value(7).toString()));
-		ui->resultTable->setItem(i, 8, new QTableWidgetItem(model->value(8).toString()));
-		ui->resultTable->setItem(i, 9, new QTableWidgetItem(model->value(9).toDate().toString(DEFAULTS::DateDisplayFormat)));
-		ui->resultTable->setItem(i, 10, new QTableWidgetItem(model->value(10).toDate().toString(DEFAULTS::DateDisplayFormat)));
-		ui->resultTable->setItem(i, 11, new QTableWidgetItem(model->value(11).toString()));
-		if (model->value(12).toBool()) {	// Active
-			ui->resultTable->setItemFlag(i, 12, new QTableWidgetItem(QString("Valid")), true);
-		} else {	// Inactive
-			ui->resultTable->setItemFlag(i, 12, new QTableWidgetItem(QString("Invalid")), false);
-		}
-	}
-	ui->resultTable->setSortingEnabled(true);
-	ui->resultTable->sortByColumn(2, Qt::AscendingOrder);
+    PrescriptionSearchItem *item;
+    for (int i = 0; i < searchItems->length(); i++) {
+        item = searchItems->at(i);
 
-	delete model;
+        ui->resultTable->setItem(i, 0, new QTableWidgetItem(item->getPrescriptionID()));
+        ui->resultTable->setItem(i, 1, new QTableWidgetItem(QString::number(item->getAllscriptsId())));
+        ui->resultTable->setItem(i, 2, new QTableWidgetItem(item->getLastname()));
+        ui->resultTable->setItem(i, 3, new QTableWidgetItem(item->getFirstname()));
+        ui->resultTable->setItem(i, 4, new QTableWidgetItem(item->getDob().toString(DEFAULTS::DateDisplayFormat)));
+        ui->resultTable->setItem(i, 5, new QTableWidgetItem(item->getDrugName()));
+        ui->resultTable->setItem(i, 6, new QTableWidgetItem(item->getDrugForm()));
+        ui->resultTable->setItem(i, 7, new QTableWidgetItem(item->getDrugStrength()));
+        ui->resultTable->setItem(i, 8, new QTableWidgetItem(item->getPrescriptionAmount()));
+        ui->resultTable->setItem(i, 9, new QTableWidgetItem(item->getPrescriptionWritten().toString(DEFAULTS::DateDisplayFormat)));
+        ui->resultTable->setItem(i, 10, new QTableWidgetItem(item->getPrescriptionFilled().toString(DEFAULTS::DateDisplayFormat)));
+        ui->resultTable->setItem(i, 11, new QTableWidgetItem(item->getShipmentLot()));
+        ui->resultTable->setItemFlag(i, 12, new QTableWidgetItem(item->getPrescriptionActive() ? QString("Valid") : QString("Invalid")), item->getPrescriptionActive());
+    }
+
+    ui->resultTable->setSortingEnabled(true);
+    ui->resultTable->sortByColumn(2, Qt::AscendingOrder);
+
+    for (int i = searchItems->length() - 1; i >= 0; i--) {
+        delete searchItems->takeAt(i);
+    }
+    delete searchItems;
 }
 
 void PrescriptionFrame::initiatePrint()
